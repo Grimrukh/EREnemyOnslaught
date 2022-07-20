@@ -1,6 +1,4 @@
 """
-Southeast Caelid (NW) (NW)
-
 linked:
 0
 82
@@ -19,20 +17,18 @@ from soulstruct.eldenring.events.instructions import *
 
 
 @RestartOnRest(1052392699)
-def Event_1052392699(_, asset: uint):
+def Event_1052392699(_, obj: uint):
     """Event 1052392699"""
     GotoIfFlagEnabled(Label.L0, flag=9411)
     GotoIfFlagEnabled(Label.L1, flag=1052380800)
-    DisableAsset(asset)
-    
-    MAIN.Await(FlagEnabled(9411))
+    DisableObject(obj)
+    IfFlagEnabled(MAIN, 9411)
 
     # --- Label 0 --- #
     DefineLabel(0)
-    EnableAsset(asset)
-    
-    MAIN.Await(FlagEnabled(1052380800))
+    EnableObject(obj)
+    IfFlagEnabled(MAIN, 1052380800)
 
     # --- Label 1 --- #
     DefineLabel(1)
-    DisableAsset(asset)
+    DisableObject(obj)

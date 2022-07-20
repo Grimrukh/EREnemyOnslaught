@@ -1,6 +1,4 @@
 """
-Southwest Mountaintops (NE) (SW)
-
 linked:
 0
 82

@@ -1,6 +1,4 @@
 """
-South Altus Plateau (NW) (SW)
-
 linked:
 0
 82
@@ -16,7 +14,6 @@ strings:
 """
 from soulstruct.eldenring.events import *
 from soulstruct.eldenring.events.instructions import *
-from .entities.m60_41_50_00_entities import Characters as m60_41_Characters
 
 
 @NeverRestart(0)
@@ -55,8 +52,7 @@ def Constructor():
 def Event_1040502200(_, vfx_id: uint):
     """Event 1040502200"""
     GotoIfFlagEnabled(Label.L0, flag=1041500800)
-    
-    MAIN.Await(CharacterDead(m60_41_Characters.FallingstarBeast))
+    IfCharacterDead(MAIN, 1041500800)
 
     # --- Label 0 --- #
     DefineLabel(0)

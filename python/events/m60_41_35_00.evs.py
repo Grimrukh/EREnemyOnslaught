@@ -1,6 +1,4 @@
 """
-West Weeping Peninsula (NW) (NE)
-
 linked:
 0
 82
@@ -14,29 +12,26 @@ strings:
 172: 
 174: 
 """
-# [COMMON_FUNC]
-from .common_func import *
 from soulstruct.eldenring.events import *
 from soulstruct.eldenring.events.instructions import *
-from .entities.m60_41_35_00_entities import *
 
 
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    RegisterGrace(grace_flag=1041350000, asset=Assets.AEG099_060_9000)
-    CommonFunc_900005610(0, asset=Assets.AEG003_316_9000, vfx_id=100, model_point=800, right=0)
-    CommonFunc_90005300(0, flag=1041350210, character=Characters.Scarab, item_lot_param_id=40144, seconds=0.0, left=0)
-    Event_1041350700(0, character=Characters.Dummy)
+    RegisterGrace(grace_flag=1041350000, obj=1041351950, unknown=5.0)
+    RunCommonEvent(0, 900005610, args=(1041351680, 100, 800, 0), arg_types="IiiI")
+    RunCommonEvent(0, 90005300, args=(1041350210, 1041350210, 40144, 0.0, 0), arg_types="IIifi")
+    Event_1041350700(0, character=1041350700)
     Event_1041350701()
-    CommonFunc_90005708(0, character=Characters.Dummy, flag=6001, left=0)
+    RunCommonEvent(0, 90005708, args=(1041350700, 6001, 0), arg_types="III")
     Event_1041353702()
 
 
 @RestartOnRest(1041352680)
 def Event_1041352680():
     """Event 1041352680"""
-    CreateAssetVFX(Assets.AEG003_316_9000, vfx_id=100, model_point=800)
+    CreateObjectVFX(1041351680, vfx_id=100, model_point=800)
 
 
 @RestartOnRest(1041350700)
@@ -49,14 +44,11 @@ def Event_1041350700(_, character: uint):
 @RestartOnRest(1041350701)
 def Event_1041350701():
     """Event 1041350701"""
-    if PlayerNotInOwnWorld():
-        return
-    AND_1.Add(CharacterHasSpecialEffect(PLAYER, 9611))
-    AND_1.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9612))
-    
-    MAIN.Await(AND_1)
-    
-    ForceAnimation(PLAYER, 60510)
+    EndIfPlayerNotInOwnWorld()
+    IfCharacterHasSpecialEffect(AND_1, PLAYER, 9611)
+    IfCharacterDoesNotHaveSpecialEffect(AND_1, PLAYER, 9612)
+    IfConditionTrue(MAIN, input_condition=AND_1)
+    ForceAnimation(PLAYER, 60510, unknown2=1.0)
     Wait(0.20000000298023224)
     Restart()
 
@@ -65,7 +57,6 @@ def Event_1041350701():
 def Event_1041353702():
     """Event 1041353702"""
     DisableFlag(1041359950)
-    if PlayerNotInOwnWorld():
-        return
+    EndIfPlayerNotInOwnWorld()
     EnableFlag(1041359950)
     End()

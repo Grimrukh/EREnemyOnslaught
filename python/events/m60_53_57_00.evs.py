@@ -1,6 +1,4 @@
 """
-Northeast Mountaintops (SW) (NE)
-
 linked:
 0
 82
@@ -14,8 +12,6 @@ strings:
 172: 
 174: 
 """
-# [COMMON_FUNC]
-from .common_func import *
 from soulstruct.eldenring.events import *
 from soulstruct.eldenring.events.instructions import *
 
@@ -24,7 +20,7 @@ from soulstruct.eldenring.events.instructions import *
 def Constructor():
     """Event 0"""
     Event_1053572200(0, character=1053575200)
-    CommonFunc_90005300(0, 1053570210, 1053570210, 40510, 0.0, 0)
+    RunCommonEvent(0, 90005300, args=(1053570210, 1053570210, 40510, 0.0, 0), arg_types="IIifi")
 
 
 @RestartOnRest(1053572200)

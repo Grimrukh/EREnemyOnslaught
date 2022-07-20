@@ -1,6 +1,4 @@
 """
-Southeast Liurnia (SE) (NW)
-
 linked:
 0
 82
@@ -14,149 +12,81 @@ strings:
 172: 
 174: 
 """
-# [COMMON_FUNC]
-from .common_func import *
 from soulstruct.eldenring.events import *
 from soulstruct.eldenring.events.instructions import *
-from .entities.m60_38_41_00_entities import *
 
 
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    RegisterGrace(grace_flag=1038410000, asset=Assets.AEG099_060_9001)
-    CommonFunc_90005100(
+    RegisterGrace(grace_flag=1038410000, obj=1038411950, unknown=5.0)
+    RunCommonEvent(
         0,
-        flag=76206,
-        flag_1=76202,
-        asset=Assets.AEG099_090_9001,
-        source_flag=77200,
-        value=2,
-        flag_2=78200,
-        flag_3=78201,
-        flag_4=78202,
-        flag_5=78203,
-        flag_6=78204,
-        flag_7=78205,
-        flag_8=78206,
-        flag_9=78207,
-        flag_10=78208,
-        flag_11=78209,
+        90005100,
+        args=(76206, 76202, 1038411980, 77200, 2, 78200, 78201, 78202, 78203, 78204, 78205, 78206, 78207, 78208, 78209),
+        arg_types="IIIIIIIIIIIIIII",
     )
-    CommonFunc_90005880(
+    RunCommonEvent(
         0,
-        flag=1038410800,
-        flag_1=1038410805,
-        flag_2=1038412800,
-        character=Characters.AdanThiefofFire,
-        item_lot_param_id=30245,
-        area_id=60,
-        block_id=38,
-        cc_id=41,
-        dd_id=0,
-        player_start=1038412805,
+        90005880,
+        args=(1038410800, 1038410805, 1038412800, 1038410800, 30245, 60, 38, 41, 0, 1038412805),
+        arg_types="IIIIiBBbbI",
     )
-    CommonFunc_90005881(
+    RunCommonEvent(
         0,
-        flag=1038410800,
-        flag_1=1038410805,
-        left_flag=1038412801,
-        cancel_flag__right_flag=1038412802,
-        message=20300,
-        anchor_entity=Assets.AEG099_170_1000,
-        area_id=60,
-        block_id=38,
-        cc_id=41,
-        dd_id=0,
-        player_start=1038412805,
+        90005881,
+        args=(1038410800, 1038410805, 1038412801, 1038412802, 20300, 1038411805, 60, 38, 41, 0, 1038412805),
+        arg_types="IIIIiIBBbbI",
     )
-    CommonFunc_90005882(
+    RunCommonEvent(
         0,
-        flag=1038410800,
-        flag_1=1038410805,
-        flag_2=1038412800,
-        character=Characters.AdanThiefofFire,
-        flag_3=1038412806,
-        character_1=1038415810,
-        asset=Assets.AEG099_120_1000,
-        owner_entity=Characters.TalkDummy0,
-        source_entity=1038412810,
-        name=900000520,
-        animation_id=-1,
-        animation_id_1=90005,
+        90005882,
+        args=(
+            1038410800,
+            1038410805,
+            1038412800,
+            1038410800,
+            1038412806,
+            1038415810,
+            1038411800,
+            1038410810,
+            1038412810,
+            900000520,
+            -1,
+            90005,
+        ),
+        arg_types="IIIIIIIIIiii",
     )
-    CommonFunc_90005883(0, flag=1038410800, flag_1=1038410805, entity=Assets.AEG099_170_1000)
-    CommonFunc_90005885(
+    RunCommonEvent(0, 90005883, args=(1038410800, 1038410805, 1038411805), arg_types="III")
+    RunCommonEvent(0, 90005885, args=(1038410800, 0, 1038412806, 1038412807, 0, 1), arg_types="IiIIii")
+    RunCommonEvent(0, 90005704, args=(1038410710, 3381, 3380, 1038419201, 3), arg_types="IIIIi")
+    RunCommonEvent(0, 90005703, args=(1038410710, 3381, 3382, 1038419201, 3381, 3380, 3384, -1), arg_types="IIIIIIIi")
+    RunCommonEvent(0, 90005702, args=(1038410710, 3383, 3380, 3384), arg_types="IIII")
+    Event_1038413700(0, character=1038410710)
+    RunCommonEvent(0, 90005706, args=(1038410720, 30018, 0), arg_types="IiI")
+    RunCommonEvent(
         0,
-        flag=1038410800,
-        bgm_boss_conv_param_id=0,
-        flag_1=1038412806,
-        flag_2=1038412807,
-        left=0,
-        left_1=1,
+        90005725,
+        args=(4740, 4741, 4743, 1043339205, 1038410730, 1038400730, 1038416700),
+        arg_types="IIIIIII",
     )
-    CommonFunc_90005704(0, attacked_entity=Characters.Hyetta, flag=3381, flag_1=3380, flag_2=1038419201, right=3)
-    CommonFunc_90005703(
-        0,
-        character=Characters.Hyetta,
-        flag=3381,
-        flag_1=3382,
-        flag_2=1038419201,
-        flag_3=3381,
-        first_flag=3380,
-        last_flag=3384,
-        right=-1,
-    )
-    CommonFunc_90005702(0, character=Characters.Hyetta, flag=3383, first_flag=3380, last_flag=3384)
-    Event_1038413700(0, character=Characters.Hyetta)
-    CommonFunc_90005706(0, character=1038410720, animation_id=30018, left=0)
-    CommonFunc_90005725(
-        0,
-        flag=4740,
-        flag_1=4741,
-        flag_2=4743,
-        flag_3=1043339205,
-        character=Characters.Merchant,
-        character_1=Characters.NomadMule,
-        asset=1038416700,
-    )
-    CommonFunc_90005703(
-        0,
-        character=Characters.Merchant,
-        flag=4741,
-        flag_1=4742,
-        flag_2=1043339206,
-        flag_3=4741,
-        first_flag=4740,
-        last_flag=4744,
-        right=0,
-    )
-    CommonFunc_90005704(0, attacked_entity=Characters.Merchant, flag=4741, flag_1=4740, flag_2=1043339206, right=3)
-    CommonFunc_90005702(0, character=Characters.Merchant, flag=4743, first_flag=4740, last_flag=4744)
-    CommonFunc_90005703(
-        0,
-        character=Characters.NomadMule,
-        flag=4741,
-        flag_1=4742,
-        flag_2=1043339207,
-        flag_3=4741,
-        first_flag=4740,
-        last_flag=4744,
-        right=0,
-    )
-    CommonFunc_90005704(0, attacked_entity=Characters.NomadMule, flag=4741, flag_1=4740, flag_2=1043339207, right=3)
-    CommonFunc_90005728(0, attacked_entity=Characters.NomadMule, flag=1043332706, flag_1=1043332707)
-    CommonFunc_90005727(0, 4741, 1038410730, 1038400730, 4740, 4743)
+    RunCommonEvent(0, 90005703, args=(1038410730, 4741, 4742, 1043339206, 4741, 4740, 4744, 0), arg_types="IIIIIIIi")
+    RunCommonEvent(0, 90005704, args=(1038410730, 4741, 4740, 1043339206, 3), arg_types="IIIIi")
+    RunCommonEvent(0, 90005702, args=(1038410730, 4743, 4740, 4744), arg_types="IIII")
+    RunCommonEvent(0, 90005703, args=(1038400730, 4741, 4742, 1043339207, 4741, 4740, 4744, 0), arg_types="IIIIIIIi")
+    RunCommonEvent(0, 90005704, args=(1038400730, 4741, 4740, 1043339207, 3), arg_types="IIIIi")
+    RunCommonEvent(0, 90005728, args=(1038400730, 1043332706, 1043332707), arg_types="III")
+    RunCommonEvent(0, 90005727, args=(4741, 1038410730, 1038400730, 4740, 4743), arg_types="IIIII")
 
 
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(1038410700)
-    DisableBackread(Characters.Hyetta)
+    DisableBackread(1038410710)
     DisableBackread(1038410720)
-    DisableBackread(Characters.Merchant)
-    DisableBackread(Characters.NomadMule)
+    DisableBackread(1038410730)
+    DisableBackread(1038400730)
 
 
 @RestartOnRest(1038413700)
@@ -165,17 +95,15 @@ def Event_1038413700(_, character: uint):
     DisableNetworkSync()
     WaitFrames(frames=1)
     GotoIfPlayerNotInOwnWorld(Label.L19)
-    if FlagEnabled(3380):
-        DisableFlag(1038419202)
+    SkipLinesIfFlagDisabled(1, 3380)
+    DisableFlag(1038419202)
 
     # --- Label 19 --- #
     DefineLabel(19)
     GotoIfFlagEnabled(Label.L8, flag=3388)
     DisableCharacter(character)
     DisableBackread(character)
-    
-    MAIN.Await(FlagEnabled(3388))
-    
+    IfFlagEnabled(MAIN, 3388)
     Restart()
 
     # --- Label 8 --- #
@@ -188,14 +116,14 @@ def Event_1038413700(_, character: uint):
     DefineLabel(0)
     EnableBackread(character)
     EnableCharacter(character)
-    ForceAnimation(character, 90101)
+    ForceAnimation(character, 90101, unknown2=1.0)
     Goto(Label.L20)
 
     # --- Label 1 --- #
     DefineLabel(1)
     EnableBackread(character)
     EnableCharacter(character)
-    ForceAnimation(character, 90101)
+    ForceAnimation(character, 90101, unknown2=1.0)
     SetTeamType(character, TeamType.HostileNPC)
     AddSpecialEffect(character, 9628)
     Goto(Label.L20)
@@ -209,9 +137,7 @@ def Event_1038413700(_, character: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    
-    MAIN.Await(FlagDisabled(3388))
-    
+    IfFlagDisabled(MAIN, 3388)
     Restart()
 
 
@@ -221,18 +147,16 @@ def Event_1038413710(_, character: uint):
     WaitFrames(frames=1)
     DisableNetworkSync()
     GotoIfPlayerNotInOwnWorld(Label.L10)
-    if FlagEnabled(3680):
-        DisableFlag(31009205)
+    SkipLinesIfFlagDisabled(1, 3680)
+    DisableFlag(31009205)
 
     # --- Label 10 --- #
     DefineLabel(10)
     GotoIfFlagEnabled(Label.L5, flag=3687)
     DisableCharacter(character)
     DisableBackread(character)
-    OR_3.Add(FlagEnabled(3687))
-    
-    MAIN.Await(OR_3)
-    
+    IfFlagEnabled(OR_3, 3687)
+    IfConditionTrue(MAIN, input_condition=OR_3)
     Restart()
 
     # --- Label 5 --- #
@@ -247,7 +171,7 @@ def Event_1038413710(_, character: uint):
     EnableBackread(character)
     EnableCharacter(character)
     SetTeamType(character, TeamType.FriendlyNPC)
-    ForceAnimation(character, 90100)
+    ForceAnimation(character, 90100, unknown2=1.0)
     GotoIfConditionTrue(Label.L20, input_condition=MAIN)
 
     # --- Label 2 --- #
@@ -273,10 +197,8 @@ def Event_1038413710(_, character: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    OR_4.Add(FlagEnabled(3687))
-    
-    MAIN.Await(not OR_4)
-    
+    IfFlagEnabled(OR_4, 3687)
+    IfConditionFalse(MAIN, input_condition=OR_4)
     Restart()
 
 
@@ -284,32 +206,25 @@ def Event_1038413710(_, character: uint):
 def Event_1038413711(_, character: uint, flag: uint, flag_1: uint):
     """Event 1038413711"""
     WaitFrames(frames=1)
-    if PlayerNotInOwnWorld():
-        return
-    if FlagEnabled(3683):
-        return
-    AND_1.Add(FlagDisabled(3685))
-    AND_1.Add(FlagDisabled(3686))
-    AND_1.Add(FlagDisabled(3687))
-    if AND_1:
-        return
+    EndIfPlayerNotInOwnWorld()
+    EndIfFlagEnabled(3683)
+    IfFlagDisabled(AND_1, 3685)
+    IfFlagDisabled(AND_1, 3686)
+    IfFlagDisabled(AND_1, 3687)
+    EndIfConditionTrue(input_condition=AND_1)
     GotoIfFlagDisabled(Label.L1, flag=3681)
     Goto(Label.L2)
 
     # --- Label 1 --- #
     DefineLabel(1)
-    
-    MAIN.Await(FlagEnabled(3681))
-    
+    IfFlagEnabled(MAIN, 3681)
     Restart()
 
     # --- Label 2 --- #
     DefineLabel(2)
-    AND_2.Add(CharacterHasSpecialEffect(PLAYER, 9700))
-    AND_2.Add(EntityWithinDistance(entity=PLAYER, other_entity=character, radius=5.0))
-    
-    MAIN.Await(AND_2)
-    
+    IfCharacterHasSpecialEffect(AND_2, PLAYER, 9700)
+    IfEntityWithinDistance(AND_2, entity=PLAYER, other_entity=character, radius=5.0)
+    IfConditionTrue(MAIN, input_condition=AND_2)
     DisableNetworkConnectedFlagRange(flag_range=(3680, 3684))
     EnableNetworkFlag(3680)
     SaveRequest()
@@ -328,17 +243,13 @@ def Event_1038413711(_, character: uint, flag: uint, flag_1: uint):
 @RestartOnRest(1038413712)
 def Event_1038413712():
     """Event 1038413712"""
-    if PlayerNotInOwnWorld():
-        return
-    if FlagDisabled(31009206):
-        return
-    if FlagEnabled(1038419254):
-        return
-    AND_1.Add(FlagDisabled(3685))
-    AND_1.Add(FlagDisabled(3686))
-    AND_1.Add(FlagDisabled(3687))
-    if AND_1:
-        return
+    EndIfPlayerNotInOwnWorld()
+    EndIfFlagDisabled(31009206)
+    EndIfFlagEnabled(1038419254)
+    IfFlagDisabled(AND_1, 3685)
+    IfFlagDisabled(AND_1, 3686)
+    IfFlagDisabled(AND_1, 3687)
+    EndIfConditionTrue(input_condition=AND_1)
     EnableFlag(1038419254)
     WaitFrames(frames=1)
     EnableFlag(3698)

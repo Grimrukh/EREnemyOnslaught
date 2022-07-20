@@ -1,6 +1,4 @@
 """
-Siofra River (Start)
-
 linked:
 0
 82
@@ -14,39 +12,27 @@ strings:
 172: 
 174: 
 """
-# [COMMON_FUNC]
-from .common_func import *
 from soulstruct.eldenring.events import *
 from soulstruct.eldenring.events.instructions import *
-from .entities.m12_07_00_00_entities import *
-from .entities.m60_45_37_00_entities import Assets as m60_45_Assets
 
 
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    RegisterGrace(grace_flag=71270, asset=Assets.AEG099_060_9000)
-    RegisterGrace(grace_flag=71271, asset=Assets.AEG099_060_9001)
-    CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=0)
-    CommonFunc_90005501(
+    RegisterGrace(grace_flag=71270, obj=12071950, unknown=5.0)
+    RegisterGrace(grace_flag=71271, obj=12071951, unknown=5.0)
+    RunCommonEvent(0, 900005610, args=(12071680, 100, 800, 0), arg_types="IiiI")
+    RunCommonEvent(
         0,
-        flag=12070525,
-        flag_1=12071525,
-        left=4,
-        asset=Assets.AEG239_010_0502,
-        asset_1=m60_45_Assets.AEG239_020_2000,
-        asset_2=Assets.AEG239_021_0500,
-        flag_2=12070527,
+        90005501,
+        args=(12070525, 12071525, 4, 12071525, 1045371526, 12071527, 12070527),
+        arg_types="IIIIIII",
     )
-    CommonFunc_90005501(
+    RunCommonEvent(
         0,
-        flag=12070515,
-        flag_1=12071515,
-        left=7,
-        asset=Assets.AEG239_010_0500,
-        asset_1=Assets.AEG239_020_0501,
-        asset_2=Assets.AEG239_020_0500,
-        flag_2=12070516,
+        90005501,
+        args=(12070515, 12071515, 7, 12071515, 12071516, 12071517, 12070516),
+        arg_types="IIIIIII",
     )
     Event_12070510()
 
@@ -57,353 +43,133 @@ def Preconstructor():
     DisableBackread(12070700)
     DisableBackread(12070701)
     Event_12070519()
-    CommonFunc_90005250(0, character=Characters.Clayman0, region=12072250, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.Clayman1, region=12072250, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.Clayman2, region=12072250, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.Clayman3, region=12072250, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.Clayman4, region=12072250, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.Clayman5, region=12072250, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.Clayman6, region=12072250, seconds=0.0, animation_id=-1)
-    CommonFunc_90005211(
+    RunCommonEvent(0, 90005250, args=(12070250, 12072250, 0.0, -1), arg_types="IIfi")
+    RunCommonEvent(0, 90005250, args=(12070251, 12072250, 0.0, -1), arg_types="IIfi")
+    RunCommonEvent(0, 90005250, args=(12070252, 12072250, 0.0, -1), arg_types="IIfi")
+    RunCommonEvent(0, 90005250, args=(12070253, 12072250, 0.0, -1), arg_types="IIfi")
+    RunCommonEvent(0, 90005250, args=(12070254, 12072250, 0.0, -1), arg_types="IIfi")
+    RunCommonEvent(0, 90005250, args=(12070255, 12072250, 0.0, -1), arg_types="IIfi")
+    RunCommonEvent(0, 90005250, args=(12070256, 12072250, 0.0, -1), arg_types="IIfi")
+    RunCommonEvent(
         0,
-        character=Characters.Clayman7,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=12072271,
-        radius=2.0,
-        seconds=1.7999999523162842,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        90005211,
+        args=(12070271, 30001, 20001, 12072271, 2.0, 1.7999999523162842, 0, 0, 0, 0),
+        arg_types="IiiIffIIII",
     )
-    CommonFunc_90005211(
+    RunCommonEvent(0, 90005211, args=(12070272, 30001, 20001, 12072271, 2.0, 0.5, 0, 0, 0, 0), arg_types="IiiIffIIII")
+    RunCommonEvent(0, 90005211, args=(12070273, 30001, 20001, 12072271, 2.0, 0.0, 0, 0, 0, 0), arg_types="IiiIffIIII")
+    RunCommonEvent(
         0,
-        character=Characters.Clayman8,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=12072271,
-        radius=2.0,
-        seconds=0.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        90005211,
+        args=(12070274, 30001, 20001, 12072271, 2.0, 1.2000000476837158, 0, 0, 0, 0),
+        arg_types="IiiIffIIII",
     )
-    CommonFunc_90005211(
+    RunCommonEvent(
         0,
-        character=Characters.Clayman9,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=12072271,
-        radius=2.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        90005211,
+        args=(12070275, 30001, 20001, 12072271, 2.0, 1.399999976158142, 0, 0, 0, 0),
+        arg_types="IiiIffIIII",
     )
-    CommonFunc_90005211(
+    RunCommonEvent(
         0,
-        character=Characters.Clayman10,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=12072271,
-        radius=2.0,
-        seconds=1.2000000476837158,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        90005211,
+        args=(12070276, 30001, 20001, 12072271, 2.0, 0.30000001192092896, 0, 0, 0, 0),
+        arg_types="IiiIffIIII",
     )
-    CommonFunc_90005211(
+    RunCommonEvent(0, 90005211, args=(12070300, 30001, 20001, 12072300, 10.0, 0.0, 0, 0, 0, 0), arg_types="IiiIffIIII")
+    RunCommonEvent(0, 90005211, args=(12070301, 30001, 20001, 12072300, 10.0, 0.5, 0, 0, 0, 0), arg_types="IiiIffIIII")
+    RunCommonEvent(0, 90005211, args=(12070310, 30001, 20001, 12072310, 10.0, 0.0, 0, 0, 0, 0), arg_types="IiiIffIIII")
+    RunCommonEvent(
         0,
-        character=Characters.Clayman11,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=12072271,
-        radius=2.0,
-        seconds=1.399999976158142,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        90005211,
+        args=(12070311, 30001, 20001, 12072310, 10.0, 0.30000001192092896, 0, 0, 0, 0),
+        arg_types="IiiIffIIII",
     )
-    CommonFunc_90005211(
+    RunCommonEvent(
         0,
-        character=Characters.Clayman12,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=12072271,
-        radius=2.0,
-        seconds=0.30000001192092896,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        90005211,
+        args=(12070312, 30001, 20001, 12072310, 10.0, 0.8999999761581421, 0, 0, 0, 0),
+        arg_types="IiiIffIIII",
     )
-    CommonFunc_90005211(
+    RunCommonEvent(0, 90005211, args=(12070313, 30001, 20001, 12072310, 10.0, 0.0, 0, 0, 0, 0), arg_types="IiiIffIIII")
+    RunCommonEvent(0, 90005261, args=(12070320, 12072300, 5.0, 0.0, -1), arg_types="IIffi")
+    RunCommonEvent(0, 90005211, args=(12070321, 30001, 20001, 12072320, 10.0, 0.0, 0, 0, 0, 0), arg_types="IiiIffIIII")
+    RunCommonEvent(0, 90005211, args=(12070322, 30001, 20001, 12072320, 10.0, 0.0, 0, 0, 0, 0), arg_types="IiiIffIIII")
+    RunCommonEvent(0, 90005200, args=(12070340, 30000, 20000, 12072340, 0.0, 0, 0, 0, 0), arg_types="IiiIfIIII")
+    RunCommonEvent(0, 90005200, args=(12070341, 30000, 20000, 12072340, 3.0, 0, 0, 0, 0), arg_types="IiiIfIIII")
+    RunCommonEvent(0, 90005200, args=(12070342, 30000, 20000, 12072340, 4.0, 0, 0, 0, 0), arg_types="IiiIfIIII")
+    RunCommonEvent(0, 90005200, args=(12070343, 30000, 20000, 12072340, 4.5, 0, 0, 0, 0), arg_types="IiiIfIIII")
+    RunCommonEvent(0, 90005251, args=(12070345, 5.0, 0.0, 3003), arg_types="Iffi")
+    RunCommonEvent(0, 90005200, args=(12070355, 30000, 20000, 12072355, 0.0, 0, 0, 0, 0), arg_types="IiiIfIIII")
+    RunCommonEvent(
         0,
-        character=Characters.SilverTear0,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=12072300,
-        radius=10.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        90005200,
+        args=(12070356, 30000, 20000, 12072355, 0.20000000298023224, 0, 0, 0, 0),
+        arg_types="IiiIfIIII",
     )
-    CommonFunc_90005211(
+    RunCommonEvent(0, 90005200, args=(12070357, 30000, 20000, 12072355, 0.0, 0, 0, 0, 0), arg_types="IiiIfIIII")
+    RunCommonEvent(
         0,
-        character=Characters.SilverTear1,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=12072300,
-        radius=10.0,
-        seconds=0.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        90005200,
+        args=(12070358, 30000, 20000, 12072355, 0.30000001192092896, 0, 0, 0, 0),
+        arg_types="IiiIfIIII",
     )
-    CommonFunc_90005211(
-        0,
-        character=Characters.SilverTear2,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=12072310,
-        radius=10.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
-    )
-    CommonFunc_90005211(
-        0,
-        character=Characters.SilverTear3,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=12072310,
-        radius=10.0,
-        seconds=0.30000001192092896,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
-    )
-    CommonFunc_90005211(
-        0,
-        character=Characters.SilverTear4,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=12072310,
-        radius=10.0,
-        seconds=0.8999999761581421,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
-    )
-    CommonFunc_90005211(
-        0,
-        character=Characters.SilverTear5,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=12072310,
-        radius=10.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
-    )
-    CommonFunc_90005261(0, character=Characters.SilverTear6, region=12072300, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005211(
-        0,
-        character=Characters.SilverTear7,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=12072320,
-        radius=10.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
-    )
-    CommonFunc_90005211(
-        0,
-        character=Characters.SilverTear8,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=12072320,
-        radius=10.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
-    )
-    CommonFunc_90005200(
-        0,
-        character=12070340,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=12072340,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
-    )
-    CommonFunc_90005200(
-        0,
-        character=12070341,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=12072340,
-        seconds=3.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
-    )
-    CommonFunc_90005200(
-        0,
-        character=12070342,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=12072340,
-        seconds=4.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
-    )
-    CommonFunc_90005200(
-        0,
-        character=12070343,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=12072340,
-        seconds=4.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
-    )
-    CommonFunc_90005251(0, character=12070345, radius=5.0, seconds=0.0, animation_id=3003)
-    CommonFunc_90005200(
-        0,
-        character=Characters.SilverTear9,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=12072355,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
-    )
-    CommonFunc_90005200(
-        0,
-        character=Characters.SilverTear10,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=12072355,
-        seconds=0.20000000298023224,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
-    )
-    CommonFunc_90005200(
-        0,
-        character=Characters.SilverTear11,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=12072355,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
-    )
-    CommonFunc_90005200(
-        0,
-        character=12070358,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=12072355,
-        seconds=0.30000001192092896,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
-    )
-    CommonFunc_90005251(0, character=12070380, radius=60.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005200(
-        0,
-        character=12070385,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=12072340,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
-    )
-    CommonFunc_90005250(0, character=Characters.Dummy, region=12072382, seconds=0.0, animation_id=-1)
-    CommonFunc_90005300(0, flag=12070402, character=Characters.Scarab1, item_lot_param_id=40652, seconds=1.5, left=0)
+    RunCommonEvent(0, 90005251, args=(12070380, 60.0, 0.0, -1), arg_types="Iffi")
+    RunCommonEvent(0, 90005200, args=(12070385, 30000, 20000, 12072340, 0.0, 0, 0, 0, 0), arg_types="IiiIfIIII")
+    RunCommonEvent(0, 90005250, args=(12070382, 12072382, 0.0, -1), arg_types="IIfi")
+    RunCommonEvent(0, 90005300, args=(12070402, 12070402, 40652, 1.5, 0), arg_types="IIifi")
     Event_12073700(0, 12070700, 12070701)
 
 
 @NeverRestart(12070510)
 def Event_12070510():
     """Event 12070510"""
-    CommonFunc_90005500(
+    RunCommonEvent(
         0,
-        flag=12070525,
-        flag_1=12070526,
-        left=4,
-        asset=Assets.AEG239_010_0502,
-        asset_1=m60_45_Assets.AEG239_020_2000,
-        obj_act_id=1045373526,
-        asset_2=Assets.AEG239_021_0500,
-        obj_act_id_1=12073527,
-        region=1045372526,
-        region_1=12072527,
-        flag_2=12070527,
-        flag_3=12070528,
-        left_1=0,
+        90005500,
+        args=(
+            12070525,
+            12070526,
+            4,
+            12071525,
+            1045371526,
+            1045373526,
+            12071527,
+            12073527,
+            1045372526,
+            12072527,
+            12070527,
+            12070528,
+            0,
+        ),
+        arg_types="IIIIIIIIIIIII",
     )
-    CommonFunc_90005500(
+    RunCommonEvent(
         0,
-        12070515,
-        12071515,
-        7,
-        12071515,
-        12071516,
-        12073516,
-        12071517,
-        12073517,
-        12072516,
-        12072517,
-        12070516,
-        12072517,
-        0,
+        90005500,
+        args=(
+            12070515,
+            12071515,
+            7,
+            12071515,
+            12071516,
+            12073516,
+            12071517,
+            12073517,
+            12072516,
+            12072517,
+            12070516,
+            12072517,
+            0,
+        ),
+        arg_types="IIIIIIIIIIIII",
     )
 
 
 @NeverRestart(12070519)
 def Event_12070519():
     """Event 12070519"""
-    if ThisEventSlotFlagEnabled():
-        return
+    EndIfThisEventSlotFlagEnabled()
     EnableFlag(12070525)
     DisableFlag(12070515)
 
@@ -420,16 +186,12 @@ def Event_12073700(_, character: uint, character_1: uint):
 @RestartOnRest(12073701)
 def Event_12073701():
     """Event 12073701"""
-    if PlayerNotInOwnWorld():
-        return
-    if FlagEnabled(3503):
-        return
-    AND_1.Add(FlagEnabled(3506))
-    AND_1.Add(FlagDisabled(12079006))
-    AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12072700))
-    
-    MAIN.Await(AND_1)
-    
+    EndIfPlayerNotInOwnWorld()
+    EndIfFlagEnabled(3503)
+    IfFlagEnabled(AND_1, 3506)
+    IfFlagDisabled(AND_1, 12079006)
+    IfCharacterInsideRegion(AND_1, character=PLAYER, region=12072700)
+    IfConditionTrue(MAIN, input_condition=AND_1)
     EnableNetworkFlag(12079005)
     End()
 
@@ -437,15 +199,11 @@ def Event_12073701():
 @RestartOnRest(12073702)
 def Event_12073702():
     """Event 12073702"""
-    if PlayerNotInOwnWorld():
-        return
-    if FlagEnabled(3503):
-        return
-    AND_1.Add(FlagEnabled(3506))
-    AND_1.Add(FlagDisabled(12079008))
-    AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12072701))
-    
-    MAIN.Await(AND_1)
-    
+    EndIfPlayerNotInOwnWorld()
+    EndIfFlagEnabled(3503)
+    IfFlagEnabled(AND_1, 3506)
+    IfFlagDisabled(AND_1, 12079008)
+    IfCharacterInsideRegion(AND_1, character=PLAYER, region=12072701)
+    IfConditionTrue(MAIN, input_condition=AND_1)
     EnableNetworkFlag(12079007)
     End()

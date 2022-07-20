@@ -1,6 +1,4 @@
 """
-East Limgrave (NW) (SE)
-
 linked:
 0
 72
@@ -13,65 +11,50 @@ strings:
 154: N:\\GR\\data\\Param\\event\\m60.emevd
 220: N:\\GR\\data\\Param\\event\\common_macro.emevd
 """
-# [COMMON_FUNC]
-from .common_func import *
 from soulstruct.eldenring.events import *
 from soulstruct.eldenring.events.instructions import *
-from .entities.m60_45_38_00_entities import *
 
 
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005704(0, attacked_entity=Characters.KennethHaight, flag=3581, flag_1=3580, flag_2=1045389201, right=3)
-    CommonFunc_90005703(
-        0,
-        character=Characters.KennethHaight,
-        flag=3581,
-        flag_1=3582,
-        flag_2=1045389201,
-        flag_3=3581,
-        first_flag=3580,
-        last_flag=3583,
-        right=-1,
-    )
-    CommonFunc_90005702(0, character=Characters.KennethHaight, flag=3583, first_flag=3580, last_flag=3583)
+    RunCommonEvent(0, 90005704, args=(1045380700, 3581, 3580, 1045389201, 3), arg_types="IIIIi")
+    RunCommonEvent(0, 90005703, args=(1045380700, 3581, 3582, 1045389201, 3581, 3580, 3583, -1), arg_types="IIIIIIIi")
+    RunCommonEvent(0, 90005702, args=(1045380700, 3583, 3580, 3583), arg_types="IIII")
     Event_1045383700(0, 1045380700)
 
 
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    DisableBackread(Characters.KennethHaight)
+    DisableBackread(1045380700)
 
 
 @RestartOnRest(1045382390)
 def Event_1045382390():
     """Event 1045382390"""
-    DisableAsset(1045381390)
+    DisableObject(1045381390)
 
 
 @RestartOnRest(1045383700)
-def Event_1045383700(_, asset__character: uint):
+def Event_1045383700(_, character__obj: uint):
     """Event 1045383700"""
     DisableNetworkSync()
     WaitFrames(frames=1)
     GotoIfPlayerNotInOwnWorld(Label.L10)
-    AND_1.Add(FlagEnabled(3580))
-    AND_1.Add(FlagEnabled(1045389203))
+    IfFlagEnabled(AND_1, 3580)
+    IfFlagEnabled(AND_1, 1045389203)
     SkipLinesIfConditionFalse(1, AND_1)
     DisableFlag(1045389203)
 
     # --- Label 10 --- #
     DefineLabel(10)
-    DisableCharacter(asset__character)
-    DisableBackread(asset__character)
-    OR_1.Add(FlagEnabled(3585))
+    DisableCharacter(character__obj)
+    DisableBackread(character__obj)
+    IfFlagEnabled(OR_1, 3585)
     GotoIfConditionTrue(Label.L0, input_condition=OR_1)
-    OR_2.Add(FlagEnabled(3585))
-    
-    MAIN.Await(OR_2)
-    
+    IfFlagEnabled(OR_2, 3585)
+    IfConditionTrue(MAIN, input_condition=OR_2)
     Restart()
 
     # --- Label 0 --- #
@@ -82,33 +65,31 @@ def Event_1045383700(_, asset__character: uint):
 
     # --- Label 1 --- #
     DefineLabel(1)
-    EnableCharacter(asset__character)
-    EnableBackread(asset__character)
-    ForceAnimation(asset__character, 90100)
-    SetCharacterTalkRange(character=asset__character, distance=100.0)
-    if FlagEnabled(1045389205):
-        ForceAnimation(asset__character, 90101)
+    EnableCharacter(character__obj)
+    EnableBackread(character__obj)
+    ForceAnimation(character__obj, 90100, unknown2=1.0)
+    SetCharacterTalkRange(character=character__obj, distance=100.0)
+    SkipLinesIfFlagDisabled(1, 1045389205)
+    ForceAnimation(character__obj, 90101, unknown2=1.0)
     Goto(Label.L20)
 
     # --- Label 2 --- #
     DefineLabel(2)
-    EnableCharacter(asset__character)
-    EnableBackread(asset__character)
-    SetTeamType(asset__character, TeamType.HostileNPC)
+    EnableCharacter(character__obj)
+    EnableBackread(character__obj)
+    SetTeamType(character__obj, TeamType.HostileNPC)
     Goto(Label.L20)
 
     # --- Label 4 --- #
     DefineLabel(4)
-    DropMandatoryTreasure(asset__character)
-    DisableCharacter(asset__character)
-    DisableBackread(asset__character)
-    DisableAsset(asset__character)
+    DropMandatoryTreasure(character__obj)
+    DisableCharacter(character__obj)
+    DisableBackread(character__obj)
+    DisableObject(character__obj)
     Goto(Label.L20)
 
     # --- Label 20 --- #
     DefineLabel(20)
-    OR_15.Add(FlagEnabled(3585))
-    
-    MAIN.Await(not OR_15)
-    
+    IfFlagEnabled(OR_15, 3585)
+    IfConditionFalse(MAIN, input_condition=OR_15)
     Restart()

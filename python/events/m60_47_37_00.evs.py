@@ -1,6 +1,4 @@
 """
-East Limgrave (SE) (NE)
-
 linked:
 0
 82
@@ -14,11 +12,8 @@ strings:
 172: 
 174: 
 """
-# [COMMON_FUNC]
-from .common_func import *
 from soulstruct.eldenring.events import *
 from soulstruct.eldenring.events.instructions import *
-from .entities.m60_47_37_00_entities import *
 
 
 @NeverRestart(0)
@@ -28,20 +23,13 @@ def Constructor():
         0,
         flag=1047370350,
         flag_1=1047372350,
-        anchor_entity=Characters.WanderingNoble,
-        character=Characters.Troll,
+        anchor_entity=1047370300,
+        character=1047370350,
         left=1,
-        item_lot_param_id=1047370100,
+        item_lot_param_id=1047370100
     )
-    CommonFunc_90005391(
-        0,
-        flag=1047370350,
-        flag_1=1047372350,
-        character=Characters.WanderingNoble,
-        character_1=Characters.Troll,
-        left=1,
-    )
-    CommonFunc_90005251(0, 1047370300, 10.0, 0.0, -1)
+    RunCommonEvent(0, 90005391, args=(1047370350, 1047372350, 1047370300, 1047370350, 1), arg_types="IIIIi")
+    RunCommonEvent(0, 90005251, args=(1047370300, 10.0, 0.0, -1), arg_types="Iffi")
 
 
 @RestartOnRest(1047372200)
@@ -55,13 +43,10 @@ def Event_1047372200(
     item_lot_param_id: int,
 ):
     """Event 1047372200"""
-    if FlagEnabled(flag):
-        return
-    AND_1.Add(FlagEnabled(flag_1))
-    AND_1.Add(CharacterDead(character))
-    
-    MAIN.Await(AND_1)
-    
+    EndIfFlagEnabled(flag)
+    IfFlagEnabled(AND_1, flag_1)
+    IfCharacterDead(AND_1, character)
+    IfConditionTrue(MAIN, input_condition=AND_1)
     Wait(1.0)
     GotoIfValueComparison(Label.L2, comparison_type=ComparisonType.Equal, left=left, right=0)
     CreateTemporaryVFX(
@@ -85,8 +70,7 @@ def Event_1047372200(
     DefineLabel(3)
     Wait(6.0)
     DisableCharacter(character)
-    if PlayerNotInOwnWorld():
-        return
-    if ValueNotEqual(left=item_lot_param_id, right=0):
-        AwardItemLot(item_lot_param_id, host_only=True)
+    EndIfPlayerNotInOwnWorld()
+    SkipLinesIfValueEqual(1, left=item_lot_param_id, right=0)
+    AwardItemLot(item_lot_param_id, host_only=True)
     EnableNetworkFlag(flag)

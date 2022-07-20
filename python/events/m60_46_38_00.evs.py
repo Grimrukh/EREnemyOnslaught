@@ -1,6 +1,4 @@
 """
-East Limgrave (NE) (SW)
-
 linked:
 0
 82
@@ -15,17 +13,14 @@ strings:
 236: 
 238: 
 """
-# [COMMON_FUNC]
-from .common_func import *
 from soulstruct.eldenring.events import *
 from soulstruct.eldenring.events.instructions import *
-from .entities.m60_46_38_00_entities import *
 
 
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    RegisterGrace(grace_flag=1046380000, asset=Assets.AEG099_060_9000)
+    RegisterGrace(grace_flag=1046380000, obj=1046381950, unknown=5.0)
     Event_1046380280()
     Event_1046382210()
     Event_1046380670(
@@ -35,16 +30,16 @@ def Constructor():
         tutorial_param_id_1=1770,
         flag_1=710770,
         flag_2=69090,
-        flag_3=69370,
+        flag_3=69370
     )
     Event_1046380671(0, flag=710590, tutorial_param_id=1590, item=9115, flag_1=69150)
-    CommonFunc_90005771(0, 1046380950, 1046382701)
+    RunCommonEvent(0, 90005771, args=(1046380950, 1046382701), arg_types="II")
 
 
 @NeverRestart(1046380280)
 def Event_1046380280():
     """Event 1046380280"""
-    DisableAsset(1046381280)
+    DisableObject(1046381280)
 
 
 @RestartOnRest(1046382210)
@@ -65,27 +60,23 @@ def Event_1046380670(
 ):
     """Event 1046380670"""
     DisableNetworkSync()
-    if PlayerNotInOwnWorld():
-        return
-    AND_1.Add(PlayerInOwnWorld())
-    AND_1.Add(PlayerHasGood(130))
-    AND_1.Add(InsideMap(game_map=EAST_LIMGRAVE_NE_SW))
-    AND_1.Add(PlayerDoesNotHaveGood(9109))
-    OR_1.Add(Multiplayer())
-    OR_1.Add(MultiplayerPending())
-    AND_1.Add(not OR_1)
-    AND_1.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 100690))
-    AND_1.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9640))
-    
-    MAIN.Await(AND_1)
-    
+    EndIfPlayerNotInOwnWorld()
+    IfPlayerInOwnWorld(AND_1)
+    IfPlayerHasGood(AND_1, 130)
+    IfInsideMap(AND_1, game_map=EAST_LIMGRAVE_NE_SW)
+    IfPlayerDoesNotHaveGood(AND_1, 9109)
+    IfTryingToCreateSession(OR_1)
+    IfTryingToJoinSession(OR_1)
+    IfConditionFalse(AND_1, input_condition=OR_1)
+    IfCharacterDoesNotHaveSpecialEffect(AND_1, PLAYER, 100690)
+    IfCharacterDoesNotHaveSpecialEffect(AND_1, PLAYER, 9640)
+    IfConditionTrue(MAIN, input_condition=AND_1)
     EnableFlag(flag)
     EnableFlag(flag_1)
     DisplayTutorialMessage(tutorial_param_id=tutorial_param_id, unk_4_5=True, unk_5_6=True)
     Wait(1.0)
     DisplayTutorialMessage(tutorial_param_id=tutorial_param_id_1, unk_4_5=True, unk_5_6=True)
-    if FlagEnabled(flag_2):
-        return
+    EndIfFlagEnabled(flag_2)
     GivePlayerItemAmountSpecifiedByFlagValue(item_type=ItemType.Good, item=9109, flag=flag, bit_count=1)
     GivePlayerItemAmountSpecifiedByFlagValue(item_type=ItemType.Good, item=9137, flag=flag_1, bit_count=1)
     EnableFlag(flag_2)
@@ -96,20 +87,15 @@ def Event_1046380670(
 def Event_1046380671(_, flag: uint, tutorial_param_id: int, item: int, flag_1: uint):
     """Event 1046380671"""
     DisableNetworkSync()
-    if PlayerNotInOwnWorld():
-        return
-    if FlagEnabled(flag):
-        return
-    AND_1.Add(PlayerInOwnWorld())
-    AND_1.Add(FlagEnabled(flag))
-    OR_1.Add(Multiplayer())
-    OR_1.Add(MultiplayerPending())
-    AND_1.Add(not OR_1)
-    
-    MAIN.Await(AND_1)
-    
+    EndIfPlayerNotInOwnWorld()
+    EndIfFlagEnabled(flag)
+    IfPlayerInOwnWorld(AND_1)
+    IfFlagEnabled(AND_1, flag)
+    IfTryingToCreateSession(OR_1)
+    IfTryingToJoinSession(OR_1)
+    IfConditionFalse(AND_1, input_condition=OR_1)
+    IfConditionTrue(MAIN, input_condition=AND_1)
     DisplayTutorialMessage(tutorial_param_id=tutorial_param_id, unk_4_5=True, unk_5_6=True)
     GivePlayerItemAmountSpecifiedByFlagValue(item_type=ItemType.Good, item=item, flag=flag, bit_count=1)
-    if FlagEnabled(flag_1):
-        return
+    EndIfFlagEnabled(flag_1)
     EnableFlag(flag_1)

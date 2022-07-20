@@ -1,6 +1,4 @@
 """
-Northeast Mountaintops (SE) (NW)
-
 linked:
 0
 82
