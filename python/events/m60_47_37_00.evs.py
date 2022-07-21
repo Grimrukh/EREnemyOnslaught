@@ -41,7 +41,7 @@ def Constructor():
         character_1=Characters.Troll,
         left=1,
     )
-    CommonFunc_90005251(0, 1047370300, 10.0, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 1047370300, 10.0, 0.0, -1)
 
 
 @RestartOnRest(1047372200)

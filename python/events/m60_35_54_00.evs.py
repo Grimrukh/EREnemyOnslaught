@@ -24,7 +24,7 @@ from .entities.m60_35_54_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.ManeuverableFlamethrower,
         region=1035542400,
@@ -32,7 +32,7 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.FirePrelate,
         region=1035542200,
@@ -41,8 +41,8 @@ def Constructor():
         animation_id=-1,
     )
     Event_1035542200(0, character=Characters.FirePrelate)
-    CommonFunc_90005261(0, character=Characters.FireMonk, region=1035542210, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(1, character=1035540211, region=1035542210, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.FireMonk, region=1035542210, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(1, character=1035540211, region=1035542210, radius=5.0, seconds=0.0, animation_id=-1)
     Event_1035542201(0, attacker__character=1035545201, region=1035542201)
     Event_1035542236(0, character=1035540450)
     Event_1035542236(1, character=1035540451)
@@ -67,234 +67,234 @@ def Constructor():
     Event_1035542580()
     Event_1035542500()
     Event_1035542450(0, asset=Assets.AEG007_434_9000)
-    CommonFunc_90005261(0, character=1035540310, region=1035542310, radius=10.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1035540310, region=1035542310, radius=10.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=1035540260,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1035542260,
-        seconds=0.30000001192092896,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1035542260,
+        trigger_delay=0.30000001192092896,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         1,
         character=1035540261,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1035542260,
-        seconds=0.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1035542260,
+        trigger_delay=0.5,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         2,
         character=1035540262,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1035542260,
-        seconds=0.10000000149011612,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1035542260,
+        trigger_delay=0.10000000149011612,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.LesserFingercreeper0,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1035542265,
-        seconds=0.10000000149011612,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1035542265,
+        trigger_delay=0.10000000149011612,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         1,
         character=Characters.LesserFingercreeper2,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1035542265,
-        seconds=1.399999976158142,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1035542265,
+        trigger_delay=1.399999976158142,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         2,
         character=Characters.LesserFingercreeper3,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1035542265,
-        seconds=0.6000000238418579,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1035542265,
+        trigger_delay=0.6000000238418579,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         3,
         character=1035540268,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1035542265,
-        seconds=1.600000023841858,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1035542265,
+        trigger_delay=1.600000023841858,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Fingercreeper0,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1035542275,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1035542275,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.LesserFingercreeper7,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1035542280,
-        seconds=0.20000000298023224,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1035542280,
+        trigger_delay=0.20000000298023224,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         1,
         character=Characters.LesserFingercreeper8,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1035542280,
-        seconds=0.10000000149011612,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1035542280,
+        trigger_delay=0.10000000149011612,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=1035540285,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1035542285,
-        seconds=0.800000011920929,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1035542285,
+        trigger_delay=0.800000011920929,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         1,
         character=1035540286,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1035542285,
-        seconds=0.10000000149011612,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1035542285,
+        trigger_delay=0.10000000149011612,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=1035540290,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=1035542290,
-        seconds=0.20000000298023224,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=1035542290,
+        trigger_delay=0.20000000298023224,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         1,
         character=1035540291,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=1035542290,
-        seconds=0.10000000149011612,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=1035542290,
+        trigger_delay=0.10000000149011612,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         2,
         character=Characters.LesserFingercreeper10,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=1035542292,
-        seconds=0.10000000149011612,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=1035542292,
+        trigger_delay=0.10000000149011612,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Fingercreeper1,
-        animation_id=30004,
-        animation_id_1=20004,
-        region=1035542300,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30004,
+        active_animation=20004,
+        trigger_region=1035542300,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Fingercreeper0,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1035542275,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1035542275,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(
+    CommonFunc_TriggerEnemyAI_WithRegion(
         0,
         character=Characters.LesserFingercreeper4,
         region=1035542301,
         seconds=0.5,
         animation_id=20004,
     )
-    CommonFunc_90005250(
+    CommonFunc_TriggerEnemyAI_WithRegion(
         1,
         character=Characters.LesserFingercreeper5,
         region=1035542301,
         seconds=1.0,
         animation_id=20004,
     )
-    CommonFunc_90005250(
+    CommonFunc_TriggerEnemyAI_WithRegion(
         2,
         character=Characters.LesserFingercreeper6,
         region=1035542301,
         seconds=1.2000000476837158,
         animation_id=20004,
     )
-    CommonFunc_90005250(4, character=Characters.LesserFingercreeper1, region=1035542301, seconds=1.5, animation_id=-1)
-    CommonFunc_90005250(5, character=Characters.LesserFingercreeper9, region=1035542301, seconds=1.5, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(4, character=Characters.LesserFingercreeper1, region=1035542301, seconds=1.5, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(5, character=Characters.LesserFingercreeper9, region=1035542301, seconds=1.5, animation_id=-1)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=0)
     Event_1035542230()
     CommonFunc_90005706(0, character=Characters.WanderingNoble, animation_id=930023, left=0)

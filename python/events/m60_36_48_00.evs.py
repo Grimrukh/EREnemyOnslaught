@@ -43,7 +43,7 @@ def Constructor():
         flag_10=78218,
         flag_11=78219,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.WanderingNoble,
         region=1036482200,
@@ -51,13 +51,13 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1036480800,
+        dead_flag=1036480800,
         character=Characters.NightsCavalryHorse,
         item_lot_param_id=0,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     CommonFunc_90005476(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
     RunCommonEvent(90005477)

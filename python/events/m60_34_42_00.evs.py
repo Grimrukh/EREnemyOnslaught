@@ -50,14 +50,14 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005251(0, character=Characters.GlintstoneDragon1, radius=17.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005300(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GlintstoneDragon1, radius=17.0, seconds=0.0, animation_id=-1)
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1034420340,
+        dead_flag=1034420340,
         character=Characters.GlintstoneDragon1,
         item_lot_param_id=1034420400,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     Event_1034422600(0, asset=Assets.AEG099_045_9000, flag=1034422600, owner_entity=Characters.Dummy)
     Event_1034422600(1, asset=Assets.AEG099_045_9001, flag=1034422601, owner_entity=Characters.Dummy)
@@ -94,14 +94,14 @@ def Preconstructor():
     DisableBackread(Characters.NepheliLoux)
     DisableBackread(Characters.Commoner)
     Event_1034422230()
-    CommonFunc_90005251(0, character=Characters.AlbinauricLookout0, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AlbinauricLookout2, region=1034422203, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.AlbinauricLookout3, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AlbinauricLookout4, region=1034422208, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AlbinauricLookout5, region=1034422208, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AlbinauricLookout6, region=1034422208, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=1034420222, radius=20.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=1034420228, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.AlbinauricLookout0, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AlbinauricLookout2, region=1034422203, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.AlbinauricLookout3, radius=8.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AlbinauricLookout4, region=1034422208, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AlbinauricLookout5, region=1034422208, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AlbinauricLookout6, region=1034422208, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1034420222, radius=20.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1034420228, radius=10.0, seconds=0.0, animation_id=-1)
     CommonFunc_90005201(
         0,
         character=Characters.LargeCrabSnow0,
@@ -114,8 +114,8 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005251(0, character=Characters.LargeCrabSnow1, radius=16.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, 1034420390, 30.0, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.LargeCrabSnow1, radius=16.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 1034420390, 30.0, 0.0, -1)
 
 
 @RestartOnRest(1034422230)

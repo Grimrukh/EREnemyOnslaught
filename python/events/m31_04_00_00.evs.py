@@ -35,7 +35,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.FungalSorcerer0,
         region=31042200,
@@ -43,7 +43,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.FungalSorcerer1,
         region=31042205,
@@ -51,7 +51,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.FungalSorcerer2,
         region=31042205,
@@ -59,7 +59,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.FungalSorcerer3,
         region=31042207,
@@ -67,7 +67,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.FungalSorcerer4,
         region=31042207,
@@ -75,7 +75,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.FungalSorcerer5,
         region=31042207,
@@ -83,7 +83,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.FungalSorcerer6,
         region=31042211,
@@ -91,7 +91,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.FungalSorcerer7,
         region=31042212,
@@ -99,7 +99,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.FungalSorcerer8,
         region=31042216,
@@ -107,7 +107,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.FungalSorcerer9,
         region=31042216,
@@ -115,11 +115,11 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005251(0, character=Characters.FungalSorcerer10, radius=1.5, seconds=0.0, animation_id=1701)
-    CommonFunc_90005251(0, character=Characters.FungalSorcerer11, radius=1.5, seconds=0.0, animation_id=1701)
-    CommonFunc_90005251(0, character=Characters.FungalSorcerer12, radius=1.5, seconds=0.0, animation_id=1701)
-    CommonFunc_90005251(0, character=Characters.FungalSorcerer13, radius=1.5, seconds=0.0, animation_id=1701)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.FungalSorcerer10, radius=1.5, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.FungalSorcerer11, radius=1.5, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.FungalSorcerer12, radius=1.5, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.FungalSorcerer13, radius=1.5, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.FungalSorcerer14,
         region=31042223,
@@ -127,8 +127,8 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005251(0, character=Characters.FungalSorcerer10, radius=1.5, seconds=0.0, animation_id=1701)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.FungalSorcerer10, radius=1.5, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.GiantMirandaFlower0,
         region=31042250,
@@ -136,7 +136,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GiantMirandaFlower1,
         animation_id=30001,
@@ -149,7 +149,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GiantMirandaFlower2,
         animation_id=30001,
@@ -162,7 +162,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GiantMirandaFlower3,
         animation_id=30001,
@@ -175,7 +175,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower0,
         region=31042260,
@@ -183,7 +183,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower1,
         region=31042260,
@@ -191,7 +191,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower2,
         region=31042260,
@@ -199,7 +199,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower3,
         region=31042260,
@@ -207,7 +207,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower4,
         region=31042260,
@@ -215,7 +215,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower5,
         animation_id=30001,
@@ -228,7 +228,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower6,
         animation_id=30001,
@@ -241,7 +241,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower7,
         animation_id=30001,
@@ -254,7 +254,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower8,
         animation_id=30001,
@@ -267,7 +267,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower9,
         animation_id=30001,
@@ -280,7 +280,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.OldWomanBat,
         animation_id=30000,
@@ -293,8 +293,8 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(0, character=31040310, region=31042310, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=31040310, region=31042310, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Bat0,
         animation_id=30000,
@@ -307,8 +307,8 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(0, character=31040312, region=31042312, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=31040312, region=31042312, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Bat1,
         animation_id=30000,
@@ -321,7 +321,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Bat2,
         animation_id=30000,
@@ -334,7 +334,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Bat3,
         animation_id=30000,
@@ -347,7 +347,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Bat4,
         animation_id=30000,
@@ -360,7 +360,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Bat5,
         animation_id=30000,
@@ -474,4 +474,4 @@ def Event_31042849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=31040800, asset=Assets.AEG099_002_9000, model_point=5, right=0)
-    CommonFunc_9005822(0, 31040800, 931000, 31042805, 31042806, 0, 31042802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 31040800, 931000, 31042805, 31042806, 0, 31042802, 0, 0)

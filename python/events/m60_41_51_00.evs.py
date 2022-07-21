@@ -35,7 +35,7 @@ def Constructor():
         item_lot__item_lot_param_id=30335,
         character_1=Characters.TreeSentinel1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.TreeSentinel0,
         region=1041512500,
@@ -43,7 +43,7 @@ def Constructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.TreeSentinel1,
         region=1041512500,
@@ -60,7 +60,7 @@ def Constructor():
         flag=1041512815,
     )
     Event_1041512320(0, character=Characters.TreeSentinel0, character_1=Characters.TreeSentinel1)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.LeyndellKnight2,
         region=1041512202,
@@ -70,13 +70,13 @@ def Constructor():
     )
     Event_1041512200(0, character=Characters.LeyndellKnight0)
     Event_1041512200(1, character=Characters.LeyndellKnight1)
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1041510410,
+        dead_flag=1041510410,
         character=Characters.GiantMirandaFlower,
         item_lot_param_id=0,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     Event_1041512270()
     Event_1041512270(slot=1)
@@ -85,7 +85,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005250(0, character=Characters.GiantMirandaFlower, region=1041512410, seconds=0.0, animation_id=700)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GiantMirandaFlower, region=1041512410, seconds=0.0, animation_id=700)
     CommonFunc_90005201(
         0,
         character=Characters.GraveSkeleton2,
@@ -98,7 +98,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GraveSkeleton0,
         animation_id=30017,
@@ -111,7 +111,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GraveSkeleton1,
         animation_id=30017,
@@ -124,7 +124,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005200(0, 1041510453, 30016, 20016, 1041512453, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(0, 1041510453, 30016, 20016, 1041512453, 0.0, 0, 0, 0, 0)
 
 
 @RestartOnRest(1041512200)

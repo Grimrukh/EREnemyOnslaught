@@ -92,7 +92,7 @@ def Preconstructor():
     DisableBackread(Characters.Human)
     DisableBackread(Characters.Merchant)
     DisableBackread(1044390711)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Skeleton0,
         region=1044392200,
@@ -100,7 +100,7 @@ def Preconstructor():
         seconds=1.0,
         animation_id=1700,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Skeleton1,
         region=1044392200,
@@ -108,7 +108,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=1700,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Skeleton2,
         region=1044392202,
@@ -116,7 +116,7 @@ def Preconstructor():
         seconds=1.0,
         animation_id=1700,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Skeleton3,
         region=1044392202,
@@ -124,7 +124,7 @@ def Preconstructor():
         seconds=1.5,
         animation_id=1700,
     )
-    CommonFunc_90005261(0, 1044390204, 1044392202, 1.0, 0.0, 1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1044390204, 1044392202, 1.0, 0.0, 1700)
 
 
 @NeverRestart(1044393710)

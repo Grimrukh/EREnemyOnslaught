@@ -28,9 +28,9 @@ def Constructor():
     RunCommonEvent(1039412200, slot=1, args=(1039410201, 10.0, 0.10000000149011612), arg_types="Iff")
     RunCommonEvent(1039412200, slot=2, args=(1039410202, 10.0, 0.10000000149011612), arg_types="Iff")
     RunCommonEvent(1039412200, slot=3, args=(1039410203, 10.0, 0.10000000149011612), arg_types="Iff")
-    CommonFunc_90005261(0, character=Characters.SmallerDog0, region=1039412270, radius=3.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.SmallerDog1, region=1039412270, radius=3.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.SmallerDog2, region=1039412272, radius=3.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.SmallerDog0, region=1039412270, radius=3.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.SmallerDog1, region=1039412270, radius=3.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.SmallerDog2, region=1039412272, radius=3.0, seconds=0.0, animation_id=0)
     CommonFunc_900005610(0, asset=Assets.AEG003_316_9000, vfx_id=100, model_point=800, right=1039418600)
     CommonFunc_90005706(0, character=Characters.Commoner3, animation_id=930018, left=0)
     Event_1039412250(

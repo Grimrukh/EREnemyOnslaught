@@ -51,86 +51,86 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.SmallerDog0,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1041552351,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1041552351,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.SmallerDog1, region=1041552352, seconds=0.0, animation_id=3000)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallerDog1, region=1041552352, seconds=0.0, animation_id=3000)
     Event_1041552350(0, character=Characters.DominulaCelebrant0, region=1041552200, character_1=1041555200)
     Event_1041552350(1, character=Characters.DominulaCelebrant1, region=1041552201, character_1=1041555200)
     Event_1041552350(2, character=Characters.DominulaCelebrant2, region=1041552202, character_1=1041555200)
     Event_1041552350(3, character=Characters.DominulaCelebrant3, region=1041552203, character_1=1041555200)
     Event_1041552350(4, character=Characters.DominulaCelebrant4, region=1041552204, character_1=1041555200)
     Event_1041552350(5, character=Characters.DominulaCelebrant5, region=1041552205, character_1=1041555200)
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.PutridCorpse0,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=1041552250,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30001,
+        active_animation=20001,
+        trigger_region=1041552250,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.PutridCorpse1,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=1041552250,
-        seconds=0.30000001192092896,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30001,
+        active_animation=20001,
+        trigger_region=1041552250,
+        trigger_delay=0.30000001192092896,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.PutridCorpse2,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=1041552250,
-        seconds=0.6000000238418579,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30001,
+        active_animation=20001,
+        trigger_region=1041552250,
+        trigger_delay=0.6000000238418579,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.PutridCorpse3,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=1041552250,
-        seconds=0.8999999761581421,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30001,
+        active_animation=20001,
+        trigger_region=1041552250,
+        trigger_delay=0.8999999761581421,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.PutridCorpse4,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=1041552250,
-        seconds=0.4000000059604645,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30001,
+        active_animation=20001,
+        trigger_region=1041552250,
+        trigger_delay=0.4000000059604645,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(0, 1041550255, 30001, 20001, 1041552250, 0.800000011920929, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(0, 1041550255, 30001, 20001, 1041552250, 0.800000011920929, 0, 0, 0, 0)
 
 
 @RestartOnRest(1041552350)

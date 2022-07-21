@@ -24,23 +24,23 @@ from .entities.m60_33_41_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1033410350,
+        dead_flag=1033410350,
         character=Characters.GlintstoneDragon0,
         item_lot_param_id=1033410400,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1033410351,
+        dead_flag=1033410351,
         character=Characters.GlintstoneDragon1,
         item_lot_param_id=1033410410,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
-    CommonFunc_90005300(0, flag=1033410340, character=Characters.RedWolf, item_lot_param_id=0, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1033410340, character=Characters.RedWolf, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005920(0, flag=1033410600, asset=1033411600, obj_act_id=1033413600)
     CommonFunc_90005920(0, flag=1033410601, asset=1033411601, obj_act_id=1033413601)
     CommonFunc_90005920(0, 1033410602, 1033411602, 1033413602)
@@ -49,7 +49,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.RedWolf,
         animation_id=30001,
@@ -74,4 +74,4 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005251(0, 1033410350, 17.0, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 1033410350, 17.0, 0.0, -1)

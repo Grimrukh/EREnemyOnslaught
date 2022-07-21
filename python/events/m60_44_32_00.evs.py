@@ -32,7 +32,7 @@ def Constructor():
         region_1=1044322201,
         region_2=1044322202,
     )
-    CommonFunc_90005300(0, flag=1044320200, character=Characters.Scarab, item_lot_param_id=40138, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1044320200, character=Characters.Scarab, item_lot_param_id=40138, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005860(
         0,
         flag=1044320800,
@@ -43,13 +43,13 @@ def Constructor():
         seconds=0.0,
     )
     CommonFunc_90005870(0, character=Characters.DeathRiteBird, name=904980602, npc_threat_level=24)
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1044320850,
+        dead_flag=1044320850,
         character=Characters.NightsCavalryHorse,
         item_lot_param_id=0,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     CommonFunc_90005476(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
     RunCommonEvent(90005477)
@@ -76,7 +76,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005211(0, 1044320340, 30000, 20000, 1044322340, 10.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 1044320340, 30000, 20000, 1044322340, 10.0, 0.0, 0, 0, 0, 0)
 
 
 @NeverRestart(1044322200)

@@ -59,7 +59,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.DepravedPerfurmer0,
         region=31182200,
@@ -67,7 +67,7 @@ def Preconstructor():
         seconds=3.4000000953674316,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.DepravedPerfurmer2,
         region=31182200,
@@ -75,7 +75,7 @@ def Preconstructor():
         seconds=3.0,
         animation_id=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.DepravedPerfurmer3,
         animation_id=30000,
@@ -88,7 +88,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.DepravedPerfurmer4,
         animation_id=30000,
@@ -105,8 +105,8 @@ def Preconstructor():
     Event_31182200(1, character=Characters.DepravedPerfurmer1, region=31182251)
     Event_31182200(2, character=Characters.DepravedPerfurmer2, region=31182252)
     Event_31182200(3, character=Characters.DepravedPerfurmer4, region=31182257)
-    CommonFunc_90005261(0, character=31180300, region=31182300, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=31180300, region=31182300, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower0,
         region=31182306,
@@ -114,7 +114,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower1,
         region=31182307,
@@ -122,7 +122,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=31180310,
         animation_id=30000,
@@ -135,7 +135,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=31180311,
         animation_id=30000,
@@ -148,7 +148,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower2,
         region=31182314,
@@ -156,7 +156,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower3,
         region=31182314,
@@ -164,7 +164,7 @@ def Preconstructor():
         seconds=0.5,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.GiantMirandaFlower1,
         region=31182351,
@@ -172,7 +172,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=3001,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.GiantMirandaFlower2,
         region=31182355,
@@ -189,7 +189,7 @@ def Preconstructor():
         animation_id=3012,
         region_1=32052401,
     )
-    CommonFunc_90005300(0, flag=31180400, character=Characters.MalformedStar, item_lot_param_id=0, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=31180400, character=Characters.MalformedStar, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
     Event_31182400()
 
 
@@ -471,4 +471,4 @@ def Event_31182849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=31180800, asset=Assets.AEG099_002_9000, model_point=5, right=0)
-    CommonFunc_9005822(0, 31180800, 920900, 31182805, 31182806, 0, 31182842, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 31180800, 920900, 31182805, 31182806, 0, 31182842, 0, 0)

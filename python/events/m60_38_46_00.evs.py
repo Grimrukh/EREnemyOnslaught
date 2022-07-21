@@ -32,13 +32,13 @@ def Constructor():
     Event_1038462200(0, character=Characters.Commoner0)
     Event_1038462200(1, character=Characters.Commoner1)
     Event_1038462200(2, character=Characters.ThornSorcerer)
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1038460340,
+        dead_flag=1038460340,
         character=Characters.GuardianGolem,
         item_lot_param_id=0,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     Event_1038460510()
     CommonFunc_90005501(0, 1038460650, 1038460651, 0, 1038461650, 1038461651, 1038461652, 1038460652)

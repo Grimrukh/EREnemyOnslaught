@@ -24,7 +24,7 @@ from .entities.m60_48_55_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005300(0, 1048550200, 1048550200, 40522, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, 1048550200, 1048550200, 40522, 0.0, 0)
 
 
 @NeverRestart(200)

@@ -41,7 +41,7 @@ def Constructor():
     Event_30012810()
     Event_30012849()
     Event_30012811()
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp7,
         animation_id=30010,
@@ -54,7 +54,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp8,
         animation_id=30010,
@@ -67,7 +67,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp9,
         animation_id=30010,
@@ -80,7 +80,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp10,
         animation_id=30010,
@@ -123,7 +123,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp0,
         animation_id=30004,
@@ -136,7 +136,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp1,
         animation_id=30002,
@@ -149,7 +149,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp2,
         animation_id=30002,
@@ -162,7 +162,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp3,
         animation_id=30000,
@@ -175,7 +175,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp4,
         animation_id=30000,
@@ -188,7 +188,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp5,
         animation_id=30009,
@@ -201,7 +201,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp6,
         animation_id=30009,
@@ -214,7 +214,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.PutridCorpse15,
         animation_id=30000,
@@ -227,55 +227,55 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.PutridCorpse1,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30012312,
-        seconds=0.30000001192092896,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30012312,
+        trigger_delay=0.30000001192092896,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.PutridCorpse2,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30012312,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30012312,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.PutridCorpse4,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30012312,
-        seconds=0.6000000238418579,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30012312,
+        trigger_delay=0.6000000238418579,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.PutridCorpse5,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30012312,
-        seconds=0.4000000059604645,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30012312,
+        trigger_delay=0.4000000059604645,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.PutridCorpse3,
         animation_id=30000,
@@ -288,7 +288,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.PutridCorpse6,
         animation_id=30000,
@@ -301,7 +301,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.PutridCorpse12,
         animation_id=30000,
@@ -314,7 +314,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.PutridCorpse8,
         animation_id=30000,
@@ -327,7 +327,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.PutridCorpse7,
         animation_id=30000,
@@ -340,7 +340,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.PutridCorpse9,
         animation_id=30000,
@@ -353,7 +353,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.PutridCorpse10,
         animation_id=30000,
@@ -366,7 +366,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(0, 30010311, 30000, 20000, 30012322, 5.0, 3.9000000953674316, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 30010311, 30000, 20000, 30012322, 5.0, 3.9000000953674316, 0, 0, 0, 0)
 
 
 @RestartOnRest(30012330)
@@ -701,4 +701,4 @@ def Event_30012849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=30010800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(0, 30010800, 930000, 30012805, 30012806, 0, 30012802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 30010800, 930000, 30012805, 30012806, 0, 30012802, 0, 0)

@@ -154,17 +154,17 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     Event_32072820()
-    CommonFunc_90005250(0, character=Characters.TunnelMiner4, region=32072204, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.Octopus, region=32072306, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RadahnSoldier0, region=32072300, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RadahnSoldier1, region=32072300, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RadahnSoldier3, region=32072306, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RadahnSoldier4, region=32072306, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RadahnSoldier5, region=32072308, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RadahnSoldier6, region=32072309, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RadahnSoldier7, region=32072309, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RadahnSoldier8, region=32072315, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, 32070316, 32072316, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner4, region=32072204, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Octopus, region=32072306, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RadahnSoldier0, region=32072300, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RadahnSoldier1, region=32072300, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RadahnSoldier3, region=32072306, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RadahnSoldier4, region=32072306, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RadahnSoldier5, region=32072308, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RadahnSoldier6, region=32072309, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RadahnSoldier7, region=32072309, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RadahnSoldier8, region=32072315, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, 32070316, 32072316, 0.0, -1)
 
 
 @RestartOnRest(32072580)
@@ -197,7 +197,7 @@ def Event_32072200(
         return
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -278,7 +278,7 @@ def Event_32072200(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     AddSpecialEffect(character, 16571)
     AddSpecialEffect(character, special_effect_id)
     ForceAnimation(character, animation_id_1, loop=True)
@@ -288,7 +288,7 @@ def Event_32072200(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -406,7 +406,7 @@ def Event_32072849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=32070800, asset=Assets.AEG099_001_9000, model_point=7, right=32070801)
-    CommonFunc_9005822(0, 32070800, 920900, 32072805, 32072806, 0, 32072802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 32070800, 920900, 32072805, 32072806, 0, 32072802, 0, 0)
 
 
 @RestartOnRest(32073700)

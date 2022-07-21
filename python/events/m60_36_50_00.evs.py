@@ -77,14 +77,14 @@ def Constructor():
         left=0,
         left_1=1,
     )
-    CommonFunc_90005300(0, flag=1036500340, character=Characters.RedWolf, item_lot_param_id=0, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1036500340, character=Characters.RedWolf, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005633(0, 580310, 580010, 1036500600, 30016, 20016, 1036501600, 1036501610)
 
 
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Skeleton0,
         region=1036502210,
@@ -92,7 +92,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=1700,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Skeleton1,
         region=1036502210,
@@ -100,7 +100,7 @@ def Preconstructor():
         seconds=0.5,
         animation_id=1700,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Skeleton2,
         region=1036502210,
@@ -108,7 +108,7 @@ def Preconstructor():
         seconds=1.0,
         animation_id=1700,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Skeleton3,
         region=1036502214,
@@ -116,7 +116,7 @@ def Preconstructor():
         seconds=1.0,
         animation_id=1700,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Skeleton4,
         region=1036502214,
@@ -124,7 +124,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=1700,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Skeleton5,
         region=1036502214,
@@ -132,7 +132,7 @@ def Preconstructor():
         seconds=0.5,
         animation_id=1700,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Skeleton6,
         region=1036502214,
@@ -140,6 +140,6 @@ def Preconstructor():
         seconds=2.0,
         animation_id=1700,
     )
-    CommonFunc_90005261(0, character=1036500218, region=1036502218, radius=1.0, seconds=1.0, animation_id=1700)
-    CommonFunc_90005261(0, character=1036500219, region=1036502218, radius=1.0, seconds=0.5, animation_id=1700)
-    CommonFunc_90005261(0, 1036500220, 1036502218, 1.0, 0.0, 1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1036500218, region=1036502218, radius=1.0, seconds=1.0, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1036500219, region=1036502218, radius=1.0, seconds=0.5, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1036500220, 1036502218, 1.0, 0.0, 1700)

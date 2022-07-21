@@ -36,60 +36,60 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Misbegotten1,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=31122201,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=31122201,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=31120213,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=31122201,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=31122201,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Misbegotten2,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=31122204,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=31122204,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.ScalyMisbegotten1,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=31122204,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=31122204,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.Misbegotten0, region=31122203, seconds=0.0, animation_id=1700)
-    CommonFunc_90005250(0, character=Characters.ScalyMisbegotten0, region=31122203, seconds=0.0, animation_id=1700)
-    CommonFunc_90005250(0, character=Characters.SpiritJellyfish0, region=31122205, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SpiritJellyfish0, region=31122220, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SpiritJellyfish1, region=31122205, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, 31120228, 31122220, 0.0, 0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Misbegotten0, region=31122203, seconds=0.0, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.ScalyMisbegotten0, region=31122203, seconds=0.0, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SpiritJellyfish0, region=31122205, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SpiritJellyfish0, region=31122220, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SpiritJellyfish1, region=31122205, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, 31120228, 31122220, 0.0, 0)
 
 
 @RestartOnRest(31122800)
@@ -176,4 +176,4 @@ def Event_31122849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=31120800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(0, 31120800, 950000, 31122805, 31122806, 0, 31122802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 31120800, 950000, 31122805, 31122806, 0, 31122802, 0, 0)

@@ -25,106 +25,106 @@ from .entities.m30_13_00_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=73013, asset=Assets.AEG099_060_9000)
-    CommonFunc_90005250(0, character=Characters.SmallLivingPot0, region=30132250, seconds=0.0, animation_id=0)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallLivingPot0, region=30132250, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=30130251,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132251,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132251,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         2,
         character=30130253,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132251,
-        seconds=0.20000000298023224,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132251,
+        trigger_delay=0.20000000298023224,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         3,
         character=Characters.SmallLivingPot1,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132251,
-        seconds=0.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132251,
+        trigger_delay=0.5,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         4,
         character=Characters.SmallLivingPot2,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132251,
-        seconds=0.30000001192092896,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132251,
+        trigger_delay=0.30000001192092896,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.SmallLivingPot3,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132256,
-        seconds=1.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132256,
+        trigger_delay=1.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         1,
         character=Characters.SmallLivingPot4,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132256,
-        seconds=0.30000001192092896,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132256,
+        trigger_delay=0.30000001192092896,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.SmallLivingPot5, region=30132270, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(1, character=Characters.SmallLivingPot6, region=30132270, seconds=0.0, animation_id=0)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallLivingPot5, region=30132270, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(1, character=Characters.SmallLivingPot6, region=30132270, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         1,
         character=Characters.SmallLivingPot7,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132405,
-        seconds=0.30000001192092896,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132405,
+        trigger_delay=0.30000001192092896,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         2,
         character=Characters.SmallLivingPot8,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132405,
-        seconds=0.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132405,
+        trigger_delay=0.5,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.SmallLivingPot9, region=30132297, seconds=3.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallLivingPot9, region=30132297, seconds=3.0, animation_id=0)
     CommonFunc_90005221(
         0,
         character=Characters.SmallLivingPot10,
@@ -141,29 +141,29 @@ def Constructor():
         seconds=0.0,
         left=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.LivingPot0,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132400,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132400,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         2,
         character=Characters.LivingPot1,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132400,
-        seconds=0.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132400,
+        trigger_delay=0.5,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_90005201(
         0,
@@ -177,74 +177,74 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.LivingPot3,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132408,
-        seconds=1.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132408,
+        trigger_delay=1.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.Imp0, region=30132300, seconds=0.0, animation_id=3006)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Imp0, region=30132300, seconds=0.0, animation_id=3006)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Imp1,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132301,
-        seconds=0.20000000298023224,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132301,
+        trigger_delay=0.20000000298023224,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         1,
         character=Characters.Imp2,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132302,
-        seconds=0.4000000059604645,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132302,
+        trigger_delay=0.4000000059604645,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.Imp3, region=30132307, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.Imp4, region=30132308, seconds=0.0, animation_id=3004)
-    CommonFunc_90005250(0, character=Characters.Imp5, region=30132309, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Imp7, region=30132315, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.Imp6, region=30132312, seconds=0.0, animation_id=0)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Imp3, region=30132307, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Imp4, region=30132308, seconds=0.0, animation_id=3004)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Imp5, region=30132309, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Imp7, region=30132315, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Imp6, region=30132312, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Imp8,
-        animation_id=30010,
-        animation_id_1=20010,
-        region=30132316,
-        seconds=5.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30010,
+        active_animation=20010,
+        trigger_region=30132316,
+        trigger_delay=5.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         1,
         character=Characters.Imp9,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30132317,
-        seconds=2.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30132317,
+        trigger_delay=2.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.Imp10, region=30132318, seconds=0.0, animation_id=3006)
-    CommonFunc_90005251(0, character=Characters.Imp11, radius=4.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Imp10, region=30132318, seconds=0.0, animation_id=3006)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Imp11, radius=4.0, seconds=0.0, animation_id=0)
     CommonFunc_90005650(
         0,
         flag=30130540,
@@ -271,53 +271,53 @@ def Constructor():
     Event_30132810()
     Event_30132849()
     Event_30132811()
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.SmallLivingPot12,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132800,
-        seconds=1.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132800,
+        trigger_delay=1.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         1,
         character=Characters.SmallLivingPot13,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132800,
-        seconds=1.2000000476837158,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132800,
+        trigger_delay=1.2000000476837158,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         2,
         character=Characters.SmallLivingPot14,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132800,
-        seconds=0.800000011920929,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132800,
+        trigger_delay=0.800000011920929,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         3,
         character=Characters.SmallLivingPot15,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30132800,
-        seconds=1.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30132800,
+        trigger_delay=1.5,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_90005646(
         0,
@@ -748,7 +748,7 @@ def Event_30132849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=30130800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(0, 30130800, 900000, 30132805, 30132806, 0, 30132802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 30130800, 900000, 30132805, 30132806, 0, 30132802, 0, 0)
 
 
 @RestartOnRest(30132850)
@@ -775,4 +775,4 @@ def Event_30132850():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=30130810, asset=30131810, model_point=3, right=0)
-    CommonFunc_9005822(0, 30130810, 930000, 30132815, 30132816, 0, 11002852, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 30130810, 930000, 30132815, 30132816, 0, 11002852, 0, 0)

@@ -23,4 +23,4 @@ from soulstruct.eldenring.events.instructions import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005211(0, 1052580204, 30018, 20018, 0, 10.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 1052580204, 30018, 20018, 0, 10.0, 0.0, 0, 0, 0, 0)

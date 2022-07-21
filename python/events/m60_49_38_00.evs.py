@@ -26,7 +26,7 @@ def Constructor():
     RegisterLadder(start_climbing_flag=49381500, stop_climbing_flag=49381501, asset=1049381500)
     RegisterLadder(start_climbing_flag=49381502, stop_climbing_flag=49381503, asset=1049381502)
     RegisterLadder(start_climbing_flag=49381504, stop_climbing_flag=49381505, asset=1049381504)
-    CommonFunc_9005810(
+    CommonFunc_RegisterGraceIfFlagEnabled(
         0,
         flag=1049380800,
         grace_flag=1049380000,
@@ -85,7 +85,7 @@ def Constructor():
         region=1049382400,
         left=0,
     )
-    CommonFunc_90005300(0, flag=1049380290, character=Characters.Scarab, item_lot_param_id=40404, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1049380290, character=Characters.Scarab, item_lot_param_id=40404, reward_delay=0.0, skip_reward=0)
     Event_1049382210()
     Event_1049382211(0, source_entity=Assets.AEG099_046_9035, seconds=6.0)
     Event_1049382211(1, source_entity=Assets.AEG099_046_9036, seconds=12.0)
@@ -96,30 +96,30 @@ def Constructor():
     Event_1049382211(6, source_entity=Assets.AEG099_046_9041, seconds=8.0)
     Event_1049382211(7, source_entity=Assets.AEG099_046_9042, seconds=5.0)
     Event_1049382211(8, source_entity=Assets.AEG099_046_9043, seconds=4.0)
-    CommonFunc_90005250(0, character=Characters.DeathRiteBird, region=1049382399, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.DeathRiteBird, region=1049382399, seconds=0.0, animation_id=-1)
     Event_1049382200(0, character=Characters.RayaLucariaScholar0, special_effect_id=14807)
     Event_1049382200(1, character=Characters.RayaLucariaScholar1, special_effect_id=14807)
     Event_1049382200(2, character=Characters.RayaLucariaScholar2, special_effect_id=14807)
-    CommonFunc_90005250(0, character=Characters.RayaLucariaScholar0, region=1049382200, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RayaLucariaScholar1, region=1049382200, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RayaLucariaScholar2, region=1049382200, seconds=0.0, animation_id=-1)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar0, region=1049382200, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar1, region=1049382200, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar2, region=1049382200, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CleanrotKnight2,
-        animation_id=30002,
-        animation_id_1=20002,
-        region=1049382311,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30002,
+        active_animation=20002,
+        trigger_region=1049382311,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.CleanrotKnight0, region=1049382311, seconds=82.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.CleanrotKnight1, region=1049382311, seconds=22.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.CleanrotKnight3, region=1049382311, seconds=115.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.CleanrotKnight4, region=1049382311, seconds=50.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.Commander, radius=35.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CleanrotKnight0, region=1049382311, seconds=82.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CleanrotKnight1, region=1049382311, seconds=22.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CleanrotKnight3, region=1049382311, seconds=115.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CleanrotKnight4, region=1049382311, seconds=50.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Commander, radius=35.0, seconds=0.0, animation_id=-1)
     CommonFunc_90005870(0, character=Characters.Commander, name=903050600, npc_threat_level=11)
     CommonFunc_90005860(
         0,

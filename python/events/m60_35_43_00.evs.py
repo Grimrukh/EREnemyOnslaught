@@ -40,7 +40,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=1035430200,
         animation_id=30001,
@@ -53,7 +53,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=1035430201,
         animation_id=30001,
@@ -66,7 +66,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=1035430202,
         animation_id=30001,
@@ -79,7 +79,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(0, 1035430203, 30001, 20001, 1035432200, 3.0, 1.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 1035430203, 30001, 20001, 1035432200, 3.0, 1.0, 0, 0, 0, 0)
 
 
 @RestartOnRest(1035432390)

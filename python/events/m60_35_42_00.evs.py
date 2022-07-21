@@ -36,7 +36,7 @@ def Constructor():
         item_lot__item_lot_param_id=30225,
         seconds=0.0,
     )
-    CommonFunc_90005300(0, flag=1035420220, character=Characters.Scarab, item_lot_param_id=40208, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1035420220, character=Characters.Scarab, item_lot_param_id=40208, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005780(
         0,
         flag=1035420800,
@@ -131,10 +131,10 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005250(0, character=1035420201, region=1035422204, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.AlbinauricLookout1, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.AlbinauricLookout2, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=1035420204, region=1035422204, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=1035420201, region=1035422204, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.AlbinauricLookout1, radius=8.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.AlbinauricLookout2, radius=8.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=1035420204, region=1035422204, seconds=0.0, animation_id=-1)
     CommonFunc_90005201(
         0,
         character=1035420205,
@@ -147,28 +147,28 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005250(0, character=1035420206, region=1035422204, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=1035420207, region=1035422204, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.AlbinauricLookout3, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AlbinauricLookout4, region=1035422204, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AlbinauricLookout5, region=1035422204, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AlbinauricLookout6, region=1035422204, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AlbinauricLookout7, region=1035422204, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.SmallCrabCrystal0, region=1035422315, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.SmallCrabCrystal1, region=1035422317, seconds=0.0, animation_id=-1)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=1035420206, region=1035422204, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=1035420207, region=1035422204, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.AlbinauricLookout3, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AlbinauricLookout4, region=1035422204, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AlbinauricLookout5, region=1035422204, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AlbinauricLookout6, region=1035422204, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AlbinauricLookout7, region=1035422204, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabCrystal0, region=1035422315, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabCrystal1, region=1035422317, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.LargeCrabSnow0,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=1035422370,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=1035422370,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(0, 1035420374, 30003, 20003, 1035422374, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(0, 1035420374, 30003, 20003, 1035422374, 0.0, 0, 0, 0, 0)
 
 
 @NeverRestart(1035422150)
@@ -397,7 +397,7 @@ def Event_1035420701(_, character: uint, asset: uint):
     EnableNetworkFlag(1035420701)
     DisableGravity(character)
     DisableAnimations(character)
-    EnableCharacterCollision(character)
+    DisableCharacterCollision(character)
     ForceAnimation(asset, 1)
     Wait(1.0)
     DeleteAssetVFX(Assets.AEG099_090_9020)
@@ -413,7 +413,7 @@ def Event_1035420701(_, character: uint, asset: uint):
     WaitFrames(frames=1)
     EnableGravity(character)
     EnableAnimations(character)
-    DisableCharacterCollision(character)
+    EnableCharacterCollision(character)
     End()
 
 

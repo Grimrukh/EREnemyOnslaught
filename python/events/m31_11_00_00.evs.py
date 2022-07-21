@@ -57,7 +57,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GlintstoneMiner0,
         animation_id=30006,
@@ -70,7 +70,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GlintstoneMiner1,
         animation_id=30003,
@@ -83,7 +83,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GlintstoneMiner2,
         animation_id=30001,
@@ -96,7 +96,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.GlintstoneMiner3,
         region=31112208,
@@ -113,7 +113,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=3031,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=31110210,
         animation_id=30002,
@@ -126,7 +126,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GlintstoneMiner5,
         animation_id=30007,
@@ -139,8 +139,8 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(0, character=31110215, region=31112215, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=31110215, region=31112215, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GlintstoneMiner6,
         animation_id=30002,
@@ -153,7 +153,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=31110217,
         animation_id=30002,
@@ -166,7 +166,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GlintstoneMiner7,
         animation_id=30004,
@@ -179,7 +179,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RayaLucariaScholar0,
         region=31112280,
@@ -187,7 +187,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RayaLucariaScholar1,
         region=31112285,
@@ -195,7 +195,7 @@ def Preconstructor():
         seconds=3.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RayaLucariaScholar3,
         region=31112285,
@@ -203,9 +203,9 @@ def Preconstructor():
         seconds=3.5,
         animation_id=0,
     )
-    CommonFunc_90005261(0, character=Characters.Snail0, region=31112240, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail0, region=31112240, radius=2.0, seconds=0.0, animation_id=0)
     Event_31112250(1, character=Characters.Snail1, region=31112241, radius=3.0, seconds=0.0, animation_id=3011)
-    CommonFunc_90005261(0, character=Characters.Snail2, region=31112240, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail2, region=31112240, radius=2.0, seconds=0.0, animation_id=0)
     CommonFunc_90005201(
         0,
         character=Characters.Snail3,
@@ -243,7 +243,7 @@ def Preconstructor():
         left_3=0,
     )
     Event_31112250(2, character=Characters.Snail6, region=31112251, radius=2.0, seconds=0.0, animation_id=3011)
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Snail7,
         animation_id=30000,
@@ -256,7 +256,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Snail8,
         animation_id=30000,
@@ -269,14 +269,14 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(0, character=Characters.Snail9, region=31112300, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail9, region=31112300, radius=2.0, seconds=0.0, animation_id=0)
     Event_31112240(0, character=Characters.Snail9)
-    CommonFunc_90005261(0, character=Characters.Snail10, region=31112262, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Snail11, region=31112262, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail10, region=31112262, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail11, region=31112262, radius=2.0, seconds=0.0, animation_id=0)
     Event_31112245(0, character=Characters.Snail10)
     Event_31112245(1, character=Characters.Snail11)
-    CommonFunc_90005261(0, character=Characters.Revenant, region=31112300, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005211(0, 31110310, 30006, 20006, 31112213, 2.0, 1.0, 0, 0, 0, 0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Revenant, region=31112300, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 31110310, 30006, 20006, 31112213, 2.0, 1.0, 0, 0, 0, 0)
 
 
 @RestartOnRest(31112208)
@@ -732,7 +732,7 @@ def Event_31112849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=31110800, asset=Assets.AEG099_002_9000, model_point=5, right=0)
-    CommonFunc_9005822(0, 31110800, 931000, 31112805, 31112806, 0, 31112842, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 31110800, 931000, 31112805, 31112806, 0, 31112842, 0, 0)
 
 
 @RestartOnRest(31113700)

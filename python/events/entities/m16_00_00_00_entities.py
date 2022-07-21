@@ -1,6 +1,31 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    RykardDead = 16000800
+    GodskinNobleDead = 16000850
+    IronVirginsDead = 16000860
+    MagmaWyrmDead = 16000512
+
+
+class NameText(NPCName):
+    GodDevouringSerpent = 904710000
+    CLONE_GodDevouringSerpent = 904710010
+    RykardLordOfBlasphemy = 904710001
+    CLONE_RykardLordOfBlasphemy = 904710011
+    GodskinNoble = 903570000
+    CLONE_GodskinNoble = 903570010
+
+
+class RegionPoints(RegionPoint):
+    RykardPhaseTwoStart = 16002831
+    CLONE_RykardPhaseTwoStart = 16002832
+
+
+class CharacterGroups(Character):
+    RykardBoss = 16005800
+
+
 class Characters(Character):
     InquisitorGhiza = 16000180  # c0000_9011 col h001800 npc 523840038 think 523840000 chara 23840
     Patches = 16000710  # c0000_9020 col h001100 npc 523090038 think 523090000 chara 23090 talk 309001600
@@ -101,13 +126,19 @@ class Characters(Character):
     IronVirgin0 = 16000460  # c4470_9000 col h003200 npc 44701038 think 44701000
     IronVirgin1 = 16000461  # c4470_9001 col h010000 npc 44700038 think 44700000
     IronVirgin2 = 16000462  # c4470_9002 col h003500 npc 44701038 think 44701000
-    IronVirgin3 = 16000861  # c4470_9003 col h014000 npc 44701938 think 44701900 group 16005860
-    IronVirgin4 = 16000860  # c4470_9005 col h014000 npc 44700938 think 44700900 group 16005860
-    GodDevouringSerpent0 = 16000800  # c4710_9000 col h016000 npc 47101038 think 47100000 talk 214101600 group 16005800
-    GodDevouringSerpent1 = 16000801  # c4710_9001 col h016000 npc 47100038 think 47100000 talk 214101600 group 16005800
+    IronVirginBoss0 = 16000861  # c4470_9003 col h014000 npc 44701938 think 44701900 group 16005860
+    IronVirginBoss1 = 16000860  # c4470_9005 col h014000 npc 44700938 think 44700900 group 16005860
+    RykardPhaseTwo = 16000800  # c4710_9000 col h016000 npc 47101038 think 47100000 talk 214101600 group 16005800
+    RykardPhaseOne = 16000801  # c4710_9001 col h016000 npc 47100038 think 47100000 talk 214101600 group 16005800
     WrithingMass = 16000760  # c4711_9000 col h016000 npc 47110038 think 47110000
     Omenkiller = 16000500  # c4820_9001 col h003900 npc 48208038 think 48200000
     MagmaWyrm = 16000510  # c4910_9002 col h007000 npc 49100038 think 49100000 group 16005510
+
+    CLONE_RykardPhaseTwo = 16000802
+    CLONE_RykardPhaseOne = 16000803
+    CLONE_GodskinNoble = 16000851
+    CLONE_IronVirginBoss0 = 16000863  # c4470_9003 col h014000 npc 44701938 think 44701900 group 16005860
+    CLONE_IronVirginBoss1 = 16000862  # c4470_9005 col h014000 npc 44700938 think 44700900 group 16005860
 
 
 class Assets(Asset):

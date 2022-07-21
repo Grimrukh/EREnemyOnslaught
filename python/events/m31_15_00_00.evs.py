@@ -25,7 +25,7 @@ from .entities.m31_15_00_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=31150000, asset=Assets.AEG099_060_9000)
-    CommonFunc_90005250(0, character=31155800, region=31152500, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=31155800, region=31152500, seconds=0.0, animation_id=0)
     Event_31152800()
     Event_31152810()
     Event_31152820(0, character=Characters.DemiHumanBeastman0)
@@ -78,10 +78,10 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.DemiHumanShaman)
-    CommonFunc_90005250(0, character=Characters.DemiHumanBeastman0, region=31152800, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.DemiHumanBeastman1, region=31152800, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.DemiHuman0, radius=7.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.DemiHumanBeastman0, region=31152800, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.DemiHumanBeastman1, region=31152800, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.DemiHuman0, radius=7.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.DemiHuman8,
         animation_id=30000,
@@ -94,7 +94,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.LargeDemiHuman,
         animation_id=30001,
@@ -107,8 +107,8 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(0, character=Characters.DemiHuman9, region=31152219, radius=2.0, seconds=1.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.DemiHuman10, region=31152219, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.DemiHuman9, region=31152219, radius=2.0, seconds=1.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.DemiHuman10, region=31152219, radius=2.0, seconds=0.0, animation_id=0)
     Event_31152570()
 
 
@@ -349,7 +349,7 @@ def Event_31152849():
         right=31150815,
         model_point_1=806760,
     )
-    CommonFunc_9005822(0, 31150800, 931000, 31152805, 31152806, 31152815, 31152842, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 31150800, 931000, 31152805, 31152806, 31152815, 31152842, 0, 0)
 
 
 @RestartOnRest(31153700)

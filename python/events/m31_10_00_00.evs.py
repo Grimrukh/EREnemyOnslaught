@@ -54,7 +54,7 @@ def Preconstructor():
     """Event 50"""
     Event_31102255(0, character=Characters.Wolf2, patrol_information_id=31103252)
     Event_31102255(1, character=Characters.Wolf3, patrol_information_id=31103253)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.WolfPackLeader,
         region=31102270,
@@ -62,14 +62,14 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(0, character=Characters.Runebear, region=31102350, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Runebear, region=31102350, radius=2.0, seconds=0.0, animation_id=0)
     Event_31102360()
-    CommonFunc_90005261(0, character=Characters.Deer0, region=31102201, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Deer1, region=31102201, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Deer2, region=31102205, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Springhare0, region=31102236, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Springhare1, region=31102236, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Springhare2, region=31102238, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Deer0, region=31102201, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Deer1, region=31102201, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Deer2, region=31102205, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Springhare0, region=31102236, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Springhare1, region=31102236, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Springhare2, region=31102238, radius=2.0, seconds=0.0, animation_id=0)
     Event_31102200(1, 31100238)
 
 
@@ -464,4 +464,4 @@ def Event_31102849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=31100800, asset=Assets.AEG099_001_9000, model_point=3, right=31100801)
-    CommonFunc_9005822(0, 31100800, 931000, 31102805, 31102806, 31102810, 31102842, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 31100800, 931000, 31102805, 31102806, 31102810, 31102842, 0, 0)

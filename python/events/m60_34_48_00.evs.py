@@ -196,8 +196,8 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.WanderingNoble6)
-    CommonFunc_90005251(0, character=Characters.WanderingNoble0, radius=2.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble0, radius=2.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.WanderingNoble0,
         region=1034482210,
@@ -205,7 +205,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.WanderingNoble2,
         region=1034482210,
@@ -213,7 +213,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.WanderingNoble3,
         region=1034482210,
@@ -221,7 +221,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.WanderingNoble4,
         region=1034482210,
@@ -229,7 +229,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.WanderingNoble5,
         region=1034482210,
@@ -237,7 +237,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(0, 1034480211, 1034482211, 15.0, 0.0, 0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1034480211, 1034482211, 15.0, 0.0, 0)
 
 
 @RestartOnRest(1034482260)
@@ -613,15 +613,15 @@ def Event_1034482849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=1034480800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(
+    CommonFunc_BossMusicPhaseTransition(
         0,
-        flag=1034480800,
+        dead_flag=1034480800,
         bgm_boss_conv_param_id=920900,
-        flag_1=1034482805,
-        flag_2=1034482806,
-        right=0,
-        flag_3=1034482802,
-        left=0,
-        left_1=0,
+        host_in_battle=1034482805,
+        summon_in_battle=1034482806,
+        extra_required_flag=0,
+        phase_two_flag=1034482802,
+        useless_phase_two_check=0,
+        use_stop_type_1=0,
     )
     CommonFunc_9005812(0, 1034480800, 1034481801, 3, 0, 0)

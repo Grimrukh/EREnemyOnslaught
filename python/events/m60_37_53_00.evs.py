@@ -47,7 +47,7 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         1,
         character=Characters.RayaLucariaScholar1,
         region=1037532400,
@@ -55,7 +55,7 @@ def Constructor():
         seconds=2.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         2,
         character=Characters.RayaLucariaScholar2,
         region=1037532400,
@@ -63,7 +63,7 @@ def Constructor():
         seconds=2.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         3,
         character=Characters.RayaLucariaScholar0,
         region=1037532400,
@@ -71,15 +71,15 @@ def Constructor():
         seconds=10.0,
         animation_id=-1,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1037530400,
+        dead_flag=1037530400,
         character=Characters.LargeScarab,
         item_lot_param_id=40332,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=m60_37_Characters.LeyndellFootSoldier2,
         animation_id=30001,
@@ -92,7 +92,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=m60_37_Characters.LeyndellFootSoldier2,
         region=1037542370,
@@ -100,7 +100,7 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         1,
         character=1037540371,
         animation_id=30002,
@@ -113,8 +113,8 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(1, character=1037540371, region=1037542370, radius=5.0, seconds=1.5, animation_id=-1)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(1, character=1037540371, region=1037542370, radius=5.0, seconds=1.5, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         2,
         character=1037540372,
         animation_id=30002,
@@ -127,8 +127,8 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(2, character=1037540372, region=1037542370, radius=5.0, seconds=4.0, animation_id=-1)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(2, character=1037540372, region=1037542370, radius=5.0, seconds=4.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         3,
         character=1037540373,
         animation_id=30001,
@@ -141,8 +141,8 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(3, character=1037540373, region=1037542370, radius=5.0, seconds=1.0, animation_id=-1)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(3, character=1037540373, region=1037542370, radius=5.0, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         4,
         character=1037540374,
         animation_id=30001,
@@ -155,8 +155,8 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(4, character=1037540374, region=1037542370, radius=5.0, seconds=2.0, animation_id=-1)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(4, character=1037540374, region=1037542370, radius=5.0, seconds=2.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         5,
         character=1037540375,
         animation_id=30001,
@@ -169,7 +169,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         5,
         character=1037540375,
         region=1037542370,
@@ -177,7 +177,7 @@ def Constructor():
         seconds=3.299999952316284,
         animation_id=-1,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.WolfPackLeader,
         animation_id=30000,

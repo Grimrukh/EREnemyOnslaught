@@ -24,29 +24,29 @@ from .entities.m60_37_54_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005250(0, character=Characters.GraftedScion, region=1037542341, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.GraftedScion, region=1037542342, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GraftedScion, region=1037542341, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GraftedScion, region=1037542342, seconds=0.0, animation_id=0)
     Event_1037542500()
-    CommonFunc_90005300(0, flag=1037540341, character=Characters.GraftedScion, item_lot_param_id=0, seconds=3.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1037540341, character=Characters.GraftedScion, item_lot_param_id=0, reward_delay=3.0, skip_reward=0)
     CommonFunc_90005271(0, character=Characters.LeyndellSoldier0, seconds=0.0, animation_id=-1)
     Event_1037542260()
-    CommonFunc_90005250(0, character=Characters.Marionette2, region=1037542250, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(1, character=Characters.Marionette3, region=1037542250, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(2, character=Characters.Marionette4, region=1037542250, seconds=0.0, animation_id=0)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Marionette2, region=1037542250, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(1, character=Characters.Marionette3, region=1037542250, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(2, character=Characters.Marionette4, region=1037542250, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Marionette0,
-        animation_id=30010,
-        animation_id_1=20010,
-        region=1037542350,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30010,
+        active_animation=20010,
+        trigger_region=1037542350,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005261(0, character=1037540235, region=1037542235, radius=5.0, seconds=0.0, animation_id=3004)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1037540235, region=1037542235, radius=5.0, seconds=0.0, animation_id=3004)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Marionette1,
         region=1037542351,
@@ -54,40 +54,40 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(1, character=1037540352, region=1037542351, radius=0.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.Basilisk0, region=1037542210, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(1, character=Characters.Basilisk2, region=1037542210, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(1, character=1037540352, region=1037542351, radius=0.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Basilisk0, region=1037542210, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(1, character=Characters.Basilisk2, region=1037542210, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(
         2,
         character=Characters.Basilisk3,
         region=1037542210,
         seconds=0.20000000298023224,
         animation_id=0,
     )
-    CommonFunc_90005250(3, character=1037540213, region=1037542210, seconds=0.10000000149011612, animation_id=0)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(3, character=1037540213, region=1037542210, seconds=0.10000000149011612, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Basilisk1,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=1037542215,
-        seconds=1.399999976158142,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30001,
+        active_animation=20001,
+        trigger_region=1037542215,
+        trigger_delay=1.399999976158142,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         1,
         character=Characters.Basilisk4,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=1037542215,
-        seconds=1.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30001,
+        active_animation=20001,
+        trigger_region=1037542215,
+        trigger_delay=1.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_1037542220(0, character=Characters.PutridCorpse0, region=1037542360, destination=1037542260, seconds=0.0)
     Event_1037542220(1, character=Characters.PutridCorpse1, region=1037542360, destination=1037542261, seconds=1.0)
@@ -129,8 +129,8 @@ def Constructor():
     Event_1037542220(13, character=1037540273, region=1037542360, destination=1037542273, seconds=2.5)
     Event_1037542220(14, character=1037540274, region=1037542360, destination=1037542274, seconds=2.0999999046325684)
     Event_1037542220(15, character=1037540275, region=1037542360, destination=1037542275, seconds=2.200000047683716)
-    CommonFunc_90005251(0, character=Characters.LeyndellFootSoldier2, radius=6.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.LeyndellFootSoldier2, radius=6.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.LeyndellSoldier1,
         region=1037542304,
@@ -138,7 +138,7 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.LeyndellSoldier2,
         region=1037542304,
@@ -146,7 +146,7 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.LeyndellSoldier3,
         region=1037542306,
@@ -154,7 +154,7 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         1,
         character=Characters.LeyndellKnight1,
         region=1037542306,
@@ -165,32 +165,32 @@ def Constructor():
     Event_1037542250(0, character=Characters.LeyndellFootSoldier0)
     Event_1037542250(1, character=Characters.LeyndellFootSoldier1)
     Event_1037542250(2, character=Characters.LeyndellKnight1)
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.LeyndellKnight0,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1037542304,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1037542304,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_1037542250(3, character=Characters.LeyndellSoldier3)
     Event_1037542300()
-    CommonFunc_90005250(1, character=1037540440, region=1037542810, seconds=0.0, animation_id=0)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(1, character=1037540440, region=1037542810, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.UlceratedTreeSpirit,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1037542810,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1037542810,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_90005870(0, character=Characters.UlceratedTreeSpirit, name=904640600, npc_threat_level=18)
     CommonFunc_90005860(
@@ -327,9 +327,9 @@ def Preconstructor():
     DisableBackread(Characters.Patches1)
     DisableBackread(Characters.Merchant)
     DisableBackread(Characters.NomadMule)
-    CommonFunc_90005261(0, character=Characters.Avionette0, region=1037542450, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.Avionette1, region=1037542452, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(1, character=Characters.Avionette2, region=1037542452, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Avionette0, region=1037542450, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Avionette1, region=1037542452, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(1, character=Characters.Avionette2, region=1037542452, radius=5.0, seconds=0.0, animation_id=-1)
     Event_1037542400(0, character=Characters.Avionette0)
     Event_1037542400(2, character=Characters.Avionette1)
     Event_1037542400(3, character=Characters.Avionette2)

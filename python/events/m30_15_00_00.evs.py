@@ -26,45 +26,45 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=301500, asset=Assets.AEG099_060_9000)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=0)
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.MirandaRotFlower0,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30152400,
-        seconds=0.800000011920929,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30152400,
+        trigger_delay=0.800000011920929,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.MirandaRotFlower1,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30152400,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30152400,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.MirandaRotFlower2,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30152400,
-        seconds=1.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30152400,
+        trigger_delay=1.5,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.CatacombsSkeleton0, region=30152214, seconds=0.0, animation_id=3028)
-    CommonFunc_90005250(0, character=Characters.GiantMirandaRotFlower, region=30152310, seconds=0.0, animation_id=3003)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CatacombsSkeleton0, region=30152214, seconds=0.0, animation_id=3028)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GiantMirandaRotFlower, region=30152310, seconds=0.0, animation_id=3003)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton1,
         animation_id=30003,
@@ -77,57 +77,57 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.MirandaRotFlower3,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30152217,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30152217,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.MirandaRotFlower4,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30152211,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30152211,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.MirandaRotFlower5,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30152217,
-        seconds=1.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30152217,
+        trigger_delay=1.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.MirandaRotFlower6,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30152217,
-        seconds=2.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30152217,
+        trigger_delay=2.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.MirandaRotFlower7, region=30152200, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.MirandaRotFlower8, region=30152200, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.MirandaRotFlower9, region=30152200, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MirandaRotFlower7, region=30152200, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MirandaRotFlower8, region=30152200, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MirandaRotFlower9, region=30152200, seconds=0.0, animation_id=-1)
     CommonFunc_90005650(
         0,
         flag=30150540,
@@ -261,4 +261,4 @@ def Event_30152849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=30150800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(0, 30150800, 930000, 30152805, 30152806, 0, 30152802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 30150800, 930000, 30152805, 30152806, 0, 30152802, 0, 0)

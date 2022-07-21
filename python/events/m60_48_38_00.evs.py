@@ -99,16 +99,16 @@ def Constructor():
         region=0,
         left=0,
     )
-    CommonFunc_90005300(0, flag=1048380290, character=Characters.Scarab, item_lot_param_id=40402, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1048380290, character=Characters.Scarab, item_lot_param_id=40402, reward_delay=0.0, skip_reward=0)
     Event_1048382201()
     Event_1048382200(0, source_entity=Assets.AEG099_046_1000, seconds=2.0)
     Event_1048382200(1, source_entity=Assets.AEG099_046_1001, seconds=4.0)
     Event_1048382200(2, source_entity=Assets.AEG099_046_1002, seconds=14.0)
     Event_1048382200(3, source_entity=Assets.AEG099_046_1003, seconds=5.0)
     Event_1048382200(4, source_entity=Assets.AEG099_046_1004, seconds=9.0)
-    CommonFunc_90005250(0, character=Characters.MirandaRotFlower0, region=1048382200, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.MirandaRotFlower1, region=1048382200, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.MirandaRotFlower2, region=1048382200, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MirandaRotFlower0, region=1048382200, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MirandaRotFlower1, region=1048382200, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MirandaRotFlower2, region=1048382200, seconds=0.0, animation_id=-1)
     CommonFunc_90005201(
         0,
         character=Characters.MirandaRotFlower3,
@@ -217,9 +217,9 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005251(0, character=Characters.MirandaRotFlower12, radius=12.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.MirandaRotFlower13, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=1048380300, region=1048382300, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.MirandaRotFlower12, radius=12.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.MirandaRotFlower13, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=1048380300, region=1048382300, seconds=0.0, animation_id=-1)
     CommonFunc_90005725(
         0,
         flag=4775,

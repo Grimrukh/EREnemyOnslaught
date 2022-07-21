@@ -345,16 +345,16 @@ def Event_12092810():
 @NeverRestart(12092849)
 def Event_12092849():
     """Event 12092849"""
-    CommonFunc_9005822(
+    CommonFunc_BossMusicPhaseTransition(
         0,
-        flag=12090800,
+        dead_flag=12090800,
         bgm_boss_conv_param_id=467000,
-        flag_1=12090805,
-        flag_2=12090806,
-        right=0,
-        flag_3=12092802,
-        left=0,
-        left_1=0,
+        host_in_battle=12090805,
+        summon_in_battle=12090806,
+        extra_required_flag=0,
+        phase_two_flag=12092802,
+        useless_phase_two_check=0,
+        use_stop_type_1=0,
     )
     CommonFunc_9005800(
         0,
@@ -377,7 +377,7 @@ def Event_12092849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=12090800, asset=Assets.AEG099_002_9000, model_point=8, right=0)
-    CommonFunc_9005822(0, 12090800, 467000, 12092805, 12092806, 0, 12092802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 12090800, 467000, 12092805, 12092806, 0, 12092802, 0, 0)
 
 
 @RestartOnRest(12092200)

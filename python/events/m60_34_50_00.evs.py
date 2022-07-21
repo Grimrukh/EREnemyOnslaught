@@ -25,7 +25,7 @@ from .entities.m60_34_50_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1034500000, asset=Assets.AEG099_060_9000)
-    CommonFunc_9005810(
+    CommonFunc_RegisterGraceIfFlagEnabled(
         0,
         flag=1034500703,
         grace_flag=1034500001,
@@ -102,7 +102,7 @@ def Constructor():
     Event_1034502804()
     Event_1034502802()
     Event_1034502803()
-    CommonFunc_90005300(0, flag=1035510200, character=Characters.Scarab, item_lot_param_id=40200, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1035510200, character=Characters.Scarab, item_lot_param_id=40200, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005525(0, flag=1034500620, asset=Assets.AEG004_983_1000)
     CommonFunc_90005525(0, flag=1034500621, asset=Assets.AEG004_336_1000)
     Event_1034502580()

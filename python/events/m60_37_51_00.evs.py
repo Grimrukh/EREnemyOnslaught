@@ -54,9 +54,9 @@ def Constructor():
         seconds=0.0,
     )
     Event_1037512208(0, character=Characters.Omen1, region=1037512208, radius=5.0, seconds=0.0, animation_id=20005)
-    CommonFunc_90005251(0, character=1037510200, radius=45.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005300(0, flag=1037510210, character=Characters.Scarab0, item_lot_param_id=40224, seconds=0.0, left=0)
-    CommonFunc_90005300(0, flag=1037510500, character=Characters.Scarab1, item_lot_param_id=40300, seconds=0.0, left=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1037510200, radius=45.0, seconds=0.0, animation_id=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1037510210, character=Characters.Scarab0, item_lot_param_id=40224, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1037510500, character=Characters.Scarab1, item_lot_param_id=40300, reward_delay=0.0, skip_reward=0)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=39200514)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9001, vfx_id=100, model_point=800, right=39200514)
     CommonFunc_90005771(0, 1037510950, 1037512700)

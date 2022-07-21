@@ -25,15 +25,15 @@ from .entities.m60_41_33_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1041330000, asset=Assets.AEG099_060_9000)
-    CommonFunc_90005251(0, character=1041330233, radius=8.0, seconds=1.0, animation_id=-1)
-    CommonFunc_90005251(0, character=1041330234, radius=8.0, seconds=0.5, animation_id=-1)
-    CommonFunc_90005251(0, character=1041330235, radius=8.0, seconds=1.100000023841858, animation_id=-1)
-    CommonFunc_90005251(0, character=1041330236, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=1041330237, radius=8.0, seconds=0.5, animation_id=-1)
-    CommonFunc_90005251(0, character=1041330238, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=1041330239, radius=8.0, seconds=1.0, animation_id=-1)
-    CommonFunc_90005251(0, character=1041330240, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=1041330241, radius=8.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1041330233, radius=8.0, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1041330234, radius=8.0, seconds=0.5, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1041330235, radius=8.0, seconds=1.100000023841858, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1041330236, radius=8.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1041330237, radius=8.0, seconds=0.5, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1041330238, radius=8.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1041330239, radius=8.0, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1041330240, radius=8.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1041330241, radius=8.0, seconds=0.0, animation_id=-1)
     CommonFunc_90005201(
         0,
         character=Characters.GravenSchool,
@@ -195,16 +195,16 @@ def Event_1041332849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=1041330800, asset=1041331800, model_point=3, right=0)
-    CommonFunc_9005822(
+    CommonFunc_BossMusicPhaseTransition(
         0,
-        flag=1041330800,
+        dead_flag=1041330800,
         bgm_boss_conv_param_id=0,
-        flag_1=1041332805,
-        flag_2=1041332806,
-        right=0,
-        flag_3=1041332802,
-        left=0,
-        left_1=0,
+        host_in_battle=1041332805,
+        summon_in_battle=1041332806,
+        extra_required_flag=0,
+        phase_two_flag=1041332802,
+        useless_phase_two_check=0,
+        use_stop_type_1=0,
     )
     CommonFunc_9005812(0, 1041330800, 1041331801, 3, 0, 0)
 

@@ -24,7 +24,7 @@ from .entities.m60_44_36_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_9005810(
+    CommonFunc_RegisterGraceIfFlagEnabled(
         0,
         flag=1044360800,
         grace_flag=76120,
@@ -35,7 +35,7 @@ def Constructor():
     Event_1044362800()
     Event_1044362810()
     Event_1044362849()
-    CommonFunc_90005300(0, flag=1044360220, character=Characters.Scarab, item_lot_param_id=40112, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1044360220, character=Characters.Scarab, item_lot_param_id=40112, reward_delay=0.0, skip_reward=0)
     Event_1044362500()
     CommonFunc_90005704(
         0,
@@ -64,12 +64,12 @@ def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.SorceressSellen)
     DisableBackread(Characters.TalkDummy0)
-    CommonFunc_90005251(0, character=Characters.GiantMirandaFlower, radius=30.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005251(0, character=Characters.MirandaFlower0, radius=3.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.MirandaFlower1, radius=3.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.MirandaFlower2, radius=3.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=1044360211, region=1044362211, radius=1.0, seconds=0.0, animation_id=1701)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GiantMirandaFlower, radius=30.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.MirandaFlower0, radius=3.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.MirandaFlower1, radius=3.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.MirandaFlower2, radius=3.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1044360211, region=1044362211, radius=1.0, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.LargeCrab0,
         region=1044362211,
@@ -77,7 +77,7 @@ def Preconstructor():
         seconds=0.5,
         animation_id=1701,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.LargeCrab1,
         region=1044362211,
@@ -85,7 +85,7 @@ def Preconstructor():
         seconds=0.30000001192092896,
         animation_id=1701,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=1044360214,
         region=1044362211,
@@ -93,8 +93,8 @@ def Preconstructor():
         seconds=0.699999988079071,
         animation_id=1701,
     )
-    CommonFunc_90005261(0, character=1044360200, region=1044362200, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005211(0, 1044360200, 30014, 20014, 1044362200, 10.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1044360200, region=1044362200, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 1044360200, 30014, 20014, 1044362200, 10.0, 0.0, 0, 0, 0, 0)
 
 
 @NeverRestart(200)
@@ -625,15 +625,15 @@ def Event_1044362849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=1044360800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(
+    CommonFunc_BossMusicPhaseTransition(
         0,
-        flag=1044360800,
+        dead_flag=1044360800,
         bgm_boss_conv_param_id=920900,
-        flag_1=1044362805,
-        flag_2=1044362806,
-        right=0,
-        flag_3=1044362802,
-        left=0,
-        left_1=0,
+        host_in_battle=1044362805,
+        summon_in_battle=1044362806,
+        extra_required_flag=0,
+        phase_two_flag=1044362802,
+        useless_phase_two_check=0,
+        use_stop_type_1=0,
     )
     CommonFunc_9005812(0, 1044360800, 1044361801, 3, 0, 0)

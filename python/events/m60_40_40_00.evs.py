@@ -23,7 +23,7 @@ from .entities.m60_40_40_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005261(0, character=Characters.Wolf, region=1040402206, radius=10.0, seconds=0.0, animation_id=3011)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Wolf, region=1040402206, radius=10.0, seconds=0.0, animation_id=3011)
     Event_1040402200(0, character=Characters.WanderingNoble0)
     Event_1040402200(1, character=Characters.WanderingNoble1)
     Event_1040402200(2, character=Characters.WanderingNoble2)

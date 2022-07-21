@@ -34,9 +34,9 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005261(0, character=Characters.Rat0, region=1043322200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Rat1, region=1043322200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005251(0, 1043320202, 5.0, 0.0, 3005)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat0, region=1043322200, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat1, region=1043322200, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 1043320202, 5.0, 0.0, 3005)
 
 
 @RestartOnRest(1043322215)

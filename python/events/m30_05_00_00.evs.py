@@ -97,141 +97,141 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CemeteryShade,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=30052800,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30001,
+        active_animation=20001,
+        trigger_region=30052800,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton15,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30052800,
-        seconds=0.30000001192092896,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30052800,
+        trigger_delay=0.30000001192092896,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton16,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30052800,
-        seconds=0.6000000238418579,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30052800,
+        trigger_delay=0.6000000238418579,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton17,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30052800,
-        seconds=1.2000000476837158,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30052800,
+        trigger_delay=1.2000000476837158,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton0,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30052200,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30052200,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton2,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30052202,
-        seconds=1.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30052202,
+        trigger_delay=1.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_30052203(0, character=Characters.CatacombsSkeleton3)
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton3,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30052202,
-        seconds=1.7000000476837158,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30052202,
+        trigger_delay=1.7000000476837158,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton1,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30052302,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30052302,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton4,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30052302,
-        seconds=4.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30052302,
+        trigger_delay=4.5,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton5,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30052205,
-        seconds=3.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30052205,
+        trigger_delay=3.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton6,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30052205,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30052205,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.CatacombsSkeleton7, region=30052207, seconds=0.0, animation_id=3021)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CatacombsSkeleton7, region=30052207, seconds=0.0, animation_id=3021)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton8,
         animation_id=30003,
@@ -244,70 +244,70 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton9,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30052209,
-        seconds=3.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30052209,
+        trigger_delay=3.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton10,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30052209,
-        seconds=3.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30052209,
+        trigger_delay=3.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.CatacombsSkeleton11, region=30052211, seconds=0.0, animation_id=3011)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CatacombsSkeleton11, region=30052211, seconds=0.0, animation_id=3011)
     Event_30052203(1, character=Characters.CatacombsSkeleton12)
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton12,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30052212,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30052212,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.CatacombsSkeleton18, region=30052215, seconds=0.0, animation_id=3030)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CatacombsSkeleton18, region=30052215, seconds=0.0, animation_id=3030)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton13,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30052213,
-        seconds=4.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30052213,
+        trigger_delay=4.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton14,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30052214,
-        seconds=9.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30052214,
+        trigger_delay=9.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005261(0, character=Characters.Commoner0, region=30052450, radius=7.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Commoner0, region=30052450, radius=7.0, seconds=0.0, animation_id=0)
     Event_30052302()
     Event_30052300(0, character=Characters.Commoner0, character_1=Characters.CatacombsSkeleton5)
     Event_30052300(1, character=Characters.Commoner0, character_1=Characters.CatacombsSkeleton6)
@@ -315,7 +315,7 @@ def Preconstructor():
     Event_30052350(0, character=Characters.Commoner0, character_1=Characters.CatacombsSkeleton5)
     Event_30052350(1, character=Characters.Commoner0, character_1=Characters.CatacombsSkeleton6)
     Event_30052350(2, character=Characters.Commoner0, character_1=Characters.CatacombsSkeleton8)
-    CommonFunc_90005250(0, character=Characters.Commoner1, region=30052301, seconds=0.0, animation_id=3015)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner1, region=30052301, seconds=0.0, animation_id=3015)
     Event_30052301()
     Event_30052300(3, character=Characters.Commoner1, character_1=Characters.CatacombsSkeleton9)
     Event_30052300(4, character=Characters.Commoner1, character_1=Characters.CatacombsSkeleton10)
@@ -323,37 +323,37 @@ def Preconstructor():
     Event_30052350(3, character=Characters.Commoner1, character_1=Characters.CatacombsSkeleton9)
     Event_30052350(4, character=Characters.Commoner1, character_1=Characters.CatacombsSkeleton10)
     Event_30052350(5, character=Characters.Commoner1, character_1=Characters.CatacombsSkeleton11)
-    CommonFunc_90005250(0, character=Characters.Commoner2, region=30052302, seconds=0.0, animation_id=3015)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner2, region=30052302, seconds=0.0, animation_id=3015)
     Event_30052300(6, character=Characters.Commoner2, character_1=Characters.CatacombsSkeleton1)
     Event_30052300(7, character=Characters.Commoner2, character_1=Characters.CatacombsSkeleton4)
     Event_30052350(6, character=Characters.Commoner2, character_1=Characters.CatacombsSkeleton1)
     Event_30052350(7, character=Characters.Commoner2, character_1=Characters.CatacombsSkeleton4)
-    CommonFunc_90005250(0, character=Characters.SmallCrabWorms0, region=30052400, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SmallCrabWorms1, region=30052400, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SmallCrabWorms2, region=30052400, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SmallCrabWorms3, region=30052400, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SmallCrabWorms4, region=30052400, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SmallCrabWorms5, region=30052400, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SmallCrabWorms6, region=30052400, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SmallCrabWorms7, region=30052400, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SmallCrabWorms8, region=30052400, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SmallCrabWorms9, region=30052400, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SmallCrabWorms10, region=30052400, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SmallCrabWorms11, region=30052400, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SmallCrabWorms12, region=30052400, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SmallCrabWorms13, region=30052400, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.SmallCrabWorms14, region=30052400, seconds=0.0, animation_id=0)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabWorms0, region=30052400, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabWorms1, region=30052400, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabWorms2, region=30052400, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabWorms3, region=30052400, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabWorms4, region=30052400, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabWorms5, region=30052400, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabWorms6, region=30052400, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabWorms7, region=30052400, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabWorms8, region=30052400, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabWorms9, region=30052400, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabWorms10, region=30052400, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabWorms11, region=30052400, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabWorms12, region=30052400, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabWorms13, region=30052400, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallCrabWorms14, region=30052400, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.LargeCrabInjured0,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=30052450,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30001,
+        active_animation=20001,
+        trigger_region=30052450,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_30052450(
         0,
@@ -751,7 +751,7 @@ def Event_30052450(
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -802,13 +802,13 @@ def Event_30052450(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
     Wait(2.5)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -816,7 +816,7 @@ def Event_30052450(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -1023,7 +1023,7 @@ def Event_30052849():
         action_button_id=10000,
     )
     CommonFunc_9005813(0, flag=30050800, asset=Assets.AEG099_001_9000, model_point=3, right=0, model_point_1=3)
-    CommonFunc_9005822(0, 30050800, 930000, 30052805, 30052806, 0, 30052802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 30050800, 930000, 30052805, 30052806, 0, 30052802, 0, 0)
 
 
 @RestartOnRest(30052899)
@@ -1050,7 +1050,7 @@ def Event_30052899():
         action_button_id=10000,
     )
     CommonFunc_9005813(0, flag=30050850, asset=Assets.AEG099_001_9002, model_point=3, right=0, model_point_1=3)
-    CommonFunc_9005822(0, 30050850, 921500, 30052855, 30052856, 0, 30052852, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 30050850, 921500, 30052855, 30052856, 0, 30052852, 0, 0)
 
 
 @RestartOnRest(30052870)

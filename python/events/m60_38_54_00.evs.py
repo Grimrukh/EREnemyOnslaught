@@ -59,13 +59,13 @@ def Constructor():
         item_lot__item_lot_param_id=0,
         seconds=0.0,
     )
-    CommonFunc_90005250(0, character=Characters.Dog, region=1038542229, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(1, character=1038540227, region=1038542229, seconds=1.0, animation_id=-1)
-    CommonFunc_90005250(2, character=Characters.SmallerDog1, region=1038542229, seconds=6.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Dog, region=1038542229, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(1, character=1038540227, region=1038542229, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(2, character=Characters.SmallerDog1, region=1038542229, seconds=6.0, animation_id=-1)
     Event_1038542260(0, character=Characters.Dog)
     Event_1038542260(1, character=1038540227)
     Event_1038542260(2, character=Characters.SmallerDog1)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.SmallerDog0,
         region=1038542220,
@@ -73,7 +73,7 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         1,
         character=Characters.SmallerDog2,
         region=1038542220,
@@ -122,7 +122,7 @@ def Constructor():
         region=1038542702,
         left=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.LeyndellFootSoldier2,
         region=1038542370,
@@ -130,7 +130,7 @@ def Constructor():
         seconds=3.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         1,
         character=Characters.LeyndellFootSoldier3,
         region=1038542370,
@@ -138,7 +138,7 @@ def Constructor():
         seconds=3.0999999046325684,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         2,
         character=Characters.LeyndellFootSoldier1,
         region=1038542370,
@@ -149,13 +149,13 @@ def Constructor():
     Event_1038542270(0, character=Characters.LeyndellFootSoldier2)
     Event_1038542270(1, character=Characters.LeyndellFootSoldier3)
     Event_1038542270(2, character=Characters.LeyndellFootSoldier1)
-    CommonFunc_90005261(0, character=Characters.Eagle2, region=1038542380, radius=5.0, seconds=0.0, animation_id=3020)
-    CommonFunc_90005261(1, character=Characters.Eagle0, region=1038542381, radius=5.0, seconds=0.0, animation_id=3020)
-    CommonFunc_90005261(2, character=Characters.Eagle3, region=1038542382, radius=5.0, seconds=0.0, animation_id=3020)
-    CommonFunc_90005261(3, character=Characters.Eagle1, region=1038542383, radius=5.0, seconds=0.0, animation_id=3020)
-    CommonFunc_90005261(4, character=Characters.Eagle4, region=1038542384, radius=5.0, seconds=0.0, animation_id=3020)
-    CommonFunc_90005261(5, character=Characters.Eagle5, region=1038542385, radius=5.0, seconds=0.0, animation_id=3020)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Eagle2, region=1038542380, radius=5.0, seconds=0.0, animation_id=3020)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(1, character=Characters.Eagle0, region=1038542381, radius=5.0, seconds=0.0, animation_id=3020)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(2, character=Characters.Eagle3, region=1038542382, radius=5.0, seconds=0.0, animation_id=3020)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(3, character=Characters.Eagle1, region=1038542383, radius=5.0, seconds=0.0, animation_id=3020)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(4, character=Characters.Eagle4, region=1038542384, radius=5.0, seconds=0.0, animation_id=3020)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(5, character=Characters.Eagle5, region=1038542385, radius=5.0, seconds=0.0, animation_id=3020)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         4,
         character=Characters.MadPumpkinHead,
         animation_id=30005,
@@ -564,7 +564,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.LeyndellFootSoldier0,
         animation_id=30010,
@@ -577,7 +577,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         1,
         character=1038540206,
         animation_id=30010,
@@ -591,30 +591,30 @@ def Constructor():
         left_3=0,
     )
     Event_1038542250(0, attacker__character=1038545200, region=1038542200)
-    CommonFunc_90005261(0, character=1038540340, region=1039532350, radius=10.0, seconds=1.0, animation_id=-1)
-    CommonFunc_90005261(1, character=1038540341, region=1039532350, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1038540340, region=1039532350, radius=10.0, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(1, character=1038540341, region=1039532350, radius=10.0, seconds=0.0, animation_id=-1)
     Event_1038542340()
-    CommonFunc_90005251(0, character=Characters.LeyndellSoldier3, radius=8.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.LeyndellSoldier3, radius=8.0, seconds=0.0, animation_id=-1)
     Event_1038542580()
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1038540400,
+        dead_flag=1038540400,
         character=Characters.MaleighMarais,
         item_lot_param_id=1038540100,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.GuardianGolem,
-        animation_id=30020,
-        animation_id_1=20020,
-        region=1038542390,
-        seconds=2.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30020,
+        active_animation=20020,
+        trigger_region=1038542390,
+        trigger_delay=2.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_1038542400()
     Event_1038542500()

@@ -196,13 +196,13 @@ def Preconstructor():
     DisableBackread(Characters.Blaidd0)
     DisableBackread(Characters.TalkDummy3)
     Event_1044352250()
-    CommonFunc_90005251(0, character=Characters.SmallCrab0, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005251(0, character=Characters.SmallCrab1, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005251(0, character=Characters.SmallCrab2, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005251(0, character=Characters.SmallCrab3, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005251(0, character=Characters.WildMouflon0, radius=15.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005251(0, character=Characters.WildMouflon1, radius=15.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.SmallCrab0, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.SmallCrab1, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.SmallCrab2, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.SmallCrab3, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WildMouflon0, radius=15.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WildMouflon1, radius=15.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.WanderingNoble0,
         region=1044352220,
@@ -210,7 +210,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005251(0, 1044350221, 55.0, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 1044350221, 55.0, 0.0, -1)
 
 
 @RestartOnRest(1044352250)

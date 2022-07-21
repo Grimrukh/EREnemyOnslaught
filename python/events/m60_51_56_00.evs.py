@@ -43,13 +43,13 @@ def Constructor():
         flag_10=78508,
         flag_11=78509,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1051560210,
+        dead_flag=1051560210,
         character=Characters.LargeScarab,
         item_lot_param_id=1051560700,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     Event_1051562200(0, character=1051565200)
     Event_1051562500()

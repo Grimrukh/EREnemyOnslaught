@@ -26,7 +26,7 @@ from .entities.m60_36_45_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1036450000, asset=Assets.AEG099_060_9000)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.DeathRiteBird,
         region=1036452340,
@@ -66,16 +66,16 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005261(0, character=Characters.Skeleton0, region=1036452220, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.Skeleton1, region=1036452220, radius=10.0, seconds=1.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.Skeleton2, region=1036452220, radius=10.0, seconds=0.5, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.Skeleton3, radius=7.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.Skeleton4, radius=7.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.Skeleton5, radius=7.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=1036450226, region=1036452226, radius=0.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=1036450227, region=1036452226, radius=0.0, seconds=1.0, animation_id=-1)
-    CommonFunc_90005261(0, character=1036450228, region=1036452226, radius=0.0, seconds=0.5, animation_id=-1)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton0, region=1036452220, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton1, region=1036452220, radius=10.0, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton2, region=1036452220, radius=10.0, seconds=0.5, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Skeleton3, radius=7.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Skeleton4, radius=7.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Skeleton5, radius=7.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1036450226, region=1036452226, radius=0.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1036450227, region=1036452226, radius=0.0, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1036450228, region=1036452226, radius=0.0, seconds=0.5, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=1036450229,
         region=1036452226,
@@ -83,10 +83,10 @@ def Preconstructor():
         seconds=0.30000001192092896,
         animation_id=-1,
     )
-    CommonFunc_90005261(0, character=1036450230, region=1036452226, radius=0.0, seconds=1.0, animation_id=-1)
-    CommonFunc_90005261(0, character=1036450231, region=1036452226, radius=0.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.Skeleton6, region=1036452250, radius=0.0, seconds=0.5, animation_id=-1)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1036450230, region=1036452226, radius=0.0, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1036450231, region=1036452226, radius=0.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton6, region=1036452250, radius=0.0, seconds=0.5, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Skeleton7,
         region=1036452250,
@@ -94,8 +94,8 @@ def Preconstructor():
         seconds=0.30000001192092896,
         animation_id=-1,
     )
-    CommonFunc_90005261(0, character=Characters.Skeleton8, region=1036452250, radius=0.0, seconds=1.0, animation_id=-1)
-    CommonFunc_90005261(0, 1036450250, 1036452250, 0.0, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton8, region=1036452250, radius=0.0, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1036450250, 1036452250, 0.0, 0.0, -1)
 
 
 @RestartOnRest(1036452200)

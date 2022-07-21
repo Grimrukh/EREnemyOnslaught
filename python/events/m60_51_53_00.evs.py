@@ -27,31 +27,31 @@ def Constructor():
     RegisterGrace(grace_flag=1051530000, asset=Assets.AEG099_060_9000)
     Event_1051532200(0, character=1051535200)
     Event_1051532390()
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=1051530321,
-        animation_id=30005,
-        animation_id_1=20005,
-        region=1051532321,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30005,
+        active_animation=20005,
+        trigger_region=1051532321,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.MassiveFingercreeper0,
-        animation_id=30006,
-        animation_id_1=20006,
-        region=1051532322,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30006,
+        active_animation=20006,
+        trigger_region=1051532322,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.MassiveFingercreeper1,
         animation_id=30006,
@@ -64,7 +64,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.MassiveFingercreeper2,
         animation_id=30006,
@@ -77,13 +77,13 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1051530210,
+        dead_flag=1051530210,
         character=Characters.ExtraLargeScarab,
         item_lot_param_id=1051530700,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     Event_1051532220(
         0,
@@ -105,13 +105,13 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1051530380,
+        dead_flag=1051530380,
         character=Characters.BloodyFingerOkina,
         item_lot_param_id=0,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     CommonFunc_90005790(
         0,
@@ -156,19 +156,19 @@ def Constructor():
     )
     Event_1051532330(0, attacker__character=1051535330, region=1051532330)
     Event_1051532330(1, attacker__character=1051535331, region=1051532331)
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Fingercreeper1,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1051532284,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1051532284,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Fingercreeper0,
         region=1051532283,

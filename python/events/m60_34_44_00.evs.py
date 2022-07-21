@@ -27,7 +27,7 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1034440000, asset=Assets.AEG099_060_9000)
     RunCommonEvent(1034442200)
-    CommonFunc_90005300(0, flag=1034440220, character=Characters.Scarab, item_lot_param_id=40218, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1034440220, character=Characters.Scarab, item_lot_param_id=40218, reward_delay=0.0, skip_reward=0)
     Event_1034440700(0, 1034440700, 930023, 3409)
 
 
@@ -35,7 +35,7 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.Commoner)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Albinauric0,
         region=1034442200,
@@ -43,7 +43,7 @@ def Preconstructor():
         seconds=2.0,
         animation_id=-1,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Albinauric0,
         animation_id=30002,
@@ -56,7 +56,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Albinauric1,
         animation_id=30002,
@@ -69,7 +69,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Albinauric2,
         region=1034442200,
@@ -77,7 +77,7 @@ def Preconstructor():
         seconds=1.0,
         animation_id=-1,
     )
-    CommonFunc_90005211(0, 1034440202, 30002, 20002, 1034442200, 3.0, 1.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 1034440202, 30002, 20002, 1034442200, 3.0, 1.0, 0, 0, 0, 0)
 
 
 @RestartOnRest(1034440700)

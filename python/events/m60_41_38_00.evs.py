@@ -55,7 +55,7 @@ def Constructor():
     CommonFunc_90005460(0, character=1041380240)
     CommonFunc_90005461(0, character=1041380240)
     CommonFunc_90005462(0, character=1041380240)
-    CommonFunc_90005300(0, flag=1041380230, character=Characters.Scarab, item_lot_param_id=40104, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1041380230, character=Characters.Scarab, item_lot_param_id=40104, reward_delay=0.0, skip_reward=0)
     Event_1041382200(0, character=Characters.Wolf0, region=1041382250, owner_entity=Characters.Dummy)
     Event_1041382200(1, character=Characters.Wolf1, region=1041382250, owner_entity=Characters.Dummy)
     Event_1041382200(2, character=Characters.Wolf2, region=1041382250, owner_entity=Characters.Dummy)
@@ -107,8 +107,8 @@ def Preconstructor():
     DisableBackread(Characters.Roderika)
     DisableBackread(1041380730)
     DisableAsset(Assets.AEG099_320_9000)
-    CommonFunc_90005251(0, character=Characters.GodrickFootSoldier, radius=100.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, 1041380216, 25.0, 0.0, 1704)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GodrickFootSoldier, radius=100.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 1041380216, 25.0, 0.0, 1704)
 
 
 @RestartOnRest(1041382200)

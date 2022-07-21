@@ -38,10 +38,10 @@ def Constructor():
         seconds=0.30000001192092896,
         animation_id=3021,
     )
-    CommonFunc_90005261(0, character=Characters.DemiHuman2, region=1036522220, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(1, character=Characters.DemiHuman3, region=1036522220, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(2, character=Characters.DemiHuman4, region=1036522220, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.DemiHuman2, region=1036522220, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(1, character=Characters.DemiHuman3, region=1036522220, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(2, character=Characters.DemiHuman4, region=1036522220, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         1,
         character=1036520205,
         region=1036522300,
@@ -49,8 +49,8 @@ def Constructor():
         seconds=0.4000000059604645,
         animation_id=-1,
     )
-    CommonFunc_90005261(2, character=Characters.DemiHuman5, region=1036522300, radius=6.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(2, character=Characters.DemiHuman5, region=1036522300, radius=6.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         2,
         character=Characters.DemiHuman6,
         region=1036522300,
@@ -59,8 +59,8 @@ def Constructor():
         animation_id=-1,
     )
     Event_1036522215(0, character=Characters.Runebear, region=1036522300, radius=10.0, seconds=0.5, animation_id=20003)
-    CommonFunc_90005261(0, character=1036520250, region=1036522250, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1036520250, region=1036522250, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=1036520250,
         animation_id=30000,
@@ -73,8 +73,8 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(0, character=1036520251, region=1036522251, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1036520251, region=1036522251, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=1036520251,
         animation_id=30000,
@@ -87,8 +87,8 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(0, character=1036520252, region=1036522252, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1036520252, region=1036522252, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=1036520252,
         animation_id=30000,

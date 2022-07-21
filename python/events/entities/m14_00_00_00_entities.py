@@ -1,6 +1,173 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    RennalaDefeated = 14000800  # also entity ID of Phase 2
+    RedWolfDead = 14000850
+    RennalaBattleStarted = 14002805
+
+    # RENNALA PHASE ONE CLONES
+    CLONE_RennalaBarrierActive = 14003700
+    CLONE_EVENT_ChooseRandomGlowingStudent = 14003701
+    CLONE_RennalaRandomFlag1 = 14003702
+    CLONE_RennalaRandomFlag2 = 14003703
+    CLONE_RennalaRandomFlag3 = 14003704
+    CLONE_EVENT_RennalaBarrierBreaks = 14003705
+    CLONE_FirstGlowingStudentHit = 14003706
+    CLONE_EVENT_RennalaBarrierDamaged = 14003707
+    CLONE_EVENT_RennalaVulnerableTimer = 14003708
+    CLONE_EVENT_RennalaRequestsSpecialStudent = 14003709
+    CLONE_RennalaSpecialStudentRequest = 14003710
+    CLONE_EVENT_ChooseRandomSpecialStudent = 14003711
+    CLONE_RennalaBarrierReset = 14003716  # enabled when barrier broken; disabled when barrier next damaged
+    CLONE_EVENT_SyncRennalaSoundDummyPosition = 14003714
+    CLONE_EVENT_RennalaSoundDummyLoop = 14003715
+    CLONE_EVENT_RennalaStudentsUnknownEffect = 14003717
+    CLONE_EVENT_StudentChosenAtBattleStart = 14003718  # 3725 used by Bloodhound Knight summon clone below
+    CLONE_EVENT_RennalaForceStudentUpdate = 14003792
+    CLONE_EVENT_RennalaStudentsEffect14353 = 14003793
+    CLONE_EVENT_RennalaStudentsEffect14355 = 14003794
+
+    # RENNALA PHASE ONE (STUDENTS)
+    RennalaBarrierActive = 14003800
+    EVENT_ChooseRandomGlowingStudent = 14003801
+    RennalaRandomFlag1 = 14003802
+    RennalaRandomFlag2 = 14003803
+    RennalaRandomFlag3 = 14003804
+    EVENT_RennalaBarrierBreaks = 14003805
+    FirstGlowingStudentHit = 14003806
+    EVENT_RennalaBarrierDamaged = 14003807
+    EVENT_RennalaVulnerableTimer = 14003808
+    EVENT_RennalaRequestsSpecialStudent = 14003809
+    RennalaSpecialStudentRequest = 14003810
+    EVENT_ChooseRandomSpecialStudent = 14003811
+    RennalaBarrierReset = 14003816  # enabled when barrier broken; disabled when barrier next damaged
+    EVENT_SyncRennalaSoundDummyPosition = 14003814
+    EVENT_RennalaSoundDummyLoop = 14003815
+    EVENT_RennalaStudentsUnknownEffect = 14003817
+    EVENT_StudentChosenAtBattleStart = 14003825
+    EVENT_RennalaForceStudentUpdate = 14003892
+    EVENT_RennalaStudentsEffect14353 = 14003893
+    EVENT_RennalaStudentsEffect14355 = 14003894
+
+    EVENT_KillStudentsWhenRennalaDies = 14003915
+
+    # RENNALA CLONE SUMMONS
+    CLONE_RennalaBloodhoundActive = 14003720
+    CLONE_RennalaBloodhoundCleanup = 14003721
+    CLONE_EVENT_RennalaSummonsBloodhoundKnight = 14003722
+    CLONE_EVENT_RennalaResumesFightingAfterBloodhound = 14003723
+    CLONE_EVENT_BloodhoundCleanup = 14003724
+    CLONE_EVENT_BloodhoundSummonDefeated = 14003725
+    CLONE_EVENT_DisableBloodhoundSummon = 14003726
+
+    CLONE_RennalaWolvesActive = 14003735
+    CLONE_RennalaWolvesCleanup = 14003736
+    CLONE_EVENT_RennalaSummonsWolves = 14003737
+    CLONE_EVENT_RennalaResumesFightingAfterWolves = 14003738
+    CLONE_EVENT_WolvesCleanup = 14003739
+    CLONE_EVENT_WolfSummonDefeated = 14003740  # 4 slots
+    CLONE_EVENT_DisableWolfSummon = 14003745  # 4 slots
+
+    CLONE_RennalaTrollActive = 14003760
+    CLONE_RennalaTrollCleanup = 14003761
+    CLONE_EVENT_RennalaSummonsTroll = 14003762
+    CLONE_EVENT_RennalaResumesFightingAfterTroll = 14003763
+    CLONE_EVENT_TrollCleanup = 14003764
+    CLONE_EVENT_TrollSummonDefeated = 14003765
+    CLONE_EVENT_DisableTrollSummon = 14003766
+
+    CLONE_RennalaDragonActive = 14003770
+    CLONE_RennalaDragonCleanup = 14003771
+    CLONE_EVENT_RennalaSummonsDragon = 14003772
+    CLONE_EVENT_RennalaResumesFightingAfterDragon = 14003773
+    CLONE_EVENT_DragonCleanup = 14003774
+    CLONE_EVENT_DragonSummonDefeated = 14003775
+    CLONE_EVENT_DisableDragonSummon = 14003776
+
+    CLONE_EVENT_DismissSummonsOnRennalaDeath = 14003777
+
+    # RENNALA SUMMONS
+    RennalaBloodhoundActive = 14003920
+    RennalaBloodhoundCleanup = 14003921
+    EVENT_RennalaSummonsBloodhoundKnight = 14003922
+    EVENT_RennalaResumesFightingAfterBloodhound = 14003923
+    EVENT_BloodhoundCleanup = 14003924
+    EVENT_BloodhoundSummonDefeated = 14003925
+    EVENT_DisableBloodhoundSummon = 14003926
+
+    RennalaWolvesActive = 14003935
+    RennalaWolvesCleanup = 14003936
+    EVENT_RennalaSummonsWolves = 14003937
+    EVENT_RennalaResumesFightingAfterWolves = 14003938
+    EVENT_WolvesCleanup = 14003939
+    EVENT_WolfSummonDefeated = 14003940  # 4 slots
+    EVENT_DisableWolfSummon = 14003945  # 4 slots
+
+    RennalaTrollActive = 14003960
+    RennalaTrollCleanup = 14003961
+    EVENT_RennalaSummonsTroll = 14003962
+    EVENT_RennalaResumesFightingAfterTroll = 14003963
+    EVENT_TrollCleanup = 14003964
+    EVENT_TrollSummonDefeated = 14003965
+    EVENT_DisableTrollSummon = 14003966
+
+    RennalaDragonActive = 14003970
+    RennalaDragonCleanup = 14003971
+    EVENT_RennalaSummonsDragon = 14003972
+    EVENT_RennalaResumesFightingAfterDragon = 14003973
+    EVENT_DragonCleanup = 14003974
+    EVENT_DragonSummonDefeated = 14003975
+    EVENT_DisableDragonSummon = 14003976
+
+    EVENT_DismissSummonsOnRennalaDeath = 14003977
+
+    EVENT_DisableRennalaSpawners = 14003978
+
+
+class Effects(SpecialEffectParam):
+    RennalaSpecialStudentRequest = 14350
+    SpecialStudent = 14351
+    RennalaBarrierUnknown = 14357  # added when barrier broken, but also required to damage barrier? -1 duration
+    RennalaBarrierUnknown2 = 14358  # also required to damage barrier; 0.1 duration
+    StudentsReactToBarrierDamage = 14589
+    FirstGlowingStudentChosen = 14361  # golden barrier is active
+    RennalaBarrierDamagedOnce = 14368
+    RennalaBarrierDamagedTwice = 14369
+    RennalaBarrierDamaged = 14356
+    StudentGlowing = 14394
+    GlowingStudentHit = 14396
+    RennalaSummonHeal = 14571
+    RennalaSummonDisableOnRennalaDeath = 14572  # added to ALL summons when Rennala dies
+    RequestSummonDisable = 14573  # causes active summon to IMMEDIATELY heal and disappear
+    RennalaSummonInactive = 14574  # removed when summon enabled, added when it is disabled
+    RennalaDragonRequest = 14575
+    RennalaBloodhoundRequest = 14580
+    RennalaTrollRequest = 14585
+    RennalaLetsSummonFight = 14590
+    RennalaWolvesRequest = 14595
+
+
+class NameText(NPCName):
+    RennalaQueenOfTheFullMoon = 902030000
+    RhondaQueenOfTheWhiteDust = 902030010
+    RennalaQueenOfTheFullMoon2 = 902030001  # Phase Two (identical)
+    RhondaQueenOfTheWhiteDust2 = 902030011  # Phase Two (identical)
+    RedWolfOfRadagon = 903181000
+    GingerSif = 903181010
+
+
+class CharacterGroups(Character):
+    RennalaBoss = 14005800
+    Students = 14005810
+    UnknownGroup = 14005811
+    CLONE_Students = 14005812
+    CLONE_UnknownGroup = 14005813
+    RennalaPhaseTwoSummons = 14005820
+    CLONE_RennalaPhaseTwoSummons = 14005830
+    RedWolfBoss = 14005850
+
+
 class Characters(Character):
     MoongrumCarianKnight = 14000499  # c0000_9014 col h008700 npc 523590024 think 523590100 chara 23590
     SorceressSellen0 = 14000710  # c0000_9015 col h009100 npc 523160024 think 523160000 chara 23162 talk 316211400
@@ -15,6 +182,9 @@ class Characters(Character):
     Dummy0 = 14000805  # c0100_9001 col h009100 npc 1200000 think 1002000
     Dummy1 = 14000690  # c0100_9002 col h005000 npc 1000000 think 1000000
     Dummy2 = 14000954  # c0100_9005 col h001100 npc 1000000 think 1000000
+
+    NewRennalaGrace = 14000955  # TODO: Same ID as Dummy2 above. Probably why it wouldn't work.
+
     TalkDummy0 = 14000950  # c1000_9000 col h009100 npc 10000000 think 1 talk 1000
     TalkDummy1 = 14000951  # c1000_9001 col h004600 npc 10000000 think 1 talk 1000
     TalkDummy2 = 14000952  # c1000_9002 col h001600 npc 10000000 think 1 talk 1000
@@ -25,10 +195,12 @@ class Characters(Character):
     TalkDummy7 = 14000106  # c1000_9007 col h009100 npc 10001000 think 1 talk 2000
     TalkDummy8 = 14000750  # c1000_9010 col h009100 npc 501060024 think 500000000 talk 106901400
     TalkDummy9 = 14000760  # c1000_9011 col h009100 npc 502010024 think 500000000 talk 201901400
-    RennalaPhaseOne0 = 14000801  # c2030_9000 col h009100 npc 20300024 think 20300000 talk 200101400 group 14005800,14005106
-    RennalaPhaseOne1 = 14000700  # c2030_9001 col h009100 npc 20300124 think 20300100 talk 200001400
-    RennalaPhaseOne2 = 14000701  # c2030_9002 col h009100 npc 20300124 think 20300100 talk 200001400
+    RennalaPhaseOne = 14000801  # c2030_9000 col h009100 npc 20300024 think 20300000 talk 200101400 group 14005800,14005106
+    CLONE_RennalaPhaseOne = 14000803  # in library
+    RennalaNPC1 = 14000700  # c2030_9001 col h009100 npc 20300124 think 20300100 talk 200001400
+    RennalaNPC2 = 14000701  # c2030_9002 col h009100 npc 20300124 think 20300100 talk 200001400
     RennalaPhaseTwo = 14000800  # c2031_9000 col h009200 npc 20310024 think 20310000 talk 200111400 group 14005800,14005106
+    CLONE_RennalaPhaseTwo = 14000802  # far below map
     RennalaStudent0 = 14000810  # c2040_9000 col h009100 npc 20403024 think 20400000 group 14005800,14005810
     RennalaStudent1 = 14000811  # c2040_9001 col h009100 npc 20400024 think 20400000 group 14005800,14005810
     RennalaStudent2 = 14000812  # c2040_9002 col h009100 npc 20403024 think 20400000 group 14005800,14005810
@@ -59,6 +231,7 @@ class Characters(Character):
     SmallCrabCrystal1 = 14000637  # c2275_9031 col h006900 npc 22751024 think 22750020
     SmallCrabCrystal2 = 14000638  # c2275_9032 col h003100 npc 22751024 think 22750020
     RedWolf = 14000850  # c3181_9000 col h004600 npc 31811024 think 31810024 group 14005102,14005850
+    CLONE_RedWolf = 14000851
     OnyxLord = 14000680  # c3600_9000 col h002900 npc 36000024 think 36000000
     PutridCorpse0 = 14000300  # c3661_9000 col h002000 npc 36614024 think 36610000
     PutridCorpse1 = 14000305  # c3661_9005 col h002000 npc 36614024 think 36610000
@@ -163,10 +336,10 @@ class Characters(Character):
     Avionette7 = 14000497  # c3860_9007 col h007000 npc 38601024 think 38601001
     Avionette8 = 14000483  # c3860_9010 col h003000 npc 38601024 think 38601000
     Avionette9 = 14000484  # c3860_9011 col h003000 npc 38601024 think 38601000
-    Wolf0 = 14000841  # c4070_9000 col h009200 npc 40708024 think 40708000 group 14005820
-    Wolf1 = 14000842  # c4070_9001 col h009200 npc 40708024 think 40708000 group 14005820
-    Wolf2 = 14000843  # c4070_9002 col h009200 npc 40708024 think 40708000 group 14005820
-    Wolf3 = 14000844  # c4070_9003 col h009200 npc 40708024 think 40708000 group 14005820
+    RennalaWolfSummon0 = 14000841  # c4070_9000 col h009200 npc 40708024 think 40708000 group 14005820
+    RennalaWolfSummon1 = 14000842  # c4070_9001 col h009200 npc 40708024 think 40708000 group 14005820
+    RennalaWolfSummon2 = 14000843  # c4070_9002 col h009200 npc 40708024 think 40708000 group 14005820
+    RennalaWolfSummon3 = 14000844  # c4070_9003 col h009200 npc 40708024 think 40708000 group 14005820
     DemiHumanShaman = 14000721  # c4110_9000 col h009000 npc 41109024 think 41109000 talk 223001400
     SmallerDog0 = 14000290  # c4161_9000 col h002500 npc 41610024 think 41610000 group 14005100
     SmallerDog1 = 14000291  # c4161_9001 col h002500 npc 41610024 think 41610000 group 14005100
@@ -174,7 +347,7 @@ class Characters(Character):
     SmallerDog3 = 14000297  # c4161_9007 col h002500 npc 41610024 think 41610000
     SmallerDog4 = 14000299  # c4161_9009 col h002500 npc 41610024 think 41610000
     Scarab = 14000486  # c4191_9001 col h002500 npc 41912024 think 41910000
-    BloodhoundKnight = 14000840  # c4290_9000 col h009200 npc 42909024 think 42909000 group 14005820
+    RennalaBloodhoundSummon = 14000840  # c4290_9000 col h009200 npc 42909024 think 42909000 group 14005820
     WanderingNoble0 = 14000417  # c4300_9017 col h005100 npc 43006024 think 43006000 group 14005104
     WanderingNoble1 = 14000418  # c4300_9018 col h005200 npc 43006024 think 43006000 group 14005104
     WanderingNoble2 = 14000419  # c4300_9019 col h005200 npc 43006024 think 43006000 group 14005104
@@ -204,8 +377,69 @@ class Characters(Character):
     SmallLivingPot8 = 14000413  # c4491_9013 col h005800 npc 44910124 think 44910000
     SmallLivingPot9 = 14000414  # c4491_9014 col h005800 npc 44910124 think 44910000
     SmallLivingPot10 = 14000415  # c4491_9015 col h005800 npc 44910124 think 44910000
-    FlyingDragon = 14000846  # c4500_9000 col h009200 npc 45008024 think 45008000 group 14005820
-    Troll = 14000845  # c4600_9000 col h009200 npc 46008024 think 46008000 group 14005820
+    RennalaDragonSummon = 14000846  # c4500_9000 col h009200 npc 45008024 think 45008000 group 14005820
+    RennalaTrollSummon = 14000845  # c4600_9000 col h009200 npc 46008024 think 46008000 group 14005820
+
+    # TODO: Not yet handled properly in Phase One.
+    CLONE_RennalaStudent0 = 14000860
+    CLONE_RennalaStudent1 = 14000861
+    CLONE_RennalaStudent2 = 14000862
+    CLONE_RennalaStudent3 = 14000863
+    CLONE_RennalaStudent4 = 14000864
+    CLONE_RennalaStudent5 = 14000865
+    CLONE_RennalaStudent6 = 14000866
+    CLONE_RennalaStudent7 = 14000867
+    CLONE_RennalaStudent8 = 14000868
+    CLONE_RennalaStudent9 = 14000869
+    CLONE_RennalaStudent10 = 14000870
+    CLONE_RennalaStudent11 = 14000871
+    CLONE_RennalaStudent12 = 14000872
+    CLONE_RennalaStudent13 = 14000873
+    CLONE_RennalaStudent14 = 14000874
+    CLONE_RennalaStudent15 = 14000875
+    CLONE_RennalaStudent16 = 14000876
+    CLONE_RennalaStudent17 = 14000877
+    CLONE_RennalaStudent18 = 14000878
+    CLONE_RennalaStudent19 = 14000879
+    CLONE_RennalaStudent20 = 14000880
+    CLONE_RennalaStudent21 = 14000881
+    CLONE_RennalaStudent22 = 14000882
+    CLONE_RennalaStudent23 = 14000883
+
+    CLONE_RennalaBloodhoundSummon = 14000890
+    CLONE_RennalaWolfSummon0 = 14000891
+    CLONE_RennalaWolfSummon1 = 14000892
+    CLONE_RennalaWolfSummon2 = 14000893
+    CLONE_RennalaWolfSummon3 = 14000894
+    CLONE_RennalaTrollSummon = 14000895
+    CLONE_RennalaDragonSummon = 14000896
+
+
+class RegionPoints(RegionPoint):
+    RedWolfFirstPosition = 14002856
+    CLONE_RedWolfFirstPosition = 14002857
+
+
+class Spawners(SpawnerEvent):
+    RennalaStudents0 = 14003810
+    RennalaStudents1 = 14003811
+    RennalaStudents2 = 14003812
+    RennalaStudents3 = 14003813
+    RennalaStudents4 = 14003814
+    RennalaStudents5 = 14003815
+    RennalaStudents6 = 14003816
+    RennalaStudents7 = 14003817
+    RennalaStudents8 = 14003818
+
+    CLONE_RennalaStudents0 = 14003710
+    CLONE_RennalaStudents1 = 14003711
+    CLONE_RennalaStudents2 = 14003712
+    CLONE_RennalaStudents3 = 14003713
+    CLONE_RennalaStudents4 = 14003714
+    CLONE_RennalaStudents5 = 14003715
+    CLONE_RennalaStudents6 = 14003716
+    CLONE_RennalaStudents7 = 14003717
+    CLONE_RennalaStudents8 = 14003718
 
 
 class Assets(Asset):
@@ -289,3 +523,6 @@ class Assets(Asset):
     AEG258_184_5001 = 14001841  # AEG258
     AEG258_184_5002 = 14001842  # AEG258
     AEG258_184_5006 = 14001846  # AEG258
+
+    # New Grace outside Rennala fight.
+    AEG099_060_9004_NewGrace = 14001955  # AEG099

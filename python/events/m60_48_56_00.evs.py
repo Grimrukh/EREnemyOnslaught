@@ -104,4 +104,4 @@ def Event_1048562350(_, character__region: uint, character: uint):
 @NeverRestart(100)
 def Event_100():
     """Event 100"""
-    CommonFunc_90005300(0, 1148560200, 1148560200, 40524, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, 1148560200, 1148560200, 40524, 0.0, 0)

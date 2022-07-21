@@ -50,7 +50,7 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.WanderingNoble)
-    CommonFunc_90005251(0, character=Characters.DominulaCelebrant5, radius=90.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.DominulaCelebrant5, radius=90.0, seconds=0.0, animation_id=0)
     Event_1041542200()
     Event_1041542230(0, character=Characters.DominulaCelebrant1, animation_id=30006, animation_id_1=20006, radius=3.0)
     Event_1041542230(1, character=Characters.DominulaCelebrant2, animation_id=30006, animation_id_1=20006, radius=3.0)

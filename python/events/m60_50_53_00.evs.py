@@ -25,13 +25,13 @@ from .entities.m60_50_53_00_entities import *
 def Constructor():
     """Event 0"""
     Event_1050532200(0, character=1050535200)
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1050530210,
+        dead_flag=1050530210,
         character=Characters.Scarab,
         item_lot_param_id=1050530700,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=1050538620)
     CommonFunc_90005683(0, flag=62511, asset=Assets.AEG099_057_1000, vfx_id=211, flag_1=78592, flag_2=0)
@@ -53,7 +53,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005200(0, 1050530201, 30004, 20004, 1050532201, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(0, 1050530201, 30004, 20004, 1050532201, 0.0, 0, 0, 0, 0)
 
 
 @RestartOnRest(1050532200)

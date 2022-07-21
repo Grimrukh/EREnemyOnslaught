@@ -69,7 +69,7 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     Event_30000050()
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton0,
         animation_id=30003,
@@ -82,7 +82,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton1,
         animation_id=30003,
@@ -107,7 +107,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton4,
         animation_id=30003,
@@ -120,7 +120,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton5,
         animation_id=30003,
@@ -133,7 +133,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=30000207,
         animation_id=30003,
@@ -146,7 +146,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton6,
         animation_id=30003,
@@ -171,7 +171,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton9,
         animation_id=30003,
@@ -184,7 +184,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton10,
         animation_id=30003,
@@ -209,7 +209,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton12,
         animation_id=30003,
@@ -222,7 +222,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton13,
         animation_id=30003,
@@ -235,7 +235,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton14,
         animation_id=30003,
@@ -248,7 +248,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton15,
         animation_id=30003,
@@ -261,29 +261,29 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton16,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30002223,
-        seconds=3.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30002223,
+        trigger_delay=3.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CatacombsSkeleton17,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=30002223,
-        seconds=0.20000000298023224,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=30002223,
+        trigger_delay=0.20000000298023224,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_90005201(
         0,
@@ -297,7 +297,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005251(0, 30000226, 3.0, 0.0, 0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 30000226, 3.0, 0.0, 0)
 
 
 @NeverRestart(30000050)
@@ -846,4 +846,4 @@ def Event_30002829():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=30000800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(0, 30000800, 930000, 30002805, 30002806, 0, 30002802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 30000800, 930000, 30002805, 30002806, 0, 30002802, 0, 0)

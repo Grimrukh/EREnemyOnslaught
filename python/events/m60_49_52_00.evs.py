@@ -48,7 +48,7 @@ def Constructor():
         seconds=0.0,
     )
     CommonFunc_90005872(0, character=Characters.Gargoyle, npc_threat_level=16, right=0)
-    CommonFunc_90005261(0, character=1049520550, region=1049522550, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1049520550, region=1049522550, radius=10.0, seconds=0.0, animation_id=-1)
     CommonFunc_90005780(
         0,
         flag=1049520800,
@@ -92,7 +92,7 @@ def Event_1049522820(
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     DisableAI(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
@@ -168,7 +168,7 @@ def Event_1049522820(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     EnableAI(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
@@ -177,7 +177,7 @@ def Event_1049522820(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 

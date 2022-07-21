@@ -120,4 +120,4 @@ def Event_1048402849():
     )
     CommonFunc_9005811(0, flag=1048400800, asset=Assets.AEG099_003_9000, model_point=3, right=0)
     CommonFunc_9005811(0, flag=1048400800, asset=Assets.AEG099_003_9001, model_point=3, right=0)
-    CommonFunc_9005822(0, 1048400800, 920900, 1048402805, 1048402806, 0, 1048402802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 1048400800, 920900, 1048402805, 1048402806, 0, 1048402802, 0, 0)

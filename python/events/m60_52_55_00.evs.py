@@ -24,7 +24,7 @@ from .entities.m60_52_55_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.ChiefGuardianArghanthy,
         region=1052552390,
@@ -32,7 +32,7 @@ def Constructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.FlameGuardian1,
         region=1052552354,
@@ -40,13 +40,13 @@ def Constructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1052550390,
+        dead_flag=1052550390,
         character=Characters.ChiefGuardianArghanthy,
         item_lot_param_id=1052550700,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     Event_1052552270(
         0,
@@ -74,8 +74,8 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(0, character=Characters.SmallerDog1, region=1052552282, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005300(0, flag=1052550300, character=Characters.Scarab, item_lot_param_id=40516, seconds=0.0, left=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.SmallerDog1, region=1052552282, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1052550300, character=Characters.Scarab, item_lot_param_id=40516, reward_delay=0.0, skip_reward=0)
     Event_1052552580()
     CommonFunc_900005610(0, 1052551500, 100, 800, 0)
 
@@ -98,7 +98,7 @@ def Event_1052552270(
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -177,7 +177,7 @@ def Event_1052552270(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -185,7 +185,7 @@ def Event_1052552270(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 

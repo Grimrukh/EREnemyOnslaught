@@ -26,14 +26,14 @@ from .entities.m60_43_39_00_entities import Characters as m60_43_Characters
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1043370000, asset=Assets.AEG099_060_9000)
-    CommonFunc_90005300(0, flag=1043370210, character=Characters.Scarab, item_lot_param_id=40108, seconds=0.0, left=0)
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1043370210, character=Characters.Scarab, item_lot_param_id=40108, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1043370800,
+        dead_flag=1043370800,
         character=Characters.NightsCavalryHorse,
         item_lot_param_id=0,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     CommonFunc_90005476(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
     RunCommonEvent(90005477)
@@ -185,67 +185,67 @@ def Preconstructor():
     DisableBackread(m60_43_Characters.WanderingNoble)
     DisableBackread(Characters.BloodyFingerNerijus)
     DisableBackread(Characters.DemiHumanShaman)
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Skeleton0,
-        animation_id=30019,
-        animation_id_1=20019,
-        region=1043372240,
-        seconds=3.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30019,
+        active_animation=20019,
+        trigger_region=1043372240,
+        trigger_delay=3.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Skeleton1,
-        animation_id=30019,
-        animation_id_1=20019,
-        region=1043372240,
-        seconds=4.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30019,
+        active_animation=20019,
+        trigger_region=1043372240,
+        trigger_delay=4.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Skeleton2,
-        animation_id=30019,
-        animation_id_1=20019,
-        region=1043372240,
-        seconds=0.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30019,
+        active_animation=20019,
+        trigger_region=1043372240,
+        trigger_delay=0.5,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Skeleton3,
-        animation_id=30019,
-        animation_id_1=20019,
-        region=1043372240,
-        seconds=1.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30019,
+        active_animation=20019,
+        trigger_region=1043372240,
+        trigger_delay=1.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Skeleton4,
-        animation_id=30019,
-        animation_id_1=20019,
-        region=1043372240,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30019,
+        active_animation=20019,
+        trigger_region=1043372240,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005261(0, 1043370210, 1043372210, 3.0, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1043370210, 1043372210, 3.0, 0.0, -1)
 
 
 @RestartOnRest(1043372250)

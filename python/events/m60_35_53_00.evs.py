@@ -27,38 +27,38 @@ def Constructor():
     CommonFunc_90005600(0, grace_flag=76355, asset=Assets.AEG099_060_9000, enemy_block_distance=5.0, character=0)
     Event_1035532200(0, attacker__character=1035535200, region=1035532200)
     Event_1035532210()
-    CommonFunc_90005251(
+    CommonFunc_TriggerEnemyAI_WithRadius(
         0,
         character=Characters.ThornSorcerer1,
         radius=10.0,
         seconds=0.20000000298023224,
         animation_id=-1,
     )
-    CommonFunc_90005251(
+    CommonFunc_TriggerEnemyAI_WithRadius(
         1,
         character=Characters.ThornSorcerer6,
         radius=10.0,
         seconds=0.30000001192092896,
         animation_id=-1,
     )
-    CommonFunc_90005251(
+    CommonFunc_TriggerEnemyAI_WithRadius(
         2,
         character=Characters.ThornSorcerer7,
         radius=10.0,
         seconds=0.30000001192092896,
         animation_id=-1,
     )
-    CommonFunc_90005251(
+    CommonFunc_TriggerEnemyAI_WithRadius(
         3,
         character=Characters.ThornSorcerer0,
         radius=10.0,
         seconds=0.4000000059604645,
         animation_id=-1,
     )
-    CommonFunc_90005251(4, character=1035530254, radius=10.0, seconds=0.4000000059604645, animation_id=-1)
-    CommonFunc_90005261(0, character=1035530230, region=1035532230, radius=30.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=1035530231, region=1035532230, radius=30.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRadius(4, character=1035530254, radius=10.0, seconds=0.4000000059604645, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1035530230, region=1035532230, radius=30.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1035530231, region=1035532230, radius=30.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.ManeuverableFlamethrower,
         region=1035532400,
@@ -66,19 +66,19 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.MagmaWyrm,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=1035532346,
-        seconds=0.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30001,
+        active_animation=20001,
+        trigger_region=1035532346,
+        trigger_delay=0.5,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.MagmaWyrm, region=1035532346, seconds=0.5, animation_id=3004)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MagmaWyrm, region=1035532346, seconds=0.5, animation_id=3004)
     Event_1035532300()
     CommonFunc_90005870(0, character=Characters.MagmaWyrm, name=904910600, npc_threat_level=5)
     CommonFunc_90005861(

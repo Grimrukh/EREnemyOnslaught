@@ -110,8 +110,8 @@ def Constructor():
     CommonFunc_90005691(0, region=34132592)
     CommonFunc_90005690(0, region=34132593)
     CommonFunc_90005691(0, region=34132593)
-    CommonFunc_90005250(0, character=Characters.GodskinMonk0, region=34132299, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, 34130298, 10.0, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GodskinMonk0, region=34132299, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 34130298, 10.0, 0.0, -1)
 
 
 @NeverRestart(50)
@@ -279,16 +279,16 @@ def Event_34132849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=34130800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(
+    CommonFunc_BossMusicPhaseTransition(
         0,
-        flag=34130800,
+        dead_flag=34130800,
         bgm_boss_conv_param_id=930000,
-        flag_1=34132805,
-        flag_2=34132806,
-        right=0,
-        flag_3=34132802,
-        left=0,
-        left_1=0,
+        host_in_battle=34132805,
+        summon_in_battle=34132806,
+        extra_required_flag=0,
+        phase_two_flag=34132802,
+        useless_phase_two_check=0,
+        use_stop_type_1=0,
     )
     CommonFunc_9005800(
         0,
@@ -312,4 +312,4 @@ def Event_34132849():
     )
     CommonFunc_9005811(0, flag=34130800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
     CommonFunc_9005812(0, flag=34130800, asset=Assets.AEG099_001_9001, model_point=3, right=0, model_point_1=0)
-    CommonFunc_9005822(0, 34130800, 356000, 34132805, 34132806, 0, 0, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 34130800, 356000, 34132805, 34132806, 0, 0, 0, 0)

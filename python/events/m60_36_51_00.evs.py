@@ -60,11 +60,11 @@ def Preconstructor():
     Event_1036512450(15, character=Characters.MirandaFlower0, radius=2.0, seconds=0.0, animation_id=0)
     Event_1036512450(16, character=Characters.MirandaFlower1, radius=2.0, seconds=0.0, animation_id=0)
     Event_1036512450(17, character=Characters.MirandaFlower4, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005251(0, character=Characters.GiantMirandaFlower, radius=5.0, seconds=0.0, animation_id=3001)
-    CommonFunc_90005250(0, character=Characters.DepravedPerfurmer, region=1036512300, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.DepravedPerfurmer, region=1036512301, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GiantMirandaFlower, radius=5.0, seconds=0.0, animation_id=3001)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.DepravedPerfurmer, region=1036512300, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.DepravedPerfurmer, region=1036512301, seconds=0.0, animation_id=-1)
     Event_1036512300()
-    CommonFunc_90005261(0, 1036510310, 1036512300, 3.0, 1.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1036510310, 1036512300, 3.0, 1.0, -1)
 
 
 @RestartOnRest(1036512300)

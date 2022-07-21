@@ -48,7 +48,7 @@ def Constructor():
     Event_1038512810()
     Event_1038512849()
     Event_1038512500()
-    CommonFunc_90005300(0, flag=1038510500, character=Characters.Scarab, item_lot_param_id=40302, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1038510500, character=Characters.Scarab, item_lot_param_id=40302, reward_delay=0.0, skip_reward=0)
     Event_1038513700(0, character=Characters.RyatheScout, asset=Assets.AEG099_320_9000)
     CommonFunc_90005752(0, asset=Assets.AEG099_320_9000, vfx_id=200, model_point=120, seconds=3.0)
     Event_1038513701()
@@ -104,9 +104,9 @@ def Preconstructor():
     DisableBackread(Characters.RyatheScout)
     DisableBackread(Characters.Millicent)
     DisableAsset(Assets.AEG099_320_9000)
-    CommonFunc_90005261(0, character=1038510301, region=1038512301, radius=3.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=1038510302, region=1038512301, radius=3.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1038510301, region=1038512301, radius=3.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1038510302, region=1038512301, radius=3.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.DemiHuman0,
         animation_id=30002,
@@ -119,7 +119,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.DemiHuman1,
         animation_id=30002,
@@ -132,7 +132,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.DemiHuman2,
         animation_id=30002,
@@ -145,7 +145,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.DemiHumanBeastman,
         region=1038512600,
@@ -165,7 +165,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005250(0, character=Characters.DemiHumanShaman2, region=1038512482, seconds=0.0, animation_id=3005)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.DemiHumanShaman2, region=1038512482, seconds=0.0, animation_id=3005)
     Event_1038512405(
         0,
         character=Characters.DemiHuman4,
@@ -246,7 +246,7 @@ def Event_1038512405(
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -325,7 +325,7 @@ def Event_1038512405(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -333,7 +333,7 @@ def Event_1038512405(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -423,16 +423,16 @@ def Event_1038512849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=1038510800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(
+    CommonFunc_BossMusicPhaseTransition(
         0,
-        flag=1038510800,
+        dead_flag=1038510800,
         bgm_boss_conv_param_id=931000,
-        flag_1=1038512805,
-        flag_2=1038512806,
-        right=0,
-        flag_3=1038512802,
-        left=0,
-        left_1=0,
+        host_in_battle=1038512805,
+        summon_in_battle=1038512806,
+        extra_required_flag=0,
+        phase_two_flag=1038512802,
+        useless_phase_two_check=0,
+        use_stop_type_1=0,
     )
     CommonFunc_9005812(0, 1038510800, 1038511801, 3, 0, 0)
 

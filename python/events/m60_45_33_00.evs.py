@@ -30,13 +30,13 @@ def Constructor():
     CommonFunc_9005910(0, asset=1045331940, first_flag=1045330101, last_flag=1045330103, right=3)
     CommonFunc_9005911(0, asset=1045331941)
     CommonFunc_9005912(0, flag=1045330100, text=605053)
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1045330200,
+        dead_flag=1045330200,
         character=Characters.Turtle0,
         item_lot_param_id=45000000,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     Event_1045332220()
     Event_1045332250(0, flag=1045330200, flag_1=1045330201, flag_2=1045330202, flag_3=1045330205)
@@ -50,27 +50,27 @@ def Constructor():
     Event_1045332254()
     Event_1045332255()
     Event_1045332256()
-    CommonFunc_90005300(0, flag=1045330200, character=Characters.Turtle0, item_lot_param_id=0, seconds=0.0, left=0)
-    CommonFunc_90005300(0, flag=1045330201, character=Characters.Turtle1, item_lot_param_id=0, seconds=0.0, left=0)
-    CommonFunc_90005300(0, flag=1045330202, character=Characters.Turtle2, item_lot_param_id=0, seconds=0.0, left=0)
-    CommonFunc_90005251(0, character=Characters.Turtle1, radius=0.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005300(0, 1045330900, 1045330900, 1045330400, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1045330200, character=Characters.Turtle0, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1045330201, character=Characters.Turtle1, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1045330202, character=Characters.Turtle2, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Turtle1, radius=0.0, seconds=0.0, animation_id=0)
+    CommonFunc_NonRespawningWithReward(0, 1045330900, 1045330900, 1045330400, 0.0, 0)
 
 
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005261(0, character=1045330210, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
-    CommonFunc_90005261(0, character=1045330211, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
-    CommonFunc_90005261(0, character=1045330212, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
-    CommonFunc_90005261(0, character=1045330213, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
-    CommonFunc_90005261(0, character=1045330214, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
-    CommonFunc_90005261(0, character=1045330215, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
-    CommonFunc_90005261(0, character=1045330216, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
-    CommonFunc_90005261(0, character=1045330217, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
-    CommonFunc_90005261(0, character=1045330218, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
-    CommonFunc_90005261(0, character=1045330219, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
-    CommonFunc_90005251(0, character=Characters.OnyxLord, radius=20.0, seconds=0.0, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1045330210, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1045330211, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1045330212, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1045330213, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1045330214, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1045330215, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1045330216, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1045330217, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1045330218, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1045330219, region=1045332210, radius=15.0, seconds=0.0, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.OnyxLord, radius=20.0, seconds=0.0, animation_id=1700)
     Event_1045332265(0, vfx_id=1045332200)
     Event_1045332265(1, vfx_id=1045332201)
     Event_1045332265(2, vfx_id=1045332202)

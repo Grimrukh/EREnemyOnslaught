@@ -25,17 +25,17 @@ from .entities.m60_50_38_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1050380000, asset=Assets.AEG099_060_9000)
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Bat,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1050382200,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1050382200,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_1050383700(0, character=Characters.SageGowry0, character_1=Characters.SageGowry1)
     CommonFunc_90005702(0, character=Characters.SageGowry0, flag=4163, first_flag=4160, last_flag=4163)

@@ -66,37 +66,37 @@ def Constructor():
         animation_id=60522,
         left=0,
     )
-    CommonFunc_90005300(0, 34100300, 34100300, 34100300, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, 34100300, 34100300, 34100300, 0.0, 0)
 
 
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.GuardianGolem0,
-        animation_id=30020,
-        animation_id_1=20020,
-        region=34102200,
-        seconds=15.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30020,
+        active_animation=20020,
+        trigger_region=34102200,
+        trigger_delay=15.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.GuardianGolem1,
-        animation_id=30020,
-        animation_id_1=20020,
-        region=34102200,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30020,
+        active_animation=20020,
+        trigger_region=34102200,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, 34100202, 34102200, 8.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, 34100202, 34102200, 8.0, -1)
 
 
 @NeverRestart(34102510)
@@ -227,4 +227,4 @@ def Event_34102849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=34100800, asset=34101800, model_point=3, right=34100801)
-    CommonFunc_9005822(0, 34100800, 90003101, 34102805, 34102806, 0, 11002852, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 34100800, 90003101, 34102805, 34102806, 0, 11002852, 0, 0)

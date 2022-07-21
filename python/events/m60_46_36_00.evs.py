@@ -24,7 +24,7 @@ from .entities.m60_46_36_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.GodrickKnight,
         region=1046362250,
@@ -32,8 +32,8 @@ def Constructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(0, character=Characters.Commoner, region=1046362240, radius=10.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Commoner, region=1046362240, radius=10.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MadPumpkinHead,
         region=1046362300,
@@ -129,7 +129,7 @@ def Event_1046362300():
     DisableCharacter(1046365300)
     DisableAnimations(1046365300)
     DisableAI(1046365300)
-    EnableCharacterCollision(1046365300)
+    DisableCharacterCollision(1046365300)
     DisableGravity(1046365300)
     End()
 
@@ -150,7 +150,7 @@ def Event_1046362310():
     DisableCharacter(1046365310)
     DisableAnimations(1046365310)
     DisableAI(1046365310)
-    EnableCharacterCollision(1046365310)
+    DisableCharacterCollision(1046365310)
     DisableGravity(1046365310)
     AND_1.Add(FlagEnabled(1046360706))
     AND_1.Add(FlagDisabled(1046362330))
@@ -164,12 +164,12 @@ def Event_1046362310():
     DisableCharacter(1046365300)
     DisableAnimations(1046365300)
     DisableAI(1046365300)
-    EnableCharacterCollision(1046365300)
+    DisableCharacterCollision(1046365300)
     DisableGravity(1046365300)
     EnableCharacter(1046365310)
     EnableAnimations(1046365310)
     EnableAI(1046365310)
-    DisableCharacterCollision(1046365310)
+    EnableCharacterCollision(1046365310)
     EnableGravity(1046365310)
     End()
 

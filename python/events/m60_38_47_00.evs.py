@@ -33,7 +33,7 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     DisableBackread(1038470700)
-    CommonFunc_90005251(0, 1038470250, 30.0, 0.0, 1700)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 1038470250, 30.0, 0.0, 1700)
 
 
 @NeverRestart(200)

@@ -356,19 +356,19 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005250(0, character=Characters.GlintstoneMiner0, region=32022200, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.GlintstoneMiner1, radius=26.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.GlintstoneMiner5, region=32022208, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.GlintstoneMiner6, region=32022210, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.GlintstoneMiner7, region=32022210, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.GlintstoneMiner8, region=32022213, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.GlintstoneMiner8, region=32022212, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.GlintstoneMiner9, region=32022210, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.GlintstoneMiner9, region=32022213, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.GlintstoneMiner13, region=32022217, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=32020220, region=32022220, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.BigGlintstoneMiner, region=32022230, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.GlintstoneMiner21, region=32022230, seconds=5.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GlintstoneMiner0, region=32022200, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GlintstoneMiner1, radius=26.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GlintstoneMiner5, region=32022208, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GlintstoneMiner6, region=32022210, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GlintstoneMiner7, region=32022210, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GlintstoneMiner8, region=32022213, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GlintstoneMiner8, region=32022212, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GlintstoneMiner9, region=32022210, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GlintstoneMiner9, region=32022213, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GlintstoneMiner13, region=32022217, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=32020220, region=32022220, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BigGlintstoneMiner, region=32022230, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GlintstoneMiner21, region=32022230, seconds=5.0, animation_id=-1)
     CommonFunc_90005260(
         0,
         character=Characters.GlintstoneMiner22,
@@ -377,7 +377,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005251(0, character=Characters.Marionette3, radius=18.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Marionette3, radius=18.0, seconds=0.0, animation_id=-1)
     CommonFunc_90005201(
         0,
         character=Characters.Marionette4,
@@ -402,42 +402,42 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005250(0, character=32020305, region=32022305, seconds=2.0, animation_id=-1)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=32020305, region=32022305, seconds=2.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Marionette0,
-        animation_id=30011,
-        animation_id_1=20011,
-        region=32022306,
-        seconds=1.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30011,
+        active_animation=20011,
+        trigger_region=32022306,
+        trigger_delay=1.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Marionette1,
-        animation_id=30011,
-        animation_id_1=20011,
-        region=32022306,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30011,
+        active_animation=20011,
+        trigger_region=32022306,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Marionette2,
-        animation_id=30010,
-        animation_id_1=20010,
-        region=32022306,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30010,
+        active_animation=20010,
+        trigger_region=32022306,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_32020519()
 
@@ -543,7 +543,7 @@ def Event_32022200(
         return
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -621,7 +621,7 @@ def Event_32022200(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -629,7 +629,7 @@ def Event_32022200(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -655,7 +655,7 @@ def Event_32022250(
         return
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -733,7 +733,7 @@ def Event_32022250(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -741,7 +741,7 @@ def Event_32022250(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -766,7 +766,7 @@ def Event_32022270(
         return
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -840,7 +840,7 @@ def Event_32022270(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -848,7 +848,7 @@ def Event_32022270(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -940,4 +940,4 @@ def Event_32022849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=32020800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(0, 32020800, 931000, 32022805, 32022806, 0, 32022802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 32020800, 931000, 32022805, 32022806, 0, 32022802, 0, 0)

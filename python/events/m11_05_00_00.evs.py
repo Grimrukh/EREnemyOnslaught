@@ -28,7 +28,7 @@ def Constructor():
     RegisterGrace(grace_flag=11050003, asset=Assets.AEG099_060_9003, enemy_block_distance=8.0)
     RegisterGrace(grace_flag=11050004, asset=Assets.AEG099_060_9004, enemy_block_distance=8.0)
     RegisterGrace(grace_flag=11050005, asset=Assets.AEG099_060_9005, enemy_block_distance=8.0)
-    CommonFunc_9005810(
+    CommonFunc_RegisterGraceIfFlagEnabled(
         0,
         flag=11050800,
         grace_flag=11050000,
@@ -36,7 +36,7 @@ def Constructor():
         asset=Assets.AEG099_060_9000,
         enemy_block_distance=8.0,
     )
-    CommonFunc_9005810(
+    CommonFunc_RegisterGraceIfFlagEnabled(
         0,
         flag=11050850,
         grace_flag=11050001,
@@ -261,8 +261,8 @@ def Preconstructor():
     DisableBackread(Characters.Commoner0)
     DisableBackread(Characters.Commoner1)
     Event_11052500()
-    CommonFunc_90005251(0, character=Characters.Commoner2, radius=3.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005251(0, character=Characters.Commoner3, radius=3.5, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Commoner2, radius=3.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Commoner3, radius=3.5, seconds=0.0, animation_id=0)
     CommonFunc_90005221(
         0,
         character=Characters.Commoner4,
@@ -295,7 +295,7 @@ def Preconstructor():
         seconds=0.0,
         left=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.GiantMirandaFlower,
         region=11052240,
@@ -303,7 +303,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower0,
         region=11052240,
@@ -311,7 +311,7 @@ def Preconstructor():
         seconds=0.5,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MirandaFlower0,
         region=11052240,
@@ -319,7 +319,7 @@ def Preconstructor():
         seconds=0.20000000298023224,
         animation_id=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.UlceratedTreeSpirit0,
         animation_id=30002,
@@ -332,7 +332,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.UlceratedTreeSpirit1,
         animation_id=30002,
@@ -345,7 +345,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(0, 11050302, 30002, 20002, 11052302, 5.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 11050302, 30002, 20002, 11052302, 5.0, 0.0, 0, 0, 0, 0)
 
 
 @NeverRestart(11052500)
@@ -663,7 +663,7 @@ def Event_11052849():
     )
     CommonFunc_9005811(0, flag=11050800, asset=Assets.AEG099_001_9001, model_point=17, right=0)
     CommonFunc_9005813(0, flag=11050800, asset=Assets.AEG099_001_9002, model_point=18, right=11050801, model_point_1=18)
-    CommonFunc_9005822(0, 11050800, 472000, 11052805, 11052806, 11050801, 11052802, 1, 1)
+    CommonFunc_BossMusicPhaseTransition(0, 11050800, 472000, 11052805, 11052806, 11050801, 11052802, 1, 1)
 
 
 @RestartOnRest(11052850)
@@ -904,7 +904,7 @@ def Event_11052859():
     CommonFunc_9005811(0, flag=11050850, asset=Assets.AEG099_001_9006, model_point=4, right=11050854)
     CommonFunc_9005811(0, flag=11050850, asset=Assets.AEG099_001_9007, model_point=5, right=11050854)
     CommonFunc_9005811(0, flag=11050850, asset=Assets.AEG099_001_9008, model_point=5, right=11050854)
-    CommonFunc_9005822(0, 11050850, 921100, 11052855, 11052856, 0, 11052852, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 11050850, 921100, 11052855, 11052856, 0, 11052852, 0, 0)
 
 
 @RestartOnRest(11053700)

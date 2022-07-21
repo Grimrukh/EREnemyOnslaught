@@ -80,8 +80,8 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.KnightBernahl)
-    CommonFunc_90005251(0, character=Characters.WolfPackLeader, radius=40.0, seconds=0.0, animation_id=3011)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WolfPackLeader, radius=40.0, seconds=0.0, animation_id=3011)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.GodrickSoldier0,
         region=1042382240,
@@ -89,7 +89,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.GodrickSoldier1,
         region=1042382240,
@@ -97,7 +97,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.GodrickSoldier2,
         region=1042382240,
@@ -105,7 +105,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.GodrickSoldier3,
         region=1042382240,
@@ -113,13 +113,13 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(0, character=1042380254, region=1042382254, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=1042380255, region=1042382254, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=1042380256, region=1042382254, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=1042380262, region=1042382254, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=1042380263, region=1042382254, radius=1.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1042380254, region=1042382254, radius=1.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1042380255, region=1042382254, radius=1.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1042380256, region=1042382254, radius=1.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1042380262, region=1042382254, radius=1.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1042380263, region=1042382254, radius=1.0, seconds=0.0, animation_id=-1)
     Event_1042382300()
-    CommonFunc_90005211(0, 1042380800, 30000, 20000, 1042382340, 10.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 1042380800, 30000, 20000, 1042382340, 10.0, 0.0, 0, 0, 0, 0)
 
 
 @NeverRestart(200)

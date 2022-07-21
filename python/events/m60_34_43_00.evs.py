@@ -26,7 +26,7 @@ from .entities.m60_34_43_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1034430000, asset=Assets.AEG099_060_9000)
-    CommonFunc_90005300(0, flag=1034430310, character=Characters.Scarab, item_lot_param_id=40260, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1034430310, character=Characters.Scarab, item_lot_param_id=40260, reward_delay=0.0, skip_reward=0)
     Event_1034432580(0, flag=1034430580, entity=Assets.AEG110_500_2000)
     Event_1034432610()
     Event_1034432260(
@@ -90,10 +90,10 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005250(0, character=1034430300, region=1034432300, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=1034430302, region=1034432302, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=1034430303, region=1034432300, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, 1034430305, 1034432305, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=1034430300, region=1034432300, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=1034430302, region=1034432302, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=1034430303, region=1034432300, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, 1034430305, 1034432305, 0.0, -1)
 
 
 @RestartOnRest(1034432260)

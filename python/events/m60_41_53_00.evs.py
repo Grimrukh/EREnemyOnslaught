@@ -47,13 +47,13 @@ def Constructor():
         right=0,
     )
     CommonFunc_90005637(0, flag=32058691, character=Characters.WanderingNoble, region=1041531650)
-    CommonFunc_90005300(0, 1041530500, 1041530500, 40308, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, 1041530500, 1041530500, 40308, 0.0, 0)
 
 
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Wormface6,
         region=1041532362,
@@ -61,29 +61,29 @@ def Preconstructor():
         seconds=0.0,
         animation_id=3010,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Wormface7,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1041532365,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1041532365,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Wormface4,
-        animation_id=30001,
-        animation_id_1=20001,
-        region=1041532357,
-        seconds=0.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30001,
+        active_animation=20001,
+        trigger_region=1041532357,
+        trigger_delay=0.5,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.Wormface5, region=1041532361, seconds=0.0, animation_id=3011)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Wormface5, region=1041532361, seconds=0.0, animation_id=3011)
     CommonFunc_90005201(0, 1041530800, 30000, 20000, 15.0, 0.0, 0, 0, 0, 0)

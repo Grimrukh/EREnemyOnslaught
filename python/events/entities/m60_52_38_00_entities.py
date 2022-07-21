@@ -1,21 +1,53 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    RadahnDead = 1252380800
+    HostInRadahnBattle = 1052382805
+    SummonInRadahnBattle = 1052382806
+    RadahnMusicTrigger = 1252382815
+    RadahnPhaseTwoTransitionFinished = 1252382890
+    RadahnPhaseTwoMusicTrigger = 1252382895
+    AlexanderSummonAvailable = 1051369259
+
+
+class RegionVolumes(RegionVolume):
+    RadahnMeteorDummyRotation = 1052382299
+
+
+class NameText(NPCName):
+    StarscourgeRadahn = 904730000
+    CLONE_StarscourgeRadahn = 904730010
+
+
 class Characters(Character):
     CastellanJerren = 1052380200  # c0000_9010 npc 533121040 think 523120040 chara 23121
     GreatHornedTragoth = 1052380260  # c0000_9011 npc 533440040 think 533441000 chara 23441
     Okina = 1052380280  # c0000_9012 npc 533550040 think 533550000 chara 23551
     FingerMaidenTherolina = 1052380300  # c0000_9013 npc 533630040 think 533630000 chara 23632
-    Human0 = 1052380899  # c0000_9009 npc 10003000 think 1
-    Human1 = 1052380320  # c0000_9014 npc 533290040 think 533290000 chara 23291 talk 329006000
+    RadahnMeteorDummy = 1052380899  # c0000_9009 npc 10003000 think 1
+    LionelTheLionhearted = 1052380320  # c0000_9014 npc 533290040 think 533290000 chara 23291 talk 329006000
     Patches = 1052380340  # c0000_9015 npc 533090040 think 533090000 chara 23092
     StarscourgeRadahn = 1052380800  # c4730_9002 npc 47300040 think 47300000 group 1052385800
     TalkDummy = 1052380950  # c1000_9000 npc 10000000 think 1 talk 1000
-    Blaidd0 = 1052380220  # c2010_9001 npc 20109140 think 20109500
-    Blaidd1 = 1052380726  # c2010_9002 npc 20109240 think 20100000 talk 216006000
+    BlaiddSummon = 1052380220  # c2010_9001 npc 20109140 think 20109500
+    BlaiddNPC = 1052380726  # c2010_9002 npc 20109240 think 20100000 talk 216006000
     CleanrotKnight = 1052380699  # c3800_9000 npc 38000000 think 38000000
-    LivingPot0 = 1052380240  # c4490_9001 npc 44909040 think 44900040
-    LivingPot1 = 1052380706  # c4490_9002 npc 44909640 think 44900000 talk 220006000
+    AlexanderSummon = 1052380240  # c4490_9001 npc 44909040 think 44900040
+    AlexanderNPC = 1052380706  # c4490_9002 npc 44909640 think 44900000 talk 220006000
+
+    CLONE_StarscourgeRadahn = 1052380801
+    StarscourgeRadahnHealthPool = 1052380802
+    CLONE_RadahnMeteorDummy = 1052380898
+
+    CLONE_CastellanJerren = 1052380201
+    CLONE_GreatHornedTragoth = 1052380261
+    CLONE_Okina = 1052380281
+    CLONE_FingerMaidenTherolina = 1052380301
+    CLONE_LionelTheLionhearted = 1052380321
+    CLONE_Patches = 1052380341
+    CLONE_BlaiddSummon = 1052380221
+    CLONE_AlexanderSummon = 1052380241
 
 
 class Assets(Asset):

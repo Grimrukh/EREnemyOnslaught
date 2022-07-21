@@ -120,8 +120,8 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     Event_1043392200()
-    CommonFunc_90005261(0, character=1043390220, region=1043392220, radius=3.0, seconds=0.0, animation_id=3010)
-    CommonFunc_90005251(0, 1043390220, 5.0, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1043390220, region=1043392220, radius=3.0, seconds=0.0, animation_id=3010)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 1043390220, 5.0, 0.0, -1)
 
 
 @RestartOnRest(1043392600)

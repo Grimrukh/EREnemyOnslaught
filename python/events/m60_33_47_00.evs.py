@@ -55,7 +55,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower0,
         region=1033472200,
@@ -63,7 +63,7 @@ def Preconstructor():
         seconds=1.0,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower1,
         region=1033472200,
@@ -71,7 +71,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower2,
         region=1033472200,
@@ -79,7 +79,7 @@ def Preconstructor():
         seconds=2.0,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower3,
         region=1033472200,
@@ -87,7 +87,7 @@ def Preconstructor():
         seconds=1.5,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower4,
         region=1033472200,
@@ -95,7 +95,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=1705,
     )
-    CommonFunc_90005261(0, 1033470205, 1033472200, 0.0, 1.0, 1705)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1033470205, 1033472200, 0.0, 1.0, 1705)
 
 
 @NeverRestart(200)

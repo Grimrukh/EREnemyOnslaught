@@ -39,22 +39,22 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Misbegotten1,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30122201,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30122201,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.ScalyMisbegotten1, region=30122250, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(1, character=Characters.ScalyMisbegotten2, region=30122250, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.Misbegotten2, region=30122205, seconds=0.0, animation_id=3000)
-    CommonFunc_90005250(0, character=Characters.Misbegotten3, region=30122208, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.ScalyMisbegotten1, region=30122250, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(1, character=Characters.ScalyMisbegotten2, region=30122250, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Misbegotten2, region=30122205, seconds=0.0, animation_id=3000)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Misbegotten3, region=30122208, seconds=0.0, animation_id=-1)
     CommonFunc_90005271(0, character=Characters.Misbegotten4, seconds=0.0, animation_id=-1)
     CommonFunc_90005271(0, character=Characters.Misbegotten5, seconds=0.0, animation_id=-1)
     CommonFunc_90005271(0, character=Characters.Misbegotten6, seconds=0.0, animation_id=-1)
@@ -72,7 +72,7 @@ def Constructor():
     Event_30122300(10, character=Characters.Misbegotten18)
     Event_30122300(11, character=Characters.Misbegotten19)
     Event_30122502(0, character=Characters.Omen, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.Omen, region=30122502, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Omen, region=30122502, seconds=0.0, animation_id=0)
     Event_30122500()
     Event_30122501()
     CommonFunc_90005650(
@@ -294,4 +294,4 @@ def Event_30122849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=30120800, asset=Assets.AEG099_001_9001, model_point=3, right=0)
-    CommonFunc_9005822(0, 30120800, 930000, 30122805, 30122806, 0, 30122802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 30120800, 930000, 30122805, 30122806, 0, 30122802, 0, 0)

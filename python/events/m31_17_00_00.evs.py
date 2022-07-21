@@ -48,8 +48,8 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005261(0, character=Characters.Wolf0, region=31172200, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Wolf0, region=31172200, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=31170201,
         animation_id=30005,
@@ -62,7 +62,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Wolf1,
         animation_id=30001,
@@ -75,7 +75,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Wolf2,
         animation_id=30004,
@@ -88,7 +88,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Wolf4,
         animation_id=30001,
@@ -101,7 +101,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Wolf5,
         animation_id=30004,
@@ -114,7 +114,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Wolf6,
         animation_id=30000,
@@ -127,7 +127,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=31170217,
         animation_id=30001,
@@ -142,7 +142,7 @@ def Preconstructor():
     )
     Event_31172216(0, character=Characters.Wolf6)
     Event_31172216(1, character=31170217)
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Wolf7,
         animation_id=30001,
@@ -155,7 +155,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.WolfPackLeader1,
         animation_id=30001,
@@ -170,7 +170,7 @@ def Preconstructor():
     )
     Event_31172208(7, character=Characters.Wolf1)
     Event_31172208(8, character=Characters.Wolf2)
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Wolf3,
         animation_id=30003,
@@ -183,7 +183,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Wolf8,
         animation_id=30003,
@@ -196,7 +196,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Wolf9,
         animation_id=30003,
@@ -210,10 +210,10 @@ def Preconstructor():
         left_3=0,
     )
     Event_31172218(3, character=Characters.WolfPackLeader0, region=31172240, radius=4.0, seconds=0.0, animation_id=3001)
-    CommonFunc_90005261(0, character=Characters.Bat0, region=31172250, radius=2.0, seconds=1.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Bat4, region=31172250, radius=2.0, seconds=2.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Bat0, region=31172250, radius=2.0, seconds=1.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Bat4, region=31172250, radius=2.0, seconds=2.0, animation_id=0)
     Event_31172254()
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Bat1,
         animation_id=30000,
@@ -226,7 +226,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Bat2,
         animation_id=30000,
@@ -239,7 +239,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Bat3,
         animation_id=30000,
@@ -252,8 +252,8 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(0, character=Characters.Bat5, region=31172258, radius=2.0, seconds=1.0, animation_id=0)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Bat5, region=31172258, radius=2.0, seconds=1.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Bat6,
         animation_id=30000,
@@ -266,12 +266,12 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(0, character=Characters.Bat7, region=31172260, radius=2.0, seconds=5.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Bat8, region=31172260, radius=2.0, seconds=10.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Octopus0, region=31172300, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Octopus1, region=31172300, radius=2.0, seconds=0.5, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Octopus2, region=31172302, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Bat7, region=31172260, radius=2.0, seconds=5.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Bat8, region=31172260, radius=2.0, seconds=10.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Octopus0, region=31172300, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Octopus1, region=31172300, radius=2.0, seconds=0.5, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Octopus2, region=31172302, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Octopus3,
         region=31172302,
@@ -279,10 +279,10 @@ def Preconstructor():
         seconds=0.30000001192092896,
         animation_id=0,
     )
-    CommonFunc_90005261(0, character=Characters.Octopus4, region=31172308, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Octopus5, region=31172309, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Octopus6, region=31172309, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Octopus4, region=31172308, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Octopus5, region=31172309, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Octopus6, region=31172309, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GiantOctopus,
         animation_id=30002,
@@ -529,7 +529,7 @@ def Event_31172849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=31170800, asset=Assets.AEG099_002_9000, model_point=5, right=0)
-    CommonFunc_9005822(0, 31170800, 931000, 31172805, 31172806, 31172499, 31172802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 31170800, 931000, 31172805, 31172806, 31172499, 31172802, 0, 0)
 
 
 @RestartOnRest(31172900)

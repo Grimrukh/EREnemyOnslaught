@@ -149,7 +149,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(0, 1040520800, 30000, 20000, 1040522800, 20.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 1040520800, 30000, 20000, 1040522800, 20.0, 0.0, 0, 0, 0, 0)
 
 
 @RestartOnRest(1040522240)

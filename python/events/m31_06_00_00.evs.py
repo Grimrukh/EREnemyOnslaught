@@ -52,7 +52,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RayaLucariaScholar0,
         region=31062200,
@@ -60,7 +60,7 @@ def Preconstructor():
         seconds=1.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RayaLucariaScholar1,
         region=31062200,
@@ -68,7 +68,7 @@ def Preconstructor():
         seconds=1.2000000476837158,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RayaLucariaScholar2,
         region=31062200,
@@ -76,7 +76,7 @@ def Preconstructor():
         seconds=1.399999976158142,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RayaLucariaScholar3,
         region=31062203,
@@ -84,7 +84,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RayaLucariaScholar4,
         region=31062203,
@@ -92,7 +92,7 @@ def Preconstructor():
         seconds=0.20000000298023224,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RayaLucariaScholar5,
         region=31062205,
@@ -100,7 +100,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RayaLucariaScholar6,
         region=31062211,
@@ -108,8 +108,8 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(0, character=31060212, region=31062211, radius=2.0, seconds=0.20000000298023224, animation_id=0)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=31060212, region=31062211, radius=2.0, seconds=0.20000000298023224, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RayaLucariaScholar7,
         region=31062215,
@@ -117,11 +117,11 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(0, character=Characters.Rat0, region=31062280, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Rat1, region=31062281, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Rat2, region=31062281, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=31060283, region=31062283, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, 31060300, 31062300, 2.0, 0.0, 0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat0, region=31062280, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat1, region=31062281, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat2, region=31062281, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=31060283, region=31062283, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 31060300, 31062300, 2.0, 0.0, 0)
 
 
 @RestartOnRest(31062300)
@@ -266,4 +266,4 @@ def Event_31062849():
     )
     CommonFunc_9005811(0, flag=31060800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
     CommonFunc_9005813(0, flag=31060800, asset=Assets.AEG099_001_9001, model_point=3, right=0, model_point_1=806760)
-    CommonFunc_9005822(0, 31060800, 931000, 31062805, 31062806, 0, 31062842, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 31060800, 931000, 31062805, 31062806, 0, 31062842, 0, 0)

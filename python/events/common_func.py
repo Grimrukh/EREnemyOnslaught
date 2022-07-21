@@ -12,44 +12,44 @@ from soulstruct.eldenring.events.instructions import *
 
 
 @RestartOnRest(90005200)
-def CommonFunc_90005200(
+def CommonFunc_TriggerInactiveEnemy_WithRegion(
     _,
     character: uint,
-    animation_id: int,
-    animation_id_1: int,
-    region: uint,
-    seconds: float,
-    left: uint,
-    left_1: uint,
-    left_2: uint,
-    left_3: uint,
+    inactive_animation: int,
+    active_animation: int,
+    trigger_region: uint,
+    trigger_delay: float,
+    disable_gravity_and_collision: uint,
+    trigger_on_ai_battle: uint,
+    trigger_on_ai_unknown5: uint,
+    trigger_on_ai_unknown6: uint,
 ):
     """CommonFunc 90005200"""
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
-    if UnsignedNotEqual(left=left, right=0):
+    if UnsignedNotEqual(left=disable_gravity_and_collision, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
-    ForceAnimation(character, animation_id, loop=True)
+        DisableCharacterCollision(character)
+    ForceAnimation(character, inactive_animation, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
     OR_1.Add(AND_15)
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.Alive))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.BluePhantom))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
-    AND_1.Add(CharacterInsideRegion(character=PLAYER, region=region))
+    AND_1.Add(CharacterInsideRegion(character=PLAYER, region=trigger_region))
     AND_1.Add(CharacterBackreadEnabled(character))
     OR_11.Add(CharacterHasSpecialEffect(character, 5080))
     OR_11.Add(CharacterHasSpecialEffect(character, 5450))
     AND_1.Add(OR_11)
-    AND_9.Add(UnsignedEqual(left=left_1, right=0))
-    AND_9.Add(UnsignedEqual(left=left_2, right=0))
-    AND_9.Add(UnsignedEqual(left=left_3, right=0))
+    AND_9.Add(UnsignedEqual(left=trigger_on_ai_battle, right=0))
+    AND_9.Add(UnsignedEqual(left=trigger_on_ai_unknown5, right=0))
+    AND_9.Add(UnsignedEqual(left=trigger_on_ai_unknown6, right=0))
     GotoIfConditionTrue(Label.L9, input_condition=AND_9)
-    if UnsignedNotEqual(left=left_1, right=0):
+    if UnsignedNotEqual(left=trigger_on_ai_battle, right=0):
         OR_9.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    if UnsignedNotEqual(left=left_2, right=0):
+    if UnsignedNotEqual(left=trigger_on_ai_unknown5, right=0):
         OR_9.Add(HasAIStatus(character, ai_status=AIStatusType.Unknown5))
-    if UnsignedNotEqual(left=left_3, right=0):
+    if UnsignedNotEqual(left=trigger_on_ai_unknown6, right=0):
         OR_9.Add(HasAIStatus(character, ai_status=AIStatusType.Unknown4))
     AND_1.Add(OR_9)
 
@@ -100,18 +100,18 @@ def CommonFunc_90005200(
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(character, 5080))
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(character, 5450))
     GotoIfConditionTrue(Label.L0, input_condition=AND_2)
-    Wait(seconds)
-    if UnsignedNotEqual(left=left, right=0):
+    Wait(trigger_delay)
+    if UnsignedNotEqual(left=disable_gravity_and_collision, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
-    ForceAnimation(character, animation_id_1, loop=True)
+        EnableCharacterCollision(character)
+    ForceAnimation(character, active_animation, loop=True)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    if UnsignedNotEqual(left=left, right=0):
+    if UnsignedNotEqual(left=disable_gravity_and_collision, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -132,7 +132,7 @@ def CommonFunc_90005201(
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -207,7 +207,7 @@ def CommonFunc_90005201(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -215,7 +215,7 @@ def CommonFunc_90005201(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -237,7 +237,7 @@ def CommonFunc_90005210(
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -314,7 +314,7 @@ def CommonFunc_90005210(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -322,12 +322,12 @@ def CommonFunc_90005210(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
 @RestartOnRest(90005211)
-def CommonFunc_90005211(
+def CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
     _,
     character: uint,
     animation_id: int,
@@ -344,7 +344,7 @@ def CommonFunc_90005211(
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -422,7 +422,7 @@ def CommonFunc_90005211(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -430,7 +430,7 @@ def CommonFunc_90005211(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -454,7 +454,7 @@ def CommonFunc_90005213(
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -537,7 +537,7 @@ def CommonFunc_90005213(
     Wait(seconds_1)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -545,7 +545,7 @@ def CommonFunc_90005213(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -564,7 +564,7 @@ def CommonFunc_90005220(
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_1.Add(CharacterBackreadEnabled(character))
     OR_11.Add(CharacterHasSpecialEffect(character, 5080))
@@ -627,7 +627,7 @@ def CommonFunc_90005220(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -635,7 +635,7 @@ def CommonFunc_90005220(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -645,7 +645,7 @@ def CommonFunc_90005221(_, character: uint, animation_id: int, animation_id_1: i
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_4.Add(CharacterHasSpecialEffect(character, 481))
     AND_4.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
@@ -693,7 +693,7 @@ def CommonFunc_90005221(_, character: uint, animation_id: int, animation_id_1: i
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -701,12 +701,12 @@ def CommonFunc_90005221(_, character: uint, animation_id: int, animation_id_1: i
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
 @RestartOnRest(90005250)
-def CommonFunc_90005250(_, character: uint, region: uint, seconds: float, animation_id: int):
+def CommonFunc_TriggerEnemyAI_WithRegion(_, character: uint, region: uint, seconds: float, animation_id: int):
     """CommonFunc 90005250"""
     if ThisEventSlotFlagEnabled():
         return
@@ -769,7 +769,7 @@ def CommonFunc_90005250(_, character: uint, region: uint, seconds: float, animat
 
 
 @RestartOnRest(90005251)
-def CommonFunc_90005251(_, character: uint, radius: float, seconds: float, animation_id: int):
+def CommonFunc_TriggerEnemyAI_WithRadius(_, character: uint, radius: float, seconds: float, animation_id: int):
     """CommonFunc 90005251"""
     if ThisEventSlotFlagEnabled():
         return
@@ -897,7 +897,7 @@ def CommonFunc_90005260(_, character: uint, region: uint, radius: float, seconds
 
 
 @RestartOnRest(90005261)
-def CommonFunc_90005261(_, character: uint, region: uint, radius: float, seconds: float, animation_id: int):
+def CommonFunc_TriggerEnemyAI_WithRegionOrRadius(_, character: uint, region: uint, radius: float, seconds: float, animation_id: int):
     """CommonFunc 90005261"""
     if ThisEventSlotFlagEnabled():
         return
@@ -1016,10 +1016,20 @@ def CommonFunc_90005271(_, character: uint, seconds: float, animation_id: int):
 
 
 @RestartOnRest(90005300)
-def CommonFunc_90005300(_, flag: uint, character: uint, item_lot_param_id: int, seconds: float, left: int):
-    """CommonFunc 90005300"""
-    GotoIfFlagDisabled(Label.L0, flag=flag)
-    if ValueNotEqual(left=left, right=0):
+def CommonFunc_NonRespawningWithReward(
+    _,
+    dead_flag: uint,
+    character: uint,
+    item_lot_param_id: int,
+    reward_delay: float,
+    skip_reward: int,
+):
+    """CommonFunc for preventing a character from respawning and giving a reward when they die.
+
+    TODO: Should support clones automatically using entity group IDs, but of course, some may not have group IDs.
+    """
+    GotoIfFlagDisabled(Label.L0, flag=dead_flag)
+    if ValueNotEqual(left=skip_reward, right=0):
         DisableCharacter(character)
         DropMandatoryTreasure(character)
         End()
@@ -1033,11 +1043,11 @@ def CommonFunc_90005300(_, flag: uint, character: uint, item_lot_param_id: int, 
     
     MAIN.Await(CharacterProportionDead(character=character))
     
-    Wait(seconds)
-    EnableFlag(flag)
+    Wait(reward_delay)
+    EnableFlag(dead_flag)
     if PlayerNotInOwnWorld():
         return
-    if ValueEqual(left=left, right=1):
+    if ValueEqual(left=skip_reward, right=1):
         return
     if ValueEqual(left=item_lot_param_id, right=0):
         return
@@ -1179,7 +1189,7 @@ def CommonFunc_90005400(_, character: uint, special_effect_id: int, seconds: flo
         return
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     if ValueNotEqual(left=special_effect_id, right=0):
         AddSpecialEffect(character, special_effect_id)
     else:
@@ -1200,7 +1210,7 @@ def CommonFunc_90005400(_, character: uint, special_effect_id: int, seconds: flo
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, 14102, loop=True)
     End()
 
@@ -1208,7 +1218,7 @@ def CommonFunc_90005400(_, character: uint, special_effect_id: int, seconds: flo
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -8330,7 +8340,7 @@ def CommonFunc_9005801(_, flag: uint, entity: uint, region: uint, flag_1: uint, 
 
 
 @RestartOnRest(9005810)
-def CommonFunc_9005810(_, flag: uint, grace_flag: uint, character: uint, asset: uint, enemy_block_distance: float):
+def CommonFunc_RegisterGraceIfFlagEnabled(_, flag: uint, grace_flag: uint, character: uint, asset: uint, enemy_block_distance: float):
     """CommonFunc 9005810"""
     GotoIfFlagEnabled(Label.L0, flag=flag)
     DisableCharacter(character)
@@ -8572,53 +8582,53 @@ def CommonFunc_9005813(_, flag: uint, asset: uint, model_point: int, right: uint
 
 
 @RestartOnRest(9005822)
-def CommonFunc_9005822(
+def CommonFunc_BossMusicPhaseTransition(
     _,
-    flag: uint,
+    dead_flag: uint,
     bgm_boss_conv_param_id: int,
-    flag_1: uint,
-    flag_2: uint,
-    right: uint,
-    flag_3: uint,
-    left: int,
-    left_1: int,
+    host_in_battle: uint,
+    summon_in_battle: uint,
+    extra_required_flag: uint,
+    phase_two_flag: uint,
+    useless_phase_two_check: int,
+    use_stop_type_1: int,
 ):
     """CommonFunc 9005822"""
     DisableNetworkSync()
-    GotoIfFlagDisabled(Label.L0, flag=flag)
+    GotoIfFlagDisabled(Label.L0, flag=dead_flag)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     if PlayerInOwnWorld():
-        DisableFlag(flag_1)
-    AND_1.Add(FlagEnabled(flag_1))
+        DisableFlag(host_in_battle)
+    AND_1.Add(FlagEnabled(host_in_battle))
     if PlayerNotInOwnWorld():
-        AND_1.Add(FlagEnabled(flag_2))
-    if UnsignedNotEqual(left=0, right=right):
-        AND_1.Add(FlagEnabled(right))
+        AND_1.Add(FlagEnabled(summon_in_battle))
+    if UnsignedNotEqual(left=0, right=extra_required_flag):
+        AND_1.Add(FlagEnabled(extra_required_flag))
     
     MAIN.Await(AND_1)
     
     WaitFrames(frames=1)
-    if FlagDisabled(flag_3):
+    if FlagDisabled(phase_two_flag):
         SetBossMusic(bgm_boss_conv_param_id=bgm_boss_conv_param_id, state=BossMusicState.Start)
-    OR_2.Add(FlagEnabled(flag_3))
-    OR_2.Add(FlagEnabled(flag))
+    OR_2.Add(FlagEnabled(phase_two_flag))
+    OR_2.Add(FlagEnabled(dead_flag))
     
     MAIN.Await(OR_2)
     
-    GotoIfFlagEnabled(Label.L1, flag=flag)
+    GotoIfFlagEnabled(Label.L1, flag=dead_flag)
     WaitFrames(frames=1)
-    SkipLinesIfValueEqual(0, left=left, right=0)  # NOTE: useless skip
+    SkipLinesIfValueEqual(0, left=useless_phase_two_check, right=0)  # NOTE: useless skip
     SetBossMusic(bgm_boss_conv_param_id=bgm_boss_conv_param_id, state=BossMusicState.HeatUp)
-    OR_3.Add(FlagEnabled(flag))
+    OR_3.Add(FlagEnabled(dead_flag))
     
     MAIN.Await(OR_3)
 
     # --- Label 1 --- #
     DefineLabel(1)
-    if ValueNotEqual(left=left_1, right=1):
+    if ValueNotEqual(left=use_stop_type_1, right=1):
         SetBossMusic(bgm_boss_conv_param_id=bgm_boss_conv_param_id, state=BossMusicState.Stop2)
         End()
     SetBossMusic(bgm_boss_conv_param_id=bgm_boss_conv_param_id, state=BossMusicState.Stop1)

@@ -24,7 +24,7 @@ from .entities.m60_53_55_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MonstrousDog2,
         region=1053552202,

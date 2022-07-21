@@ -186,7 +186,7 @@ def Preconstructor():
     DisableBackread(Characters.Merchant)
     DisableBackread(Characters.NomadMule)
     DisableBackread(Characters.Ranni)
-    CommonFunc_90005300(0, 1042360200, 1042365200, 0, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, 1042360200, 1042365200, 0, 0.0, 0)
 
 
 @RestartOnRest(1042362200)

@@ -38,7 +38,7 @@ def Constructor():
     )
     Event_1034452800()
     Event_1034452805()
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GlintstoneDragon,
         animation_id=30000,
@@ -51,7 +51,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.GlintstoneDragon,
         region=1034452800,
@@ -59,15 +59,15 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005251(0, character=Characters.Scarab4, radius=7.0, seconds=0.0, animation_id=1701)
-    CommonFunc_90005251(0, character=Characters.Scarab5, radius=7.0, seconds=0.0, animation_id=1701)
-    CommonFunc_90005251(0, character=Characters.Scarab6, radius=7.0, seconds=0.0, animation_id=1701)
-    CommonFunc_90005251(0, character=Characters.Scarab7, radius=7.0, seconds=0.0, animation_id=1701)
-    CommonFunc_90005251(0, character=Characters.Scarab8, radius=7.0, seconds=0.0, animation_id=1701)
-    CommonFunc_90005251(0, character=Characters.Scarab0, radius=7.0, seconds=0.0, animation_id=1701)
-    CommonFunc_90005251(0, character=Characters.Scarab1, radius=7.0, seconds=0.0, animation_id=1701)
-    CommonFunc_90005251(0, character=Characters.Scarab2, radius=7.0, seconds=0.0, animation_id=1701)
-    CommonFunc_90005251(0, character=Characters.Scarab3, radius=7.0, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Scarab4, radius=7.0, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Scarab5, radius=7.0, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Scarab6, radius=7.0, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Scarab7, radius=7.0, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Scarab8, radius=7.0, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Scarab0, radius=7.0, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Scarab1, radius=7.0, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Scarab2, radius=7.0, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Scarab3, radius=7.0, seconds=0.0, animation_id=1701)
     CommonFunc_90005460(0, character=Characters.RayaLucariaScholar)
     CommonFunc_90005460(0, character=1034450201)
     CommonFunc_90005460(0, character=1034450202)

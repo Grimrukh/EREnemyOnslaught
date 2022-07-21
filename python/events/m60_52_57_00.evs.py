@@ -43,7 +43,7 @@ def Constructor():
         flag_10=78508,
         flag_11=78509,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Skeleton4,
         animation_id=30018,
@@ -56,7 +56,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Skeleton10,
         animation_id=30019,
@@ -69,12 +69,12 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005250(0, character=Characters.Avionette0, region=1052572240, seconds=0.0, animation_id=3010)
-    CommonFunc_90005250(0, character=Characters.Avionette1, region=1052572240, seconds=0.5, animation_id=3010)
-    CommonFunc_90005250(0, character=Characters.Avionette2, region=1052572243, seconds=0.0, animation_id=3032)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Avionette0, region=1052572240, seconds=0.0, animation_id=3010)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Avionette1, region=1052572240, seconds=0.5, animation_id=3010)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Avionette2, region=1052572243, seconds=0.0, animation_id=3032)
     Event_1052572200(0, character=1052575200)
-    CommonFunc_90005261(0, character=1052570320, region=1052572320, radius=3.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=1052570321, region=1052572321, radius=3.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1052570320, region=1052572320, radius=3.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1052570321, region=1052572321, radius=3.0, seconds=0.0, animation_id=0)
     Event_1052572210()
     Event_1052572220()
     Event_1052572230()

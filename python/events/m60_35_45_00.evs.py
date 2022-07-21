@@ -109,8 +109,8 @@ def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.Merchant)
     DisableBackread(Characters.NomadMule)
-    CommonFunc_90005251(0, character=Characters.WolfPackLeader, radius=10.0, seconds=0.0, animation_id=3011)
-    CommonFunc_90005211(0, 1035450210, 30002, 20002, 1035452210, 3.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WolfPackLeader, radius=10.0, seconds=0.0, animation_id=3011)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 1035450210, 30002, 20002, 1035452210, 3.0, 0.0, 0, 0, 0, 0)
 
 
 @RestartOnRest(1035452500)

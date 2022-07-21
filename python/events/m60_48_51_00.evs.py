@@ -24,7 +24,7 @@ from .entities.m60_48_51_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Scarab2,
         animation_id=30001,

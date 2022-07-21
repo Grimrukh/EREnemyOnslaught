@@ -105,15 +105,15 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.YuraHunterofBloodyFingers)
-    CommonFunc_90005251(0, character=Characters.WanderingNoble0, radius=20.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.WanderingNoble1, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.WanderingNoble2, radius=20.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.WanderingNoble3, radius=20.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.WanderingNoble4, radius=20.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.WanderingNoble5, radius=20.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.WanderingNoble6, radius=20.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.WanderingNoble7, radius=20.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, 1043360200, 5.0, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble0, radius=20.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble1, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble2, radius=20.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble3, radius=20.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble4, radius=20.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble5, radius=20.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble6, radius=20.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble7, radius=20.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 1043360200, 5.0, 0.0, -1)
 
 
 @RestartOnRest(1043362210)

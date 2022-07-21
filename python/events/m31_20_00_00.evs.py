@@ -54,56 +54,56 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.MirandaRotFlower0,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=31202240,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=31202240,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         1,
         character=Characters.MirandaRotFlower1,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=31202240,
-        seconds=0.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=31202240,
+        trigger_delay=0.5,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         2,
         character=Characters.MirandaRotFlower2,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=31202240,
-        seconds=1.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=31202240,
+        trigger_delay=1.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         3,
         character=Characters.MirandaRotFlower3,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=31202240,
-        seconds=0.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=31202240,
+        trigger_delay=0.5,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.Rat1, region=31202230, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(1, 31200231, 31202230, 0.0, 0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Rat1, region=31202230, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(1, 31200231, 31202230, 0.0, 0)
 
 
 @RestartOnRest(31202520)
@@ -334,4 +334,4 @@ def Event_31092849():
         action_button_id=10010,
     )
     CommonFunc_9005811(0, flag=31200800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(0, 31200800, 931000, 31202805, 31202806, 0, 31202842, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 31200800, 931000, 31202805, 31202806, 0, 31202842, 0, 0)

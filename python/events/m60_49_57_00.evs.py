@@ -24,7 +24,7 @@ from .entities.m60_49_57_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.ErdtreeGuardian0,
         animation_id=30003,
@@ -37,7 +37,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.ErdtreeGuardian1,
         animation_id=30003,
@@ -50,7 +50,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.ErdtreeGuardian6,
         animation_id=30003,
@@ -63,29 +63,29 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1049570300,
+        dead_flag=1049570300,
         character=Characters.LargeScarab,
         item_lot_param_id=1049570710,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1049570310,
+        dead_flag=1049570310,
         character=Characters.Scarab,
         item_lot_param_id=1049570700,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1049570320,
+        dead_flag=1049570320,
         character=Characters.ExtraLargeScarab,
         item_lot_param_id=1049570720,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     CommonFunc_90005201(
         0,

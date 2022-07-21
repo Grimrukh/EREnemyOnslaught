@@ -74,7 +74,7 @@ def Constructor():
         region_1=1048372298,
         region_2=1048372297,
     )
-    CommonFunc_90005300(0, 1048370299, 1048370299, 40406, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, 1048370299, 1048370299, 40406, 0.0, 0)
 
 
 @NeverRestart(50)

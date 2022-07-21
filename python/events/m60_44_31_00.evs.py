@@ -29,13 +29,13 @@ def Constructor():
     Event_1044312200(2, character=Characters.SpiritJellyfish2, region=1044312200)
     Event_1044312200(3, character=Characters.SpiritJellyfish3, region=1044312200)
     Event_1044312340()
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1044310350,
+        dead_flag=1044310350,
         character=Characters.GuardianGolem,
         item_lot_param_id=0,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     CommonFunc_90005550(0, flag=1044310200, asset=1044311200, obj_act_id=44313200)
     CommonFunc_90005631(0, 1044311640, 61012)
@@ -106,5 +106,5 @@ def Event_1044312350():
 def Event_250():
     """Event 250"""
     CommonFunc_90005485(0, character=Characters.GuardianGolem)
-    CommonFunc_90005251(0, character=Characters.GuardianGolem, radius=340.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GuardianGolem, radius=340.0, seconds=0.0, animation_id=-1)
     Event_1044312350()

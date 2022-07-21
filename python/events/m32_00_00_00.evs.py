@@ -261,26 +261,26 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     Event_32000519()
-    CommonFunc_90005250(0, character=Characters.TunnelMiner3, region=32002207, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.TunnelMiner4, region=32002207, seconds=1.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.TunnelMiner5, region=32002210, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.TunnelMiner6, region=32002211, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.TunnelMiner7, region=32002212, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.Misbegotten0, radius=27.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner3, region=32002207, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner4, region=32002207, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner5, region=32002210, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner6, region=32002211, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner7, region=32002212, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Misbegotten0, radius=27.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Misbegotten1,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=32002302,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=32002302,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.Misbegotten7, region=32002317, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, 32000319, 32002315, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Misbegotten7, region=32002317, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, 32000319, 32002315, 0.0, -1)
 
 
 @NeverRestart(32002510)
@@ -341,7 +341,7 @@ def Event_32002200(
         return
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -419,7 +419,7 @@ def Event_32002200(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     AddSpecialEffect(character, 16571)
     AddSpecialEffect(character, special_effect_id)
     ForceAnimation(character, animation_id_1, loop=True)
@@ -429,7 +429,7 @@ def Event_32002200(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -456,7 +456,7 @@ def Event_32002250(
         return
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -534,7 +534,7 @@ def Event_32002250(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     AddSpecialEffect(character, 16571)
     AddSpecialEffect(character, special_effect_id)
     ForceAnimation(character, animation_id_1, loop=True)
@@ -544,7 +544,7 @@ def Event_32002250(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -569,7 +569,7 @@ def Event_32002270(
         return
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -643,7 +643,7 @@ def Event_32002270(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -651,7 +651,7 @@ def Event_32002270(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -845,4 +845,4 @@ def Event_32002849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=32000800, asset=Assets.AEG099_002_9000, model_point=7, right=32000801)
-    CommonFunc_9005822(0, 32000800, 931000, 32002805, 32002806, 0, 32002802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 32000800, 931000, 32002805, 32002806, 0, 32002802, 0, 0)

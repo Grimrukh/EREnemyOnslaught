@@ -39,14 +39,14 @@ def Constructor():
     CommonFunc_90005621(0, flag=1035410570, asset=Assets.AEG099_272_9000)
     Event_1035412610(0, flag=1035410610, character=Characters.GiantTurtle)
     Event_1035412611(0, flag=1035410610, attacked_entity=Characters.GiantTurtle)
-    CommonFunc_90005251(0, character=Characters.GiantTurtle, radius=0.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005300(0, 1035410610, 1035410610, 0, 0.0, 0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GiantTurtle, radius=0.0, seconds=0.0, animation_id=0)
+    CommonFunc_NonRespawningWithReward(0, 1035410610, 1035410610, 0, 0.0, 0)
 
 
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower0,
         region=1035412200,
@@ -54,7 +54,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower1,
         region=1035412200,
@@ -62,7 +62,7 @@ def Preconstructor():
         seconds=0.5,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower2,
         region=1035412200,
@@ -70,7 +70,7 @@ def Preconstructor():
         seconds=1.0,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower3,
         region=1035412203,
@@ -78,7 +78,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower4,
         region=1035412203,
@@ -86,7 +86,7 @@ def Preconstructor():
         seconds=2.0,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower5,
         region=1035412203,
@@ -94,7 +94,7 @@ def Preconstructor():
         seconds=0.5,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower6,
         region=1035412203,
@@ -102,7 +102,7 @@ def Preconstructor():
         seconds=1.0,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Revenant0,
         region=1035412340,
@@ -110,7 +110,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=1700,
     )
-    CommonFunc_90005261(0, 1035410350, 1035412350, 1.0, 0.0, 1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1035410350, 1035412350, 1.0, 0.0, 1700)
 
 
 @RestartOnRest(1035412610)

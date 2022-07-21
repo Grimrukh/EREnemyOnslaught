@@ -313,9 +313,9 @@ def Constructor():
             life=0.0,
             repetition_time=1.0,
         )
-    CommonFunc_90005300(0, flag=1047390299, character=Characters.Scarab0, item_lot_param_id=40410, seconds=0.0, left=0)
-    CommonFunc_90005300(0, flag=1047390298, character=Characters.Scarab1, item_lot_param_id=40422, seconds=0.0, left=0)
-    CommonFunc_90005261(
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1047390299, character=Characters.Scarab0, item_lot_param_id=40410, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1047390298, character=Characters.Scarab1, item_lot_param_id=40422, reward_delay=0.0, skip_reward=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MonstrousCrow0,
         region=1047392304,
@@ -323,7 +323,7 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MonstrousCrow1,
         region=1047392304,
@@ -331,9 +331,9 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005250(0, character=Characters.RadahnSoldier0, region=1047392450, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RadahnSoldier1, region=1047392450, seconds=2.0, animation_id=-1)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RadahnSoldier0, region=1047392450, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RadahnSoldier1, region=1047392450, seconds=2.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RadahnSoldier2,
         region=1047392406,
@@ -341,8 +341,8 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005250(0, character=Characters.RadahnSoldier3, region=1047392406, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RadahnSoldier4, region=1047392406, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.TunnelMiner0, region=1047392450, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.TunnelMiner1, region=1047392450, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, 1047390452, 1047392450, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RadahnSoldier3, region=1047392406, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RadahnSoldier4, region=1047392406, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner0, region=1047392450, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner1, region=1047392450, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, 1047390452, 1047392450, 0.0, -1)

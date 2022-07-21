@@ -49,8 +49,8 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005261(0, character=Characters.Rat0, region=31012201, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Rat1, region=31012201, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat0, region=31012201, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat1, region=31012201, radius=2.0, seconds=0.0, animation_id=0)
     Event_31012200(0, character=Characters.Rat0, patrol_information_id=31013201)
     Event_31012200(1, character=Characters.Rat1, patrol_information_id=31013202)
     Event_31012230(0, character=Characters.Rat0)
@@ -58,8 +58,8 @@ def Preconstructor():
     Event_31012207(0, character=Characters.Rat2, region=31012207, radius=2.0, seconds=7.0, animation_id=0)
     Event_31012207(1, character=Characters.Rat3, region=31012207, radius=2.0, seconds=10.0, animation_id=0)
     Event_31012207(2, character=Characters.Rat4, region=31012207, radius=2.0, seconds=15.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Rat5, region=31012221, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Rat6, region=31012221, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat5, region=31012221, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat6, region=31012221, radius=2.0, seconds=0.0, animation_id=0)
     Event_31012207(3, character=Characters.GiantRat, region=31012207, radius=3.0, seconds=3.0, animation_id=0)
     Event_31012220(0, character=Characters.Rat2)
     Event_31012220(1, character=Characters.Rat3)
@@ -355,4 +355,4 @@ def Event_31012849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=31010800, asset=Assets.AEG099_001_9000, model_point=3, right=31010801)
-    CommonFunc_9005822(0, 31010800, 931000, 31012805, 31012806, 0, 31012802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 31010800, 931000, 31012805, 31012806, 0, 31012802, 0, 0)

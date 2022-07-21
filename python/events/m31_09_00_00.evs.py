@@ -30,8 +30,8 @@ def Constructor():
     Event_31092849()
     Event_31092811()
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=0)
-    CommonFunc_90005261(0, character=Characters.DemiHuman0, region=31092200, radius=1.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.DemiHuman0, region=31092200, radius=1.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.DemiHuman1,
         animation_id=30001,
@@ -44,7 +44,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.DemiHuman2,
         animation_id=30002,
@@ -57,7 +57,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.DemiHuman3,
         animation_id=30000,
@@ -70,7 +70,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.DemiHuman4,
         animation_id=30000,
@@ -83,7 +83,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.DemiHuman5,
         animation_id=30002,
@@ -96,7 +96,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.DemiHuman6,
         animation_id=30002,
@@ -109,7 +109,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.DemiHuman7,
         animation_id=30001,
@@ -122,7 +122,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.LargeDemiHuman2,
         animation_id=30002,
@@ -135,7 +135,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.DemiHumanShaman0,
         region=31092254,
@@ -143,7 +143,7 @@ def Constructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.DemiHumanShaman1,
         animation_id=30002,
@@ -159,7 +159,7 @@ def Constructor():
     Event_31092301(0, character=Characters.DemiHuman8, seconds=1.0)
     Event_31092301(1, character=Characters.DemiHumanShaman2, seconds=0.5)
     Event_31092301(2, character=Characters.LargeDemiHuman1, seconds=1.0)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.DemiHumanBeastman,
         region=31092350,
@@ -398,4 +398,4 @@ def Event_31092849():
         action_button_id=10010,
     )
     CommonFunc_9005811(0, flag=31090800, asset=Assets.AEG099_001_9001, model_point=5, right=0)
-    CommonFunc_9005822(0, 31090800, 931000, 31092805, 31092806, 0, 31092802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 31090800, 931000, 31092805, 31092806, 0, 31092802, 0, 0)

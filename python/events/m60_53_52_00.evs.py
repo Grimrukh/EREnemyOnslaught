@@ -23,4 +23,4 @@ from soulstruct.eldenring.events.instructions import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_9005810(0, 1252520800, 1053520000, 1053520950, 1053521950, 5.0)
+    CommonFunc_RegisterGraceIfFlagEnabled(0, 1252520800, 1053520000, 1053520950, 1053521950, 5.0)

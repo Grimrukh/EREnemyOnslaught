@@ -128,4 +128,4 @@ def Event_34152849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=34150800, asset=34151800, model_point=3, right=0)
-    CommonFunc_9005822(0, 34150800, 900000, 34152805, 34152806, 0, 11002852, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 34150800, 900000, 34152805, 34152806, 0, 11002852, 0, 0)

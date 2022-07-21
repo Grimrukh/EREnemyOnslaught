@@ -62,8 +62,8 @@ def Constructor():
     Event_30082400(0, character=Characters.Imp0)
     Event_30082400(1, character=Characters.Imp1)
     Event_30082400(2, character=30080302)
-    CommonFunc_90005261(0, character=Characters.Imp0, region=30082312, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Imp0, region=30082312, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp1,
         animation_id=30002,
@@ -76,15 +76,15 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(0, character=Characters.Imp2, region=30082303, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(1, character=Characters.Imp3, region=30082303, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(2, character=30080305, region=30082303, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(3, character=30080306, region=30082303, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Imp2, region=30082303, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(1, character=Characters.Imp3, region=30082303, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(2, character=30080305, region=30082303, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(3, character=30080306, region=30082303, radius=2.0, seconds=0.0, animation_id=0)
     Event_30082400(4, character=Characters.Imp2)
     Event_30082400(5, character=Characters.Imp3)
     Event_30082400(6, character=30080305)
     Event_30082400(7, character=30080306)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Imp4,
         region=30082307,
@@ -92,7 +92,7 @@ def Constructor():
         seconds=0.800000011920929,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         1,
         character=Characters.Imp5,
         region=30082307,
@@ -100,8 +100,8 @@ def Constructor():
         seconds=6.300000190734863,
         animation_id=-1,
     )
-    CommonFunc_90005261(2, character=Characters.Imp6, region=30082307, radius=2.0, seconds=0.5, animation_id=-1)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(2, character=Characters.Imp6, region=30082307, radius=2.0, seconds=0.5, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         3,
         character=Characters.Imp7,
         region=30082307,
@@ -114,26 +114,26 @@ def Constructor():
     Event_30082400(10, character=Characters.Imp6)
     Event_30082400(11, character=Characters.Imp7)
     Event_30082400(12, character=Characters.GraveWardenDuelist)
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=30080450,
+        dead_flag=30080450,
         character=Characters.GraveWardenDuelist,
         item_lot_param_id=0,
-        seconds=3.0,
-        left=0,
+        reward_delay=3.0,
+        skip_reward=0,
     )
-    CommonFunc_90005250(0, character=Characters.RevenantFollower1, region=30082403, seconds=0.0, animation_id=3022)
-    CommonFunc_90005250(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RevenantFollower1, region=30082403, seconds=0.0, animation_id=3022)
+    CommonFunc_TriggerEnemyAI_WithRegion(
         1,
         character=Characters.RevenantFollower2,
         region=30082403,
         seconds=0.8999999761581421,
         animation_id=3022,
     )
-    CommonFunc_90005250(2, character=30080405, region=30082403, seconds=0.5, animation_id=3022)
-    CommonFunc_90005251(0, character=30080406, radius=4.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.RevenantFollower0, region=30082400, seconds=0.0, animation_id=3022)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegion(2, character=30080405, region=30082403, seconds=0.5, animation_id=3022)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=30080406, radius=4.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RevenantFollower0, region=30082400, seconds=0.0, animation_id=3022)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower3,
         region=30082409,
@@ -141,8 +141,8 @@ def Constructor():
         seconds=0.0,
         animation_id=3022,
     )
-    CommonFunc_90005250(1, character=Characters.RevenantFollower4, region=30082410, seconds=0.0, animation_id=3022)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegion(1, character=Characters.RevenantFollower4, region=30082410, seconds=0.0, animation_id=3022)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower5,
         region=30082412,
@@ -151,17 +151,17 @@ def Constructor():
         animation_id=-1,
     )
     Event_30082300(0, character=Characters.RevenantFollower5)
-    CommonFunc_90005261(0, character=Characters.PutridCorpse0, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(1, character=Characters.PutridCorpse1, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(2, character=Characters.PutridCorpse2, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(3, character=Characters.PutridCorpse3, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(4, character=Characters.PutridCorpse4, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(5, character=Characters.PutridCorpse5, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(6, character=Characters.PutridCorpse6, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(7, character=Characters.PutridCorpse7, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(8, character=Characters.PutridCorpse8, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(9, character=Characters.PutridCorpse9, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.PutridCorpse0, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(1, character=Characters.PutridCorpse1, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(2, character=Characters.PutridCorpse2, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(3, character=Characters.PutridCorpse3, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(4, character=Characters.PutridCorpse4, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(5, character=Characters.PutridCorpse5, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(6, character=Characters.PutridCorpse6, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(7, character=Characters.PutridCorpse7, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(8, character=Characters.PutridCorpse8, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(9, character=Characters.PutridCorpse9, region=30082200, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.PutridCorpse12,
         region=30082220,
@@ -169,7 +169,7 @@ def Constructor():
         seconds=0.0,
         animation_id=3035,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         1,
         character=Characters.PutridCorpse13,
         region=30082220,
@@ -177,9 +177,9 @@ def Constructor():
         seconds=1.0,
         animation_id=3035,
     )
-    CommonFunc_90005251(0, character=Characters.PutridCorpse10, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005251(0, character=Characters.PutridCorpse11, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.PutridCorpse10, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.PutridCorpse11, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.PutridCorpse14,
         region=30082225,
@@ -187,32 +187,32 @@ def Constructor():
         seconds=0.0,
         animation_id=3035,
     )
-    CommonFunc_90005251(0, character=Characters.RevenantFollower6, radius=7.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.RevenantFollower6, radius=7.0, seconds=0.0, animation_id=0)
     Event_30082550()
     Event_30082501()
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Revenant1,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30082461,
-        seconds=0.30000001192092896,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30082461,
+        trigger_delay=0.30000001192092896,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Revenant2,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30082462,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30082462,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_90005652(0, flag=30080540, asset=Assets.AEG027_041_0500, flag_1=30080400)
     CommonFunc_90005651(0, flag=30080540, anchor_entity=Assets.AEG027_041_0500)
@@ -1058,4 +1058,4 @@ def Event_30082849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=30080800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(0, 30080800, 920200, 30082805, 30082806, 0, 30082802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 30080800, 920200, 30082805, 30082806, 0, 30082802, 0, 0)

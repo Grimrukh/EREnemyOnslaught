@@ -31,7 +31,7 @@ def Constructor():
         enemy_block_distance=5.0,
         character=1048570480,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.AlbinauricArcher0,
         animation_id=30000,
@@ -44,7 +44,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.AlbinauricArcher1,
         animation_id=30000,
@@ -57,7 +57,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.AlbinauricArcher2,
         animation_id=30000,
@@ -70,38 +70,38 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005300(0, flag=1048570200, character=1048570200, item_lot_param_id=40526, seconds=0.0, left=0)
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1048570200, character=1048570200, item_lot_param_id=40526, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1048570250,
+        dead_flag=1048570250,
         character=Characters.BlackKnifeAssassin0,
         item_lot_param_id=1048570900,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1048570251,
+        dead_flag=1048570251,
         character=Characters.BlackKnifeAssassin1,
         item_lot_param_id=1048570910,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1048570252,
+        dead_flag=1048570252,
         character=Characters.BlackKnifeAssassin2,
         item_lot_param_id=1048570920,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1048570253,
+        dead_flag=1048570253,
         character=Characters.BlackKnifeAssassin3,
         item_lot_param_id=1048570930,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     Event_1048572820(
         0,
@@ -161,7 +161,7 @@ def Constructor():
     Event_1048572370(1, asset=Assets.AEG110_029_2001, asset_1=Assets.AEG110_039_2001, flag=1048570371)
     Event_1048572370(2, asset=Assets.AEG110_029_2002, asset_1=Assets.AEG110_039_2002, flag=1048570372)
     Event_1048572370(3, asset=Assets.AEG110_029_2003, asset_1=Assets.AEG110_039_2003, flag=1048570373)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.BlackKnifeAssassin0,
         region=1048572250,
@@ -575,7 +575,7 @@ def Event_1048572820(
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     DisableAI(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
@@ -651,7 +651,7 @@ def Event_1048572820(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     EnableAI(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
@@ -660,5 +660,5 @@ def Event_1048572820(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()

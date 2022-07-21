@@ -47,7 +47,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005261(0, 1038420240, 1038422240, 30.0, 0.0, 0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1038420240, 1038422240, 30.0, 0.0, 0)
 
 
 @RestartOnRest(1038422200)

@@ -126,4 +126,4 @@ def Event_12082849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=12080800, asset=Assets.AEG099_002_9000, model_point=8, right=0)
-    CommonFunc_9005822(0, 12080800, 467000, 12082805, 12082806, 0, 12082802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 12080800, 467000, 12082805, 12082806, 0, 12082802, 0, 0)

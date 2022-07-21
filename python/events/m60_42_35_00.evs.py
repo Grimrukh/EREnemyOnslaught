@@ -32,7 +32,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005250(0, character=Characters.LargeCrab, region=1042352210, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.LargeCrab, region=1042352210, seconds=0.0, animation_id=-1)
     CommonFunc_90005201(
         0,
         character=Characters.Skeleton0,
@@ -45,7 +45,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005251(0, character=Characters.Skeleton0, radius=20.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Skeleton0, radius=20.0, seconds=0.0, animation_id=-1)
     CommonFunc_90005201(
         0,
         character=Characters.Skeleton1,
@@ -58,7 +58,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005251(0, character=Characters.Skeleton1, radius=20.0, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Skeleton1, radius=20.0, seconds=1.0, animation_id=-1)
     CommonFunc_90005201(
         0,
         character=Characters.Skeleton2,
@@ -71,7 +71,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005251(0, 1042350202, 20.0, 1.5, -1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 1042350202, 20.0, 1.5, -1)
 
 
 @RestartOnRest(1042352222)

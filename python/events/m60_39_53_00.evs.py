@@ -43,7 +43,7 @@ def Constructor():
         flag_10=78358,
         flag_11=78359,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.LeyndellSoldier1,
         region=1039532350,
@@ -51,17 +51,17 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.MadPumpkinHead,
-        animation_id=30005,
-        animation_id_1=20005,
-        region=1039532360,
-        seconds=3.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30005,
+        active_animation=20005,
+        trigger_region=1039532360,
+        trigger_delay=3.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_1039532400()
     Event_1039532650()

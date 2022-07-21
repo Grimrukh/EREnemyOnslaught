@@ -24,7 +24,7 @@ from .entities.m60_42_55_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_9005810(
+    CommonFunc_RegisterGraceIfFlagEnabled(
         0,
         flag=1042550800,
         grace_flag=1042550000,
@@ -87,7 +87,7 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.Millicent0)
-    CommonFunc_90005251(0, 1042550800, 50.0, 0.0, 0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 1042550800, 50.0, 0.0, 0)
 
 
 @RestartOnRest(1042553710)

@@ -70,7 +70,7 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.WhiteMaskVarre)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RayaLucariaSoldier0,
         region=1035442210,
@@ -78,7 +78,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RayaLucariaSoldier1,
         region=1035442210,
@@ -86,10 +86,10 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(0, character=1035440202, region=1035442210, radius=10.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=1035440203, region=1035442210, radius=10.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=1035440204, region=1035442210, radius=10.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1035440202, region=1035442210, radius=10.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1035440203, region=1035442210, radius=10.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1035440204, region=1035442210, radius=10.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.ManeuverableFlamethrower,
         region=1035442210,
@@ -97,7 +97,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005211(0, 1035440220, 30000, 20000, 1035442220, 10.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 1035440220, 30000, 20000, 1035442220, 10.0, 0.0, 0, 0, 0, 0)
 
 
 @RestartOnRest(1035442650)

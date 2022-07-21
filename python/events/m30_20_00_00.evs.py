@@ -30,7 +30,7 @@ def Constructor():
     Event_30202811()
     Event_30202829()
     CommonFunc_90005616(0, flag=30207910, region=30202700)
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GiantOctopus0,
         animation_id=30002,
@@ -43,7 +43,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GiantOctopus1,
         animation_id=30002,
@@ -56,7 +56,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GiantOctopus2,
         animation_id=30002,
@@ -69,7 +69,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Octopus0,
         region=30202200,
@@ -77,7 +77,7 @@ def Constructor():
         seconds=0.10000000149011612,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Octopus1,
         region=30202200,
@@ -85,7 +85,7 @@ def Constructor():
         seconds=0.30000001192092896,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Octopus4,
         region=30202257,
@@ -93,7 +93,7 @@ def Constructor():
         seconds=0.10000000149011612,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Octopus5,
         region=30202257,
@@ -101,8 +101,8 @@ def Constructor():
         seconds=0.30000001192092896,
         animation_id=0,
     )
-    CommonFunc_90005261(0, character=Characters.Octopus6, region=30202257, radius=1.0, seconds=0.5, animation_id=0)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Octopus6, region=30202257, radius=1.0, seconds=0.5, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Octopus7,
         region=30202257,
@@ -110,7 +110,7 @@ def Constructor():
         seconds=0.30000001192092896,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Octopus8,
         region=30202257,
@@ -118,7 +118,7 @@ def Constructor():
         seconds=0.20000000298023224,
         animation_id=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia2,
         animation_id=30002,
@@ -131,7 +131,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia3,
         animation_id=30002,
@@ -144,7 +144,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia4,
         animation_id=30002,
@@ -157,7 +157,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia6,
         animation_id=30002,
@@ -170,7 +170,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia7,
         animation_id=30002,
@@ -183,7 +183,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia8,
         animation_id=30000,
@@ -196,7 +196,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia9,
         region=30202253,
@@ -204,7 +204,7 @@ def Constructor():
         seconds=0.800000011920929,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia10,
         region=30202254,
@@ -212,7 +212,7 @@ def Constructor():
         seconds=0.800000011920929,
         animation_id=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia11,
         animation_id=30001,
@@ -225,7 +225,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia12,
         animation_id=30001,
@@ -238,7 +238,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia13,
         region=30202257,
@@ -246,7 +246,7 @@ def Constructor():
         seconds=0.800000011920929,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia14,
         region=30202260,
@@ -254,7 +254,7 @@ def Constructor():
         seconds=0.10000000149011612,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia15,
         region=30202260,
@@ -262,7 +262,7 @@ def Constructor():
         seconds=0.20000000298023224,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia16,
         region=30202260,
@@ -270,7 +270,7 @@ def Constructor():
         seconds=0.10000000149011612,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia17,
         region=30202260,
@@ -480,4 +480,4 @@ def Event_30202829():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=30200800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(0, 30200800, 921100, 30202805, 30202806, 0, 30202802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 30200800, 921100, 30202805, 30202806, 0, 30202802, 0, 0)

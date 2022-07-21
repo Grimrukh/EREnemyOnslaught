@@ -26,10 +26,10 @@ from .entities.m60_39_44_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1039440000, asset=Assets.AEG099_060_9000)
-    CommonFunc_90005261(0, character=Characters.Skeleton0, region=1039442200, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.Skeleton1, region=1039442200, radius=5.0, seconds=1.5, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.Skeleton2, region=1039442200, radius=5.0, seconds=1.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.Skeleton3, region=1039442200, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton0, region=1039442200, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton1, region=1039442200, radius=5.0, seconds=1.5, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton2, region=1039442200, radius=5.0, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton3, region=1039442200, radius=5.0, seconds=0.0, animation_id=-1)
     CommonFunc_90005616(0, flag=530240, region=1039442710)
     CommonFunc_90005780(
         0,

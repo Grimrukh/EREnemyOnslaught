@@ -105,7 +105,7 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     Event_30060519()
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp0,
         animation_id=30009,
@@ -118,9 +118,9 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005251(0, character=Characters.Imp1, radius=20.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Imp2, region=30062202, radius=5.0, seconds=1.0, animation_id=3002)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Imp1, radius=20.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Imp2, region=30062202, radius=5.0, seconds=1.0, animation_id=3002)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp3,
         animation_id=30000,
@@ -133,19 +133,19 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005250(0, character=Characters.Imp4, region=30062204, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Imp4, region=30062204, seconds=0.0, animation_id=0)
     Event_30062206()
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Imp5,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30062205,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30062205,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_30062211(
         0,
@@ -171,7 +171,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp8,
         animation_id=30002,
@@ -184,7 +184,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp9,
         animation_id=30010,
@@ -197,7 +197,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp10,
         animation_id=30010,
@@ -210,7 +210,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp11,
         animation_id=30010,
@@ -223,7 +223,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp12,
         animation_id=30003,
@@ -248,7 +248,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp14,
         animation_id=30004,
@@ -273,7 +273,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Imp16,
         region=30062216,
@@ -281,7 +281,7 @@ def Preconstructor():
         seconds=0.4000000059604645,
         animation_id=3005,
     )
-    CommonFunc_90005261(0, character=0, region=0, radius=0.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=0, region=0, radius=0.0, seconds=0.0, animation_id=0)
     CommonFunc_90005201(
         0,
         character=Characters.Omen0,
@@ -294,23 +294,23 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(0, character=Characters.Omen1, region=30062301, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Omen1, region=30062301, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Omen2,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=30062302,
-        seconds=2.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=30062302,
+        trigger_delay=2.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     RunCommonEvent(30062300, slot=0, args=(30060303, 30000, 20000, 30062303, 3.0, 0, 0, 0, 0), arg_types="IiiIfIIII")
-    CommonFunc_90005261(0, character=Characters.Omen4, region=30062304, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Omen4, region=30062304, radius=5.0, seconds=0.0, animation_id=-1)
     Event_30062304()
-    CommonFunc_90005200(0, 30060305, 30000, 20000, 30062305, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(0, 30060305, 30000, 20000, 30062305, 0.0, 0, 0, 0, 0)
 
 
 @RestartOnRest(30062206)
@@ -387,7 +387,7 @@ def Event_30062211(
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_14.Add(HasAIStatus(Characters.Omen1, ai_status=AIStatusType.Battle))
     OR_2.Add(AND_14)
@@ -459,7 +459,7 @@ def Event_30062211(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -467,7 +467,7 @@ def Event_30062211(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -1295,7 +1295,7 @@ def Event_30062300(
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     DisableAI(character)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
@@ -1372,7 +1372,7 @@ def Event_30062300(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -1380,7 +1380,7 @@ def Event_30062300(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -1519,4 +1519,4 @@ def Event_30062849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=30060800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(0, 30060800, 930000, 30062805, 30062806, 0, 30062802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 30060800, 930000, 30062805, 30062806, 0, 30062802, 0, 0)

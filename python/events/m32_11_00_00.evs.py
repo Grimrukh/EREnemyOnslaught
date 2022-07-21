@@ -85,105 +85,105 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     Event_32110519()
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.TunnelMiner0,
-        animation_id=30007,
-        animation_id_1=20007,
-        region=32112200,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30007,
+        active_animation=20007,
+        trigger_region=32112200,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.TunnelMiner1,
-        animation_id=30007,
-        animation_id_1=20007,
-        region=32112200,
-        seconds=0.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30007,
+        active_animation=20007,
+        trigger_region=32112200,
+        trigger_delay=0.5,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.TunnelMiner2,
-        animation_id=30007,
-        animation_id_1=20007,
-        region=32112205,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30007,
+        active_animation=20007,
+        trigger_region=32112205,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.TunnelMiner3,
-        animation_id=30007,
-        animation_id_1=20007,
-        region=32112206,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30007,
+        active_animation=20007,
+        trigger_region=32112206,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.TunnelMiner3, region=32112206, seconds=0.0, animation_id=-1)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner3, region=32112206, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.TunnelMiner4,
-        animation_id=30007,
-        animation_id_1=20007,
-        region=32112206,
-        seconds=0.5,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30007,
+        active_animation=20007,
+        trigger_region=32112206,
+        trigger_delay=0.5,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=32110208,
-        animation_id=30007,
-        animation_id_1=20007,
-        region=32112208,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30007,
+        active_animation=20007,
+        trigger_region=32112208,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=32110208, region=32112208, seconds=0.0, animation_id=-1)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=32110208, region=32112208, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.TunnelMiner5,
-        animation_id=30007,
-        animation_id_1=20007,
-        region=32112209,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30007,
+        active_animation=20007,
+        trigger_region=32112209,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.TunnelMiner6,
-        animation_id=30007,
-        animation_id_1=20007,
-        region=32112209,
-        seconds=0.20000000298023224,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30007,
+        active_animation=20007,
+        trigger_region=32112209,
+        trigger_delay=0.20000000298023224,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.TunnelMiner6, region=32112209, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner6, region=32112209, seconds=0.0, animation_id=-1)
     CommonFunc_90005201(
         0,
         character=Characters.TunnelMiner7,
@@ -196,33 +196,33 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.TunnelMiner8,
-        animation_id=30007,
-        animation_id_1=20007,
-        region=32112215,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30007,
+        active_animation=20007,
+        trigger_region=32112215,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.TunnelMiner8, region=32112215, seconds=0.0, animation_id=-1)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner8, region=32112215, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.TunnelMiner9,
-        animation_id=30007,
-        animation_id_1=20007,
-        region=32112216,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30007,
+        active_animation=20007,
+        trigger_region=32112216,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=Characters.OnyxLord0, region=32112300, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, 32110301, 32112301, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.OnyxLord0, region=32112300, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, 32110301, 32112301, 0.0, -1)
 
 
 @NeverRestart(32112510)
@@ -397,4 +397,4 @@ def Event_32112849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=32110800, asset=Assets.AEG099_003_9000, model_point=7, right=32110801)
-    CommonFunc_9005822(0, 32110800, 920700, 32112805, 32112806, 0, 32112802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 32110800, 920700, 32112805, 32112806, 0, 32112802, 0, 0)

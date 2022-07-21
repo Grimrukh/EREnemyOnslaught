@@ -25,14 +25,14 @@ from .entities.m60_46_39_00_entities import *
 def Constructor():
     """Event 0"""
     Event_1035472602()
-    CommonFunc_90005300(0, flag=1046390210, character=Characters.Scarab, item_lot_param_id=40118, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1046390210, character=Characters.Scarab, item_lot_param_id=40118, reward_delay=0.0, skip_reward=0)
     Event_1035472200(0, 1046391600, 60, 51, 43, 0, 1051430600, 0, 1051432650, 1051432651, 1051432652, 0, 0, 0.0, 0.0)
 
 
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005261(0, 1046390340, 1046392340, 30.0, 0.0, 0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1046390340, 1046392340, 30.0, 0.0, 0)
 
 
 @NeverRestart(1035472200)

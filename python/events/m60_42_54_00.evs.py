@@ -44,7 +44,7 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     DisableBackread(1042540700)
-    CommonFunc_90005250(0, character=Characters.SmallerDog0, region=1042542200, seconds=0.0, animation_id=3005)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallerDog0, region=1042542200, seconds=0.0, animation_id=3005)
     Event_1042542350(0, character=Characters.DominulaCelebrant0, region=1042542300, character_1=1042545300)
     Event_1042542350(1, character=Characters.DominulaCelebrant1, region=1042542301, character_1=1042545300)
     Event_1042542350(2, character=Characters.DominulaCelebrant2, region=1042542302, character_1=1042545300)
@@ -60,37 +60,37 @@ def Preconstructor():
     Event_1042542350(12, character=Characters.DominulaCelebrant17, region=1042542327, character_1=1042545327)
     Event_1042542350(13, character=Characters.DominulaCelebrant18, region=1042542328, character_1=1042545327)
     Event_1042542350(14, character=Characters.DominulaCelebrant19, region=1042542329, character_1=1042545327)
-    CommonFunc_90005251(0, character=Characters.DominulaCelebrant20, radius=4.0, seconds=0.0, animation_id=3004)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.DominulaCelebrant20, radius=4.0, seconds=0.0, animation_id=3004)
     Event_1042542350(15, character=Characters.DominulaCelebrant23, region=1042542338, character_1=1042545338)
     Event_1042542350(16, character=Characters.DominulaCelebrant24, region=1042542339, character_1=1042545338)
     Event_1042542350(17, character=Characters.DominulaCelebrant3, region=1042542303, character_1=1042545303)
     Event_1042542350(18, character=Characters.DominulaCelebrant4, region=1042542304, character_1=1042545303)
     Event_1042542350(19, character=Characters.DominulaCelebrant5, region=1042542305, character_1=1042545303)
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.LeyndellSoldier0,
-        animation_id=30004,
-        animation_id_1=20004,
-        region=1042542651,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30004,
+        active_animation=20004,
+        trigger_region=1042542651,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.LeyndellSoldier1,
-        animation_id=30004,
-        animation_id_1=20004,
-        region=1042542651,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30004,
+        active_animation=20004,
+        trigger_region=1042542651,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(0, 1042540653, 30004, 20004, 1042542651, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(0, 1042540653, 30004, 20004, 1042542651, 0.0, 0, 0, 0, 0)
 
 
 @RestartOnRest(1042542350)

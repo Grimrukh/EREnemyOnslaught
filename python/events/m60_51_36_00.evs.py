@@ -25,9 +25,9 @@ from .entities.m60_51_36_00_entities import *
 def Constructor():
     """Event 0"""
     Event_1051362580()
-    CommonFunc_9005810(
+    CommonFunc_RegisterGraceIfFlagEnabled(
         0,
-        flag=1051360800,
+        flag=Flags.RedmaneDuoDead,
         grace_flag=1051360000,
         character=Characters.TalkDummy1,
         asset=Assets.AEG099_060_9002,
@@ -382,8 +382,27 @@ def Constructor():
         seconds=0.0,
         seconds_1=0.0,
     )
-    Event_1051362800()
-    Event_1051362810()
+
+    # LEONINE MISBEGOTTEN AND CRUCIBLE KNIGHT
+    RedmaneDuoDies()
+    RedmaneDuoBattleTrigger()
+    # New event to control separate Knight triggers.
+    RedmaneDuoCrucibleKnightTrigger(
+        0,
+        crucible_knight=Characters.CrucibleKnight,
+        leonine=Characters.LeonineMisbegotten,
+        max_delay=30.0,
+        boss_name=NameText.CrucibleKnight,
+        bar_slot=1,
+    )
+    RedmaneDuoCrucibleKnightTrigger(
+        1,
+        crucible_knight=Characters.CLONE_CrucibleKnight,
+        leonine=Characters.CLONE_LeonineMisbegotten,
+        max_delay=60.0,
+        boss_name=NameText.CrucibleKnight,  # no funny alternate names for now
+        bar_slot=0,
+    )
     Event_1051362849()
     Event_1051362630(0, asset=Assets.AEG003_129_2006)
     Event_1051362630(1, asset=Assets.AEG003_130_2002)
@@ -394,7 +413,7 @@ def Constructor():
     Event_1051362200()
     Event_1051362220()
     Event_1051362230()
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.IronVirgin,
         region=1051362200,
@@ -402,30 +421,40 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005251(0, character=Characters.Commoner0, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.Commoner1, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005300(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Commoner0, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Commoner1, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1051360291,
+        dead_flag=1051360291,
         character=Characters.LionGuardian0,
         item_lot_param_id=1051360700,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1051360292,
+        dead_flag=1051360292,
         character=Characters.LionGuardian1,
         item_lot_param_id=1051360800,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     Event_1051362340(0, character=Characters.Troll)
-    CommonFunc_90005250(0, character=Characters.RadahnSoldier, region=1051362422, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RadahnFootSoldier0, region=1051362422, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RadahnFootSoldier1, region=1051362422, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RadahnFootSoldier2, region=1051362422, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.MadPumpkinHead, region=1051362490, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RadahnSoldier, region=1051362422, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RadahnFootSoldier0, region=1051362422, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RadahnFootSoldier1, region=1051362422, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RadahnFootSoldier2, region=1051362422, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.MadPumpkinHead, region=1051362490, seconds=0.0, animation_id=-1
+    )
     CommonFunc_90005501(
         0,
         flag=1051360510,
@@ -470,7 +499,7 @@ def Constructor():
     RunCommonEvent(1051362560, slot=1, args=(1051361564,))
     RunCommonEvent(1051362560, slot=2, args=(1051361566,))
     RunCommonEvent(1051362560, slot=3, args=(1051361568,))
-    Event_1051363710(0, character=Characters.LivingPot)
+    Event_1051363710(0, character=Characters.Alexander)
     Event_1051363711()
     Event_1051360720(0, character=Characters.Blaidd)
     Event_1051360721()
@@ -478,7 +507,7 @@ def Constructor():
     Event_1051363726(0, asset__character=1051360701)
     Event_1051363727()
     CommonFunc_90005708(0, character=Characters.WitchHunterJerren0, flag=3360, left=1051362700)
-    Event_1051360730(0, character=Characters.Human, animation_id=0, left=1)
+    Event_1051360730(0, character=Characters.LionelTheLionhearted, animation_id=0, left=1)
     Event_1051360730(1, character=Characters.Okina, animation_id=90100, left=1)
     Event_1051360730(2, character=Characters.FingerMaidenTherolina, animation_id=90101, left=0)
     Event_1051360734(0, character=Characters.FingerMaidenTherolina)
@@ -493,8 +522,8 @@ def Preconstructor():
     DisableBackread(Characters.WitchHunterJerren0)
     DisableBackread(Characters.WitchHunterJerren1)
     DisableBackread(1051360702)
-    DisableBackread(Characters.LivingPot)
-    DisableBackread(Characters.Human)
+    DisableBackread(Characters.Alexander)
+    DisableBackread(Characters.LionelTheLionhearted)
     DisableBackread(Characters.Blaidd)
     DisableBackread(Characters.GreatHornedTragoth)
     DisableBackread(Characters.Okina)
@@ -644,7 +673,7 @@ def Event_1051362230():
     if FlagEnabled(1051360230):
         return
     AND_1.Add(FlagEnabled(9412))
-    AND_1.Add(FlagEnabled(1051360800))
+    AND_1.Add(FlagEnabled(Flags.RedmaneDuoDead))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=1051362230))
     
     MAIN.Await(AND_1)
@@ -821,7 +850,7 @@ def Event_1051362650(
     flag_7: uint,
 ):
     """Event 1051362650"""
-    MAIN.Await(FlagEnabled(1051360800))
+    MAIN.Await(FlagEnabled(Flags.RedmaneDuoDead))
     
     DeleteAssetVFX(asset, erase_root=False)
     if PlayerNotInOwnWorld():
@@ -937,9 +966,9 @@ def Event_1051362650(
 
 
 @RestartOnRest(1051362800)
-def Event_1051362800():
+def RedmaneDuoDies():
     """Event 1051362800"""
-    if FlagEnabled(1051360800):
+    if FlagEnabled(Flags.RedmaneDuoDead):
         return
     AND_3.Add(FlagEnabled(9410))
     AND_3.Add(FlagDisabled(9413))
@@ -947,6 +976,8 @@ def Event_1051362800():
         return
     AND_1.Add(HealthValue(Characters.CrucibleKnight) <= 0)
     AND_1.Add(HealthValue(Characters.LeonineMisbegotten) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_CrucibleKnight) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_LeonineMisbegotten) <= 0)
     
     MAIN.Await(AND_1)
     
@@ -954,26 +985,34 @@ def Event_1051362800():
     PlaySoundEffect(Characters.CrucibleKnight, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(CharacterDead(Characters.CrucibleKnight))
     AND_2.Add(CharacterDead(Characters.LeonineMisbegotten))
+    AND_2.Add(CharacterDead(Characters.CLONE_CrucibleKnight))
+    AND_2.Add(CharacterDead(Characters.CLONE_LeonineMisbegotten))
     
     MAIN.Await(AND_2)
     
     KillBossAndDisplayBanner(character=Characters.CrucibleKnight, banner_type=BannerType.GreatEnemyFelled)
-    EnableFlag(1051360800)
+    EnableFlag(Flags.RedmaneDuoDead)
     EnableFlag(9183)
     if PlayerInOwnWorld():
         EnableFlag(61183)
 
 
 @RestartOnRest(1051362810)
-def Event_1051362810():
+def RedmaneDuoBattleTrigger():
     """Event 1051362810"""
-    GotoIfFlagDisabled(Label.L0, flag=1051360800)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.RedmaneDuoDead)
     DisableCharacter(Characters.CrucibleKnight)
     DisableAnimations(Characters.CrucibleKnight)
     Kill(Characters.CrucibleKnight)
     DisableCharacter(Characters.LeonineMisbegotten)
     DisableAnimations(Characters.LeonineMisbegotten)
     Kill(Characters.LeonineMisbegotten)
+    DisableCharacter(Characters.CLONE_CrucibleKnight)
+    DisableAnimations(Characters.CLONE_CrucibleKnight)
+    Kill(Characters.CLONE_CrucibleKnight)
+    DisableCharacter(Characters.CLONE_LeonineMisbegotten)
+    DisableAnimations(Characters.CLONE_LeonineMisbegotten)
+    Kill(Characters.CLONE_LeonineMisbegotten)
     End()
 
     # --- Label 0 --- #
@@ -986,12 +1025,20 @@ def Event_1051362810():
     DisableCharacter(Characters.LeonineMisbegotten)
     DisableAnimations(Characters.LeonineMisbegotten)
     Kill(Characters.LeonineMisbegotten)
+    DisableCharacter(Characters.CLONE_CrucibleKnight)
+    DisableAnimations(Characters.CLONE_CrucibleKnight)
+    Kill(Characters.CLONE_CrucibleKnight)
+    DisableCharacter(Characters.CLONE_LeonineMisbegotten)
+    DisableAnimations(Characters.CLONE_LeonineMisbegotten)
+    Kill(Characters.CLONE_LeonineMisbegotten)
     End()
 
     # --- Label 5 --- #
     DefineLabel(5)
     DisableAI(Characters.LeonineMisbegotten)
     DisableAI(Characters.CrucibleKnight)
+    DisableAI(Characters.CLONE_LeonineMisbegotten)
+    DisableAI(Characters.CLONE_CrucibleKnight)
     AND_2.Add(FlagEnabled(1051362805))
     AND_2.Add(OR_15)
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=1051362800))
@@ -999,20 +1046,35 @@ def Event_1051362810():
     MAIN.Await(AND_2)
     
     EnableAI(Characters.LeonineMisbegotten)
+    EnableAI(Characters.CLONE_LeonineMisbegotten)
     SetNetworkUpdateRate(Characters.LeonineMisbegotten, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.LeonineMisbegotten, name=903460501)
-    OR_1.Add(HealthRatio(Characters.LeonineMisbegotten) < 0.5)
-    OR_1.Add(CharacterDead(Characters.LeonineMisbegotten))
-    OR_1.Add(TimeElapsed(seconds=30.0))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CrucibleKnight, attacker=PLAYER))
-    
+    SetNetworkUpdateRate(Characters.CLONE_LeonineMisbegotten, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.LeonineMisbegotten, name=NameText.LeonineMisbegotten, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_LeonineMisbegotten, name=NameText.LeonineMisbegotten, bar_slot=0)
+
+
+@RestartOnRest(1051362811)
+def RedmaneDuoCrucibleKnightTrigger(
+    _, crucible_knight: uint, leonine: uint, max_delay: float, boss_name: int, bar_slot: int
+):
+    """Crucible Knight attached to given Leonine Misbegotten enters the fray."""
+    if FlagEnabled(Flags.RedmaneDuoDead):
+        return
+    OR_1.Add(HealthRatio(leonine) < 0.5)
+    OR_1.Add(CharacterDead(leonine))
+    OR_1.Add(TimeElapsed(seconds=max_delay))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=crucible_knight, attacker=PLAYER))
+
     MAIN.Await(OR_1)
-    
-    ForceAnimation(Characters.CrucibleKnight, 20011)
-    EnableAI(Characters.CrucibleKnight)
-    SetNetworkUpdateRate(Characters.CrucibleKnight, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.CrucibleKnight, name=902500500, bar_slot=1)
-    SetNest(Characters.CrucibleKnight, region=1051362299)
+
+    ForceAnimation(crucible_knight, 20011)
+    EnableAI(crucible_knight)
+    SetNetworkUpdateRate(crucible_knight, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNest(crucible_knight, region=1051362299)
+
+    # Crucible Knight health bar takes over when Leonine Misbegotten is dead.
+    MAIN.Await(HealthRatio(leonine) <= 0.0)
+    EnableBossHealthBar(crucible_knight, name=boss_name, bar_slot=bar_slot)
 
 
 @RestartOnRest(1051362849)
@@ -1024,7 +1086,7 @@ def Event_1051362849():
         return
     CommonFunc_9005800(
         0,
-        flag=1051360800,
+        flag=Flags.RedmaneDuoDead,
         entity=Assets.AEG099_001_9000,
         region=1051362800,
         flag_1=1051362805,
@@ -1035,16 +1097,16 @@ def Event_1051362849():
     )
     CommonFunc_9005801(
         0,
-        flag=1051360800,
+        flag=Flags.RedmaneDuoDead,
         entity=Assets.AEG099_001_9000,
         region=1051362800,
         flag_1=1051362805,
         flag_2=1051362806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=1051360800, asset=Assets.AEG099_001_9000, model_point=5, right=0)
-    CommonFunc_9005811(0, flag=1051360800, asset=Assets.AEG099_001_9001, model_point=3, right=0)
-    CommonFunc_9005822(0, 1051360800, 920200, 1051362805, 1051362806, 0, 1051362802, 0, 0)
+    CommonFunc_9005811(0, flag=Flags.RedmaneDuoDead, asset=Assets.AEG099_001_9000, model_point=5, right=0)
+    CommonFunc_9005811(0, flag=Flags.RedmaneDuoDead, asset=Assets.AEG099_001_9001, model_point=3, right=0)
+    CommonFunc_BossMusicPhaseTransition(0, Flags.RedmaneDuoDead, 920200, 1051362805, 1051362806, 0, 1051362802, 0, 0)
 
 
 @RestartOnRest(1051363700)

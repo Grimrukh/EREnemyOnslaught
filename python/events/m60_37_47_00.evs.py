@@ -24,7 +24,7 @@ from .entities.m60_37_47_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.AncestralFollower,
         region=1037472200,
@@ -56,6 +56,6 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005251(0, character=Characters.WildMouflon, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.Runebear, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WildMouflon, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Runebear, radius=10.0, seconds=0.0, animation_id=-1)
     CommonFunc_900005610(0, 1037471680, 100, 800, 0)

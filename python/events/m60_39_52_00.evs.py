@@ -69,7 +69,7 @@ def Constructor():
         left=0,
     )
     CommonFunc_90005631(0, anchor_entity=Assets.AEG099_376_1000, text=61031)
-    CommonFunc_90005300(0, flag=1039520500, character=Characters.Scarab, item_lot_param_id=40306, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1039520500, character=Characters.Scarab, item_lot_param_id=40306, reward_delay=0.0, skip_reward=0)
     Event_1039523700(0, character=Characters.YuraHunterofBloodyFingers)
     Event_1039523701(0, character=Characters.YuraHunterofBloodyFingers)
     Event_1039523703(0, asset=Assets.AEG099_429_9000, asset_1=Assets.AEG099_429_9001, asset_2=Assets.AEG099_429_9002)
@@ -83,7 +83,7 @@ def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.YuraHunterofBloodyFingers)
     DisableBackread(Characters.EleonoraVioletBloodyFinger)
-    CommonFunc_90005251(0, character=Characters.Scarab, radius=25.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Scarab, radius=25.0, seconds=0.0, animation_id=0)
     CommonFunc_90005201(
         0,
         character=Characters.Scarab,
@@ -144,25 +144,25 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005251(0, character=Characters.RevenantFollower, radius=150.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.RevenantFollower, radius=150.0, seconds=0.0, animation_id=0)
     Event_1039522220(0, character=Characters.Troll0)
     CommonFunc_90005423(0, character=Characters.Troll0)
     Event_1039522220(1, character=Characters.Troll1)
     CommonFunc_90005423(0, character=Characters.Troll1)
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.SanguineNoble,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1039522400,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1039522400,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_1039522400()
-    CommonFunc_90005300(0, 1039520400, 1039520400, 0, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, 1039520400, 1039520400, 0, 0.0, 0)
 
 
 @RestartOnRest(1039522220)

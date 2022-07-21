@@ -35,8 +35,8 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005261(0, character=Characters.Wolf2, region=31032202, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Wolf2, region=31032202, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Wolf3,
         animation_id=30000,
@@ -49,7 +49,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Wolf4,
         animation_id=30005,
@@ -62,7 +62,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(0, 31030216, 30001, 20001, 31032216, 2.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 31030216, 30001, 20001, 31032216, 2.0, 0.0, 0, 0, 0, 0)
 
 
 @RestartOnRest(31032650)
@@ -201,4 +201,4 @@ def Event_31032849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=31030800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(0, 31030800, 931000, 31032805, 31032806, 0, 31032802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 31030800, 931000, 31032805, 31032806, 0, 31032802, 0, 0)

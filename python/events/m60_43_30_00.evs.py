@@ -24,7 +24,7 @@ from .entities.m60_43_30_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_9005810(
+    CommonFunc_RegisterGraceIfFlagEnabled(
         0,
         flag=1043300800,
         grace_flag=76161,
@@ -54,7 +54,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005200(0, 1043300340, 30001, 20001, 1043302340, 0.5, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(0, 1043300340, 30001, 20001, 1043302340, 0.5, 0, 0, 0, 0)
 
 
 @RestartOnRest(1043302500)
@@ -142,4 +142,4 @@ def Event_1043302849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=1043300800, asset=Assets.AEG099_002_9000, model_point=5, right=0)
-    CommonFunc_9005822(0, 1043300800, 950000, 1043302805, 1043302806, 0, 0, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 1043300800, 950000, 1043302805, 1043302806, 0, 0, 0, 0)

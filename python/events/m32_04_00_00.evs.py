@@ -147,8 +147,8 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     Event_32040519()
-    CommonFunc_90005250(0, character=Characters.TunnelMiner0, region=32042200, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.TunnelMiner5, region=32042217, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner0, region=32042200, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner5, region=32042217, seconds=0.0, animation_id=-1)
     CommonFunc_90005201(
         0,
         character=Characters.TunnelMiner6,
@@ -161,16 +161,16 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005251(0, character=32040250, radius=15.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=32040302, region=32042213, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.LeyndellSoldier0, region=32042213, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.LeyndellSoldier1, region=32042305, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.LeyndellKnight0, region=32042305, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.LeyndellKnight1, region=32042351, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.SmallerDog0, region=32042200, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.SmallerDog3, region=32042410, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.SmallerDog4, region=32042410, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, 32040412, 32042217, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=32040250, radius=15.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=32040302, region=32042213, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.LeyndellSoldier0, region=32042213, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.LeyndellSoldier1, region=32042305, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.LeyndellKnight0, region=32042305, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.LeyndellKnight1, region=32042351, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallerDog0, region=32042200, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallerDog3, region=32042410, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallerDog4, region=32042410, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, 32040412, 32042217, 0.0, -1)
 
 
 @NeverRestart(32042510)
@@ -313,7 +313,7 @@ def Event_32042200(
         return
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -391,7 +391,7 @@ def Event_32042200(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     AddSpecialEffect(character, 16571)
     AddSpecialEffect(character, special_effect_id)
     ForceAnimation(character, animation_id_1, loop=True)
@@ -401,7 +401,7 @@ def Event_32042200(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -428,7 +428,7 @@ def Event_32042250(
         return
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -506,7 +506,7 @@ def Event_32042250(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     AddSpecialEffect(character, 16571)
     AddSpecialEffect(character, special_effect_id)
     ForceAnimation(character, animation_id_1, loop=True)
@@ -516,7 +516,7 @@ def Event_32042250(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -541,7 +541,7 @@ def Event_32042270(
         return
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -615,7 +615,7 @@ def Event_32042270(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -623,7 +623,7 @@ def Event_32042270(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -710,4 +710,4 @@ def Event_32042849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=32040800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(0, 32040800, 931000, 32042805, 32042806, 0, 32042802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 32040800, 931000, 32042805, 32042806, 0, 32042802, 0, 0)

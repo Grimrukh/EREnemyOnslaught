@@ -24,7 +24,7 @@ from .entities.m60_51_54_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.LesserFingercreeper,
         region=1051542245,
@@ -33,7 +33,7 @@ def Constructor():
         animation_id=0,
     )
     Event_1051542200(0, character=1049535200)
-    CommonFunc_90005300(0, 1051540210, 1051540210, 40512, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, 1051540210, 1051540210, 40512, 0.0, 0)
 
 
 @RestartOnRest(1051542200)

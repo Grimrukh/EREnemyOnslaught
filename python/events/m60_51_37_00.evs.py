@@ -17,12 +17,13 @@ strings:
 from soulstruct.eldenring.events import *
 from soulstruct.eldenring.events.instructions import *
 from .entities.m60_51_37_00_entities import *
+from .entities.m60_52_38_00_entities import Characters as m60_52_38_00_Characters, Flags as m60_52_38_00_Flags
 
 
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    Event_1051372598(
+    HostStartsRadahnBattle(
         0,
         asset=Assets.AEG099_510_9000,
         area_id=60,
@@ -35,11 +36,11 @@ def Constructor():
         left_flag=1052382610,
         cancel_flag__right_flag=1052382611,
     )
-    Event_1051372599()
+    SummonStartsRadahnBattle()
 
 
 @RestartOnRest(1051372598)
-def Event_1051372598(
+def HostStartsRadahnBattle(
     _,
     asset: uint,
     area_id: uchar,
@@ -138,9 +139,10 @@ def Event_1051372598(
 
     # --- Label 2 --- #
     DefineLabel(2)
-    ActivateMultiplayerBuffs(1052385800)
+    ActivateMultiplayerBuffs(m60_52_38_00_Characters.StarscourgeRadahn)
+    ActivateMultiplayerBuffs(m60_52_38_00_Characters.CLONE_StarscourgeRadahn)
     BanishInvaders(unknown=0)
-    EnableNetworkFlag(1052382805)
+    EnableNetworkFlag(m60_52_38_00_Flags.HostInRadahnBattle)
 
     # --- Label 4 --- #
     DefineLabel(4)
@@ -152,7 +154,7 @@ def Event_1051372598(
 
 
 @RestartOnRest(1051372599)
-def Event_1051372599():
+def SummonStartsRadahnBattle():
     """Event 1051372599"""
     DisableNetworkSync()
     if PlayerInOwnWorld():
@@ -175,9 +177,10 @@ def Event_1051372599():
         use_bonfire_effect=False,
         reset_camera=True,
     )
-    GotoIfFlagEnabled(Label.L1, flag=1252380800)
-    ActivateMultiplayerBuffs(1052385800)
-    EnableNetworkFlag(1052382806)
+    GotoIfFlagEnabled(Label.L1, flag=m60_52_38_00_Flags.RadahnDead)
+    ActivateMultiplayerBuffs(m60_52_38_00_Characters.StarscourgeRadahn)
+    ActivateMultiplayerBuffs(m60_52_38_00_Characters.CLONE_StarscourgeRadahn)
+    EnableNetworkFlag(m60_52_38_00_Flags.SummonInRadahnBattle)
 
     # --- Label 1 --- #
     DefineLabel(1)

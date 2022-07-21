@@ -88,11 +88,11 @@ def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.Hyetta)
     DisableBackread(Characters.DemiHumanShaman)
-    CommonFunc_90005261(0, character=Characters.Skeleton0, region=1039402210, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.Skeleton1, region=1039402211, radius=5.0, seconds=0.5, animation_id=-1)
-    CommonFunc_90005261(0, character=1039400212, region=1039402211, radius=5.0, seconds=1.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.Skeleton2, region=1039402211, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005211(0, 1039400220, 30001, 20001, 1039402220, 0.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton0, region=1039402210, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton1, region=1039402211, radius=5.0, seconds=0.5, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1039400212, region=1039402211, radius=5.0, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton2, region=1039402211, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 1039400220, 30001, 20001, 1039402220, 0.0, 0.0, 0, 0, 0, 0)
 
 
 @RestartOnRest(1039400700)

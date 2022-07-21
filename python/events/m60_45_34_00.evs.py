@@ -119,7 +119,7 @@ def Preconstructor():
     DisableBackread(Characters.IrinaofMorne1)
     DisableBackread(Characters.Edgar)
     Event_1045340706()
-    CommonFunc_90005250(0, 1045340405, 1045342405, 0.0, 0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, 1045340405, 1045342405, 0.0, 0)
 
 
 @RestartOnRest(1045342250)

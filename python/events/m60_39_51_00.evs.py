@@ -61,16 +61,16 @@ def Constructor():
         item_lot__item_lot_param_id=1039510200,
         seconds=0.0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1039510800,
+        dead_flag=1039510800,
         character=Characters.NightsCavalryHorse,
         item_lot_param_id=0,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     CommonFunc_90005872(0, character=Characters.NightsCavalry, npc_threat_level=10, right=0)
-    CommonFunc_90005300(0, flag=1039510500, character=Characters.Scarab, item_lot_param_id=40304, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1039510500, character=Characters.Scarab, item_lot_param_id=40304, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005703(
         0,
         character=Characters.DemiHumanShaman,
@@ -125,7 +125,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.LeyndellSoldier,
         region=1039512300,
@@ -169,7 +169,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005250(0, character=Characters.MadPumpkinHead, region=1039512350, seconds=0.0, animation_id=3003)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MadPumpkinHead, region=1039512350, seconds=0.0, animation_id=3003)
     CommonFunc_90005201(
         0,
         character=Characters.LeyndellKnight1,
@@ -182,7 +182,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005250(0, 1039510361, 1039512361, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, 1039510361, 1039512361, 0.0, -1)
 
 
 @RestartOnRest(1039512451)

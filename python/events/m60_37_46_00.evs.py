@@ -56,11 +56,11 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.GiantTurtle)
-    CommonFunc_90005261(0, character=1037460200, region=1037462600, radius=3.0, seconds=0.0, animation_id=3020)
-    CommonFunc_90005261(0, character=1037460201, region=1037462600, radius=3.0, seconds=0.0, animation_id=3020)
-    CommonFunc_90005261(0, character=1037460202, region=1037462600, radius=3.0, seconds=0.0, animation_id=3020)
-    CommonFunc_90005261(0, character=1037460203, region=1037462600, radius=3.0, seconds=0.0, animation_id=1700)
-    CommonFunc_90005261(0, 1037460204, 1037462600, 3.0, 0.0, 1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1037460200, region=1037462600, radius=3.0, seconds=0.0, animation_id=3020)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1037460201, region=1037462600, radius=3.0, seconds=0.0, animation_id=3020)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1037460202, region=1037462600, radius=3.0, seconds=0.0, animation_id=3020)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1037460203, region=1037462600, radius=3.0, seconds=0.0, animation_id=1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1037460204, 1037462600, 3.0, 0.0, 1700)
 
 
 @RestartOnRest(1037460700)

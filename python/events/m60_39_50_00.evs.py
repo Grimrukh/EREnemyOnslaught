@@ -92,10 +92,10 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005251(0, character=Characters.RevenantFollower, radius=30.0, seconds=1.0, animation_id=3022)
-    CommonFunc_90005251(0, character=Characters.VulgarMilitia0, radius=20.0, seconds=0.0, animation_id=3020)
-    CommonFunc_90005251(0, character=Characters.VulgarMilitia1, radius=20.0, seconds=0.0, animation_id=3020)
-    CommonFunc_90005211(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.RevenantFollower, radius=30.0, seconds=1.0, animation_id=3022)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.VulgarMilitia0, radius=20.0, seconds=0.0, animation_id=3020)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.VulgarMilitia1, radius=20.0, seconds=0.0, animation_id=3020)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Misbegotten,
         animation_id=30000,
@@ -108,19 +108,19 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=1039500302,
-        animation_id=30000,
-        animation_id_1=20000,
-        region=1039502300,
-        seconds=1.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1039502300,
+        trigger_delay=1.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(0, 1039500303, 30000, 20000, 1039502300, 1.5, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(0, 1039500303, 30000, 20000, 1039502300, 1.5, 0, 0, 0, 0)
 
 
 @RestartOnRest(1039502575)

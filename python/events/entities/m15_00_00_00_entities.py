@@ -1,6 +1,10 @@
 from soulstruct.eldenring.game_types import *
 
 
+class CharacterGroups(Character):
+    MaleniaBoss = 15005800
+
+
 class Characters(Character):
     Millicent0 = 15000700  # c0000_9015 col h008300 npc 523480056 think 523480000 chara 23483 talk 348001500
     Millicent1 = 15000701  # c0000_9016 col h013500 npc 533480056 think 533481000 chara 23488 talk 348101500
@@ -51,12 +55,12 @@ class Characters(Character):
     KindredofRotLarva24 = 15000597  # c2041_9027 col h013400 npc 20410056 think 20410000
     KindredofRotLarva25 = 15000598  # c2041_9028 col h013400 npc 20410056 think 20410000
     KindredofRotLarva26 = 15000599  # c2041_9029 col h013400 npc 20410056 think 20410000
-    Malenia0 = 15000800  # c2120_9000 col h015000 npc 21200056 think 21200000 talk 203101500 group 15005800,15005100
-    Malenia1 = 15000801  # c2120_9001 col h015000 npc 21202056 think 21200000 group 15005800
-    Malenia2 = 15000802  # c2120_9002 col h015000 npc 21202056 think 21200000 group 15005800
-    Malenia3 = 15000803  # c2120_9003 col h015000 npc 21202056 think 21200000 group 15005800
-    Malenia4 = 15000804  # c2120_9004 col h015000 npc 21202056 think 21200000 group 15005800
-    Malenia5 = 15000805  # c2120_9005 col h015000 npc 21202056 think 21200000 group 15005800
+    Malenia = 15000800  # c2120_9000 col h015000 npc 21200056 think 21200000 talk 203101500 group 15005800,15005100
+    MaleniaSpirit1 = 15000801  # c2120_9001 col h015000 npc 21202056 think 21200000 group 15005800
+    MaleniaSpirit2 = 15000802  # c2120_9002 col h015000 npc 21202056 think 21200000 group 15005800
+    MaleniaSpirit3 = 15000803  # c2120_9003 col h015000 npc 21202056 think 21200000 group 15005800
+    MaleniaSpirit4 = 15000804  # c2120_9004 col h015000 npc 21202056 think 21200000 group 15005800
+    MaleniaSpirit5 = 15000805  # c2120_9005 col h015000 npc 21202056 think 21200000 group 15005800
     Loretta = 15000850  # c3252_9000 col h007400 npc 32520054 think 32520054 group 15005850,15005110
     Crystalian0 = 15000310  # c3350_9000 col h005200 npc 33501154 think 33501000
     Crystalian1 = 15000311  # c3350_9001 col h005300 npc 33500154 think 33500000
@@ -275,6 +279,9 @@ class Characters(Character):
     UlceratedTreeSpirit = 15000398  # c4640_9000 col h013500 npc 46400156 think 46400056
     PutridAvatar0 = 15000392  # c4811_9002 col h012500 npc 48110056 think 48110000
     PutridAvatar1 = 15000393  # c4811_9003 col h010200 npc 48110056 think 48110000
+
+    CLONE_Malenia = 15000806
+    CLONE_Loretta = 15000851
 
 
 class Assets(Asset):

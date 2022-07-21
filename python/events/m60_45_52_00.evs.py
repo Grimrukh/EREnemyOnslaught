@@ -38,29 +38,29 @@ def Constructor():
     )
     CommonFunc_90005872(0, character=Characters.DraconicTreeSentinel, npc_threat_level=12, right=0)
     CommonFunc_9005811(0, flag=1045520800, asset=Assets.AEG099_001_9000, model_point=5, right=0)
-    CommonFunc_90005251(0, character=Characters.GuardianGolem2, radius=70.0, seconds=0.0, animation_id=3006)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GuardianGolem2, radius=70.0, seconds=0.0, animation_id=3006)
     Event_1045522200()
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1045520200,
+        dead_flag=1045520200,
         character=Characters.GuardianGolem0,
         item_lot_param_id=30360,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1045520202,
+        dead_flag=1045520202,
         character=Characters.GuardianGolem1,
         item_lot_param_id=30365,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
-    CommonFunc_90005251(0, character=Characters.WanderingNoble0, radius=100.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005251(0, character=Characters.WanderingNoble1, radius=100.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005251(0, character=Characters.WanderingNoble2, radius=100.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005251(0, character=Characters.WanderingNoble3, radius=100.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005251(0, character=Characters.WanderingNoble4, radius=100.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble0, radius=100.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble1, radius=100.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble2, radius=100.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble3, radius=100.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble4, radius=100.0, seconds=0.0, animation_id=0)
     CommonFunc_90005201(
         0,
         character=1045520400,

@@ -54,7 +54,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005300(0, 1033400610, 1033400610, 0, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, 1033400610, 1033400610, 0, 0.0, 0)
 
 
 @NeverRestart(50)

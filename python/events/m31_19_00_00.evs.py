@@ -39,16 +39,16 @@ def Constructor():
     Event_31192863(0, character=Characters.Snail1, flag=31192870)
     Event_31192863(1, character=Characters.Snail2, flag=31192871)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=0)
-    CommonFunc_90005261(0, character=Characters.Skeleton0, region=31192200, radius=3.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton0, region=31192200, radius=3.0, seconds=0.0, animation_id=0)
     Event_31192210(0, character=Characters.Skeleton1, region=31192210, radius=2.0, seconds=0.0, animation_id=0)
     Event_31192210(1, character=Characters.Skeleton2, region=31192210, radius=2.0, seconds=0.0, animation_id=0)
     Event_31192210(2, character=Characters.Skeleton3, region=31192210, radius=2.0, seconds=0.0, animation_id=0)
     Event_31192210(3, character=Characters.Skeleton4, region=31192210, radius=2.0, seconds=1.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Skeleton5, region=31192219, radius=3.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Skeleton6, region=31192219, radius=3.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Skeleton7, region=31192220, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.GraveSkeleton, region=31192219, radius=3.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=31190280, region=31192218, radius=3.0, seconds=0.0, animation_id=3001)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton5, region=31192219, radius=3.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton6, region=31192219, radius=3.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton7, region=31192220, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.GraveSkeleton, region=31192219, radius=3.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=31190280, region=31192218, radius=3.0, seconds=0.0, animation_id=3001)
     CommonFunc_90005525(0, flag=31190600, asset=Assets.AEG027_069_1000)
     CommonFunc_90005525(0, flag=31190601, asset=Assets.AEG027_069_1001)
     CommonFunc_90005525(0, flag=31190602, asset=Assets.AEG027_069_1002)
@@ -137,7 +137,7 @@ def Event_35002250(
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -193,7 +193,7 @@ def Event_35002250(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -201,7 +201,7 @@ def Event_35002250(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -469,7 +469,7 @@ def Event_31192849():
         action_button_id=10000,
     )
     CommonFunc_9005813(0, flag=31190800, asset=Assets.AEG099_001_9000, model_point=3, right=0, model_point_1=3)
-    CommonFunc_9005822(0, 31190800, 921500, 31192805, 31192806, 0, 31192802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 31190800, 921500, 31192805, 31192806, 0, 31192802, 0, 0)
 
 
 @RestartOnRest(31192899)
@@ -496,7 +496,7 @@ def Event_31192899():
         action_button_id=10000,
     )
     CommonFunc_9005813(0, flag=31190850, asset=Assets.AEG099_001_9002, model_point=3, right=0, model_point_1=3)
-    CommonFunc_9005822(0, 31190850, 920100, 31192855, 31192856, 0, 31192852, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 31190850, 920100, 31192855, 31192856, 0, 31192852, 0, 0)
 
 
 @RestartOnRest(31192845)

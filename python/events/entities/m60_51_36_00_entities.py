@@ -1,13 +1,24 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    RedmaneDuoDead = 1051360800
+
+
+class NameText(NPCName):
+    LeonineMisbegotten = 903460501
+    CrucibleKnight = 902500500
+
+
 class Characters(Character):
     WitchHunterJerren0 = 1051360700  # c0000_9005 npc 523120040 think 523120000 chara 23120 talk 312006000
     WitchHunterJerren1 = 1051360701  # c0000_9006 npc 523120140 think 523120000 chara 23120 talk 312006000
-    Human = 1051360715  # c0000_9008 npc 523290040 think 523290000 chara 23291
+    Alexander = 1051360705  # c4490_9000 npc 44909540 think 44900000 talk 220006000
+    LionelTheLionhearted = 1051360715  # c0000_9008 npc 523290040 think 523290000 chara 23291
     GreatHornedTragoth = 1051360725  # c0000_9009 npc 523440040 think 523440000 chara 23441
     Okina = 1051360730  # c0000_9011 npc 523550040 think 523550000 chara 23551
     FingerMaidenTherolina = 1051360735  # c0000_9012 npc 523630040 think 523630000 chara 23632 talk 363006000
+
     BulletDummy0 = 1051360400  # c0120_9000 npc 1200041 think 1200000 group 1051365200
     BulletDummy1 = 1051360402  # c0120_9001 npc 1200041 think 1200000 group 1051365200
     TalkDummy0 = 1051360951  # c1000_9002 col h513600 npc 10000000 think 1 talk 1000
@@ -28,8 +39,10 @@ class Characters(Character):
     RadahnFootSoldier3 = 1051360401  # c4374_9027 npc 43740041 think 43740000 group 1051365200
     RadahnFootSoldier4 = 1051360403  # c4374_9028 npc 43740041 think 43740000 group 1051365200
     IronVirgin = 1051360200  # c4470_9000 npc 44702041 think 44702000 group 1051365200
-    LivingPot = 1051360705  # c4490_9000 npc 44909540 think 44900000 talk 220006000
     Troll = 1051360340  # c4600_9000 npc 46003041 think 46000040 group 1051365200
+
+    CLONE_CrucibleKnight = 1051360802  # c2500_9000 npc 25000941 think 25000040 group 1051365800,1051365100
+    CLONE_LeonineMisbegotten = 1051360803  # c3460_9000 npc 34600941 think 34602000 group 1051365800,1051365100
 
 
 class Assets(Asset):

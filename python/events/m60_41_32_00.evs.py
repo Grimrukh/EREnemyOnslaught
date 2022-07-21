@@ -41,13 +41,13 @@ def Constructor():
     CommonFunc_90005721(0, character=1041320290, character_1=1041320293)
     CommonFunc_90005723(0, character=1041320290)
     CommonFunc_90005920(0, flag=1041320900, asset=1041321900, obj_act_id=1041323900)
-    CommonFunc_90005261(0, character=1041329200, region=1041322200, radius=5.0, seconds=0.0, animation_id=1701)
-    CommonFunc_90005261(0, character=1041329201, region=1041322200, radius=5.0, seconds=2.0, animation_id=1701)
-    CommonFunc_90005261(0, character=1041329202, region=1041322200, radius=5.0, seconds=1.0, animation_id=1702)
-    CommonFunc_90005261(0, character=1041329203, region=1041322200, radius=5.0, seconds=0.0, animation_id=1701)
-    CommonFunc_90005261(0, character=1041329204, region=1041322200, radius=5.0, seconds=2.0, animation_id=1702)
-    CommonFunc_90005261(0, character=1041329205, region=1041322200, radius=5.0, seconds=1.0, animation_id=1702)
-    CommonFunc_90005261(0, character=1041329206, region=1041322200, radius=5.0, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1041329200, region=1041322200, radius=5.0, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1041329201, region=1041322200, radius=5.0, seconds=2.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1041329202, region=1041322200, radius=5.0, seconds=1.0, animation_id=1702)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1041329203, region=1041322200, radius=5.0, seconds=0.0, animation_id=1701)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1041329204, region=1041322200, radius=5.0, seconds=2.0, animation_id=1702)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1041329205, region=1041322200, radius=5.0, seconds=1.0, animation_id=1702)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1041329206, region=1041322200, radius=5.0, seconds=0.0, animation_id=1701)
     CommonFunc_90005725(
         0,
         flag=4745,

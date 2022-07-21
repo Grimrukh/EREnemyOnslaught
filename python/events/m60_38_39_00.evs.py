@@ -24,7 +24,7 @@ from .entities.m60_38_39_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Skeleton0,
         animation_id=30018,
@@ -37,7 +37,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Skeleton1,
         animation_id=30018,
@@ -50,4 +50,4 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(0, 1038390210, 1038392210, 7.0, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1038390210, 1038392210, 7.0, 0.0, -1)

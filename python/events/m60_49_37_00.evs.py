@@ -25,14 +25,14 @@ from .entities.m60_49_37_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1049370000, asset=Assets.AEG099_060_9000)
-    CommonFunc_90005251(0, character=1049370200, radius=20.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005300(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1049370200, radius=20.0, seconds=0.0, animation_id=-1)
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1049370800,
+        dead_flag=1049370800,
         character=Characters.NightsCavalryHorse,
         item_lot_param_id=0,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     CommonFunc_90005476(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
     Event_1049372291(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
@@ -64,13 +64,13 @@ def Constructor():
         seconds=0.0,
     )
     Event_1049372299()
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1049370299,
+        dead_flag=1049370299,
         character=Characters.LionGuardian,
         item_lot_param_id=1049370700,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     CommonFunc_90005725(
         0,

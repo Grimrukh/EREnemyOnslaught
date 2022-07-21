@@ -46,7 +46,7 @@ def Constructor():
         flag_10=78118,
         flag_11=78119,
     )
-    CommonFunc_90005300(0, flag=1044330290, character=Characters.Scarab, item_lot_param_id=40140, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1044330290, character=Characters.Scarab, item_lot_param_id=40140, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005550(0, flag=1044330500, asset=1044331500, obj_act_id=44333500)
     CommonFunc_90005510(
         0,
@@ -236,15 +236,15 @@ def Preconstructor():
     DisableBackread(1044330700)
     DisableBackread(Characters.Merchant)
     DisableBackread(Characters.NomadMule)
-    CommonFunc_90005251(0, character=Characters.GodrickSoldier0, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.GodrickSoldier1, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.SmallerDog0, region=1044332233, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=1044330271, region=1044332233, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.SmallerDog1, region=1044332231, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.SmallerDog2, region=1044332231, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.SmallerDog3, region=1044332231, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.Troll, radius=3.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GodrickSoldier0, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GodrickSoldier1, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallerDog0, region=1044332233, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=1044330271, region=1044332233, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallerDog1, region=1044332231, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallerDog2, region=1044332231, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallerDog3, region=1044332231, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Troll, radius=3.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Misbegotten0,
         region=1044332260,
@@ -252,7 +252,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Misbegotten1,
         region=1044332260,
@@ -260,7 +260,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Misbegotten2,
         region=1044332260,
@@ -268,7 +268,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Misbegotten3,
         region=1044332260,
@@ -276,12 +276,12 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005251(0, character=Characters.Commoner0, radius=4.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.Commoner1, radius=4.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.Commoner2, radius=4.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.Commoner3, radius=4.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.Commoner4, radius=4.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(2, character=Characters.Commoner5, radius=4.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Commoner0, radius=4.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Commoner1, radius=4.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Commoner2, radius=4.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Commoner3, radius=4.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Commoner4, radius=4.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(2, character=Characters.Commoner5, radius=4.0, seconds=0.0, animation_id=-1)
     CommonFunc_90005201(
         0,
         character=Characters.Commoner0,
@@ -354,14 +354,14 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(0, character=Characters.Rat0, region=1044332220, radius=15.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.Rat1, region=1044332220, radius=15.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=1044330216, region=1044332220, radius=15.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.Rat2, region=1044332220, radius=15.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.Rat3, region=1044332220, radius=15.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.GiantRat, region=1044332220, radius=15.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.Commoner0, region=1044332200, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, 1044330201, 1044332200, 1.0, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat0, region=1044332220, radius=15.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat1, region=1044332220, radius=15.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1044330216, region=1044332220, radius=15.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat2, region=1044332220, radius=15.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat3, region=1044332220, radius=15.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.GiantRat, region=1044332220, radius=15.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Commoner0, region=1044332200, radius=1.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1044330201, 1044332200, 1.0, 0.0, -1)
 
 
 @NeverRestart(200)

@@ -34,7 +34,7 @@ def Constructor():
     Event_31212860()
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=0)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9001, vfx_id=100, model_point=800, right=0)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.GraveWardenDuelist,
         region=31212810,
@@ -184,7 +184,7 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     Event_31212205()
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia1,
         animation_id=30000,
@@ -197,7 +197,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia2,
         region=31212209,
@@ -205,7 +205,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia5,
         region=31212219,
@@ -213,7 +213,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia6,
         region=31212219,
@@ -221,7 +221,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia7,
         region=31212219,
@@ -526,14 +526,14 @@ def Preconstructor():
         left_3=0,
         patrol_information_id=0,
     )
-    CommonFunc_90005261(0, character=Characters.Rat0, region=31212300, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Rat1, region=31212305, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Rat2, region=31212316, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Rat3, region=31212316, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.Rat4, region=31212316, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat0, region=31212300, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat1, region=31212305, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat2, region=31212316, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat3, region=31212316, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat4, region=31212316, radius=2.0, seconds=0.0, animation_id=0)
     Event_31212308(0, character=31210306, region=31212306)
     Event_31212308(1, character=31210307, region=31212307)
-    CommonFunc_90005261(0, 31210330, 31212316, 2.0, 0.0, 0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 31210330, 31212316, 2.0, 0.0, 0)
 
 
 @RestartOnRest(31212500)
@@ -625,7 +625,7 @@ def Event_31212250(
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     AddSpecialEffect(character, 8081)
     AddSpecialEffect(character, 8082)
     ForceAnimation(character, animation_id, loop=True)
@@ -672,7 +672,7 @@ def Event_31212250(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     ChangePatrolBehavior(character, patrol_information_id=patrol_information_id)
     RemoveSpecialEffect(character, 8082)
@@ -682,7 +682,7 @@ def Event_31212250(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -986,4 +986,4 @@ def Event_31032849():
     )
     CommonFunc_9005811(0, flag=31210800, asset=Assets.AEG099_001_9000, model_point=3, right=31210801)
     CommonFunc_9005811(0, flag=31210800, asset=Assets.AEG099_001_9001, model_point=3, right=31210801)
-    CommonFunc_9005822(0, 31210800, 931000, 31212805, 31212806, 31212810, 31212852, 31212802, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 31210800, 931000, 31212805, 31212806, 31212810, 31212852, 31212802, 0)

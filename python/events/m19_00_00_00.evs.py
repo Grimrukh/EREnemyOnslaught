@@ -24,7 +24,7 @@ from .entities.m19_00_00_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_9005810(
+    CommonFunc_RegisterGraceIfFlagEnabled(
         0,
         flag=19000800,
         grace_flag=19000000,
@@ -697,7 +697,7 @@ def Event_19002849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=19000800, asset=Assets.AEG099_001_9000, model_point=5, right=19002801)
-    CommonFunc_9005822(0, 19000800, 219000, 19002805, 19002806, 0, 19002802, 0, 1)
+    CommonFunc_BossMusicPhaseTransition(0, 19000800, 219000, 19002805, 19002806, 0, 19002802, 0, 1)
 
 
 @RestartOnRest(19002900)

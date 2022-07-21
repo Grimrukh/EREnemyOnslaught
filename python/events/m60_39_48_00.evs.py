@@ -41,14 +41,14 @@ def Constructor():
     )
     Event_1039482610()
     Event_1039482611()
-    CommonFunc_90005300(0, 1039480340, 1039480340, 0, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, 1039480340, 1039480340, 0, 0.0, 0)
 
 
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
     Event_1039480519()
-    CommonFunc_90005251(0, 1039480200, 10.0, 0.0, 1700)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 1039480200, 10.0, 0.0, 1700)
 
 
 @RestartOnRest(1039482510)

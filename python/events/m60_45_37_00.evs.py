@@ -26,10 +26,10 @@ from .entities.m60_45_37_00_entities import *
 def Constructor():
     """Event 0"""
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9002, vfx_id=100, model_point=800, right=0)
-    CommonFunc_90005251(0, character=1045370201, radius=80.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=1045370207, radius=50.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=1045370214, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=1045370216, radius=50.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1045370201, radius=80.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1045370207, radius=50.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1045370214, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1045370216, radius=50.0, seconds=0.0, animation_id=-1)
     CommonFunc_90005511(
         0,
         flag=1045370560,
@@ -41,7 +41,7 @@ def Constructor():
     CommonFunc_90005512(0, flag=1045370560, region=1045372550, region_1=1045372551)
     CommonFunc_90005640(0, flag=1045370560, asset=Assets.AEG239_001_2000)
     Event_1045372230()
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.LargeDemiHuman,
         region=1045372240,
@@ -49,11 +49,11 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(0, character=Characters.DemiHuman0, region=1045372240, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.DemiHuman1, region=1045372240, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.DemiHuman2, region=1045372240, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.DemiHuman3, region=1045372240, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.Runebear2, radius=4.0, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.DemiHuman0, region=1045372240, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.DemiHuman1, region=1045372240, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.DemiHuman2, region=1045372240, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.DemiHuman3, region=1045372240, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Runebear2, radius=4.0, seconds=1.0, animation_id=-1)
     CommonFunc_90005201(
         0,
         character=Characters.Runebear1,
@@ -67,7 +67,7 @@ def Constructor():
         left_3=0,
     )
     Event_1045372344()
-    CommonFunc_90005300(0, flag=1045370200, character=Characters.Scarab, item_lot_param_id=40116, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1045370200, character=Characters.Scarab, item_lot_param_id=40116, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005400(0, character=Characters.Runebear3, special_effect_id=0, seconds=0.0, seconds_1=0.0, left=0)
     CommonFunc_90005401(0, flag=98101, character=Characters.Runebear3)
     CommonFunc_90005637(0, flag=1045378601, character=Characters.WanderingNoble, region=1045371620)

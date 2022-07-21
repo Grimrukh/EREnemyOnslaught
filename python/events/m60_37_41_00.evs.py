@@ -23,7 +23,7 @@ from .entities.m60_37_41_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia0,
         region=1037412200,
@@ -31,7 +31,7 @@ def Constructor():
         seconds=0.0,
         animation_id=3020,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia1,
         region=1037412200,
@@ -39,7 +39,7 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia2,
         region=1037412200,
@@ -47,7 +47,7 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia3,
         region=1037412200,
@@ -55,7 +55,7 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia4,
         region=1037412204,
@@ -63,7 +63,7 @@ def Constructor():
         seconds=0.0,
         animation_id=3020,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia5,
         region=1037412204,
@@ -71,7 +71,7 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia6,
         region=1037412204,

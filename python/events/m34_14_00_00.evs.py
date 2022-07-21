@@ -29,7 +29,7 @@ def Constructor():
     Event_34142850()
     Event_34140860()
     Event_34142899()
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.LeyndellSoldier,
         region=34142300,
@@ -472,7 +472,7 @@ def Event_34142875():
 @NeverRestart(34142899)
 def Event_34142899():
     """Event 34142899"""
-    CommonFunc_9005822(0, 34140850, 921200, 34142855, 34142856, 0, 0, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 34140850, 921200, 34142855, 34142856, 0, 0, 0, 0)
 
 
 @RestartOnRest(34140700)

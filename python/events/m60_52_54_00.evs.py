@@ -44,106 +44,106 @@ def Constructor():
         flag_11=78509,
     )
     Event_1052542200(0, character=1052545200)
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.LesserFingercreeper0,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=1052542304,
-        seconds=1.7000000476837158,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=1052542304,
+        trigger_delay=1.7000000476837158,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.LesserFingercreeper1,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=1052542304,
-        seconds=1.7000000476837158,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=1052542304,
+        trigger_delay=1.7000000476837158,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.LesserFingercreeper2,
-        animation_id=30004,
-        animation_id_1=20004,
-        region=1052542304,
-        seconds=1.7000000476837158,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30004,
+        active_animation=20004,
+        trigger_region=1052542304,
+        trigger_delay=1.7000000476837158,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Fingercreeper,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=1052542311,
-        seconds=1.899999976158142,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=1052542311,
+        trigger_delay=1.899999976158142,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=1052540320,
-        animation_id=30005,
-        animation_id_1=20005,
-        region=1052542320,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30005,
+        active_animation=20005,
+        trigger_region=1052542320,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.MassiveFingercreeper,
-        animation_id=30005,
-        animation_id_1=20005,
-        region=1052542321,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30005,
+        active_animation=20005,
+        trigger_region=1052542321,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=1052540322,
-        animation_id=30005,
-        animation_id_1=20005,
-        region=1052542322,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30005,
+        active_animation=20005,
+        trigger_region=1052542322,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.SnowTroll0,
-        animation_id=30003,
-        animation_id_1=20003,
-        region=1052542331,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30003,
+        active_animation=20003,
+        trigger_region=1052542331,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005261(0, character=Characters.SnowTroll2, region=1052542334, radius=50.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005300(0, flag=1052540491, character=Characters.SnowTroll0, item_lot_param_id=0, seconds=0.0, left=0)
-    CommonFunc_90005300(0, flag=1052540492, character=Characters.SnowTroll1, item_lot_param_id=0, seconds=0.0, left=0)
-    CommonFunc_90005300(0, flag=1052540494, character=Characters.SnowTroll2, item_lot_param_id=0, seconds=0.0, left=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.SnowTroll2, region=1052542334, radius=50.0, seconds=0.0, animation_id=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1052540491, character=Characters.SnowTroll0, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1052540492, character=Characters.SnowTroll1, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1052540494, character=Characters.SnowTroll2, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005771(0, 1052540950, 1052542700)
 
 

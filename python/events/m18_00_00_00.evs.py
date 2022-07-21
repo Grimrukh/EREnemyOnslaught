@@ -197,7 +197,7 @@ def Constructor():
     Event_18002640(0, region=18002651, tutorial_param_id=1020, flag=710020, item=9100, flag_1=69000)
     Event_18002640(1, region=18002656, tutorial_param_id=1070, flag=710070, item=9112, flag_1=69120)
     Event_18002640(2, region=18002663, tutorial_param_id=1140, flag=710140, item=9103, flag_1=69030)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.WanderingNoble3,
         region=18002202,
@@ -264,52 +264,52 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.Commoner)
-    CommonFunc_90005251(0, character=Characters.WanderingNoble1, radius=2.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=18000300, region=18002300, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.CastleGuard, radius=4.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.BanishedKnight, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.Imp0, radius=4.0, seconds=0.0, animation_id=3000)
-    CommonFunc_90005251(0, character=Characters.Imp1, radius=7.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.Imp2, radius=5.0, seconds=2.0, animation_id=-1)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble1, radius=2.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=18000300, region=18002300, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.CastleGuard, radius=4.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.BanishedKnight, radius=8.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Imp0, radius=4.0, seconds=0.0, animation_id=3000)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Imp1, radius=7.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Imp2, radius=5.0, seconds=2.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.GraftedScion0,
-        animation_id=30002,
-        animation_id_1=20002,
-        region=18002350,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30002,
+        active_animation=20002,
+        trigger_region=18002350,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.GraftedScion1,
-        animation_id=30002,
-        animation_id_1=20002,
-        region=18002350,
-        seconds=3.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30002,
+        active_animation=20002,
+        trigger_region=18002350,
+        trigger_delay=3.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=18000350,
+        dead_flag=18000350,
         character=Characters.GraftedScion0,
         item_lot_param_id=18002000,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=18000351,
+        dead_flag=18000351,
         character=Characters.GraftedScion1,
         item_lot_param_id=18002010,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     Event_18002520()
 
@@ -1317,7 +1317,7 @@ def Event_18000820():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=18000800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(0, 18000800, 920600, 18002805, 18002806, 0, 18002802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 18000800, 920600, 18002805, 18002806, 0, 18002802, 0, 0)
 
 
 @RestartOnRest(18002850)
@@ -1386,4 +1386,4 @@ def Event_18000870():
     )
     CommonFunc_9005811(0, flag=18000850, asset=Assets.AEG099_001_9010, model_point=3, right=0)
     CommonFunc_9005811(0, flag=18000850, asset=Assets.AEG099_001_9011, model_point=4, right=0)
-    CommonFunc_9005822(0, 18000850, 931000, 18002855, 18002856, 0, 18002852, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 18000850, 931000, 18002855, 18002856, 0, 18002852, 0, 0)

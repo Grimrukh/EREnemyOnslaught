@@ -30,7 +30,7 @@ def Constructor():
     RegisterGrace(grace_flag=71233, asset=Assets.AEG099_060_9003)
     RegisterGrace(grace_flag=71234, asset=Assets.AEG099_060_9004)
     RegisterGrace(grace_flag=71235, asset=Assets.AEG099_060_9005)
-    CommonFunc_9005810(
+    CommonFunc_RegisterGraceIfFlagEnabled(
         0,
         flag=12030800,
         grace_flag=71230,
@@ -82,64 +82,64 @@ def Constructor():
     Event_12032241(11, character=Characters.GiantAnt27, seconds=28.0)
     Event_12032241(12, character=Characters.GiantAnt28, seconds=25.0)
     Event_12032241(13, character=Characters.GiantAnt29, seconds=20.0)
-    CommonFunc_90005261(0, character=12030200, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.GiantAnt1, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.GiantAnt2, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.GiantAnt3, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.GiantAnt4, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(0, character=Characters.GiantAnt5, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005300(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=12030200, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.GiantAnt1, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.GiantAnt2, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.GiantAnt3, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.GiantAnt4, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.GiantAnt5, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=12030240,
+        dead_flag=12030240,
         character=Characters.GiantAnt14,
         item_lot_param_id=12030800,
-        seconds=1.5,
-        left=0,
+        reward_delay=1.5,
+        skip_reward=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=12030241,
+        dead_flag=12030241,
         character=Characters.GiantAnt15,
         item_lot_param_id=12030810,
-        seconds=1.5,
-        left=0,
+        reward_delay=1.5,
+        skip_reward=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=12030256,
+        dead_flag=12030256,
         character=Characters.GiantAnt30,
         item_lot_param_id=12030820,
-        seconds=1.5,
-        left=0,
+        reward_delay=1.5,
+        skip_reward=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=12030257,
+        dead_flag=12030257,
         character=Characters.GiantAnt31,
         item_lot_param_id=12030830,
-        seconds=1.5,
-        left=0,
+        reward_delay=1.5,
+        skip_reward=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=12030297,
+        dead_flag=12030297,
         character=Characters.GiantAnt13,
         item_lot_param_id=12030840,
-        seconds=1.5,
-        left=0,
+        reward_delay=1.5,
+        skip_reward=0,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=12030201,
+        dead_flag=12030201,
         character=Characters.GiantAnt0,
         item_lot_param_id=12030850,
-        seconds=1.5,
-        left=0,
+        reward_delay=1.5,
+        skip_reward=0,
     )
-    CommonFunc_90005251(0, character=12030303, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005300(0, flag=12030350, character=Characters.Scarab0, item_lot_param_id=40660, seconds=1.5, left=0)
-    CommonFunc_90005300(0, flag=12030354, character=Characters.Scarab1, item_lot_param_id=40668, seconds=1.5, left=0)
-    CommonFunc_90005300(0, flag=12030355, character=Characters.Scarab2, item_lot_param_id=40670, seconds=1.5, left=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=12030303, radius=8.0, seconds=0.0, animation_id=-1)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=12030350, character=Characters.Scarab0, item_lot_param_id=40660, reward_delay=1.5, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=12030354, character=Characters.Scarab1, item_lot_param_id=40668, reward_delay=1.5, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=12030355, character=Characters.Scarab2, item_lot_param_id=40670, reward_delay=1.5, skip_reward=0)
     CommonFunc_90005860(
         0,
         flag=12030390,
@@ -151,18 +151,18 @@ def Constructor():
     )
     CommonFunc_90005870(0, character=Characters.CrucibleKnight, name=902500600, npc_threat_level=12)
     CommonFunc_90005872(0, character=Characters.CrucibleKnight, npc_threat_level=12, right=0)
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=12030391,
+        dead_flag=12030391,
         character=Characters.ErdtreeAvatar,
         item_lot_param_id=12030960,
-        seconds=1.5,
-        left=0,
+        reward_delay=1.5,
+        skip_reward=0,
     )
-    CommonFunc_90005250(0, character=Characters.ErdtreeAvatar, region=12032391, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.ErdtreeAvatar, region=12032391, seconds=0.0, animation_id=-1)
     Event_12032504()
     Event_12032509()
-    CommonFunc_90005251(0, character=Characters.WalkingMausoleum, radius=200.0, seconds=10.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WalkingMausoleum, radius=200.0, seconds=10.0, animation_id=-1)
     CommonFunc_90005451(0, character=Characters.WalkingMausoleum, asset_group=12036420)
     CommonFunc_90005452(0, character=Characters.WalkingMausoleum, flag=12030400)
     CommonFunc_90005454(0, character=Characters.WalkingMausoleum, flag=12032400, flag_1=12030400)
@@ -1317,7 +1317,7 @@ def Event_12032849():
     )
     Event_12032840()
     RunCommonEvent(12032842, slot=0, args=(12030800, 12031800, 5, 12030801), arg_types="IIiI")
-    CommonFunc_9005822(0, 12030800, 921100, 12032805, 12032806, 12032803, 0, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 12030800, 921100, 12032805, 12032806, 12032803, 0, 0, 0)
 
 
 @RestartOnRest(12032859)
@@ -1465,7 +1465,7 @@ def Event_12032896(_, flag: uint, flag_1: uint, flag_2: uint):
 def Event_12032899():
     """Event 12032899"""
     RunCommonEvent(12032896, slot=0, args=(12030850, 12032860, 12032856), arg_types="III")
-    CommonFunc_9005822(0, 12030850, 451000, 12032860, 12032856, 12030852, 12032852, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 12030850, 451000, 12032860, 12032856, 12030852, 12032852, 0, 0)
 
 
 @RestartOnRest(12032861)

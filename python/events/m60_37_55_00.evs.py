@@ -24,8 +24,8 @@ from .entities.m60_37_55_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    EnableCharacterCollision(0)
-    CommonFunc_90005261(
+    DisableCharacterCollision(0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.DemiHumanShaman0,
         region=1037552200,
@@ -33,7 +33,7 @@ def Constructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         1,
         character=Characters.DemiHumanShaman1,
         region=1037552200,
@@ -43,7 +43,7 @@ def Constructor():
     )
     Event_1037552200(0, character=Characters.DemiHumanShaman0, region=1037552200)
     Event_1037552200(1, character=Characters.DemiHumanShaman1, region=1037552200)
-    CommonFunc_90005261(0, 1037550205, 1037552205, 10.0, 0.0, 0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1037550205, 1037552205, 10.0, 0.0, 0)
 
 
 @RestartOnRest(1037552200)

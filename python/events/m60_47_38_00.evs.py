@@ -165,24 +165,24 @@ def Constructor():
         right=0,
     )
     CommonFunc_90005637(0, flag=31218690, character=Characters.WanderingNoble, region=1047382625)
-    CommonFunc_90005251(0, character=1047380294, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=1047380296, region=1047382296, seconds=0.0, animation_id=-1)
-    CommonFunc_90005300(
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1047380294, radius=8.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=1047380296, region=1047382296, seconds=0.0, animation_id=-1)
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1047380299,
+        dead_flag=1047380299,
         character=Characters.LionGuardian,
         item_lot_param_id=1047380700,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
-    CommonFunc_90005250(0, character=1047380301, region=1047382453, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.KindredofRot0, region=1047382302, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.KindredofRot1, region=1047382302, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=1047380307, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.KindredofRot2, region=1047382302, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.FungalSorcerer0, region=1047382450, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.FungalSorcerer1, radius=15.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.RedmaneKnight, region=1047382474, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=1047380301, region=1047382453, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.KindredofRot0, region=1047382302, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.KindredofRot1, region=1047382302, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=1047380307, radius=8.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.KindredofRot2, region=1047382302, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.FungalSorcerer0, region=1047382450, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.FungalSorcerer1, radius=15.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RedmaneKnight, region=1047382474, seconds=0.0, animation_id=-1)
     CommonFunc_90005513(
         0,
         flag=1047380540,

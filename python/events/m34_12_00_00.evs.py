@@ -156,9 +156,9 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     Event_34120519()
-    CommonFunc_90005250(0, character=Characters.VulgarMilitia0, region=34122201, seconds=0.5, animation_id=3020)
-    CommonFunc_90005251(0, character=Characters.VulgarMilitia0, radius=2.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.VulgarMilitia0, region=34122201, seconds=0.5, animation_id=3020)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.VulgarMilitia0, radius=2.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia1,
         region=34122210,
@@ -166,11 +166,11 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005250(0, character=Characters.VulgarMilitia2, region=34122211, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.VulgarMilitia3, region=34122211, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.VulgarMilitia4, radius=16.0, seconds=0.0, animation_id=3020)
-    CommonFunc_90005250(0, character=Characters.VulgarMilitia5, region=34122210, seconds=0.5, animation_id=3020)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.VulgarMilitia2, region=34122211, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.VulgarMilitia3, region=34122211, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.VulgarMilitia4, radius=16.0, seconds=0.0, animation_id=3020)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.VulgarMilitia5, region=34122210, seconds=0.5, animation_id=3020)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.VulgarMilitia6,
         region=34122216,
@@ -178,18 +178,18 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005250(0, character=34120250, region=34122250, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=34120251, region=34122250, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=34120255, region=34122255, seconds=0.20000000298023224, animation_id=-1)
-    CommonFunc_90005250(0, character=34120256, region=34122255, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=34120257, region=34122255, seconds=0.5, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AbnormalStoneCluster0, region=34122258, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AbnormalStoneCluster1, region=34122258, seconds=1.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AbnormalStoneCluster2, region=34122260, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AbnormalStoneCluster3, region=34122261, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AbnormalStoneCluster4, region=34122263, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AbnormalStoneCluster5, region=34122263, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AbnormalStoneCluster6, region=34122263, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=34120250, region=34122250, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=34120251, region=34122250, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=34120255, region=34122255, seconds=0.20000000298023224, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=34120256, region=34122255, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=34120257, region=34122255, seconds=0.5, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AbnormalStoneCluster0, region=34122258, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AbnormalStoneCluster1, region=34122258, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AbnormalStoneCluster2, region=34122260, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AbnormalStoneCluster3, region=34122261, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AbnormalStoneCluster4, region=34122263, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AbnormalStoneCluster5, region=34122263, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AbnormalStoneCluster6, region=34122263, seconds=0.0, animation_id=-1)
     CommonFunc_90005260(
         0,
         character=Characters.AbnormalStoneCluster7,
@@ -214,14 +214,14 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005250(0, character=Characters.AbnormalStoneCluster10, region=34122268, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AbnormalStoneCluster11, region=34122270, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AbnormalStoneCluster12, region=34122270, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AbnormalStoneCluster13, region=34122270, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.AbnormalStoneCluster14, region=34122270, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.TunnelMiner0, region=34122300, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.TunnelMiner4, region=34122305, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, 34120350, 34122350, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AbnormalStoneCluster10, region=34122268, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AbnormalStoneCluster11, region=34122270, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AbnormalStoneCluster12, region=34122270, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AbnormalStoneCluster13, region=34122270, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AbnormalStoneCluster14, region=34122270, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner0, region=34122300, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner4, region=34122305, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, 34120350, 34122350, 0.0, -1)
 
 
 @NeverRestart(34122510)
@@ -303,7 +303,7 @@ def Event_32012200(
         return
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -381,7 +381,7 @@ def Event_32012200(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     AddSpecialEffect(character, 16571)
     AddSpecialEffect(character, special_effect_id)
     ForceAnimation(character, animation_id_1, loop=True)
@@ -391,7 +391,7 @@ def Event_32012200(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -521,15 +521,15 @@ def Event_34122849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=34120800, asset=Assets.AEG099_003_9000, model_point=3, right=34120801)
-    CommonFunc_9005822(
+    CommonFunc_BossMusicPhaseTransition(
         0,
-        flag=34120800,
+        dead_flag=34120800,
         bgm_boss_conv_param_id=931000,
-        flag_1=34122805,
-        flag_2=34122806,
-        right=0,
-        flag_3=34122802,
-        left=0,
-        left_1=0,
+        host_in_battle=34122805,
+        summon_in_battle=34122806,
+        extra_required_flag=0,
+        phase_two_flag=34122802,
+        useless_phase_two_check=0,
+        use_stop_type_1=0,
     )
     CommonFunc_9005811(0, 34120800, 34121801, 3, 34120801)

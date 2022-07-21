@@ -35,13 +35,13 @@ def Constructor():
     Event_1043342220(4, character=Characters.DemiHuman4, asset=Assets.AEG801_480_9004, region=1043342223)
     Event_1043342220(5, character=1043340225, asset=1043341225, region=1043342223)
     CommonFunc_90005683(0, flag=62150, asset=Assets.AEG099_055_1001, vfx_id=210, flag_1=78196, flag_2=78196)
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1043340340,
+        dead_flag=1043340340,
         character=Characters.DemiHumanQueen,
         item_lot_param_id=1043340400,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     CommonFunc_90005706(0, character=Characters.Commoner, animation_id=930025, left=Assets.AEG099_590_9000)
     CommonFunc_90005771(0, 1043340950, 1043342700)
@@ -63,7 +63,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.ErdtreeGuardian1,
         animation_id=30004,
@@ -76,7 +76,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.ErdtreeGuardian2,
         animation_id=30004,
@@ -89,7 +89,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.ErdtreeGuardian3,
         animation_id=30004,
@@ -102,7 +102,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005250(0, 1043340300, 1043342300, 0.0, 3031)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, 1043340300, 1043342300, 0.0, 3031)
 
 
 @RestartOnRest(1043342220)

@@ -24,7 +24,7 @@ from .entities.m60_42_50_00_entities import *
 @NeverRestart(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005300(0, 1042500300, 1042500300, 1042500020, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, 1042500300, 1042500300, 1042500020, 0.0, 0)
 
 
 @NeverRestart(50)
@@ -54,4 +54,4 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005251(0, 1042500351, 100.0, 0.0, 0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 1042500351, 100.0, 0.0, 0)

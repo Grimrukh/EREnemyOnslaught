@@ -1,6 +1,22 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    GodrickDead = 10000800
+    MargitDead = 10000850  # also his entity ID
+
+
+class NameText(NPCName):
+    MargitTheFellOmen = 902130000
+    UncleMerbit = 902130010
+    GodrickTheGrafted = 904750000
+    GodefroyTheGratuitous = 904750010
+
+
+class CharacterGroups(Character):
+    Godrick = 10005800
+
+
 class Characters(Character):
     SorcererRogier0 = 10000715  # c0000_9026 col h005700 npc 523250114 think 523250000 chara 23250 talk 325001000
     SorcererRogier1 = 10000740  # c0000_9027 col h012500 npc 523250214 think 1 chara 23250
@@ -26,6 +42,7 @@ class Characters(Character):
     TalkDummy12 = 10000106  # c1000_9023 col h014000 npc 10001000 think 1 talk 2000
     TalkDummy13 = 10000108  # c1000_9024 col h001200 npc 10001000 think 1 talk 2000
     Margit = 10000850  # c2130_9000 col h001200 npc 21300014 think 21300000 talk 204101000 group 10005850,10005108
+    MargitClone = 10000851
     Omen = 10000620  # c2140_9000 col h008000 npc 21400114 think 21400000 group 10005370,10005104
     CrucibleKnight = 10000498  # c2500_9000 col h015600 npc 25000014 think 25000050
     CastleGuard0 = 10000300  # c3000_9000 col h003000 npc 30003214 think 30003000
@@ -154,7 +171,8 @@ class Characters(Character):
     Troll = 10000660  # c4600_9000 col h010300 npc 46000014 think 46000000 group 10005100
     UlceratedTreeSpirit = 10000291  # c4640_9000 col h012500 npc 46400014 think 46400000
     GraftedScion = 10000280  # c4690_9000 col h007100 npc 46900014 think 46900000
-    GodricktheGrafted = 10000800  # c4750_9000 col h014000 npc 47500014 think 47500000 talk 207101000 group 10005800,10005106
+    Godrick = 10000800  # c4750_9000 col h014000 npc 47500014 think 47500000 talk 207101000 group 10005800,10005106
+    GodrickClone = 10000801
     DefeatedGodrick = 10000720  # c4751_9000 col h014000 npc 47510014 think 500000000
     Eagle0 = 10000580  # c6001_9000 col h013300 npc 60010014 think 60010000 group 10005580
     Eagle1 = 10000581  # c6001_9001 col h013300 npc 60010014 think 60010000 group 10005580

@@ -58,7 +58,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton0,
         animation_id=30003,
@@ -71,7 +71,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton1,
         animation_id=30003,
@@ -84,7 +84,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton2,
         animation_id=30003,
@@ -97,7 +97,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton3,
         animation_id=30003,
@@ -110,7 +110,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton5,
         animation_id=30003,
@@ -123,7 +123,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton6,
         animation_id=30003,
@@ -160,7 +160,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton9,
         animation_id=30003,
@@ -173,7 +173,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton10,
         animation_id=30003,
@@ -186,7 +186,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton11,
         animation_id=30003,
@@ -199,7 +199,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton12,
         animation_id=30003,
@@ -212,7 +212,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton13,
         animation_id=30003,
@@ -225,7 +225,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton14,
         animation_id=30003,
@@ -238,7 +238,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton15,
         animation_id=30003,
@@ -251,7 +251,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.CatacombsSkeleton16,
         animation_id=30003,
@@ -264,7 +264,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005211(0, 30110217, 30003, 20003, 30112217, 3.0, 8.5, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 30110217, 30003, 20003, 30112217, 3.0, 8.5, 0, 0, 0, 0)
 
 
 @NeverRestart(30112580)
@@ -384,7 +384,7 @@ def Event_30112849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=30110800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_9005822(0, 30110800, 921500, 30112805, 30112806, 0, 30112802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 30110800, 921500, 30112805, 30112806, 0, 30112802, 0, 0)
 
 
 @RestartOnRest(30112900)

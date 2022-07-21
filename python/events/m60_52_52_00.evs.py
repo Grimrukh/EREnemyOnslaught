@@ -644,4 +644,4 @@ def Event_1052522849():
     CommonFunc_9005811(0, flag=1252520800, asset=m60_52_Assets.AEG099_003_9001, model_point=10, right=1252520804)
     CommonFunc_9005811(0, flag=1252520800, asset=Assets.AEG099_019_1000, model_point=0, right=1252520804)
     CommonFunc_9005811(0, flag=1252520800, asset=m60_52_Assets.AEG099_017_1000, model_point=0, right=1252520804)
-    CommonFunc_9005822(0, 1252520800, 476000, 1252522805, 1252522806, 0, 1252522802, 1, 1)
+    CommonFunc_BossMusicPhaseTransition(0, 1252520800, 476000, 1252522805, 1252522806, 0, 1252522802, 1, 1)

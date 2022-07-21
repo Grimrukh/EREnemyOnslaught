@@ -143,8 +143,8 @@ def Preconstructor():
     DisableBackread(Characters.YuraHunterofBloodyFingers1)
     DisableBackread(Characters.YuraHunterofBloodyFingers0)
     DisableBackread(Characters.BloodyFingerRavenmountAssassin)
-    CommonFunc_90005251(0, character=Characters.Wolf0, radius=7.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, 1035460213, 7.0, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Wolf0, radius=7.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 1035460213, 7.0, 0.0, -1)
 
 
 @RestartOnRest(1035462145)

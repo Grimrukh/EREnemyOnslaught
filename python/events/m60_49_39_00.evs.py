@@ -42,7 +42,7 @@ def Constructor():
         flag_10=78408,
         flag_11=78409,
     )
-    CommonFunc_9005810(
+    CommonFunc_RegisterGraceIfFlagEnabled(
         0,
         flag=1049390800,
         grace_flag=1049390001,
@@ -147,9 +147,9 @@ def Constructor():
         left=0,
         left_1=1,
     )
-    CommonFunc_90005251(0, character=Characters.RayaLucariaScholar0, radius=17.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.RayaLucariaScholar4, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, character=Characters.RayaLucariaScholar7, radius=17.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.RayaLucariaScholar0, radius=17.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.RayaLucariaScholar4, radius=8.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.RayaLucariaScholar7, radius=17.0, seconds=0.0, animation_id=-1)
     Event_1049392200(0, character=Characters.RayaLucariaScholar0, special_effect_id=14809)
     Event_1049392200(1, character=Characters.RayaLucariaScholar1, special_effect_id=14807)
     Event_1049392200(2, character=Characters.RayaLucariaScholar2, special_effect_id=14809)
@@ -178,12 +178,12 @@ def Constructor():
         region_1=1049392298,
         region_2=1049392297,
     )
-    CommonFunc_90005300(0, flag=1049390299, character=Characters.Scarab0, item_lot_param_id=40418, seconds=0.0, left=0)
-    CommonFunc_90005300(0, flag=1049390298, character=Characters.Scarab1, item_lot_param_id=40416, seconds=0.0, left=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1049390299, character=Characters.Scarab0, item_lot_param_id=40418, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1049390298, character=Characters.Scarab1, item_lot_param_id=40416, reward_delay=0.0, skip_reward=0)
     Event_1049392201(0, character=Characters.WanderingNoble0, special_effect_id=10113, seconds=3.0, seconds_1=5.0)
     Event_1049392201(2, character=Characters.WanderingNoble2, special_effect_id=10113, seconds=6.0, seconds_1=2.0)
     Event_1049392201(3, character=Characters.RayaLucariaScholar3, special_effect_id=10113, seconds=9.0, seconds_1=3.0)
-    CommonFunc_90005250(0, 1049390405, 1049392405, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, 1049390405, 1049392405, 0.0, -1)
 
 
 @RestartOnRest(1049392200)
@@ -533,4 +533,4 @@ def Event_1049392849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=1049390800, asset=Assets.AEG099_002_9000, model_point=4, right=0)
-    CommonFunc_9005822(0, 1049390800, 920900, 1049392805, 1049392806, 0, 1049392802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 1049390800, 920900, 1049392805, 1049392806, 0, 1049392802, 0, 0)

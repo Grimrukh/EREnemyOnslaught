@@ -44,13 +44,13 @@ def Constructor():
         flag_10=78528,
         flag_11=78529,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1049540200,
+        dead_flag=1049540200,
         character=Characters.Scarab,
         item_lot_param_id=1049540700,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     CommonFunc_90005501(
         0,
@@ -66,8 +66,8 @@ def Constructor():
     CommonFunc_90005640(0, flag=1049540540, asset=1049541540)
     Event_1049542210()
     Event_1049542216(0, character=Characters.WanderingNoble3)
-    CommonFunc_90005261(0, character=Characters.Wolf, region=1049542260, radius=10.0, seconds=0.0, animation_id=20010)
-    CommonFunc_90005261(0, character=1049540373, region=1049542260, radius=10.0, seconds=0.0, animation_id=20002)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Wolf, region=1049542260, radius=10.0, seconds=0.0, animation_id=20010)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1049540373, region=1049542260, radius=10.0, seconds=0.0, animation_id=20002)
     Event_1049542350(0, character__region=1049540350, character=Characters.BigWolf)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9001, vfx_id=100, model_point=800, right=0)
     Event_1049543700(0, character=Characters.TalkDummy1, region=1049542700, distance=155.0)
@@ -317,7 +317,7 @@ def Event_200():
     )
     CommonFunc_90005423(0, character=Characters.SnowTroll0)
     CommonFunc_90005423(0, character=Characters.SnowTroll1)
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.CaravanDummy,
         region=1249542300,
@@ -325,9 +325,9 @@ def Event_200():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005261(0, character=Characters.Dummy, region=1249542300, radius=10.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, character=Characters.SnowTroll0, region=1249542300, radius=10.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005261(0, 1249540303, 1249542300, 10.0, 0.0, 0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Dummy, region=1249542300, radius=10.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.SnowTroll0, region=1249542300, radius=10.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1249540303, 1249542300, 10.0, 0.0, 0)
 
 
 @NeverRestart(250)

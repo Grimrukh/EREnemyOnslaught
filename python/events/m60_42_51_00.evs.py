@@ -43,13 +43,13 @@ def Constructor():
         flag_10=78308,
         flag_11=78309,
     )
-    CommonFunc_90005300(
+    CommonFunc_NonRespawningWithReward(
         0,
-        flag=1042510300,
+        dead_flag=1042510300,
         character=Characters.Gargoyle,
         item_lot_param_id=1042510900,
-        seconds=0.0,
-        left=0,
+        reward_delay=0.0,
+        skip_reward=0,
     )
     Event_1042512240(0, 1042511690, 1042511691, 62031)
 
@@ -57,7 +57,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005200(0, 1042510300, 30004, 20004, 1042512301, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(0, 1042510300, 30004, 20004, 1042512301, 0.0, 0, 0, 0, 0)
 
 
 @RestartOnRest(1042512240)

@@ -103,8 +103,8 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005251(0, character=Characters.LargeCrabSnow, radius=15.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005251(0, 1035480210, 1.0, 0.0, -1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.LargeCrabSnow, radius=15.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, 1035480210, 1.0, 0.0, -1)
 
 
 @RestartOnRest(1035482210)

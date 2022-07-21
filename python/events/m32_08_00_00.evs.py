@@ -134,63 +134,63 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     Event_32082820()
-    CommonFunc_90005250(0, character=Characters.GlintstoneMiner5, region=32082211, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.GlintstoneMiner6, region=32082302, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.GlintstoneMiner7, region=32082217, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.GlintstoneMiner8, region=32082217, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.BigGlintstoneMiner, region=32082250, seconds=0.0, animation_id=-1)
-    CommonFunc_90005200(
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GlintstoneMiner5, region=32082211, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GlintstoneMiner6, region=32082302, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GlintstoneMiner7, region=32082217, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GlintstoneMiner8, region=32082217, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BigGlintstoneMiner, region=32082250, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.KindredofRot0,
-        animation_id=30009,
-        animation_id_1=20029,
-        region=32082300,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30009,
+        active_animation=20029,
+        trigger_region=32082300,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.KindredofRot1,
-        animation_id=30009,
-        animation_id_1=20029,
-        region=32082301,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30009,
+        active_animation=20029,
+        trigger_region=32082301,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.KindredofRot2,
-        animation_id=30009,
-        animation_id_1=20029,
-        region=32082302,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30009,
+        active_animation=20029,
+        trigger_region=32082302,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005200(
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.KindredofRot3,
-        animation_id=30009,
-        animation_id_1=20029,
-        region=32082303,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        inactive_animation=30009,
+        active_animation=20029,
+        trigger_region=32082303,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005250(0, character=32080305, region=32082305, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.KindredofRot4, region=32082306, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, character=Characters.KindredofRot5, region=32082306, seconds=0.0, animation_id=-1)
-    CommonFunc_90005250(0, 32080308, 32082308, 0.0, 3008)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=32080305, region=32082305, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.KindredofRot4, region=32082306, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.KindredofRot5, region=32082306, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, 32080308, 32082308, 0.0, 3008)
 
 
 @RestartOnRest(32082580)
@@ -236,7 +236,7 @@ def Event_32082200(
         return
     if UnsignedNotEqual(left=left, right=0):
         DisableGravity(character)
-        EnableCharacterCollision(character)
+        DisableCharacterCollision(character)
     ForceAnimation(character, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -314,7 +314,7 @@ def Event_32082200(
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     ForceAnimation(character, animation_id_1, loop=True)
     End()
 
@@ -322,7 +322,7 @@ def Event_32082200(
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
         EnableGravity(character)
-        DisableCharacterCollision(character)
+        EnableCharacterCollision(character)
     End()
 
 
@@ -448,4 +448,4 @@ def Event_32082849():
         action_button_id=10000,
     )
     CommonFunc_9005811(0, flag=32080800, asset=Assets.AEG099_003_9000, model_point=7, right=32080801)
-    CommonFunc_9005822(0, 32080800, 920800, 32082805, 32082806, 0, 32082802, 0, 0)
+    CommonFunc_BossMusicPhaseTransition(0, 32080800, 920800, 32082805, 32082806, 0, 32082802, 0, 0)

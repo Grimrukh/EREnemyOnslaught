@@ -184,7 +184,7 @@ def Constructor():
 @NeverRestart(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005211(
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=1034470340,
         animation_id=30005,
@@ -197,7 +197,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower0,
         region=1034472200,
@@ -205,7 +205,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower1,
         region=1034472200,
@@ -213,7 +213,7 @@ def Preconstructor():
         seconds=2.0,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower2,
         region=1034472200,
@@ -221,7 +221,7 @@ def Preconstructor():
         seconds=1.0,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower3,
         region=1034472200,
@@ -229,7 +229,7 @@ def Preconstructor():
         seconds=0.5,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower4,
         region=1034472200,
@@ -237,7 +237,7 @@ def Preconstructor():
         seconds=1.5,
         animation_id=1705,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RevenantFollower5,
         region=1034472200,
@@ -245,7 +245,7 @@ def Preconstructor():
         seconds=0.0,
         animation_id=1705,
     )
-    CommonFunc_90005261(0, 1034470206, 1034472200, 5.0, 2.0, 1705)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1034470206, 1034472200, 5.0, 2.0, 1705)
 
 
 @RestartOnRest(1034472260)

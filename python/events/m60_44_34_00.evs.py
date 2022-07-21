@@ -70,9 +70,9 @@ def Constructor():
     Event_1044342300(1, character=Characters.DemiHuman5, asset=Assets.AEG801_480_9002, region=1044342301)
     Event_1044342300(2, character=Characters.DemiHuman6, asset=Assets.AEG801_480_9001, region=1044342301)
     Event_1044342203(0, character=Characters.GodrickFootSoldier1)
-    CommonFunc_90005250(0, character=Characters.GodrickFootSoldier1, region=1044342280, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GodrickFootSoldier1, region=1044342280, seconds=0.0, animation_id=-1)
     Event_1044342280()
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Misbegotten0,
         region=1044342270,
@@ -80,7 +80,7 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005261(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Misbegotten1,
         region=1044342270,
@@ -92,8 +92,8 @@ def Constructor():
     Event_1044342230(1, character=1044340231)
     Event_1044342230(2, character=1044340232)
     Event_1044342230(3, character=1044340240)
-    CommonFunc_90005251(0, character=Characters.GodrickFootSoldier2, radius=8.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005250(0, character=Characters.GodrickFootSoldier0, region=1044342600, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GodrickFootSoldier2, radius=8.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GodrickFootSoldier0, region=1044342600, seconds=0.0, animation_id=-1)
     CommonFunc_90005630(0, far_view_id=61443400, asset=1044341500, model_point=127)
     Event_1044343700(0, character=1044340700, character_1=1044340701, character_2=1044340702, asset=1044346700)
     Event_1044343702(0, character=1044340700)
