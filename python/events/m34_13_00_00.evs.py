@@ -35,7 +35,7 @@ def Constructor():
         flag=192,
         flag_1=9130,
         asset=Assets.AEG099_991_9000,
-        item_lot_param_id=34130050,
+        item_lot=34130050,
         item=8149,
         model_point=806930,
         action_button_id=9081,
@@ -278,7 +278,7 @@ def Event_34132849():
         summon_entered_fog_flag=34132806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=34130800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=34130800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(
         0,
         dead_flag=34130800,
@@ -310,6 +310,6 @@ def Event_34132849():
         summon_entered_fog_flag=31122806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=34130800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=34130800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_9005812(0, flag=34130800, asset=Assets.AEG099_001_9001, model_point=3, right=0, model_point_1=0)
     CommonFunc_ControlBossMusic(0, 34130800, 356000, 34132805, 34132806, 0, 0, 0, 0)

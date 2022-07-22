@@ -146,7 +146,7 @@ def Constructor():
 @ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1037520355, character=1037525350, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1037520355, character=1037525350, item_lot=0, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005600(0, grace_flag=1037520001, asset=Assets.AEG099_060_9001, enemy_block_distance=5.0, character=0)
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,

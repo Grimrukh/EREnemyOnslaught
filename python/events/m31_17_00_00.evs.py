@@ -393,7 +393,7 @@ def Event_31172218(_, character: uint, region: uint, radius: float, seconds: flo
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -432,7 +432,7 @@ def Event_31172499():
     if FlagEnabled(31170800):
         return
     OR_1.Add(CharacterInsideRegion(character=PLAYER, region=31172390))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.GuardianGolem, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.GuardianGolem))
     OR_2.Add(CharacterHasStateInfo(character=Characters.GuardianGolem, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=Characters.GuardianGolem, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=Characters.GuardianGolem, state_info=5))
@@ -528,7 +528,7 @@ def Event_31172849():
         summon_entered_fog_flag=31172806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=31170800, fog_asset=Assets.AEG099_002_9000, model_point=5, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=31170800, fog_asset=Assets.AEG099_002_9000, model_point=5, required_flag=0)
     CommonFunc_ControlBossMusic(0, 31170800, 931000, 31172805, 31172806, 31172499, 31172802, 0, 0)
 
 

@@ -32,14 +32,14 @@ def Constructor():
         asset=Assets.AEG099_060_9000,
         enemy_block_distance=5.0,
     )
-    CommonFunc_90005870(0, character=Characters.GodskinApostle, name=903560600, npc_threat_level=27)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.GodskinApostle, name=903560600, npc_threat_level=27)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1042550800,
-        left=0,
-        character=Characters.GodskinApostle,
-        left_1=0,
-        item_lot__item_lot_param_id=30325,
+        dead_flag=1042550800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.GodskinApostle,
+        boss_banner_choice=0,
+        item_lot=30325,
         seconds=0.0,
     )
     CommonFunc_90005780(

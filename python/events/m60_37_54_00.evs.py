@@ -27,7 +27,7 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GraftedScion, region=1037542341, seconds=0.0, animation_id=0)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GraftedScion, region=1037542342, seconds=0.0, animation_id=0)
     Event_1037542500()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1037540341, character=Characters.GraftedScion, item_lot_param_id=0, reward_delay=3.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1037540341, character=Characters.GraftedScion, item_lot=0, reward_delay=3.0, skip_reward=0)
     CommonFunc_90005271(0, character=Characters.LeyndellSoldier0, seconds=0.0, animation_id=-1)
     Event_1037542260()
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Marionette2, region=1037542250, seconds=0.0, animation_id=0)
@@ -192,14 +192,14 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005870(0, character=Characters.UlceratedTreeSpirit, name=904640600, npc_threat_level=18)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.UlceratedTreeSpirit, name=904640600, npc_threat_level=18)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1037540810,
-        left=0,
-        character=Characters.UlceratedTreeSpirit,
-        left_1=0,
-        item_lot__item_lot_param_id=30380,
+        dead_flag=1037540810,
+        extra_flag_to_enable=0,
+        boss_character=Characters.UlceratedTreeSpirit,
+        boss_banner_choice=0,
+        item_lot=30380,
         seconds=0.0,
     )
     CommonFunc_90005872(0, character=Characters.UlceratedTreeSpirit, npc_threat_level=18, right=0)

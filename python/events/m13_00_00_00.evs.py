@@ -102,22 +102,22 @@ def Constructor():
     )
     Event_13002892()
     Event_13002236(0, region=13002314, character=Characters.BeastmanofFarumAzula29)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=13000340, character=13000340, item_lot_param_id=40770, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=13000341, character=Characters.Scarab, item_lot_param_id=40772, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=13000342, character=13000342, item_lot_param_id=40774, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=13000343, character=13000343, item_lot_param_id=40776, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=13000369, character=Characters.WormfaceLarge, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=13000340, character=13000340, item_lot=40770, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=13000341, character=Characters.Scarab, item_lot=40772, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=13000342, character=13000342, item_lot=40774, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=13000343, character=13000343, item_lot=40776, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=13000369, character=Characters.WormfaceLarge, item_lot=0, reward_delay=0.0, skip_reward=0)
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=13000490,
         character=Characters.AncientDragon0,
-        item_lot_param_id=13002091,
+        item_lot=13002091,
         reward_delay=0.0,
         skip_reward=0,
     )
     Event_13002493(0, character=Characters.AncientDragon0, region=13002641, region_1=13002640)
     Event_13002646(0, flag=13000492, region=13002492, character=Characters.AncientDragon1, seconds=10.0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=13000494, character=Characters.AncientDragon2, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=13000494, character=Characters.AncientDragon2, item_lot=0, reward_delay=0.0, skip_reward=0)
     Event_13002493(2, character=Characters.AncientDragon2, region=13002645, region_1=13002494)
     Event_13002646(1, flag=13000494, region=13002646, character=Characters.AncientDragon2, seconds=10.0)
     Event_13002610()
@@ -125,19 +125,19 @@ def Constructor():
         0,
         dead_flag=13000495,
         character=Characters.AncientDragon3,
-        item_lot_param_id=13002093,
+        item_lot=13002093,
         reward_delay=0.0,
         skip_reward=0,
     )
     Event_13002646(2, flag=13000495, region=13002495, character=Characters.AncientDragon3, seconds=1.0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=13000701, character=Characters.AncientDragon4, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=13000702, character=Characters.AncientDragon5, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=13000701, character=Characters.AncientDragon4, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=13000702, character=Characters.AncientDragon5, item_lot=0, reward_delay=0.0, skip_reward=0)
     Event_13002493(3, character=Characters.AncientDragon5, region=13002497, region_1=13002493)
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=13000295,
         character=Characters.CrucibleKnight0,
-        item_lot_param_id=0,
+        item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -145,7 +145,7 @@ def Constructor():
         0,
         dead_flag=13000296,
         character=Characters.CrucibleKnight1,
-        item_lot_param_id=0,
+        item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -153,7 +153,7 @@ def Constructor():
         0,
         dead_flag=13000496,
         character=Characters.DraconicTreeSentinel,
-        item_lot_param_id=13002095,
+        item_lot=13002095,
         reward_delay=2.0,
         skip_reward=0,
     )
@@ -287,7 +287,7 @@ def Constructor():
         flag_1=13002181,
         flag_2=13002182,
         character=Characters.RecusantBernahl0,
-        item_lot_param_id=102920,
+        item_lot=102920,
         seconds=0.0,
     )
     RunCommonEvent(
@@ -316,7 +316,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_990_9009,
         action_button_id=4110,
-        item_lot_param_id=101740,
+        item_lot=101740,
         first_flag=400174,
         last_flag=400174,
         flag=13009254,
@@ -330,53 +330,53 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     Event_13000519()
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.BeastmanofFarumAzula0,
-        animation_id=30003,
-        animation_id_1=20003,
+        inactive_animation=30003,
+        active_animation=20003,
         radius=2.0,
-        seconds=0.0,
-        left=0,
-        left_1=1,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=1,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.BeastmanofFarumAzula1,
-        animation_id=30003,
-        animation_id_1=20003,
+        inactive_animation=30003,
+        active_animation=20003,
         radius=2.0,
-        seconds=0.0,
-        left=0,
-        left_1=1,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=1,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.BeastmanofFarumAzula2,
-        animation_id=30003,
-        animation_id_1=20003,
+        inactive_animation=30003,
+        active_animation=20003,
         radius=2.0,
-        seconds=0.0,
-        left=0,
-        left_1=1,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=1,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.BeastmanofFarumAzula35,
-        animation_id=30003,
-        animation_id_1=20003,
+        inactive_animation=30003,
+        active_animation=20003,
         radius=2.0,
-        seconds=0.0,
-        left=0,
-        left_1=1,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=1,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
@@ -502,17 +502,17 @@ def Preconstructor():
         animation_id=-1,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.BeastmanofFarumAzula30, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.BeastmanofFarumAzula31,
-        animation_id=30004,
-        animation_id_1=20004,
+        inactive_animation=30004,
+        active_animation=20004,
         radius=5.0,
-        seconds=0.0,
-        left=0,
-        left_1=1,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=1,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BeastmanofFarumAzula32, region=13002245, seconds=0.0, animation_id=-1)
     CommonFunc_90005221(
@@ -901,17 +901,17 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.FarumAzulaDog2_1,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=10.0,
-        seconds=0.0,
-        left=0,
-        left_1=1,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=1,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
@@ -945,29 +945,29 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.FarumAzulaDog2_5,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=20.0,
-        seconds=0.0,
-        left=0,
-        left_1=1,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=1,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.FarumAzulaDog2_5,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=15.0,
-        seconds=0.0,
-        left=0,
-        left_1=1,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=1,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
@@ -1155,17 +1155,17 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.BladedTalonEagle14,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=1.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BanishedKnight0, region=13002381, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BanishedKnight1, region=13002382, seconds=0.0, animation_id=-1)
@@ -1825,7 +1825,7 @@ def Event_13002829():
         summon_entered_fog_flag=13002806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=13000800, fog_asset=Assets.AEG099_002_9000, model_point=4, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=13000800, fog_asset=Assets.AEG099_002_9000, model_point=4, required_flag=0)
     CommonFunc_ControlBossMusic(0, 13000800, 211000, 13002805, 13002806, 0, 13002802, 1, 1)
 
 
@@ -1969,7 +1969,7 @@ def Event_13002835():
     ForceAnimation(Characters.DragonlordPlacidusax, 30000, loop=True)
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=13002831))
     OR_1.Add(AND_1)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DragonlordPlacidusax, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DragonlordPlacidusax))
     OR_1.Add(CharacterHasStateInfo(character=Characters.DragonlordPlacidusax, state_info=436))
     OR_1.Add(CharacterHasStateInfo(character=Characters.DragonlordPlacidusax, state_info=2))
     OR_1.Add(CharacterHasStateInfo(character=Characters.DragonlordPlacidusax, state_info=5))
@@ -2365,11 +2365,11 @@ def Event_13002865():
         summon_entered_fog_flag=13002856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=13000850, fog_asset=Assets.AEG099_001_9000, model_point=5, first_time_done_flag=13000851)
-    CommonFunc_ControlBossFog(0, flag=13000850, fog_asset=Assets.AEG099_001_9003, model_point=5, first_time_done_flag=13000851)
-    CommonFunc_ControlBossFog(0, flag=13000850, fog_asset=Assets.AEG099_001_9002, model_point=5, first_time_done_flag=13000851)
-    CommonFunc_ControlBossFog(0, flag=13000850, fog_asset=Assets.AEG099_001_9001, model_point=5, first_time_done_flag=13000851)
-    CommonFunc_ControlBossFog(0, flag=13000850, fog_asset=Assets.AEG099_001_9004, model_point=5, first_time_done_flag=13000851)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=13000850, fog_asset=Assets.AEG099_001_9000, model_point=5, required_flag=13000851)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=13000850, fog_asset=Assets.AEG099_001_9003, model_point=5, required_flag=13000851)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=13000850, fog_asset=Assets.AEG099_001_9002, model_point=5, required_flag=13000851)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=13000850, fog_asset=Assets.AEG099_001_9001, model_point=5, required_flag=13000851)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=13000850, fog_asset=Assets.AEG099_001_9004, model_point=5, required_flag=13000851)
     CommonFunc_ControlBossMusic(0, 13000850, 356000, 13002855, 13002856, 0, 13002852, 0, 0)
 
 

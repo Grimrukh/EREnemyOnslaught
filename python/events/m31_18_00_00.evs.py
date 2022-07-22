@@ -189,7 +189,7 @@ def Preconstructor():
         animation_id=3012,
         region_1=32052401,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=31180400, character=Characters.MalformedStar, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=31180400, character=Characters.MalformedStar, item_lot=0, reward_delay=0.0, skip_reward=0)
     Event_31182400()
 
 
@@ -256,7 +256,7 @@ def Event_31182200(_, character: uint, region: uint):
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=6))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=260))
-    OR_5.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_5.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(AND_4)
     OR_2.Add(AND_5)
     OR_2.Add(AND_6)
@@ -329,7 +329,7 @@ def Event_31182402(_, character: uint, region: uint, radius: float, seconds: flo
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -470,5 +470,5 @@ def Event_31182849():
         summon_entered_fog_flag=31182806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=31180800, fog_asset=Assets.AEG099_002_9000, model_point=5, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=31180800, fog_asset=Assets.AEG099_002_9000, model_point=5, required_flag=0)
     CommonFunc_ControlBossMusic(0, 31180800, 920900, 31182805, 31182806, 0, 31182842, 0, 0)

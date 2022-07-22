@@ -397,7 +397,7 @@ def Event_31072213(_, character: uint, region: uint):
     OR_2.Add(AND_1)
     OR_2.Add(AND_2)
     OR_2.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -542,11 +542,11 @@ def Event_31072230(
 
     # --- Label 9 --- #
     DefineLabel(9)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.FungalSorcerer9, attacker=0))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.FungalSorcerer10, attacker=0))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.FungalSorcerer11, attacker=0))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.FungalSorcerer12, attacker=0))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.FungalSorcerer13, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.FungalSorcerer9))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.FungalSorcerer10))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.FungalSorcerer11))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.FungalSorcerer12))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.FungalSorcerer13))
     AND_4.Add(CharacterHasSpecialEffect(character, 481))
     AND_4.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
     AND_4.Add(CharacterDoesNotHaveSpecialEffect(character, 90110))
@@ -619,7 +619,7 @@ def Event_31072280(_, character: uint):
     AND_1.Add(EntityWithinDistance(entity=character, other_entity=PLAYER, radius=2.0))
     OR_2.Add(AND_1)
     OR_2.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -773,5 +773,5 @@ def Event_31042849():
         summon_entered_fog_flag=31072806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=31070800, fog_asset=Assets.AEG099_001_9000, model_point=5, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=31070800, fog_asset=Assets.AEG099_001_9000, model_point=5, required_flag=0)
     CommonFunc_ControlBossMusic(0, 31070800, 931000, 31072805, 31072806, 0, 31072842, 0, 0)

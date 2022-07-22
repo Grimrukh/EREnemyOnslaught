@@ -43,20 +43,20 @@ def Constructor():
         flag_10=78308,
         flag_11=78309,
     )
-    CommonFunc_90005870(0, character=Characters.AncientDragon, name=904510600, npc_threat_level=28)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.AncientDragon, name=904510600, npc_threat_level=28)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1037510800,
-        left=0,
-        character=Characters.AncientDragon,
-        left_1=1,
-        item_lot__item_lot_param_id=30300,
+        dead_flag=1037510800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.AncientDragon,
+        boss_banner_choice=1,
+        item_lot=30300,
         seconds=0.0,
     )
     Event_1037512208(0, character=Characters.Omen1, region=1037512208, radius=5.0, seconds=0.0, animation_id=20005)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1037510200, radius=45.0, seconds=0.0, animation_id=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1037510210, character=Characters.Scarab0, item_lot_param_id=40224, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1037510500, character=Characters.Scarab1, item_lot_param_id=40300, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1037510210, character=Characters.Scarab0, item_lot=40224, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1037510500, character=Characters.Scarab1, item_lot=40300, reward_delay=0.0, skip_reward=0)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=39200514)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9001, vfx_id=100, model_point=800, right=39200514)
     CommonFunc_90005771(0, 1037510950, 1037512700)
@@ -108,7 +108,7 @@ def Event_1037512208(_, character: uint, region: uint, radius: float, seconds: f
     OR_3.Add(EntityWithinDistance(entity=PLAYER, other_entity=character, radius=radius))
     AND_1.Add(OR_3)
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))

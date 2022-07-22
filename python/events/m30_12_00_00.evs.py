@@ -27,17 +27,17 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=301200, asset=Assets.AEG099_060_9001)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=0)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Misbegotten0,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=7.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
@@ -184,7 +184,7 @@ def Event_30122502(_, character: uint, seconds: float, animation_id: int):
     if FlagEnabled(30122502):
         return
     DisableAI(character)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     
     MAIN.Await(OR_2)
     
@@ -293,5 +293,5 @@ def Event_30122849():
         summon_entered_fog_flag=30122806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=30120800, fog_asset=Assets.AEG099_001_9001, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=30120800, fog_asset=Assets.AEG099_001_9001, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, 30120800, 930000, 30122805, 30122806, 0, 30122802, 0, 0)

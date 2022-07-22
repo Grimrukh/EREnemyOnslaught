@@ -43,7 +43,7 @@ def Constructor():
         flag_10=78358,
         flag_11=78359,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1040540500, character=Characters.Scarab, item_lot_param_id=40312, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1040540500, character=Characters.Scarab, item_lot=40312, reward_delay=0.0, skip_reward=0)
     Event_1040542700(0, character=Characters.BrotherCorhyn)
     CommonFunc_90005704(0, attacked_entity=Characters.BrotherCorhyn, flag=4201, flag_1=4200, flag_2=1040549201, right=3)
     CommonFunc_90005703(
@@ -75,20 +75,20 @@ def Preconstructor():
     Event_1040542201(2, character=Characters.LeyndellFootSoldier6, patrol_information_id=1040543252)
     Event_1040542201(3, character=Characters.LeyndellFootSoldier7, patrol_information_id=1040543253)
     Event_1040542201(4, character=1040540254, patrol_information_id=1040543254)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.MadPumpkinHead1,
-        animation_id=30005,
-        animation_id_1=20005,
+        inactive_animation=30005,
+        active_animation=20005,
         radius=5.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1040540340, radius=0.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005201(0, 1040540402, 30000, 20000, 10.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRadius(0, 1040540402, 30000, 20000, 10.0, 0.0, 0, 0, 0, 0)
 
 
 @ContinueOnRest(200)

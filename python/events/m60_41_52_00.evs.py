@@ -26,13 +26,13 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=76305, asset=Assets.AEG099_060_9002)
     Event_1041522320(0, character=Characters.AncientDragon, name=904510600, npc_threat_level=28)
-    CommonFunc_90005860(
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1041520800,
-        left=0,
-        character=Characters.AncientDragon,
-        left_1=1,
-        item_lot__item_lot_param_id=30300,
+        dead_flag=1041520800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.AncientDragon,
+        boss_banner_choice=1,
+        item_lot=30300,
         seconds=0.0,
     )
     Event_1041522270(0, owner_entity=Characters.Dummy0, region=1041522270, source_entity=1041522271)

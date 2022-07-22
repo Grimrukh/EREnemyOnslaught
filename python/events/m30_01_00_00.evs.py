@@ -408,7 +408,7 @@ def Event_30012910(_, character: uint, region: uint, radius: float, seconds: flo
     AND_1.Add(OR_3)
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -700,5 +700,5 @@ def Event_30012849():
         summon_entered_fog_flag=30012806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=30010800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=30010800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, 30010800, 930000, 30012805, 30012806, 0, 30012802, 0, 0)

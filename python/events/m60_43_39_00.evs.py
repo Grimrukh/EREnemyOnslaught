@@ -135,7 +135,7 @@ def Event_1043392600(_, attacked_entity: uint, region: uint):
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=region))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=attacked_entity, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=attacked_entity))
     OR_2.Add(AND_1)
     
     MAIN.Await(OR_2)

@@ -130,7 +130,7 @@ def Event_1042542350(_, character: uint, region: uint, character_1: uint):
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=character))
     OR_1.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_1.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_1.Add(CharacterHasStateInfo(character=character, state_info=5))

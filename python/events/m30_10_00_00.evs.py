@@ -310,17 +310,17 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(1, character=Characters.Basilisk10, region=30102219, radius=10.0, seconds=1.0, animation_id=0)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(2, character=Characters.Basilisk11, region=30102219, radius=10.0, seconds=4.0, animation_id=0)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Basilisk12, region=30102221, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Basilisk13,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=10.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Omen, region=30102300, seconds=0.0, animation_id=0)
     Event_30102480()
@@ -2248,5 +2248,5 @@ def Event_30102849():
         summon_entered_fog_flag=30102806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=30100800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=30100800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, 30100800, 920200, 30102805, 30102806, 0, 30102802, 0, 0)

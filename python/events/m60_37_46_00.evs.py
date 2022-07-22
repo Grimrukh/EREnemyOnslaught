@@ -31,16 +31,16 @@ def Constructor():
         region=1037462340,
         flag_1=1037462716,
     )
-    CommonFunc_90005860(
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1037460800,
-        left=0,
-        character=Characters.BellBearingHunter,
-        left_1=0,
-        item_lot__item_lot_param_id=1037460400,
+        dead_flag=1037460800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.BellBearingHunter,
+        boss_banner_choice=0,
+        item_lot=1037460400,
         seconds=0.0,
     )
-    CommonFunc_90005870(0, character=Characters.BellBearingHunter, name=903100601, npc_threat_level=10)
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.BellBearingHunter, name=903100601, npc_threat_level=10)
     CommonFunc_90005872(0, character=Characters.BellBearingHunter, npc_threat_level=10, right=0)
     CommonFunc_90005702(0, character=Characters.GiantTurtle, flag=3723, first_flag=3720, last_flag=3723)
     Event_1037460700(0, character=Characters.GiantTurtle)
@@ -130,7 +130,7 @@ def Event_1037460702(_, character: uint):
     if PlayerNotInOwnWorld():
         return
     
-    MAIN.Await(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    MAIN.Await(AttackedWithDamageType(attacked_entity=character))
     
     AddSpecialEffect(character, 9750)
     Restart()

@@ -131,17 +131,17 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.MadPumpkinHead,
-        animation_id=30005,
-        animation_id_1=20005,
+        inactive_animation=30005,
+        active_animation=20005,
         radius=3.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
@@ -285,7 +285,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_990_9000,
         action_button_id=4110,
-        item_lot_param_id=110620,
+        item_lot=110620,
         first_flag=400061,
         last_flag=400061,
         flag=1043319208,

@@ -184,17 +184,17 @@ def Preconstructor():
         trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.TunnelMiner6, region=32112209, seconds=0.0, animation_id=-1)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.TunnelMiner7,
-        animation_id=30006,
-        animation_id_1=20006,
+        inactive_animation=30006,
+        active_animation=20006,
         radius=5.0,
-        seconds=0.0,
-        left=0,
-        left_1=1,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=1,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
@@ -396,5 +396,5 @@ def Event_32112849():
         summon_entered_fog_flag=32112806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=32110800, fog_asset=Assets.AEG099_003_9000, model_point=7, first_time_done_flag=32110801)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=32110800, fog_asset=Assets.AEG099_003_9000, model_point=7, required_flag=32110801)
     CommonFunc_ControlBossMusic(0, 32110800, 920700, 32112805, 32112806, 0, 32112802, 0, 0)

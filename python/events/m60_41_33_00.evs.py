@@ -34,17 +34,17 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1041330239, radius=8.0, seconds=1.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1041330240, radius=8.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1041330241, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.GravenSchool,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=20.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_90005920(0, flag=1041330900, asset=1041331900, obj_act_id=1041333900)
     CommonFunc_90005703(
@@ -194,7 +194,7 @@ def Event_1041332849():
         summon_entered_fog_flag=1041332806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=1041330800, fog_asset=1041331800, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=1041330800, fog_asset=1041331800, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(
         0,
         dead_flag=1041330800,

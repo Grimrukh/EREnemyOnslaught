@@ -42,17 +42,17 @@ def Constructor():
     Event_1034432614(0, flag=1033400610, attacked_entity=Characters.GiantTurtle)
     Event_1033402611()
     Event_1034432612()
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.GiantTurtle,
-        animation_id=30006,
-        animation_id_1=20006,
+        inactive_animation=30006,
+        active_animation=20006,
         radius=0.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_NonRespawningWithReward(0, 1033400610, 1033400610, 0, 0.0, 0)
 

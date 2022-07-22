@@ -51,7 +51,7 @@ def Constructor():
         flag_1=11102180,
         flag_2=11102181,
         character=Characters.MadTongueAlberich,
-        item_lot_param_id=11100800,
+        item_lot=11100800,
         seconds=0.0,
     )
     Event_11102600()
@@ -123,7 +123,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_990_9000,
         action_button_id=4110,
-        item_lot_param_id=103400,
+        item_lot=103400,
         first_flag=400349,
         last_flag=400349,
         flag=4048,
@@ -168,7 +168,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_990_9001,
         action_button_id=4110,
-        item_lot_param_id=103590,
+        item_lot=103590,
         first_flag=400359,
         last_flag=400359,
         flag=3909,
@@ -178,7 +178,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_990_9001,
         action_button_id=4110,
-        item_lot_param_id=103580,
+        item_lot=103580,
         first_flag=400356,
         last_flag=400358,
         flag=400359,
@@ -193,12 +193,12 @@ def Constructor():
     Event_11100760(0, character=Characters.NepheliLoux0)
     Event_11100761(0, character=Characters.NepheliLoux1)
     Event_11100765(0, character=Characters.EnshaoftheRoyalRemains0)
-    CommonFunc_90005774(0, flag=11109656, item_lot_param_id=11100900, flag_1=11107900)
+    CommonFunc_90005774(0, flag=11109656, item_lot=11100900, flag_1=11107900)
     CommonFunc_90005750(
         0,
         asset=Assets.AEG099_990_9002,
         action_button_id=4110,
-        item_lot_param_id=104900,
+        item_lot=104900,
         first_flag=400490,
         last_flag=400490,
         flag=11109656,

@@ -55,7 +55,7 @@ def Constructor():
         flag_1=1039522181,
         flag_2=1039522182,
         character=Characters.EleonoraVioletBloodyFinger,
-        item_lot_param_id=101620,
+        item_lot=101620,
         seconds=0.0,
     )
     CommonFunc_90005793(
@@ -69,7 +69,7 @@ def Constructor():
         left=0,
     )
     CommonFunc_90005631(0, anchor_entity=Assets.AEG099_376_1000, text=61031)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1039520500, character=Characters.Scarab, item_lot_param_id=40306, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1039520500, character=Characters.Scarab, item_lot=40306, reward_delay=0.0, skip_reward=0)
     Event_1039523700(0, character=Characters.YuraHunterofBloodyFingers)
     Event_1039523701(0, character=Characters.YuraHunterofBloodyFingers)
     Event_1039523703(0, asset=Assets.AEG099_429_9000, asset_1=Assets.AEG099_429_9001, asset_2=Assets.AEG099_429_9002)
@@ -84,65 +84,65 @@ def Preconstructor():
     DisableBackread(Characters.YuraHunterofBloodyFingers)
     DisableBackread(Characters.EleonoraVioletBloodyFinger)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Scarab, radius=25.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Scarab,
-        animation_id=30001,
-        animation_id_1=20004,
+        inactive_animation=30001,
+        active_animation=20004,
         radius=25.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.LargeCrab0,
-        animation_id=30003,
-        animation_id_1=20003,
+        inactive_animation=30003,
+        active_animation=20003,
         radius=6.5,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.LargeCrab1,
-        animation_id=30003,
-        animation_id_1=20003,
+        inactive_animation=30003,
+        active_animation=20003,
         radius=6.5,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.LargeCrab2,
-        animation_id=30003,
-        animation_id_1=20003,
+        inactive_animation=30003,
+        active_animation=20003,
         radius=6.5,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.LargeCrab3,
-        animation_id=30003,
-        animation_id_1=20003,
+        inactive_animation=30003,
+        active_animation=20003,
         radius=6.5,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.RevenantFollower, radius=150.0, seconds=0.0, animation_id=0)
     Event_1039522220(0, character=Characters.Troll0)

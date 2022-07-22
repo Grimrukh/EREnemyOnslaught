@@ -358,7 +358,7 @@ def Preconstructor():
         trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Dummy, region=12072382, seconds=0.0, animation_id=-1)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12070402, character=Characters.Scarab1, item_lot_param_id=40652, reward_delay=1.5, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=12070402, character=Characters.Scarab1, item_lot=40652, reward_delay=1.5, skip_reward=0)
     Event_12073700(0, 12070700, 12070701)
 
 

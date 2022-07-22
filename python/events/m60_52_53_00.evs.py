@@ -68,13 +68,13 @@ def Event_1052532500():
 
     # --- Label 1 --- #
     DefineLabel(1)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=m60_52_Characters.FireGiant0, attacker=0))
-    OR_1.Add(CharacterHasStateInfo(character=m60_52_Characters.FireGiant0, state_info=436))
-    OR_1.Add(CharacterHasStateInfo(character=m60_52_Characters.FireGiant0, state_info=2))
-    OR_1.Add(CharacterHasStateInfo(character=m60_52_Characters.FireGiant0, state_info=5))
-    OR_1.Add(CharacterHasStateInfo(character=m60_52_Characters.FireGiant0, state_info=6))
-    OR_1.Add(CharacterHasStateInfo(character=m60_52_Characters.FireGiant0, state_info=260))
-    OR_1.Add(EntityWithinDistance(entity=m60_52_Characters.FireGiant0, other_entity=PLAYER, radius=120.0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=m60_52_Characters.FireGiantPhaseOneTwo))
+    OR_1.Add(CharacterHasStateInfo(character=m60_52_Characters.FireGiantPhaseOneTwo, state_info=436))
+    OR_1.Add(CharacterHasStateInfo(character=m60_52_Characters.FireGiantPhaseOneTwo, state_info=2))
+    OR_1.Add(CharacterHasStateInfo(character=m60_52_Characters.FireGiantPhaseOneTwo, state_info=5))
+    OR_1.Add(CharacterHasStateInfo(character=m60_52_Characters.FireGiantPhaseOneTwo, state_info=6))
+    OR_1.Add(CharacterHasStateInfo(character=m60_52_Characters.FireGiantPhaseOneTwo, state_info=260))
+    OR_1.Add(EntityWithinDistance(entity=m60_52_Characters.FireGiantPhaseOneTwo, other_entity=PLAYER, radius=120.0))
     OR_2.Add(CharacterInsideRegion(character=PLAYER, region=1052532800))
     OR_2.Add(CharacterInsideRegion(character=PLAYER, region=1052532801))
     AND_2.Add(OR_2)
@@ -100,13 +100,13 @@ def Event_1052532510():
 @ContinueOnRest(200)
 def Event_200():
     """Event 200"""
-    CommonFunc_90005781(0, flag=1252520800, flag_1=1252532160, flag_2=1252532161, character=Characters.LivingPot0)
+    CommonFunc_90005781(0, flag=1252520800, flag_1=1252532160, flag_2=1252532161, character=Characters.AlexanderSummon)
     CommonFunc_90005783(
         0,
         flag=1252520800,
         flag_1=1252532160,
         flag_2=1252532161,
-        character=Characters.LivingPot0,
+        character=Characters.AlexanderSummon,
         other_entity=1052532700,
         region=1052532162,
         left=2,
@@ -127,7 +127,7 @@ def Event_200():
         flag=1252520800,
         summon_flag=1252532160,
         dismissal_flag=1252532161,
-        character=Characters.LivingPot0,
+        character=Characters.AlexanderSummon,
         region=1052532700,
         right=1035539209,
         unknown=0,

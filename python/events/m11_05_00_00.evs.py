@@ -226,7 +226,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9000,
         action_button_id=6450,
-        item_lot_param_id=4900,
+        item_lot=4900,
         first_flag=9500,
         last_flag=9500,
         flag=11059206,
@@ -237,7 +237,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9000,
         action_button_id=4110,
-        item_lot_param_id=105000,
+        item_lot=105000,
         first_flag=400500,
         last_flag=400500,
         flag=11059305,
@@ -721,7 +721,7 @@ def GodfreyHoarahLouxCommonEvents():
         summon_entered_fog_flag=11052806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=Flags.HoarahLouxDead, fog_asset=Assets.AEG099_001_9001, model_point=17, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.HoarahLouxDead, fog_asset=Assets.AEG099_001_9001, model_point=17, required_flag=0)
     CommonFunc_9005813(
         0, 
         flag=Flags.HoarahLouxDead, 
@@ -916,8 +916,8 @@ def SirGideonOfnirBattleTrigger():
     AND_11.Add(PlayerInOwnWorld())
     AND_11.Add(CharacterHasSpecialEffect(Characters.SirGideonOfnir, 9770))  # not copying this trigger
     OR_11.Add(AND_11)
-    OR_11.Add(AttackedWithDamageType(attacked_entity=Characters.SirGideonOfnir, attacker=0))
-    OR_11.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_SirGideonOfnir, attacker=0))
+    OR_11.Add(AttackedWithDamageType(attacked_entity=Characters.SirGideonOfnir))
+    OR_11.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_SirGideonOfnir))
 
     MAIN.Await(OR_11)
     
@@ -1016,13 +1016,13 @@ def SirGideonOfnirCommonEvents():
         summon_entered_fog_flag=11052856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9003, model_point=5, first_time_done_flag=11050854)
-    CommonFunc_ControlBossFog(0, flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9004, model_point=4, first_time_done_flag=11050854)
-    CommonFunc_ControlBossFog(0, flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9005, model_point=4, first_time_done_flag=11050854)
-    CommonFunc_ControlBossFog(0, flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_002_9000, model_point=8, first_time_done_flag=11050854)
-    CommonFunc_ControlBossFog(0, flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9006, model_point=4, first_time_done_flag=11050854)
-    CommonFunc_ControlBossFog(0, flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9007, model_point=5, first_time_done_flag=11050854)
-    CommonFunc_ControlBossFog(0, flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9008, model_point=5, first_time_done_flag=11050854)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9003, model_point=5, required_flag=11050854)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9004, model_point=4, required_flag=11050854)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9005, model_point=4, required_flag=11050854)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_002_9000, model_point=8, required_flag=11050854)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9006, model_point=4, required_flag=11050854)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9007, model_point=5, required_flag=11050854)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9008, model_point=5, required_flag=11050854)
     CommonFunc_ControlBossMusic(
         0,
         Flags.SirGideonOfnirDead,
@@ -1174,7 +1174,7 @@ def Event_11053708(
     _,
     asset: uint,
     action_button_id: int,
-    item_lot_param_id: int,
+    item_lot: int,
     first_flag: uint,
     last_flag: uint,
     flag: uint,
@@ -1204,7 +1204,7 @@ def Event_11053708(
     
     GotoIfFinishedConditionTrue(Label.L0, input_condition=OR_2)
     DeleteAssetVFX(asset)
-    AwardItemLot(item_lot_param_id, host_only=True)
+    AwardItemLot(item_lot, host_only=True)
     EzstateAIRequest(PLAYER, command_id=60070, command_slot=0)
     End()
 

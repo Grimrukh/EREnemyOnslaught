@@ -87,14 +87,14 @@ def Constructor():
     Event_1034503600(0, region=1034502500, flag=1034500738)
     Event_1034502610()
     Event_1034502620()
-    CommonFunc_90005870(0, character=Characters.GlintstoneDragon, name=904502601, npc_threat_level=25)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.GlintstoneDragon, name=904502601, npc_threat_level=25)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1034500800,
-        left=0,
-        character=Characters.GlintstoneDragon,
-        left_1=1,
-        item_lot__item_lot_param_id=0,
+        dead_flag=1034500800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.GlintstoneDragon,
+        boss_banner_choice=1,
+        item_lot=0,
         seconds=0.0,
     )
     Event_1034502800()
@@ -102,7 +102,7 @@ def Constructor():
     Event_1034502804()
     Event_1034502802()
     Event_1034502803()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1035510200, character=Characters.Scarab, item_lot_param_id=40200, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1035510200, character=Characters.Scarab, item_lot=40200, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005525(0, flag=1034500620, asset=Assets.AEG004_983_1000)
     CommonFunc_90005525(0, flag=1034500621, asset=Assets.AEG004_336_1000)
     Event_1034502580()
@@ -220,7 +220,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9001,
         action_button_id=4110,
-        item_lot_param_id=101480,
+        item_lot=101480,
         first_flag=400148,
         last_flag=400148,
         flag=3569,

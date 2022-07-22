@@ -257,7 +257,7 @@ def Event_1042322403(
     ForceAnimation(character_1, animation_id, loop=True)
     AND_1.Add(CharacterHasSpecialEffect(character_1, 5080))
     OR_1.Add(CharacterHasSpecialEffect(character, special_effect, target_comparison_type=ComparisonType.GreaterThanOrEqual))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=character_1, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=character_1))
     OR_1.Add(HasAIStatus(character_1, ai_status=AIStatusType.Search))
     AND_1.Add(OR_1)
     

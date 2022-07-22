@@ -26,17 +26,17 @@ def Constructor():
     """Event 0"""
     Event_1035422150()
     RegisterGrace(grace_flag=1035420000, asset=Assets.AEG099_060_9000)
-    CommonFunc_90005870(0, character=Characters.Omenkiller, name=904820600, npc_threat_level=5)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.Omenkiller, name=904820600, npc_threat_level=5)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1035420800,
-        left=0,
-        character=Characters.Omenkiller,
-        left_1=0,
-        item_lot__item_lot_param_id=30225,
+        dead_flag=1035420800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.Omenkiller,
+        boss_banner_choice=0,
+        item_lot=30225,
         seconds=0.0,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1035420220, character=Characters.Scarab, item_lot_param_id=40208, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1035420220, character=Characters.Scarab, item_lot=40208, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005780(
         0,
         flag=1035420800,
@@ -106,7 +106,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_990_9000,
         action_button_id=4350,
-        item_lot_param_id=103930,
+        item_lot=103930,
         first_flag=400393,
         last_flag=400393,
         flag=1035429255,
@@ -135,17 +135,17 @@ def Preconstructor():
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.AlbinauricLookout1, radius=8.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.AlbinauricLookout2, radius=8.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=1035420204, region=1035422204, seconds=0.0, animation_id=-1)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=1035420205,
-        animation_id=30004,
-        animation_id_1=20004,
+        inactive_animation=30004,
+        active_animation=20004,
         radius=8.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=1035420206, region=1035422204, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=1035420207, region=1035422204, seconds=0.0, animation_id=-1)

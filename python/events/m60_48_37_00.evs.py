@@ -43,26 +43,26 @@ def Constructor():
         flag_10=78418,
         flag_11=78419,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.DecayingEkzykes,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=50.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005870(0, character=Characters.DecayingEkzykes, name=904501600, npc_threat_level=25)
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DecayingEkzykes, name=904501600, npc_threat_level=25)
     CommonFunc_90005861(
         0,
         flag=1048370800,
         left=0,
         character=Characters.DecayingEkzykes,
         left_1=1,
-        item_lot__item_lot_param_id=30400,
+        item_lot=30400,
         text=30064,
         seconds=0.0,
     )

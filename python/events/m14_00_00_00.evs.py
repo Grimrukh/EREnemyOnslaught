@@ -725,7 +725,7 @@ def Constructor():
         0,
         dead_flag=14000276,
         character=Characters.RayaLucariaScholar23,
-        item_lot_param_id=0,
+        item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -733,7 +733,7 @@ def Constructor():
         0,
         dead_flag=14000277,
         character=Characters.RayaLucariaScholar24,
-        item_lot_param_id=0,
+        item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -777,16 +777,16 @@ def Constructor():
         0,
         dead_flag=14000633,
         character=Characters.SmallCrabCrystal0,
-        item_lot_param_id=14000005,
+        item_lot=14000005,
         reward_delay=0.0,
         skip_reward=0,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=14000634, character=14000634, item_lot_param_id=14000015, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=14000634, character=14000634, item_lot=14000015, reward_delay=0.0, skip_reward=0)
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=14000637,
         character=Characters.SmallCrabCrystal1,
-        item_lot_param_id=14000025,
+        item_lot=14000025,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -794,7 +794,7 @@ def Constructor():
         0,
         dead_flag=14000638,
         character=Characters.SmallCrabCrystal2,
-        item_lot_param_id=14000035,
+        item_lot=14000035,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -805,12 +805,12 @@ def Constructor():
     Event_14002490(1, character=Characters.Avionette1, region=14002491, seconds=0.0, animation_id=3032)
     Event_14002490(2, character=Characters.Avionette6, region=14002496, seconds=0.0, animation_id=3032)
     Event_14002490(3, character=Characters.Avionette7, region=14002496, seconds=1.0, animation_id=3032)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=14000486, character=Characters.Scarab, item_lot_param_id=40272, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=14000486, character=Characters.Scarab, item_lot=40272, reward_delay=0.0, skip_reward=0)
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=14000499,
         character=Characters.MoongrumCarianKnight,
-        item_lot_param_id=14000980,
+        item_lot=14000980,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -878,7 +878,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9003,
         action_button_id=4110,
-        item_lot_param_id=101070,
+        item_lot=101070,
         first_flag=400107,
         last_flag=400107,
         flag=3469,
@@ -1025,29 +1025,29 @@ def Preconstructor():
         trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.PutridCorpse2, region=14002310, seconds=0.0, animation_id=-1)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.PutridCorpse3,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=5.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.PutridCorpse4,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=5.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
@@ -1238,41 +1238,41 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.PutridCorpse20,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=3.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.PutridCorpse21,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=3.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.PutridCorpse22,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=3.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
@@ -2187,9 +2187,9 @@ def Event_14002360(
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.Alive))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.GrayPhantom))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
-    OR_3.Add(AttackedWithDamageType(attacked_entity=attacked_entity, attacker=0))
-    OR_3.Add(AttackedWithDamageType(attacked_entity=attacked_entity_1, attacker=0))
-    OR_3.Add(AttackedWithDamageType(attacked_entity=attacked_entity_2, attacker=0))
+    OR_3.Add(AttackedWithDamageType(attacked_entity=attacked_entity))
+    OR_3.Add(AttackedWithDamageType(attacked_entity=attacked_entity_1))
+    OR_3.Add(AttackedWithDamageType(attacked_entity=attacked_entity_2))
     AND_1.Add(OR_3)
     AND_1.Add(CharacterBackreadEnabled(character))
     OR_11.Add(CharacterHasSpecialEffect(character, 5080))
@@ -2211,7 +2211,7 @@ def Event_14002360(
     DefineLabel(9)
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -2256,7 +2256,7 @@ def Event_14002490(_, character: uint, region: uint, seconds: float, animation_i
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=region))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -2295,7 +2295,7 @@ def Event_14002491(_, character: uint, region: uint, radius: float, seconds: flo
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=region))
     AND_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=character, radius=radius))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -2961,7 +2961,7 @@ def Event_14002849():
         summon_entered_fog_flag=14002806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=Flags.RennalaDefeated, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=14000801)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.RennalaDefeated, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=14000801)
     CommonFunc_ControlBossMusic(0, Flags.RennalaDefeated, 203000, Flags.RennalaBattleStarted, 14002806, 0, 14002803, 1, 0)
 
 
@@ -3057,7 +3057,7 @@ def RedWolfFogGateEvents():
         summon_entered_fog_flag=14002856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=Flags.RedWolfDead, fog_asset=Assets.AEG099_003_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.RedWolfDead, fog_asset=Assets.AEG099_003_9000, model_point=3, required_flag=0)
     CommonFunc_9005813(
         0,
         flag=Flags.RedWolfDead,

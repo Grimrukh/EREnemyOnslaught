@@ -37,24 +37,24 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005870(0, character=Characters.DeathRiteBird, name=904980600, npc_threat_level=24)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DeathRiteBird, name=904980600, npc_threat_level=24)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1050570800,
-        left=0,
-        character=Characters.DeathRiteBird,
-        left_1=0,
-        item_lot__item_lot_param_id=30530,
+        dead_flag=1050570800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.DeathRiteBird,
+        boss_banner_choice=0,
+        item_lot=30530,
         seconds=0.0,
     )
-    CommonFunc_90005870(0, character=Characters.PutridAvatar, name=904811600, npc_threat_level=18)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.PutridAvatar, name=904811600, npc_threat_level=18)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1050570850,
-        left=0,
-        character=Characters.PutridAvatar,
-        left_1=0,
-        item_lot__item_lot_param_id=30555,
+        dead_flag=1050570850,
+        extra_flag_to_enable=0,
+        boss_character=Characters.PutridAvatar,
+        boss_banner_choice=0,
+        item_lot=30555,
         seconds=0.0,
     )
     CommonFunc_90005872(0, character=Characters.PutridAvatar, npc_threat_level=18, right=0)
@@ -306,7 +306,7 @@ def Event_1050572820(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))

@@ -291,7 +291,7 @@ def Event_31202810():
     Wait(5.0)
     EnableAI(Characters.CleanrotKnight1)
     SetNetworkUpdateRate(Characters.CleanrotKnight1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    OR_15.Add(AttackedWithDamageType(attacked_entity=Characters.CleanrotKnight1, attacker=0))
+    OR_15.Add(AttackedWithDamageType(attacked_entity=Characters.CleanrotKnight1))
     OR_15.Add(TimeElapsed(seconds=7.0))
     AwaitConditionTrue(OR_15)
     EnableBossHealthBar(Characters.CleanrotKnight1, name=903800312, bar_slot=1)
@@ -333,5 +333,5 @@ def Event_31092849():
         summon_entered_fog_flag=31202806,
         action_button_id=10010,
     )
-    CommonFunc_ControlBossFog(0, flag=31200800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=31200800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, 31200800, 931000, 31202805, 31202806, 0, 31202842, 0, 0)

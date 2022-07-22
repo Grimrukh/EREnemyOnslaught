@@ -23,4 +23,4 @@ from soulstruct.eldenring.events.instructions import *
 @ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005201(0, 1042520303, 30000, 20000, 15.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRadius(0, 1042520303, 30000, 20000, 15.0, 0.0, 0, 0, 0, 0)

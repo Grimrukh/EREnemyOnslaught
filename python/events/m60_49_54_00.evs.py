@@ -48,7 +48,7 @@ def Constructor():
         0,
         dead_flag=1049540200,
         character=Characters.Scarab,
-        item_lot_param_id=1049540700,
+        item_lot=1049540700,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -89,9 +89,9 @@ def Event_1049542210():
     DisableAI(Characters.WanderingNoble0)
     DisableAI(Characters.WanderingNoble1)
     DisableAI(Characters.WanderingNoble2)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.WanderingNoble0, attacker=0))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.WanderingNoble1, attacker=0))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.WanderingNoble2, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.WanderingNoble0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.WanderingNoble1))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.WanderingNoble2))
     OR_1.Add(CharacterHasStateInfo(character=Characters.WanderingNoble0, state_info=436))
     OR_1.Add(CharacterHasStateInfo(character=Characters.WanderingNoble0, state_info=2))
     OR_1.Add(CharacterHasStateInfo(character=Characters.WanderingNoble0, state_info=5))

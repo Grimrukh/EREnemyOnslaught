@@ -42,17 +42,17 @@ def Preconstructor():
     DisableBackread(1044370705)
     Event_1044375220()
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1044370203, radius=106.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.GodrickFootSoldier2,
-        animation_id=30001,
-        animation_id_1=20001,
+        inactive_animation=30001,
+        active_animation=20001,
         radius=5.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton0, region=1044372200, radius=10.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(

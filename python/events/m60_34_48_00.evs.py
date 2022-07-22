@@ -102,7 +102,7 @@ def Constructor():
         seconds_2=0.0,
         seconds_3=0.0,
         seconds_4=0.0,
-        item_lot_param_id=1034481300,
+        item_lot=1034481300,
         flag_1=1034482250,
     )
     Event_1034482261(
@@ -116,7 +116,7 @@ def Constructor():
         seconds_2=0.0,
         seconds_3=0.0,
         seconds_4=0.0,
-        item_lot_param_id=1034481310,
+        item_lot=1034481310,
         flag_1=1034482251,
     )
     Event_1034482262(
@@ -285,7 +285,7 @@ def Event_1034482261(
     seconds_2: float,
     seconds_3: float,
     seconds_4: float,
-    item_lot_param_id: int,
+    item_lot: int,
     flag_1: uint,
 ):
     """Event 1034482261"""
@@ -335,7 +335,7 @@ def Event_1034482261(
     DisableAsset(asset)
     if PlayerInOwnWorld():
         Wait(0.30000001192092896)
-        AwardItemLot(item_lot_param_id, host_only=True)
+        AwardItemLot(item_lot, host_only=True)
     End()
     Wait(seconds)
     Wait(seconds_1)
@@ -612,7 +612,7 @@ def Event_1034482849():
         summon_entered_fog_flag=1034482806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=1034480800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=1034480800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(
         0,
         dead_flag=1034480800,

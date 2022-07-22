@@ -92,7 +92,7 @@ def Constructor():
         0,
         dead_flag=12030240,
         character=Characters.GiantAnt14,
-        item_lot_param_id=12030800,
+        item_lot=12030800,
         reward_delay=1.5,
         skip_reward=0,
     )
@@ -100,7 +100,7 @@ def Constructor():
         0,
         dead_flag=12030241,
         character=Characters.GiantAnt15,
-        item_lot_param_id=12030810,
+        item_lot=12030810,
         reward_delay=1.5,
         skip_reward=0,
     )
@@ -108,7 +108,7 @@ def Constructor():
         0,
         dead_flag=12030256,
         character=Characters.GiantAnt30,
-        item_lot_param_id=12030820,
+        item_lot=12030820,
         reward_delay=1.5,
         skip_reward=0,
     )
@@ -116,7 +116,7 @@ def Constructor():
         0,
         dead_flag=12030257,
         character=Characters.GiantAnt31,
-        item_lot_param_id=12030830,
+        item_lot=12030830,
         reward_delay=1.5,
         skip_reward=0,
     )
@@ -124,7 +124,7 @@ def Constructor():
         0,
         dead_flag=12030297,
         character=Characters.GiantAnt13,
-        item_lot_param_id=12030840,
+        item_lot=12030840,
         reward_delay=1.5,
         skip_reward=0,
     )
@@ -132,30 +132,30 @@ def Constructor():
         0,
         dead_flag=12030201,
         character=Characters.GiantAnt0,
-        item_lot_param_id=12030850,
+        item_lot=12030850,
         reward_delay=1.5,
         skip_reward=0,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=12030303, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12030350, character=Characters.Scarab0, item_lot_param_id=40660, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12030354, character=Characters.Scarab1, item_lot_param_id=40668, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12030355, character=Characters.Scarab2, item_lot_param_id=40670, reward_delay=1.5, skip_reward=0)
-    CommonFunc_90005860(
+    CommonFunc_NonRespawningWithReward(0, dead_flag=12030350, character=Characters.Scarab0, item_lot=40660, reward_delay=1.5, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=12030354, character=Characters.Scarab1, item_lot=40668, reward_delay=1.5, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=12030355, character=Characters.Scarab2, item_lot=40670, reward_delay=1.5, skip_reward=0)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=12030390,
-        left=0,
-        character=Characters.CrucibleKnight,
-        left_1=1,
-        item_lot__item_lot_param_id=12030950,
+        dead_flag=12030390,
+        extra_flag_to_enable=0,
+        boss_character=Characters.CrucibleKnight,
+        boss_banner_choice=1,
+        item_lot=12030950,
         seconds=0.0,
     )
-    CommonFunc_90005870(0, character=Characters.CrucibleKnight, name=902500600, npc_threat_level=12)
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.CrucibleKnight, name=902500600, npc_threat_level=12)
     CommonFunc_90005872(0, character=Characters.CrucibleKnight, npc_threat_level=12, right=0)
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=12030391,
         character=Characters.ErdtreeAvatar,
-        item_lot_param_id=12030960,
+        item_lot=12030960,
         reward_delay=1.5,
         skip_reward=0,
     )
@@ -266,7 +266,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9001,
         action_button_id=4350,
-        item_lot_param_id=103410,
+        item_lot=103410,
         first_flag=400348,
         last_flag=400348,
         flag=4067,
@@ -338,7 +338,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9002,
         action_button_id=6460,
-        item_lot_param_id=103350,
+        item_lot=103350,
         first_flag=9502,
         last_flag=9502,
         flag=4131,
@@ -348,7 +348,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9002,
         action_button_id=4110,
-        item_lot_param_id=113300,
+        item_lot=113300,
         first_flag=400339,
         last_flag=400339,
         flag=12039162,
@@ -663,7 +663,7 @@ def Event_12032310(_, character: uint):
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -692,7 +692,7 @@ def Event_12032241(_, character: uint, seconds: float):
     AddSpecialEffect(character, 2900)
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     ForceAnimation(character, 30001, loop=True)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(FlagEnabled(12032240))
     
     MAIN.Await(OR_2)

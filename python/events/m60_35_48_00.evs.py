@@ -54,7 +54,7 @@ def Constructor():
         seconds_2=0.0,
         seconds_3=0.0,
         seconds_4=0.0,
-        item_lot_param_id=1035480100,
+        item_lot=1035480100,
         flag_1=1035482250,
     )
     Event_1035482262(
@@ -91,17 +91,17 @@ def Constructor():
 @ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.LargeCrabSnow,
-        animation_id=30001,
-        animation_id_1=20001,
+        inactive_animation=30001,
+        active_animation=20001,
         radius=15.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.LargeCrabSnow, radius=15.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, 1035480210, 1.0, 0.0, -1)
@@ -158,7 +158,7 @@ def Event_1035482261(
     seconds_2: float,
     seconds_3: float,
     seconds_4: float,
-    item_lot_param_id: int,
+    item_lot: int,
     flag_1: uint,
 ):
     """Event 1035482261"""
@@ -208,7 +208,7 @@ def Event_1035482261(
     DisableAsset(asset)
     if PlayerInOwnWorld():
         Wait(0.30000001192092896)
-        AwardItemLot(item_lot_param_id, host_only=True)
+        AwardItemLot(item_lot, host_only=True)
     End()
     Wait(seconds)
     Wait(seconds_1)

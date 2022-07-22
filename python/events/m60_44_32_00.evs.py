@@ -32,35 +32,35 @@ def Constructor():
         region_1=1044322201,
         region_2=1044322202,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1044320200, character=Characters.Scarab, item_lot_param_id=40138, reward_delay=0.0, skip_reward=0)
-    CommonFunc_90005860(
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1044320200, character=Characters.Scarab, item_lot=40138, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1044320800,
-        left=0,
-        character=Characters.DeathRiteBird,
-        left_1=0,
-        item_lot__item_lot_param_id=1044320400,
+        dead_flag=1044320800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.DeathRiteBird,
+        boss_banner_choice=0,
+        item_lot=1044320400,
         seconds=0.0,
     )
-    CommonFunc_90005870(0, character=Characters.DeathRiteBird, name=904980602, npc_threat_level=24)
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DeathRiteBird, name=904980602, npc_threat_level=24)
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1044320850,
         character=Characters.NightsCavalryHorse,
-        item_lot_param_id=0,
+        item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
     )
     CommonFunc_90005476(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
     RunCommonEvent(90005477)
     Event_1044322340(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
-    CommonFunc_90005860(
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1044320850,
-        left=0,
-        character=Characters.NightsCavalry,
-        left_1=0,
-        item_lot__item_lot_param_id=1044320410,
+        dead_flag=1044320850,
+        extra_flag_to_enable=0,
+        boss_character=Characters.NightsCavalry,
+        boss_banner_choice=0,
+        item_lot=1044320410,
         seconds=0.0,
     )
     CommonFunc_90005871(

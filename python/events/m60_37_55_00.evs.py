@@ -54,7 +54,7 @@ def Event_1037552200(_, character: uint, region: uint):
     AddSpecialEffect(character, 8081)
     AddSpecialEffect(character, 8082)
     OR_1.Add(CharacterOutsideRegion(character=PLAYER, region=region))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=character))
     OR_1.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_1.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_1.Add(CharacterHasStateInfo(character=character, state_info=5))

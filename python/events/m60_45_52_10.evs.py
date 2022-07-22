@@ -27,25 +27,25 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=76314, asset=Assets.AEG099_060_9000)
     Event_1045522500()
-    CommonFunc_90005870(0, character=m60_45_Characters.DraconicTreeSentinel, name=903250600, npc_threat_level=12)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=m60_45_Characters.DraconicTreeSentinel, name=903250600, npc_threat_level=12)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1045520800,
-        left=0,
-        character=m60_45_Characters.DraconicTreeSentinel,
-        left_1=0,
-        item_lot__item_lot_param_id=30315,
+        dead_flag=1045520800,
+        extra_flag_to_enable=0,
+        boss_character=m60_45_Characters.DraconicTreeSentinel,
+        boss_banner_choice=0,
+        item_lot=30315,
         seconds=0.0,
     )
     CommonFunc_90005872(0, character=m60_45_Characters.DraconicTreeSentinel, npc_threat_level=12, right=0)
-    CommonFunc_ControlBossFog(0, flag=1045520800, fog_asset=m60_45_Assets.AEG099_001_9000, model_point=5, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=1045520800, fog_asset=m60_45_Assets.AEG099_001_9000, model_point=5, required_flag=0)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=m60_45_Characters.GuardianGolem2, radius=70.0, seconds=0.0, animation_id=3006)
     Event_1045522200()
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1045520200,
         character=m60_45_Characters.GuardianGolem0,
-        item_lot_param_id=30360,
+        item_lot=30360,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -53,7 +53,7 @@ def Constructor():
         0,
         dead_flag=1045520202,
         character=m60_45_Characters.GuardianGolem1,
-        item_lot_param_id=30365,
+        item_lot=30365,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -62,17 +62,17 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=m60_45_Characters.WanderingNoble2, radius=100.0, seconds=0.0, animation_id=0)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=m60_45_Characters.WanderingNoble3, radius=100.0, seconds=0.0, animation_id=0)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=m60_45_Characters.WanderingNoble4, radius=100.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=1045520400,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=33.0,
-        seconds=2.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=2.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_90005560(0, flag=1045520600, asset=m60_45_Assets.AEG099_635_9000, left=0)
     CommonFunc_90005683(0, flag=62315, asset=Assets.AEG099_055_1000, vfx_id=205, flag_1=78394, flag_2=78394)
@@ -152,7 +152,7 @@ def Constructor():
         flag_1=1045522181,
         flag_2=1045522182,
         character=Characters.DungEater,
-        item_lot_param_id=113800,
+        item_lot=113800,
         seconds=0.0,
     )
     CommonFunc_90005793(

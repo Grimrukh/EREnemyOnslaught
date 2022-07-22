@@ -34,16 +34,16 @@ def Constructor():
         seconds=0.0,
         animation_id=1700,
     )
-    CommonFunc_90005860(
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1036450800,
-        left=0,
-        character=Characters.DeathRiteBird,
-        left_1=0,
-        item_lot__item_lot_param_id=1036450400,
+        dead_flag=1036450800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.DeathRiteBird,
+        boss_banner_choice=0,
+        item_lot=1036450400,
         seconds=0.0,
     )
-    CommonFunc_90005870(0, character=Characters.DeathRiteBird, name=904980604, npc_threat_level=24)
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DeathRiteBird, name=904980604, npc_threat_level=24)
     CommonFunc_90005605(
         0,
         1036451620,
@@ -115,7 +115,7 @@ def Event_1036452200(_, character: uint, radius: float, seconds: float, animatio
     OR_3.Add(EntityWithinDistance(entity=PLAYER, other_entity=character, radius=radius))
     AND_1.Add(OR_3)
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(AND_1)
     
     MAIN.Await(OR_2)

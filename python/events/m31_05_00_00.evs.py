@@ -261,7 +261,7 @@ def Event_31052301():
     AND_1.Add(EntityWithinDistance(entity=Characters.Snail1, other_entity=PLAYER, radius=4.0))
     OR_2.Add(AND_1)
     OR_2.Add(HasAIStatus(Characters.Snail1, ai_status=AIStatusType.Battle))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.Snail1, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.Snail1))
     
     MAIN.Await(OR_2)
     
@@ -373,6 +373,6 @@ def Event_31052849():
         summon_entered_fog_flag=31052806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=31050800, fog_asset=Assets.AEG099_002_9000, model_point=5, first_time_done_flag=31050801)
-    CommonFunc_ControlBossFog(0, flag=31050800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=31050801)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=31050800, fog_asset=Assets.AEG099_002_9000, model_point=5, required_flag=31050801)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=31050800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=31050801)
     CommonFunc_ControlBossMusic(0, 31050800, 931000, 31052805, 31052806, 0, 31052802, 0, 0)

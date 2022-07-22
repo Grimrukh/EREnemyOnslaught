@@ -423,7 +423,7 @@ def Event_30052301():
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=30052310))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.Commoner1, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.Commoner1))
     OR_2.Add(AND_1)
     
     MAIN.Await(OR_2)
@@ -446,7 +446,7 @@ def Event_30052302():
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=30052205))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.Commoner0, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.Commoner0))
     OR_2.Add(AND_1)
     
     MAIN.Await(OR_2)
@@ -782,7 +782,7 @@ def Event_30052450(
     DefineLabel(9)
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))

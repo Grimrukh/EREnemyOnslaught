@@ -59,7 +59,7 @@ def Constructor():
         anchor_entity=Characters.WanderingNoble9,
         character=Characters.Runebear,
         left=1,
-        item_lot_param_id=1049550700,
+        item_lot=1049550700,
     )
     Event_1049552401(
         0,
@@ -132,7 +132,7 @@ def Event_1049552210(_, character: uint):
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     DisableAI(character)
     ForceAnimation(character, 30012, loop=True)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=character))
     OR_1.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_1.Add(CharacterHasStateInfo(character=character, state_info=6))
     OR_1.Add(CharacterHasStateInfo(character=character, state_info=260))
@@ -181,7 +181,7 @@ def Event_1049552400(
     anchor_entity: uint,
     character: uint,
     left: int,
-    item_lot_param_id: int,
+    item_lot: int,
 ):
     """Event 1049552400"""
     if FlagEnabled(flag):
@@ -217,8 +217,8 @@ def Event_1049552400(
     DisableCharacter(character)
     if PlayerNotInOwnWorld():
         return
-    if ValueNotEqual(left=item_lot_param_id, right=0):
-        AwardItemLot(item_lot_param_id, host_only=True)
+    if ValueNotEqual(left=item_lot, right=0):
+        AwardItemLot(item_lot, host_only=True)
     EnableNetworkFlag(flag)
 
 
@@ -325,7 +325,7 @@ def Event_1049552420(
     if UnsignedNotEqual(left=0, right=region):
         OR_3.Add(CharacterInsideRegion(character=PLAYER, region=region))
     OR_3.Add(EntityWithinDistance(entity=PLAYER, other_entity=character, radius=radius))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.WanderingNoble9, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.WanderingNoble9))
     OR_3.Add(CharacterHasStateInfo(character=Characters.WanderingNoble9, state_info=436))
     OR_3.Add(CharacterHasStateInfo(character=Characters.WanderingNoble9, state_info=2))
     OR_3.Add(CharacterHasStateInfo(character=Characters.WanderingNoble9, state_info=5))
@@ -375,7 +375,7 @@ def Event_1049552420(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))

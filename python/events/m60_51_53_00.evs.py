@@ -81,7 +81,7 @@ def Constructor():
         0,
         dead_flag=1051530210,
         character=Characters.ExtraLargeScarab,
-        item_lot_param_id=1051530700,
+        item_lot=1051530700,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -93,23 +93,23 @@ def Constructor():
         region_1=1051532211,
         region_2=1051532212,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.ExtraLargeScarab,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=15.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1051530380,
         character=Characters.BloodyFingerOkina,
-        item_lot_param_id=0,
+        item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -141,7 +141,7 @@ def Constructor():
         flag_1=1051532181,
         flag_2=1051532182,
         character=Characters.BloodyFingerOkina,
-        item_lot_param_id=1051530500,
+        item_lot=1051530500,
         seconds=0.0,
     )
     CommonFunc_90005793(

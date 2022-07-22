@@ -94,14 +94,14 @@ def Constructor():
     Event_1049392849()
     Event_1049390800()
     Event_1049392810()
-    CommonFunc_ControlBossFog(0, flag=1049390800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=1049390800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_90005880(
         0,
         flag=1049390850,
         flag_1=1049390855,
         flag_2=1049392850,
         character=Characters.BattleMage,
-        item_lot_param_id=1049390850,
+        item_lot=1049390850,
         area_id=60,
         block_id=49,
         cc_id=39,
@@ -158,17 +158,17 @@ def Constructor():
     Event_1049392200(5, character=Characters.RayaLucariaScholar5, special_effect_id=14809)
     Event_1049392200(7, character=Characters.RayaLucariaScholar6, special_effect_id=14808)
     Event_1049392200(9, character=Characters.RayaLucariaScholar7, special_effect_id=14809)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.DragonbarrowDragon,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=20.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_1049392350(
         0,
@@ -178,8 +178,8 @@ def Constructor():
         region_1=1049392298,
         region_2=1049392297,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1049390299, character=Characters.Scarab0, item_lot_param_id=40418, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1049390298, character=Characters.Scarab1, item_lot_param_id=40416, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1049390299, character=Characters.Scarab0, item_lot=40418, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1049390298, character=Characters.Scarab1, item_lot=40416, reward_delay=0.0, skip_reward=0)
     Event_1049392201(0, character=Characters.WanderingNoble0, special_effect_id=10113, seconds=3.0, seconds_1=5.0)
     Event_1049392201(2, character=Characters.WanderingNoble2, special_effect_id=10113, seconds=6.0, seconds_1=2.0)
     Event_1049392201(3, character=Characters.RayaLucariaScholar3, special_effect_id=10113, seconds=9.0, seconds_1=3.0)
@@ -532,5 +532,5 @@ def Event_1049392849():
         summon_entered_fog_flag=1049392806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=1049390800, fog_asset=Assets.AEG099_002_9000, model_point=4, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=1049390800, fog_asset=Assets.AEG099_002_9000, model_point=4, required_flag=0)
     CommonFunc_ControlBossMusic(0, 1049390800, 920900, 1049392805, 1049392806, 0, 1049392802, 0, 0)

@@ -39,17 +39,17 @@ def Preconstructor():
     Event_1041552400(3, character=Characters.WanderingNoble3)
     Event_1041552400(4, character=Characters.WanderingNoble5)
     Event_1041552400(5, character=Characters.WanderingNoble6)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.ScalyMisbegotten,
-        animation_id=30001,
-        animation_id_1=20001,
+        inactive_animation=30001,
+        active_animation=20001,
         radius=10.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
@@ -170,7 +170,7 @@ def Event_1041552350(_, character: uint, region: uint, character_1: uint):
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=character))
     OR_1.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_1.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_1.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -204,7 +204,7 @@ def Event_1041552400(_, character: uint):
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
     DisableAI(character)
     ForceAnimation(character, 30012, loop=True)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=character))
     OR_1.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_1.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_1.Add(CharacterHasStateInfo(character=character, state_info=5))

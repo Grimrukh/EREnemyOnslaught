@@ -24,14 +24,14 @@ from .entities.m60_41_50_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005870(0, character=Characters.FallingstarBeast, name=904680602, npc_threat_level=19)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.FallingstarBeast, name=904680602, npc_threat_level=19)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1041500800,
-        left=0,
-        character=Characters.FallingstarBeast,
-        left_1=0,
-        item_lot__item_lot_param_id=30310,
+        dead_flag=1041500800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.FallingstarBeast,
+        boss_banner_choice=0,
+        item_lot=30310,
         seconds=0.0,
     )
     Event_1041502200()
@@ -40,7 +40,7 @@ def Constructor():
 @ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_90005201(0, 1041500800, 30009, 20009, 30.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRadius(0, 1041500800, 30009, 20009, 30.0, 0.0, 0, 0, 0, 0)
 
 
 @RestartOnRest(1041502200)

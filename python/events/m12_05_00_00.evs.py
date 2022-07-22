@@ -329,17 +329,17 @@ def Constructor():
         seconds=0.0,
         left=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.PutridCorpse5,
-        animation_id=30006,
-        animation_id_1=20006,
+        inactive_animation=30006,
+        active_animation=20006,
         radius=20.0,
-        seconds=7.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=7.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_90005221(
         0,
@@ -637,10 +637,10 @@ def Constructor():
     Event_12052360(2, character=Characters.GiantSkeletonTorso2, character_1=Characters.Albinauric2_2)
     Event_12052360(3, character=Characters.GiantSkeletonTorso3, character_1=Characters.Albinauric2_3)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Dummy0, radius=60.0, seconds=0.0, animation_id=-1)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12050400, character=12050400, item_lot_param_id=40680, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12050401, character=12050401, item_lot_param_id=40682, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12050402, character=12050402, item_lot_param_id=40684, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12050403, character=Characters.Scarab, item_lot_param_id=40686, reward_delay=1.5, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=12050400, character=12050400, item_lot=40680, reward_delay=1.5, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=12050401, character=12050401, item_lot=40682, reward_delay=1.5, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=12050402, character=12050402, item_lot=40684, reward_delay=1.5, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=12050403, character=Characters.Scarab, item_lot=40686, reward_delay=1.5, skip_reward=0)
     CommonFunc_90005790(
         0,
         right=12050800,
@@ -663,7 +663,7 @@ def Constructor():
         flag_1=12052410,
         flag_2=12052411,
         character=Characters.NamelessWhiteMask0,
-        item_lot_param_id=0,
+        item_lot=0,
         seconds=0.0,
     )
     CommonFunc_90005790(
@@ -688,7 +688,7 @@ def Constructor():
         flag_1=12052412,
         flag_2=12052413,
         character=Characters.NamelessWhiteMask1,
-        item_lot_param_id=12050950,
+        item_lot=12050950,
         seconds=0.0,
     )
     CommonFunc_90005790(
@@ -713,7 +713,7 @@ def Constructor():
         flag_1=12052414,
         flag_2=12052415,
         character=Characters.NamelessWhiteMask2,
-        item_lot_param_id=0,
+        item_lot=0,
         seconds=0.0,
     )
     CommonFunc_90005501(
@@ -789,7 +789,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9001,
         action_button_id=4350,
-        item_lot_param_id=100360,
+        item_lot=100360,
         first_flag=400036,
         last_flag=400037,
         flag=12059166,
@@ -993,7 +993,7 @@ def Event_12052200():
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(Characters.MohgwynMonstrousCrow0, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.MohgwynMonstrousCrow0, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.MohgwynMonstrousCrow0))
     OR_2.Add(CharacterHasStateInfo(character=Characters.MohgwynMonstrousCrow0, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=Characters.MohgwynMonstrousCrow0, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=Characters.MohgwynMonstrousCrow0, state_info=5))
@@ -1342,8 +1342,8 @@ def Event_12052848():
 @RestartOnRest(12052849)
 def Event_12052849():
     """Event 12052849"""
-    CommonFunc_ControlBossFog(0, flag=12050800, fog_asset=Assets.AEG099_001_9000, model_point=12, first_time_done_flag=12050801)
-    CommonFunc_ControlBossFog(0, flag=12050800, fog_asset=Assets.AEG099_001_9001, model_point=12, first_time_done_flag=12050801)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=12050800, fog_asset=Assets.AEG099_001_9000, model_point=12, required_flag=12050801)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=12050800, fog_asset=Assets.AEG099_001_9001, model_point=12, required_flag=12050801)
     CommonFunc_ControlBossMusic(
         0,
         dead_flag=12050800,
@@ -1375,7 +1375,7 @@ def Event_12052849():
         summon_entered_fog_flag=12052806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=12050800, fog_asset=Assets.AEG099_002_9000, model_point=4, first_time_done_flag=12050801)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=12050800, fog_asset=Assets.AEG099_002_9000, model_point=4, required_flag=12050801)
     CommonFunc_ControlBossMusic(0, 12050800, 480000, 12052805, 12052806, 0, 12052802, 0, 0)
 
 

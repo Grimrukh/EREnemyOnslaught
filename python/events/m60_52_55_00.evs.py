@@ -44,7 +44,7 @@ def Constructor():
         0,
         dead_flag=1052550390,
         character=Characters.ChiefGuardianArghanthy,
-        item_lot_param_id=1052550700,
+        item_lot=1052550700,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -75,7 +75,7 @@ def Constructor():
         left_3=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.SmallerDog1, region=1052552282, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1052550300, character=Characters.Scarab, item_lot_param_id=40516, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1052550300, character=Characters.Scarab, item_lot=40516, reward_delay=0.0, skip_reward=0)
     Event_1052552580()
     CommonFunc_900005610(0, 1052551500, 100, 800, 0)
 
@@ -154,7 +154,7 @@ def Event_1052552270(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))

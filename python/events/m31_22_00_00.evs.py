@@ -155,7 +155,7 @@ def Event_31222305():
     if OR_5:
         return
     OR_1.Add(HasAIStatus(Characters.Snail4, ai_status=AIStatusType.Battle))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Snail4, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Snail4))
     
     MAIN.Await(OR_1)
     
@@ -171,7 +171,7 @@ def Event_31222306():
     if OR_5:
         return
     OR_1.Add(HasAIStatus(Characters.Snail0, ai_status=AIStatusType.Battle))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Snail0, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Snail0))
     
     MAIN.Await(OR_1)
     
@@ -186,7 +186,7 @@ def Event_31222311():
     OR_15.Add(ThisEventSlotFlagEnabled())
     if OR_15:
         return
-    OR_5.Add(AttackedWithDamageType(attacked_entity=Characters.Snail0, attacker=0))
+    OR_5.Add(AttackedWithDamageType(attacked_entity=Characters.Snail0))
     OR_5.Add(CharacterDead(Characters.Snail0))
     
     MAIN.Await(OR_5)
@@ -242,7 +242,7 @@ def Event_31222314():
     OR_15.Add(ThisEventSlotFlagEnabled())
     if OR_15:
         return
-    OR_5.Add(AttackedWithDamageType(attacked_entity=Characters.Snail1, attacker=0))
+    OR_5.Add(AttackedWithDamageType(attacked_entity=Characters.Snail1))
     OR_5.Add(CharacterDead(Characters.Snail1))
     
     MAIN.Await(OR_5)
@@ -273,7 +273,7 @@ def Event_31222315():
     OR_15.Add(ThisEventSlotFlagEnabled())
     if OR_15:
         return
-    OR_5.Add(AttackedWithDamageType(attacked_entity=Characters.Snail2, attacker=0))
+    OR_5.Add(AttackedWithDamageType(attacked_entity=Characters.Snail2))
     OR_5.Add(CharacterDead(Characters.Snail2))
     
     MAIN.Await(OR_5)
@@ -516,5 +516,5 @@ def Event_31222849():
         summon_entered_fog_flag=31222806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=31220800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=31220800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, 31220800, 356000, 31222805, 31222806, 0, 0, 0, 0)

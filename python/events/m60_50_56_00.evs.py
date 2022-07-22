@@ -25,14 +25,14 @@ from .entities.m60_50_57_00_entities import Characters as m60_50_Characters
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005870(0, character=Characters.GreatWyrmTheodorix, name=904911600, npc_threat_level=5)
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.GreatWyrmTheodorix, name=904911600, npc_threat_level=5)
     CommonFunc_90005861(
         0,
         flag=1050560800,
         left=0,
         character=Characters.GreatWyrmTheodorix,
         left_1=1,
-        item_lot__item_lot_param_id=30550,
+        item_lot=30550,
         text=30065,
         seconds=0.0,
     )
@@ -90,7 +90,7 @@ def Constructor():
     Event_1050562260(0, anchor_entity=Assets.AEG099_251_9000)
     Event_1050562260(1, anchor_entity=Assets.AEG099_251_9001)
     Event_1050562260(2, anchor_entity=Assets.AEG099_251_9002)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1050560300, character=Characters.RedWolf, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1050560300, character=Characters.RedWolf, item_lot=0, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005560(0, flag=1050560500, asset=Assets.AEG099_635_9000, left=0)
     CommonFunc_90005795(
         0,

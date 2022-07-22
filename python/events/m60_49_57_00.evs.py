@@ -67,7 +67,7 @@ def Constructor():
         0,
         dead_flag=1049570300,
         character=Characters.LargeScarab,
-        item_lot_param_id=1049570710,
+        item_lot=1049570710,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -75,7 +75,7 @@ def Constructor():
         0,
         dead_flag=1049570310,
         character=Characters.Scarab,
-        item_lot_param_id=1049570700,
+        item_lot=1049570700,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -83,33 +83,33 @@ def Constructor():
         0,
         dead_flag=1049570320,
         character=Characters.ExtraLargeScarab,
-        item_lot_param_id=1049570720,
+        item_lot=1049570720,
         reward_delay=0.0,
         skip_reward=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.LargeScarab,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=4.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Scarab,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=4.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_1049572350(0, source_entity=1049572351)
     Event_1049572350(1, source_entity=1049572351)

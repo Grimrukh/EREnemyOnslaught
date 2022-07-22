@@ -26,25 +26,25 @@ from .entities.m60_43_39_00_entities import Characters as m60_43_Characters
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1043370000, asset=Assets.AEG099_060_9000)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1043370210, character=Characters.Scarab, item_lot_param_id=40108, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1043370210, character=Characters.Scarab, item_lot=40108, reward_delay=0.0, skip_reward=0)
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1043370800,
         character=Characters.NightsCavalryHorse,
-        item_lot_param_id=0,
+        item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
     )
     CommonFunc_90005476(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
     RunCommonEvent(90005477)
     Event_1043372340(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
-    CommonFunc_90005860(
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1043370800,
-        left=0,
-        character=Characters.NightsCavalry,
-        left_1=0,
-        item_lot__item_lot_param_id=1043370400,
+        dead_flag=1043370800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.NightsCavalry,
+        boss_banner_choice=0,
+        item_lot=1043370400,
         seconds=0.0,
     )
     CommonFunc_90005871(
@@ -143,7 +143,7 @@ def Constructor():
         unknown=0,
         right_2=0,
     )
-    CommonFunc_90005774(0, flag=1043379262, item_lot_param_id=1042370700, flag_1=1042377700)
+    CommonFunc_90005774(0, flag=1043379262, item_lot=1042370700, flag_1=1042377700)
     CommonFunc_90005704(
         0,
         attacked_entity=Characters.DemiHumanShaman,

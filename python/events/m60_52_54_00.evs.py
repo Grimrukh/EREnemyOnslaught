@@ -141,9 +141,9 @@ def Constructor():
         trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.SnowTroll2, region=1052542334, radius=50.0, seconds=0.0, animation_id=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1052540491, character=Characters.SnowTroll0, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1052540492, character=Characters.SnowTroll1, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1052540494, character=Characters.SnowTroll2, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1052540491, character=Characters.SnowTroll0, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1052540492, character=Characters.SnowTroll1, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1052540494, character=Characters.SnowTroll2, item_lot=0, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005771(0, 1052540950, 1052542700)
 
 

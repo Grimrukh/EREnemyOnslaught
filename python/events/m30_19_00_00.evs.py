@@ -55,17 +55,17 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Imp4, region=30192220, seconds=0.0, animation_id=3004)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Imp7, region=30192210, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=30190211, region=30192210, seconds=0.0, animation_id=-1)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=30190212,
-        animation_id=30001,
-        animation_id_1=20001,
+        inactive_animation=30001,
+        active_animation=20001,
         radius=6.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
@@ -494,7 +494,7 @@ def Event_30192201():
     """Event 30192201"""
     if ThisEventSlotFlagEnabled():
         return
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.ErdtreeBurialWatchdog0, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.ErdtreeBurialWatchdog0))
     OR_2.Add(CharacterHasStateInfo(character=Characters.ErdtreeBurialWatchdog0, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=Characters.ErdtreeBurialWatchdog0, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=Characters.ErdtreeBurialWatchdog0, state_info=5))
@@ -3985,5 +3985,5 @@ def Event_30192849():
         summon_entered_fog_flag=30192806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=30190800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=30190800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, 30190800, 930000, 30192805, 30192806, 0, 30192802, 0, 0)

@@ -25,14 +25,24 @@ from .entities.m60_52_53_00_entities import Assets as m60_52_Assets, Characters 
 @ContinueOnRest(200)
 def Event_200():
     """Event 200"""
-    Event_1052520800()
-    Event_1052522810()
-    Event_1052522811()
-    Event_1052522812()
-    Event_1052522815(
+    FireGiantDies()
+    FireGiantBattleTrigger()
+    FireGiantPhaseThreeTransition(
         0,
+        fire_giant_phase_onetwo=Characters.FireGiantPhaseOneTwo,
+        fire_giant_phase_three=Characters.FireGiantPhaseThree,
+    )
+    FireGiantPhaseThreeTransition(
+        2,
+        fire_giant_phase_onetwo=Characters.CLONE_FireGiantPhaseOneTwo,
+        fire_giant_phase_three=Characters.CLONE_FireGiantPhaseThree,
+    )
+    FireGiantPhaseThreeAITrigger()
+    FireGiantFirstLeg(
+        0,
+        fire_giant=Characters.FireGiantPhaseOneTwo,
         part_health=225,
-        value=200,
+        value_0=200,
         value_1=175,
         value_2=150,
         value_3=125,
@@ -41,11 +51,21 @@ def Event_200():
         value_6=50,
         value_7=25,
         value_8=0,
+        damage_flag_0=Flags.FireGiantFirstLegDamage0,
+        damage_flag_1=Flags.FireGiantFirstLegDamage1,
+        damage_flag_2=Flags.FireGiantFirstLegDamage2,
+        damage_flag_3=Flags.FireGiantFirstLegDamage3,
+        damage_flag_4=Flags.FireGiantFirstLegDamage4,
+        damage_flag_5=Flags.FireGiantFirstLegDamage5,
+        damage_flag_6=Flags.FireGiantFirstLegDamage6,
+        damage_flag_7=Flags.FireGiantFirstLegDamage7,
+        damage_flag_8=Flags.FireGiantFirstLegDamage8,
     )
-    Event_1052522816(
-        0,
+    FireGiantFirstLeg(
+        30,
+        fire_giant=Characters.CLONE_FireGiantPhaseOneTwo,
         part_health=225,
-        value=200,
+        value_0=200,
         value_1=175,
         value_2=150,
         value_3=125,
@@ -54,82 +74,184 @@ def Event_200():
         value_6=50,
         value_7=25,
         value_8=0,
+        damage_flag_0=Flags.CLONE_FireGiantFirstLegDamage0,
+        damage_flag_1=Flags.CLONE_FireGiantFirstLegDamage1,
+        damage_flag_2=Flags.CLONE_FireGiantFirstLegDamage2,
+        damage_flag_3=Flags.CLONE_FireGiantFirstLegDamage3,
+        damage_flag_4=Flags.CLONE_FireGiantFirstLegDamage4,
+        damage_flag_5=Flags.CLONE_FireGiantFirstLegDamage5,
+        damage_flag_6=Flags.CLONE_FireGiantFirstLegDamage6,
+        damage_flag_7=Flags.CLONE_FireGiantFirstLegDamage7,
+        damage_flag_8=Flags.CLONE_FireGiantFirstLegDamage8,
     )
-    Event_1052522817()
-    Event_1052522849()
+    FireGiantSecondLeg(
+        0,
+        fire_giant=Characters.FireGiantPhaseOneTwo,
+        part_health=225,
+        value_0=200,
+        value_1=175,
+        value_2=150,
+        value_3=125,
+        value_4=100,
+        value_5=75,
+        value_6=50,
+        value_7=25,
+        value_8=0,
+        damage_flag_0=Flags.FireGiantSecondLegDamage0,
+        damage_flag_1=Flags.FireGiantSecondLegDamage1,
+        damage_flag_2=Flags.FireGiantSecondLegDamage2,
+        damage_flag_3=Flags.FireGiantSecondLegDamage3,
+        damage_flag_4=Flags.FireGiantSecondLegDamage4,
+        damage_flag_5=Flags.FireGiantSecondLegDamage5,
+        damage_flag_6=Flags.FireGiantSecondLegDamage6,
+        damage_flag_7=Flags.FireGiantSecondLegDamage7,
+        damage_flag_8=Flags.FireGiantSecondLegDamage8,
+    )
+    FireGiantSecondLeg(
+        30,
+        fire_giant=Characters.CLONE_FireGiantPhaseOneTwo,
+        part_health=225,
+        value_0=200,
+        value_1=175,
+        value_2=150,
+        value_3=125,
+        value_4=100,
+        value_5=75,
+        value_6=50,
+        value_7=25,
+        value_8=0,
+        damage_flag_0=Flags.CLONE_FireGiantSecondLegDamage0,
+        damage_flag_1=Flags.CLONE_FireGiantSecondLegDamage1,
+        damage_flag_2=Flags.CLONE_FireGiantSecondLegDamage2,
+        damage_flag_3=Flags.CLONE_FireGiantSecondLegDamage3,
+        damage_flag_4=Flags.CLONE_FireGiantSecondLegDamage4,
+        damage_flag_5=Flags.CLONE_FireGiantSecondLegDamage5,
+        damage_flag_6=Flags.CLONE_FireGiantSecondLegDamage6,
+        damage_flag_7=Flags.CLONE_FireGiantSecondLegDamage7,
+        damage_flag_8=Flags.CLONE_FireGiantSecondLegDamage8,
+    )
+    FireGiantRegenerate(0, fire_giant=Characters.FireGiantPhaseOneTwo)
+    FireGiantRegenerate(30, fire_giant=Characters.CLONE_FireGiantPhaseOneTwo)  # 1052522847
+    FireGiantCommonEvents()
 
 
 @RestartOnRest(1052520800)
-def Event_1052520800():
+def FireGiantDies():
     """Event 1052520800"""
-    if FlagEnabled(1252520800):
+    if FlagEnabled(Flags.FireGiantDead):
         return
-    
-    MAIN.Await(HealthValue(Characters.FireGiant1) <= 0)
-    
-    Wait(4.0)
-    PlaySoundEffect(Characters.FireGiant1, 888880000, sound_type=SoundType.s_SFX)
-    
-    MAIN.Await(CharacterDead(Characters.FireGiant1))
+
+    AND_1.Add(HealthValue(Characters.FireGiantPhaseThree) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_FireGiantPhaseThree) <= 0)
+    MAIN.Await(AND_1)
     
     Wait(4.0)
-    KillBossAndDisplayBanner(character=Characters.FireGiant1, banner_type=BannerType.LegendFelled)
-    EnableFlag(1252520800)
+    PlaySoundEffect(Characters.FireGiantPhaseThree, 888880000, sound_type=SoundType.s_SFX)
+
+    AND_2.Add(CharacterDead(Characters.FireGiantPhaseThree))
+    AND_2.Add(CharacterDead(Characters.CLONE_FireGiantPhaseThree))
+    MAIN.Await(AND_2)
+    
+    Wait(4.0)
+    KillBossAndDisplayBanner(character=Characters.FireGiantPhaseThree, banner_type=BannerType.LegendFelled)
+    EnableFlag(Flags.FireGiantDead)
     EnableFlag(9131)
     if PlayerInOwnWorld():
         EnableFlag(61131)
 
 
 @RestartOnRest(1052522810)
-def Event_1052522810():
+def FireGiantBattleTrigger():
     """Event 1052522810"""
-    GotoIfFlagDisabled(Label.L0, flag=1252520800)
-    DisableCharacter(1052525800)
-    DisableAnimations(1052525800)
-    Kill(1052525800, award_runes=True)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.FireGiantDead)
+    DisableCharacter(CharacterGroups.FireGiantBoss)
+    DisableAnimations(CharacterGroups.FireGiantBoss)
+    Kill(CharacterGroups.FireGiantBoss, award_runes=True)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableGravity(Characters.FireGiant1)
-    DisableAnimations(Characters.FireGiant1)
-    DisableAI(Characters.FireGiant1)
-    DisableAI(Characters.FireGiant0)
-    SetLockOnPoint(character=Characters.FireGiant1, lock_on_model_point=221, state=False)
-    SetLockOnPoint(character=Characters.FireGiant1, lock_on_model_point=222, state=False)
-    SetLockOnPoint(character=Characters.FireGiant1, lock_on_model_point=225, state=False)
-    SetLockOnPoint(character=Characters.FireGiant1, lock_on_model_point=226, state=False)
-    SetLockOnPoint(character=Characters.FireGiant1, lock_on_model_point=227, state=False)
-    SetLockOnPoint(character=Characters.FireGiant0, lock_on_model_point=221, state=False)
-    SetLockOnPoint(character=Characters.FireGiant0, lock_on_model_point=223, state=False)
-    SetLockOnPoint(character=Characters.FireGiant0, lock_on_model_point=224, state=False)
-    SetLockOnPoint(character=Characters.FireGiant0, lock_on_model_point=225, state=False)
-    SetLockOnPoint(character=Characters.FireGiant0, lock_on_model_point=226, state=False)
-    SetLockOnPoint(character=Characters.FireGiant0, lock_on_model_point=227, state=False)
-    GotoIfFlagEnabled(Label.L1, flag=1252520801)
+    DisableGravity(Characters.FireGiantPhaseThree)
+    DisableAnimations(Characters.FireGiantPhaseThree)
+    DisableAI(Characters.FireGiantPhaseThree)
+    DisableAI(Characters.FireGiantPhaseOneTwo)
+
+    DisableGravity(Characters.CLONE_FireGiantPhaseThree)
+    DisableAnimations(Characters.CLONE_FireGiantPhaseThree)
+    DisableAI(Characters.CLONE_FireGiantPhaseThree)
+    DisableAI(Characters.CLONE_FireGiantPhaseOneTwo)
+
+    SetLockOnPoint(character=Characters.FireGiantPhaseThree, lock_on_model_point=221, state=False)
+    SetLockOnPoint(character=Characters.FireGiantPhaseThree, lock_on_model_point=222, state=False)
+    SetLockOnPoint(character=Characters.FireGiantPhaseThree, lock_on_model_point=225, state=False)
+    SetLockOnPoint(character=Characters.FireGiantPhaseThree, lock_on_model_point=226, state=False)
+    SetLockOnPoint(character=Characters.FireGiantPhaseThree, lock_on_model_point=227, state=False)
+    SetLockOnPoint(character=Characters.FireGiantPhaseOneTwo, lock_on_model_point=221, state=False)
+    SetLockOnPoint(character=Characters.FireGiantPhaseOneTwo, lock_on_model_point=223, state=False)
+    SetLockOnPoint(character=Characters.FireGiantPhaseOneTwo, lock_on_model_point=224, state=False)
+    SetLockOnPoint(character=Characters.FireGiantPhaseOneTwo, lock_on_model_point=225, state=False)
+    SetLockOnPoint(character=Characters.FireGiantPhaseOneTwo, lock_on_model_point=226, state=False)
+    SetLockOnPoint(character=Characters.FireGiantPhaseOneTwo, lock_on_model_point=227, state=False)
+
+    SetLockOnPoint(character=Characters.CLONE_FireGiantPhaseThree, lock_on_model_point=221, state=False)
+    SetLockOnPoint(character=Characters.CLONE_FireGiantPhaseThree, lock_on_model_point=222, state=False)
+    SetLockOnPoint(character=Characters.CLONE_FireGiantPhaseThree, lock_on_model_point=225, state=False)
+    SetLockOnPoint(character=Characters.CLONE_FireGiantPhaseThree, lock_on_model_point=226, state=False)
+    SetLockOnPoint(character=Characters.CLONE_FireGiantPhaseThree, lock_on_model_point=227, state=False)
+    SetLockOnPoint(character=Characters.CLONE_FireGiantPhaseOneTwo, lock_on_model_point=221, state=False)
+    SetLockOnPoint(character=Characters.CLONE_FireGiantPhaseOneTwo, lock_on_model_point=223, state=False)
+    SetLockOnPoint(character=Characters.CLONE_FireGiantPhaseOneTwo, lock_on_model_point=224, state=False)
+    SetLockOnPoint(character=Characters.CLONE_FireGiantPhaseOneTwo, lock_on_model_point=225, state=False)
+    SetLockOnPoint(character=Characters.CLONE_FireGiantPhaseOneTwo, lock_on_model_point=226, state=False)
+    SetLockOnPoint(character=Characters.CLONE_FireGiantPhaseOneTwo, lock_on_model_point=227, state=False)
+
+    GotoIfFlagEnabled(Label.L1, flag=Flags.FireGiantFirstTimeDone)
     if PlayerInOwnWorld():
-        DisableFlag(1252520804)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.FireGiant0, attacker=0))
-    OR_1.Add(EntityWithinDistance(entity=Characters.FireGiant0, other_entity=PLAYER, radius=120.0))
-    OR_1.Add(EntityWithinDistance(entity=Characters.FireGiant0, other_entity=m60_52_Characters.LivingPot0, radius=120.0))
-    OR_1.Add(EntityWithinDistance(entity=Characters.FireGiant0, other_entity=m60_52_Characters.LivingPot1, radius=120.0))
-    
+        DisableFlag(Flags.EnableFireGiantFog)
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.FireGiantPhaseOneTwo))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_FireGiantPhaseOneTwo))
+    OR_1.Add(EntityWithinDistance(
+        entity=Characters.FireGiantPhaseOneTwo, other_entity=PLAYER, radius=120.0
+    ))
+    OR_1.Add(EntityWithinDistance(
+        entity=Characters.FireGiantPhaseOneTwo, other_entity=m60_52_Characters.AlexanderSummon, radius=120.0
+    ))
+    OR_1.Add(EntityWithinDistance(
+        entity=Characters.FireGiantPhaseOneTwo, other_entity=m60_52_Characters.LivingPot1, radius=120.0
+    ))
+    OR_1.Add(EntityWithinDistance(
+        entity=Characters.CLONE_FireGiantPhaseOneTwo, other_entity=PLAYER, radius=120.0
+    ))
+    OR_1.Add(EntityWithinDistance(
+        entity=Characters.CLONE_FireGiantPhaseOneTwo, other_entity=m60_52_Characters.AlexanderSummon, radius=120.0
+    ))
+    OR_1.Add(EntityWithinDistance(
+        entity=Characters.CLONE_FireGiantPhaseOneTwo, other_entity=m60_52_Characters.LivingPot1, radius=120.0
+    ))
+
     MAIN.Await(OR_1)
     
-    EnableFlag(1252520801)
+    EnableFlag(Flags.FireGiantFirstTimeDone)
     if PlayerInOwnWorld():
         BanishInvaders(unknown=0)
     Goto(Label.L2)
 
     # --- Label 1 --- #
     DefineLabel(1)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.FireGiant0, attacker=0))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.FireGiant0, state_info=436))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.FireGiant0, state_info=2))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.FireGiant0, state_info=5))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.FireGiant0, state_info=6))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.FireGiant0, state_info=260))
-    OR_1.Add(EntityWithinDistance(entity=Characters.FireGiant0, other_entity=PLAYER, radius=120.0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.FireGiantPhaseOneTwo))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.FireGiantPhaseOneTwo, state_info=436))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.FireGiantPhaseOneTwo, state_info=2))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.FireGiantPhaseOneTwo, state_info=5))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.FireGiantPhaseOneTwo, state_info=6))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.FireGiantPhaseOneTwo, state_info=260))
+    OR_1.Add(EntityWithinDistance(entity=Characters.FireGiantPhaseOneTwo, other_entity=PLAYER, radius=120.0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_FireGiantPhaseOneTwo))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_FireGiantPhaseOneTwo, state_info=436))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_FireGiantPhaseOneTwo, state_info=2))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_FireGiantPhaseOneTwo, state_info=5))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_FireGiantPhaseOneTwo, state_info=6))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_FireGiantPhaseOneTwo, state_info=260))
+    OR_1.Add(EntityWithinDistance(entity=Characters.CLONE_FireGiantPhaseOneTwo, other_entity=PLAYER, radius=120.0))
     OR_2.Add(CharacterInsideRegion(character=PLAYER, region=1052532800))
     OR_2.Add(CharacterInsideRegion(character=PLAYER, region=1052532801))
     AND_2.Add(OR_2)
@@ -140,23 +262,29 @@ def Event_1052522810():
 
     # --- Label 2 --- #
     DefineLabel(2)
-    EnableNetworkFlag(1252520804)
-    ReferDamageToEntity(Characters.FireGiant0, target_entity=Characters.FireGiant1)
-    EnableAI(Characters.FireGiant0)
-    EnableBossHealthBar(Characters.FireGiant1, name=904760000)
-    DisableHealthBar(Characters.FireGiant0)
-    SetNetworkUpdateRate(Characters.FireGiant0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableNetworkFlag(Flags.EnableFireGiantFog)
+
+    ReferDamageToEntity(Characters.FireGiantPhaseOneTwo, target_entity=Characters.FireGiantPhaseThree)
+    ReferDamageToEntity(Characters.CLONE_FireGiantPhaseOneTwo, target_entity=Characters.CLONE_FireGiantPhaseThree)
+    EnableAI(Characters.FireGiantPhaseOneTwo)
+    EnableAI(Characters.CLONE_FireGiantPhaseOneTwo)
+    EnableBossHealthBar(Characters.FireGiantPhaseThree, name=NameText.FireGiant, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_FireGiantPhaseThree, name=NameText.CLONE_FireGiant, bar_slot=0)
+    DisableHealthBar(Characters.FireGiantPhaseOneTwo)
+    DisableHealthBar(Characters.CLONE_FireGiantPhaseOneTwo)
+    SetNetworkUpdateRate(Characters.FireGiantPhaseOneTwo, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_FireGiantPhaseOneTwo, is_fixed=True, update_rate=CharacterUpdateRate.Always)
 
 
 @RestartOnRest(1052522811)
-def Event_1052522811():
+def FireGiantPhaseThreeTransition(_, fire_giant_phase_onetwo: uint, fire_giant_phase_three: uint):
     """Event 1052522811"""
-    if FlagEnabled(1252520800):
+    if FlagEnabled(Flags.FireGiantDead):
         return
     
-    MAIN.Await(HealthRatio(Characters.FireGiant0) <= 0.0)
+    MAIN.Await(HealthRatio(fire_giant_phase_onetwo) <= 0.0)
     
-    SetTeamType(Characters.FireGiant0, TeamType.Object)
+    SetTeamType(fire_giant_phase_onetwo, TeamType.Object)
     if PlayerInOwnWorld():
         PlayCutsceneToPlayerAndWarpWithStablePositionUpdate(
             cutscene_id=60520010,
@@ -173,47 +301,53 @@ def Event_1052522811():
     WaitFramesAfterCutscene(frames=1)
     if PlayerInOwnWorld():
         SetCameraAngle(x_angle=-32.529998779296875, y_angle=-43.560001373291016)
-    EnableCharacter(Characters.FireGiant1)
+    EnableCharacter(fire_giant_phase_three)
     WaitFrames(frames=1)
-    ForceAnimation(Characters.FireGiant1, 20000)
+    ForceAnimation(fire_giant_phase_three, 20000)
     Move(
-        Characters.FireGiant1,
-        destination=1052522815,
+        fire_giant_phase_three,
+        destination=1052522815,  # TODO: May want a different placement for clone?
         destination_type=CoordEntityType.Region,
-        copy_draw_parent=Characters.FireGiant0,
+        copy_draw_parent=fire_giant_phase_onetwo,
     )
-    EnableGravity(Characters.FireGiant1)
+    EnableGravity(fire_giant_phase_three)
     WaitFrames(frames=1)
-    DisableCharacter(Characters.FireGiant0)
-    DisableAnimations(Characters.FireGiant0)
+    DisableCharacter(fire_giant_phase_onetwo)
+    DisableAnimations(fire_giant_phase_onetwo)
     WaitFrames(frames=1)
-    EnableAnimations(Characters.FireGiant1)
-    EnableFlag(1252522802)
+    EnableAnimations(fire_giant_phase_three)
+    EnableFlag(Flags.FireGiantInPhaseThree)
 
 
 @ContinueOnRest(1052522812)
-def Event_1052522812():
+def FireGiantPhaseThreeAITrigger():
     """Event 1052522812"""
-    if FlagEnabled(1252520800):
+    if FlagEnabled(Flags.FireGiantDead):
         return
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.FireGiant1, attacker=0))
-    OR_1.Add(EntityWithinDistance(entity=Characters.FireGiant1, other_entity=PLAYER, radius=70.0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.FireGiantPhaseThree))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_FireGiantPhaseThree))
+    OR_1.Add(EntityWithinDistance(entity=Characters.FireGiantPhaseThree, other_entity=PLAYER, radius=70.0))
+    OR_1.Add(EntityWithinDistance(entity=Characters.CLONE_FireGiantPhaseThree, other_entity=PLAYER, radius=70.0))
     AND_1.Add(OR_1)
-    AND_1.Add(FlagEnabled(1252522802))
+    AND_1.Add(FlagEnabled(Flags.FireGiantInPhaseThree))
     
     MAIN.Await(AND_1)
     
-    EnableAI(Characters.FireGiant1)
-    SetNetworkUpdateRate(Characters.FireGiant1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableAI(Characters.FireGiantPhaseThree)
+    EnableAI(Characters.CLONE_FireGiantPhaseThree)
+    SetNetworkUpdateRate(Characters.FireGiantPhaseThree, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_FireGiantPhaseThree, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     WaitFrames(frames=1)
-    AddSpecialEffect(Characters.FireGiant1, 12780)
+    AddSpecialEffect(Characters.FireGiantPhaseThree, 12780)
+    AddSpecialEffect(Characters.CLONE_FireGiantPhaseThree, 12780)
 
 
 @RestartOnRest(1052522815)
-def Event_1052522815(
+def FireGiantFirstLeg(
     _,
+    fire_giant: uint,
     part_health: int,
-    value: int,
+    value_0: int,
     value_1: int,
     value_2: int,
     value_3: int,
@@ -222,178 +356,188 @@ def Event_1052522815(
     value_6: int,
     value_7: int,
     value_8: int,
+    damage_flag_0: int,
+    damage_flag_1: int,
+    damage_flag_2: int,
+    damage_flag_3: int,
+    damage_flag_4: int,
+    damage_flag_5: int,
+    damage_flag_6: int,
+    damage_flag_7: int,
+    damage_flag_8: int,
 ):
     """Event 1052522815"""
-    if FlagEnabled(1252520800):
+    if FlagEnabled(Flags.FireGiantDead):
         return
     if ThisEventSlotFlagEnabled():
         return
-    AND_1.Add(CharacterBackreadEnabled(Characters.FireGiant0))
+    AND_1.Add(CharacterBackreadEnabled(fire_giant))
     
     MAIN.Await(AND_1)
     
     CreateNPCPart(
-        Characters.FireGiant0,
+        fire_giant,
         npc_part_id=9,
         part_index=NPCPartType.Part9,
         part_health=part_health,
         body_damage_correction=1.5,
     )
-    GotoIfFlagEnabled(Label.L18, flag=1052522828)
-    GotoIfFlagEnabled(Label.L17, flag=1052522827)
-    GotoIfFlagEnabled(Label.L16, flag=1052522826)
-    GotoIfFlagEnabled(Label.L15, flag=1052522825)
-    GotoIfFlagEnabled(Label.L14, flag=1052522824)
-    GotoIfFlagEnabled(Label.L13, flag=1052522823)
-    GotoIfFlagEnabled(Label.L12, flag=1052522822)
-    GotoIfFlagEnabled(Label.L11, flag=1052522821)
-    GotoIfFlagEnabled(Label.L10, flag=1052522820)
-    OR_10.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=9) <= value)
+    GotoIfFlagEnabled(Label.L18, flag=damage_flag_8)
+    GotoIfFlagEnabled(Label.L17, flag=damage_flag_7)
+    GotoIfFlagEnabled(Label.L16, flag=damage_flag_6)
+    GotoIfFlagEnabled(Label.L15, flag=damage_flag_5)
+    GotoIfFlagEnabled(Label.L14, flag=damage_flag_4)
+    GotoIfFlagEnabled(Label.L13, flag=damage_flag_3)
+    GotoIfFlagEnabled(Label.L12, flag=damage_flag_2)
+    GotoIfFlagEnabled(Label.L11, flag=damage_flag_1)
+    GotoIfFlagEnabled(Label.L10, flag=damage_flag_0)
+    OR_10.Add(CharacterPartHealth(fire_giant, npc_part_id=9) <= value_0)
     
     MAIN.Await(OR_10)
     
-    EnableNetworkFlag(1052522820)
+    EnableNetworkFlag(damage_flag_0)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=110,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 10 --- #
     DefineLabel(10)
-    AddSpecialEffect(Characters.FireGiant0, 12730)
-    OR_11.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=9) <= value_1)
+    AddSpecialEffect(fire_giant, 12730)
+    OR_11.Add(CharacterPartHealth(fire_giant, npc_part_id=9) <= value_1)
     
     MAIN.Await(OR_11)
     
-    EnableNetworkFlag(1052522820)
+    EnableNetworkFlag(damage_flag_1)  # NOTE: this was damage flag 0 (accidentally, I presume)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=110,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 11 --- #
     DefineLabel(11)
-    AddSpecialEffect(Characters.FireGiant0, 12731)
-    OR_12.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=9) <= value_2)
+    AddSpecialEffect(fire_giant, 12731)
+    OR_12.Add(CharacterPartHealth(fire_giant, npc_part_id=9) <= value_2)
     
     MAIN.Await(OR_12)
     
-    EnableNetworkFlag(1052522822)
+    EnableNetworkFlag(damage_flag_2)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=110,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 12 --- #
     DefineLabel(12)
-    AddSpecialEffect(Characters.FireGiant0, 12732)
-    OR_13.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=9) <= value_3)
+    AddSpecialEffect(fire_giant, 12732)
+    OR_13.Add(CharacterPartHealth(fire_giant, npc_part_id=9) <= value_3)
     
     MAIN.Await(OR_13)
     
-    EnableNetworkFlag(1052522823)
+    EnableNetworkFlag(damage_flag_3)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=110,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 13 --- #
     DefineLabel(13)
-    AddSpecialEffect(Characters.FireGiant0, 12733)
-    OR_14.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=9) <= value_4)
+    AddSpecialEffect(fire_giant, 12733)
+    OR_14.Add(CharacterPartHealth(fire_giant, npc_part_id=9) <= value_4)
     
     MAIN.Await(OR_14)
     
-    EnableNetworkFlag(1052522824)
+    EnableNetworkFlag(damage_flag_4)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=110,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 14 --- #
     DefineLabel(14)
-    AddSpecialEffect(Characters.FireGiant0, 12734)
-    OR_15.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=9) <= value_5)
+    AddSpecialEffect(fire_giant, 12734)
+    OR_15.Add(CharacterPartHealth(fire_giant, npc_part_id=9) <= value_5)
     
     MAIN.Await(OR_15)
     
-    EnableNetworkFlag(1052522825)
+    EnableNetworkFlag(damage_flag_5)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=110,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 15 --- #
     DefineLabel(15)
-    AddSpecialEffect(Characters.FireGiant0, 12735)
-    AND_10.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=9) <= value_6)
+    AddSpecialEffect(fire_giant, 12735)
+    AND_10.Add(CharacterPartHealth(fire_giant, npc_part_id=9) <= value_6)
     
     MAIN.Await(AND_10)
     
-    EnableNetworkFlag(1052522826)
+    EnableNetworkFlag(damage_flag_6)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=110,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 16 --- #
     DefineLabel(16)
-    AddSpecialEffect(Characters.FireGiant0, 12736)
-    AND_11.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=9) <= value_7)
+    AddSpecialEffect(fire_giant, 12736)
+    AND_11.Add(CharacterPartHealth(fire_giant, npc_part_id=9) <= value_7)
     
     MAIN.Await(AND_11)
     
-    EnableNetworkFlag(1052522827)
+    EnableNetworkFlag(damage_flag_7)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=110,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 17 --- #
     DefineLabel(17)
-    AddSpecialEffect(Characters.FireGiant0, 12737)
-    AND_12.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=9) <= value_8)
+    AddSpecialEffect(fire_giant, 12737)
+    AND_12.Add(CharacterPartHealth(fire_giant, npc_part_id=9) <= value_8)
     
     MAIN.Await(AND_12)
     
-    EnableNetworkFlag(1052522828)
+    EnableNetworkFlag(damage_flag_8)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=110,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 18 --- #
     DefineLabel(18)
-    AddSpecialEffect(Characters.FireGiant0, 12738)
+    AddSpecialEffect(fire_giant, 12738)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
-    if CharacterHasSpecialEffect(character=Characters.FireGiant0, special_effect=12752):
+    if CharacterHasSpecialEffect(character=fire_giant, special_effect=12752):
         return
-    AddSpecialEffect(Characters.FireGiant0, 12750)
+    AddSpecialEffect(fire_giant, 12750)
 
 
 @RestartOnRest(1052522816)
-def Event_1052522816(
+def FireGiantSecondLeg(
     _,
+    fire_giant: uint,
     part_health: int,
-    value: int,
+    value_0: int,
     value_1: int,
     value_2: int,
     value_3: int,
@@ -402,194 +546,203 @@ def Event_1052522816(
     value_6: int,
     value_7: int,
     value_8: int,
+    damage_flag_0: int,
+    damage_flag_1: int,
+    damage_flag_2: int,
+    damage_flag_3: int,
+    damage_flag_4: int,
+    damage_flag_5: int,
+    damage_flag_6: int,
+    damage_flag_7: int,
+    damage_flag_8: int,
 ):
     """Event 1052522816"""
-    if FlagEnabled(1252520800):
+    if FlagEnabled(Flags.FireGiantDead):
         return
     if ThisEventSlotFlagEnabled():
         return
-    AND_1.Add(CharacterBackreadEnabled(Characters.FireGiant0))
+    AND_1.Add(CharacterBackreadEnabled(fire_giant))
     
     MAIN.Await(AND_1)
     
     CreateNPCPart(
-        Characters.FireGiant0,
+        fire_giant,
         npc_part_id=8,
         part_index=NPCPartType.Part8,
         part_health=part_health,
         body_damage_correction=1.5,
     )
-    GotoIfFlagEnabled(Label.L18, flag=1052522838)
-    GotoIfFlagEnabled(Label.L17, flag=1052522837)
-    GotoIfFlagEnabled(Label.L16, flag=1052522836)
-    GotoIfFlagEnabled(Label.L15, flag=1052522835)
-    GotoIfFlagEnabled(Label.L14, flag=1052522834)
-    GotoIfFlagEnabled(Label.L13, flag=1052522833)
-    GotoIfFlagEnabled(Label.L12, flag=1052522832)
-    GotoIfFlagEnabled(Label.L11, flag=1052522831)
-    GotoIfFlagEnabled(Label.L10, flag=1052522830)
-    OR_10.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=8) <= value)
+    GotoIfFlagEnabled(Label.L18, flag=damage_flag_8)
+    GotoIfFlagEnabled(Label.L17, flag=damage_flag_7)
+    GotoIfFlagEnabled(Label.L16, flag=damage_flag_6)
+    GotoIfFlagEnabled(Label.L15, flag=damage_flag_5)
+    GotoIfFlagEnabled(Label.L14, flag=damage_flag_4)
+    GotoIfFlagEnabled(Label.L13, flag=damage_flag_3)
+    GotoIfFlagEnabled(Label.L12, flag=damage_flag_2)
+    GotoIfFlagEnabled(Label.L11, flag=damage_flag_1)
+    GotoIfFlagEnabled(Label.L10, flag=damage_flag_0)
+    OR_10.Add(CharacterPartHealth(fire_giant, npc_part_id=8) <= value_0)
     
     MAIN.Await(OR_10)
     
-    EnableNetworkFlag(1052522830)
+    EnableNetworkFlag(damage_flag_0)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=111,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 10 --- #
     DefineLabel(10)
-    AddSpecialEffect(Characters.FireGiant0, 12740)
-    OR_11.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=8) <= value_1)
+    AddSpecialEffect(fire_giant, 12740)
+    OR_11.Add(CharacterPartHealth(fire_giant, npc_part_id=8) <= value_1)
     
     MAIN.Await(OR_11)
     
-    EnableNetworkFlag(1052522831)
+    EnableNetworkFlag(damage_flag_1)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=111,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 11 --- #
     DefineLabel(11)
-    AddSpecialEffect(Characters.FireGiant0, 12741)
-    OR_12.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=8) <= value_2)
+    AddSpecialEffect(fire_giant, 12741)
+    OR_12.Add(CharacterPartHealth(fire_giant, npc_part_id=8) <= value_2)
     
     MAIN.Await(OR_12)
     
-    EnableNetworkFlag(1052522832)
+    EnableNetworkFlag(damage_flag_2)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=111,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 12 --- #
     DefineLabel(12)
-    AddSpecialEffect(Characters.FireGiant0, 12742)
-    OR_13.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=8) <= value_3)
+    AddSpecialEffect(fire_giant, 12742)
+    OR_13.Add(CharacterPartHealth(fire_giant, npc_part_id=8) <= value_3)
     
     MAIN.Await(OR_13)
     
-    EnableNetworkFlag(1052522833)
+    EnableNetworkFlag(damage_flag_3)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=111,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 13 --- #
     DefineLabel(13)
-    AddSpecialEffect(Characters.FireGiant0, 12743)
-    OR_14.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=8) <= value_4)
+    AddSpecialEffect(fire_giant, 12743)
+    OR_14.Add(CharacterPartHealth(fire_giant, npc_part_id=8) <= value_4)
     
     MAIN.Await(OR_14)
     
-    EnableNetworkFlag(1052522834)
+    EnableNetworkFlag(damage_flag_4)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=111,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 14 --- #
     DefineLabel(14)
-    AddSpecialEffect(Characters.FireGiant0, 12744)
-    OR_15.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=8) <= value_5)
+    AddSpecialEffect(fire_giant, 12744)
+    OR_15.Add(CharacterPartHealth(fire_giant, npc_part_id=8) <= value_5)
     
     MAIN.Await(OR_15)
     
-    EnableNetworkFlag(1052522835)
+    EnableNetworkFlag(damage_flag_5)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=111,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 15 --- #
     DefineLabel(15)
-    AddSpecialEffect(Characters.FireGiant0, 12745)
-    AND_10.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=8) <= value_6)
+    AddSpecialEffect(fire_giant, 12745)
+    AND_10.Add(CharacterPartHealth(fire_giant, npc_part_id=8) <= value_6)
     
     MAIN.Await(AND_10)
     
-    EnableNetworkFlag(1052522836)
+    EnableNetworkFlag(damage_flag_6)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=111,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 16 --- #
     DefineLabel(16)
-    AddSpecialEffect(Characters.FireGiant0, 12746)
-    AND_11.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=8) <= value_7)
+    AddSpecialEffect(fire_giant, 12746)
+    AND_11.Add(CharacterPartHealth(fire_giant, npc_part_id=8) <= value_7)
     
     MAIN.Await(AND_11)
     
-    EnableNetworkFlag(1052522837)
+    EnableNetworkFlag(damage_flag_7)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=111,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 17 --- #
     DefineLabel(17)
-    AddSpecialEffect(Characters.FireGiant0, 12747)
-    AND_12.Add(CharacterPartHealth(Characters.FireGiant0, npc_part_id=8) <= value_8)
+    AddSpecialEffect(fire_giant, 12747)
+    AND_12.Add(CharacterPartHealth(fire_giant, npc_part_id=8) <= value_8)
     
     MAIN.Await(AND_12)
     
-    EnableNetworkFlag(1052522838)
+    EnableNetworkFlag(damage_flag_8)
     CreateTemporaryVFX(
         vfx_id=647605,
-        anchor_entity=Characters.FireGiant0,
+        anchor_entity=fire_giant,
         model_point=111,
         anchor_type=CoordEntityType.Character,
     )
 
     # --- Label 18 --- #
     DefineLabel(18)
-    AddSpecialEffect(Characters.FireGiant0, 12748)
+    AddSpecialEffect(fire_giant, 12748)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
-    if CharacterHasSpecialEffect(character=Characters.FireGiant0, special_effect=12752):
+    if CharacterHasSpecialEffect(character=fire_giant, special_effect=12752):
         return
-    AddSpecialEffect(Characters.FireGiant0, 12750)
+    AddSpecialEffect(fire_giant, 12750)
 
 
 @RestartOnRest(1052522817)
-def Event_1052522817():
+def FireGiantRegenerate(_, fire_giant: uint):
     """Event 1052522817"""
-    if FlagEnabled(1252520800):
+    if FlagEnabled(Flags.FireGiantDead):
         return
-    OR_1.Add(CharacterHasSpecialEffect(Characters.FireGiant0, 12752))
+    OR_1.Add(CharacterHasSpecialEffect(fire_giant, 12752))
     
     MAIN.Await(OR_1)
     
-    SetNPCPartHealth(Characters.FireGiant0, npc_part_id=8, desired_health=0, overwrite_max=False)
-    SetNPCPartHealth(Characters.FireGiant0, npc_part_id=9, desired_health=0, overwrite_max=False)
+    SetNPCPartHealth(fire_giant, npc_part_id=8, desired_health=0, overwrite_max=False)
+    SetNPCPartHealth(fire_giant, npc_part_id=9, desired_health=0, overwrite_max=False)
     WaitFrames(frames=1)
     CreateNPCPart(
-        Characters.FireGiant0,
+        fire_giant,
         npc_part_id=8,
         part_index=NPCPartType.Part8,
         part_health=99999,
         body_damage_correction=2.0,
     )
     CreateNPCPart(
-        Characters.FireGiant0,
+        fire_giant,
         npc_part_id=9,
         part_index=NPCPartType.Part9,
         part_health=99999,
@@ -598,33 +751,33 @@ def Event_1052522817():
 
 
 @RestartOnRest(1052522849)
-def Event_1052522849():
+def FireGiantCommonEvents():
     """Event 1052522849"""
     CommonFunc_HostEntersBossFog(
         0,
-        boss_dead_flag=1252520800,
+        boss_dead_flag=Flags.FireGiantDead,
         fog_asset=m60_52_Assets.AEG099_002_9000,
         fog_region=1052532800,
         host_entered_fog_flag=1252522805,
-        boss_characters=1052525800,
+        boss_characters=CharacterGroups.FireGiantBoss,
         action_button_id=10000,
-        first_time_done_flag=1252520801,
+        first_time_done_flag=Flags.FireGiantFirstTimeDone,
         first_time_trigger_region=0,
     )
     CommonFunc_HostEntersBossFog(
         0,
-        boss_dead_flag=1252520800,
+        boss_dead_flag=Flags.FireGiantDead,
         fog_asset=m60_52_Assets.AEG099_003_9001,
         fog_region=1052532801,
         host_entered_fog_flag=1252522805,
-        boss_characters=1052525800,
+        boss_characters=CharacterGroups.FireGiantBoss,
         action_button_id=10000,
-        first_time_done_flag=1252520801,
+        first_time_done_flag=Flags.FireGiantFirstTimeDone,
         first_time_trigger_region=0,
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=1252520800,
+        boss_dead_flag=Flags.FireGiantDead,
         fog_asset=m60_52_Assets.AEG099_002_9000,
         fog_region=1052532800,
         host_entered_fog_flag=1252522805,
@@ -633,15 +786,49 @@ def Event_1052522849():
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=1252520800,
+        boss_dead_flag=Flags.FireGiantDead,
         fog_asset=m60_52_Assets.AEG099_003_9001,
         fog_region=1052532801,
         host_entered_fog_flag=1252522805,
         summon_entered_fog_flag=1252522806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=1252520800, fog_asset=m60_52_Assets.AEG099_002_9000, model_point=9, first_time_done_flag=1252520804)
-    CommonFunc_ControlBossFog(0, flag=1252520800, fog_asset=m60_52_Assets.AEG099_003_9001, model_point=10, first_time_done_flag=1252520804)
-    CommonFunc_ControlBossFog(0, flag=1252520800, fog_asset=Assets.AEG099_019_1000, model_point=0, first_time_done_flag=1252520804)
-    CommonFunc_ControlBossFog(0, flag=1252520800, fog_asset=m60_52_Assets.AEG099_017_1000, model_point=0, first_time_done_flag=1252520804)
-    CommonFunc_ControlBossMusic(0, 1252520800, 476000, 1252522805, 1252522806, 0, 1252522802, 1, 1)
+    CommonFunc_ControlBossFog(
+        0,
+        boss_dead_flag=Flags.FireGiantDead,
+        fog_asset=m60_52_Assets.AEG099_002_9000,
+        model_point=9,
+        required_flag=Flags.EnableFireGiantFog,
+    )
+    CommonFunc_ControlBossFog(
+        0,
+        boss_dead_flag=Flags.FireGiantDead,
+        fog_asset=m60_52_Assets.AEG099_003_9001,
+        model_point=10,
+        required_flag=Flags.EnableFireGiantFog,
+    )
+    CommonFunc_ControlBossFog(
+        0,
+        boss_dead_flag=Flags.FireGiantDead,
+        fog_asset=Assets.AEG099_019_1000,
+        model_point=0,
+        required_flag=Flags.EnableFireGiantFog,
+    )
+    CommonFunc_ControlBossFog(
+        0,
+        boss_dead_flag=Flags.FireGiantDead,
+        fog_asset=m60_52_Assets.AEG099_017_1000,
+        model_point=0,
+        required_flag=Flags.EnableFireGiantFog,
+    )
+    CommonFunc_ControlBossMusic(
+        0,
+        Flags.FireGiantDead,
+        476000,
+        1252522805,
+        1252522806,
+        0,
+        Flags.FireGiantInPhaseThree,
+        1,
+        1,
+    )

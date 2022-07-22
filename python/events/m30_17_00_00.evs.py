@@ -227,7 +227,7 @@ def Constructor():
         trigger_on_ai_unknown6=0,
     )
     Event_30172400(11, character=Characters.Troll)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=30170400, character=Characters.Troll, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=30170400, character=Characters.Troll, item_lot=0, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005652(0, flag=30170540, asset=Assets.AEG027_041_0500, flag_1=30170400)
     CommonFunc_90005651(0, flag=30170540, anchor_entity=Assets.AEG027_041_0500)
     Event_30172600()
@@ -371,7 +371,7 @@ def Event_30172200(_, character: uint):
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=30172200))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(AND_1)
     
     MAIN.Await(OR_2)
@@ -394,7 +394,7 @@ def Event_30172311():
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=30172316))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=30170316, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=30170316))
     OR_2.Add(AND_1)
     
     MAIN.Await(OR_2)
@@ -484,7 +484,7 @@ def Event_30172402(_, character: uint, region: uint):
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=region))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     EnableSpawner(entity=30173216)
     Wait(4.0)
     AddSpecialEffect(character, 10120)
@@ -1116,7 +1116,7 @@ def Event_30172849():
         summon_entered_fog_flag=30172806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=30170800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=30170800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, 30170800, 920200, 30172805, 30172806, 0, 30172802, 0, 0)
 
 

@@ -43,13 +43,13 @@ def Constructor():
         flag_10=78508,
         flag_11=78509,
     )
-    CommonFunc_90005860(
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1052560800,
-        left=0,
-        character=Characters.ErdtreeAvatar0,
-        left_1=0,
-        item_lot__item_lot_param_id=30525,
+        dead_flag=1052560800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.ErdtreeAvatar0,
+        boss_banner_choice=0,
+        item_lot=30525,
         seconds=0.0,
     )
     Event_1052562815(0, character=Characters.ErdtreeAvatar0, name=904810601, npc_threat_level=18)
@@ -286,7 +286,7 @@ def Event_1052562830(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))

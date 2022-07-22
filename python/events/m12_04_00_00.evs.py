@@ -167,7 +167,7 @@ def Event_12042810():
 @ContinueOnRest(12042849)
 def Event_12042849():
     """Event 12042849"""
-    CommonFunc_ControlBossFog(0, flag=12040800, fog_asset=Assets.AEG099_002_9001, model_point=8, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=12040800, fog_asset=Assets.AEG099_002_9001, model_point=8, required_flag=0)
     CommonFunc_HostEntersBossFog(
         0,
         boss_dead_flag=12040800,
@@ -188,5 +188,5 @@ def Event_12042849():
         summon_entered_fog_flag=12042806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=12040800, fog_asset=Assets.AEG099_002_9000, model_point=8, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=12040800, fog_asset=Assets.AEG099_002_9000, model_point=8, required_flag=0)
     CommonFunc_ControlBossMusic(0, 12040800, 920700, 12042805, 12042806, 0, 12042802, 0, 0)

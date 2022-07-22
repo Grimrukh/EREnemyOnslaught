@@ -53,7 +53,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_990_9001,
         action_button_id=4110,
-        item_lot_param_id=103120,
+        item_lot=103120,
         first_flag=400312,
         last_flag=400312,
         flag=7611,
@@ -63,7 +63,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_990_9001,
         action_button_id=4110,
-        item_lot_param_id=103120,
+        item_lot=103120,
         first_flag=400312,
         last_flag=400312,
         flag=1050389238,
@@ -269,11 +269,11 @@ def Event_1050383703(_, character: uint):
     if PlayerNotInOwnWorld():
         return
     OR_1.Add(HealthValue(Characters.SageGowry0) == 0)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.SageGowry0, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.SageGowry0))
     AND_1.Add(OR_1)
     AND_1.Add(CharacterBackreadEnabled(Characters.SageGowry0))
     OR_2.Add(HealthValue(Characters.SageGowry1) == 0)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.SageGowry1, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.SageGowry1))
     AND_2.Add(OR_2)
     AND_2.Add(CharacterBackreadEnabled(Characters.SageGowry1))
     OR_3.Add(AND_1)

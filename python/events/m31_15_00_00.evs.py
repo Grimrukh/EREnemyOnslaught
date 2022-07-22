@@ -340,7 +340,7 @@ def Event_31152849():
         summon_entered_fog_flag=31152806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=31150800, fog_asset=Assets.AEG099_003_9000, model_point=3, first_time_done_flag=31150815)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=31150800, fog_asset=Assets.AEG099_003_9000, model_point=3, required_flag=31150815)
     CommonFunc_9005812(
         0,
         flag=31150800,

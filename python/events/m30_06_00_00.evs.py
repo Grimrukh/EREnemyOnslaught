@@ -236,17 +236,17 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Imp13,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=3.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
@@ -261,17 +261,17 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Imp15,
-        animation_id=30002,
-        animation_id_1=20002,
+        inactive_animation=30002,
+        active_animation=20002,
         radius=2.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
@@ -282,17 +282,17 @@ def Preconstructor():
         animation_id=3005,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=0, region=0, radius=0.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Omen0,
-        animation_id=30001,
-        animation_id_1=20001,
+        inactive_animation=30001,
+        active_animation=20001,
         radius=3.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Omen1, region=30062301, radius=5.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerInactiveEnemy_WithRegion(
@@ -351,7 +351,7 @@ def Event_30062206():
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(Characters.Imp4, 90150))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(Characters.Imp4, 90160))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.Imp4, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.Imp4))
     OR_2.Add(CharacterHasStateInfo(character=Characters.Imp4, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=Characters.Imp4, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=Characters.Imp4, state_info=5))
@@ -441,7 +441,7 @@ def Event_30062211(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(AND_4)
     OR_2.Add(AND_5)
     OR_2.Add(AND_6)
@@ -1348,7 +1348,7 @@ def Event_30062300(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -1518,5 +1518,5 @@ def Event_30062849():
         summon_entered_fog_flag=30062806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=30060800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=30060800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, 30060800, 930000, 30062805, 30062806, 0, 30062802, 0, 0)

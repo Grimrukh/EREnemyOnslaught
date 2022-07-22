@@ -75,7 +75,7 @@ def Constructor():
         0,
         dead_flag=34110280,
         character=Characters.GodskinNoble,
-        item_lot_param_id=34110400,
+        item_lot=34110400,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -98,7 +98,7 @@ def Constructor():
         0,
         dead_flag=34110710,
         character=Characters.PreceptorMiriam0,
-        item_lot_param_id=34110700,
+        item_lot=34110700,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -108,7 +108,7 @@ def Constructor():
         0,
         dead_flag=34110711,
         character=Characters.PreceptorMiriam1,
-        item_lot_param_id=34110710,
+        item_lot=34110710,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -2561,5 +2561,5 @@ def Event_34112849():
         summon_entered_fog_flag=34112806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=34110800, fog_asset=34111800, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=34110800, fog_asset=34111800, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, 34110800, 930000, 34112805, 34112806, 0, 34112802, 0, 0)

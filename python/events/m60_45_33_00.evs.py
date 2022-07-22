@@ -34,7 +34,7 @@ def Constructor():
         0,
         dead_flag=1045330200,
         character=Characters.Turtle0,
-        item_lot_param_id=45000000,
+        item_lot=45000000,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -50,9 +50,9 @@ def Constructor():
     Event_1045332254()
     Event_1045332255()
     Event_1045332256()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1045330200, character=Characters.Turtle0, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1045330201, character=Characters.Turtle1, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1045330202, character=Characters.Turtle2, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1045330200, character=Characters.Turtle0, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1045330201, character=Characters.Turtle1, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1045330202, character=Characters.Turtle2, item_lot=0, reward_delay=0.0, skip_reward=0)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Turtle1, radius=0.0, seconds=0.0, animation_id=0)
     CommonFunc_NonRespawningWithReward(0, 1045330900, 1045330900, 1045330400, 0.0, 0)
 

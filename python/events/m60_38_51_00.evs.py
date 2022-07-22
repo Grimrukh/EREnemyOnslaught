@@ -48,7 +48,7 @@ def Constructor():
     Event_1038512810()
     Event_1038512849()
     Event_1038512500()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1038510500, character=Characters.Scarab, item_lot_param_id=40302, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1038510500, character=Characters.Scarab, item_lot=40302, reward_delay=0.0, skip_reward=0)
     Event_1038513700(0, character=Characters.RyatheScout, asset=Assets.AEG099_320_9000)
     CommonFunc_90005752(0, asset=Assets.AEG099_320_9000, vfx_id=200, model_point=120, seconds=3.0)
     Event_1038513701()
@@ -153,17 +153,17 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=1038510602,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=4.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.DemiHumanShaman2, region=1038512482, seconds=0.0, animation_id=3005)
     Event_1038512405(
@@ -302,7 +302,7 @@ def Event_1038512405(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -422,7 +422,7 @@ def Event_1038512849():
         summon_entered_fog_flag=1038512806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=1038510800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=1038510800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(
         0,
         dead_flag=1038510800,

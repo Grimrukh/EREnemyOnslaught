@@ -36,7 +36,7 @@ def Constructor():
     Event_1042392200(9, character=Characters.Wolf9, region=1042392249, owner_entity=Characters.Dummy, flag=1042392249)
     Event_1042392200(10, character=Characters.Wolf10, region=1042392249, owner_entity=Characters.Dummy, flag=1042392249)
     Event_1042392200(11, character=Characters.Wolf11, region=1042392249, owner_entity=Characters.Dummy, flag=1042392249)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1042390310, character=Characters.Scarab, item_lot_param_id=40146, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1042390310, character=Characters.Scarab, item_lot=40146, reward_delay=0.0, skip_reward=0)
     Event_1042392600(0, attacked_entity=Assets.AEG099_280_9000, region=1042392600)
     Event_1042392600(1, attacked_entity=Assets.AEG099_280_9001, region=1042392601)
     Event_1042392600(2, attacked_entity=Assets.AEG099_280_9002, region=1042392602)
@@ -66,7 +66,7 @@ def Constructor():
         flag_1=1042392181,
         flag_2=1042392182,
         character=Characters.RecusantHenricus,
-        item_lot_param_id=1042390700,
+        item_lot=1042390700,
         seconds=0.0,
     )
     CommonFunc_90005793(
@@ -275,7 +275,7 @@ def Event_1042392600(_, attacked_entity: uint, region: uint):
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=region))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=attacked_entity, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=attacked_entity))
     OR_2.Add(AND_1)
     
     MAIN.Await(OR_2)

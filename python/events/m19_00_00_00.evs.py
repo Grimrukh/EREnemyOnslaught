@@ -801,10 +801,10 @@ def EldenBeastCommonEvents():
     )
     CommonFunc_ControlBossFog(
         0,
-        flag=Flags.EldenBeastDead,
+        boss_dead_flag=Flags.EldenBeastDead,
         fog_asset=Assets.AEG099_001_9000,
         model_point=5,
-        first_time_done_flag=Flags.RadagonBattleStarted,
+        required_flag=Flags.RadagonBattleStarted,
     )
     CommonFunc_ControlBossMusic(0, Flags.EldenBeastDead, 219000, 19002805, 19002806, 0, Flags.RadagonDead, 0, 1)
 

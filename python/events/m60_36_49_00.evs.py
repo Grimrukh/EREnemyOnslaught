@@ -48,7 +48,7 @@ def Constructor():
         0,
         dead_flag=1036490200,
         character=Characters.ExtraLargeScarab,
-        item_lot_param_id=40204,
+        item_lot=40204,
         reward_delay=0.0,
         skip_reward=0,
     )

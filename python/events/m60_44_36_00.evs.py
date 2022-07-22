@@ -35,7 +35,7 @@ def Constructor():
     Event_1044362800()
     Event_1044362810()
     Event_1044362849()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1044360220, character=Characters.Scarab, item_lot_param_id=40112, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1044360220, character=Characters.Scarab, item_lot=40112, reward_delay=0.0, skip_reward=0)
     Event_1044362500()
     CommonFunc_90005704(
         0,
@@ -624,7 +624,7 @@ def Event_1044362849():
         summon_entered_fog_flag=1044362806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=1044360800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=1044360800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(
         0,
         dead_flag=1044360800,

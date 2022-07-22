@@ -90,7 +90,7 @@ def Event_31102200(_, character: uint):
     AND_1.Add(EntityWithinDistance(entity=character, other_entity=PLAYER, radius=2.0))
     OR_2.Add(AND_1)
     OR_2.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     
     MAIN.Await(OR_2)
     
@@ -143,7 +143,7 @@ def Event_31102250(_, character: uint, region: uint, radius: float, seconds: flo
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=6))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=260))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(AND_1)
     OR_2.Add(AND_2)
     OR_2.Add(AND_4)
@@ -463,5 +463,5 @@ def Event_31102849():
         summon_entered_fog_flag=31102806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=31100800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=31100801)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=31100800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=31100801)
     CommonFunc_ControlBossMusic(0, 31100800, 931000, 31102805, 31102806, 31102810, 31102842, 0, 0)

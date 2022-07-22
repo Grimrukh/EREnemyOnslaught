@@ -3,6 +3,12 @@ from soulstruct.eldenring.game_types import *
 
 class Flags(Flag):
     DragonkinSoldierOfNokstellaDead = 12010800
+    DragonkinSoldierOfNokstellaInPhaseTwo = 12012802  # either one
+
+
+class NameText(NPCName):
+    DragonkinSoldierOfNokstella = 904650000
+    CLONE_DragonkinSoldierOfNokstella = 904650010
 
 
 class Characters(Character):
@@ -94,11 +100,12 @@ class Characters(Character):
     DragonkinSoldierHealthPool = 12010800  # c4650_9000 col h004900 npc 46500960 think 1 group 12015102,12015800
     DragonkinSoldierPhaseOne = 12010801  # c4650_9001 col h004900 npc 46500060 think 46500100 group 12015102,12015800
     DragonkinSoldierPhaseTwo = 12010802  # c4650_9002 col h004900 npc 46500160 think 46500100 group 12015102,12015800
-    DragonkinSoldier3 = 12010850  # c4650_9100 col h012100 npc 46500262 think 46500200 group 12015108
+    DragonkinSoldierLakeOfRot = 12010850  # c4650_9100 col h012100 npc 46500262 think 46500200 group 12015108
 
     CLONE_DragonkinSoldierHealthPool = 12010803
     CLONE_DragonkinSoldierPhaseOne = 12010804
     CLONE_DragonkinSoldierPhaseTwo = 12010805
+    CLONE_DragonkinSoldierLakeOfRot = 12010851
 
 
 class Assets(Asset):

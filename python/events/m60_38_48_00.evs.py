@@ -26,14 +26,14 @@ from .entities.m60_37_49_00_entities import Characters as m60_37_Characters
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1038480000, asset=Assets.AEG099_060_9000)
-    CommonFunc_90005870(0, character=Characters.ErdtreeAvatar, name=904810601, npc_threat_level=18)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.ErdtreeAvatar, name=904810601, npc_threat_level=18)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1038480800,
-        left=0,
-        character=Characters.ErdtreeAvatar,
-        left_1=0,
-        item_lot__item_lot_param_id=30200,
+        dead_flag=1038480800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.ErdtreeAvatar,
+        boss_banner_choice=0,
+        item_lot=30200,
         seconds=0.0,
     )
     CommonFunc_90005872(0, character=Characters.ErdtreeAvatar, npc_threat_level=18, right=0)

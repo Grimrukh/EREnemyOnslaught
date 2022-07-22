@@ -182,10 +182,10 @@ def Event_31092300():
     EndIffSpecialStandbyEndedFlagEnabled(character=Characters.LargeDemiHuman0)
     DisableAI(Characters.LargeDemiHuman0)
     ForceAnimation(Characters.LargeDemiHuman0, 30002)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DemiHuman8, attacker=0))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DemiHumanShaman2, attacker=0))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.LargeDemiHuman0, attacker=0))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.LargeDemiHuman1, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DemiHuman8))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DemiHumanShaman2))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.LargeDemiHuman0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.LargeDemiHuman1))
     OR_1.Add(EntityWithinDistance(entity=Characters.LargeDemiHuman0, other_entity=PLAYER, radius=3.0))
     OR_1.Add(CharacterInsideRegion(character=PLAYER, region=31092301))
     AND_4.Add(CharacterHasSpecialEffect(Characters.LargeDemiHuman0, 481))
@@ -235,10 +235,10 @@ def Event_31092301(_, character: uint, seconds: float):
     if OR_15:
         return
     DisableAI(character)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DemiHuman8, attacker=0))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DemiHumanShaman2, attacker=0))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.LargeDemiHuman0, attacker=0))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.LargeDemiHuman1, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DemiHuman8))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DemiHumanShaman2))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.LargeDemiHuman0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.LargeDemiHuman1))
     OR_1.Add(AssetDestroyed(31091550))
     OR_1.Add(AssetDestroyed(31091551))
     OR_1.Add(AssetDestroyed(31091552))
@@ -397,5 +397,5 @@ def Event_31092849():
         summon_entered_fog_flag=31092806,
         action_button_id=10010,
     )
-    CommonFunc_ControlBossFog(0, flag=31090800, fog_asset=Assets.AEG099_001_9001, model_point=5, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=31090800, fog_asset=Assets.AEG099_001_9001, model_point=5, required_flag=0)
     CommonFunc_ControlBossMusic(0, 31090800, 931000, 31092805, 31092806, 0, 31092802, 0, 0)

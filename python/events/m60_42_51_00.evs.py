@@ -47,7 +47,7 @@ def Constructor():
         0,
         dead_flag=1042510300,
         character=Characters.Gargoyle,
-        item_lot_param_id=1042510900,
+        item_lot=1042510900,
         reward_delay=0.0,
         skip_reward=0,
     )

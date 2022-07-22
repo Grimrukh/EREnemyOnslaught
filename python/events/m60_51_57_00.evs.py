@@ -97,7 +97,7 @@ def Constructor():
     )
     CommonFunc_90005502(0, flag=1051570514, asset=Assets.AEG030_183_2000, region=1051572511)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9008, vfx_id=100, model_point=800, right=0)
-    CommonFunc_90005632(0, flag=580030, asset=Assets.AEG099_387_2000, item_lot_param_id=80030)
+    CommonFunc_90005632(0, flag=580030, asset=Assets.AEG099_387_2000, item_lot=80030)
     Event_1051572849()
     Event_1051572800()
     Event_1051572810()
@@ -935,7 +935,7 @@ def Constructor():
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1051570395, region=1051572275, radius=3.0, seconds=0.0, animation_id=3005)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1051570315, region=1051572315, radius=3.0, seconds=0.0, animation_id=-1)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1051570315, character=1051570315, item_lot_param_id=40508, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1051570315, character=1051570315, item_lot=40508, reward_delay=0.0, skip_reward=0)
     Event_1051572310(
         0,
         character=Characters.LionGuardian1,
@@ -954,7 +954,7 @@ def Constructor():
         0,
         dead_flag=1051570310,
         character=Characters.LionGuardian0,
-        item_lot_param_id=1051570800,
+        item_lot=1051570800,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -962,7 +962,7 @@ def Constructor():
         0,
         dead_flag=1051570311,
         character=Characters.LionGuardian1,
-        item_lot_param_id=1051570810,
+        item_lot=1051570810,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -1039,7 +1039,7 @@ def Constructor():
         0,
         dead_flag=1051570421,
         character=Characters.TibiaMariner,
-        item_lot_param_id=1051570720,
+        item_lot=1051570720,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -1293,7 +1293,7 @@ def Event_1051572250(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -1404,7 +1404,7 @@ def Event_1051572274(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -1513,7 +1513,7 @@ def Event_1051572310(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -1698,7 +1698,7 @@ def Event_1051572810():
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=1051572801))
     OR_1.Add(AND_1)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Commander, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Commander))
     OR_1.Add(CharacterHasStateInfo(character=Characters.Commander, state_info=436))
     OR_1.Add(CharacterHasStateInfo(character=Characters.Commander, state_info=2))
     OR_1.Add(CharacterHasStateInfo(character=Characters.Commander, state_info=5))
@@ -1879,8 +1879,8 @@ def Event_1051572849():
         summon_entered_fog_flag=1051572806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=1051570800, fog_asset=Assets.AEG099_002_9000, model_point=3, first_time_done_flag=0)
-    CommonFunc_ControlBossFog(0, flag=1051570800, fog_asset=Assets.AEG099_002_9001, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=1051570800, fog_asset=Assets.AEG099_002_9000, model_point=3, required_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=1051570800, fog_asset=Assets.AEG099_002_9001, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, 1051570800, 950000, 1051572805, 1051572806, 0, 1051572802, 0, 0)
 
 

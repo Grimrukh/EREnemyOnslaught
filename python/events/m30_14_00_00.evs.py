@@ -154,29 +154,29 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=30140213,
-        animation_id=30009,
-        animation_id_1=20009,
+        inactive_animation=30009,
+        active_animation=20009,
         radius=4.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=30140214,
-        animation_id=30009,
-        animation_id_1=20009,
+        inactive_animation=30009,
+        active_animation=20009,
         radius=4.0,
-        seconds=0.20000000298023224,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.20000000298023224,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Imp10, region=30142215, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=30140217, region=30142215, seconds=0.0, animation_id=-1)
@@ -494,5 +494,5 @@ def Event_30142849():
         summon_entered_fog_flag=30142806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=30140800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=30140800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, 30140800, 930000, 30142805, 30142806, 0, 30142802, 0, 0)

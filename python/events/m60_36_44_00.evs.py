@@ -29,8 +29,8 @@ def Constructor():
     Event_1036442203(1, character=1036440204)
     Event_1036442203(2, character=1036440205)
     Event_1036442203(3, character=1036440206)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1036440250, character=Characters.Scarab, item_lot_param_id=40202, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1036440260, character=1036440260, item_lot_param_id=1036440200, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1036440250, character=Characters.Scarab, item_lot=40202, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1036440260, character=1036440260, item_lot=1036440200, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005920(0, flag=1036440600, asset=1036441600, obj_act_id=1036443600)
     CommonFunc_90005705(0, 1036440700)
 
@@ -39,17 +39,17 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.FingerReader)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=1036440210,
-        animation_id=30002,
-        animation_id_1=20002,
+        inactive_animation=30002,
+        active_animation=20002,
         radius=7.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1036440220, region=1036442220, radius=10.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1036440230, region=1036442220, radius=10.0, seconds=0.0, animation_id=-1)

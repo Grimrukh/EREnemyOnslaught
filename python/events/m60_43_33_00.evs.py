@@ -25,14 +25,14 @@ from .entities.m60_43_33_00_entities import *
 def Constructor():
     """Event 0"""
     CommonFunc_90005600(0, grace_flag=1043330000, asset=1043331950, enemy_block_distance=5.0, character=1043330480)
-    CommonFunc_90005870(0, character=Characters.ErdtreeAvatar, name=904810600, npc_threat_level=18)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.ErdtreeAvatar, name=904810600, npc_threat_level=18)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1043330800,
-        left=0,
-        character=Characters.ErdtreeAvatar,
-        left_1=0,
-        item_lot__item_lot_param_id=30185,
+        dead_flag=1043330800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.ErdtreeAvatar,
+        boss_banner_choice=0,
+        item_lot=30185,
         seconds=0.0,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.ErdtreeAvatar, radius=20.0, seconds=0.0, animation_id=0)
@@ -45,7 +45,7 @@ def Constructor():
         0,
         flag=1043330290,
         character=1043330290,
-        item_lot_param_id=70500,
+        item_lot=70500,
         seconds=0.0,
         left=1,
         character_1=1043335291,
@@ -82,7 +82,7 @@ def Preconstructor():
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat2, region=1043332200, radius=5.0, seconds=0.0, animation_id=0)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat3, region=1043332200, radius=5.0, seconds=0.0, animation_id=0)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat4, region=1043332200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005201(0, 1043330250, 30000, 20000, 10.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRadius(0, 1043330250, 30000, 20000, 10.0, 0.0, 0, 0, 0, 0)
 
 
 @ContinueOnRest(1043330050)
@@ -128,7 +128,7 @@ def Event_1043332230(_, character: uint, region: uint):
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))

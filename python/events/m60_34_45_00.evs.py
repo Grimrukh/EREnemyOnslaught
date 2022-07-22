@@ -25,14 +25,14 @@ from .entities.m60_34_45_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005870(0, character=Characters.GlintstoneDragon, name=904502600, npc_threat_level=25)
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.GlintstoneDragon, name=904502600, npc_threat_level=25)
     CommonFunc_90005861(
         0,
         flag=1034450800,
         left=0,
         character=Characters.GlintstoneDragon,
         left_1=1,
-        item_lot__item_lot_param_id=30210,
+        item_lot=30210,
         text=30061,
         seconds=0.0,
     )
@@ -83,17 +83,17 @@ def Constructor():
     CommonFunc_90005462(0, character=1034450203)
     CommonFunc_90005461(0, character=1034450204)
     CommonFunc_90005462(0, character=1034450204)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.RayaLucariaScholar,
-        animation_id=30010,
-        animation_id_1=-1,
+        inactive_animation=30010,
+        active_animation=-1,
         radius=0.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_900005610(0, asset=Assets.AEG003_316_9000, vfx_id=100, model_point=800, right=0)
     CommonFunc_90005620(

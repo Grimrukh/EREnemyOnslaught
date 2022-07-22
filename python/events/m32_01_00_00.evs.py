@@ -432,7 +432,7 @@ def Event_32012200(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -547,7 +547,7 @@ def Event_32012250(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -656,7 +656,7 @@ def Event_32012270(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -842,7 +842,7 @@ def Event_32012849():
         summon_entered_fog_flag=32012806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=32010800, fog_asset=Assets.AEG099_002_9000, model_point=7, first_time_done_flag=32010801)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=32010800, fog_asset=Assets.AEG099_002_9000, model_point=7, required_flag=32010801)
     CommonFunc_ControlBossMusic(0, 32010800, 931000, 32012805, 32012806, 0, 32012802, 0, 0)
 
 

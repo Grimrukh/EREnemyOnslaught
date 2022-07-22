@@ -59,11 +59,11 @@ def Constructor():
         left=0,
         character=Characters.FlyingDragon,
         left_1=1,
-        item_lot__item_lot_param_id=30110,
+        item_lot=30110,
         text=30060,
         seconds=0.0,
     )
-    CommonFunc_90005870(0, character=Characters.FlyingDragon, name=904500600, npc_threat_level=25)
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.FlyingDragon, name=904500600, npc_threat_level=25)
     Event_1043362380()
     Event_1043362510(0, asset=Assets.AEG099_290_9001, region=1043362510, flag=1043362500, obj_act_id=1043363600)
     CommonFunc_90005781(

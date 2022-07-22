@@ -25,37 +25,37 @@ from .entities.m60_34_42_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1034420000, asset=Assets.AEG099_060_9000)
-    CommonFunc_90005870(0, character=Characters.GlintstoneDragon0, name=904502602, npc_threat_level=25)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.GlintstoneDragon0, name=904502602, npc_threat_level=25)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1034420800,
-        left=0,
-        character=Characters.GlintstoneDragon0,
-        left_1=1,
-        item_lot__item_lot_param_id=30260,
+        dead_flag=1034420800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.GlintstoneDragon0,
+        boss_banner_choice=1,
+        item_lot=30260,
         seconds=0.0,
     )
     Event_1034422800()
     Event_1034422801()
     Event_1034422802()
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.GlintstoneDragon1,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=17.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GlintstoneDragon1, radius=17.0, seconds=0.0, animation_id=-1)
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1034420340,
         character=Characters.GlintstoneDragon1,
-        item_lot_param_id=1034420400,
+        item_lot=1034420400,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -102,17 +102,17 @@ def Preconstructor():
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AlbinauricLookout6, region=1034422208, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1034420222, radius=20.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1034420228, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.LargeCrabSnow0,
-        animation_id=30003,
-        animation_id_1=20003,
+        inactive_animation=30003,
+        active_animation=20003,
         radius=15.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.LargeCrabSnow1, radius=16.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, 1034420390, 30.0, 0.0, -1)
@@ -128,14 +128,14 @@ def Event_1034422230():
     DisableAI(Characters.AlbinauricLookout9)
     DisableAI(Characters.AlbinauricLookout12)
     DisableAI(Characters.AlbinauricLookout13)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout1, attacker=0))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout7, attacker=0))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout8, attacker=0))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout9, attacker=0))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout11, attacker=0))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout12, attacker=0))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout13, attacker=0))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout14, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout1))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout7))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout8))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout9))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout11))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout12))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout13))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout14))
     
     MAIN.Await(OR_2)
     

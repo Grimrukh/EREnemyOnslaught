@@ -50,7 +50,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_990_9000,
         action_button_id=4350,
-        item_lot_param_id=113010,
+        item_lot=113010,
         first_flag=400308,
         last_flag=400309,
         flag=1044529272,
@@ -67,19 +67,19 @@ def Preconstructor():
     Event_1044523700(0, entity=Assets.AEG099_315_9000)
     DisableBackread(Characters.Blackguard0)
     DisableBackread(Characters.Blackguard1)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Skeleton0,
-        animation_id=30014,
-        animation_id_1=20014,
+        inactive_animation=30014,
+        active_animation=20014,
         radius=15.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(0, 1044520301, 30016, 20016, 20.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRadius(0, 1044520301, 30016, 20016, 20.0, 0.0, 0, 0, 0, 0)
 
 
 @ContinueOnRest(1044523700)

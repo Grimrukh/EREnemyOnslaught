@@ -292,7 +292,7 @@ def Event_32082200(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -447,5 +447,5 @@ def Event_32082849():
         summon_entered_fog_flag=32082806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=32080800, fog_asset=Assets.AEG099_003_9000, model_point=7, first_time_done_flag=32080801)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=32080800, fog_asset=Assets.AEG099_003_9000, model_point=7, required_flag=32080801)
     CommonFunc_ControlBossMusic(0, 32080800, 920800, 32082805, 32082806, 0, 32082802, 0, 0)

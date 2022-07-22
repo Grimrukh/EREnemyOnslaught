@@ -78,7 +78,7 @@ def Constructor():
         flag=194,
         flag_1=9122,
         asset=Assets.AEG099_991_9000,
-        item_lot_param_id=34120500,
+        item_lot=34120500,
         item=8151,
         model_point=806936,
         action_button_id=9083,
@@ -359,7 +359,7 @@ def Event_32012200(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -409,7 +409,7 @@ def Event_34122400(_, character: uint, region: uint):
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=region))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -520,7 +520,7 @@ def Event_34122849():
         summon_entered_fog_flag=34122806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=34120800, fog_asset=Assets.AEG099_003_9000, model_point=3, first_time_done_flag=34120801)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=34120800, fog_asset=Assets.AEG099_003_9000, model_point=3, required_flag=34120801)
     CommonFunc_ControlBossMusic(
         0,
         dead_flag=34120800,

@@ -30,7 +30,7 @@ def Constructor():
         0,
         dead_flag=1049370800,
         character=Characters.NightsCavalryHorse,
-        item_lot_param_id=0,
+        item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -43,24 +43,24 @@ def Constructor():
         npc_threat_level=10,
         character_1=Characters.NightsCavalryHorse,
     )
-    CommonFunc_90005860(
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1049370800,
-        left=0,
-        character=Characters.NightsCavalry,
-        left_1=0,
-        item_lot__item_lot_param_id=1049370100,
+        dead_flag=1049370800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.NightsCavalry,
+        boss_banner_choice=0,
+        item_lot=1049370100,
         seconds=0.0,
     )
     CommonFunc_90005872(0, character=Characters.NightsCavalry, npc_threat_level=10, right=0)
-    CommonFunc_90005870(0, character=Characters.DeathRiteBird, name=904980606, npc_threat_level=24)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DeathRiteBird, name=904980606, npc_threat_level=24)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1049370850,
-        left=0,
-        character=Characters.DeathRiteBird,
-        left_1=0,
-        item_lot__item_lot_param_id=1049370110,
+        dead_flag=1049370850,
+        extra_flag_to_enable=0,
+        boss_character=Characters.DeathRiteBird,
+        boss_banner_choice=0,
+        item_lot=1049370110,
         seconds=0.0,
     )
     Event_1049372299()
@@ -68,7 +68,7 @@ def Constructor():
         0,
         dead_flag=1049370299,
         character=Characters.LionGuardian,
-        item_lot_param_id=1049370700,
+        item_lot=1049370700,
         reward_delay=0.0,
         skip_reward=0,
     )

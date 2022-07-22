@@ -313,8 +313,8 @@ def Constructor():
             life=0.0,
             repetition_time=1.0,
         )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1047390299, character=Characters.Scarab0, item_lot_param_id=40410, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1047390298, character=Characters.Scarab1, item_lot_param_id=40422, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1047390299, character=Characters.Scarab0, item_lot=40410, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1047390298, character=Characters.Scarab1, item_lot=40422, reward_delay=0.0, skip_reward=0)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.MonstrousCrow0,

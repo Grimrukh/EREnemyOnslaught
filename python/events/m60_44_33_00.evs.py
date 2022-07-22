@@ -46,7 +46,7 @@ def Constructor():
         flag_10=78118,
         flag_11=78119,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1044330290, character=Characters.Scarab, item_lot_param_id=40140, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1044330290, character=Characters.Scarab, item_lot=40140, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005550(0, flag=1044330500, asset=1044331500, obj_act_id=44333500)
     CommonFunc_90005510(
         0,
@@ -282,77 +282,77 @@ def Preconstructor():
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Commoner3, radius=4.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Commoner4, radius=4.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(2, character=Characters.Commoner5, radius=4.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Commoner0,
-        animation_id=30006,
-        animation_id_1=20006,
+        inactive_animation=30006,
+        active_animation=20006,
         radius=4.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Commoner1,
-        animation_id=30004,
-        animation_id_1=20004,
+        inactive_animation=30004,
+        active_animation=20004,
         radius=4.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Commoner2,
-        animation_id=30004,
-        animation_id_1=20004,
+        inactive_animation=30004,
+        active_animation=20004,
         radius=4.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Commoner3,
-        animation_id=30006,
-        animation_id_1=20006,
+        inactive_animation=30006,
+        active_animation=20006,
         radius=4.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Commoner4,
-        animation_id=30004,
-        animation_id_1=20004,
+        inactive_animation=30004,
+        active_animation=20004,
         radius=4.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Commoner5,
-        animation_id=30004,
-        animation_id_1=20004,
+        inactive_animation=30004,
+        active_animation=20004,
         radius=4.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat0, region=1044332220, radius=15.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat1, region=1044332220, radius=15.0, seconds=0.0, animation_id=-1)

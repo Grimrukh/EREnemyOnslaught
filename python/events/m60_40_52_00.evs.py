@@ -44,14 +44,14 @@ def Constructor():
         flag_10=78318,
         flag_11=78319,
     )
-    CommonFunc_90005870(0, character=Characters.BlackKnifeAssassin, name=902100600, npc_threat_level=14)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.BlackKnifeAssassin, name=902100600, npc_threat_level=14)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1040520800,
-        left=0,
-        character=Characters.BlackKnifeAssassin,
-        left_1=0,
-        item_lot__item_lot_param_id=30350,
+        dead_flag=1040520800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.BlackKnifeAssassin,
+        boss_banner_choice=0,
+        item_lot=30350,
         seconds=0.0,
     )
     Event_1040522240(0, asset=Assets.AEG099_070_9000, entity=Assets.AEG099_071_9000, flag=62030)
@@ -125,29 +125,29 @@ def Preconstructor():
     DisableBackread(Characters.BrotherCorhyn)
     DisableBackread(Characters.Merchant)
     DisableBackread(Characters.FingerReader)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.LeyndellSoldier0,
-        animation_id=30001,
-        animation_id_1=20001,
+        inactive_animation=30001,
+        active_animation=20001,
         radius=4.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.LeyndellSoldier1,
-        animation_id=30002,
-        animation_id_1=20002,
+        inactive_animation=30002,
+        active_animation=20002,
         radius=4.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 1040520800, 30000, 20000, 1040522800, 20.0, 0.0, 0, 0, 0, 0)
 

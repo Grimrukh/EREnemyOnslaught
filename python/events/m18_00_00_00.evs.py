@@ -313,7 +313,7 @@ def Preconstructor():
         0,
         dead_flag=18000350,
         character=Characters.GraftedScion0,
-        item_lot_param_id=18002000,
+        item_lot=18002000,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -321,7 +321,7 @@ def Preconstructor():
         0,
         dead_flag=18000351,
         character=Characters.GraftedScion1,
-        item_lot_param_id=18002010,
+        item_lot=18002010,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -1330,7 +1330,7 @@ def Event_18000820():
         summon_entered_fog_flag=18002806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=18000800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=18000800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, 18000800, 920600, 18002805, 18002806, 0, 18002802, 0, 0)
 
 
@@ -1398,6 +1398,6 @@ def Event_18000870():
         summon_entered_fog_flag=18002856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=18000850, fog_asset=Assets.AEG099_001_9010, model_point=3, first_time_done_flag=0)
-    CommonFunc_ControlBossFog(0, flag=18000850, fog_asset=Assets.AEG099_001_9011, model_point=4, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=18000850, fog_asset=Assets.AEG099_001_9010, model_point=3, required_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=18000850, fog_asset=Assets.AEG099_001_9011, model_point=4, required_flag=0)
     CommonFunc_ControlBossMusic(0, 18000850, 931000, 18002855, 18002856, 0, 18002852, 0, 0)

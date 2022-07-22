@@ -29,20 +29,20 @@ def Constructor():
         0,
         dead_flag=1039430800,
         character=Characters.NightsCavalryHorse,
-        item_lot_param_id=0,
+        item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
     )
     CommonFunc_90005476(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
     RunCommonEvent(90005477)
     Event_1039432340(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
-    CommonFunc_90005860(
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1039430800,
-        left=0,
-        character=Characters.NightsCavalry,
-        left_1=0,
-        item_lot__item_lot_param_id=1039430400,
+        dead_flag=1039430800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.NightsCavalry,
+        boss_banner_choice=0,
+        item_lot=1039430400,
         seconds=0.0,
     )
     CommonFunc_90005872(0, character=Characters.NightsCavalry, npc_threat_level=10, right=0)

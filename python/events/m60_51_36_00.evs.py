@@ -427,7 +427,7 @@ def Constructor():
         0,
         dead_flag=1051360291,
         character=Characters.LionGuardian0,
-        item_lot_param_id=1051360700,
+        item_lot=1051360700,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -435,7 +435,7 @@ def Constructor():
         0,
         dead_flag=1051360292,
         character=Characters.LionGuardian1,
-        item_lot_param_id=1051360800,
+        item_lot=1051360800,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -697,7 +697,7 @@ def Event_1051362340(_, character: uint):
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=1051362340))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.Troll, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.Troll))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -1104,8 +1104,8 @@ def Event_1051362849():
         summon_entered_fog_flag=1051362806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=Flags.RedmaneDuoDead, fog_asset=Assets.AEG099_001_9000, model_point=5, first_time_done_flag=0)
-    CommonFunc_ControlBossFog(0, flag=Flags.RedmaneDuoDead, fog_asset=Assets.AEG099_001_9001, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.RedmaneDuoDead, fog_asset=Assets.AEG099_001_9000, model_point=5, required_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.RedmaneDuoDead, fog_asset=Assets.AEG099_001_9001, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, Flags.RedmaneDuoDead, 920200, 1051362805, 1051362806, 0, 1051362802, 0, 0)
 
 

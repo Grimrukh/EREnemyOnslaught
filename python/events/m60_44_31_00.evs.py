@@ -33,7 +33,7 @@ def Constructor():
         0,
         dead_flag=1044310350,
         character=Characters.GuardianGolem,
-        item_lot_param_id=0,
+        item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -73,7 +73,7 @@ def Event_1044312340():
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=1044310340, radius=0.0))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=1044310340, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=1044310340))
     OR_2.Add(FlagEnabled(1044310200))
     OR_2.Add(AND_1)
     

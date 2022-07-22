@@ -24,14 +24,14 @@ from .entities.m60_41_53_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005870(0, character=Characters.WormfaceLarge, name=904580600, npc_threat_level=8)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.WormfaceLarge, name=904580600, npc_threat_level=8)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1041530800,
-        left=0,
-        character=Characters.WormfaceLarge,
-        left_1=0,
-        item_lot__item_lot_param_id=30320,
+        dead_flag=1041530800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.WormfaceLarge,
+        boss_banner_choice=0,
+        item_lot=30320,
         seconds=0.0,
     )
     CommonFunc_90005636(
@@ -86,4 +86,4 @@ def Preconstructor():
         trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Wormface5, region=1041532361, seconds=0.0, animation_id=3011)
-    CommonFunc_90005201(0, 1041530800, 30000, 20000, 15.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRadius(0, 1041530800, 30000, 20000, 15.0, 0.0, 0, 0, 0, 0)

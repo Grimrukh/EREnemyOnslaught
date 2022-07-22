@@ -32,29 +32,29 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.WildMouflon,
-        animation_id=30005,
-        animation_id_1=20021,
+        inactive_animation=30005,
+        active_animation=20021,
         radius=15.0,
-        seconds=2.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=2.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Runebear,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=10.0,
-        seconds=1.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=1.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WildMouflon, radius=10.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Runebear, radius=10.0, seconds=0.0, animation_id=-1)

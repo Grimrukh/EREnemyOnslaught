@@ -39,7 +39,7 @@ def Constructor():
         0,
         dead_flag=1043340340,
         character=Characters.DemiHumanQueen,
-        item_lot_param_id=1043340400,
+        item_lot=1043340400,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -51,17 +51,17 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.Commoner)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.ErdtreeGuardian0,
-        animation_id=30004,
-        animation_id_1=20004,
+        inactive_animation=30004,
+        active_animation=20004,
         radius=10.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,

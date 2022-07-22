@@ -538,7 +538,7 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MonstrousCrow0, region=1047402259, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=1047400259, region=1047402259, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MonstrousCrow1, region=1047402260, seconds=0.0, animation_id=-1)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1047400290, character=Characters.Scarab, item_lot_param_id=40400, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1047400290, character=Characters.Scarab, item_lot=40400, reward_delay=0.0, skip_reward=0)
     Event_1047402399()
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Dummy, region=1047402399, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.PutridCorpse0, region=1047402399, seconds=0.0, animation_id=-1)
@@ -584,14 +584,14 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.PutridCorpseBare7, region=1047402336, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=1047400468, region=1047402468, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1047400391, radius=60.0, seconds=0.0, animation_id=-1)
-    CommonFunc_90005870(0, character=Characters.PutridAvatar, name=904811602, npc_threat_level=18)
-    CommonFunc_90005860(
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.PutridAvatar, name=904811602, npc_threat_level=18)
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1047400800,
-        left=0,
-        character=Characters.PutridAvatar,
-        left_1=0,
-        item_lot__item_lot_param_id=30410,
+        dead_flag=1047400800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.PutridAvatar,
+        boss_banner_choice=0,
+        item_lot=30410,
         seconds=0.0,
     )
     CommonFunc_90005872(0, 1047400800, 18, 0)

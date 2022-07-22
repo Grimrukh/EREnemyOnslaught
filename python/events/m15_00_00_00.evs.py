@@ -101,13 +101,13 @@ def Constructor():
     SkipLinesIfCeremonyInactive(line_count=1, ceremony=30)
     CommonFunc_90005796(0, flag=7611, character=Characters.Millicent2, banner_type=5, region=15002151)
     Event_15002155()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=15000390, character=15000390, item_lot_param_id=15001250, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=15000391, character=15000391, item_lot_param_id=15001260, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=15000390, character=15000390, item_lot=15001250, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=15000391, character=15000391, item_lot=15001260, reward_delay=0.0, skip_reward=0)
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=15000392,
         character=Characters.PutridAvatar0,
-        item_lot_param_id=15001270,
+        item_lot=15001270,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -115,30 +115,30 @@ def Constructor():
         0,
         dead_flag=15000393,
         character=Characters.PutridAvatar1,
-        item_lot_param_id=15001280,
+        item_lot=15001280,
         reward_delay=0.0,
         skip_reward=0,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=15000394, character=15000394, item_lot_param_id=15001290, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=15000394, character=15000394, item_lot=15001290, reward_delay=0.0, skip_reward=0)
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=15000398,
         character=Characters.UlceratedTreeSpirit,
-        item_lot_param_id=15001200,
+        item_lot=15001200,
         reward_delay=0.0,
         skip_reward=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Scarab0,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=8.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_90005221(0, character=Characters.Scarab2, animation_id=30001, animation_id_1=20001, seconds=0.0, left=0)
     CommonFunc_90005221(0, character=Characters.Scarab3, animation_id=30001, animation_id_1=20001, seconds=0.0, left=0)
@@ -358,17 +358,17 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Misbegotten11,
-        animation_id=30004,
-        animation_id_1=20004,
+        inactive_animation=30004,
+        active_animation=20004,
         radius=1.399999976158142,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
@@ -386,17 +386,17 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.ScalyMisbegotten2,
-        animation_id=30005,
-        animation_id_1=20005,
+        inactive_animation=30005,
+        active_animation=20005,
         radius=3.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
@@ -863,65 +863,65 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.HaligtreeSoldier35,
-        animation_id=30003,
-        animation_id_1=20003,
+        inactive_animation=30003,
+        active_animation=20003,
         radius=3.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.HaligtreeSoldier36,
-        animation_id=30002,
-        animation_id_1=20002,
+        inactive_animation=30002,
+        active_animation=20002,
         radius=3.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.HaligtreeSoldier37,
-        animation_id=30002,
-        animation_id_1=20002,
+        inactive_animation=30002,
+        active_animation=20002,
         radius=3.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.HaligtreeSoldier40,
-        animation_id=30003,
-        animation_id_1=20003,
+        inactive_animation=30003,
+        active_animation=20003,
         radius=3.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.HaligtreeSoldier41,
-        animation_id=30004,
-        animation_id_1=20004,
+        inactive_animation=30004,
+        active_animation=20004,
         radius=3.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.HaligtreeSoldier42, radius=1.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
@@ -1361,17 +1361,17 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.KindredofRotLarva9,
-        animation_id=30001,
-        animation_id_1=20001,
+        inactive_animation=30001,
+        active_animation=20001,
         radius=3.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
@@ -1602,7 +1602,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9000,
         action_button_id=4350,
-        item_lot_param_id=103210,
+        item_lot=103210,
         first_flag=400321,
         last_flag=400321,
         flag=4192,
@@ -1613,7 +1613,7 @@ def Constructor():
     Event_15000713(0, entity=Assets.AEG099_090_9001)
     Event_15000715()
     Event_15000716()
-    CommonFunc_90005774(0, flag=7611, item_lot_param_id=103220, flag_1=400323)
+    CommonFunc_90005774(0, flag=7611, item_lot=103220, flag_1=400323)
     CommonFunc_90005774(0, 7610, 104800, 400480)
 
 
@@ -1959,7 +1959,7 @@ def Event_15002811():
         return
     AND_1.Add(HealthValue(Characters.Malenia) <= 1)
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(Characters.Malenia, 18480))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Malenia, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Malenia))
     AND_1.Add(OR_1)
     
     MAIN.Await(AND_1)
@@ -2228,7 +2228,7 @@ def Event_15002849():
         summon_entered_fog_flag=15002806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=15000800, fog_asset=Assets.AEG099_003_9000, model_point=5, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=15000800, fog_asset=Assets.AEG099_003_9000, model_point=5, required_flag=0)
     CommonFunc_ControlBossMusic(0, 15002800, 212000, 15002805, 15002806, 0, 15002802, 1, 1)
 
 
@@ -2336,8 +2336,8 @@ def Event_15002899():
         summon_entered_fog_flag=15002856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=15000850, fog_asset=Assets.AEG099_003_9001, model_point=3, first_time_done_flag=15000851)
-    CommonFunc_ControlBossFog(0, flag=15000850, fog_asset=Assets.AEG099_003_9002, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=15000850, fog_asset=Assets.AEG099_003_9001, model_point=3, required_flag=15000851)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=15000850, fog_asset=Assets.AEG099_003_9002, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, 15000850, 920200, 15002855, 15002856, 0, 15002852, 0, 0)
 
 

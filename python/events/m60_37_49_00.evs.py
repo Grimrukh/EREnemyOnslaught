@@ -53,7 +53,7 @@ def Constructor():
         flag_1=1037492181,
         flag_2=1037492182,
         character=Characters.FesteringFingerprintVyke,
-        item_lot_param_id=1037490300,
+        item_lot=1037490300,
         seconds=0.0,
     )
     CommonFunc_90005793(
@@ -67,41 +67,41 @@ def Constructor():
         left=0,
     )
     CommonFunc_90005631(0, anchor_entity=Assets.AEG099_376_1000, text=61023)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.RayaLucariaFootSoldier2,
-        animation_id=30010,
-        animation_id_1=20010,
+        inactive_animation=30010,
+        active_animation=20010,
         radius=5.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.RayaLucariaFootSoldier0,
-        animation_id=30010,
-        animation_id_1=20010,
+        inactive_animation=30010,
+        active_animation=20010,
         radius=5.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.RayaLucariaFootSoldier1,
-        animation_id=30010,
-        animation_id_1=20010,
+        inactive_animation=30010,
+        active_animation=20010,
         radius=5.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_1037493700(0, 1037490700)
 

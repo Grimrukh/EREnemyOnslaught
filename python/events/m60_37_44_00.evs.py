@@ -44,7 +44,7 @@ def Constructor():
         flag_10=78208,
         flag_11=78209,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1037440210, character=Characters.Scarab, item_lot_param_id=40262, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1037440210, character=Characters.Scarab, item_lot=40262, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005920(0, flag=1037440600, asset=1037441600, obj_act_id=1037443600)
     Event_1037442610(0, asset=1037441610, entity=1037441611, flag=82021)
     Event_1037443700(0, character=Characters.KnightDiallos, character_1=Characters.Human)
@@ -69,17 +69,17 @@ def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.KnightDiallos)
     DisableBackread(Characters.Human)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=1037440220,
-        animation_id=30001,
-        animation_id_1=20001,
+        inactive_animation=30001,
+        active_animation=20001,
         radius=15.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1037440220, radius=15.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(

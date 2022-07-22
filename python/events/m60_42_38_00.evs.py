@@ -25,16 +25,16 @@ from .entities.m60_42_38_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1042380000, asset=Assets.AEG099_060_9000)
-    CommonFunc_90005860(
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1042380800,
-        left=0,
-        character=Characters.DeathRiteBird,
-        left_1=0,
-        item_lot__item_lot_param_id=1042380400,
+        dead_flag=1042380800,
+        extra_flag_to_enable=0,
+        boss_character=Characters.DeathRiteBird,
+        boss_banner_choice=0,
+        item_lot=1042380400,
         seconds=0.0,
     )
-    CommonFunc_90005870(0, character=Characters.DeathRiteBird, name=904980601, npc_threat_level=24)
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DeathRiteBird, name=904980601, npc_threat_level=24)
     Event_1042382350()
     CommonFunc_90005460(0, character=Characters.GiantOctopus)
     CommonFunc_90005461(0, character=Characters.GiantOctopus)
@@ -47,16 +47,16 @@ def Constructor():
         flag_1=1042382718,
     )
     CommonFunc_90005770(0, flag=1042380701)
-    CommonFunc_90005860(
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1042380850,
-        left=0,
-        character=Characters.BellBearingHunter,
-        left_1=0,
-        item_lot__item_lot_param_id=1042380410,
+        dead_flag=1042380850,
+        extra_flag_to_enable=0,
+        boss_character=Characters.BellBearingHunter,
+        boss_banner_choice=0,
+        item_lot=1042380410,
         seconds=0.0,
     )
-    CommonFunc_90005870(0, character=Characters.BellBearingHunter, name=903100600, npc_threat_level=10)
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.BellBearingHunter, name=903100600, npc_threat_level=10)
     CommonFunc_90005872(0, character=Characters.BellBearingHunter, npc_threat_level=10, right=0)
     Event_1042383700(0, character=Characters.KnightBernahl)
     CommonFunc_90005704(0, attacked_entity=Characters.KnightBernahl, flag=3881, flag_1=3880, flag_2=1042389251, right=3)
@@ -206,7 +206,7 @@ def Event_1042382340(_, character: uint, region: uint, seconds: float, animation
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -245,7 +245,7 @@ def Event_1042382350():
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(OR_1)
     OR_2.Add(CharacterInsideRegion(character=PLAYER, region=1042382350))
-    OR_3.Add(AttackedWithDamageType(attacked_entity=Characters.Troll1, attacker=0))
+    OR_3.Add(AttackedWithDamageType(attacked_entity=Characters.Troll1))
     OR_3.Add(CharacterHasStateInfo(character=Characters.Troll1, state_info=436))
     OR_3.Add(CharacterHasStateInfo(character=Characters.Troll1, state_info=2))
     OR_3.Add(CharacterHasStateInfo(character=Characters.Troll1, state_info=5))

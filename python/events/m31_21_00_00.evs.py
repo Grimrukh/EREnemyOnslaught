@@ -330,17 +330,17 @@ def Preconstructor():
         patrol_information_id=0,
     )
     Event_31212260(0, character=Characters.PutridCorpse3, region=31212253, patrol_information_id=31213254)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.PutridCorpse5,
-        animation_id=30002,
-        animation_id_1=20002,
+        inactive_animation=30002,
+        active_animation=20002,
         radius=4.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_31212250(
         4,
@@ -734,7 +734,7 @@ def Event_31212308(_, character: uint, region: uint):
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=260))
     OR_2.Add(AND_1)
     OR_2.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterInsideRegion(character=character, region=region))
     
     MAIN.Await(OR_2)
@@ -984,6 +984,6 @@ def Event_31032849():
         summon_entered_fog_flag=31212806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=31210800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=31210801)
-    CommonFunc_ControlBossFog(0, flag=31210800, fog_asset=Assets.AEG099_001_9001, model_point=3, first_time_done_flag=31210801)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=31210800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=31210801)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=31210800, fog_asset=Assets.AEG099_001_9001, model_point=3, required_flag=31210801)
     CommonFunc_ControlBossMusic(0, 31210800, 931000, 31212805, 31212806, 31212810, 31212852, 31212802, 0)

@@ -118,6 +118,6 @@ def Event_1048402849():
         summon_entered_fog_flag=1048402806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=1048400800, fog_asset=Assets.AEG099_003_9000, model_point=3, first_time_done_flag=0)
-    CommonFunc_ControlBossFog(0, flag=1048400800, fog_asset=Assets.AEG099_003_9001, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=1048400800, fog_asset=Assets.AEG099_003_9000, model_point=3, required_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=1048400800, fog_asset=Assets.AEG099_003_9001, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, 1048400800, 920900, 1048402805, 1048402806, 0, 1048402802, 0, 0)

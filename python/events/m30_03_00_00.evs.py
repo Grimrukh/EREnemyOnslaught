@@ -119,17 +119,17 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Imp4,
-        animation_id=30010,
-        animation_id_1=20010,
+        inactive_animation=30010,
+        active_animation=20010,
         radius=15.0,
-        seconds=2.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=2.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_30032205(
         0,
@@ -1049,7 +1049,7 @@ def Event_30032205(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -1102,7 +1102,7 @@ def Event_30032207(_, character: uint, region: uint):
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(OR_1)
     OR_2.Add(CharacterInsideRegion(character=PLAYER, region=region))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     
     MAIN.Await(OR_2)
     
@@ -1212,7 +1212,7 @@ def Event_30032849():
         summon_entered_fog_flag=30032806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=30030800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=30030800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, 30030800, 920200, 30032805, 30032806, 0, 30032860, 0, 0)
 
 

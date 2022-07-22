@@ -206,41 +206,41 @@ def Preconstructor():
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail0, region=31112240, radius=2.0, seconds=0.0, animation_id=0)
     Event_31112250(1, character=Characters.Snail1, region=31112241, radius=3.0, seconds=0.0, animation_id=3011)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail2, region=31112240, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Snail3,
-        animation_id=30001,
-        animation_id_1=20001,
+        inactive_animation=30001,
+        active_animation=20001,
         radius=8.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Snail4,
-        animation_id=30001,
-        animation_id_1=20001,
+        inactive_animation=30001,
+        active_animation=20001,
         radius=10.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Snail5,
-        animation_id=30001,
-        animation_id_1=20001,
+        inactive_animation=30001,
+        active_animation=20001,
         radius=10.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_31112250(2, character=Characters.Snail6, region=31112251, radius=2.0, seconds=0.0, animation_id=3011)
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
@@ -320,7 +320,7 @@ def Event_31112208():
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneMiner3, 90160))
     OR_2.Add(AND_1)
     OR_2.Add(HasAIStatus(Characters.GlintstoneMiner3, ai_status=AIStatusType.Battle))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.GlintstoneMiner3, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.GlintstoneMiner3))
     OR_2.Add(CharacterHasStateInfo(character=Characters.GlintstoneMiner3, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=Characters.GlintstoneMiner3, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=Characters.GlintstoneMiner3, state_info=5))
@@ -381,7 +381,7 @@ def Event_31112240(_, character: uint):
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     OR_2.Add(AND_1)
     OR_2.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -440,7 +440,7 @@ def Event_31112245(_, character: uint):
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     OR_2.Add(AND_1)
     OR_2.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -498,7 +498,7 @@ def Event_31112250(_, character: uint, region: uint, radius: float, seconds: flo
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -549,7 +549,7 @@ def Event_31112301():
     AND_1.Add(EntityWithinDistance(entity=31110301, other_entity=PLAYER, radius=4.0))
     OR_2.Add(AND_1)
     OR_2.Add(HasAIStatus(31110301, ai_status=AIStatusType.Battle))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=31110301, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=31110301))
     
     MAIN.Await(OR_2)
     
@@ -731,7 +731,7 @@ def Event_31112849():
         summon_entered_fog_flag=31112806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=31110800, fog_asset=Assets.AEG099_002_9000, model_point=5, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=31110800, fog_asset=Assets.AEG099_002_9000, model_point=5, required_flag=0)
     CommonFunc_ControlBossMusic(0, 31110800, 931000, 31112805, 31112806, 0, 31112842, 0, 0)
 
 

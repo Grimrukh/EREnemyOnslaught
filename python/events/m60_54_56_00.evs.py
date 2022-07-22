@@ -47,14 +47,14 @@ def Event_1054562500():
 @ContinueOnRest(200)
 def Event_200():
     """Event 200"""
-    CommonFunc_90005870(0, character=Characters.BorealistheFreezingFog, name=904503600, npc_threat_level=25)
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.BorealistheFreezingFog, name=904503600, npc_threat_level=25)
     CommonFunc_90005861(
         0,
         flag=1254560800,
         left=0,
         character=Characters.BorealistheFreezingFog,
         left_1=1,
-        item_lot__item_lot_param_id=30510,
+        item_lot=30510,
         text=30066,
         seconds=0.0,
     )
@@ -186,7 +186,7 @@ def Event_1054562820(
     DefineLabel(9)
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))

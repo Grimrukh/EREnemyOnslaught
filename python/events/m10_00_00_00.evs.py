@@ -140,7 +140,7 @@ def Constructor():
     CommonFunc_90005691(0, region=10002610)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9002, vfx_id=100, model_point=800, right=0)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9003, vfx_id=100, model_point=800, right=0)
-    CommonFunc_90005632(0, flag=580040, asset=Assets.AEG099_388_5000, item_lot_param_id=80040)
+    CommonFunc_90005632(0, flag=580040, asset=Assets.AEG099_388_5000, item_lot=80040)
     CommonFunc_90005570(0, flag=60836, gesture_param_id=94, asset=Assets.AEG099_610_9048, left=0, left_1=1, right=0)
     CommonFunc_90005560(0, flag=10000698, asset=Assets.AEG099_635_9000, left=0)
     Event_10002690()
@@ -279,12 +279,12 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=10000280, character=Characters.GraftedScion, item_lot_param_id=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=10000280, character=Characters.GraftedScion, item_lot=0, reward_delay=0.0, skip_reward=0)
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=10000289,
         character=Characters.LionGuardian,
-        item_lot_param_id=10001085,
+        item_lot=10001085,
         reward_delay=1.0,
         skip_reward=0,
     )
@@ -293,7 +293,7 @@ def Constructor():
         0,
         dead_flag=10000291,
         character=Characters.UlceratedTreeSpirit,
-        item_lot_param_id=10001095,
+        item_lot=10001095,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -301,13 +301,13 @@ def Constructor():
         0,
         dead_flag=10000498,
         character=Characters.CrucibleKnight,
-        item_lot_param_id=10001295,
+        item_lot=10001295,
         reward_delay=0.0,
         skip_reward=0,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=10000495, character=Characters.Scarab0, item_lot_param_id=40170, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=10000496, character=Characters.Scarab1, item_lot_param_id=40172, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=10000497, character=Characters.Scarab2, item_lot_param_id=40174, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=10000495, character=Characters.Scarab0, item_lot=40170, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=10000496, character=Characters.Scarab1, item_lot=40172, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=10000497, character=Characters.Scarab2, item_lot=40174, reward_delay=0.0, skip_reward=0)
     CommonFunc_90005780(
         0,
         flag=Flags.GodrickDead,
@@ -762,17 +762,17 @@ def Preconstructor():
     CommonFunc_90005221(0, character=10000405, animation_id=30000, animation_id_1=20001, seconds=0.0, left=0)
     CommonFunc_90005221(0, character=10000406, animation_id=30000, animation_id_1=20001, seconds=0.0, left=0)
     CommonFunc_90005221(0, character=10000407, animation_id=30000, animation_id_1=20001, seconds=0.0, left=0)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.CastleGuard32,
-        animation_id=30006,
-        animation_id_1=20006,
+        inactive_animation=30006,
+        active_animation=20006,
         radius=5.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard33, region=10002416, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard34, region=10002416, seconds=0.0, animation_id=-1)
@@ -786,17 +786,17 @@ def Preconstructor():
         animation_id=-1,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard38, region=10002214, seconds=0.0, animation_id=-1)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.CastleGuard32,
-        animation_id=30006,
-        animation_id_1=20006,
+        inactive_animation=30006,
+        active_animation=20006,
         radius=5.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard31, region=10002616, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard44, region=10002238, seconds=0.0, animation_id=-1)
@@ -972,7 +972,7 @@ def Event_10002281(_, character: uint, region: uint, seconds: float, animation_i
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=region))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(AND_1)
     
     MAIN.Await(OR_2)
@@ -1182,7 +1182,7 @@ def Event_10002240(
     DefineLabel(9)
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -1245,7 +1245,7 @@ def Event_11002291(_, character: uint, region: uint, seconds: float):
     AND_3.Add(CharacterInsideRegion(character=PLAYER, region=region))
     AND_1.Add(AND_3)
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -1333,7 +1333,7 @@ def Event_10002311(
     DefineLabel(9)
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -1378,7 +1378,7 @@ def Event_10002320():
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=10002294))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=10000294, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=10000294))
     OR_2.Add(CharacterHasStateInfo(character=10000294, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=10000294, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=10000294, state_info=5))
@@ -1442,7 +1442,7 @@ def Event_10002350(_, character: uint, region: uint, seconds: float, flag: uint)
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=region))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -2049,7 +2049,7 @@ def GodrickFogGateEvents():
         summon_entered_fog_flag=10002806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=Flags.GodrickDead, fog_asset=Assets.AEG099_002_9000, model_point=5, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodrickDead, fog_asset=Assets.AEG099_002_9000, model_point=5, required_flag=0)
     CommonFunc_ControlBossMusic(0, Flags.GodrickDead, 475000, 10002805, 10002806, 0, 10002802, 1, 1)
 
 
@@ -2106,7 +2106,7 @@ def MargitBattleStart():
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(EntityWithinDistance(entity=Characters.Margit, other_entity=PLAYER, radius=25.0))
     OR_1.Add(AND_1)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Margit, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Margit))
     AND_10.Add(OR_1)
     AND_10.Add(FlagDisabled(Flags.MargitDead))
     
@@ -2213,7 +2213,7 @@ def MargitFogGateEvents():
         summon_entered_fog_flag=10002856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=Flags.MargitDead, fog_asset=Assets.AEG099_002_9001, model_point=3, first_time_done_flag=10000851)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.MargitDead, fog_asset=Assets.AEG099_002_9001, model_point=3, required_flag=10000851)
     CommonFunc_9005813(
         0,
         flag=Flags.MargitDead,

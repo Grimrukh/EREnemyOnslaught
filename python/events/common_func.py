@@ -80,7 +80,7 @@ def CommonFunc_TriggerInactiveEnemy_WithRegion(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -116,24 +116,24 @@ def CommonFunc_TriggerInactiveEnemy_WithRegion(
 
 
 @RestartOnRest(90005201)
-def CommonFunc_90005201(
+def CommonFunc_TriggerInactiveEnemy_WithRadius(
     _,
     character: uint,
-    animation_id: int,
-    animation_id_1: int,
+    inactive_animation: int,
+    active_animation: int,
     radius: float,
-    seconds: float,
-    left: uint,
-    left_1: uint,
-    left_2: uint,
-    left_3: uint,
+    delay: float,
+    disable_gravity_collision: uint,
+    trigger_on_ai_battle: uint,
+    trigger_on_ai_unknown5: uint,
+    trigger_on_ai_unknown6: uint,
 ):
     """CommonFunc 90005201"""
     EndIffSpecialStandbyEndedFlagEnabled(character=character)
-    if UnsignedNotEqual(left=left, right=0):
+    if UnsignedNotEqual(left=disable_gravity_collision, right=0):
         DisableGravity(character)
         DisableCharacterCollision(character)
-    ForceAnimation(character, animation_id, loop=True)
+    ForceAnimation(character, inactive_animation, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
     OR_1.Add(AND_15)
@@ -145,15 +145,15 @@ def CommonFunc_90005201(
     OR_11.Add(CharacterHasSpecialEffect(character, 5080))
     OR_11.Add(CharacterHasSpecialEffect(character, 5450))
     AND_1.Add(OR_11)
-    AND_9.Add(UnsignedEqual(left=left_1, right=0))
-    AND_9.Add(UnsignedEqual(left=left_2, right=0))
-    AND_9.Add(UnsignedEqual(left=left_3, right=0))
+    AND_9.Add(UnsignedEqual(left=trigger_on_ai_battle, right=0))
+    AND_9.Add(UnsignedEqual(left=trigger_on_ai_unknown5, right=0))
+    AND_9.Add(UnsignedEqual(left=trigger_on_ai_unknown6, right=0))
     GotoIfConditionTrue(Label.L9, input_condition=AND_9)
-    if UnsignedNotEqual(left=left_1, right=0):
+    if UnsignedNotEqual(left=trigger_on_ai_battle, right=0):
         OR_9.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    if UnsignedNotEqual(left=left_2, right=0):
+    if UnsignedNotEqual(left=trigger_on_ai_unknown5, right=0):
         OR_9.Add(HasAIStatus(character, ai_status=AIStatusType.Unknown5))
-    if UnsignedNotEqual(left=left_3, right=0):
+    if UnsignedNotEqual(left=trigger_on_ai_unknown6, right=0):
         OR_9.Add(HasAIStatus(character, ai_status=AIStatusType.Unknown4))
     AND_1.Add(OR_9)
 
@@ -184,7 +184,7 @@ def CommonFunc_90005201(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -204,16 +204,16 @@ def CommonFunc_90005201(
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(character, 5080))
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(character, 5450))
     GotoIfConditionTrue(Label.L0, input_condition=AND_2)
-    Wait(seconds)
-    if UnsignedNotEqual(left=left, right=0):
+    Wait(delay)
+    if UnsignedNotEqual(left=disable_gravity_collision, right=0):
         EnableGravity(character)
         EnableCharacterCollision(character)
-    ForceAnimation(character, animation_id_1, loop=True)
+    ForceAnimation(character, active_animation, loop=True)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    if UnsignedNotEqual(left=left, right=0):
+    if UnsignedNotEqual(left=disable_gravity_collision, right=0):
         EnableGravity(character)
         EnableCharacterCollision(character)
     End()
@@ -291,7 +291,7 @@ def CommonFunc_90005210(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -399,7 +399,7 @@ def CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -511,7 +511,7 @@ def CommonFunc_90005213(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -604,7 +604,7 @@ def CommonFunc_90005220(
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -670,7 +670,7 @@ def CommonFunc_90005221(_, character: uint, animation_id: int, animation_id_1: i
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -742,7 +742,7 @@ def CommonFunc_TriggerEnemyAI_WithRegion(_, character: uint, region: uint, secon
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -805,7 +805,7 @@ def CommonFunc_TriggerEnemyAI_WithRadius(_, character: uint, radius: float, seco
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -870,7 +870,7 @@ def CommonFunc_90005260(_, character: uint, region: uint, radius: float, seconds
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -937,7 +937,7 @@ def CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
     OR_3.Add(EntityWithinDistance(entity=PLAYER, other_entity=character, radius=radius))
     AND_1.Add(OR_3)
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -992,7 +992,7 @@ def CommonFunc_90005271(_, character: uint, seconds: float, animation_id: int):
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -1022,7 +1022,7 @@ def CommonFunc_NonRespawningWithReward(
     _,
     dead_flag: uint,
     character: uint,
-    item_lot_param_id: int,
+    item_lot: int,
     reward_delay: float,
     skip_reward: int,
 ):
@@ -1051,14 +1051,14 @@ def CommonFunc_NonRespawningWithReward(
         return
     if ValueEqual(left=skip_reward, right=1):
         return
-    if ValueEqual(left=item_lot_param_id, right=0):
+    if ValueEqual(left=item_lot, right=0):
         return
-    AwardItemLot(item_lot_param_id, host_only=True)
+    AwardItemLot(item_lot, host_only=True)
     End()
 
 
 @RestartOnRest(90005360)
-def CommonFunc_90005360(_, flag: uint, character: uint, item_lot_param_id: int):
+def CommonFunc_90005360(_, flag: uint, character: uint, item_lot: int):
     """CommonFunc 90005360"""
     GotoIfFlagDisabled(Label.L0, flag=flag)
     DisableCharacter(character)
@@ -1073,7 +1073,7 @@ def CommonFunc_90005360(_, flag: uint, character: uint, item_lot_param_id: int):
     DisplayBanner(BannerType.Unknown14)
     if PlayerNotInOwnWorld():
         return
-    AwardItemLot(item_lot_param_id, host_only=True)
+    AwardItemLot(item_lot, host_only=True)
 
 
 @RestartOnRest(90005390)
@@ -1084,7 +1084,7 @@ def CommonFunc_90005390(
     anchor_entity: uint,
     character: uint,
     left: int,
-    item_lot_param_id: int,
+    item_lot: int,
 ):
     """CommonFunc 90005390"""
     if FlagEnabled(flag):
@@ -1119,8 +1119,8 @@ def CommonFunc_90005390(
     DisableCharacter(character)
     if PlayerNotInOwnWorld():
         return
-    if ValueNotEqual(left=item_lot_param_id, right=0):
-        AwardItemLot(item_lot_param_id, host_only=True)
+    if ValueNotEqual(left=item_lot, right=0):
+        AwardItemLot(item_lot, host_only=True)
     EnableNetworkFlag(flag)
 
 
@@ -1197,7 +1197,7 @@ def CommonFunc_90005400(_, character: uint, special_effect_id: int, seconds: flo
     else:
         AddSpecialEffect(character, 4421)
     ForceAnimation(character, 14100, loop=True)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasSpecialEffect(character, 5112))
     
     MAIN.Await(OR_2)
@@ -1737,7 +1737,7 @@ def CommonFunc_90005463(_, character: uint, character_1: uint):
     """CommonFunc 90005463"""
     GotoIfThisEventSlotFlagEnabled(Label.L0)
     OR_10.Add(EventValue(flag=character, bit_count=3) >= 5)
-    AND_1.Add(AttackedWithDamageType(attacked_entity=character_1, attacker=0))
+    AND_1.Add(AttackedWithDamageType(attacked_entity=character_1))
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(character, 11757))
     OR_10.Add(AND_1)
     
@@ -2328,7 +2328,7 @@ def CommonFunc_90005481(_, character: uint):
         unk_24_28=-1,
     )
     AND_1.Add(CharacterHasSpecialEffect(character, 16499))
-    AND_1.Add(NPCPartAttackedWithDamageType(character=character, npc_part_id=10, attacker=0))
+    AND_1.Add(NPCPartAttackedWithDamageType(character=character, npc_part_id=10))
     
     MAIN.Await(AND_1)
     
@@ -4746,7 +4746,7 @@ def CommonFunc_90005631(_, anchor_entity: uint, text: int):
 
 
 @RestartOnRest(90005632)
-def CommonFunc_90005632(_, flag: uint, asset: uint, item_lot_param_id: int):
+def CommonFunc_90005632(_, flag: uint, asset: uint, item_lot: int):
     """CommonFunc 90005632"""
     if FlagEnabled(flag):
         return
@@ -4762,7 +4762,7 @@ def CommonFunc_90005632(_, flag: uint, asset: uint, item_lot_param_id: int):
     DeleteAssetVFX(asset)
     PlaySoundEffect(asset, 806841, sound_type=SoundType.s_SFX)
     Wait(0.10000000149011612)
-    AwardItemLot(item_lot_param_id, host_only=True)
+    AwardItemLot(item_lot, host_only=True)
 
 
 @RestartOnRest(90005633)
@@ -6641,7 +6641,7 @@ def CommonFunc_90005709(_, attacked_entity: uint, model_point: int, vfx_id: int)
     if PlayerNotInOwnWorld():
         return
     
-    MAIN.Await(AttackedWithDamageType(attacked_entity=attacked_entity, attacker=0))
+    MAIN.Await(AttackedWithDamageType(attacked_entity=attacked_entity))
     
     CreateTemporaryVFX(
         vfx_id=vfx_id,
@@ -6816,7 +6816,7 @@ def CommonFunc_90005724(
     _,
     flag: uint,
     character: uint,
-    item_lot_param_id: int,
+    item_lot: int,
     seconds: float,
     left: int,
     character_1: uint,
@@ -6846,7 +6846,7 @@ def CommonFunc_90005724(
         return
     if ValueEqual(left=left, right=1):
         return
-    AwardItemLot(item_lot_param_id, host_only=True)
+    AwardItemLot(item_lot, host_only=True)
     End()
 
 
@@ -7547,7 +7547,7 @@ def CommonFunc_90005750(
     _,
     asset: uint,
     action_button_id: int,
-    item_lot_param_id: int,
+    item_lot: int,
     first_flag: uint,
     last_flag: uint,
     flag: uint,
@@ -7575,7 +7575,7 @@ def CommonFunc_90005750(
     
     GotoIfFinishedConditionTrue(Label.L0, input_condition=OR_2)
     DeleteAssetVFX(asset)
-    AwardItemLot(item_lot_param_id, host_only=True)
+    AwardItemLot(item_lot, host_only=True)
     EzstateAIRequest(PLAYER, command_id=60070, command_slot=0)
     End()
 
@@ -7702,7 +7702,7 @@ def CommonFunc_90005773(_, flag: uint):
 
 
 @ContinueOnRest(90005774)
-def CommonFunc_90005774(_, flag: uint, item_lot_param_id: int, flag_1: uint):
+def CommonFunc_90005774(_, flag: uint, item_lot: int, flag_1: uint):
     """CommonFunc 90005774"""
     if PlayerNotInOwnWorld():
         return
@@ -7712,7 +7712,7 @@ def CommonFunc_90005774(_, flag: uint, item_lot_param_id: int, flag_1: uint):
     AND_2.Add(FlagEnabled(flag))
     AwaitConditionTrue(AND_2)
     if PlayerInOwnWorld():
-        AwardItemLot(item_lot_param_id, host_only=True)
+        AwardItemLot(item_lot, host_only=True)
     End()
 
 
@@ -8039,7 +8039,7 @@ def CommonFunc_90005792(
     flag_1: uint,
     flag_2: uint,
     character: uint,
-    item_lot_param_id: int,
+    item_lot: int,
     seconds: float,
 ):
     """CommonFunc 90005792"""
@@ -8060,9 +8060,9 @@ def CommonFunc_90005792(
     EnableFlag(flag)
     if PlayerNotInOwnWorld():
         return
-    if ValueEqual(left=item_lot_param_id, right=0):
+    if ValueEqual(left=item_lot, right=0):
         return
-    AwardItemLot(item_lot_param_id, host_only=True)
+    AwardItemLot(item_lot, host_only=True)
     End()
     OR_1.Add(FlagEnabled(flag_2))
 
@@ -8378,7 +8378,7 @@ def CommonFunc_RegisterGraceIfFlagEnabled(
 
 
 @RestartOnRest(9005811)
-def CommonFunc_ControlBossFog(_, flag: uint, fog_asset: uint, model_point: int, first_time_done_flag: uint):
+def CommonFunc_ControlBossFog(_, boss_dead_flag: uint, fog_asset: uint, model_point: int, required_flag: uint):
     """CommonFunc 9005811"""
     DisableNetworkSync()
     DisableAsset(fog_asset)
@@ -8388,24 +8388,24 @@ def CommonFunc_ControlBossFog(_, flag: uint, fog_asset: uint, model_point: int, 
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.Invader2))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.Invader3))
     AND_1.Add(OR_1)
-    AND_1.Add(FlagDisabled(flag))
+    AND_1.Add(FlagDisabled(boss_dead_flag))
     OR_2.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     OR_2.Add(CharacterType(PLAYER, character_type=CharacterType.BluePhantom))
     AND_2.Add(OR_2)
-    AND_2.Add(FlagDisabled(flag))
-    if UnsignedNotEqual(left=0, right=first_time_done_flag):
-        AND_3.Add(FlagEnabled(first_time_done_flag))
-    AND_3.Add(FlagDisabled(flag))
+    AND_2.Add(FlagDisabled(boss_dead_flag))
+    if UnsignedNotEqual(left=0, right=required_flag):
+        AND_3.Add(FlagEnabled(required_flag))
+    AND_3.Add(FlagDisabled(boss_dead_flag))
     OR_4.Add(Invasion())
     OR_4.Add(InvasionPending())
     AND_4.Add(OR_4)
-    AND_4.Add(FlagEnabled(flag))
+    AND_4.Add(FlagEnabled(boss_dead_flag))
     AND_7.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_4.Add(not AND_7)
     OR_5.Add(Invasion())
     OR_5.Add(InvasionPending())
     AND_5.Add(OR_5)
-    AND_5.Add(FlagEnabled(flag))
+    AND_5.Add(FlagEnabled(boss_dead_flag))
     AND_5.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_5.Add(EntityBeyondDistance(entity=PLAYER, other_entity=fog_asset, radius=1.0))
     OR_8.Add(AND_1)
@@ -8424,24 +8424,24 @@ def CommonFunc_ControlBossFog(_, flag: uint, fog_asset: uint, model_point: int, 
     OR_11.Add(CharacterType(PLAYER, character_type=CharacterType.Invader2))
     OR_11.Add(CharacterType(PLAYER, character_type=CharacterType.Invader3))
     AND_11.Add(OR_11)
-    AND_11.Add(FlagDisabled(flag))
+    AND_11.Add(FlagDisabled(boss_dead_flag))
     OR_12.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     OR_12.Add(CharacterType(PLAYER, character_type=CharacterType.BluePhantom))
     AND_12.Add(OR_12)
-    AND_12.Add(FlagDisabled(flag))
-    if UnsignedNotEqual(left=0, right=first_time_done_flag):
-        AND_13.Add(FlagEnabled(first_time_done_flag))
-    AND_13.Add(FlagDisabled(flag))
+    AND_12.Add(FlagDisabled(boss_dead_flag))
+    if UnsignedNotEqual(left=0, right=required_flag):
+        AND_13.Add(FlagEnabled(required_flag))
+    AND_13.Add(FlagDisabled(boss_dead_flag))
     OR_14.Add(Invasion())
     OR_14.Add(InvasionPending())
     AND_14.Add(OR_14)
-    AND_14.Add(FlagEnabled(flag))
+    AND_14.Add(FlagEnabled(boss_dead_flag))
     OR_7.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_14.Add(not OR_7)
     OR_15.Add(Invasion())
     OR_15.Add(InvasionPending())
     AND_15.Add(OR_15)
-    AND_15.Add(FlagEnabled(flag))
+    AND_15.Add(FlagEnabled(boss_dead_flag))
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_15.Add(EntityBeyondDistance(entity=PLAYER, other_entity=fog_asset, radius=1.0))
     AND_9.Add(not AND_11)
@@ -8788,62 +8788,62 @@ def CommonFunc_9005845(_, flag: uint, character: uint):
 
 
 @RestartOnRest(90005860)
-def CommonFunc_90005860(
+def CommonFunc_NonRespawningBossWithReward(
     _,
-    flag: uint,
-    left: uint,
-    character: uint,
-    left_1: uint,
-    item_lot__item_lot_param_id: int,
-    seconds: float,
+    dead_flag: uint,
+    extra_flag_to_enable: uint,
+    boss_character: uint,
+    boss_banner_choice: uint,
+    item_lot: int,
+    seconds: float,  # does nothing
 ):
     """CommonFunc 90005860"""
-    if ValueNotEqual(left=item_lot__item_lot_param_id, right=0):
-        Unknown_2004_76(flag=flag, item_lot=item_lot__item_lot_param_id)
-    GotoIfFlagDisabled(Label.L0, flag=flag)
-    DisableCharacter(character)
-    DisableAnimations(character)
-    Kill(character)
+    if ValueNotEqual(left=item_lot, right=0):
+        Unknown_2004_76(flag=dead_flag, item_lot=item_lot)
+    GotoIfFlagDisabled(Label.L0, flag=dead_flag)
+    DisableCharacter(boss_character)
+    DisableAnimations(boss_character)
+    Kill(boss_character)
     if PlayerNotInOwnWorld():
         return
-    if ValueEqual(left=item_lot__item_lot_param_id, right=0):
+    if ValueEqual(left=item_lot, right=0):
         return
     Wait(1.0)
-    AwardItemLot(item_lot__item_lot_param_id, host_only=True)
+    AwardItemLot(item_lot, host_only=True)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     
-    MAIN.Await(HealthValue(character) <= 0)
+    MAIN.Await(HealthValue(boss_character) <= 0)
     
     Wait(2.0)
-    PlaySoundEffect(character, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(boss_character, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(character))
+    MAIN.Await(CharacterDead(boss_character))
     
-    SkipLinesIfUnsignedEqual(6, left=left_1, right=3)
-    SkipLinesIfUnsignedEqual(4, left=left_1, right=2)
-    SkipLinesIfUnsignedEqual(2, left=left_1, right=1)
-    KillBossAndDisplayBanner(character=character, banner_type=BannerType.EnemyFelled)
+    SkipLinesIfUnsignedEqual(6, left=boss_banner_choice, right=3)
+    SkipLinesIfUnsignedEqual(4, left=boss_banner_choice, right=2)
+    SkipLinesIfUnsignedEqual(2, left=boss_banner_choice, right=1)
+    KillBossAndDisplayBanner(character=boss_character, banner_type=BannerType.EnemyFelled)
     Goto(Label.L1)
-    KillBossAndDisplayBanner(character=character, banner_type=BannerType.GreatEnemyFelled)
+    KillBossAndDisplayBanner(character=boss_character, banner_type=BannerType.GreatEnemyFelled)
     Goto(Label.L1)
-    KillBossAndDisplayBanner(character=character, banner_type=BannerType.DemigodFelled)
+    KillBossAndDisplayBanner(character=boss_character, banner_type=BannerType.DemigodFelled)
     Goto(Label.L1)
-    KillBossAndDisplayBanner(character=character, banner_type=BannerType.LegendFelled)
+    KillBossAndDisplayBanner(character=boss_character, banner_type=BannerType.LegendFelled)
 
     # --- Label 1 --- #
     DefineLabel(1)
-    EnableFlag(flag)
-    if UnsignedNotEqual(left=left, right=0):
-        EnableFlag(left)
+    EnableFlag(dead_flag)
+    if UnsignedNotEqual(left=extra_flag_to_enable, right=0):
+        EnableFlag(extra_flag_to_enable)
     if PlayerNotInOwnWorld():
         return
-    if ValueEqual(left=item_lot__item_lot_param_id, right=0):
+    if ValueEqual(left=item_lot, right=0):
         return
     Wait(5.0)
-    AwardItemLot(item_lot__item_lot_param_id, host_only=True)
+    AwardItemLot(item_lot, host_only=True)
     End()
     Wait(seconds)
 
@@ -8855,23 +8855,23 @@ def CommonFunc_90005861(
     left: uint,
     character: uint,
     left_1: uint,
-    item_lot__item_lot_param_id: int,
+    item_lot: int,
     text: int,
     seconds: float,
 ):
     """CommonFunc 90005861"""
-    if ValueNotEqual(left=item_lot__item_lot_param_id, right=0):
-        Unknown_2004_76(flag=flag, item_lot=item_lot__item_lot_param_id)
+    if ValueNotEqual(left=item_lot, right=0):
+        Unknown_2004_76(flag=flag, item_lot=item_lot)
     GotoIfFlagDisabled(Label.L0, flag=flag)
     DisableCharacter(character)
     DisableAnimations(character)
     Kill(character)
     if PlayerNotInOwnWorld():
         return
-    if ValueEqual(left=item_lot__item_lot_param_id, right=0):
+    if ValueEqual(left=item_lot, right=0):
         return
     Wait(1.0)
-    AwardItemLot(item_lot__item_lot_param_id, host_only=True)
+    AwardItemLot(item_lot, host_only=True)
     End()
 
     # --- Label 0 --- #
@@ -8902,10 +8902,10 @@ def CommonFunc_90005861(
         EnableFlag(left)
     if PlayerNotInOwnWorld():
         return
-    if ValueEqual(left=item_lot__item_lot_param_id, right=0):
+    if ValueEqual(left=item_lot, right=0):
         return
     Wait(5.0)
-    AwardItemLot(item_lot__item_lot_param_id, host_only=True)
+    AwardItemLot(item_lot, host_only=True)
     Wait(2.0)
     DisplayFlashingMessage(text)
     End()
@@ -8913,7 +8913,7 @@ def CommonFunc_90005861(
 
 
 @ContinueOnRest(90005870)
-def CommonFunc_90005870(_, character: uint, name: int, npc_threat_level: uint):
+def CommonFunc_FieldBossMusicHealthBar(_, character: uint, name: int, npc_threat_level: uint):
     """CommonFunc 90005870"""
     DisableNetworkSync()
     AND_1.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
@@ -9098,7 +9098,7 @@ def CommonFunc_90005880(
     flag_1: uint,
     flag_2: uint,
     character: uint,
-    item_lot_param_id: int,
+    item_lot: int,
     area_id: uchar,
     block_id: uchar,
     cc_id: char,
@@ -9119,7 +9119,7 @@ def CommonFunc_90005880(
     Wait(3.0)
     KillBossAndDisplayBanner(character=character, banner_type=BannerType.EnemyFelled)
     DeactivateGparamOverride(change_duration=10.0)
-    AwardItemLot(item_lot_param_id, host_only=True)
+    AwardItemLot(item_lot, host_only=True)
     EnableNetworkFlag(flag)
     Wait(5.0)
     AddSpecialEffect(20000, 8870)
@@ -9263,7 +9263,7 @@ def CommonFunc_90005882(
     AddSpecialEffect(20000, 8870)
     OR_1.Add(EntityBeyondDistance(entity=PLAYER, other_entity=asset, radius=12.0))
     OR_1.Add(AttackedWithDamageType(attacked_entity=character, attacker=PLAYER))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=character))
     
     MAIN.Await(OR_1)
     
@@ -9897,7 +9897,7 @@ def CommonFunc_90005110(
     flag: uint,
     flag_1: uint,
     asset: uint,
-    item_lot_param_id: int,
+    item_lot: int,
     item: int,
     model_point: int,
     action_button_id: int,
@@ -9923,7 +9923,7 @@ def CommonFunc_90005110(
     DeleteAssetVFX(asset)
     Wait(4.0)
     DisplayBanner(BannerType.GreatRuneRestored)
-    AwardItemLot(item_lot_param_id, host_only=True)
+    AwardItemLot(item_lot, host_only=True)
     RemoveGoodFromPlayer(item=item, quantity=1)
     EnableFlag(flag)
     End()

@@ -26,16 +26,16 @@ from .entities.m60_37_54_00_entities import Characters as m60_37_Characters
 def Constructor():
     """Event 0"""
     CommonFunc_90005600(0, grace_flag=76357, asset=Assets.AEG099_060_9000, enemy_block_distance=5.0, character=0)
-    CommonFunc_90005870(0, character=Characters.DemiHumanQueen, name=904130600, npc_threat_level=16)
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DemiHumanQueen, name=904130600, npc_threat_level=16)
     Event_1037532345()
     Event_1037532350()
-    CommonFunc_90005860(
+    CommonFunc_NonRespawningBossWithReward(
         0,
-        flag=1037530800,
-        left=1037530800,
-        character=Characters.DemiHumanQueen,
-        left_1=0,
-        item_lot__item_lot_param_id=30395,
+        dead_flag=1037530800,
+        extra_flag_to_enable=1037530800,
+        boss_character=Characters.DemiHumanQueen,
+        boss_banner_choice=0,
+        item_lot=30395,
         seconds=0.0,
     )
     CommonFunc_90005872(0, character=Characters.DemiHumanQueen, npc_threat_level=16, right=0)
@@ -75,7 +75,7 @@ def Constructor():
         0,
         dead_flag=1037530400,
         character=Characters.LargeScarab,
-        item_lot_param_id=40332,
+        item_lot=40332,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -190,29 +190,29 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Wolf0,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=5.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Wolf2,
-        animation_id=30000,
-        animation_id_1=20000,
+        inactive_animation=30000,
+        active_animation=20000,
         radius=5.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_1037532400(0, character=Characters.Wolf1, region=1037532300, owner_entity=Characters.Dummy1)
     Event_1037532400(1, character=Characters.Wolf3, region=1037532300, owner_entity=Characters.Dummy1)
@@ -520,7 +520,7 @@ def Event_1037532450(_, character: uint, region: uint, radius: float, seconds: f
     OR_3.Add(EntityWithinDistance(entity=PLAYER, other_entity=character, radius=radius))
     AND_1.Add(OR_3)
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))

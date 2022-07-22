@@ -2,7 +2,7 @@ from soulstruct.eldenring.game_types import *
 
 
 class Characters(Character):
-    LivingPot0 = 1052530700  # c4490_9000 npc 44909850 think 44900052
+    AlexanderSummon = 1052530700  # c4490_9000 npc 44909850 think 44900052
     LivingPot1 = 1052530701  # c4490_9001 npc 44909850 think 44900052
     Dummy = 1052530100  # c0100_9000 npc 1000000 think 1000000 talk 2000
     TalkDummy0 = 1052530950  # c1000_9001 npc 10000000 think 1 talk 1000

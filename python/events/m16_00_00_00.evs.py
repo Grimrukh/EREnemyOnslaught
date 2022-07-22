@@ -242,7 +242,7 @@ def Constructor():
         flag_1=16002181,
         flag_2=16002182,
         character=Characters.InquisitorGhiza,
-        item_lot_param_id=16000940,
+        item_lot=16000940,
         seconds=0.0,
     )
     Event_16002185(
@@ -269,7 +269,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9000,
         action_button_id=4350,
-        item_lot_param_id=100730,
+        item_lot=100730,
         first_flag=400073,
         last_flag=400073,
         flag=16009208,
@@ -279,7 +279,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9001,
         action_button_id=4350,
-        item_lot_param_id=100740,
+        item_lot=100740,
         first_flag=400074,
         last_flag=400074,
         flag=16009216,
@@ -289,7 +289,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9002,
         action_button_id=4350,
-        item_lot_param_id=100750,
+        item_lot=100750,
         first_flag=400075,
         last_flag=400075,
         flag=16009217,
@@ -299,7 +299,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_990_9003,
         action_button_id=4350,
-        item_lot_param_id=100725,
+        item_lot=100725,
         first_flag=400070,
         last_flag=400072,
         flag=16009270,
@@ -309,7 +309,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_990_9004,
         action_button_id=4350,
-        item_lot_param_id=100710,
+        item_lot=100710,
         first_flag=400071,
         last_flag=400071,
         flag=16009266,
@@ -319,7 +319,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9000,
         action_button_id=4350,
-        item_lot_param_id=100760,
+        item_lot=100760,
         first_flag=400076,
         last_flag=400076,
         flag=16009267,
@@ -329,7 +329,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9001,
         action_button_id=4350,
-        item_lot_param_id=100770,
+        item_lot=100770,
         first_flag=400077,
         last_flag=400077,
         flag=16009268,
@@ -339,7 +339,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9002,
         action_button_id=4350,
-        item_lot_param_id=100780,
+        item_lot=100780,
         first_flag=400078,
         last_flag=400078,
         flag=16009269,
@@ -365,7 +365,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9007,
         action_button_id=4350,
-        item_lot_param_id=100910,
+        item_lot=100910,
         first_flag=400091,
         last_flag=400091,
         flag=16009337,
@@ -375,7 +375,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9009,
         action_button_id=4350,
-        item_lot_param_id=100911,
+        item_lot=100911,
         first_flag=400091,
         last_flag=400091,
         flag=16009338,
@@ -391,7 +391,7 @@ def Constructor():
         0,
         asset=Assets.AEG099_090_9008,
         action_button_id=4350,
-        item_lot_param_id=102910,
+        item_lot=102910,
         first_flag=400291,
         last_flag=400291,
         flag=16009463,
@@ -583,7 +583,7 @@ def Preconstructor():
         0,
         dead_flag=Flags.MagmaWyrmDead,
         character=Characters.MagmaWyrm,
-        item_lot_param_id=16002000,
+        item_lot=16002000,
         reward_delay=0.0,
         skip_reward=0,
     )
@@ -599,29 +599,29 @@ def Preconstructor():
                                          animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble1, radius=3.0, seconds=0.0,
                                          animation_id=-1)
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=16000443,
-        animation_id=30011,
-        animation_id_1=20,
+        inactive_animation=30011,
+        active_animation=20,
         radius=5.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.WanderingNoble2,
-        animation_id=30011,
-        animation_id_1=20,
+        inactive_animation=30011,
+        active_animation=20,
         radius=5.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
@@ -644,32 +644,32 @@ def Preconstructor():
         seconds=0.0,
         animation_id=3007,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.WanderingNoble4,
-        animation_id=30011,
-        animation_id_1=20,
+        inactive_animation=30011,
+        active_animation=20,
         radius=1.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005201(
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.WanderingNoble5,
-        animation_id=30011,
-        animation_id_1=20,
+        inactive_animation=30011,
+        active_animation=20,
         radius=3.0,
-        seconds=0.0,
-        left=0,
-        left_1=0,
-        left_2=0,
-        left_3=0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
     )
     Event_16009000()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=16000420, character=Characters.Scarab0, item_lot_param_id=40590,
+    CommonFunc_NonRespawningWithReward(0, dead_flag=16000420, character=Characters.Scarab0, item_lot=40590,
                                        reward_delay=0.0, skip_reward=0)
     CommonFunc_NonRespawningWithReward(0, 16000421, 16000421, 40592, 0.0, 0)
 
@@ -732,7 +732,7 @@ def Event_16002310(_, character: uint, radius: float, seconds: float, animation_
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
     AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=0))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
@@ -1832,7 +1832,7 @@ def RykardFogGateEvents():
         summon_entered_fog_flag=16002806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=Flags.RykardDead, fog_asset=Assets.AEG099_003_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.RykardDead, fog_asset=Assets.AEG099_003_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, Flags.RykardDead, 471000, 16002805, 16002806, 16002803, 16002802, 0, 0)
 
 
@@ -2018,8 +2018,8 @@ def IronVirginsFogGateEvents():
         summon_entered_fog_flag=16002866,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=Flags.IronVirginsDead, fog_asset=Assets.AEG099_002_9000, model_point=4, first_time_done_flag=0)
-    CommonFunc_ControlBossFog(0, flag=Flags.IronVirginsDead, fog_asset=Assets.AEG099_002_9001, model_point=5, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.IronVirginsDead, fog_asset=Assets.AEG099_002_9000, model_point=4, required_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.IronVirginsDead, fog_asset=Assets.AEG099_002_9001, model_point=5, required_flag=0)
     CommonFunc_ControlBossMusic(0, Flags.IronVirginsDead, 931000, 16002865, 16002866, 0, 16002862, 0, 0)
 
 
@@ -2046,8 +2046,8 @@ def GodskinNobleFogGateEvents():
         summon_entered_fog_flag=16002856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, flag=Flags.GodskinNobleDead, fog_asset=Assets.AEG099_003_0500, model_point=4, first_time_done_flag=16000851)
-    CommonFunc_ControlBossFog(0, flag=Flags.GodskinNobleDead, fog_asset=Assets.AEG099_003_0501, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinNobleDead, fog_asset=Assets.AEG099_003_0500, model_point=4, required_flag=16000851)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinNobleDead, fog_asset=Assets.AEG099_003_0501, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(0, Flags.GodskinNobleDead, 356000, 16002855, 16002856, 0, 16002852, 0, 0)
 
 
