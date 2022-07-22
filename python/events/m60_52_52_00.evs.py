@@ -22,7 +22,7 @@ from .entities.m60_52_52_00_entities import *
 from .entities.m60_52_53_00_entities import Assets as m60_52_Assets, Characters as m60_52_Characters
 
 
-@NeverRestart(200)
+@ContinueOnRest(200)
 def Event_200():
     """Event 200"""
     Event_1052520800()
@@ -163,13 +163,13 @@ def Event_1052522811():
             cutscene_flags=0,
             move_to_region=1052522810,
             map_id=60525200,
-            player_id=10000,
+            player_id=PLAYER,
             unk_16_20=65001,
             unk_20_21=False,
             update_stable_position=False,
         )
     else:
-        PlayCutscene(60520010, cutscene_flags=0, player_id=10000)
+        PlayCutscene(60520010, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     if PlayerInOwnWorld():
         SetCameraAngle(x_angle=-32.529998779296875, y_angle=-43.560001373291016)
@@ -191,7 +191,7 @@ def Event_1052522811():
     EnableFlag(1252522802)
 
 
-@NeverRestart(1052522812)
+@ContinueOnRest(1052522812)
 def Event_1052522812():
     """Event 1052522812"""
     if FlagEnabled(1252520800):
@@ -600,48 +600,48 @@ def Event_1052522817():
 @RestartOnRest(1052522849)
 def Event_1052522849():
     """Event 1052522849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=1252520800,
-        entity=m60_52_Assets.AEG099_002_9000,
-        region=1052532800,
-        flag_1=1252522805,
-        character=1052525800,
+        boss_dead_flag=1252520800,
+        fog_asset=m60_52_Assets.AEG099_002_9000,
+        fog_region=1052532800,
+        host_entered_fog_flag=1252522805,
+        boss_characters=1052525800,
         action_button_id=10000,
-        left=1252520801,
-        region_1=0,
+        first_time_done_flag=1252520801,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=1252520800,
-        entity=m60_52_Assets.AEG099_003_9001,
-        region=1052532801,
-        flag_1=1252522805,
-        character=1052525800,
+        boss_dead_flag=1252520800,
+        fog_asset=m60_52_Assets.AEG099_003_9001,
+        fog_region=1052532801,
+        host_entered_fog_flag=1252522805,
+        boss_characters=1052525800,
         action_button_id=10000,
-        left=1252520801,
-        region_1=0,
+        first_time_done_flag=1252520801,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=1252520800,
-        entity=m60_52_Assets.AEG099_002_9000,
-        region=1052532800,
-        flag_1=1252522805,
-        flag_2=1252522806,
-        action_button_id=10000,
-    )
-    CommonFunc_9005801(
-        0,
-        flag=1252520800,
-        entity=m60_52_Assets.AEG099_003_9001,
-        region=1052532801,
-        flag_1=1252522805,
-        flag_2=1252522806,
+        boss_dead_flag=1252520800,
+        fog_asset=m60_52_Assets.AEG099_002_9000,
+        fog_region=1052532800,
+        host_entered_fog_flag=1252522805,
+        summon_entered_fog_flag=1252522806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=1252520800, asset=m60_52_Assets.AEG099_002_9000, model_point=9, right=1252520804)
-    CommonFunc_9005811(0, flag=1252520800, asset=m60_52_Assets.AEG099_003_9001, model_point=10, right=1252520804)
-    CommonFunc_9005811(0, flag=1252520800, asset=Assets.AEG099_019_1000, model_point=0, right=1252520804)
-    CommonFunc_9005811(0, flag=1252520800, asset=m60_52_Assets.AEG099_017_1000, model_point=0, right=1252520804)
-    CommonFunc_BossMusicPhaseTransition(0, 1252520800, 476000, 1252522805, 1252522806, 0, 1252522802, 1, 1)
+    CommonFunc_SummonEntersBossFog(
+        0,
+        boss_dead_flag=1252520800,
+        fog_asset=m60_52_Assets.AEG099_003_9001,
+        fog_region=1052532801,
+        host_entered_fog_flag=1252522805,
+        summon_entered_fog_flag=1252522806,
+        action_button_id=10000,
+    )
+    CommonFunc_ControlBossFog(0, flag=1252520800, fog_asset=m60_52_Assets.AEG099_002_9000, model_point=9, first_time_done_flag=1252520804)
+    CommonFunc_ControlBossFog(0, flag=1252520800, fog_asset=m60_52_Assets.AEG099_003_9001, model_point=10, first_time_done_flag=1252520804)
+    CommonFunc_ControlBossFog(0, flag=1252520800, fog_asset=Assets.AEG099_019_1000, model_point=0, first_time_done_flag=1252520804)
+    CommonFunc_ControlBossFog(0, flag=1252520800, fog_asset=m60_52_Assets.AEG099_017_1000, model_point=0, first_time_done_flag=1252520804)
+    CommonFunc_ControlBossMusic(0, 1252520800, 476000, 1252522805, 1252522806, 0, 1252522802, 1, 1)

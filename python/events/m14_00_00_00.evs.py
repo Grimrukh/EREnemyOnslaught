@@ -23,7 +23,7 @@ from .entities.m31_06_00_00_entities import Assets as m31_06_Assets
 from .entities.m60_35_46_00_entities import Assets as m60_35_Assets
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=14000002, asset=Assets.AEG099_060_9002)
@@ -918,7 +918,7 @@ def Constructor():
     CommonFunc_90005750(0, 14001720, 4110, 103600, 400360, 400362, 3806, 0)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.RennalaNPC1)
@@ -1795,7 +1795,7 @@ def Preconstructor():
     CommonFunc_TriggerEnemyAI_WithRegion(0, 14000499, 14002499, 0.0, -1)
 
 
-@NeverRestart(14002080)
+@ContinueOnRest(14002080)
 def Event_14002080():
     """Event 14002080"""
     if PlayerNotInOwnWorld():
@@ -1867,7 +1867,7 @@ def Event_14002580():
     RegisterLadder(start_climbing_flag=14000542, stop_climbing_flag=14000543, asset=Assets.AEG257_015_0500)
 
 
-@NeverRestart(14002510)
+@ContinueOnRest(14002510)
 def Event_14002510():
     """Event 14002510"""
     CommonFunc_90005500(
@@ -1920,7 +1920,7 @@ def Event_14002510():
     )
 
 
-@NeverRestart(14000519)
+@ContinueOnRest(14000519)
 def Event_14000519():
     """Event 14000519"""
     if ThisEventSlotFlagEnabled():
@@ -2338,7 +2338,7 @@ def Event_14002495():
     Restart()
 
 
-@NeverRestart(14002606)
+@ContinueOnRest(14002606)
 def Event_14002606():
     """Event 14002606"""
     DisableNetworkSync()
@@ -2620,12 +2620,12 @@ def RennalaBattleTrigger():
             cutscene_flags=0,
             move_to_region=14002802,
             map_id=14000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
     else:
-        PlayCutscene(14000000, cutscene_flags=0, player_id=10000)
+        PlayCutscene(14000000, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     EnableNetworkFlag(14000801)
     EnableCharacter(Characters.RennalaPhaseOne)
@@ -2834,7 +2834,7 @@ def RennalaPhaseTwoTransition():
             cutscene_flags=0,
             move_to_region=14002803,
             map_id=14000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
@@ -2844,7 +2844,7 @@ def RennalaPhaseTwoTransition():
             cutscene_flags=0,
             move_to_region=14002806,
             map_id=14000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
@@ -2941,28 +2941,28 @@ def Event_140028122(_, character: uint, special_effect: int, special_effect_1: i
 @RestartOnRest(14002849)
 def Event_14002849():
     """Event 14002849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=Flags.RennalaDefeated,
-        entity=Assets.AEG099_001_9000,
-        region=14002800,
-        flag_1=Flags.RennalaBattleStarted,
-        character=CharacterGroups.RennalaBoss,
+        boss_dead_flag=Flags.RennalaDefeated,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=14002800,
+        host_entered_fog_flag=Flags.RennalaBattleStarted,
+        boss_characters=CharacterGroups.RennalaBoss,
         action_button_id=10000,
-        left=14000801,
-        region_1=0,
+        first_time_done_flag=14000801,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=Flags.RennalaDefeated,
-        entity=Assets.AEG099_001_9000,
-        region=14002800,
-        flag_1=Flags.RennalaBattleStarted,
-        flag_2=14002806,
+        boss_dead_flag=Flags.RennalaDefeated,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=14002800,
+        host_entered_fog_flag=Flags.RennalaBattleStarted,
+        summon_entered_fog_flag=14002806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=Flags.RennalaDefeated, asset=Assets.AEG099_001_9000, model_point=3, right=14000801)
-    CommonFunc_BossMusicPhaseTransition(0, Flags.RennalaDefeated, 203000, Flags.RennalaBattleStarted, 14002806, 0, 14002803, 1, 0)
+    CommonFunc_ControlBossFog(0, flag=Flags.RennalaDefeated, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=14000801)
+    CommonFunc_ControlBossMusic(0, Flags.RennalaDefeated, 203000, Flags.RennalaBattleStarted, 14002806, 0, 14002803, 1, 0)
 
 
 @RestartOnRest(14002850)
@@ -3037,27 +3037,27 @@ def RedWolfBattleTrigger():
 @RestartOnRest(14002889)
 def RedWolfFogGateEvents():
     """Event 14002889"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=Flags.RedWolfDead,
-        entity=Assets.AEG099_003_9000,
-        region=14002850,
-        flag_1=14002855,
-        character=14005850,
+        boss_dead_flag=Flags.RedWolfDead,
+        fog_asset=Assets.AEG099_003_9000,
+        fog_region=14002850,
+        host_entered_fog_flag=14002855,
+        boss_characters=14005850,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=Flags.RedWolfDead,
-        entity=Assets.AEG099_003_9000,
-        region=14002850,
-        flag_1=14002855,
-        flag_2=14002856,
+        boss_dead_flag=Flags.RedWolfDead,
+        fog_asset=Assets.AEG099_003_9000,
+        fog_region=14002850,
+        host_entered_fog_flag=14002855,
+        summon_entered_fog_flag=14002856,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=Flags.RedWolfDead, asset=Assets.AEG099_003_9000, model_point=3, right=0)
+    CommonFunc_ControlBossFog(0, flag=Flags.RedWolfDead, fog_asset=Assets.AEG099_003_9000, model_point=3, first_time_done_flag=0)
     CommonFunc_9005813(
         0,
         flag=Flags.RedWolfDead,
@@ -3066,7 +3066,7 @@ def RedWolfFogGateEvents():
         right=14000851,
         model_point_1=806760,
     )
-    CommonFunc_BossMusicPhaseTransition(0, Flags.RedWolfDead, 921400, 14002855, 14002856, 0, 14000852, 0, 0)
+    CommonFunc_ControlBossMusic(0, Flags.RedWolfDead, 921400, 14002855, 14002856, 0, 14000852, 0, 0)
 
 
 @RestartOnRest(14002820)
@@ -4639,7 +4639,7 @@ def Event_14003850(
     Restart()
 
 
-@NeverRestart(14003880)
+@ContinueOnRest(14003880)
 def Event_14003880(
     _,
     character: uint,

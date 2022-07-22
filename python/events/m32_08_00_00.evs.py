@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m32_08_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=32080000, asset=Assets.AEG099_060_9000)
@@ -130,7 +130,7 @@ def Constructor():
     Event_32082200(5, 32080205, 30005, 20005, 0.0, 0, 0, 0, 0, 32081618, 32081619, 0, 0)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     Event_32082820()
@@ -427,25 +427,25 @@ def Event_32082820():
 @RestartOnRest(32082849)
 def Event_32082849():
     """Event 32082849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=32080800,
-        entity=Assets.AEG099_003_9000,
-        region=32082800,
-        flag_1=32082805,
-        character=32085800,
+        boss_dead_flag=32080800,
+        fog_asset=Assets.AEG099_003_9000,
+        fog_region=32082800,
+        host_entered_fog_flag=32082805,
+        boss_characters=32085800,
         action_button_id=10000,
-        left=32080801,
-        region_1=32082801,
+        first_time_done_flag=32080801,
+        first_time_trigger_region=32082801,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=32080800,
-        entity=Assets.AEG099_003_9000,
-        region=32082800,
-        flag_1=32082805,
-        flag_2=32082806,
+        boss_dead_flag=32080800,
+        fog_asset=Assets.AEG099_003_9000,
+        fog_region=32082800,
+        host_entered_fog_flag=32082805,
+        summon_entered_fog_flag=32082806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=32080800, asset=Assets.AEG099_003_9000, model_point=7, right=32080801)
-    CommonFunc_BossMusicPhaseTransition(0, 32080800, 920800, 32082805, 32082806, 0, 32082802, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=32080800, fog_asset=Assets.AEG099_003_9000, model_point=7, first_time_done_flag=32080801)
+    CommonFunc_ControlBossMusic(0, 32080800, 920800, 32082805, 32082806, 0, 32082802, 0, 0)

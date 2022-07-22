@@ -23,7 +23,7 @@ from .entities.m60_35_45_00_entities import Characters as m60_35_Characters
 from .entities.m60_49_40_00_entities import Assets as m60_49_Assets
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=71223, asset=Assets.AEG099_060_9003)
@@ -471,7 +471,7 @@ def Constructor():
     Event_12022698()
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(12020700)
@@ -531,7 +531,7 @@ def Event_12022569(_, flag: uint, flag_1: uint):
     Restart()
 
 
-@NeverRestart(12022568)
+@ContinueOnRest(12022568)
 def Event_12022568(_, flag: uint, asset: uint):
     """Event 12022568"""
     DisableNetworkSync()
@@ -553,7 +553,7 @@ def Event_12022568(_, flag: uint, asset: uint):
     DisableAsset(asset)
 
 
-@NeverRestart(12022567)
+@ContinueOnRest(12022567)
 def Event_12022567(_, flag: uint, region: uint):
     """Event 12022567"""
     DisableNetworkSync()
@@ -643,7 +643,7 @@ def Event_12022601(_, flag: uint, asset: uint, asset_1: uint):
     End()
 
 
-@NeverRestart(12022609)
+@ContinueOnRest(12022609)
 def Event_12022609():
     """Event 12022609"""
     GotoIfPlayerNotInOwnWorld(Label.L10)
@@ -660,7 +660,7 @@ def Event_12022609():
     Wait(0.4000000059604645)
     BanishInvaders(unknown=0)
     Wait(1.0)
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
         destination_type=CoordEntityType.Region,
         destination=12082400,
@@ -687,7 +687,7 @@ def Event_12022609():
     
     MAIN.Await(FlagEnabled(12022610))
     
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
         destination_type=CoordEntityType.Region,
         destination=12022202,
@@ -697,7 +697,7 @@ def Event_12022609():
         reset_camera=True,
     )
     Wait(5.0)
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
         destination_type=CoordEntityType.Region,
         destination=12082401,
@@ -783,7 +783,7 @@ def Event_12022621(_, flag: uint, asset: uint, asset_1: uint):
     End()
 
 
-@NeverRestart(12022629)
+@ContinueOnRest(12022629)
 def Event_12022629():
     """Event 12022629"""
     GotoIfPlayerNotInOwnWorld(Label.L10)
@@ -804,7 +804,7 @@ def Event_12022629():
     else:
         BanishInvaders(unknown=0)
     Wait(2.0)
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
         destination_type=CoordEntityType.Region,
         destination=12092400,
@@ -831,7 +831,7 @@ def Event_12022629():
     
     MAIN.Await(FlagEnabled(12022630))
     
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
         destination_type=CoordEntityType.Region,
         destination=12022209,
@@ -841,7 +841,7 @@ def Event_12022629():
         reset_camera=True,
     )
     Wait(5.0)
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
         destination_type=CoordEntityType.Region,
         destination=12092401,
@@ -853,7 +853,7 @@ def Event_12022629():
     Restart()
 
 
-@NeverRestart(12022670)
+@ContinueOnRest(12022670)
 def Event_12022670():
     """Event 12022670"""
     if ThisEventSlotFlagDisabled():
@@ -888,7 +888,7 @@ def Event_12022670():
     RotateToFaceEntity(PLAYER, Assets.AEG099_510_9000, wait_for_completion=True)
     ForceAnimation(PLAYER, 60490)
     Wait(3.0)
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
         destination_type=CoordEntityType.Region,
         destination=12022670,
@@ -905,7 +905,7 @@ def Event_12022670():
     MAIN.Await(FlagEnabled(12022670))
     
     Wait(3.0)
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
         destination_type=CoordEntityType.Region,
         destination=12022671,
@@ -1340,7 +1340,7 @@ def Event_12022440(_, character: uint, character_1: uint, patrol_information_id:
     ChangePatrolBehavior(character_1, patrol_information_id=patrol_information_id)
 
 
-@NeverRestart(12022502)
+@ContinueOnRest(12022502)
 def Event_12022502():
     """Event 12022502"""
     DisableNetworkSync()
@@ -1360,17 +1360,17 @@ def Event_12022502():
         cutscene_flags=0,
         move_to_region=12032502,
         map_id=12030000,
-        player_id=10000,
+        player_id=PLAYER,
         unk_20_24=12020000,
         unk_24_25=False,
     )
-    PlayCutscene(12020001, cutscene_flags=CutsceneFlags.Unknown16, player_id=10000)
+    PlayCutscene(12020001, cutscene_flags=CutsceneFlags.Unknown16, player_id=PLAYER)
     WaitFrames(frames=1)
     Wait(1.0)
     DisplayAreaWelcomeMessage(text=12030)
 
 
-@NeverRestart(12022503)
+@ContinueOnRest(12022503)
 def Event_12022503():
     """Event 12022503"""
     if FlagEnabled(12020502):
@@ -1383,7 +1383,7 @@ def Event_12022503():
     CreateAssetVFX(Assets.AEG099_060_9000, vfx_id=100, model_point=6400)
 
 
-@NeverRestart(12020510)
+@ContinueOnRest(12020510)
 def Event_12020510():
     """Event 12020510"""
     CommonFunc_90005500(
@@ -1420,7 +1420,7 @@ def Event_12020510():
     )
 
 
-@NeverRestart(12020519)
+@ContinueOnRest(12020519)
 def Event_12020519():
     """Event 12020519"""
     if ThisEventSlotFlagEnabled():
@@ -1431,7 +1431,7 @@ def Event_12020519():
     EnableFlag(12020530)
 
 
-@NeverRestart(12020500)
+@ContinueOnRest(12020500)
 def Event_12020500():
     """Event 12020500"""
     if FlagEnabled(12020570):
@@ -1701,18 +1701,18 @@ def Event_12022899():
         left=0,
         region_1=12022851,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=12020850,
-        entity=Assets.AEG099_002_9000,
-        region=12022850,
-        flag_1=12022855,
-        flag_2=12022856,
+        boss_dead_flag=12020850,
+        fog_asset=Assets.AEG099_002_9000,
+        fog_region=12022850,
+        host_entered_fog_flag=12022855,
+        summon_entered_fog_flag=12022856,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=12020850, asset=Assets.AEG099_002_9000, model_point=8, right=0)
+    CommonFunc_ControlBossFog(0, flag=12020850, fog_asset=Assets.AEG099_002_9000, model_point=8, first_time_done_flag=0)
     CommonFunc_9005812(0, flag=12020850, asset=Assets.AEG099_002_9001, model_point=8, right=0, model_point_1=0)
-    CommonFunc_BossMusicPhaseTransition(0, 12020850, 921100, 12022855, 12022856, 12022858, 12022852, 0, 0)
+    CommonFunc_ControlBossMusic(0, 12020850, 921100, 12022855, 12022856, 12022858, 12022852, 0, 0)
 
 
 @RestartOnRest(12022800)
@@ -1831,8 +1831,8 @@ def Event_12022821():
 @RestartOnRest(12022849)
 def Event_12022849():
     """Event 12022849"""
-    CommonFunc_9005811(0, flag=12020800, asset=Assets.AEG099_002_9003, model_point=5, right=12020801)
-    CommonFunc_BossMusicPhaseTransition(
+    CommonFunc_ControlBossFog(0, flag=12020800, fog_asset=Assets.AEG099_002_9003, model_point=5, first_time_done_flag=12020801)
+    CommonFunc_ControlBossMusic(
         0,
         dead_flag=12020800,
         bgm_boss_conv_param_id=931000,
@@ -1843,28 +1843,28 @@ def Event_12022849():
         useless_phase_two_check=0,
         use_stop_type_1=0,
     )
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=12020800,
-        entity=Assets.AEG099_002_9002,
-        region=12022800,
-        flag_1=12022805,
-        character=12025800,
+        boss_dead_flag=12020800,
+        fog_asset=Assets.AEG099_002_9002,
+        fog_region=12022800,
+        host_entered_fog_flag=12022805,
+        boss_characters=12025800,
         action_button_id=10000,
-        left=12020801,
-        region_1=12022801,
+        first_time_done_flag=12020801,
+        first_time_trigger_region=12022801,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=12020800,
-        entity=Assets.AEG099_002_9002,
-        region=12022800,
-        flag_1=12022805,
-        flag_2=12022806,
+        boss_dead_flag=12020800,
+        fog_asset=Assets.AEG099_002_9002,
+        fog_region=12022800,
+        host_entered_fog_flag=12022805,
+        summon_entered_fog_flag=12022806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=12020800, asset=Assets.AEG099_002_9002, model_point=3, right=12020801)
-    CommonFunc_BossMusicPhaseTransition(0, 12020800, 931000, 12022805, 12022806, 0, 12022802, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=12020800, fog_asset=Assets.AEG099_002_9002, model_point=3, first_time_done_flag=12020801)
+    CommonFunc_ControlBossMusic(0, 12020800, 931000, 12022805, 12022806, 0, 12022802, 0, 0)
 
 
 @RestartOnRest(12020700)

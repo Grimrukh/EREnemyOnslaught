@@ -22,7 +22,7 @@ from .entities.m30_12_00_00_entities import *
 from .entities.m30_10_00_00_entities import Characters as m30_10_Characters
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=301200, asset=Assets.AEG099_060_9001)
@@ -273,25 +273,25 @@ def Event_30122811():
 @RestartOnRest(30122849)
 def Event_30122849():
     """Event 30122849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=30120800,
-        entity=Assets.AEG099_001_9001,
-        region=30122800,
-        flag_1=30122805,
-        character=30125800,
+        boss_dead_flag=30120800,
+        fog_asset=Assets.AEG099_001_9001,
+        fog_region=30122800,
+        host_entered_fog_flag=30122805,
+        boss_characters=30125800,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=30120800,
-        entity=Assets.AEG099_001_9001,
-        region=30122800,
-        flag_1=30122805,
-        flag_2=30122806,
+        boss_dead_flag=30120800,
+        fog_asset=Assets.AEG099_001_9001,
+        fog_region=30122800,
+        host_entered_fog_flag=30122805,
+        summon_entered_fog_flag=30122806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=30120800, asset=Assets.AEG099_001_9001, model_point=3, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, 30120800, 930000, 30122805, 30122806, 0, 30122802, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=30120800, fog_asset=Assets.AEG099_001_9001, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, 30120800, 930000, 30122805, 30122806, 0, 30122802, 0, 0)

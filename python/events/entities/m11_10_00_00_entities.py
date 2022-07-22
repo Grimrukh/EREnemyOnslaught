@@ -31,6 +31,8 @@ class Characters(Character):
     FingerReaderEnia = 11100705  # c2170_9000 col h016500 npc 21700079 think 21700000 talk 102001110
     ScalyMisbegotten = 11100715  # c3451_9000 col h016600 npc 34510179 think 34519000 talk 213001110
 
+    # TODO: Clone of Gideon that stands near him (if he's enabled).
+
 
 class Assets(Asset):
     AEG027_078_9000 = 11101575  # AEG027

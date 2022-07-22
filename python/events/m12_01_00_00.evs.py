@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m12_01_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=71211, asset=Assets.AEG099_060_9001)
@@ -575,7 +575,7 @@ def Constructor():
     CommonFunc_90005702(0, 12010705, 4808, 4805, 4809)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     Event_12010519()
@@ -757,7 +757,7 @@ def Event_12012050():
     DisableAsset(12015650)
 
 
-@NeverRestart(12012569)
+@ContinueOnRest(12012569)
 def Event_12012569(_, flag: uint, asset: uint):
     """Event 12012569"""
     GotoIfFlagDisabled(Label.L0, flag=flag)
@@ -1689,7 +1689,7 @@ def Event_12012301():
     EnableNetworkFlag(12012301)
 
 
-@NeverRestart(12012506)
+@ContinueOnRest(12012506)
 def Event_12012506():
     """Event 12012506"""
     AND_1.Add(PlayerInOwnWorld())
@@ -1706,27 +1706,27 @@ def Event_12012506():
             cutscene_flags=0,
             move_to_region=12042506,
             map_id=12040000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
-        PlayCutscene(12010001, cutscene_flags=CutsceneFlags.Unskippable | CutsceneFlags.Unknown16, player_id=10000)
+        PlayCutscene(12010001, cutscene_flags=CutsceneFlags.Unskippable | CutsceneFlags.Unknown16, player_id=PLAYER)
     else:
         PlayCutsceneToPlayerAndWarp(
             cutscene_id=12010000,
             cutscene_flags=0,
             move_to_region=12042508,
             map_id=12040000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
-        PlayCutscene(12010001, cutscene_flags=CutsceneFlags.Unskippable | CutsceneFlags.Unknown16, player_id=10000)
+        PlayCutscene(12010001, cutscene_flags=CutsceneFlags.Unskippable | CutsceneFlags.Unknown16, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     End()
 
 
-@NeverRestart(12012507)
+@ContinueOnRest(12012507)
 def Event_12012507():
     """Event 12012507"""
     if PlayerNotInOwnWorld():
@@ -1745,15 +1745,15 @@ def Event_12012507():
         cutscene_flags=0,
         move_to_region=12042506,
         map_id=12040000,
-        player_id=10000,
+        player_id=PLAYER,
         unk_20_24=0,
         unk_24_25=False,
     )
-    PlayCutscene(12010001, cutscene_flags=CutsceneFlags.Unskippable | CutsceneFlags.Unknown16, player_id=10000)
+    PlayCutscene(12010001, cutscene_flags=CutsceneFlags.Unskippable | CutsceneFlags.Unknown16, player_id=PLAYER)
     End()
 
 
-@NeverRestart(12010509)
+@ContinueOnRest(12010509)
 def Event_12010509():
     """Event 12010509"""
     CommonFunc_90005500(
@@ -1822,7 +1822,7 @@ def Event_12010509():
     )
 
 
-@NeverRestart(12010519)
+@ContinueOnRest(12010519)
 def Event_12010519():
     """Event 12010519"""
     if ThisEventSlotFlagEnabled():
@@ -1843,20 +1843,28 @@ def Event_12012530():
 @RestartOnRest(12012800)
 def Event_12012800():
     """Event 12012800"""
-    if FlagEnabled(12010800):
+    if FlagEnabled(Flags.DragonkinSoldierOfNokstellaDead):
         return
-    
-    MAIN.Await(HealthValue(Characters.DragonkinSoldier0) <= 0)
-    
-    Kill(Characters.DragonkinSoldier1)
-    Kill(Characters.DragonkinSoldier2)
+
+    AND_1.Add(HealthValue(Characters.DragonkinSoldierHealthPool) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_DragonkinSoldierHealthPool) <= 0)
+    MAIN.Await(AND_1)
+
+    # TODO: New event where killing the Health Pool kills both phases.
+
+    Kill(Characters.DragonkinSoldierPhaseOne)
+    Kill(Characters.DragonkinSoldierPhaseTwo)
+    Kill(Characters.CLONE_DragonkinSoldierPhaseOne)
+    Kill(Characters.CLONE_DragonkinSoldierPhaseTwo)
     Wait(4.0)
-    PlaySoundEffect(Characters.DragonkinSoldier0, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(Characters.DragonkinSoldierHealthPool, 888880000, sound_type=SoundType.s_SFX)
+
+    AND_2.Add(CharacterDead(Characters.DragonkinSoldierHealthPool))
+    AND_2.Add(CharacterDead(Characters.CLONE_DragonkinSoldierOfNokstella))
+    MAIN.Await(AND_2)
     
-    MAIN.Await(CharacterDead(Characters.DragonkinSoldier0))
-    
-    KillBossAndDisplayBanner(character=Characters.DragonkinSoldier0, banner_type=BannerType.GreatEnemyFelled)
-    EnableFlag(12010800)
+    KillBossAndDisplayBanner(character=Characters.DragonkinSoldierHealthPool, banner_type=BannerType.GreatEnemyFelled)
+    EnableFlag(Flags.DragonkinSoldierOfNokstellaDead)
     EnableFlag(9109)
     if PlayerInOwnWorld():
         EnableFlag(61109)
@@ -1865,35 +1873,35 @@ def Event_12012800():
 @RestartOnRest(12012810)
 def Event_12012810():
     """Event 12012810"""
-    GotoIfFlagDisabled(Label.L0, flag=12010800)
-    DisableCharacter(Characters.DragonkinSoldier0)
-    DisableAnimations(Characters.DragonkinSoldier0)
-    Kill(Characters.DragonkinSoldier0)
-    DisableCharacter(Characters.DragonkinSoldier1)
-    DisableAnimations(Characters.DragonkinSoldier1)
-    Kill(Characters.DragonkinSoldier1)
-    DisableCharacter(Characters.DragonkinSoldier2)
-    DisableAnimations(Characters.DragonkinSoldier2)
-    Kill(Characters.DragonkinSoldier2)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.DragonkinSoldierOfNokstellaDead)
+    DisableCharacter(Characters.DragonkinSoldierHealthPool)
+    DisableAnimations(Characters.DragonkinSoldierHealthPool)
+    Kill(Characters.DragonkinSoldierHealthPool)
+    DisableCharacter(Characters.DragonkinSoldierPhaseOne)
+    DisableAnimations(Characters.DragonkinSoldierPhaseOne)
+    Kill(Characters.DragonkinSoldierPhaseOne)
+    DisableCharacter(Characters.DragonkinSoldierPhaseTwo)
+    DisableAnimations(Characters.DragonkinSoldierPhaseTwo)
+    Kill(Characters.DragonkinSoldierPhaseTwo)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(Characters.DragonkinSoldier1)
-    DisableAI(Characters.DragonkinSoldier2)
-    DisableHealthBar(Characters.DragonkinSoldier1)
-    DisableHealthBar(Characters.DragonkinSoldier2)
-    ReferDamageToEntity(Characters.DragonkinSoldier1, target_entity=Characters.DragonkinSoldier0)
-    ReferDamageToEntity(Characters.DragonkinSoldier2, target_entity=Characters.DragonkinSoldier0)
-    EnableImmortality(Characters.DragonkinSoldier1)
-    EnableImmortality(Characters.DragonkinSoldier2)
-    DisableGravity(Characters.DragonkinSoldier0)
-    DisableAnimations(Characters.DragonkinSoldier0)
-    DisableCharacter(Characters.DragonkinSoldier2)
-    ForceAnimation(Characters.DragonkinSoldier1, 30002, loop=True)
+    DisableAI(Characters.DragonkinSoldierPhaseOne)
+    DisableAI(Characters.DragonkinSoldierPhaseTwo)
+    DisableHealthBar(Characters.DragonkinSoldierPhaseOne)
+    DisableHealthBar(Characters.DragonkinSoldierPhaseTwo)
+    ReferDamageToEntity(Characters.DragonkinSoldierPhaseOne, target_entity=Characters.DragonkinSoldierHealthPool)
+    ReferDamageToEntity(Characters.DragonkinSoldierPhaseTwo, target_entity=Characters.DragonkinSoldierHealthPool)
+    EnableImmortality(Characters.DragonkinSoldierPhaseOne)
+    EnableImmortality(Characters.DragonkinSoldierPhaseTwo)
+    DisableGravity(Characters.DragonkinSoldierHealthPool)
+    DisableAnimations(Characters.DragonkinSoldierHealthPool)
+    DisableCharacter(Characters.DragonkinSoldierPhaseTwo)
+    ForceAnimation(Characters.DragonkinSoldierPhaseOne, 30002, loop=True)
     GotoIfFlagEnabled(Label.L1, flag=12010801)
-    DisableCharacter(Characters.DragonkinSoldier0)
-    DisableCharacter(Characters.DragonkinSoldier1)
+    DisableCharacter(Characters.DragonkinSoldierHealthPool)
+    DisableCharacter(Characters.DragonkinSoldierPhaseOne)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
     OR_1.Add(AND_15)
@@ -1902,22 +1910,22 @@ def Event_12012810():
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12012801))
-    AND_1.Add(CharacterBackreadEnabled(Characters.DragonkinSoldier1))
+    AND_1.Add(CharacterBackreadEnabled(Characters.DragonkinSoldierPhaseOne))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.DragonkinSoldier1, attacker=0))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.DragonkinSoldier1, state_info=436))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.DragonkinSoldier1, state_info=2))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.DragonkinSoldier1, state_info=5))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.DragonkinSoldier1, state_info=6))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.DragonkinSoldier1, state_info=260))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.DragonkinSoldierPhaseOne, attacker=0))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.DragonkinSoldierPhaseOne, state_info=436))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.DragonkinSoldierPhaseOne, state_info=2))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.DragonkinSoldierPhaseOne, state_info=5))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.DragonkinSoldierPhaseOne, state_info=6))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.DragonkinSoldierPhaseOne, state_info=260))
     
     MAIN.Await(OR_2)
     
     Wait(0.10000000149011612)
-    EnableCharacter(Characters.DragonkinSoldier0)
-    EnableCharacter(Characters.DragonkinSoldier1)
-    ForceAnimation(Characters.DragonkinSoldier1, 20002)
+    EnableCharacter(Characters.DragonkinSoldierHealthPool)
+    EnableCharacter(Characters.DragonkinSoldierPhaseOne)
+    ForceAnimation(Characters.DragonkinSoldierPhaseOne, 20002)
     Goto(Label.L2)
 
     # --- Label 1 --- #
@@ -1927,7 +1935,7 @@ def Event_12012810():
     
     MAIN.Await(AND_10)
     
-    ForceAnimation(Characters.DragonkinSoldier1, 20002)
+    ForceAnimation(Characters.DragonkinSoldierPhaseOne, 20002)
 
     # --- Label 2 --- #
     DefineLabel(2)
@@ -1937,18 +1945,18 @@ def Event_12012810():
     EnableNetworkFlag(12012803)
     Wait(0.10000000149011612)
     EnableNetworkFlag(12010801)
-    EnableAI(Characters.DragonkinSoldier1)
-    SetNetworkUpdateRate(Characters.DragonkinSoldier1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.DragonkinSoldier0, name=904650000)
+    EnableAI(Characters.DragonkinSoldierPhaseOne)
+    SetNetworkUpdateRate(Characters.DragonkinSoldierPhaseOne, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.DragonkinSoldierHealthPool, name=904650000)
 
 
 @RestartOnRest(12012820)
 def Event_12012820():
     """Event 12012820"""
-    if FlagEnabled(12010800):
+    if FlagEnabled(Flags.DragonkinSoldierOfNokstellaDead):
         return
-    AND_1.Add(EntityWithinDistance(entity=Characters.DragonkinSoldier2, other_entity=PLAYER, radius=50.0))
-    AND_1.Add(CharacterHasSpecialEffect(Characters.DragonkinSoldier2, 13208))
+    AND_1.Add(EntityWithinDistance(entity=Characters.DragonkinSoldierPhaseTwo, other_entity=PLAYER, radius=50.0))
+    AND_1.Add(CharacterHasSpecialEffect(Characters.DragonkinSoldierPhaseTwo, 13208))
     
     MAIN.Await(AND_1)
     
@@ -1960,11 +1968,11 @@ def Event_12012820():
 @RestartOnRest(12012830)
 def Event_12012830():
     """Event 12012830"""
-    if FlagEnabled(12010800):
+    if FlagEnabled(Flags.DragonkinSoldierOfNokstellaDead):
         return
     DisableNetworkSync()
-    AND_1.Add(EntityWithinDistance(entity=Characters.DragonkinSoldier2, other_entity=PLAYER, radius=50.0))
-    AND_1.Add(CharacterDoesNotHaveSpecialEffect(Characters.DragonkinSoldier2, 13208))
+    AND_1.Add(EntityWithinDistance(entity=Characters.DragonkinSoldierPhaseTwo, other_entity=PLAYER, radius=50.0))
+    AND_1.Add(CharacterDoesNotHaveSpecialEffect(Characters.DragonkinSoldierPhaseTwo, 13208))
     
     MAIN.Await(AND_1)
     
@@ -1976,50 +1984,50 @@ def Event_12012830():
 @RestartOnRest(12012811)
 def Event_12012811():
     """Event 12012811"""
-    if FlagEnabled(12010800):
+    if FlagEnabled(Flags.DragonkinSoldierOfNokstellaDead):
         return
-    AND_1.Add(CharacterHasSpecialEffect(Characters.DragonkinSoldier1, 13209))
+    AND_1.Add(CharacterHasSpecialEffect(Characters.DragonkinSoldierPhaseOne, 13209))
     
     MAIN.Await(AND_1)
     
     EnableFlag(12012811)
     EnableFlag(12012802)
-    EnableCharacter(Characters.DragonkinSoldier2)
-    DisableAnimations(Characters.DragonkinSoldier2)
-    EnableAI(Characters.DragonkinSoldier2)
-    SetNetworkUpdateRate(Characters.DragonkinSoldier2, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableCharacter(Characters.DragonkinSoldierPhaseTwo)
+    DisableAnimations(Characters.DragonkinSoldierPhaseTwo)
+    EnableAI(Characters.DragonkinSoldierPhaseTwo)
+    SetNetworkUpdateRate(Characters.DragonkinSoldierPhaseTwo, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     Move(
-        Characters.DragonkinSoldier2,
-        destination=Characters.DragonkinSoldier1,
+        Characters.DragonkinSoldierPhaseTwo,
+        destination=Characters.DragonkinSoldierPhaseOne,
         destination_type=CoordEntityType.Character,
         model_point=100,
         short_move=True,
     )
     WaitFrames(frames=90)
-    DisableCharacter(Characters.DragonkinSoldier1)
-    EnableAnimations(Characters.DragonkinSoldier2)
+    DisableCharacter(Characters.DragonkinSoldierPhaseOne)
+    EnableAnimations(Characters.DragonkinSoldierPhaseTwo)
 
 
 @RestartOnRest(12012812)
 def Event_12012812():
     """Event 12012812"""
-    if FlagEnabled(12010800):
+    if FlagEnabled(Flags.DragonkinSoldierOfNokstellaDead):
         return
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12012812))
     
     MAIN.Await(AND_1)
     
-    SetNetworkUpdateRate(Characters.DragonkinSoldier0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    SetNetworkUpdateRate(Characters.DragonkinSoldier1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.DragonkinSoldierHealthPool, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.DragonkinSoldierPhaseOne, is_fixed=True, update_rate=CharacterUpdateRate.Always)
 
 
 @RestartOnRest(12012849)
 def Event_12012849():
     """Event 12012849"""
-    CommonFunc_9005811(0, flag=12010800, asset=Assets.AEG099_002_9001, model_point=4, right=12010840)
-    CommonFunc_BossMusicPhaseTransition(
+    CommonFunc_ControlBossFog(0, flag=Flags.DragonkinSoldierOfNokstellaDead, fog_asset=Assets.AEG099_002_9001, model_point=4, first_time_done_flag=12010840)
+    CommonFunc_ControlBossMusic(
         0,
-        dead_flag=12010800,
+        dead_flag=Flags.DragonkinSoldierOfNokstellaDead,
         bgm_boss_conv_param_id=920300,
         host_in_battle=12012805,
         summon_in_battle=12012806,
@@ -2028,25 +2036,25 @@ def Event_12012849():
         useless_phase_two_check=0,
         use_stop_type_1=0,
     )
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=12010800,
-        entity=Assets.AEG099_002_9000,
-        region=12012800,
-        flag_1=12012805,
-        character=12015800,
+        boss_dead_flag=Flags.DragonkinSoldierOfNokstellaDead,
+        fog_asset=Assets.AEG099_002_9000,
+        fog_region=12012800,
+        host_entered_fog_flag=12012805,
+        boss_characters=12015800,
         action_button_id=10000,
-        left=12010801,
-        region_1=12012801,
+        first_time_done_flag=12010801,
+        first_time_trigger_region=12012801,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=12010800,
-        entity=Assets.AEG099_002_9000,
-        region=12012800,
-        flag_1=12012805,
-        flag_2=12012806,
+        boss_dead_flag=Flags.DragonkinSoldierOfNokstellaDead,
+        fog_asset=Assets.AEG099_002_9000,
+        fog_region=12012800,
+        host_entered_fog_flag=12012805,
+        summon_entered_fog_flag=12012806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=12010800, asset=Assets.AEG099_002_9000, model_point=5, right=12010801)
-    CommonFunc_BossMusicPhaseTransition(0, 12010800, 920300, 12012805, 12012806, 12012803, 12012802, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=Flags.DragonkinSoldierOfNokstellaDead, fog_asset=Assets.AEG099_002_9000, model_point=5, first_time_done_flag=12010801)
+    CommonFunc_ControlBossMusic(0, Flags.DragonkinSoldierOfNokstellaDead, 920300, 12012805, 12012806, 12012803, 12012802, 0, 0)

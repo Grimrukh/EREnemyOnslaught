@@ -22,7 +22,7 @@ from .entities.m12_05_00_00_entities import *
 from .entities.m60_35_45_00_entities import Characters as m60_35_Characters
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=71251, asset=Assets.AEG099_060_9001)
@@ -798,7 +798,7 @@ def Constructor():
     CommonFunc_90005702(0, 12050702, 3183, 3180, 3184)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(12050700)
@@ -1179,12 +1179,12 @@ def Event_12052810():
             cutscene_flags=0,
             move_to_region=12052805,
             map_id=12050000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=12050000,
             unk_24_25=False,
         )
     else:
-        PlayCutscene(12050020, cutscene_flags=0, player_id=10000)
+        PlayCutscene(12050020, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     EnableNetworkFlag(12050802)
     EnableCharacter(Characters.Mohg)
@@ -1342,9 +1342,9 @@ def Event_12052848():
 @RestartOnRest(12052849)
 def Event_12052849():
     """Event 12052849"""
-    CommonFunc_9005811(0, flag=12050800, asset=Assets.AEG099_001_9000, model_point=12, right=12050801)
-    CommonFunc_9005811(0, flag=12050800, asset=Assets.AEG099_001_9001, model_point=12, right=12050801)
-    CommonFunc_BossMusicPhaseTransition(
+    CommonFunc_ControlBossFog(0, flag=12050800, fog_asset=Assets.AEG099_001_9000, model_point=12, first_time_done_flag=12050801)
+    CommonFunc_ControlBossFog(0, flag=12050800, fog_asset=Assets.AEG099_001_9001, model_point=12, first_time_done_flag=12050801)
+    CommonFunc_ControlBossMusic(
         0,
         dead_flag=12050800,
         bgm_boss_conv_param_id=90003101,
@@ -1355,31 +1355,31 @@ def Event_12052849():
         useless_phase_two_check=0,
         use_stop_type_1=0,
     )
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=12050800,
-        entity=Assets.AEG099_002_9000,
-        region=12052800,
-        flag_1=12052805,
-        character=12055800,
+        boss_dead_flag=12050800,
+        fog_asset=Assets.AEG099_002_9000,
+        fog_region=12052800,
+        host_entered_fog_flag=12052805,
+        boss_characters=12055800,
         action_button_id=10000,
-        left=12050801,
-        region_1=12052801,
+        first_time_done_flag=12050801,
+        first_time_trigger_region=12052801,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=12050800,
-        entity=Assets.AEG099_002_9000,
-        region=12052800,
-        flag_1=12052805,
-        flag_2=12052806,
+        boss_dead_flag=12050800,
+        fog_asset=Assets.AEG099_002_9000,
+        fog_region=12052800,
+        host_entered_fog_flag=12052805,
+        summon_entered_fog_flag=12052806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=12050800, asset=Assets.AEG099_002_9000, model_point=4, right=12050801)
-    CommonFunc_BossMusicPhaseTransition(0, 12050800, 480000, 12052805, 12052806, 0, 12052802, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=12050800, fog_asset=Assets.AEG099_002_9000, model_point=4, first_time_done_flag=12050801)
+    CommonFunc_ControlBossMusic(0, 12050800, 480000, 12052805, 12052806, 0, 12052802, 0, 0)
 
 
-@NeverRestart(12052510)
+@ContinueOnRest(12052510)
 def Event_12052510():
     """Event 12052510"""
     CommonFunc_90005500(

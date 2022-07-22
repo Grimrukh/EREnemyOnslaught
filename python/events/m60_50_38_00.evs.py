@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m60_50_38_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1050380000, asset=Assets.AEG099_060_9000)
@@ -116,7 +116,7 @@ def Constructor():
     CommonFunc_90005752(0, 1050381700, 200, 120, 3.0)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.SageGowry0)
@@ -516,7 +516,7 @@ def Event_1050383713():
     MAIN.Await(FlagEnabled(1050382716))
     
     WaitFrames(frames=2)
-    PlayCutscene(60500000, cutscene_flags=0, player_id=10000)
+    PlayCutscene(60500000, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     EnableFlag(1050382717)
     ForceAnimation(Characters.Millicent0, 90102)

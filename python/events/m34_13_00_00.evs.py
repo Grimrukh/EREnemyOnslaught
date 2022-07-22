@@ -22,7 +22,7 @@ from .entities.m34_13_00_00_entities import *
 from .entities.m31_12_00_00_entities import Assets as m31_12_Assets
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=34130001, asset=Assets.AEG099_060_9001)
@@ -114,13 +114,13 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRadius(0, 34130298, 10.0, 0.0, -1)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     Event_34130519()
 
 
-@NeverRestart(34132510)
+@ContinueOnRest(34132510)
 def Event_34132510():
     """Event 34132510"""
     CommonFunc_90005507(
@@ -141,7 +141,7 @@ def Event_34132510():
     )
 
 
-@NeverRestart(34132515)
+@ContinueOnRest(34132515)
 def Event_34132515():
     """Event 34132515"""
     CommonFunc_90005507(
@@ -162,7 +162,7 @@ def Event_34132515():
     )
 
 
-@NeverRestart(34132520)
+@ContinueOnRest(34132520)
 def Event_34132520():
     """Event 34132520"""
     CommonFunc_90005507(
@@ -191,7 +191,7 @@ def Event_34130519():
     EnableFlag(34130520)
 
 
-@NeverRestart(34132580)
+@ContinueOnRest(34132580)
 def Event_34132580():
     """Event 34132580"""
     RegisterLadder(start_climbing_flag=34130580, stop_climbing_flag=34130581, asset=Assets.AEG027_071_0500)
@@ -258,28 +258,28 @@ def Event_34132810():
 @RestartOnRest(34132849)
 def Event_34132849():
     """Event 34132849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=34130800,
-        entity=Assets.AEG099_001_9000,
-        region=34132800,
-        flag_1=34132805,
-        character=34135800,
+        boss_dead_flag=34130800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=34132800,
+        host_entered_fog_flag=34132805,
+        boss_characters=34135800,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=34130800,
-        entity=Assets.AEG099_001_9000,
-        region=34132800,
-        flag_1=34132805,
-        flag_2=34132806,
+        boss_dead_flag=34130800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=34132800,
+        host_entered_fog_flag=34132805,
+        summon_entered_fog_flag=34132806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=34130800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_BossMusicPhaseTransition(
+    CommonFunc_ControlBossFog(0, flag=34130800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(
         0,
         dead_flag=34130800,
         bgm_boss_conv_param_id=930000,
@@ -290,26 +290,26 @@ def Event_34132849():
         useless_phase_two_check=0,
         use_stop_type_1=0,
     )
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=34130800,
-        entity=m31_12_Assets.AEG099_001_9000,
-        region=34132800,
-        flag_1=34132805,
-        character=31125800,
+        boss_dead_flag=34130800,
+        fog_asset=m31_12_Assets.AEG099_001_9000,
+        fog_region=34132800,
+        host_entered_fog_flag=34132805,
+        boss_characters=31125800,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=34130800,
-        entity=m31_12_Assets.AEG099_001_9000,
-        region=34132800,
-        flag_1=34132805,
-        flag_2=31122806,
+        boss_dead_flag=34130800,
+        fog_asset=m31_12_Assets.AEG099_001_9000,
+        fog_region=34132800,
+        host_entered_fog_flag=34132805,
+        summon_entered_fog_flag=31122806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=34130800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
+    CommonFunc_ControlBossFog(0, flag=34130800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
     CommonFunc_9005812(0, flag=34130800, asset=Assets.AEG099_001_9001, model_point=3, right=0, model_point_1=0)
-    CommonFunc_BossMusicPhaseTransition(0, 34130800, 356000, 34132805, 34132806, 0, 0, 0, 0)
+    CommonFunc_ControlBossMusic(0, 34130800, 356000, 34132805, 34132806, 0, 0, 0, 0)

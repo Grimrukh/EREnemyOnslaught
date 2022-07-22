@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m60_51_36_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     Event_1051362580()
@@ -516,7 +516,7 @@ def Constructor():
     Event_1051362490(0, 1051362710)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.WitchHunterJerren0)
@@ -641,7 +641,7 @@ def Event_1051362220():
     MAIN.Await(FlagEnabled(9411))
     
     EnableFlag(9021)
-    PlayCutscene(60510000, cutscene_flags=CutsceneFlags.Unskippable, player_id=10000)
+    PlayCutscene(60510000, cutscene_flags=CutsceneFlags.Unskippable, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
 
     # --- Label 1 --- #
@@ -767,7 +767,7 @@ def Event_1051362500():
     End()
 
 
-@NeverRestart(1051362510)
+@ContinueOnRest(1051362510)
 def Event_1051362510():
     """Event 1051362510"""
     CommonFunc_90005500(
@@ -788,7 +788,7 @@ def Event_1051362510():
     )
 
 
-@NeverRestart(1051362519)
+@ContinueOnRest(1051362519)
 def Event_1051362519():
     """Event 1051362519"""
     if FlagEnabled(1051360514):
@@ -798,7 +798,7 @@ def Event_1051362519():
     EnableFlag(1051360510)
 
 
-@NeverRestart(1051362560)
+@ContinueOnRest(1051362560)
 def Event_1051362560(_, asset: uint):
     """Event 1051362560"""
     GotoIfFlagEnabled(Label.L0, flag=9413)
@@ -1055,7 +1055,7 @@ def RedmaneDuoBattleTrigger():
 
 @RestartOnRest(1051362811)
 def RedmaneDuoCrucibleKnightTrigger(
-    _, crucible_knight: uint, leonine: uint, max_delay: float, boss_name: int, bar_slot: int
+    _, crucible_knight: uint, leonine: uint, max_delay: float, boss_name: int, bar_slot: short
 ):
     """Crucible Knight attached to given Leonine Misbegotten enters the fray."""
     if FlagEnabled(Flags.RedmaneDuoDead):
@@ -1084,29 +1084,29 @@ def Event_1051362849():
     AND_3.Add(FlagDisabled(9413))
     if AND_3:
         return
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=Flags.RedmaneDuoDead,
-        entity=Assets.AEG099_001_9000,
-        region=1051362800,
-        flag_1=1051362805,
-        character=1051365800,
+        boss_dead_flag=Flags.RedmaneDuoDead,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=1051362800,
+        host_entered_fog_flag=1051362805,
+        boss_characters=1051365800,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=Flags.RedmaneDuoDead,
-        entity=Assets.AEG099_001_9000,
-        region=1051362800,
-        flag_1=1051362805,
-        flag_2=1051362806,
+        boss_dead_flag=Flags.RedmaneDuoDead,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=1051362800,
+        host_entered_fog_flag=1051362805,
+        summon_entered_fog_flag=1051362806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=Flags.RedmaneDuoDead, asset=Assets.AEG099_001_9000, model_point=5, right=0)
-    CommonFunc_9005811(0, flag=Flags.RedmaneDuoDead, asset=Assets.AEG099_001_9001, model_point=3, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, Flags.RedmaneDuoDead, 920200, 1051362805, 1051362806, 0, 1051362802, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=Flags.RedmaneDuoDead, fog_asset=Assets.AEG099_001_9000, model_point=5, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, flag=Flags.RedmaneDuoDead, fog_asset=Assets.AEG099_001_9001, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, Flags.RedmaneDuoDead, 920200, 1051362805, 1051362806, 0, 1051362802, 0, 0)
 
 
 @RestartOnRest(1051363700)
@@ -1116,7 +1116,7 @@ def Event_1051363700():
     AND_1.Add(FlagEnabled(9410))
     AND_1.Add(FlagDisabled(9411))
     AwaitConditionTrue(AND_1)
-    PlayCutscene(60510000, cutscene_flags=0, player_id=10000)
+    PlayCutscene(60510000, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     EnableFlag(9411)
     End()

@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m10_00_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=10000002, asset=Assets.AEG099_060_9002)
@@ -173,19 +173,19 @@ def Constructor():
     GodrickDies()
     GodrickBattleTrigger()
     GodrickPhaseTwoTransition(0, character=Characters.Godrick)  # 10002811
-    GodrickPhaseTwoTransition(1, character=Characters.GodrickClone)  # 10002812
+    GodrickPhaseTwoTransition(1, character=Characters.CLONE_Godrick)  # 10002812
     GodrickFogGateEvents()
     Event_10002820(
         0, character=Characters.Godrick, region=10002820, special_effect_id=14790, special_effect_id_1=14791
     )
     Event_10002821(0, region=10002821, special_effect_id=14792, special_effect_id_1=14793)
     Event_10002820(  # 10002822
-        2, character=Characters.GodrickClone, region=10002820, special_effect_id=14790, special_effect_id_1=14791
+        2, character=Characters.CLONE_Godrick, region=10002820, special_effect_id=14790, special_effect_id_1=14791
     )
     Event_10002824(0, character=Characters.Godrick, region=10002824, special_effect_id=14794, special_effect_id_1=14795)
     Event_10002825(0, region=10002825, special_effect_id=14796, special_effect_id_1=14797)
     Event_10002824(  # 10002826
-        2, character=Characters.GodrickClone, region=10002824, special_effect_id=14794, special_effect_id_1=14795
+        2, character=Characters.CLONE_Godrick, region=10002824, special_effect_id=14794, special_effect_id_1=14795
     )
 
     # MARGIT
@@ -600,7 +600,7 @@ def Constructor():
     Event_10003500(1, 10002741)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.GatekeeperGostoc0)
@@ -989,7 +989,7 @@ def Event_10002281(_, character: uint, region: uint, seconds: float, animation_i
     DisableInvincibility(character)
 
 
-@NeverRestart(10002580)
+@ContinueOnRest(10002580)
 def Event_10002580():
     """Event 10002580"""
     RegisterLadder(start_climbing_flag=10000580, stop_climbing_flag=10000581, asset=Assets.AEG219_060_0500)
@@ -1005,7 +1005,7 @@ def Event_10002580():
     RegisterLadder(start_climbing_flag=10000598, stop_climbing_flag=10000599, asset=Assets.AEG219_071_0500)
 
 
-@NeverRestart(10002500)
+@ContinueOnRest(10002500)
 def Event_10002500():
     """Event 10002500"""
     AND_1.Add(FlagDisabled(10000500))
@@ -1032,7 +1032,7 @@ def Event_10002500():
     ForceAnimation(Assets.AEG219_050_0500, 1)
 
 
-@NeverRestart(10002501)
+@ContinueOnRest(10002501)
 def Event_10002501():
     """Event 10002501"""
     AND_1.Add(FlagDisabled(10000500))
@@ -1057,7 +1057,7 @@ def Event_10002501():
     ForceAnimation(Assets.AEG219_050_0500, 1)
 
 
-@NeverRestart(10002510)
+@ContinueOnRest(10002510)
 def Event_10002510():
     """Event 10002510"""
     CommonFunc_90005500(
@@ -1110,7 +1110,7 @@ def Event_10002510():
     )
 
 
-@NeverRestart(10000519)
+@ContinueOnRest(10000519)
 def Event_10000519():
     """Event 10000519"""
     if ThisEventSlotFlagEnabled():
@@ -1480,7 +1480,7 @@ def Event_10002480():
     Kill(Characters.BladedTalonEagle12)
 
 
-@NeverRestart(1002700)
+@ContinueOnRest(1002700)
 def Event_1002700(_, character: uint, flag: uint, flag_1: uint):
     """Event 1002700"""
     GotoIfFlagEnabled(Label.L0, flag=flag)
@@ -1499,7 +1499,7 @@ def Event_1002700(_, character: uint, flag: uint, flag_1: uint):
     End()
 
 
-@NeverRestart(1002680)
+@ContinueOnRest(1002680)
 def Event_1002680():
     """Event 1002680"""
     AND_1.Add(CharacterOutsideRegion(character=PLAYER, region=10002680))
@@ -1687,13 +1687,13 @@ def Event_10003500(_, region: uint):
     Restart()
 
 
-@NeverRestart(10002800)
+@ContinueOnRest(10002800)
 def GodrickDies():
     """Event 10002800"""
     if FlagEnabled(Flags.GodrickDead):
         return
     
-    MAIN.Await(HealthRatio(Characters.Godrick) <= 0.0 and HealthRatio(Characters.GodrickClone) <= 0.0)
+    MAIN.Await(HealthRatio(Characters.Godrick) <= 0.0 and HealthRatio(Characters.CLONE_Godrick) <= 0.0)
     
     Kill(10005810)
     Kill(10005820)
@@ -1704,7 +1704,7 @@ def GodrickDies():
     PlaySoundEffect(Characters.Godrick, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(PlayerInOwnWorld())
     AND_2.Add(CharacterDead(Characters.Godrick))
-    AND_2.Add(CharacterDead(Characters.GodrickClone))
+    AND_2.Add(CharacterDead(Characters.CLONE_Godrick))
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9646))
     OR_2.Add(AND_2)
     OR_2.Add(FlagEnabled(Flags.GodrickDead))
@@ -1738,9 +1738,9 @@ def GodrickBattleTrigger():
     DisableCharacter(Characters.Godrick)
     DisableAnimations(Characters.Godrick)
     Kill(Characters.Godrick)
-    DisableCharacter(Characters.GodrickClone)
-    DisableAnimations(Characters.GodrickClone)
-    Kill(Characters.GodrickClone)
+    DisableCharacter(Characters.CLONE_Godrick)
+    DisableAnimations(Characters.CLONE_Godrick)
+    Kill(Characters.CLONE_Godrick)
     DisableAsset(Assets.AEG210_290_8500)
     EnableAsset(Assets.AEG210_291_8500)
     DisableAsset(Assets.AEG099_330_9000)
@@ -1759,7 +1759,7 @@ def GodrickBattleTrigger():
     DefineLabel(0)
     DisableAssetActivation(Assets.AEG219_001_0500, obj_act_id=219001)
     DisableAI(Characters.Godrick)
-    DisableAI(Characters.GodrickClone)
+    DisableAI(Characters.CLONE_Godrick)
     OR_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     OR_15.Add(CharacterType(PLAYER, character_type=CharacterType.Invader))
     OR_15.Add(CharacterType(PLAYER, character_type=CharacterType.Invader2))
@@ -1769,7 +1769,7 @@ def GodrickBattleTrigger():
         return
     GotoIfFlagEnabled(Label.L1, flag=10000801)
     ForceAnimation(Characters.Godrick, 30000, loop=True)
-    ForceAnimation(Characters.GodrickClone, 30000, loop=True)
+    ForceAnimation(Characters.CLONE_Godrick, 30000, loop=True)
     EnableAsset(Assets.AEG210_290_8500)
     DisableAsset(Assets.AEG210_291_8500)
     EnableAsset(Assets.AEG210_025_8500)
@@ -1792,12 +1792,12 @@ def GodrickBattleTrigger():
             cutscene_flags=0,
             move_to_region=10002810,
             map_id=10000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
     else:
-        PlayCutscene(10000020, cutscene_flags=0, player_id=10000)
+        PlayCutscene(10000020, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     if PlayerInOwnWorld():
         SetCameraAngle(x_angle=19.0, y_angle=137.8300018310547)
@@ -1816,7 +1816,7 @@ def GodrickBattleTrigger():
         short_move=True,
     )
     Move(
-        Characters.GodrickClone,
+        Characters.CLONE_Godrick,
         destination=Assets.AEG003_316_9001,
         destination_type=CoordEntityType.Asset,
         model_point=100,
@@ -1824,7 +1824,7 @@ def GodrickBattleTrigger():
     )
     DisableAsset(Assets.AEG099_330_9000)
     ForceAnimation(Characters.Godrick, 20000)
-    ForceAnimation(Characters.GodrickClone, 20000)
+    ForceAnimation(Characters.CLONE_Godrick, 20000)
     EnableNetworkFlag(10000801)
     Goto(Label.L2)
 
@@ -1843,7 +1843,7 @@ def GodrickBattleTrigger():
         short_move=True,
     )
     Move(
-        Characters.GodrickClone,
+        Characters.CLONE_Godrick,
         destination=Assets.AEG003_316_9001,
         destination_type=CoordEntityType.Asset,
         model_point=100,
@@ -1857,10 +1857,10 @@ def GodrickBattleTrigger():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.Godrick)
-    EnableAI(Characters.GodrickClone)
-    SetNetworkUpdateRate(CharacterGroups.Godrick, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableAI(Characters.CLONE_Godrick)
+    SetNetworkUpdateRate(CharacterGroups.GodrickBoss, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     EnableBossHealthBar(Characters.Godrick, name=NameText.GodrickTheGrafted, bar_slot=1)
-    EnableBossHealthBar(Characters.GodrickClone, name=NameText.GodefroyTheGratuitous, bar_slot=0)
+    EnableBossHealthBar(Characters.CLONE_Godrick, name=NameText.CLONE_Godrick, bar_slot=0)
 
 
 @RestartOnRest(10002811)
@@ -1888,12 +1888,12 @@ def GodrickPhaseTwoTransition(_, character: uint):
             cutscene_flags=0,
             move_to_region=10002811,
             map_id=10000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
     else:
-        PlayCutscene(10000030, cutscene_flags=0, player_id=10000)
+        PlayCutscene(10000030, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     EnableFlag(10002802)
     Move(
@@ -1920,9 +1920,9 @@ def GodrickPhaseTwoTransition(_, character: uint):
     # --- Label 15 --- #
     DefineLabel(15)
     if PlayerInOwnWorld():
-        PlayCutscene(10000030, cutscene_flags=0, player_id=10000)
+        PlayCutscene(10000030, cutscene_flags=0, player_id=PLAYER)
     else:
-        PlayCutscene(10000030, cutscene_flags=0, player_id=10000)
+        PlayCutscene(10000030, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     EnableFlag(10002802)
     AddSpecialEffect(character, 14750)
@@ -2029,45 +2029,45 @@ def Event_10002825(_, region: uint, special_effect_id: int, special_effect_id_1:
 @RestartOnRest(10002849)
 def GodrickFogGateEvents():
     """Event 10002849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=Flags.GodrickDead,
-        entity=Assets.AEG099_002_9000,
-        region=10002800,
-        flag_1=10002805,
-        character=10005800,
+        boss_dead_flag=Flags.GodrickDead,
+        fog_asset=Assets.AEG099_002_9000,
+        fog_region=10002800,
+        host_entered_fog_flag=10002805,
+        boss_characters=10005800,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=Flags.GodrickDead,
-        entity=Assets.AEG099_002_9000,
-        region=10002800,
-        flag_1=10002805,
-        flag_2=10002806,
+        boss_dead_flag=Flags.GodrickDead,
+        fog_asset=Assets.AEG099_002_9000,
+        fog_region=10002800,
+        host_entered_fog_flag=10002805,
+        summon_entered_fog_flag=10002806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=Flags.GodrickDead, asset=Assets.AEG099_002_9000, model_point=5, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, Flags.GodrickDead, 475000, 10002805, 10002806, 0, 10002802, 1, 1)
+    CommonFunc_ControlBossFog(0, flag=Flags.GodrickDead, fog_asset=Assets.AEG099_002_9000, model_point=5, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, Flags.GodrickDead, 475000, 10002805, 10002806, 0, 10002802, 1, 1)
 
 
-@NeverRestart(10002850)
+@ContinueOnRest(10002850)
 def MargitDies():
     """Event 10002850"""
     if FlagEnabled(Flags.MargitDead):
         return
     
-    MAIN.Await(HealthValue(Characters.Margit) <= 0 and HealthValue(Characters.MargitClone) <= 0)
+    MAIN.Await(HealthValue(Characters.Margit) <= 0 and HealthValue(Characters.CLONE_Margit) <= 0)
     
     Wait(2.0)
     PlaySoundEffect(Characters.Margit, 77777777, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.Margit) and CharacterDead(Characters.MargitClone))
+    MAIN.Await(CharacterDead(Characters.Margit) and CharacterDead(Characters.CLONE_Margit))
     
     Kill(Characters.Margit)
-    Kill(Characters.MargitClone)
+    Kill(Characters.CLONE_Margit)
     KillBossAndDisplayBanner(character=Characters.Margit, banner_type=BannerType.GreatEnemyFelled)
     EnableFlag(Flags.MargitDead)
     EnableFlag(9100)
@@ -2082,15 +2082,15 @@ def MargitBattleStart():
     DisableCharacter(Characters.Margit)
     DisableAnimations(Characters.Margit)
     Kill(Characters.Margit)
-    DisableCharacter(Characters.MargitClone)
-    DisableAnimations(Characters.MargitClone)
-    Kill(Characters.MargitClone)
+    DisableCharacter(Characters.CLONE_Margit)
+    DisableAnimations(Characters.CLONE_Margit)
+    Kill(Characters.CLONE_Margit)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.Margit)
-    DisableAI(Characters.MargitClone)
+    DisableAI(Characters.CLONE_Margit)
     if PlayerInOwnWorld():
         EnableThisSlotFlag()
     OR_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
@@ -2100,9 +2100,9 @@ def MargitBattleStart():
     GotoIfThisEventSlotFlagEnabled(Label.L2)
     GotoIfFlagEnabled(Label.L1, flag=10000851)
     DisableCharacter(Characters.Margit)
-    DisableCharacter(Characters.MargitClone)
+    DisableCharacter(Characters.CLONE_Margit)
     SetCharacterFadeOnEnable(character=Characters.Margit, state=False)
-    SetCharacterFadeOnEnable(character=Characters.MargitClone, state=False)
+    SetCharacterFadeOnEnable(character=Characters.CLONE_Margit, state=False)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(EntityWithinDistance(entity=Characters.Margit, other_entity=PLAYER, radius=25.0))
     OR_1.Add(AND_1)
@@ -2113,7 +2113,7 @@ def MargitBattleStart():
     MAIN.Await(AND_10)
     
     SetCharacterFadeOnEnable(character=Characters.Margit, state=False)
-    SetCharacterFadeOnEnable(character=Characters.MargitClone, state=False)
+    SetCharacterFadeOnEnable(character=Characters.CLONE_Margit, state=False)
     if PlayerInOwnWorld():
         BanishInvaders(unknown=0)
     if PlayerInOwnWorld():
@@ -2122,17 +2122,17 @@ def MargitBattleStart():
             cutscene_flags=0,
             move_to_region=10002852,
             map_id=10000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
     else:
-        PlayCutscene(10000010, cutscene_flags=0, player_id=10000)
+        PlayCutscene(10000010, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     EnableCharacter(Characters.Margit)
     ForceAnimation(Characters.Margit, 20000)
-    EnableCharacter(Characters.MargitClone)
-    ForceAnimation(Characters.MargitClone, 20000)
+    EnableCharacter(Characters.CLONE_Margit)
+    ForceAnimation(Characters.CLONE_Margit, 20000)
     EnableNetworkFlag(10000851)
     Goto(Label.L2)
 
@@ -2149,11 +2149,11 @@ def MargitBattleStart():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.Margit)
-    EnableAI(Characters.MargitClone)
+    EnableAI(Characters.CLONE_Margit)
     SetNetworkUpdateRate(Characters.Margit, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    SetNetworkUpdateRate(Characters.MargitClone, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_Margit, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     EnableBossHealthBar(Characters.Margit, name=NameText.MargitTheFellOmen, bar_slot=1)
-    EnableBossHealthBar(Characters.MargitClone, name=NameText.UncleMerbit, bar_slot=0)
+    EnableBossHealthBar(Characters.CLONE_Margit, name=NameText.CLONE_Margit, bar_slot=0)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
 
 
@@ -2193,27 +2193,27 @@ def MargitPostBattleBackread():
 @RestartOnRest(10002889)
 def MargitFogGateEvents():
     """Event 10002889"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=Flags.MargitDead,
-        entity=Assets.AEG099_002_9001,
-        region=10002850,
-        flag_1=10002855,
-        character=Characters.Margit,
+        boss_dead_flag=Flags.MargitDead,
+        fog_asset=Assets.AEG099_002_9001,
+        fog_region=10002850,
+        host_entered_fog_flag=10002855,
+        boss_characters=Characters.Margit,
         action_button_id=10000,
-        left=10000851,
-        region_1=0,
+        first_time_done_flag=10000851,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=Flags.MargitDead,
-        entity=Assets.AEG099_002_9001,
-        region=10002850,
-        flag_1=10002855,
-        flag_2=10002856,
+        boss_dead_flag=Flags.MargitDead,
+        fog_asset=Assets.AEG099_002_9001,
+        fog_region=10002850,
+        host_entered_fog_flag=10002855,
+        summon_entered_fog_flag=10002856,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=Flags.MargitDead, asset=Assets.AEG099_002_9001, model_point=3, right=10000851)
+    CommonFunc_ControlBossFog(0, flag=Flags.MargitDead, fog_asset=Assets.AEG099_002_9001, model_point=3, first_time_done_flag=10000851)
     CommonFunc_9005813(
         0,
         flag=Flags.MargitDead,
@@ -2222,7 +2222,7 @@ def MargitFogGateEvents():
         right=10000851,
         model_point_1=806760,
     )
-    CommonFunc_BossMusicPhaseTransition(0, Flags.MargitDead, 213000, 10002855, 10002856, 0, 10002852, 0, 0)
+    CommonFunc_ControlBossMusic(0, Flags.MargitDead, 213000, 10002855, 10002856, 0, 10002852, 0, 0)
 
 
 @RestartOnRest(10003700)
@@ -2738,7 +2738,7 @@ def Event_10003731():
             cutscene_flags=0,
             move_to_region=10002712,
             map_id=10000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
@@ -2751,7 +2751,7 @@ def Event_10003731():
         cutscene_flags=0,
         move_to_region=10002713,
         map_id=10000000,
-        player_id=10000,
+        player_id=PLAYER,
         unk_20_24=0,
         unk_24_25=False,
     )
@@ -3266,7 +3266,7 @@ def Event_10000762():
     EnableFlag(11109528)
 
 
-@NeverRestart(10000763)
+@ContinueOnRest(10000763)
 def Event_10000763(_, asset: uint, radius: float):
     """Event 10000763"""
     DisableNetworkSync()

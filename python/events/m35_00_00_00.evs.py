@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m35_00_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=35000001, asset=Assets.AEG099_060_9001)
@@ -291,7 +291,7 @@ def Constructor():
     Event_35002361()
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.Hyetta)
@@ -1513,7 +1513,7 @@ def Preconstructor():
     CommonFunc_TriggerEnemyAI_WithRegion(0, 35000485, 35002483, 0.0, -1)
 
 
-@NeverRestart(35000050)
+@ContinueOnRest(35000050)
 def Event_35000050():
     """Event 35000050"""
     if ThisEventSlotFlagEnabled():
@@ -1536,7 +1536,7 @@ def Event_35002498():
     End()
 
 
-@NeverRestart(35002500)
+@ContinueOnRest(35002500)
 def Event_35002500():
     """Event 35002500"""
     if PlayerNotInOwnWorld():
@@ -1574,7 +1574,7 @@ def Event_35002500():
         cutscene_flags=0,
         move_to_region=35002500,
         map_id=35000000,
-        player_id=10000,
+        player_id=PLAYER,
         unk_20_24=0,
         unk_24_25=False,
     )
@@ -1586,7 +1586,7 @@ def Event_35002500():
     EnableFlag(9430)
 
 
-@NeverRestart(35002504)
+@ContinueOnRest(35002504)
 def Event_35002504():
     """Event 35002504"""
     GotoIfFlagDisabled(Label.L0, flag=35000504)
@@ -1698,7 +1698,7 @@ def Event_35002600():
     DisableTreasure(asset=Assets.AEG099_610_9031)
 
 
-@NeverRestart(35002510)
+@ContinueOnRest(35002510)
 def Event_35002510():
     """Event 35002510"""
     CommonFunc_90005500(
@@ -1963,7 +1963,7 @@ def Event_35002510():
         CommonFunc_90005682(0, 35000677, 35001675, 35002675, 35000675, 801103300, 801103305, 102, 0, 0, 0)
 
 
-@NeverRestart(35000519)
+@ContinueOnRest(35000519)
 def Event_35000519():
     """Event 35000519"""
     if ThisEventSlotFlagEnabled():
@@ -1972,7 +1972,7 @@ def Event_35000519():
     DisableFlag(35000520)
 
 
-@NeverRestart(35002679)
+@ContinueOnRest(35002679)
 def Event_35002679():
     """Event 35002679"""
     CommonFunc_90005681(0, 35000670, 35000671, 35000672, 35000672, 35001670)
@@ -3023,7 +3023,7 @@ def Event_35003500(_, region: uint):
     Restart()
 
 
-@NeverRestart(35002530)
+@ContinueOnRest(35002530)
 def Event_35002530():
     """Event 35002530"""
     GotoIfFlagEnabled(Label.L0, flag=35000530)
@@ -3043,7 +3043,7 @@ def Event_35002530():
     ForceAnimation(35001350, 1)
 
 
-@NeverRestart(35002642)
+@ContinueOnRest(35002642)
 def Event_35002642():
     """Event 35002642"""
     DisableAssetActivation(Assets.AEG027_041_0502, obj_act_id=27041)
@@ -3171,29 +3171,29 @@ def Event_35002820():
 @RestartOnRest(35002849)
 def Event_35002849():
     """Event 35002849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=35000800,
-        entity=Assets.AEG099_001_9000,
-        region=35002800,
-        flag_1=35002805,
-        character=35005800,
+        boss_dead_flag=35000800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=35002800,
+        host_entered_fog_flag=35002805,
+        boss_characters=35005800,
         action_button_id=10000,
-        left=35000801,
-        region_1=35002802,
+        first_time_done_flag=35000801,
+        first_time_trigger_region=35002802,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=35000800,
-        entity=Assets.AEG099_001_9000,
-        region=35002800,
-        flag_1=35002805,
-        flag_2=35002806,
+        boss_dead_flag=35000800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=35002800,
+        host_entered_fog_flag=35002805,
+        summon_entered_fog_flag=35002806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=35000800, asset=Assets.AEG099_001_9000, model_point=5, right=35000801)
+    CommonFunc_ControlBossFog(0, flag=35000800, fog_asset=Assets.AEG099_001_9000, model_point=5, first_time_done_flag=35000801)
     CommonFunc_9005812(0, flag=35000800, asset=Assets.AEG099_001_9001, model_point=5, right=35000801, model_point_1=5)
-    CommonFunc_BossMusicPhaseTransition(0, 35000800, 921600, 35002805, 35002806, 0, 35002802, 0, 1)
+    CommonFunc_ControlBossMusic(0, 35000800, 921600, 35002805, 35002806, 0, 35002802, 0, 1)
 
 
 @RestartOnRest(35002850)
@@ -3246,28 +3246,28 @@ def Event_35002860():
 @RestartOnRest(35002899)
 def Event_35002899():
     """Event 35002899"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=35000850,
-        entity=Assets.AEG099_002_9100,
-        region=35002850,
-        flag_1=35002855,
-        character=35005850,
+        boss_dead_flag=35000850,
+        fog_asset=Assets.AEG099_002_9100,
+        fog_region=35002850,
+        host_entered_fog_flag=35002855,
+        boss_characters=35005850,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=35000850,
-        entity=Assets.AEG099_002_9100,
-        region=35002850,
-        flag_1=35002855,
-        flag_2=35002856,
+        boss_dead_flag=35000850,
+        fog_asset=Assets.AEG099_002_9100,
+        fog_region=35002850,
+        host_entered_fog_flag=35002855,
+        summon_entered_fog_flag=35002856,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=35000850, asset=Assets.AEG099_002_9100, model_point=5, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, 35000850, 921700, 35002855, 35002856, 0, 35002852, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=35000850, fog_asset=Assets.AEG099_002_9100, model_point=5, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, 35000850, 921700, 35002855, 35002856, 0, 35002852, 0, 0)
 
 
 @RestartOnRest(35000700)
@@ -3581,7 +3581,7 @@ def Event_35003722(_, entity: uint):
     # --- Label 1 --- #
     DefineLabel(1)
     DisableFlag(35002725)
-    PlayCutscene(35000010, cutscene_flags=0, player_id=10000)
+    PlayCutscene(35000010, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     Goto(Label.L20)
 
@@ -3590,7 +3590,7 @@ def Event_35003722(_, entity: uint):
     WaitFrames(frames=1)
     EnableFlag(35009323)
     DisableFlag(35002726)
-    PlayCutscene(35000020, cutscene_flags=0, player_id=10000)
+    PlayCutscene(35000020, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     EnableFlag(35009333)
     ForceAnimation(entity, 90103)
@@ -3619,7 +3619,7 @@ def Event_35003723():
     End()
 
 
-@NeverRestart(35003724)
+@ContinueOnRest(35003724)
 def Event_35003724(
     _,
     asset: uint,

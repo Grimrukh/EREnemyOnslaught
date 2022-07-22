@@ -20,7 +20,7 @@ from .entities.m60_51_37_00_entities import *
 from .entities.m60_52_38_00_entities import Characters as m60_52_38_00_Characters, Flags as m60_52_38_00_Flags
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     HostStartsRadahnBattle(
@@ -123,7 +123,7 @@ def HostStartsRadahnBattle(
     ForceAnimation(PLAYER, 60490)
     Wait(3.0)
     EnableNetworkFlag(1052382602)
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
         destination_type=CoordEntityType.Region,
         destination=player_start,
@@ -168,7 +168,7 @@ def SummonStartsRadahnBattle():
     
     MAIN.Await(FlagEnabled(1052382602))
     
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=20000,
         destination_type=CoordEntityType.Region,
         destination=1051382302,

@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m60_40_53_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=76306, asset=Assets.AEG099_060_9000)
@@ -39,7 +39,7 @@ def Constructor():
     CommonFunc_NonRespawningWithReward(0, 1040530500, 1040530500, 40320, 0.0, 0)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BleedDog1, region=1040532400, radius=15.0, seconds=0.0, animation_id=-1)
@@ -389,28 +389,28 @@ def Event_1040532810():
 @RestartOnRest(1040532849)
 def Event_1040532849():
     """Event 1040532849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=1040530800,
-        entity=Assets.AEG099_001_9000,
-        region=1040532800,
-        flag_1=1040532805,
-        character=1040535800,
+        boss_dead_flag=1040530800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=1040532800,
+        host_entered_fog_flag=1040532805,
+        boss_characters=1040535800,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=1040530800,
-        entity=Assets.AEG099_001_9000,
-        region=1040532800,
-        flag_1=1040532805,
-        flag_2=1040532806,
+        boss_dead_flag=1040530800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=1040532800,
+        host_entered_fog_flag=1040532805,
+        summon_entered_fog_flag=1040532806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=1040530800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_BossMusicPhaseTransition(
+    CommonFunc_ControlBossFog(0, flag=1040530800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(
         0,
         dead_flag=1040530800,
         bgm_boss_conv_param_id=920900,

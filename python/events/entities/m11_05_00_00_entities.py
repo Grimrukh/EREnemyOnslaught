@@ -1,17 +1,49 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    HoarahLouxDead = 11050800
+    GodfreyHoarahLouxFirstTimeDone = 11050801
+    HoarahLouxInPhaseTwo = 11052802  # either one
+    SirGideonOfnirDead = 11050850
+    SirGideonOfnirFirstTimeDone = 11050851
+    SirGideonOfnirInPhaseTwo = 11052852  # for music
+
+
+class NameText(NPCName):
+    GodfreyFirstEldenLord = 904720000
+    CLONE_GodfreyFirstEldenLord = 904720010
+    HoarahLoux = 904720001
+    CLONE_HoarahLoux = 904720011
+    SirGideonOfnir = 132400
+    CLONE_SirGideonOfnir = 132401  # TODO: Have Gideon's clone also sitting in Roundtable Hold with him.
+
+
+class RegionPoints(RegionPoint):
+    # TODO: Two new regions for Godfrey post-cutscene. Both Hoarah Loux transitions can use the original one below.
+    GodfreyPostCutscenePosition = 11052813
+    CLONE_GodfreyPostCutscenePosition = 11052814
+    HoarahLouxPostCutscenePosition = 11052815
+    PlayerPostHoarahLouxCutscenePosition = 11052816
+
+
+class CharacterGroups(Character):
+    GodfreyHoarahLouxBoss = 11055800
+    SirGideonOfnirBoss = 11055850
+    SirGideonOfnirVariants = 11055851
+
+
 class Characters(Character):
-    SirGideonOfnir0 = 11050850  # c0000_9020 col h013700 npc 523240070 think 523240100 chara 23241 talk 324001105 group 11055850,11055102
-    SirGideonOfnir1 = 11050851  # c0000_9021 col h013700 npc 523240070 think 523240100 chara 23242 group 11055850,11055851
-    SirGideonOfnir2 = 11050852  # c0000_9022 col h013700 npc 523240070 think 523240100 chara 23243 group 11055850,11055851
-    SirGideonOfnir3 = 11050853  # c0000_9023 col h013700 npc 523240070 think 523240100 chara 23244 group 11055850,11055851
-    SirGideonOfnir4 = 11050854  # c0000_9024 col h013700 npc 523240070 think 523240100 chara 23245 group 11055850,11055851
-    SirGideonOfnir5 = 11050855  # c0000_9025 col h013700 npc 523240070 think 523240100 chara 23246 group 11055850,11055851
-    SirGideonOfnir6 = 11050856  # c0000_9026 col h013700 npc 523240070 think 523240100 chara 23247 group 11055850,11055851
-    SirGideonOfnir7 = 11050857  # c0000_9027 col h013700 npc 523240070 think 523240100 chara 23248 group 11055850,11055851
+    SirGideonOfnir = 11050850  # c0000_9020 col h013700 npc 523240070 think 523240100 chara 23241 talk 324001105 group 11055850,11055102
+    SirGideonOfnirVariant1 = 11050851  # c0000_9021 col h013700 npc 523240070 think 523240100 chara 23242 group 11055850,11055851
+    SirGideonOfnirVariant2 = 11050852  # c0000_9022 col h013700 npc 523240070 think 523240100 chara 23243 group 11055850,11055851
+    SirGideonOfnirVariant3 = 11050853  # c0000_9023 col h013700 npc 523240070 think 523240100 chara 23244 group 11055850,11055851
+    SirGideonOfnirVariant4 = 11050854  # c0000_9024 col h013700 npc 523240070 think 523240100 chara 23245 group 11055850,11055851
+    SirGideonOfnirVariant5 = 11050855  # c0000_9025 col h013700 npc 523240070 think 523240100 chara 23246 group 11055850,11055851
+    SirGideonOfnirVariant6 = 11050856  # c0000_9026 col h013700 npc 523240070 think 523240100 chara 23247 group 11055850,11055851
+    SirGideonOfnirVariant7 = 11050857  # c0000_9027 col h013700 npc 523240070 think 523240100 chara 23248 group 11055850,11055851
     BrotherCorhyn = 11050710  # c0000_9030 col h024300 npc 523510070 think 523510000 chara 23510 talk 351001105
-    Human = 11050740  # c0000_9031 col h020000 npc 533181070 think 533181000 chara 23184
+    Shabriri = 11050740  # c0000_9031 col h020000 npc 533181070 think 533181000 chara 23184
     NepheliLoux = 11050750  # c0000_9032 col h020000 npc 533340070 think 533340000 chara 23341
     TalkDummy0 = 11050950  # c1000_9000 npc 10000000 think 1 talk 1000
     TalkDummy1 = 11050951  # c1000_9001 col h013700 npc 10000000 think 1 talk 1000
@@ -41,6 +73,11 @@ class Characters(Character):
     Godfrey = 11050801  # c4720_9000 col h020100 npc 47200070 think 47200900 talk 206101105 group 11055800,11055100
     HoarahLoux = 11050800  # c4721_9000 col h020100 npc 47210070 think 47210900 talk 206101105 group 11055800,11055100
     Gargoyle = 11050310  # c4770_9000 col h013200 npc 47700070 think 47700000
+
+    # TODO: New starting points for Godfrey and Gideon.
+    CLONE_Godfrey = 11050803
+    CLONE_HoarahLoux = 11050802
+    CLONE_SirGideonOfnir = 11050858
 
 
 class Assets(Asset):

@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m13_00_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=13000003, asset=Assets.AEG099_060_9003)
@@ -326,7 +326,7 @@ def Constructor():
     Event_13003721()
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     Event_13000519()
@@ -1321,7 +1321,7 @@ def Preconstructor():
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 13000496, 13002496, 40.0, 0.0, -1)
 
 
-@NeverRestart(13002500)
+@ContinueOnRest(13002500)
 def Event_13002500():
     """Event 13002500"""
     if PlayerNotInOwnWorld():
@@ -1357,7 +1357,7 @@ def Event_13002580():
     RegisterLadder(start_climbing_flag=13000590, stop_climbing_flag=13000591, asset=Assets.AEG247_011_0500)
 
 
-@NeverRestart(13002510)
+@ContinueOnRest(13002510)
 def Event_13002510():
     """Event 13002510"""
     CommonFunc_90005500(
@@ -1442,7 +1442,7 @@ def Event_13002510():
     )
 
 
-@NeverRestart(13000519)
+@ContinueOnRest(13000519)
 def Event_13000519():
     """Event 13000519"""
     if ThisEventSlotFlagEnabled():
@@ -1716,12 +1716,12 @@ def Event_13002811():
             cutscene_flags=0,
             move_to_region=13002820,
             map_id=13000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
     else:
-        PlayCutscene(13000040, cutscene_flags=0, player_id=10000)
+        PlayCutscene(13000040, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     EnableFlag(13002802)
     DisableCharacter(Characters.BeastClergyman0)
@@ -1805,28 +1805,28 @@ def Event_13002828():
 @RestartOnRest(13002829)
 def Event_13002829():
     """Event 13002829"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=13000800,
-        entity=Assets.AEG099_002_9000,
-        region=13002800,
-        flag_1=13002805,
-        character=13005800,
+        boss_dead_flag=13000800,
+        fog_asset=Assets.AEG099_002_9000,
+        fog_region=13002800,
+        host_entered_fog_flag=13002805,
+        boss_characters=13005800,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=13000800,
-        entity=Assets.AEG099_002_9000,
-        region=13002800,
-        flag_1=13002805,
-        flag_2=13002806,
+        boss_dead_flag=13000800,
+        fog_asset=Assets.AEG099_002_9000,
+        fog_region=13002800,
+        host_entered_fog_flag=13002805,
+        summon_entered_fog_flag=13002806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=13000800, asset=Assets.AEG099_002_9000, model_point=4, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, 13000800, 211000, 13002805, 13002806, 0, 13002802, 1, 1)
+    CommonFunc_ControlBossFog(0, flag=13000800, fog_asset=Assets.AEG099_002_9000, model_point=4, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, 13000800, 211000, 13002805, 13002806, 0, 13002802, 1, 1)
 
 
 @RestartOnRest(13002830)
@@ -1860,7 +1860,7 @@ def Event_13002834():
         return
     GotoIfPlayerInOwnWorld(Label.L0)
     GotoIfFlagDisabled(Label.L0, flag=13002834)
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=20000,
         destination_type=CoordEntityType.Region,
         destination=13002836,
@@ -1904,7 +1904,7 @@ def Event_13002834():
             cutscene_flags=0,
             move_to_region=13002834,
             map_id=13000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
             change_weather=True,
@@ -1916,7 +1916,7 @@ def Event_13002834():
             cutscene_flags=CutsceneFlags.Unskippable,
             move_to_region=13002836,
             map_id=13000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
             change_weather=True,
@@ -2044,7 +2044,7 @@ def Event_13002846(_, flag: uint, flag_1: uint, flag_2: uint):
 def Event_13002849():
     """Event 13002849"""
     Event_13002846(0, flag=13000830, flag_1=13002835, flag_2=13002836)
-    CommonFunc_BossMusicPhaseTransition(0, 13000830, 452000, 13002835, 13002836, 0, 13002832, 0, 1)
+    CommonFunc_ControlBossMusic(0, 13000830, 452000, 13002835, 13002836, 0, 13002832, 0, 1)
 
 
 @RestartOnRest(13002850)
@@ -2070,7 +2070,7 @@ def Event_13002850():
         EnableFlag(61114)
 
 
-@NeverRestart(13002859)
+@ContinueOnRest(13002859)
 def Event_13002859():
     """Event 13002859"""
     if PlayerNotInOwnWorld():
@@ -2305,72 +2305,72 @@ def Event_13002892():
 @RestartOnRest(13002865)
 def Event_13002865():
     """Event 13002865"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=13000850,
-        entity=Assets.AEG099_001_9000,
-        region=13002850,
-        flag_1=13002855,
-        character=13005850,
+        boss_dead_flag=13000850,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=13002850,
+        host_entered_fog_flag=13002855,
+        boss_characters=13005850,
         action_button_id=10000,
-        left=13000851,
-        region_1=13002851,
+        first_time_done_flag=13000851,
+        first_time_trigger_region=13002851,
     )
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=13000850,
-        entity=Assets.AEG099_001_9003,
-        region=13002852,
-        flag_1=13002855,
-        character=13005850,
+        boss_dead_flag=13000850,
+        fog_asset=Assets.AEG099_001_9003,
+        fog_region=13002852,
+        host_entered_fog_flag=13002855,
+        boss_characters=13005850,
         action_button_id=10000,
-        left=13000851,
-        region_1=13002851,
+        first_time_done_flag=13000851,
+        first_time_trigger_region=13002851,
     )
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=13000850,
-        entity=Assets.AEG099_001_9002,
-        region=13002853,
-        flag_1=13002855,
-        character=13005850,
+        boss_dead_flag=13000850,
+        fog_asset=Assets.AEG099_001_9002,
+        fog_region=13002853,
+        host_entered_fog_flag=13002855,
+        boss_characters=13005850,
         action_button_id=10000,
-        left=13000851,
-        region_1=13002851,
+        first_time_done_flag=13000851,
+        first_time_trigger_region=13002851,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=13000850,
-        entity=Assets.AEG099_001_9000,
-        region=13002850,
-        flag_1=13002855,
-        flag_2=13002856,
-        action_button_id=10000,
-    )
-    CommonFunc_9005801(
-        0,
-        flag=13000850,
-        entity=Assets.AEG099_001_9003,
-        region=13002852,
-        flag_1=13002855,
-        flag_2=13002856,
+        boss_dead_flag=13000850,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=13002850,
+        host_entered_fog_flag=13002855,
+        summon_entered_fog_flag=13002856,
         action_button_id=10000,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=13000850,
-        entity=Assets.AEG099_001_9002,
-        region=13002853,
-        flag_1=13002855,
-        flag_2=13002856,
+        boss_dead_flag=13000850,
+        fog_asset=Assets.AEG099_001_9003,
+        fog_region=13002852,
+        host_entered_fog_flag=13002855,
+        summon_entered_fog_flag=13002856,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=13000850, asset=Assets.AEG099_001_9000, model_point=5, right=13000851)
-    CommonFunc_9005811(0, flag=13000850, asset=Assets.AEG099_001_9003, model_point=5, right=13000851)
-    CommonFunc_9005811(0, flag=13000850, asset=Assets.AEG099_001_9002, model_point=5, right=13000851)
-    CommonFunc_9005811(0, flag=13000850, asset=Assets.AEG099_001_9001, model_point=5, right=13000851)
-    CommonFunc_9005811(0, flag=13000850, asset=Assets.AEG099_001_9004, model_point=5, right=13000851)
-    CommonFunc_BossMusicPhaseTransition(0, 13000850, 356000, 13002855, 13002856, 0, 13002852, 0, 0)
+    CommonFunc_SummonEntersBossFog(
+        0,
+        boss_dead_flag=13000850,
+        fog_asset=Assets.AEG099_001_9002,
+        fog_region=13002853,
+        host_entered_fog_flag=13002855,
+        summon_entered_fog_flag=13002856,
+        action_button_id=10000,
+    )
+    CommonFunc_ControlBossFog(0, flag=13000850, fog_asset=Assets.AEG099_001_9000, model_point=5, first_time_done_flag=13000851)
+    CommonFunc_ControlBossFog(0, flag=13000850, fog_asset=Assets.AEG099_001_9003, model_point=5, first_time_done_flag=13000851)
+    CommonFunc_ControlBossFog(0, flag=13000850, fog_asset=Assets.AEG099_001_9002, model_point=5, first_time_done_flag=13000851)
+    CommonFunc_ControlBossFog(0, flag=13000850, fog_asset=Assets.AEG099_001_9001, model_point=5, first_time_done_flag=13000851)
+    CommonFunc_ControlBossFog(0, flag=13000850, fog_asset=Assets.AEG099_001_9004, model_point=5, first_time_done_flag=13000851)
+    CommonFunc_ControlBossMusic(0, 13000850, 356000, 13002855, 13002856, 0, 13002852, 0, 0)
 
 
 @RestartOnRest(13002600)
@@ -3022,7 +3022,7 @@ def Event_13003720():
     End()
 
 
-@NeverRestart(13003721)
+@ContinueOnRest(13003721)
 def Event_13003721():
     """Event 13003721"""
     if PlayerNotInOwnWorld():

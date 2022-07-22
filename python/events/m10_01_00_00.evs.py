@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m10_01_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     Event_10012682()
@@ -35,7 +35,7 @@ def Constructor():
     Event_10010792()
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.FingerMaiden)
@@ -78,7 +78,7 @@ def Event_10010020():
     PlayCutsceneToPlayerWithWeatherAndTime(
         cutscene_id=10000040,
         cutscene_flags=0,
-        player_id=10000,
+        player_id=PLAYER,
         weather_duration=0.0,
         change_time=True,
         time=(23, 45, 0),
@@ -93,7 +93,7 @@ def Event_10010020():
     EnableFlag(100)
 
 
-@NeverRestart(10010030)
+@ContinueOnRest(10010030)
 def Event_10010030():
     """Event 10010030"""
     AND_15.Add(ThisEventSlotFlagEnabled())
@@ -127,7 +127,7 @@ def Event_10010030():
         cutscene_flags=0,
         move_to_region=18002020,
         map_id=18000000,
-        player_id=10000,
+        player_id=PLAYER,
         unk_20_24=10010,
         unk_24_25=False,
         change_weather=True,
@@ -137,7 +137,7 @@ def Event_10010030():
     WaitFramesAfterCutscene(frames=1)
 
 
-@NeverRestart(10010031)
+@ContinueOnRest(10010031)
 def Event_10010031():
     """Event 10010031"""
     if OutsideMap(game_map=CHAPEL_OF_ANTICIPATION):
@@ -366,41 +366,41 @@ def Event_10012811():
 def Event_10012849():
     """Event 10012849"""
     if FlagDisabled(101):
-        CommonFunc_9005800(
+        CommonFunc_HostEntersBossFog(
             0,
-            flag=10010800,
-            entity=Assets.AEG099_001_9000,
-            region=10012800,
-            flag_1=10012805,
-            character=10015800,
+            boss_dead_flag=10010800,
+            fog_asset=Assets.AEG099_001_9000,
+            fog_region=10012800,
+            host_entered_fog_flag=10012805,
+            boss_characters=10015800,
             action_button_id=10000,
-            left=10010801,
-            region_1=10012801,
+            first_time_done_flag=10010801,
+            first_time_trigger_region=10012801,
         )
     else:
-        CommonFunc_9005800(
+        CommonFunc_HostEntersBossFog(
             0,
-            flag=10010800,
-            entity=Assets.AEG099_001_9001,
-            region=10012800,
-            flag_1=10012805,
-            character=10015800,
+            boss_dead_flag=10010800,
+            fog_asset=Assets.AEG099_001_9001,
+            fog_region=10012800,
+            host_entered_fog_flag=10012805,
+            boss_characters=10015800,
             action_button_id=10000,
-            left=10010801,
-            region_1=10012801,
+            first_time_done_flag=10010801,
+            first_time_trigger_region=10012801,
         )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=10010800,
-        entity=Assets.AEG099_001_9001,
-        region=10012800,
-        flag_1=10012805,
-        flag_2=10012806,
+        boss_dead_flag=10010800,
+        fog_asset=Assets.AEG099_001_9001,
+        fog_region=10012800,
+        host_entered_fog_flag=10012805,
+        summon_entered_fog_flag=10012806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=10010800, asset=Assets.AEG099_001_9000, model_point=16, right=10010801)
-    CommonFunc_9005811(0, flag=10010800, asset=Assets.AEG099_001_9001, model_point=16, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, 10010800, 920900, 10012805, 10012806, 0, 10012802, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=10010800, fog_asset=Assets.AEG099_001_9000, model_point=16, first_time_done_flag=10010801)
+    CommonFunc_ControlBossFog(0, flag=10010800, fog_asset=Assets.AEG099_001_9001, model_point=16, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, 10010800, 920900, 10012805, 10012806, 0, 10012802, 0, 0)
 
 
 @RestartOnRest(10010790)
@@ -455,7 +455,7 @@ def Event_10010792():
     End()
 
 
-@NeverRestart(10012900)
+@ContinueOnRest(10012900)
 def Event_10012900():
     """Event 10012900"""
     MAIN.Await(FlagEnabled(10010900))

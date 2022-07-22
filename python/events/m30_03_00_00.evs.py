@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m30_03_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     CommonFunc_90005646(
@@ -88,7 +88,7 @@ def Constructor():
     CommonFunc_90005920(0, 30030520, 30031520, 30033520)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     Event_30030050()
@@ -165,7 +165,7 @@ def Preconstructor():
     CommonFunc_TriggerInactiveEnemy_WithRegion(0, 30030209, 30002, 20002, 30032207, 3.0, 0, 0, 0, 0)
 
 
-@NeverRestart(30030050)
+@ContinueOnRest(30030050)
 def Event_30030050():
     """Event 30030050"""
     if ThisEventSlotFlagEnabled():
@@ -1192,28 +1192,28 @@ def Event_30032810():
 @RestartOnRest(30032849)
 def Event_30032849():
     """Event 30032849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=30030800,
-        entity=Assets.AEG099_001_9000,
-        region=30032800,
-        flag_1=30032805,
-        character=30035800,
+        boss_dead_flag=30030800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=30032800,
+        host_entered_fog_flag=30032805,
+        boss_characters=30035800,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=30030800,
-        entity=Assets.AEG099_001_9000,
-        region=30032800,
-        flag_1=30032805,
-        flag_2=30032806,
+        boss_dead_flag=30030800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=30032800,
+        host_entered_fog_flag=30032805,
+        summon_entered_fog_flag=30032806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=30030800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, 30030800, 920200, 30032805, 30032806, 0, 30032860, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=30030800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, 30030800, 920200, 30032805, 30032806, 0, 30032860, 0, 0)
 
 
 @RestartOnRest(30032890)
@@ -1487,7 +1487,7 @@ def Event_30032821():
     Restart()
 
 
-@NeverRestart(30032838)
+@ContinueOnRest(30032838)
 def Event_30032838():
     """Event 30032838"""
     DisableNetworkSync()

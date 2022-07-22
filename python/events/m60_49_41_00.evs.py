@@ -22,7 +22,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m60_49_41_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     CommonFunc_NonRespawningWithReward(0, dead_flag=1049410299, character=Characters.Scarab, item_lot_param_id=40426, reward_delay=0.0, skip_reward=0)

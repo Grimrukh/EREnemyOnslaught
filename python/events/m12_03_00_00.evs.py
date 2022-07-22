@@ -22,7 +22,7 @@ from .entities.m12_03_00_00_entities import *
 from .entities.m12_02_00_00_entities import Assets as m12_02_Assets
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=71231, asset=Assets.AEG099_060_9001)
@@ -374,7 +374,7 @@ def Constructor():
     Event_12030720(0, 12030725)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.FiaDeathbedCompanion0)
@@ -545,7 +545,7 @@ def Event_12032500():
     Restart()
 
 
-@NeverRestart(12032504)
+@ContinueOnRest(12032504)
 def Event_12032504():
     """Event 12032504"""
     if PlayerNotInOwnWorld():
@@ -573,19 +573,19 @@ def Event_12032504():
         cutscene_flags=0,
         move_to_region=12012504,
         map_id=12010000,
-        player_id=10000,
+        player_id=PLAYER,
         unk_20_24=12030000,
         unk_24_25=False,
     )
     WaitFramesAfterCutscene(frames=1)
-    PlayCutscene(12030011, cutscene_flags=CutsceneFlags.Unknown16, player_id=10000)
+    PlayCutscene(12030011, cutscene_flags=CutsceneFlags.Unknown16, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     AddSpecialEffect(PLAYER, 191)
     Wait(1.0)
     DisplayAreaWelcomeMessage(text=12010)
 
 
-@NeverRestart(12032509)
+@ContinueOnRest(12032509)
 def Event_12032509():
     """Event 12032509"""
     DisableNetworkSync()
@@ -605,11 +605,11 @@ def Event_12032509():
         cutscene_flags=0,
         move_to_region=12032502,
         map_id=12030000,
-        player_id=10000,
+        player_id=PLAYER,
         unk_20_24=12020000,
         unk_24_25=False,
     )
-    PlayCutscene(12020001, cutscene_flags=CutsceneFlags.Unknown16, player_id=10000)
+    PlayCutscene(12020001, cutscene_flags=CutsceneFlags.Unknown16, player_id=PLAYER)
     WaitFrames(frames=1)
     Wait(1.0)
     DisplayAreaWelcomeMessage(text=12030)
@@ -1068,7 +1068,7 @@ def Event_12032812():
     EnableBossHealthBar(Characters.FiasChampion1, name=137100, bar_slot=2)
 
 
-@NeverRestart(12032820)
+@ContinueOnRest(12032820)
 def Event_12032820():
     """Event 12032820"""
     if PlayerNotInOwnWorld():
@@ -1193,7 +1193,7 @@ def Event_12032840():
     EnableFlag(12032806)
     DisplayNetworkMessage(text=2920000, unk_4_5=False)
     Wait(4.0)
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
         destination_type=CoordEntityType.Region,
         destination=12032806,
@@ -1317,7 +1317,7 @@ def Event_12032849():
     )
     Event_12032840()
     RunCommonEvent(12032842, slot=0, args=(12030800, 12031800, 5, 12030801), arg_types="IIiI")
-    CommonFunc_BossMusicPhaseTransition(0, 12030800, 921100, 12032805, 12032806, 12032803, 0, 0, 0)
+    CommonFunc_ControlBossMusic(0, 12030800, 921100, 12032805, 12032806, 12032803, 0, 0, 0)
 
 
 @RestartOnRest(12032859)
@@ -1339,7 +1339,7 @@ def Event_12032859():
         cutscene_flags=0,
         move_to_region=12032859,
         map_id=12030000,
-        player_id=10000,
+        player_id=PLAYER,
         unk_20_24=12030000,
         unk_24_25=False,
     )
@@ -1390,7 +1390,7 @@ def Event_12032850():
         cutscene_flags=0,
         move_to_region=12032858,
         map_id=12030000,
-        player_id=10000,
+        player_id=PLAYER,
         unk_20_24=0,
         unk_24_25=True,
     )
@@ -1465,7 +1465,7 @@ def Event_12032896(_, flag: uint, flag_1: uint, flag_2: uint):
 def Event_12032899():
     """Event 12032899"""
     RunCommonEvent(12032896, slot=0, args=(12030850, 12032860, 12032856), arg_types="III")
-    CommonFunc_BossMusicPhaseTransition(0, 12030850, 451000, 12032860, 12032856, 12030852, 12032852, 0, 0)
+    CommonFunc_ControlBossMusic(0, 12030850, 451000, 12032860, 12032856, 12030852, 12032852, 0, 0)
 
 
 @RestartOnRest(12032861)

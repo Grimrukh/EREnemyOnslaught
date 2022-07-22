@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m30_17_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=301700, asset=Assets.AEG099_060_9000)
@@ -321,13 +321,13 @@ def Constructor():
     Event_30170050()
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     Event_30170519()
 
 
-@NeverRestart(30170050)
+@ContinueOnRest(30170050)
 def Event_30170050():
     """Event 30170050"""
     if ThisEventSlotFlagEnabled():
@@ -511,7 +511,7 @@ def Event_30172402(_, character: uint, region: uint):
     End()
 
 
-@NeverRestart(30172500)
+@ContinueOnRest(30172500)
 def Event_30172500():
     """Event 30172500"""
     CommonFunc_90005681(
@@ -624,7 +624,7 @@ def Event_30172500():
         CommonFunc_90005682(0, 30170502, 30171500, 30172500, 30170500, 801105000, 801105005, 101, 104, 100, 0)
 
 
-@NeverRestart(30172501)
+@ContinueOnRest(30172501)
 def Event_30172501(_, flag: uint, flag_1: uint, flag_2: uint, flag_3: uint, attacked_entity: uint):
     """Event 30172501"""
     if FlagDisabled(30170504):
@@ -706,7 +706,7 @@ def Event_30172501(_, flag: uint, flag_1: uint, flag_2: uint, flag_3: uint, atta
     Restart()
 
 
-@NeverRestart(30172502)
+@ContinueOnRest(30172502)
 def Event_30172502(
     _,
     flag: uint,
@@ -908,7 +908,7 @@ def Event_30172502(
     Restart()
 
 
-@NeverRestart(30172510)
+@ContinueOnRest(30172510)
 def Event_30172510():
     """Event 30172510"""
     CommonFunc_90005500(
@@ -961,7 +961,7 @@ def Event_30172510():
     )
 
 
-@NeverRestart(30170519)
+@ContinueOnRest(30170519)
 def Event_30170519():
     """Event 30170519"""
     if ThisEventSlotFlagEnabled():
@@ -1018,7 +1018,7 @@ def Event_30172525():
     Restart()
 
 
-@NeverRestart(30172580)
+@ContinueOnRest(30172580)
 def Event_30172580():
     """Event 30172580"""
     RegisterLadder(start_climbing_flag=30170580, stop_climbing_flag=30170581, asset=Assets.AEG027_009_0500)
@@ -1096,28 +1096,28 @@ def Event_30122811():
 @RestartOnRest(30172849)
 def Event_30172849():
     """Event 30172849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=30170800,
-        entity=Assets.AEG099_001_9000,
-        region=30172800,
-        flag_1=30172805,
-        character=30175800,
+        boss_dead_flag=30170800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=30172800,
+        host_entered_fog_flag=30172805,
+        boss_characters=30175800,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=30170800,
-        entity=Assets.AEG099_001_9000,
-        region=30172800,
-        flag_1=30172805,
-        flag_2=30172806,
+        boss_dead_flag=30170800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=30172800,
+        host_entered_fog_flag=30172805,
+        summon_entered_fog_flag=30172806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=30170800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, 30170800, 920200, 30172805, 30172806, 0, 30172802, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=30170800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, 30170800, 920200, 30172805, 30172806, 0, 30172802, 0, 0)
 
 
 @RestartOnRest(16002520)

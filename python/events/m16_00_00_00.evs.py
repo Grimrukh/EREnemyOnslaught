@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m16_00_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=16000002, asset=Assets.AEG099_060_9002)
@@ -422,7 +422,7 @@ def Constructor():
     Event_16003765()
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.Tanith0)
@@ -760,7 +760,7 @@ def Event_16002310(_, character: uint, radius: float, seconds: float, animation_
     EnableAI(character)
 
 
-@NeverRestart(16002500)
+@ContinueOnRest(16002500)
 def Event_16002500():
     """Event 16002500"""
     GotoIfFlagDisabled(Label.L0, flag=16000500)
@@ -793,7 +793,7 @@ def Event_16002500():
     GotoIfConditionTrue(Label.L1, input_condition=AND_6)
     EnableNetworkFlag(16000500)
     EnableNetworkFlag(9021)
-    PlayCutscene(16000000, cutscene_flags=0, player_id=10000)
+    PlayCutscene(16000000, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     EndOfAnimation(asset=Assets.AEG277_019_0500, animation_id=20)
     DisableAsset(Assets.AEG270_459_2000)
@@ -806,13 +806,13 @@ def Event_16002500():
     Restart()
 
 
-@NeverRestart(16002505)
+@ContinueOnRest(16002505)
 def Event_16002505():
     """Event 16002505"""
     DisableAsset(Assets.AEG007_434_9000)
 
 
-@NeverRestart(16002510)
+@ContinueOnRest(16002510)
 def Event_16002510():
     """Event 16002510"""
     CommonFunc_90005500(
@@ -877,7 +877,7 @@ def Event_16002510():
     )
 
 
-@NeverRestart(16000519)
+@ContinueOnRest(16000519)
 def Event_16000519():
     """Event 16000519"""
     if ThisEventSlotFlagEnabled():
@@ -982,7 +982,7 @@ def Event_16002570(
     RotateToFaceEntity(PLAYER, asset, wait_for_completion=True)
     ForceAnimation(PLAYER, 60490)
     Wait(3.0)
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
         destination_type=CoordEntityType.Region,
         destination=player_start,
@@ -1008,7 +1008,7 @@ def Event_16002579():
 
     MAIN.Await(FlagEnabled(16002578))
 
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=20000,
         destination_type=CoordEntityType.Region,
         destination=16002575,
@@ -1353,12 +1353,12 @@ def RykardPhaseTwoTransition():
             cutscene_flags=0,
             move_to_region=16002830,
             map_id=16,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=16,
             unk_24_25=False,
         )
     else:
-        PlayCutscene(16000020, cutscene_flags=0, player_id=10000)
+        PlayCutscene(16000020, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     if PlayerInOwnWorld():
         SetCameraAngle(x_angle=-4.0, y_angle=0.0)
@@ -1823,17 +1823,17 @@ def RykardFogGateEvents():
         left=0,
         region_1=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=Flags.RykardDead,
-        entity=Assets.AEG099_003_9000,
-        region=16002801,
-        flag_1=16002805,
-        flag_2=16002806,
+        boss_dead_flag=Flags.RykardDead,
+        fog_asset=Assets.AEG099_003_9000,
+        fog_region=16002801,
+        host_entered_fog_flag=16002805,
+        summon_entered_fog_flag=16002806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=Flags.RykardDead, asset=Assets.AEG099_003_9000, model_point=3, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, Flags.RykardDead, 471000, 16002805, 16002806, 16002803, 16002802, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=Flags.RykardDead, fog_asset=Assets.AEG099_003_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, Flags.RykardDead, 471000, 16002805, 16002806, 16002803, 16002802, 0, 0)
 
 
 @RestartOnRest(16002850)
@@ -1995,60 +1995,60 @@ def IronVirginsBattleTrigger():
     EnableBossHealthBar(Characters.IronVirginBoss0, name=904470001, bar_slot=1)
 
 
-@NeverRestart(16002889)
+@ContinueOnRest(16002889)
 def IronVirginsFogGateEvents():
     """Event 16002889"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=Flags.IronVirginsDead,
-        entity=Assets.AEG099_002_9000,
-        region=16002860,
-        flag_1=16002865,
-        character=16005860,
+        boss_dead_flag=Flags.IronVirginsDead,
+        fog_asset=Assets.AEG099_002_9000,
+        fog_region=16002860,
+        host_entered_fog_flag=16002865,
+        boss_characters=16005860,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=Flags.IronVirginsDead,
-        entity=Assets.AEG099_002_9000,
-        region=16002860,
-        flag_1=16002865,
-        flag_2=16002866,
+        boss_dead_flag=Flags.IronVirginsDead,
+        fog_asset=Assets.AEG099_002_9000,
+        fog_region=16002860,
+        host_entered_fog_flag=16002865,
+        summon_entered_fog_flag=16002866,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=Flags.IronVirginsDead, asset=Assets.AEG099_002_9000, model_point=4, right=0)
-    CommonFunc_9005811(0, flag=Flags.IronVirginsDead, asset=Assets.AEG099_002_9001, model_point=5, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, Flags.IronVirginsDead, 931000, 16002865, 16002866, 0, 16002862, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=Flags.IronVirginsDead, fog_asset=Assets.AEG099_002_9000, model_point=4, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, flag=Flags.IronVirginsDead, fog_asset=Assets.AEG099_002_9001, model_point=5, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, Flags.IronVirginsDead, 931000, 16002865, 16002866, 0, 16002862, 0, 0)
 
 
-@NeverRestart(16002899)
+@ContinueOnRest(16002899)
 def GodskinNobleFogGateEvents():
     """Event 16002899"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=Flags.GodskinNobleDead,
-        entity=Assets.AEG099_003_0500,
-        region=16002850,
-        flag_1=16002855,
-        character=16005850,
+        boss_dead_flag=Flags.GodskinNobleDead,
+        fog_asset=Assets.AEG099_003_0500,
+        fog_region=16002850,
+        host_entered_fog_flag=16002855,
+        boss_characters=16005850,
         action_button_id=10000,
-        left=16000851,
-        region_1=0,
+        first_time_done_flag=16000851,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=Flags.GodskinNobleDead,
-        entity=Assets.AEG099_003_0500,
-        region=16002850,
-        flag_1=16002855,
-        flag_2=16002856,
+        boss_dead_flag=Flags.GodskinNobleDead,
+        fog_asset=Assets.AEG099_003_0500,
+        fog_region=16002850,
+        host_entered_fog_flag=16002855,
+        summon_entered_fog_flag=16002856,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=Flags.GodskinNobleDead, asset=Assets.AEG099_003_0500, model_point=4, right=16000851)
-    CommonFunc_9005811(0, flag=Flags.GodskinNobleDead, asset=Assets.AEG099_003_0501, model_point=3, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, Flags.GodskinNobleDead, 356000, 16002855, 16002856, 0, 16002852, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=Flags.GodskinNobleDead, fog_asset=Assets.AEG099_003_0500, model_point=4, first_time_done_flag=16000851)
+    CommonFunc_ControlBossFog(0, flag=Flags.GodskinNobleDead, fog_asset=Assets.AEG099_003_0501, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, Flags.GodskinNobleDead, 356000, 16002855, 16002856, 0, 16002852, 0, 0)
 
 
 @RestartOnRest(16009000)
@@ -2063,7 +2063,7 @@ def Event_16009000():
         cutscene_flags=0,
         move_to_region=16002840,
         map_id=16000000,
-        player_id=10000,
+        player_id=PLAYER,
         unk_20_24=0,
         unk_24_25=False,
     )

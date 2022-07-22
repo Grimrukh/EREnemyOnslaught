@@ -1,6 +1,40 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    PlayerTouchedErdtreeAfterMorgott = 11000500
+    MorgottDead = 11000800
+    MorgottFirstTimeDone = 11000801
+    MorgottInPhaseTwo = 11002802
+    GodfreyPhantomDead = 11000850
+    GodfreyPhantomFirstTimeDone = 11000851
+    GodfreyPhaseTwoMusicTrigger = 11002852
+
+
+class NameText(NPCName):
+    MorgottPhaseOne = 902130002
+    CLONE_MorgottPhaseOne = 902130012
+    GodfreyFirstEldenLord = 904720002
+    CLONE_GodfreyFirstEldenLord = 904720012
+
+
+class RegionPoints(RegionPoint):
+    MorgottPreCutscenePosition = 11002810
+    MorgottPostCutscenePosition = 11002811
+    PlayerPostMorgottCutscenePosition = 11002812
+    CLONE_MorgottPreCutscenePosition = 11002813
+    CLONE_MorgottPostCutscenePosition = 11002814
+
+
+class Effects(SpecialEffectParam):
+    MorgottPhaseTwo = 16205
+
+
+class CharacterGroups(Character):
+    MorgottBoss = 11005800
+    GodfreyPhantomBoss = 11005850
+
+
 class Characters(Character):
     Human = 11000160  # c0000_9015 npc 52306000 think 1 chara 28500
     BrotherCorhyn = 11000725  # c0000_9025 col h015800 npc 523510034 think 523510000 chara 23510 talk 351001100
@@ -25,7 +59,7 @@ class Characters(Character):
     TalkDummy12 = 11000106  # c1000_9013 col h018200 npc 10001000 think 1 talk 2000
     TalkDummy13 = 11000716  # c1000_9015 col h015100 npc 501120034 think 500000000
     BlackKnifeAssassin = 11000484  # c2100_9000 col h014700 npc 21000034 think 21000000
-    Margit = 11000800  # c2130_9000 col h020100 npc 21300534 think 21300500 talk 204111100 group 11005800,11005100
+    Morgott = 11000800  # c2130_9000 col h020100 npc 21300534 think 21300500 talk 204111100 group 11005800,11005100
     DefeatedMorgott = 11000720  # c2131_9000 col h020100 npc 21310034 think 500000000 talk 204201100
     Melina = 11000730  # c2180_9000 col h020101 npc 21801034 think 21800000
     CrucibleKnight0 = 11000495  # c2500_9000 col h003700 npc 25001134 think 25001100
@@ -242,13 +276,16 @@ class Characters(Character):
     IronVirgin1 = 11000493  # c4470_9001 col h016200 npc 44701034 think 44701000
     UlceratedTreeSpirit = 11000497  # c4640_9000 col h007400 npc 46400034 think 46400000
     GuardianGolem = 11000498  # c4660_9000 col h016300 npc 46600034 think 46600000
-    Godfrey = 11000850  # c4720_9000 col h013700 npc 47200134 think 47200000 group 11005850,11005102
+    GodfreyPhantom = 11000850  # c4720_9000 col h013700 npc 47200134 think 47200000 group 11005850,11005102
     Gargoyle0 = 11000391  # c4770_9001 col h018200 npc 47702034 think 47702000
     Gargoyle1 = 11000392  # c4770_9002 col h005500 npc 47702034 think 47702100
     Gargoyle2 = 11000393  # c4770_9003 col h012900 npc 47701034 think 47701000
     Gargoyle3 = 11000394  # c4770_9004 col h008000 npc 47702034 think 47702100
     ErdtreeAvatar = 11000389  # c4810_9000 col h005700 npc 48100034 think 48100000 group 11005104
     Omenkiller = 11000469  # c4820_9000 col h007600 npc 48208034 think 48200000
+
+    CLONE_Morgott = 11000801
+    CLONE_GodfreyPhantom = 11000851
 
 
 class Assets(Asset):

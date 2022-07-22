@@ -1,6 +1,10 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    DragonkinSoldierOfNokstellaDead = 12010800
+
+
 class Characters(Character):
     SilverTear0 = 12010248  # c0000_9020 col h009500 npc 523680062 think 523680000 chara 23682 group 12015106
     SilverTear1 = 12010249  # c0000_9021 col h009500 npc 523680062 think 523680000 chara 23683 group 12015106
@@ -87,10 +91,14 @@ class Characters(Character):
     MalformedStar0 = 12010400  # c4620_9000 col h003600 npc 46202060 think 46201000
     MalformedStar1 = 12010401  # c4620_9001 col h007500 npc 46202062 think 46201000 group 12015104
     UlceratedTreeSpirit = 12010420  # c4640_9000 col h015700 npc 46400162 think 46400062 group 12015110
-    DragonkinSoldier0 = 12010800  # c4650_9000 col h004900 npc 46500960 think 1 group 12015102,12015800
-    DragonkinSoldier1 = 12010801  # c4650_9001 col h004900 npc 46500060 think 46500100 group 12015102,12015800
-    DragonkinSoldier2 = 12010802  # c4650_9002 col h004900 npc 46500160 think 46500100 group 12015102,12015800
+    DragonkinSoldierHealthPool = 12010800  # c4650_9000 col h004900 npc 46500960 think 1 group 12015102,12015800
+    DragonkinSoldierPhaseOne = 12010801  # c4650_9001 col h004900 npc 46500060 think 46500100 group 12015102,12015800
+    DragonkinSoldierPhaseTwo = 12010802  # c4650_9002 col h004900 npc 46500160 think 46500100 group 12015102,12015800
     DragonkinSoldier3 = 12010850  # c4650_9100 col h012100 npc 46500262 think 46500200 group 12015108
+
+    CLONE_DragonkinSoldierHealthPool = 12010803
+    CLONE_DragonkinSoldierPhaseOne = 12010804
+    CLONE_DragonkinSoldierPhaseTwo = 12010805
 
 
 class Assets(Asset):

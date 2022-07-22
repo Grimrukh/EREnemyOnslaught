@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m60_42_53_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     CommonFunc_NonRespawningWithReward(0, dead_flag=1042530501, character=1042530501, item_lot_param_id=1042530300, reward_delay=0.0, skip_reward=0)
@@ -37,7 +37,7 @@ def Constructor():
     CommonFunc_90005391(0, 1042530350, 1042532350, 1042530365, 1042530350, 0)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1042530202, region=1042532202, radius=5.0, seconds=0.0, animation_id=0)
@@ -244,7 +244,7 @@ def Event_1042532365(_, character: uint):
     EnableAI(character)
 
 
-@NeverRestart(200)
+@ContinueOnRest(200)
 def Event_200():
     """Event 200"""
     CommonFunc_90005490(

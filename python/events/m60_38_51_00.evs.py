@@ -22,7 +22,7 @@ from .entities.m60_38_51_00_entities import *
 from .entities.m60_38_50_00_entities import Characters as m60_38_Characters
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=76302, asset=Assets.AEG099_060_9000)
@@ -98,7 +98,7 @@ def Constructor():
     CommonFunc_90005771(0, 1038510950, 1038512700)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.RyatheScout)
@@ -402,28 +402,28 @@ def Event_1038512810():
 @RestartOnRest(1038512849)
 def Event_1038512849():
     """Event 1038512849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=1038510800,
-        entity=Assets.AEG099_001_9000,
-        region=1038512800,
-        flag_1=1038512805,
-        character=1038515800,
+        boss_dead_flag=1038510800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=1038512800,
+        host_entered_fog_flag=1038512805,
+        boss_characters=1038515800,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=1038510800,
-        entity=Assets.AEG099_001_9000,
-        region=1038512800,
-        flag_1=1038512805,
-        flag_2=1038512806,
+        boss_dead_flag=1038510800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=1038512800,
+        host_entered_fog_flag=1038512805,
+        summon_entered_fog_flag=1038512806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=1038510800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_BossMusicPhaseTransition(
+    CommonFunc_ControlBossFog(0, flag=1038510800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(
         0,
         dead_flag=1038510800,
         bgm_boss_conv_param_id=931000,

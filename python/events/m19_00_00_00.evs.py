@@ -18,43 +18,47 @@ strings:
 from .common_func import *
 from soulstruct.eldenring.events import *
 from soulstruct.eldenring.events.instructions import *
+from .entities.common_entities import CommonFlags
 from .entities.m19_00_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
-        flag=19000800,
+        flag=Flags.EldenBeastDead,
         grace_flag=19000000,
         character=Characters.TalkDummy0,
         asset=Assets.AEG099_060_9000,
         enemy_block_distance=8.0,
     )
-    Event_19000100()
-    Event_19000110()
-    Event_19000120()
-    Event_19002500()
+    PlayEldenLordEndingCutscene()
+    PlayAgeOfStarsEndingCutscene()
+    PlayFrenziedFlameEndingCutscene()
+    TravelToStonePlatform()
     Event_19002502()
-    Event_19002800()
-    Event_19002810()
-    Event_19002811()
-    Event_19002812()
-    Event_19002830()
-    Event_19002849()
+    EldenBeastDies()
+    RadagonBattleTrigger()
+    RadagonDies()
+    EldenBeastBattleTrigger()
+    EldenBeastCameraChange()
+    EldenBeastCommonEvents()
     Event_19002900()
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     Event_19000050()
 
 
-@NeverRestart(19000100)
-def Event_19000100():
-    """Event 19000100"""
+@ContinueOnRest(19000100)
+def PlayEldenLordEndingCutscene():
+    """Play ending cutscene for one of the four Age of Fracture variants.
+
+    Does NOT include Frenzied Flame ending or Age of the Stars (Ranni) ending.
+    """
     GotoIfPlayerInOwnWorld(Label.L0)
     DisableAsset(Assets.AEG227_018_1000)
     DisableAsset(Assets.AEG227_017_1000)
@@ -62,16 +66,19 @@ def Event_19000100():
 
     # --- Label 0 --- #
     DefineLabel(0)
-    if FlagEnabled(120):
+    if FlagEnabled(CommonFlags.EndingDone):
         return
-    OR_15.Add(FlagEnabled(9400))
+
+    # If an Elden Lord ending was already chosen, play that cutscene immediately.
+    OR_15.Add(FlagEnabled(9400))  # not sure where these "cutscene request" flags are enabled
     OR_15.Add(FlagEnabled(9401))
     OR_15.Add(FlagEnabled(9402))
     OR_15.Add(FlagEnabled(9403))
     GotoIfConditionTrue(Label.L15, input_condition=OR_15)
+
     DisableAsset(Assets.AEG227_018_1000)
     DisableAsset(Assets.AEG227_017_1000)
-    AND_1.Add(FlagEnabled(19001100))
+    AND_1.Add(FlagEnabled(Flags.EndingCanBeChosen))
     
     MAIN.Await(AND_1)
     
@@ -79,11 +86,13 @@ def Event_19000100():
     EnableAsset(Assets.AEG227_017_1000)
     DisableCharacter(Characters.Radagon)
     DisableAnimations(Characters.Radagon)
+    DisableCharacter(Characters.CLONE_Radagon)
+    DisableAnimations(Characters.CLONE_Radagon)
     DisableAsset(Assets.AEG301_240_1000)
-    AND_2.Add(FlagDisabled(108))
+    AND_2.Add(FlagDisabled(CommonFlags.FrenziedFlameEndingForced))
     OR_4.Add(AND_2)
-    AND_3.Add(FlagEnabled(108))
-    AND_3.Add(FlagEnabled(116))
+    AND_3.Add(FlagEnabled(CommonFlags.FrenziedFlameEndingForced))
+    AND_3.Add(FlagEnabled(CommonFlags.MiquellasNeedleUsed))
     OR_4.Add(AND_3)
     AND_5.Add(OR_4)
     OR_5.Add(FlagEnabled(9400))
@@ -91,7 +100,8 @@ def Event_19000100():
     OR_5.Add(FlagEnabled(9402))
     OR_5.Add(FlagEnabled(9403))
     AND_5.Add(OR_5)
-    
+
+    # One of 9400-9403 enabled AND (Frenzied Flame ending not forced OR Frenzied Flame reversed with Miquella's Needle)
     MAIN.Await(AND_5)
     
     AND_10.Add(PlayerGender(gender=Gender.Female))
@@ -109,17 +119,17 @@ def Event_19000100():
 
     # --- Label 15 --- #
     DefineLabel(15)
-    EnableFlag(19000100)
-    EnableFlag(19002100)
+    EnableFlag(Flags.EldenLordEndingChosen)  # purpose unclear
+    EnableFlag(19002100)  # purpose unclear
     GotoIfFlagEnabled(Label.L13, flag=9403)
     GotoIfFlagEnabled(Label.L12, flag=9402)
     GotoIfFlagEnabled(Label.L11, flag=9401)
     PlayCutsceneToPlayerAndWarpWithStablePositionUpdate(
         cutscene_id=19000010,
-        cutscene_flags=CutsceneFlags.Unknown64,
+        cutscene_flags=CutsceneFlags.IsEndingCutscene,
         move_to_region=11712500,
         map_id=11710000,
-        player_id=10000,
+        player_id=PLAYER,
         unk_16_20=19000,
         unk_20_21=False,
         update_stable_position=False,
@@ -132,10 +142,10 @@ def Event_19000100():
     DefineLabel(11)
     PlayCutsceneToPlayerAndWarpWithStablePositionUpdate(
         cutscene_id=19000060,
-        cutscene_flags=CutsceneFlags.Unknown64,
+        cutscene_flags=CutsceneFlags.IsEndingCutscene,
         move_to_region=11712500,
         map_id=11710000,
-        player_id=10000,
+        player_id=PLAYER,
         unk_16_20=19000,
         unk_20_21=False,
         update_stable_position=False,
@@ -148,10 +158,10 @@ def Event_19000100():
     DefineLabel(12)
     PlayCutsceneToPlayerAndWarpWithStablePositionUpdate(
         cutscene_id=19000070,
-        cutscene_flags=CutsceneFlags.Unknown64,
+        cutscene_flags=CutsceneFlags.IsEndingCutscene,
         move_to_region=11712500,
         map_id=11710000,
-        player_id=10000,
+        player_id=PLAYER,
         unk_16_20=19000,
         unk_20_21=False,
         update_stable_position=False,
@@ -164,10 +174,10 @@ def Event_19000100():
     DefineLabel(13)
     PlayCutsceneToPlayerAndWarpWithStablePositionUpdate(
         cutscene_id=19000080,
-        cutscene_flags=CutsceneFlags.Unknown64,
+        cutscene_flags=CutsceneFlags.IsEndingCutscene,
         move_to_region=11712500,
         map_id=11710000,
-        player_id=10000,
+        player_id=PLAYER,
         unk_16_20=19000,
         unk_20_21=False,
         update_stable_position=False,
@@ -180,27 +190,32 @@ def Event_19000100():
     DefineLabel(15)
 
 
-@NeverRestart(19000110)
-def Event_19000110():
+@ContinueOnRest(19000110)
+def PlayAgeOfStarsEndingCutscene():
     """Event 19000110"""
     if PlayerNotInOwnWorld():
         return
-    if FlagEnabled(120):
+    if FlagEnabled(CommonFlags.EndingDone):
         return
+
+    # If cutscene already requested (but not complete), go straight to it.
     OR_15.Add(FlagEnabled(9404))
     OR_15.Add(FlagEnabled(9405))
     GotoIfConditionTrue(Label.L15, input_condition=OR_15)
-    AND_3.Add(FlagEnabled(19001100))
-    AND_3.Add(FlagEnabled(1034509406))
-    AND_1.Add(FlagDisabled(108))
+
+    AND_3.Add(FlagEnabled(Flags.EndingCanBeChosen))
+    AND_3.Add(FlagEnabled(Flags.RanniEndingAvailable))
+    AND_1.Add(FlagDisabled(CommonFlags.FrenziedFlameEndingForced))
     OR_3.Add(AND_1)
-    AND_2.Add(FlagEnabled(108))
-    AND_2.Add(FlagEnabled(116))
+    AND_2.Add(FlagEnabled(CommonFlags.FrenziedFlameEndingForced))
+    AND_2.Add(FlagEnabled(CommonFlags.MiquellasNeedleUsed))
     OR_3.Add(AND_2)
     AND_3.Add(OR_3)
-    
+
+    # Ending can be chosen AND Ranni ending available AND (Frenzied Flame not used OR Frenzied Flame undone)
     MAIN.Await(AND_3)
-    
+
+    # Show Ranni summon sign and wait for interaction.
     CreateAssetVFX(Assets.AEG099_090_9001, vfx_id=100, model_point=30070)
     AND_4.Add(ActionButtonParamActivated(action_button_id=9610, entity=Assets.AEG099_090_9001))
     AND_4.Add(PlayerInOwnWorld())
@@ -209,29 +224,30 @@ def Event_19000110():
 
     # --- Label 15 --- #
     DefineLabel(15)
-    if FlagDisabled(1034509407):
-        PlayCutscene(19000020, cutscene_flags=0, player_id=10000)
+    # TODO: Investigate this cutscene variant (19000020 with flag vs 19000021 without)
+    if FlagDisabled(1034509407):  # unknown flag from Ranni's Rise
+        PlayCutscene(19000020, cutscene_flags=0, player_id=PLAYER)
         EnableFlag(9404)
         TriggerMultiplayerEvent(event_id=50)
     else:
-        PlayCutscene(19000021, cutscene_flags=0, player_id=10000)
+        PlayCutscene(19000021, cutscene_flags=0, player_id=PLAYER)
         EnableFlag(9405)
         TriggerMultiplayerEvent(event_id=60)
     WaitFramesAfterCutscene(frames=1)
-    EnableFlag(120)
+    EnableFlag(CommonFlags.EndingDone)
     EnableFlag(6010)
     AwardAchievement(achievement_id=2)
     SetRespawnPoint(respawn_point=11102020)
     SaveRequest()
-    EnableFlag(21)
+    EnableFlag(21)  # credits
 
 
-@NeverRestart(19000120)
-def Event_19000120():
+@ContinueOnRest(19000120)
+def PlayFrenziedFlameEndingCutscene():
     """Event 19000120"""
     if PlayerNotInOwnWorld():
         return
-    if FlagEnabled(120):
+    if FlagEnabled(CommonFlags.EndingDone):
         return
     OR_15.Add(FlagEnabled(9406))
     OR_15.Add(FlagEnabled(9407))
@@ -241,8 +257,8 @@ def Event_19000120():
     MAIN.Await(AND_1)
     
     WaitFrames(frames=1)
-    AND_1.Add(FlagEnabled(108))
-    AND_1.Add(FlagDisabled(116))
+    AND_1.Add(FlagEnabled(CommonFlags.FrenziedFlameEndingForced))
+    AND_1.Add(FlagDisabled(CommonFlags.MiquellasNeedleUsed))
     AND_1.Add(ActionButtonParamActivated(action_button_id=9620, entity=Assets.AEG099_090_9002))
     
     MAIN.Await(AND_1)
@@ -252,16 +268,16 @@ def Event_19000120():
 
     # --- Label 15 --- #
     DefineLabel(15)
-    if FlagDisabled(109):
-        PlayCutscene(19000030, cutscene_flags=0, player_id=10000)
+    if FlagDisabled(109):  # unknown variant (flag enabled in Shunning-Grounds)
+        PlayCutscene(19000030, cutscene_flags=0, player_id=PLAYER)
         EnableFlag(9406)
         TriggerMultiplayerEvent(event_id=70)
     else:
-        PlayCutscene(19000031, cutscene_flags=0, player_id=10000)
+        PlayCutscene(19000031, cutscene_flags=0, player_id=PLAYER)
         EnableFlag(9407)
         TriggerMultiplayerEvent(event_id=80)
     WaitFramesAfterCutscene(frames=1)
-    EnableFlag(120)
+    EnableFlag(CommonFlags.EndingDone)
     EnableFlag(6010)
     AwardAchievement(achievement_id=3)
     SetRespawnPoint(respawn_point=11102020)
@@ -269,25 +285,26 @@ def Event_19000120():
     EnableFlag(22)
 
 
-@NeverRestart(19000050)
+@ContinueOnRest(19000050)
 def Event_19000050():
     """Event 19000050"""
     if ThisEventSlotFlagEnabled():
         return
 
 
-@NeverRestart(19002500)
-def Event_19002500():
+@ContinueOnRest(19002500)
+def TravelToStonePlatform():
     """Event 19002500"""
-    GotoIfFlagDisabled(Label.L0, flag=19000800)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.EldenBeastDead)
     CreateAssetVFX(Assets.AEG099_003_9000, vfx_id=101, model_point=1530)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     GotoIfPlayerInOwnWorld(Label.L1)
-    GotoIfFlagDisabled(Label.L1, flag=19002801)
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    GotoIfFlagDisabled(Label.L1, flag=Flags.RadagonBattleStarted)
+    # Summon arrives in Stone Platform.
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=20000,
         destination_type=CoordEntityType.Region,
         destination=19002811,
@@ -302,9 +319,11 @@ def Event_19002500():
     DefineLabel(1)
     CreateAssetVFX(Assets.AEG099_003_9000, vfx_id=101, model_point=1530)
     if PlayerNotInOwnWorld():
-        GotoIfFlagEnabled(Label.L2, flag=19002500)
+        GotoIfFlagEnabled(Label.L2, flag=Flags.StonePlatformEntered)
+
+    # Host activates Erdtree fog.
     AND_1.Add(PlayerInOwnWorld())
-    AND_1.Add(FlagDisabled(19000800))
+    AND_1.Add(FlagDisabled(Flags.EldenBeastDead))
     AND_1.Add(ActionButtonParamActivated(action_button_id=9501, entity=Assets.AEG099_003_9000))
     
     MAIN.Await(AND_1)
@@ -318,18 +337,25 @@ def Event_19002500():
     OR_9.Add(CharacterInvadeType(character=20000, invade_type=7))
     if OR_9:
         return
+
     ForceAnimation(PLAYER, 67080)
     if PlayerNotInOwnWorld():
-        GotoIfFlagEnabled(Label.L2, flag=19002500)
+        GotoIfFlagEnabled(Label.L2, flag=Flags.StonePlatformEntered)
     Wait(2.4000000953674316)
     CreateAssetVFX(Assets.AEG099_003_9001, vfx_id=101, model_point=1531)
     if PlayerNotInOwnWorld():
-        GotoIfFlagEnabled(Label.L2, flag=19002500)
+        GotoIfFlagEnabled(Label.L2, flag=Flags.StonePlatformEntered)
     Wait(3.5999999046325684)
-    EnableNetworkFlag(19002500)
+    EnableNetworkFlag(Flags.StonePlatformEntered)
 
     # --- Label 2 --- #
     DefineLabel(2)
+    # Player arrives in Stone Platform.
+
+    if FlagEnabled(Flags.RadagonDead):
+        # Radagon already dead. Elden Beast transition cutscene will trigger instead.
+        return
+
     EnableFlag(9021)
     if PlayerInOwnWorld():
         PlayCutsceneToPlayerAndWarp(
@@ -337,7 +363,7 @@ def Event_19002500():
             cutscene_flags=CutsceneFlags.Unknown32,
             move_to_region=19002810,
             map_id=19000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=19000,
             unk_24_25=False,
         )
@@ -347,13 +373,13 @@ def Event_19002500():
             cutscene_flags=CutsceneFlags.Unknown32,
             move_to_region=19002811,
             map_id=19000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=19000,
             unk_24_25=False,
         )
     WaitFramesAfterCutscene(frames=1)
-    if FlagDisabled(119):
-        EnableFlag(119)
+    if FlagDisabled(CommonFlags.RadagonChallenged):
+        EnableFlag(CommonFlags.RadagonChallenged)
     DeleteAssetVFX(Assets.AEG099_003_9001, erase_root=False)
     if PlayerInOwnWorld():
         SetCameraAngle(x_angle=13.0600004196167, y_angle=-63.06999969482422)
@@ -386,7 +412,7 @@ def Event_19002502():
 
 
 @RestartOnRest(19002800)
-def Event_19002800():
+def EldenBeastDies():
     """Event 19002800"""
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=19002815))
@@ -394,20 +420,24 @@ def Event_19002800():
     GotoIfConditionTrue(Label.L0, input_condition=AND_1)
     if FlagEnabled(19000804):
         return
-    GotoIfFlagEnabled(Label.L0, flag=19000800)
-    
-    MAIN.Await(HealthValue(Characters.EldenBeast) <= 0)
+    GotoIfFlagEnabled(Label.L0, flag=Flags.EldenBeastDead)
+
+    AND_3.Add(HealthValue(Characters.EldenBeast) <= 0)
+    AND_3.Add(HealthValue(Characters.CLONE_EldenBeast) <= 0)
+    MAIN.Await(AND_3)
     
     Wait(4.0)
     PlaySoundEffect(19008000, 888880000, sound_type=SoundType.s_SFX)
     ChangeCamera(normal_camera_id=-1, locked_camera_id=-1)
-    
-    MAIN.Await(CharacterDead(Characters.EldenBeast))
+
+    AND_4.Add(CharacterDead(Characters.EldenBeast))
+    AND_4.Add(CharacterDead(Characters.CLONE_EldenBeast))
+    MAIN.Await(AND_4)
     
     Wait(4.5)
     KillBossAndDisplayBanner(character=Characters.EldenBeast, banner_type=BannerType.GodSlain)
-    EnableFlag(19000800)
-    EnableFlag(19001100)
+    EnableFlag(Flags.EldenBeastDead)
+    EnableFlag(Flags.EndingCanBeChosen)
     EnableFlag(9123)
     if PlayerNotInOwnWorld():
         return
@@ -427,7 +457,7 @@ def Event_19002800():
         cutscene_flags=0,
         move_to_region=19002814,
         map_id=19000000,
-        player_id=10000,
+        player_id=PLAYER,
         unk_20_24=19000,
         unk_24_25=False,
     )
@@ -449,33 +479,40 @@ def Event_19002800():
 
 
 @RestartOnRest(19002810)
-def Event_19002810():
-    """Event 19002810"""
-    GotoIfFlagDisabled(Label.L0, flag=19000800)
-    DisableCharacter(19005800)
-    DisableAnimations(19005800)
-    Kill(19005800)
-    DisableCharacter(19000811)
-    DisableAnimations(19000811)
-    DisableAsset(Assets.AEG301_240_1000)
+def RadagonBattleTrigger():
+    """Now treated as a separate fight from Elden Beast."""
+    GotoIfFlagDisabled(Label.L0, flag=Flags.RadagonDead)
+    DisableCharacter(Characters.Radagon)
+    DisableAnimations(Characters.Radagon)
+    Kill(Characters.Radagon)
+    DisableCharacter(Characters.CLONE_Radagon)
+    DisableAnimations(Characters.CLONE_Radagon)
+    Kill(Characters.CLONE_Radagon)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(19005800)
+    DisableAI(Characters.Radagon)
     DisableCharacter(Characters.Radagon)
     DisableAnimations(Characters.Radagon)
     SetCharacterFadeOnEnable(character=Characters.Radagon, state=False)
+    DisableAI(Characters.CLONE_Radagon)
+    DisableCharacter(Characters.CLONE_Radagon)
+    DisableAnimations(Characters.CLONE_Radagon)
+    SetCharacterFadeOnEnable(character=Characters.CLONE_Radagon, state=False)
     DisableAsset(Assets.AEG301_240_1000)
+
+    # Battle starts when host gets close to either Radagon.
     AND_1.Add(PlayerInOwnWorld())
-    AND_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=Characters.Radagon, radius=20.0))
-    
+    OR_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=Characters.Radagon, radius=20.0))
+    OR_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=Characters.CLONE_Radagon, radius=20.0))
+    AND_1.Add(OR_1)
     MAIN.Await(AND_1)
     
     if PlayerInOwnWorld():
         SetCameraAngle(x_angle=14.600000381469727, y_angle=-72.33000183105469)
-    EnableNetworkFlag(19000801)
-    EnableNetworkFlag(19002801)
+    EnableNetworkFlag(Flags.RadagonFirstTimeDone)  # was unused
+    EnableNetworkFlag(Flags.RadagonBattleStarted)
     EnableNetworkFlag(19002806)
     DisableAsset(Assets.AEG301_240_1000)
     Goto(Label.L2)
@@ -490,36 +527,73 @@ def Event_19002810():
     ForceAnimation(Characters.Radagon, 20010)
     EnableAI(Characters.Radagon)
     SetNetworkUpdateRate(Characters.Radagon, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.Radagon, name=902190000)
+
+    EnableCharacter(Characters.CLONE_Radagon)
+    EnableAnimations(Characters.CLONE_Radagon)
+    ForceAnimation(Characters.CLONE_Radagon, 20010)
+    EnableAI(Characters.CLONE_Radagon)
+    SetNetworkUpdateRate(Characters.CLONE_Radagon, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+
+    EnableBossHealthBar(Characters.Radagon, name=NameText.RadagonOfTheGoldenOrder, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_Radagon, name=NameText.CLONE_RadagonOfTheGoldenOrder, bar_slot=0)
 
 
 @RestartOnRest(19002811)
-def Event_19002811():
+def RadagonDies():
     """Event 19002811"""
-    if FlagEnabled(19000800):
+    if FlagEnabled(Flags.RadagonDead):
         return
     AND_1.Add(CharacterDead(Characters.Radagon))
-    
+    AND_1.Add(CharacterDead(Characters.CLONE_Radagon))
+
     MAIN.Await(AND_1)
     
     Wait(3.0)
-    EnableFlag(19002802)
-    EnableFlag(19000802)
+    # TODO: Elden Beast music should start straightaway if Radagon is already dead (no transition event).
+    EnableFlag(Flags.RadagonDead)  # will trigger Elden Beast fight immediately
 
 
 @RestartOnRest(19002812)
-def Event_19002812():
+def EldenBeastBattleTrigger():
     """Event 19002812"""
-    if FlagEnabled(19000800):
-        return
-    GotoIfThisEventSlotFlagEnabled(Label.L0)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.EldenBeastDead)
+    DisableCharacter(Characters.EldenBeast)
+    DisableAnimations(Characters.EldenBeast)
+    Kill(Characters.EldenBeast)
+    DisableCharacter(Characters.CLONE_EldenBeast)
+    DisableAnimations(Characters.CLONE_EldenBeast)
+    Kill(Characters.CLONE_EldenBeast)
+    DisableCharacter(Characters.Unknown)  # TODO: ?
+    DisableAnimations(Characters.Unknown)
+    DisableAsset(Assets.AEG301_240_1000)
+    End()
+
+    # --- Label 0 --- #
+    DefineLabel(0)
+    GotoIfThisEventSlotFlagEnabled(Label.L1)  # fight already started
+
+    DisableAI(Characters.EldenBeast)
+    DisableCharacter(Characters.EldenBeast)
+    DisableAnimations(Characters.EldenBeast)
+    DisableAI(Characters.CLONE_EldenBeast)
+    DisableCharacter(Characters.CLONE_EldenBeast)
+    DisableAnimations(Characters.CLONE_EldenBeast)
+    DisableCharacter(Characters.Unknown)  # TODO: ?
+    DisableAnimations(Characters.Unknown)
+    DisableAsset(Assets.AEG301_240_1000)
+
     DisableHealthBar(Characters.EldenBeast)
+    DisableHealthBar(Characters.CLONE_EldenBeast)
     AND_1.Add(PlayerInOwnWorld())
-    AND_1.Add(FlagEnabled(19002802))
+    AND_1.Add(FlagEnabled(Flags.RadagonDead))
+    AND_1.Add(FlagEnabled(Flags.StonePlatformEntered))
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.EldenBeast, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_EldenBeast, attacker=PLAYER))
+
     MAIN.Await(OR_1)
+
+    # TODO: Will need to make sure that summons can enter Elden Beast fight properly as well.
     
     SetPlayerPositionDisplay(
         state=False,
@@ -533,9 +607,9 @@ def Event_19002812():
         PlayCutsceneToPlayerAndWarp(
             cutscene_id=19000000,
             cutscene_flags=0,
-            move_to_region=19002812,
+            move_to_region=RegionPoints.HostPositionAfterEldenBeastCutscene,
             map_id=19000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
@@ -543,9 +617,9 @@ def Event_19002812():
         PlayCutsceneToPlayerAndWarp(
             cutscene_id=19000000,
             cutscene_flags=0,
-            move_to_region=19002813,
+            move_to_region=RegionPoints.SummonPositionAfterEldenBeastCutscene,
             map_id=19000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
@@ -553,36 +627,51 @@ def Event_19002812():
     if PlayerInOwnWorld():
         SetCameraAngle(x_angle=-11.329999923706055, y_angle=-25.829999923706055)
     if PlayerInOwnWorld():
+        # So summons will skip the trigger/cutscene above.
         SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
 
-    # --- Label 0 --- #
-    DefineLabel(0)
+    # --- Label 1 --- #
+    DefineLabel(1)
     SetBackreadStateAlternate(35000, True)
     SetNetworkUpdateRate(35000, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryFiveFrames)
     Move(35000, destination=19002813, destination_type=CoordEntityType.Region, copy_draw_parent=Characters.EldenBeast)
     Move(
-        Characters.TalkDummy3,
+        Characters.TalkDummy3,  # TODO: Needed for clone? Probably not...
         destination=19002813,
         destination_type=CoordEntityType.Region,
         copy_draw_parent=Characters.EldenBeast,
     )
     SetCharacterTalkRange(character=Characters.TalkDummy3, distance=200.0)
+
     EnableCharacter(Characters.EldenBeast)
     EnableAnimations(Characters.EldenBeast)
-    EnableAI(19005800)
+    EnableAI(Characters.EldenBeast)  # changed from entity group
     ForceAnimation(Characters.EldenBeast, 20000)
-    EnableBossHealthBar(Characters.EldenBeast, name=902200000)
+
+    EnableCharacter(Characters.CLONE_EldenBeast)
+    EnableAnimations(Characters.CLONE_EldenBeast)
+    EnableAI(Characters.CLONE_EldenBeast)
+    ForceAnimation(Characters.CLONE_EldenBeast, 20000)
+
+    # TODO: Not sure how to manage this unknown entity. It's never disabled during the Radagon fight, so I assume
+    #  I can just leave it.
+    # EnableCharacter(Characters.Unknown)
+    # EnableAnimations(Characters.Unknown)
+
+    EnableBossHealthBar(Characters.EldenBeast, name=NameText.EldenBeast, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_EldenBeast, name=NameText.CLONE_EldenBeast, bar_slot=0)
+
     ChangeCamera(normal_camera_id=2200, locked_camera_id=2200)
     WaitFramesAfterCutscene(frames=1)
     AttachAssetToCharacter(character=Characters.TalkDummy3, model_point=10, asset=Assets.AEG099_052_9000)
 
 
 @RestartOnRest(19002820)
-def Event_19002820():
-    """Event 19002820"""
+def EldenBeastRandomFlagRequest():
+    """UNUSED"""
     if PlayerNotInOwnWorld():
         return
-    if FlagEnabled(19000800):
+    if FlagEnabled(Flags.EldenBeastDead):
         return
     AND_1.Add(FlagRangeAllDisabled(flag_range=(19002830, 19002834)))
     AND_1.Add(CharacterHasSpecialEffect(Characters.EldenBeast, 18600))
@@ -595,24 +684,36 @@ def Event_19002820():
 
 
 @RestartOnRest(19002821)
-def Event_19002821():
-    """Event 19002821"""
-    if FlagEnabled(19000800):
+def EldenBeastSpecialAttackManager():
+    """UNUSED"""
+    if FlagEnabled(Flags.EldenBeastDead):
         return
-    Event_19002822(0, flag=19002830, model_point=110, model_point_1=111, model_point_2=112, model_point_3=113)
-    Event_19002822(1, flag=19002831, model_point=111, model_point_1=112, model_point_2=113, model_point_3=114)
-    Event_19002822(2, flag=19002832, model_point=112, model_point_1=113, model_point_2=114, model_point_3=115)
-    Event_19002822(3, flag=19002833, model_point=113, model_point_1=114, model_point_2=115, model_point_3=116)
-    Event_19002822(4, 19002834, 114, 115, 116, 117)
+    EldenBeastSpecialAttack(
+        0, required_flag=19002830, model_point=110, model_point_1=111, model_point_2=112, model_point_3=113
+    )
+    EldenBeastSpecialAttack(
+        1, required_flag=19002831, model_point=111, model_point_1=112, model_point_2=113, model_point_3=114
+    )
+    EldenBeastSpecialAttack(
+        2, required_flag=19002832, model_point=112, model_point_1=113, model_point_2=114, model_point_3=115
+    )
+    EldenBeastSpecialAttack(
+        3, required_flag=19002833, model_point=113, model_point_1=114, model_point_2=115, model_point_3=116
+    )
+    EldenBeastSpecialAttack(
+        4, required_flag=19002834, model_point=114, model_point_1=115, model_point_2=116, model_point_3=117
+    )
 
 
 @RestartOnRest(19002822)
-def Event_19002822(_, flag: uint, model_point: int, model_point_1: int, model_point_2: int, model_point_3: int):
-    """Event 19002822"""
-    if FlagEnabled(19000800):
+def EldenBeastSpecialAttack(
+    _, required_flag: uint, model_point: int, model_point_1: int, model_point_2: int, model_point_3: int
+):
+    """UNUSED"""
+    if FlagEnabled(Flags.EldenBeastDead):
         return
     AND_1.Add(PlayerInOwnWorld())
-    AND_1.Add(FlagEnabled(flag))
+    AND_1.Add(FlagEnabled(required_flag))
     
     MAIN.Await(AND_1)
     
@@ -650,23 +751,25 @@ def Event_19002822(_, flag: uint, model_point: int, model_point_1: int, model_po
     ForceAnimation(19000803, 3000, skip_transition=True)
     ForceAnimation(19000804, 3000, skip_transition=True)
     Wait(2.0)
-    DisableFlag(flag)
+    DisableFlag(required_flag)
     Restart()
 
 
 @RestartOnRest(19002830)
-def Event_19002830():
+def EldenBeastCameraChange():
     """Event 19002830"""
     DisableNetworkSync()
-    if FlagEnabled(19000800):
+    if FlagEnabled(Flags.EldenBeastDead):
         return
-    AND_1.Add(CharacterHasSpecialEffect(Characters.EldenBeast, 18606))
-    
-    MAIN.Await(AND_1)
+    OR_1.Add(CharacterHasSpecialEffect(Characters.EldenBeast, 18606))
+    OR_1.Add(CharacterHasSpecialEffect(Characters.CLONE_EldenBeast, 18606))
+
+    MAIN.Await(OR_1)
     
     ChangeCamera(normal_camera_id=2201, locked_camera_id=2201)
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(Characters.EldenBeast, 18606))
-    
+    AND_2.Add(CharacterDoesNotHaveSpecialEffect(Characters.CLONE_EldenBeast, 18606))
+
     MAIN.Await(AND_2)
     
     ChangeCamera(normal_camera_id=2200, locked_camera_id=2200)
@@ -674,30 +777,36 @@ def Event_19002830():
 
 
 @RestartOnRest(19002849)
-def Event_19002849():
+def EldenBeastCommonEvents():
     """Event 19002849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=19000800,
-        entity=Assets.AEG099_001_9000,
-        region=19002800,
-        flag_1=19002805,
-        character=19005800,
+        boss_dead_flag=Flags.EldenBeastDead,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=19002800,
+        host_entered_fog_flag=19002805,
+        boss_characters=CharacterGroups.RadagonEldenBeast,
         action_button_id=10000,
-        left=19002801,
-        region_1=0,
+        first_time_done_flag=Flags.RadagonBattleStarted,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=19000800,
-        entity=Assets.AEG099_001_9000,
-        region=19002800,
-        flag_1=19002805,
-        flag_2=19002806,
+        boss_dead_flag=Flags.EldenBeastDead,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=19002800,
+        host_entered_fog_flag=19002805,
+        summon_entered_fog_flag=19002806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=19000800, asset=Assets.AEG099_001_9000, model_point=5, right=19002801)
-    CommonFunc_BossMusicPhaseTransition(0, 19000800, 219000, 19002805, 19002806, 0, 19002802, 0, 1)
+    CommonFunc_ControlBossFog(
+        0,
+        flag=Flags.EldenBeastDead,
+        fog_asset=Assets.AEG099_001_9000,
+        model_point=5,
+        first_time_done_flag=Flags.RadagonBattleStarted,
+    )
+    CommonFunc_ControlBossMusic(0, Flags.EldenBeastDead, 219000, 19002805, 19002806, 0, Flags.RadagonDead, 0, 1)
 
 
 @RestartOnRest(19002900)
@@ -707,7 +816,7 @@ def Event_19002900():
     
     MAIN.Await(ActionButtonParamActivated(action_button_id=9000, entity=Assets.AEG099_090_9000))
     
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
         destination_type=CoordEntityType.Region,
         destination=19002900,

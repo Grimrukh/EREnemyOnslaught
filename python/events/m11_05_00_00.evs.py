@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m11_05_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=11050002, asset=Assets.AEG099_060_9002, enemy_block_distance=8.0)
@@ -30,7 +30,7 @@ def Constructor():
     RegisterGrace(grace_flag=11050005, asset=Assets.AEG099_060_9005, enemy_block_distance=8.0)
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
-        flag=11050800,
+        flag=Flags.HoarahLouxDead,
         grace_flag=11050000,
         character=Characters.TalkDummy0,
         asset=Assets.AEG099_060_9000,
@@ -38,46 +38,66 @@ def Constructor():
     )
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
-        flag=11050850,
+        flag=Flags.SirGideonOfnirDead,
         grace_flag=11050001,
         character=Characters.TalkDummy1,
         asset=Assets.AEG099_060_9001,
         enemy_block_distance=8.0,
     )
-    Event_11052800()
-    Event_11052810()
-    Event_11052811()
-    Event_11052830()
-    Event_11052849()
-    Event_11052850()
-    Event_11052860()
-    Event_11052861()
-    Event_11052859()
+    
+    # HOARAH LOUX
+    HoarahLouxDies()
+    GodfreyHoarahLouxBattleTrigger()
+    # TODO: Changing one boss health bar might clear both. Will need a flag to track each name change in that case.
+    HoarahLouxPhaseTwoTransition(
+        0,
+        godfrey=Characters.Godfrey,
+        hoarah_loux=Characters.HoarahLoux,
+        boss_name=NameText.HoarahLoux,
+        bar_slot=1,
+    )
+    HoarahLouxPhaseTwoTransition(  # 11052812
+        1,
+        godfrey=Characters.CLONE_Godfrey,
+        hoarah_loux=Characters.CLONE_HoarahLoux,
+        boss_name=NameText.CLONE_HoarahLoux,
+        bar_slot=0,
+    )
+    HoarahLouxCameraChange()
+    GodfreyHoarahLouxCommonEvents()
+
+    # SIR GIDEON OFNIR
+    SirGideonOfnirDies()
+    SirGideonOfnirBattleTrigger()
+    SirGideonOfnirPhaseTwoTransition()
+    SirGideonOfnirCommonEvents()
+    
+    # SHABRIRI SUMMON
     CommonFunc_90005780(
         0,
-        flag=11050800,
+        flag=Flags.HoarahLouxDead,
         summon_flag=11052160,
         dismissal_flag=11052161,
-        character=Characters.Human,
+        character=Characters.Shabriri,
         sign_type=20,
         region=11052160,
         right=11059350,
         unknown=1,
         right_1=0,
     )
-    CommonFunc_90005781(0, flag=11050800, flag_1=11052160, flag_2=11052161, character=Characters.Human)
+    CommonFunc_90005781(0, flag=Flags.HoarahLouxDead, flag_1=11052160, flag_2=11052161, character=Characters.Shabriri)
     CommonFunc_90005784(
         0,
         flag=11052160,
         flag_1=11052805,
-        character=Characters.Human,
+        character=Characters.Shabriri,
         region=11052800,
         region_1=11052805,
         animation=0,
     )
     CommonFunc_90005780(
         0,
-        flag=11050800,
+        flag=Flags.HoarahLouxDead,
         summon_flag=11052164,
         dismissal_flag=11052165,
         character=Characters.NepheliLoux,
@@ -87,7 +107,11 @@ def Constructor():
         unknown=1,
         right_1=0,
     )
-    CommonFunc_90005781(0, flag=11050800, flag_1=11052164, flag_2=11052165, character=Characters.NepheliLoux)
+    
+    # NEPHELI LOUX SUMMON
+    CommonFunc_90005781(
+        0, flag=Flags.HoarahLouxDead, flag_1=11052164, flag_2=11052165, character=Characters.NepheliLoux
+    )
     CommonFunc_90005784(
         0,
         flag=11052164,
@@ -97,6 +121,7 @@ def Constructor():
         region_1=11052805,
         animation=0,
     )
+    
     CommonFunc_90005501(
         0,
         flag=11050525,
@@ -174,11 +199,11 @@ def Constructor():
         seconds=0.0,
         seconds_1=0.0,
     )
-    Event_11053700(
+    ControlHoarahLouxTalkRange(
         0,
         character=Characters.Godfrey,
         character_1=Characters.HoarahLoux,
-        flag=11050800,
+        flag=Flags.HoarahLouxDead,
         flag_1=11052805,
         distance=90.0,
     )
@@ -226,7 +251,7 @@ def Constructor():
     )
     CommonFunc_90005706(0, character=Characters.Commoner1, animation_id=930025, left=0)
     CommonFunc_90005706(0, character=Characters.Commoner0, animation_id=930010, left=0)
-    Event_11053710(0, character=Characters.SirGideonOfnir0)
+    Event_11053710(0, character=Characters.SirGideonOfnir)
     Event_11053720()
     CommonFunc_90005703(
         0,
@@ -252,7 +277,7 @@ def Constructor():
     Event_11053731(0, 11050730)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.Goldmask)
@@ -348,7 +373,7 @@ def Preconstructor():
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 11050302, 30002, 20002, 11052302, 5.0, 0.0, 0, 0, 0, 0)
 
 
-@NeverRestart(11052500)
+@ContinueOnRest(11052500)
 def Event_11052500():
     """Event 11052500"""
     if PlayerNotInOwnWorld():
@@ -361,7 +386,7 @@ def Event_11052500():
     
     MAIN.Await(AND_1)
     
-    PlayCutscene(13000060, cutscene_flags=0, player_id=10000)
+    PlayCutscene(13000060, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     EnableFlag(11050500)
     ForceAnimation(PLAYER, 0)
@@ -369,7 +394,7 @@ def Event_11052500():
     DisplayAreaWelcomeMessage(text=11050)
 
 
-@NeverRestart(11052510)
+@ContinueOnRest(11052510)
 def Event_11052510():
     """Event 11052510"""
     CommonFunc_90005500(
@@ -448,27 +473,31 @@ def Event_11052692():
     DisableAssetActivation(Assets.AEG227_052_0501, obj_act_id=-1)
 
 
-@NeverRestart(11052800)
-def Event_11052800():
+@ContinueOnRest(11052800)
+def HoarahLouxDies():
     """Event 11052800"""
-    if FlagEnabled(11050800):
+    if FlagEnabled(Flags.HoarahLouxDead):
         return
     
-    MAIN.Await(HealthValue(Characters.HoarahLoux) <= 0)
+    # Hoarah Loux is not immortal, so we can wait for both to die.
+    AND_1.Await(HealthValue(Characters.HoarahLoux) <= 0)
+    AND_1.Await(HealthValue(Characters.CLONE_HoarahLoux) <= 0)
+    MAIN.Await(AND_1)
     
     Wait(4.0)
     PlaySoundEffect(11058000, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(PlayerInOwnWorld())
     AND_2.Add(CharacterDead(Characters.HoarahLoux))
+    AND_2.Add(CharacterDead(Characters.CLONE_HoarahLoux))
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9646))
     OR_2.Add(AND_2)
-    OR_2.Add(FlagEnabled(11050800))
+    OR_2.Add(FlagEnabled(Flags.HoarahLouxDead))
     
     MAIN.Await(OR_2)
     
     KillBossAndDisplayBanner(character=Characters.HoarahLoux, banner_type=BannerType.LegendFelled)
-    EnableFlag(11050800)
-    EnableNetworkFlag(11050800)
+    EnableFlag(Flags.HoarahLouxDead)
+    EnableNetworkFlag(Flags.HoarahLouxDead)
     EnableFlag(9107)
     if PlayerInOwnWorld():
         EnableFlag(61107)
@@ -481,22 +510,26 @@ def Event_11052800():
 
 
 @RestartOnRest(11052810)
-def Event_11052810():
+def GodfreyHoarahLouxBattleTrigger():
     """Event 11052810"""
-    GotoIfFlagDisabled(Label.L0, flag=11050800)
-    DisableCharacter(11055800)
-    DisableAnimations(11055800)
-    Kill(11055800)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.HoarahLouxDead)
+    DisableCharacter(CharacterGroups.GodfreyHoarahLouxBoss)
+    DisableAnimations(CharacterGroups.GodfreyHoarahLouxBoss)
+    Kill(CharacterGroups.GodfreyHoarahLouxBoss)
     DisableAsset(Assets.AEG228_076_3500)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(11055800)
+    DisableAI(CharacterGroups.GodfreyHoarahLouxBoss)
     DisableGravity(Characters.HoarahLoux)
+    DisableGravity(Characters.CLONE_HoarahLoux)
     DisableAnimations(Characters.HoarahLoux)
+    DisableAnimations(Characters.CLONE_HoarahLoux)
     EnableImmortality(Characters.Godfrey)
+    EnableImmortality(Characters.CLONE_Godfrey)
     DisableAnimations(Characters.Godfrey)
+    DisableAnimations(Characters.CLONE_Godfrey)
     OR_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     OR_15.Add(CharacterType(PLAYER, character_type=CharacterType.Invader))
     OR_15.Add(CharacterType(PLAYER, character_type=CharacterType.Invader2))
@@ -504,9 +537,12 @@ def Event_11052810():
     OR_15.Add(CharacterType(PLAYER, character_type=CharacterType.BluePhantom))
     if OR_15:
         return
-    GotoIfFlagEnabled(Label.L1, flag=11050801)
+    
+    GotoIfFlagEnabled(Label.L1, flag=Flags.GodfreyHoarahLouxFirstTimeDone)
     DisableAnimations(Characters.Godfrey)
+    DisableAnimations(Characters.CLONE_Godfrey)
     ForceAnimation(Characters.Godfrey, 30010)
+    ForceAnimation(Characters.CLONE_Godfrey, 30010)
     AND_1.Add(FlagEnabled(11052805))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=11052801))
     
@@ -521,28 +557,40 @@ def Event_11052810():
             cutscene_flags=0,
             move_to_region=11052811,
             map_id=11050000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
     else:
-        PlayCutscene(11050010, cutscene_flags=0, player_id=10000)
+        PlayCutscene(11050010, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
-    EnableNetworkFlag(11050801)
+    EnableNetworkFlag(Flags.GodfreyHoarahLouxFirstTimeDone)
     if PlayerNotInOwnWorld():
         SetBossMusic(bgm_boss_conv_param_id=472000, state=BossMusicState.Stop2)
     if PlayerInOwnWorld():
         SetCameraAngle(x_angle=7.5, y_angle=-37.15999984741211)
     DisableAsset(Assets.AEG228_076_3500)
+
     EnableCharacter(Characters.Godfrey)
     EnableAnimations(Characters.Godfrey)
     Move(
         Characters.Godfrey,
-        destination=11052815,
+        destination=RegionPoints.GodfreyPostCutscenePosition,  # TODO: Create
         destination_type=CoordEntityType.Region,
         copy_draw_parent=Characters.Godfrey,
     )
     ForceAnimation(Characters.Godfrey, 20020)
+    
+    EnableCharacter(Characters.CLONE_Godfrey)
+    EnableAnimations(Characters.CLONE_Godfrey)
+    Move(
+        Characters.CLONE_Godfrey,
+        destination=RegionPoints.CLONE_GodfreyPostCutscenePosition,  # TODO: Create
+        destination_type=CoordEntityType.Region,
+        copy_draw_parent=Characters.CLONE_Godfrey,
+    )
+    ForceAnimation(Characters.CLONE_Godfrey, 20020)
+
     Goto(Label.L2)
 
     # --- Label 1 --- #
@@ -556,82 +604,94 @@ def Event_11052810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAnimations(Characters.Godfrey)
+    EnableAnimations(Characters.CLONE_Godfrey)
     EnableAI(Characters.Godfrey)
+    EnableAI(Characters.CLONE_Godfrey)
     SetNetworkUpdateRate(Characters.Godfrey, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_Godfrey, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     ReferDamageToEntity(Characters.Godfrey, target_entity=Characters.HoarahLoux)
+    ReferDamageToEntity(Characters.CLONE_Godfrey, target_entity=Characters.CLONE_HoarahLoux)
     DisableHealthBar(Characters.Godfrey)
-    EnableBossHealthBar(Characters.HoarahLoux, name=904720000)
+    DisableHealthBar(Characters.CLONE_Godfrey)
+    EnableBossHealthBar(Characters.HoarahLoux, name=NameText.GodfreyFirstEldenLord, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_HoarahLoux, name=NameText.CLONE_GodfreyFirstEldenLord, bar_slot=0)
 
 
 @RestartOnRest(11052811)
-def Event_11052811():
+def HoarahLouxPhaseTwoTransition(_, godfrey: uint, hoarah_loux: uint, boss_name: int, bar_slot: short):
     """Event 11052811"""
-    if FlagEnabled(11050800):
+    if FlagEnabled(Flags.HoarahLouxDead):
         return
-    AND_1.Add(HealthValue(Characters.Godfrey) <= 1)
+    
+    AND_1.Add(HealthValue(godfrey) <= 1)
     
     MAIN.Await(AND_1)
     
-    DisableAnimations(Characters.Godfrey)
+    DisableAnimations(godfrey)
     if PlayerInOwnWorld():
         PlayCutsceneToPlayerAndWarp(
             cutscene_id=11050020,
             cutscene_flags=0,
-            move_to_region=11052816,
+            move_to_region=RegionPoints.PlayerPostHoarahLouxCutscenePosition,
             map_id=11050000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
     else:
-        PlayCutscene(11050020, cutscene_flags=0, player_id=10000)
+        PlayCutscene(11050020, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
-    EnableFlag(11052802)
-    DisableCharacter(Characters.Godfrey)
+    EnableFlag(Flags.HoarahLouxInPhaseTwo)  # only used for music
+    DisableCharacter(godfrey)
     if PlayerInOwnWorld():
         SetCameraAngle(x_angle=8.09000015258789, y_angle=-37.15999984741211)
-    EnableCharacter(Characters.HoarahLoux)
+    EnableCharacter(hoarah_loux)
     WaitFrames(frames=1)
-    EnableGravity(Characters.HoarahLoux)
+    EnableGravity(hoarah_loux)
     Move(
-        Characters.HoarahLoux,
-        destination=11052815,
+        hoarah_loux,
+        destination=RegionPoints.HoarahLouxPostCutscenePosition,  # both can use this
         destination_type=CoordEntityType.Region,
-        copy_draw_parent=Characters.HoarahLoux,
+        copy_draw_parent=hoarah_loux,
     )
     WaitFrames(frames=1)
-    EnableAnimations(Characters.HoarahLoux)
-    ForceAnimation(Characters.HoarahLoux, 20020)
-    EnableAI(Characters.HoarahLoux)
-    EnableBossHealthBar(Characters.HoarahLoux, name=904720001)
+    EnableAnimations(hoarah_loux)
+    ForceAnimation(hoarah_loux, 20020)
+    EnableAI(hoarah_loux)
+    EnableBossHealthBar(hoarah_loux, name=boss_name, bar_slot=bar_slot)
 
 
 @RestartOnRest(11052830)
-def Event_11052830():
+def HoarahLouxCameraChange():
     """Event 11052830"""
     DisableNetworkSync()
-    if FlagEnabled(11050800):
+    if FlagEnabled(Flags.HoarahLouxDead):
         return
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagEnabled(11052805))
-    AND_1.Add(FlagDisabled(11050800))
+    AND_1.Add(FlagDisabled(Flags.HoarahLouxDead))
     AND_2.Add(PlayerNotInOwnWorld())
     AND_2.Add(FlagEnabled(11052806))
-    AND_2.Add(FlagDisabled(11050800))
+    AND_2.Add(FlagDisabled(Flags.HoarahLouxDead))
     OR_3.Add(AND_1)
     OR_3.Add(AND_2)
     
     MAIN.Await(OR_3)
     
     ChangeCamera(normal_camera_id=4721, locked_camera_id=4721)
-    AND_4.Add(CharacterHasSpecialEffect(Characters.HoarahLoux, 12298))
-    AND_4.Add(FlagDisabled(11050800))
+    OR_1.Add(CharacterHasSpecialEffect(Characters.HoarahLoux, 12298))
+    OR_1.Add(CharacterHasSpecialEffect(Characters.CLONE_HoarahLoux, 12298))
+    AND_4.Add(OR_1)
+    AND_4.Add(FlagDisabled(Flags.HoarahLouxDead))
     
     MAIN.Await(AND_4)
     
     ChangeCamera(normal_camera_id=4725, locked_camera_id=4725)
-    AND_4.Add(CharacterHasSpecialEffect(Characters.HoarahLoux, 12298))
-    AND_4.Add(FlagDisabled(11050800))
+
+    OR_1.Add(CharacterHasSpecialEffect(Characters.HoarahLoux, 12298))
+    OR_1.Add(CharacterHasSpecialEffect(Characters.CLONE_HoarahLoux, 12298))
+    AND_4.Add(OR_1)
+    AND_4.Add(FlagDisabled(Flags.HoarahLouxDead))
     
     MAIN.Await(not AND_4)
     
@@ -639,75 +699,97 @@ def Event_11052830():
 
 
 @RestartOnRest(11052849)
-def Event_11052849():
+def GodfreyHoarahLouxCommonEvents():
     """Event 11052849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=11050800,
-        entity=Assets.AEG099_001_9001,
-        region=11052800,
-        flag_1=11052805,
-        character=11055800,
+        boss_dead_flag=Flags.HoarahLouxDead,
+        fog_asset=Assets.AEG099_001_9001,
+        fog_region=11052800,
+        host_entered_fog_flag=11052805,
+        boss_characters=CharacterGroups.GodfreyHoarahLouxBoss,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=11050800,
-        entity=Assets.AEG099_001_9001,
-        region=11052800,
-        flag_1=11052805,
-        flag_2=11052806,
+        boss_dead_flag=Flags.HoarahLouxDead,
+        fog_asset=Assets.AEG099_001_9001,
+        fog_region=11052800,
+        host_entered_fog_flag=11052805,
+        summon_entered_fog_flag=11052806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=11050800, asset=Assets.AEG099_001_9001, model_point=17, right=0)
-    CommonFunc_9005813(0, flag=11050800, asset=Assets.AEG099_001_9002, model_point=18, right=11050801, model_point_1=18)
-    CommonFunc_BossMusicPhaseTransition(0, 11050800, 472000, 11052805, 11052806, 11050801, 11052802, 1, 1)
+    CommonFunc_ControlBossFog(0, flag=Flags.HoarahLouxDead, fog_asset=Assets.AEG099_001_9001, model_point=17, first_time_done_flag=0)
+    CommonFunc_9005813(
+        0, 
+        flag=Flags.HoarahLouxDead, 
+        asset=Assets.AEG099_001_9002, 
+        model_point=18, 
+        right=Flags.GodfreyHoarahLouxFirstTimeDone, 
+        model_point_1=18,
+    )
+    CommonFunc_ControlBossMusic(
+        0,
+        Flags.HoarahLouxDead,
+        472000, 
+        11052805, 
+        11052806, 
+        Flags.GodfreyHoarahLouxFirstTimeDone, 
+        Flags.HoarahLouxInPhaseTwo, 
+        1, 
+        1,
+    )
 
 
 @RestartOnRest(11052850)
-def Event_11052850():
+def SirGideonOfnirDies():
     """Event 11052850"""
-    if FlagEnabled(11050850):
+    if FlagEnabled(Flags.SirGideonOfnirDead):
         return
     
-    MAIN.Await(HealthValue(Characters.SirGideonOfnir0) <= 0)
+    AND_1.Add(HealthValue(Characters.SirGideonOfnir) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_SirGideonOfnir) <= 0)
+    MAIN.Await(AND_1)
     
     Wait(4.0)
     PlaySoundEffect(11058050, 888880000, sound_type=SoundType.s_SFX)
     AddSpecialEffect(20000, 1899)
     AND_2.Add(PlayerInOwnWorld())
-    AND_2.Add(CharacterDead(Characters.SirGideonOfnir0))
+    AND_2.Add(CharacterDead(Characters.SirGideonOfnir))
+    AND_2.Add(CharacterDead(Characters.CLONE_SirGideonOfnir))
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9646))
     OR_2.Add(AND_2)
-    OR_2.Add(FlagEnabled(11050850))
+    OR_2.Add(FlagEnabled(Flags.SirGideonOfnirDead))
     
     MAIN.Await(OR_2)
     
-    KillBossAndDisplayBanner(character=Characters.SirGideonOfnir0, banner_type=BannerType.GreatEnemyFelled)
-    SetBackreadStateAlternate(Characters.SirGideonOfnir0, False)
-    EnableNetworkFlag(11050850)
+    KillBossAndDisplayBanner(character=Characters.SirGideonOfnir, banner_type=BannerType.GreatEnemyFelled)
+    SetBackreadStateAlternate(Characters.SirGideonOfnir, False)
+    SetBackreadStateAlternate(Characters.CLONE_SirGideonOfnir, False)
+    EnableNetworkFlag(Flags.SirGideonOfnirDead)
     EnableFlag(9106)
     if PlayerInOwnWorld():
         EnableFlag(61106)
 
 
 @RestartOnRest(11052860)
-def Event_11052860():
+def SirGideonOfnirBattleTrigger():
     """Event 11052860"""
-    GotoIfFlagDisabled(Label.L0, flag=11050850)
-    DisableCharacter(11055850)
-    DisableAnimations(11055850)
-    Kill(11055850)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.SirGideonOfnirDead)
+    DisableCharacter(CharacterGroups.SirGideonOfnirBoss)
+    DisableAnimations(CharacterGroups.SirGideonOfnirBoss)
+    Kill(CharacterGroups.SirGideonOfnirBoss)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableCharacter(11055851)
-    DisableAnimations(11055851)
-    DisableAI(11055850)
-    SetBackreadStateAlternate(Characters.SirGideonOfnir0, True)
+    DisableCharacter(CharacterGroups.SirGideonOfnirVariants)
+    DisableAnimations(CharacterGroups.SirGideonOfnirVariants)
+    DisableAI(CharacterGroups.SirGideonOfnirBoss)
+    SetBackreadStateAlternate(Characters.SirGideonOfnir, True)
+    SetBackreadStateAlternate(Characters.CLONE_SirGideonOfnir, True)
     AND_8.Add(FlagEnabled(9120))
     AND_8.Add(FlagEnabled(9122))
     AND_8.Add(FlagEnabled(9112))
@@ -738,77 +820,110 @@ def Event_11052860():
     GotoIfConditionTrue(Label.L2, input_condition=AND_2)
     Goto(Label.L1)
 
+    # Choose a Gideon variant to copy player (CharaInit) data from, for spells, etc.
+
     # --- Label 2 --- #
     DefineLabel(2)
     CopyPlayerCharacterData(
-        source_character=Characters.SirGideonOfnir1,
-        dest_characterentity=Characters.SirGideonOfnir0,
+        source_character=Characters.SirGideonOfnirVariant1,
+        dest_characterentity=Characters.SirGideonOfnir,
+    )
+    CopyPlayerCharacterData(
+        source_character=Characters.SirGideonOfnirVariant1,
+        dest_characterentity=Characters.CLONE_SirGideonOfnir,
     )
     Goto(Label.L1)
 
     # --- Label 3 --- #
     DefineLabel(3)
     CopyPlayerCharacterData(
-        source_character=Characters.SirGideonOfnir2,
-        dest_characterentity=Characters.SirGideonOfnir0,
+        source_character=Characters.SirGideonOfnirVariant2,
+        dest_characterentity=Characters.SirGideonOfnir,
+    )
+    CopyPlayerCharacterData(
+        source_character=Characters.SirGideonOfnirVariant2,
+        dest_characterentity=Characters.CLONE_SirGideonOfnir,
     )
     Goto(Label.L1)
 
     # --- Label 4 --- #
     DefineLabel(4)
     CopyPlayerCharacterData(
-        source_character=Characters.SirGideonOfnir3,
-        dest_characterentity=Characters.SirGideonOfnir0,
+        source_character=Characters.SirGideonOfnirVariant3,
+        dest_characterentity=Characters.SirGideonOfnir,
+    )
+    CopyPlayerCharacterData(
+        source_character=Characters.SirGideonOfnirVariant3,
+        dest_characterentity=Characters.CLONE_SirGideonOfnir,
     )
     Goto(Label.L1)
 
     # --- Label 5 --- #
     DefineLabel(5)
     CopyPlayerCharacterData(
-        source_character=Characters.SirGideonOfnir4,
-        dest_characterentity=Characters.SirGideonOfnir0,
+        source_character=Characters.SirGideonOfnirVariant4,
+        dest_characterentity=Characters.SirGideonOfnir,
+    )
+    CopyPlayerCharacterData(
+        source_character=Characters.SirGideonOfnirVariant4,
+        dest_characterentity=Characters.CLONE_SirGideonOfnir,
     )
     Goto(Label.L1)
 
     # --- Label 6 --- #
     DefineLabel(6)
     CopyPlayerCharacterData(
-        source_character=Characters.SirGideonOfnir5,
-        dest_characterentity=Characters.SirGideonOfnir0,
+        source_character=Characters.SirGideonOfnirVariant5,
+        dest_characterentity=Characters.SirGideonOfnir,
+    )
+    CopyPlayerCharacterData(
+        source_character=Characters.SirGideonOfnirVariant5,
+        dest_characterentity=Characters.CLONE_SirGideonOfnir,
     )
     Goto(Label.L1)
 
     # --- Label 7 --- #
     DefineLabel(7)
     CopyPlayerCharacterData(
-        source_character=Characters.SirGideonOfnir6,
-        dest_characterentity=Characters.SirGideonOfnir0,
+        source_character=Characters.SirGideonOfnirVariant6,
+        dest_characterentity=Characters.SirGideonOfnir,
+    )
+    CopyPlayerCharacterData(
+        source_character=Characters.SirGideonOfnirVariant6,
+        dest_characterentity=Characters.CLONE_SirGideonOfnir,
     )
     Goto(Label.L1)
 
     # --- Label 8 --- #
     DefineLabel(8)
     CopyPlayerCharacterData(
-        source_character=Characters.SirGideonOfnir7,
-        dest_characterentity=Characters.SirGideonOfnir0,
+        source_character=Characters.SirGideonOfnirVariant7,
+        dest_characterentity=Characters.SirGideonOfnir,
+    )
+    CopyPlayerCharacterData(
+        source_character=Characters.SirGideonOfnirVariant7,
+        dest_characterentity=Characters.CLONE_SirGideonOfnir,
     )
     Goto(Label.L1)
 
     # --- Label 1 --- #
     DefineLabel(1)
-    GotoIfFlagEnabled(Label.L1, flag=11050851)
-    ForceAnimation(Characters.SirGideonOfnir0, 90102, loop=True)
+    GotoIfFlagEnabled(Label.L1, flag=Flags.SirGideonOfnirFirstTimeDone)
+    ForceAnimation(Characters.SirGideonOfnir, 90102, loop=True)
+    ForceAnimation(Characters.CLONE_SirGideonOfnir, 90102, loop=True)
     if PlayerInOwnWorld():
         DisableFlag(11050854)
     AND_11.Add(PlayerInOwnWorld())
-    AND_11.Add(CharacterHasSpecialEffect(Characters.SirGideonOfnir0, 9770))
+    AND_11.Add(CharacterHasSpecialEffect(Characters.SirGideonOfnir, 9770))  # not copying this trigger
     OR_11.Add(AND_11)
-    OR_11.Add(AttackedWithDamageType(attacked_entity=Characters.SirGideonOfnir0, attacker=0))
-    
+    OR_11.Add(AttackedWithDamageType(attacked_entity=Characters.SirGideonOfnir, attacker=0))
+    OR_11.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_SirGideonOfnir, attacker=0))
+
     MAIN.Await(OR_11)
     
-    EnableNetworkFlag(11050851)
-    AddSpecialEffect(Characters.SirGideonOfnir0, 9644)
+    EnableNetworkFlag(Flags.SirGideonOfnirFirstTimeDone)
+    AddSpecialEffect(Characters.SirGideonOfnir, 9644)
+    AddSpecialEffect(Characters.CLONE_SirGideonOfnir, 9644)
     Goto(Label.L10)
 
     # --- Label 1 --- #
@@ -823,92 +938,106 @@ def Event_11052860():
 
     # --- Label 10 --- #
     DefineLabel(10)
-    SetTeamType(Characters.SirGideonOfnir0, TeamType.Enemy)
-    EnableAI(Characters.SirGideonOfnir0)
-    SetNetworkUpdateRate(11055850, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.SirGideonOfnir0, name=132400)
+    SetTeamType(Characters.SirGideonOfnir, TeamType.Enemy)
+    SetTeamType(Characters.CLONE_SirGideonOfnir, TeamType.Enemy)
+    EnableAI(Characters.SirGideonOfnir)
+    EnableAI(Characters.CLONE_SirGideonOfnir)
+    SetNetworkUpdateRate(CharacterGroups.SirGideonOfnirBoss, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.SirGideonOfnir, name=NameText.SirGideonOfnir, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_SirGideonOfnir, name=NameText.CLONE_SirGideonOfnir, bar_slot=0)
 
 
 @RestartOnRest(11052861)
-def Event_11052861():
-    """Event 11052861"""
-    if FlagEnabled(11050850):
+def SirGideonOfnirPhaseTwoTransition():
+    """Waits for either Gideon to fall below 60% health."""
+    if FlagEnabled(Flags.SirGideonOfnirDead):
         return
-    AND_1.Add(HealthRatio(Characters.SirGideonOfnir0) <= 0.6000000238418579)
+    OR_1.Add(HealthRatio(Characters.SirGideonOfnir) <= 0.6000000238418579)
+    OR_1.Add(HealthRatio(Characters.CLONE_SirGideonOfnir) <= 0.6000000238418579)
+
+    MAIN.Await(OR_1)
     
-    MAIN.Await(AND_1)
-    
-    EnableFlag(11052852)
+    EnableFlag(Flags.SirGideonOfnirInPhaseTwo)
 
 
 @RestartOnRest(11052859)
-def Event_11052859():
+def SirGideonOfnirCommonEvents():
     """Event 11052859"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=11050850,
-        entity=Assets.AEG099_001_9003,
-        region=11052850,
-        flag_1=11052855,
-        character=11055850,
+        boss_dead_flag=Flags.SirGideonOfnirDead,
+        fog_asset=Assets.AEG099_001_9003,
+        fog_region=11052850,
+        host_entered_fog_flag=11052855,
+        boss_characters=CharacterGroups.SirGideonOfnirBoss,
         action_button_id=10000,
-        left=11050851,
-        region_1=0,
+        first_time_done_flag=Flags.SirGideonOfnirFirstTimeDone,
+        first_time_trigger_region=0,
     )
-    if FlagDisabled(11050851):
-        CommonFunc_9005800(
+    if FlagDisabled(Flags.SirGideonOfnirFirstTimeDone):
+        CommonFunc_HostEntersBossFog(
             0,
-            flag=11050850,
-            entity=Assets.AEG099_001_9004,
-            region=11052855,
-            flag_1=11052855,
-            character=11055850,
+            boss_dead_flag=Flags.SirGideonOfnirDead,
+            fog_asset=Assets.AEG099_001_9004,
+            fog_region=11052855,
+            host_entered_fog_flag=11052855,
+            boss_characters=CharacterGroups.SirGideonOfnirBoss,
             action_button_id=10000,
-            left=6000,
-            region_1=0,
+            first_time_done_flag=6000,
+            first_time_trigger_region=0,
         )
     else:
-        CommonFunc_9005800(
+        CommonFunc_HostEntersBossFog(
             0,
-            flag=11050850,
-            entity=Assets.AEG099_001_9004,
-            region=11052855,
-            flag_1=11052855,
-            character=11055850,
+            boss_dead_flag=Flags.SirGideonOfnirDead,
+            fog_asset=Assets.AEG099_001_9004,
+            fog_region=11052855,
+            host_entered_fog_flag=11052855,
+            boss_characters=CharacterGroups.SirGideonOfnirBoss,
             action_button_id=10000,
-            left=11050851,
-            region_1=0,
+            first_time_done_flag=Flags.SirGideonOfnirFirstTimeDone,
+            first_time_trigger_region=0,
         )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=11050850,
-        entity=Assets.AEG099_001_9003,
-        region=11052850,
-        flag_1=11052855,
-        flag_2=11052856,
+        boss_dead_flag=Flags.SirGideonOfnirDead,
+        fog_asset=Assets.AEG099_001_9003,
+        fog_region=11052850,
+        host_entered_fog_flag=11052855,
+        summon_entered_fog_flag=11052856,
         action_button_id=10000,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=11050850,
-        entity=Assets.AEG099_001_9004,
-        region=11052855,
-        flag_1=11052855,
-        flag_2=11052856,
+        boss_dead_flag=Flags.SirGideonOfnirDead,
+        fog_asset=Assets.AEG099_001_9004,
+        fog_region=11052855,
+        host_entered_fog_flag=11052855,
+        summon_entered_fog_flag=11052856,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=11050850, asset=Assets.AEG099_001_9003, model_point=5, right=11050854)
-    CommonFunc_9005811(0, flag=11050850, asset=Assets.AEG099_001_9004, model_point=4, right=11050854)
-    CommonFunc_9005811(0, flag=11050850, asset=Assets.AEG099_001_9005, model_point=4, right=11050854)
-    CommonFunc_9005811(0, flag=11050850, asset=Assets.AEG099_002_9000, model_point=8, right=11050854)
-    CommonFunc_9005811(0, flag=11050850, asset=Assets.AEG099_001_9006, model_point=4, right=11050854)
-    CommonFunc_9005811(0, flag=11050850, asset=Assets.AEG099_001_9007, model_point=5, right=11050854)
-    CommonFunc_9005811(0, flag=11050850, asset=Assets.AEG099_001_9008, model_point=5, right=11050854)
-    CommonFunc_BossMusicPhaseTransition(0, 11050850, 921100, 11052855, 11052856, 0, 11052852, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9003, model_point=5, first_time_done_flag=11050854)
+    CommonFunc_ControlBossFog(0, flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9004, model_point=4, first_time_done_flag=11050854)
+    CommonFunc_ControlBossFog(0, flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9005, model_point=4, first_time_done_flag=11050854)
+    CommonFunc_ControlBossFog(0, flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_002_9000, model_point=8, first_time_done_flag=11050854)
+    CommonFunc_ControlBossFog(0, flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9006, model_point=4, first_time_done_flag=11050854)
+    CommonFunc_ControlBossFog(0, flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9007, model_point=5, first_time_done_flag=11050854)
+    CommonFunc_ControlBossFog(0, flag=Flags.SirGideonOfnirDead, fog_asset=Assets.AEG099_001_9008, model_point=5, first_time_done_flag=11050854)
+    CommonFunc_ControlBossMusic(
+        0,
+        Flags.SirGideonOfnirDead,
+        921100,
+        11052855,
+        11052856,
+        0,
+        Flags.SirGideonOfnirInPhaseTwo,
+        0,
+        0,
+    )
 
 
 @RestartOnRest(11053700)
-def Event_11053700(_, character: uint, character_1: uint, flag: uint, flag_1: uint, distance: float):
+def ControlHoarahLouxTalkRange(_, character: uint, character_1: uint, flag: uint, flag_1: uint, distance: float):
     """Event 11053700"""
     if PlayerNotInOwnWorld():
         return
@@ -1040,7 +1169,7 @@ def Event_11053707():
     End()
 
 
-@NeverRestart(11053708)
+@ContinueOnRest(11053708)
 def Event_11053708(
     _,
     asset: uint,
@@ -1109,7 +1238,7 @@ def Event_11053720():
     WaitFrames(frames=1)
     if FlagDisabled(3631):
         return
-    if FlagEnabled(11050800):
+    if FlagEnabled(Flags.HoarahLouxDead):
         return
     if FlagDisabled(35000500):
         return

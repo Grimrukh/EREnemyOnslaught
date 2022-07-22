@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m34_11_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=34110000, asset=Assets.AEG099_060_9000)
@@ -119,7 +119,7 @@ def Constructor():
     CommonFunc_90005706(0, 34110700, 930023, 0)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     Event_34112150()
@@ -511,14 +511,14 @@ def Event_34112150():
     EnableNetworkFlag(370)
     EnableFlag(9021)
     if PlayerInOwnWorld():
-        PlayCutscene(34110000, cutscene_flags=0, player_id=10000)
+        PlayCutscene(34110000, cutscene_flags=0, player_id=PLAYER)
     else:
         PlayCutsceneToPlayerAndWarp(
             cutscene_id=34110000,
             cutscene_flags=0,
             move_to_region=34112505,
             map_id=34110000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
@@ -565,14 +565,14 @@ def Event_34112150():
     EnableAsset(34116150)
     EnableFlag(9021)
     if PlayerInOwnWorld():
-        PlayCutscene(34110001, cutscene_flags=0, player_id=10000)
+        PlayCutscene(34110001, cutscene_flags=0, player_id=PLAYER)
     else:
         PlayCutsceneToPlayerAndWarp(
             cutscene_id=34110001,
             cutscene_flags=0,
             move_to_region=34112505,
             map_id=34110000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
@@ -596,7 +596,7 @@ def Event_34112150():
     Restart()
 
 
-@NeverRestart(34112151)
+@ContinueOnRest(34112151)
 def Event_34112151():
     """Event 34112151"""
     AND_1.Add(PlayerInOwnWorld())
@@ -611,7 +611,7 @@ def Event_34112151():
             cutscene_flags=0,
             move_to_region=34112160,
             map_id=34110000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
@@ -621,7 +621,7 @@ def Event_34112151():
             cutscene_flags=0,
             move_to_region=34112160,
             map_id=34110000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
@@ -639,7 +639,7 @@ def Event_34112152():
     EndOfAnimation(asset=Assets.AEG027_058_5500, animation_id=10)
 
 
-@NeverRestart(34112510)
+@ContinueOnRest(34112510)
 def Event_34112510():
     """Event 34112510"""
     Event_34112900(
@@ -708,7 +708,7 @@ def Event_34112510():
     )
 
 
-@NeverRestart(34112519)
+@ContinueOnRest(34112519)
 def Event_34112519():
     """Event 34112519"""
     if ThisEventSlotFlagEnabled():
@@ -726,7 +726,7 @@ def Event_34112580():
     RegisterLadder(start_climbing_flag=34110532, stop_climbing_flag=34110533, asset=Assets.AEG027_221_0500)
 
 
-@NeverRestart(34112900)
+@ContinueOnRest(34112900)
 def Event_34112900(
     _,
     flag: uint,
@@ -1128,7 +1128,7 @@ def Event_34112900(
     Restart()
 
 
-@NeverRestart(34112910)
+@ContinueOnRest(34112910)
 def Event_34112910(
     _,
     flag: uint,
@@ -2541,25 +2541,25 @@ def Event_34112810():
 @RestartOnRest(34112849)
 def Event_34112849():
     """Event 34112849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=34110800,
-        entity=34111800,
-        region=34112800,
-        flag_1=34112805,
-        character=34115800,
+        boss_dead_flag=34110800,
+        fog_asset=34111800,
+        fog_region=34112800,
+        host_entered_fog_flag=34112805,
+        boss_characters=34115800,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=34110800,
-        entity=34111800,
-        region=34112800,
-        flag_1=34112805,
-        flag_2=34112806,
+        boss_dead_flag=34110800,
+        fog_asset=34111800,
+        fog_region=34112800,
+        host_entered_fog_flag=34112805,
+        summon_entered_fog_flag=34112806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=34110800, asset=34111800, model_point=3, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, 34110800, 930000, 34112805, 34112806, 0, 34112802, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=34110800, fog_asset=34111800, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, 34110800, 930000, 34112805, 34112806, 0, 34112802, 0, 0)

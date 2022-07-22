@@ -897,7 +897,9 @@ def CommonFunc_90005260(_, character: uint, region: uint, radius: float, seconds
 
 
 @RestartOnRest(90005261)
-def CommonFunc_TriggerEnemyAI_WithRegionOrRadius(_, character: uint, region: uint, radius: float, seconds: float, animation_id: int):
+def CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+    _, character: uint, region: uint, radius: float, seconds: float, animation_id: int
+):
     """CommonFunc 90005261"""
     if ThisEventSlotFlagEnabled():
         return
@@ -1379,7 +1381,7 @@ def CommonFunc_90005424(_, asset: uint, character: uint, character_1: uint, char
     EnableTreasure(asset=asset)
 
 
-@NeverRestart(90005440)
+@ContinueOnRest(90005440)
 def CommonFunc_90005440(_, character: uint, character_1: uint):
     """CommonFunc 90005440"""
     AddSpecialEffect(character_1, 14500)
@@ -2182,7 +2184,7 @@ def CommonFunc_90005474(_, character: uint):
     Restart()
 
 
-@NeverRestart(90005476)
+@ContinueOnRest(90005476)
 def CommonFunc_90005476(_, character: uint, character_1: uint):
     """CommonFunc 90005476"""
     AND_9.Add(CharacterAlive(character))
@@ -2427,7 +2429,7 @@ def CommonFunc_90005491(_, character: uint, asset: uint, region: uint):
     Restart()
 
 
-@NeverRestart(90005500)
+@ContinueOnRest(90005500)
 def CommonFunc_90005500(
     _,
     flag: uint,
@@ -3030,7 +3032,7 @@ def CommonFunc_90015502(_, flag: uint, asset: uint, region: uint):
     Restart()
 
 
-@NeverRestart(90005503)
+@ContinueOnRest(90005503)
 def CommonFunc_90005503(
     _,
     flag: uint,
@@ -3278,7 +3280,7 @@ def CommonFunc_90005503(
     Restart()
 
 
-@NeverRestart(90005504)
+@ContinueOnRest(90005504)
 def CommonFunc_90005504(_, flag: uint, flag_1: uint, left: uint, entity: uint, flag_2: uint):
     """CommonFunc 90005504"""
     if PlayerInOwnWorld():
@@ -3326,7 +3328,7 @@ def CommonFunc_90005504(_, flag: uint, flag_1: uint, left: uint, entity: uint, f
     End()
 
 
-@NeverRestart(90005505)
+@ContinueOnRest(90005505)
 def CommonFunc_90005505(
     _,
     flag: uint,
@@ -3548,7 +3550,7 @@ def CommonFunc_90005505(
     Restart()
 
 
-@NeverRestart(90005507)
+@ContinueOnRest(90005507)
 def CommonFunc_90005507(
     _,
     flag: uint,
@@ -4059,7 +4061,7 @@ def CommonFunc_90005508(
     End()
 
 
-@NeverRestart(90005510)
+@ContinueOnRest(90005510)
 def CommonFunc_90005510(_, flag: uint, asset: uint, obj_act_id: uint, obj_act_id_1: int, text: int, left: uint):
     """CommonFunc 90005510"""
     if PlayerNotInOwnWorld():
@@ -4081,7 +4083,7 @@ def CommonFunc_90005510(_, flag: uint, asset: uint, obj_act_id: uint, obj_act_id
     End()
 
 
-@NeverRestart(90005511)
+@ContinueOnRest(90005511)
 def CommonFunc_90005511(_, flag: uint, asset: uint, obj_act_id: uint, obj_act_id_1: int, left: uint):
     """CommonFunc 90005511"""
     GotoIfFlagEnabled(Label.L0, flag=flag)
@@ -4101,7 +4103,7 @@ def CommonFunc_90005511(_, flag: uint, asset: uint, obj_act_id: uint, obj_act_id
     End()
 
 
-@NeverRestart(90005512)
+@ContinueOnRest(90005512)
 def CommonFunc_90005512(_, flag: uint, region: uint, region_1: uint):
     """CommonFunc 90005512"""
     DisableNetworkSync()
@@ -4160,7 +4162,7 @@ def CommonFunc_90005513(
     ForceAnimation(asset, animation_id)
 
 
-@NeverRestart(90005515)
+@ContinueOnRest(90005515)
 def CommonFunc_90005515(_, flag: uint, anchor_entity: uint):
     """CommonFunc 90005515"""
     DisableNetworkSync()
@@ -4337,7 +4339,7 @@ def CommonFunc_90005560(_, flag: uint, asset: uint, left: int):
         DeleteAssetVFX(asset)
 
 
-@NeverRestart(90005570)
+@ContinueOnRest(90005570)
 def CommonFunc_90005570(_, flag: uint, gesture_param_id: int, asset: uint, left: int, left_1: int, right: int):
     """CommonFunc 90005570"""
     if PlayerNotInOwnWorld():
@@ -4384,7 +4386,7 @@ def CommonFunc_90005570(_, flag: uint, gesture_param_id: int, asset: uint, left:
         return
 
 
-@NeverRestart(900005571)
+@ContinueOnRest(900005571)
 def CommonFunc_900005571(_, flag: uint, gesture_param_id: int, flag_1: uint, right: int):
     """CommonFunc 900005571"""
     if PlayerNotInOwnWorld():
@@ -4545,7 +4547,7 @@ def CommonFunc_90005605(
     Wait(seconds_1)
 
 
-@NeverRestart(900005610)
+@ContinueOnRest(900005610)
 def CommonFunc_900005610(_, asset: uint, vfx_id: int, model_point: int, right: uint):
     """CommonFunc 900005610"""
     DisableNetworkSync()
@@ -4566,7 +4568,7 @@ def CommonFunc_900005610(_, asset: uint, vfx_id: int, model_point: int, right: u
     Restart()
 
 
-@NeverRestart(90005616)
+@ContinueOnRest(90005616)
 def CommonFunc_90005616(_, flag: uint, region: uint):
     """CommonFunc 90005616"""
     if PlayerNotInOwnWorld():
@@ -4583,7 +4585,7 @@ def CommonFunc_90005616(_, flag: uint, region: uint):
     DisplayFlashingMessage(20600)
 
 
-@NeverRestart(90005620)
+@ContinueOnRest(90005620)
 def CommonFunc_90005620(
     _,
     flag: uint,
@@ -4693,7 +4695,7 @@ def CommonFunc_90005620(
         return
 
 
-@NeverRestart(90005621)
+@ContinueOnRest(90005621)
 def CommonFunc_90005621(_, flag: uint, asset: uint):
     """CommonFunc 90005621"""
     GotoIfFlagDisabled(Label.L0, flag=flag)
@@ -4981,7 +4983,7 @@ def CommonFunc_90005645(
     WarpToMap(game_map=(area_id, block_id, cc_id, dd_id), player_start=player_start)
 
 
-@NeverRestart(90005646)
+@ContinueOnRest(90005646)
 def CommonFunc_90005646(
     _,
     flag: uint,
@@ -5033,7 +5035,7 @@ def CommonFunc_90005646(
     WarpToMap(game_map=(area_id, block_id, cc_id, dd_id), player_start=player_start)
 
 
-@NeverRestart(90005650)
+@ContinueOnRest(90005650)
 def CommonFunc_90005650(_, flag: uint, asset: uint, asset_1: uint, obj_act_id: uint, obj_act_id_1: int):
     """CommonFunc 90005650"""
     GotoIfFlagDisabled(Label.L0, flag=flag)
@@ -5057,7 +5059,7 @@ def CommonFunc_90005650(_, flag: uint, asset: uint, asset_1: uint, obj_act_id: u
     End()
 
 
-@NeverRestart(90005652)
+@ContinueOnRest(90005652)
 def CommonFunc_90005652(_, flag: uint, asset: uint, flag_1: uint):
     """CommonFunc 90005652"""
     GotoIfFlagDisabled(Label.L0, flag=flag)
@@ -5077,7 +5079,7 @@ def CommonFunc_90005652(_, flag: uint, asset: uint, flag_1: uint):
     End()
 
 
-@NeverRestart(90005651)
+@ContinueOnRest(90005651)
 def CommonFunc_90005651(_, flag: uint, anchor_entity: uint):
     """CommonFunc 90005651"""
     DisableNetworkSync()
@@ -5093,7 +5095,7 @@ def CommonFunc_90005651(_, flag: uint, anchor_entity: uint):
     Restart()
 
 
-@NeverRestart(90005660)
+@ContinueOnRest(90005660)
 def CommonFunc_90005660(
     _,
     owner_entity: uint,
@@ -5290,7 +5292,7 @@ def CommonFunc_90005660(
     Restart()
 
 
-@NeverRestart(90005670)
+@ContinueOnRest(90005670)
 def CommonFunc_90005670(
     _,
     flag: uint,
@@ -5360,7 +5362,7 @@ def CommonFunc_90005670(
     Restart()
 
 
-@NeverRestart(90005673)
+@ContinueOnRest(90005673)
 def CommonFunc_90005673(_, flag: uint, region: uint):
     """CommonFunc 90005673"""
     OR_9.Add(CharacterType(PLAYER, character_type=CharacterType.Alive))
@@ -5399,7 +5401,7 @@ def CommonFunc_90005673(_, flag: uint, region: uint):
     Restart()
 
 
-@NeverRestart(90005671)
+@ContinueOnRest(90005671)
 def CommonFunc_90005671(
     _,
     flag: uint,
@@ -5434,7 +5436,7 @@ def CommonFunc_90005671(
     Restart()
 
 
-@NeverRestart(90005672)
+@ContinueOnRest(90005672)
 def CommonFunc_90005672(_, flag: uint, region: uint):
     """CommonFunc 90005672"""
     AND_1.Add(FlagEnabled(flag))
@@ -5447,7 +5449,7 @@ def CommonFunc_90005672(_, flag: uint, region: uint):
     Restart()
 
 
-@NeverRestart(90005675)
+@ContinueOnRest(90005675)
 def CommonFunc_90005675(
     _,
     flag: uint,
@@ -5549,7 +5551,7 @@ def CommonFunc_90005680(_, flag: uint, flag_1: uint, flag_2: uint, flag_3: uint,
     End()
 
 
-@NeverRestart(90005681)
+@ContinueOnRest(90005681)
 def CommonFunc_90005681(_, flag: uint, flag_1: uint, flag_2: uint, flag_3: uint, attacked_entity: uint):
     """CommonFunc 90005681"""
     AND_13.Add(FlagEnabled(flag))
@@ -5626,7 +5628,7 @@ def CommonFunc_90005681(_, flag: uint, flag_1: uint, flag_2: uint, flag_3: uint,
     Restart()
 
 
-@NeverRestart(90005682)
+@ContinueOnRest(90005682)
 def CommonFunc_90005682(
     _,
     flag: uint,
@@ -5828,7 +5830,7 @@ def CommonFunc_90005682(
     Restart()
 
 
-@NeverRestart(90005683)
+@ContinueOnRest(90005683)
 def CommonFunc_90005683(_, flag: uint, asset: uint, vfx_id: int, flag_1: uint, flag_2: uint):
     """CommonFunc 90005683"""
     DisableNetworkSync()
@@ -5869,7 +5871,7 @@ def CommonFunc_90005683(_, flag: uint, asset: uint, vfx_id: int, flag_1: uint, f
     CreateAssetVFX(asset, vfx_id=vfx_id, model_point=800530)
 
 
-@NeverRestart(90005684)
+@ContinueOnRest(90005684)
 def CommonFunc_90005684(_, anchor_entity: uint):
     """CommonFunc 90005684"""
     DisableNetworkSync()
@@ -5882,7 +5884,7 @@ def CommonFunc_90005684(_, anchor_entity: uint):
     Restart()
 
 
-@NeverRestart(90005685)
+@ContinueOnRest(90005685)
 def CommonFunc_90005685(_, character: uint):
     """CommonFunc 90005685"""
     EnableImmortality(character)
@@ -5893,7 +5895,7 @@ def CommonFunc_90005685(_, character: uint):
     SetNetworkUpdateRate(character, is_fixed=True, update_rate=CharacterUpdateRate.Always)
 
 
-@NeverRestart(90005686)
+@ContinueOnRest(90005686)
 def CommonFunc_90005686(_, source_entity: uint, flag: uint):
     """CommonFunc 90005686"""
     MAIN.Await(FlagEnabled(flag))
@@ -5947,7 +5949,7 @@ def CommonFunc_90005686(_, source_entity: uint, flag: uint):
     Restart()
 
 
-@NeverRestart(90005687)
+@ContinueOnRest(90005687)
 def CommonFunc_90005687(_, character: uint, patrol_information_id: uint, region: uint):
     """CommonFunc 90005687"""
     if ThisEventSlotFlagEnabled():
@@ -5960,7 +5962,7 @@ def CommonFunc_90005687(_, character: uint, patrol_information_id: uint, region:
     WaitFrames(frames=1)
 
 
-@NeverRestart(90005688)
+@ContinueOnRest(90005688)
 def CommonFunc_90005688(
     _,
     character: uint,
@@ -7540,7 +7542,7 @@ def CommonFunc_90005743(
     Restart()
 
 
-@NeverRestart(90005750)
+@ContinueOnRest(90005750)
 def CommonFunc_90005750(
     _,
     asset: uint,
@@ -7602,7 +7604,7 @@ def CommonFunc_90005751(_, attacked_entity: uint, model_point: int, vfx_id: int)
     Restart()
 
 
-@NeverRestart(90005752)
+@ContinueOnRest(90005752)
 def CommonFunc_90005752(_, asset: uint, vfx_id: int, model_point: int, seconds: float):
     """CommonFunc 90005752"""
     DisableNetworkSync()
@@ -7686,7 +7688,7 @@ def CommonFunc_90005772(_, character: uint):
     DisableCharacter(character)
 
 
-@NeverRestart(90005773)
+@ContinueOnRest(90005773)
 def CommonFunc_90005773(_, flag: uint):
     """CommonFunc 90005773"""
     if PlayerNotInOwnWorld():
@@ -7699,7 +7701,7 @@ def CommonFunc_90005773(_, flag: uint):
     Restart()
 
 
-@NeverRestart(90005774)
+@ContinueOnRest(90005774)
 def CommonFunc_90005774(_, flag: uint, item_lot_param_id: int, flag_1: uint):
     """CommonFunc 90005774"""
     if PlayerNotInOwnWorld():
@@ -7727,7 +7729,7 @@ def CommonFunc_90005775(_, world_map_point_param_id: int, flag: uint, distance: 
     OpenWorldMapPoint(world_map_point_param_id=world_map_point_param_id, distance=distance)
 
 
-@NeverRestart(90005780)
+@ContinueOnRest(90005780)
 def CommonFunc_90005780(
     _,
     flag: uint,
@@ -7768,7 +7770,7 @@ def CommonFunc_90005780(
         return
 
 
-@NeverRestart(90005781)
+@ContinueOnRest(90005781)
 def CommonFunc_90005781(_, flag: uint, flag_1: uint, flag_2: uint, character: uint):
     """CommonFunc 90005781"""
     DisableCharacter(character)
@@ -7794,7 +7796,7 @@ def CommonFunc_90005781(_, flag: uint, flag_1: uint, flag_2: uint, character: ui
     SetBackreadStateAlternate(character, False)
 
 
-@NeverRestart(90005782)
+@ContinueOnRest(90005782)
 def CommonFunc_90005782(
     _,
     flag: uint,
@@ -7834,7 +7836,7 @@ def CommonFunc_90005782(
     SetNetworkUpdateRate(character, is_fixed=True, update_rate=CharacterUpdateRate.Always)
 
 
-@NeverRestart(90005784)
+@ContinueOnRest(90005784)
 def CommonFunc_90005784(_, flag: uint, flag_1: uint, character: uint, region: uint, region_1: uint, animation: int):
     """CommonFunc 90005784"""
     if PlayerNotInOwnWorld():
@@ -7947,7 +7949,7 @@ def CommonFunc_90005785(
     End()
 
 
-@NeverRestart(90005790)
+@ContinueOnRest(90005790)
 def CommonFunc_90005790(
     _,
     right: uint,
@@ -8002,7 +8004,7 @@ def CommonFunc_90005790(
         return
 
 
-@NeverRestart(90005791)
+@ContinueOnRest(90005791)
 def CommonFunc_90005791(_, flag: uint, flag_1: uint, flag_2: uint, character: uint):
     """CommonFunc 90005791"""
     DisableCharacter(character)
@@ -8211,71 +8213,71 @@ def CommonFunc_90005797(_, flag: uint, character: uint, banner_type: uchar, regi
 
 
 @RestartOnRest(9005800)
-def CommonFunc_9005800(
+def CommonFunc_HostEntersBossFog(
     _,
-    flag: uint,
-    entity: uint,
-    region: uint,
-    flag_1: uint,
-    character: uint,
+    boss_dead_flag: uint,
+    fog_asset: uint,
+    fog_region: uint,
+    host_entered_fog_flag: uint,
+    boss_characters: uint,
     action_button_id: int,
-    left: uint,
-    region_1: uint,
+    first_time_done_flag: uint,
+    first_time_trigger_region: uint,
 ):
     """CommonFunc 9005800"""
-    GotoIfFlagEnabled(Label.L10, flag=flag)
+    GotoIfFlagEnabled(Label.L10, flag=boss_dead_flag)
     WaitFrames(frames=1)
-    GotoIfUnsignedEqual(Label.L0, left=left, right=0)
-    GotoIfFlagEnabled(Label.L0, flag=left)
-    if UnsignedNotEqual(left=region_1, right=0):
-        OR_1.Add(CharacterInsideRegion(character=PLAYER, region=region_1))
-    OR_1.Add(FlagEnabled(left))
+    GotoIfUnsignedEqual(Label.L0, left=first_time_done_flag, right=0)
+    GotoIfFlagEnabled(Label.L0, flag=first_time_done_flag)
+    if UnsignedNotEqual(left=first_time_trigger_region, right=0):
+        OR_1.Add(CharacterInsideRegion(character=PLAYER, region=first_time_trigger_region))
+    OR_1.Add(FlagEnabled(first_time_done_flag))
     AND_1.Add(OR_1)
     AND_1.Add(PlayerInOwnWorld())
     OR_2.Add(AND_1)
-    OR_2.Add(FlagEnabled(flag))
+    OR_2.Add(FlagEnabled(boss_dead_flag))
     
     MAIN.Await(OR_2)
     
-    if FlagEnabled(flag):
+    if FlagEnabled(boss_dead_flag):
         return RESTART
     Goto(Label.L1)
 
-    # --- Label 0 --- #
+    # --- Label 0 --- #  Wait for player to interact with fog.
     DefineLabel(0)
     GotoIfPlayerNotInOwnWorld(Label.L3)
     AND_3.Add(PlayerInOwnWorld())
-    AND_3.Add(FlagDisabled(flag))
-    AND_3.Add(ActionButtonParamActivated(action_button_id=action_button_id, entity=entity))
-    OR_3.Add(FlagEnabled(flag))
+    AND_3.Add(FlagDisabled(boss_dead_flag))
+    AND_3.Add(ActionButtonParamActivated(action_button_id=action_button_id, entity=fog_asset))
+    OR_3.Add(FlagEnabled(boss_dead_flag))
     OR_3.Add(AND_3)
     
     MAIN.Await(OR_3)
     
     GotoIfPlayerNotInOwnWorld(Label.L2)
-    if FlagEnabled(flag):
+    if FlagEnabled(boss_dead_flag):
         return RESTART
     SuppressSoundForFogGate(duration=5.0)
     SkipLinesIfCharacterHasSpecialEffect(line_count=2, character=PLAYER, special_effect=4250)
-    RotateToFaceEntity(PLAYER, region, animation=60060, wait_for_completion=True)
+    RotateToFaceEntity(PLAYER, fog_region, animation=60060, wait_for_completion=True)
     SkipLines(1)
-    RotateToFaceEntity(PLAYER, region, animation=60060)
+    RotateToFaceEntity(PLAYER, fog_region, animation=60060)
 
     # --- Label 3 --- #
     DefineLabel(3)
-    GotoIfFlagEnabled(Label.L1, flag=flag_1)
+    GotoIfFlagEnabled(Label.L1, flag=host_entered_fog_flag)
     OR_4.Add(TimeElapsed(seconds=3.0))
-    OR_5.Add(CharacterInsideRegion(character=PLAYER, region=region))
+    OR_5.Add(CharacterInsideRegion(character=PLAYER, region=fog_region))
     OR_5.Add(OR_4)
     AND_4.Add(OR_5)
     AND_4.Add(PlayerInOwnWorld())
-    AND_4.Add(FlagDisabled(flag))
+    AND_4.Add(FlagDisabled(boss_dead_flag))
     OR_6.Add(AND_4)
-    OR_6.Add(FlagEnabled(flag))
+    OR_6.Add(FlagEnabled(boss_dead_flag))
     
     MAIN.Await(OR_6)
     
-    if FlagEnabled(flag):
+    if FlagEnabled(boss_dead_flag):
         return RESTART
     RestartIfFinishedConditionTrue(input_condition=OR_4)
 
@@ -8283,12 +8285,12 @@ def CommonFunc_9005800(
     DefineLabel(1)
     GotoIfPlayerNotInOwnWorld(Label.L2)
     NotifyBossBattleStart()
-    SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Forced)
+    SetNetworkUpdateAuthority(boss_characters, authority_level=UpdateAuthority.Forced)
 
     # --- Label 2 --- #
     DefineLabel(2)
-    ActivateMultiplayerBuffs(character)
-    EnableNetworkFlag(flag_1)
+    ActivateMultiplayerBuffs(boss_characters)
+    EnableNetworkFlag(host_entered_fog_flag)
     if PlayerNotInOwnWorld():
         return
     Restart()
@@ -8298,36 +8300,44 @@ def CommonFunc_9005800(
     if PlayerNotInOwnWorld():
         return
     AND_10.Add(PlayerInOwnWorld())
-    AND_10.Add(FlagEnabled(flag))
+    AND_10.Add(FlagEnabled(boss_dead_flag))
     OR_10.Add(Invasion())
     OR_10.Add(InvasionPending())
     AND_10.Add(OR_10)
-    AND_10.Add(ActionButtonParamActivated(action_button_id=10000, entity=entity))
+    AND_10.Add(ActionButtonParamActivated(action_button_id=10000, entity=fog_asset))
     
     MAIN.Await(AND_10)
     
-    RotateToFaceEntity(PLAYER, region, animation=60060, wait_for_completion=True)
+    RotateToFaceEntity(PLAYER, fog_region, animation=60060, wait_for_completion=True)
     BanishInvaders(unknown=0)
     Restart()
 
 
 @RestartOnRest(9005801)
-def CommonFunc_9005801(_, flag: uint, entity: uint, region: uint, flag_1: uint, flag_2: uint, action_button_id: int):
+def CommonFunc_SummonEntersBossFog(
+    _,
+    boss_dead_flag: uint,
+    fog_asset: uint,
+    fog_region: uint,
+    host_entered_fog_flag: uint,
+    summon_entered_fog_flag: uint,
+    action_button_id: int,
+):
     """CommonFunc 9005801"""
     DisableNetworkSync()
-    if FlagEnabled(flag):
+    if FlagEnabled(boss_dead_flag):
         return
-    AND_1.Add(FlagDisabled(flag))
-    AND_1.Add(FlagEnabled(flag_1))
+    AND_1.Add(FlagDisabled(boss_dead_flag))
+    AND_1.Add(FlagEnabled(host_entered_fog_flag))
     AND_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
-    AND_1.Add(ActionButtonParamActivated(action_button_id=action_button_id, entity=entity))
+    AND_1.Add(ActionButtonParamActivated(action_button_id=action_button_id, entity=fog_asset))
     
     MAIN.Await(AND_1)
     
     SuppressSoundForFogGate(duration=5.0)
-    RotateToFaceEntity(PLAYER, region, animation=60060, wait_for_completion=True)
+    RotateToFaceEntity(PLAYER, fog_region, animation=60060, wait_for_completion=True)
     AND_2.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
-    OR_2.Add(CharacterInsideRegion(character=PLAYER, region=region))
+    OR_2.Add(CharacterInsideRegion(character=PLAYER, region=fog_region))
     OR_1.Add(TimeElapsed(seconds=3.0))
     OR_2.Add(OR_1)
     AND_2.Add(OR_2)
@@ -8335,12 +8345,14 @@ def CommonFunc_9005801(_, flag: uint, entity: uint, region: uint, flag_1: uint, 
     MAIN.Await(AND_2)
     
     RestartIfFinishedConditionTrue(input_condition=OR_1)
-    EnableFlag(flag_2)
+    EnableFlag(summon_entered_fog_flag)
     Restart()
 
 
 @RestartOnRest(9005810)
-def CommonFunc_RegisterGraceIfFlagEnabled(_, flag: uint, grace_flag: uint, character: uint, asset: uint, enemy_block_distance: float):
+def CommonFunc_RegisterGraceIfFlagEnabled(
+    _, flag: uint, grace_flag: uint, character: uint, asset: uint, enemy_block_distance: float
+):
     """CommonFunc 9005810"""
     GotoIfFlagEnabled(Label.L0, flag=flag)
     DisableCharacter(character)
@@ -8366,11 +8378,11 @@ def CommonFunc_RegisterGraceIfFlagEnabled(_, flag: uint, grace_flag: uint, chara
 
 
 @RestartOnRest(9005811)
-def CommonFunc_9005811(_, flag: uint, asset: uint, model_point: int, right: uint):
+def CommonFunc_ControlBossFog(_, flag: uint, fog_asset: uint, model_point: int, first_time_done_flag: uint):
     """CommonFunc 9005811"""
     DisableNetworkSync()
-    DisableAsset(asset)
-    DeleteAssetVFX(asset)
+    DisableAsset(fog_asset)
+    DeleteAssetVFX(fog_asset)
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.Invader))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.Invader2))
@@ -8381,8 +8393,8 @@ def CommonFunc_9005811(_, flag: uint, asset: uint, model_point: int, right: uint
     OR_2.Add(CharacterType(PLAYER, character_type=CharacterType.BluePhantom))
     AND_2.Add(OR_2)
     AND_2.Add(FlagDisabled(flag))
-    if UnsignedNotEqual(left=0, right=right):
-        AND_3.Add(FlagEnabled(right))
+    if UnsignedNotEqual(left=0, right=first_time_done_flag):
+        AND_3.Add(FlagEnabled(first_time_done_flag))
     AND_3.Add(FlagDisabled(flag))
     OR_4.Add(Invasion())
     OR_4.Add(InvasionPending())
@@ -8395,7 +8407,7 @@ def CommonFunc_9005811(_, flag: uint, asset: uint, model_point: int, right: uint
     AND_5.Add(OR_5)
     AND_5.Add(FlagEnabled(flag))
     AND_5.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
-    AND_5.Add(EntityBeyondDistance(entity=PLAYER, other_entity=asset, radius=1.0))
+    AND_5.Add(EntityBeyondDistance(entity=PLAYER, other_entity=fog_asset, radius=1.0))
     OR_8.Add(AND_1)
     OR_8.Add(AND_2)
     OR_8.Add(AND_3)
@@ -8404,9 +8416,9 @@ def CommonFunc_9005811(_, flag: uint, asset: uint, model_point: int, right: uint
     
     MAIN.Await(OR_8)
     
-    EnableAsset(asset)
-    DeleteAssetVFX(asset)
-    CreateAssetVFX(asset, vfx_id=101, model_point=model_point)
+    EnableAsset(fog_asset)
+    DeleteAssetVFX(fog_asset)
+    CreateAssetVFX(fog_asset, vfx_id=101, model_point=model_point)
     OR_11.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     OR_11.Add(CharacterType(PLAYER, character_type=CharacterType.Invader))
     OR_11.Add(CharacterType(PLAYER, character_type=CharacterType.Invader2))
@@ -8417,8 +8429,8 @@ def CommonFunc_9005811(_, flag: uint, asset: uint, model_point: int, right: uint
     OR_12.Add(CharacterType(PLAYER, character_type=CharacterType.BluePhantom))
     AND_12.Add(OR_12)
     AND_12.Add(FlagDisabled(flag))
-    if UnsignedNotEqual(left=0, right=right):
-        AND_13.Add(FlagEnabled(right))
+    if UnsignedNotEqual(left=0, right=first_time_done_flag):
+        AND_13.Add(FlagEnabled(first_time_done_flag))
     AND_13.Add(FlagDisabled(flag))
     OR_14.Add(Invasion())
     OR_14.Add(InvasionPending())
@@ -8431,7 +8443,7 @@ def CommonFunc_9005811(_, flag: uint, asset: uint, model_point: int, right: uint
     AND_15.Add(OR_15)
     AND_15.Add(FlagEnabled(flag))
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
-    AND_15.Add(EntityBeyondDistance(entity=PLAYER, other_entity=asset, radius=1.0))
+    AND_15.Add(EntityBeyondDistance(entity=PLAYER, other_entity=fog_asset, radius=1.0))
     AND_9.Add(not AND_11)
     AND_9.Add(not AND_12)
     AND_9.Add(not AND_13)
@@ -8582,7 +8594,7 @@ def CommonFunc_9005813(_, flag: uint, asset: uint, model_point: int, right: uint
 
 
 @RestartOnRest(9005822)
-def CommonFunc_BossMusicPhaseTransition(
+def CommonFunc_ControlBossMusic(
     _,
     dead_flag: uint,
     bgm_boss_conv_param_id: int,
@@ -8900,7 +8912,7 @@ def CommonFunc_90005861(
     Wait(seconds)
 
 
-@NeverRestart(90005870)
+@ContinueOnRest(90005870)
 def CommonFunc_90005870(_, character: uint, name: int, npc_threat_level: uint):
     """CommonFunc 90005870"""
     DisableNetworkSync()
@@ -8974,7 +8986,7 @@ def CommonFunc_90005870(_, character: uint, name: int, npc_threat_level: uint):
     Restart()
 
 
-@NeverRestart(90005871)
+@ContinueOnRest(90005871)
 def CommonFunc_90005871(_, character: uint, name: int, npc_threat_level: uint, character_1: uint):
     """CommonFunc 90005871"""
     DisableNetworkSync()
@@ -9056,7 +9068,7 @@ def CommonFunc_90005871(_, character: uint, name: int, npc_threat_level: uint, c
     Restart()
 
 
-@NeverRestart(90005872)
+@ContinueOnRest(90005872)
 def CommonFunc_90005872(_, character: uint, npc_threat_level: uint, right: uint):
     """CommonFunc 90005872"""
     DisableNetworkSync()
@@ -9170,7 +9182,7 @@ def CommonFunc_90005881(
     WaitFrames(frames=1)
     ForceAnimation(PLAYER, 60450)
     Wait(1.5)
-    MoveCharacterAndCopyDrawParentWitHFadeout(
+    MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
         destination_type=CoordEntityType.Region,
         destination=player_start,

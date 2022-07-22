@@ -22,7 +22,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m60_52_38_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     CommonFunc_RegisterGraceIfFlagEnabled(
@@ -78,7 +78,7 @@ def Constructor():
     Event_1252380720()
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(1052380700)
@@ -90,7 +90,7 @@ def Preconstructor():
     DisableBackread(1052380735)
 
 
-@NeverRestart(200)
+@ContinueOnRest(200)
 def Event_200():
     """Event 200"""
     RadahnDies()
@@ -3860,7 +3860,7 @@ def RadahnPhaseTwoTransition(_, radahn: uint, radahn_meteor_dummy: uint):
 @RestartOnRest(1252382850)
 def RadahnMusicControl():
     """Event 1252382850"""
-    CommonFunc_BossMusicPhaseTransition(
+    CommonFunc_ControlBossMusic(
         0,
         dead_flag=Flags.RadahnDead,
         bgm_boss_conv_param_id=473000,

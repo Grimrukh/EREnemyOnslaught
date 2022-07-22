@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m15_00_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     DisableAsset(Assets.AEG099_332_9000)
@@ -1617,7 +1617,7 @@ def Constructor():
     CommonFunc_90005774(0, 7610, 104800, 400480)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.Millicent0)
@@ -1638,7 +1638,7 @@ def Preconstructor():
     Event_15002550()
 
 
-@NeverRestart(15000050)
+@ContinueOnRest(15000050)
 def Event_15000050():
     """Event 15000050"""
     if ThisEventSlotFlagEnabled():
@@ -1715,7 +1715,7 @@ def Event_15002344(_, character: uint, entity: uint):
     DisableSpawner(entity=entity)
 
 
-@NeverRestart(15002520)
+@ContinueOnRest(15002520)
 def Event_15002520():
     """Event 15002520"""
     CommonFunc_90005500(
@@ -1753,7 +1753,7 @@ def Event_15002520():
     )
 
 
-@NeverRestart(15002620)
+@ContinueOnRest(15002620)
 def Event_15002620():
     """Event 15002620"""
     CommonFunc_90005500(
@@ -1913,12 +1913,12 @@ def Event_15002810():
             cutscene_flags=0,
             move_to_region=15002811,
             map_id=15000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
     else:
-        PlayCutscene(15000000, cutscene_flags=0, player_id=10000)
+        PlayCutscene(15000000, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     if PlayerInOwnWorld():
         SetCameraAngle(x_angle=13.069999694824219, y_angle=34.47999954223633)
@@ -1970,12 +1970,12 @@ def Event_15002811():
             cutscene_flags=0,
             move_to_region=15002815,
             map_id=15000000,
-            player_id=10000,
+            player_id=PLAYER,
             unk_20_24=0,
             unk_24_25=False,
         )
     else:
-        PlayCutscene(15000010, cutscene_flags=0, player_id=10000)
+        PlayCutscene(15000010, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     EnableFlag(15002802)
     if PlayerInOwnWorld():
@@ -2023,7 +2023,7 @@ def Event_15002811():
         ChangeCamera(normal_camera_id=2120, locked_camera_id=2120)
 
 
-@NeverRestart(15002820)
+@ContinueOnRest(15002820)
 def Event_15002820(_, character: uint, animation_id: int, special_effect: int):
     """Event 15002820"""
     if FlagEnabled(15000800):
@@ -2070,7 +2070,7 @@ def Event_15002820(_, character: uint, animation_id: int, special_effect: int):
     Restart()
 
 
-@NeverRestart(15002830)
+@ContinueOnRest(15002830)
 def Event_15002830(_, special_effect_id: int, special_effect: int):
     """Event 15002830"""
     if FlagEnabled(15000800):
@@ -2086,7 +2086,7 @@ def Event_15002830(_, special_effect_id: int, special_effect: int):
     Restart()
 
 
-@NeverRestart(15002840)
+@ContinueOnRest(15002840)
 def Event_15002840(_, character: uint, character_1: uint, state: uchar):
     """Event 15002840"""
     if FlagEnabled(15000800):
@@ -2120,7 +2120,7 @@ def Event_15002840(_, character: uint, character_1: uint, state: uchar):
     Restart()
 
 
-@NeverRestart(15002842)
+@ContinueOnRest(15002842)
 def Event_15002842(_, character: uint, special_effect_id: int, special_effect: int):
     """Event 15002842"""
     if FlagEnabled(15000800):
@@ -2167,7 +2167,7 @@ def Event_15002842(_, character: uint, special_effect_id: int, special_effect: i
     Restart()
 
 
-@NeverRestart(15002848)
+@ContinueOnRest(15002848)
 def Event_15002848(_, special_effect: int, locked_camera_id__normal_camera_id: int):
     """Event 15002848"""
     DisableNetworkSync()
@@ -2208,28 +2208,28 @@ def Event_15002848(_, special_effect: int, locked_camera_id__normal_camera_id: i
 @RestartOnRest(15002849)
 def Event_15002849():
     """Event 15002849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=15000800,
-        entity=Assets.AEG099_003_9000,
-        region=15002800,
-        flag_1=15002805,
-        character=CharacterGroups.MaleniaBoss,
+        boss_dead_flag=15000800,
+        fog_asset=Assets.AEG099_003_9000,
+        fog_region=15002800,
+        host_entered_fog_flag=15002805,
+        boss_characters=CharacterGroups.MaleniaBoss,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=15000800,
-        entity=Assets.AEG099_003_9000,
-        region=15002800,
-        flag_1=15002805,
-        flag_2=15002806,
+        boss_dead_flag=15000800,
+        fog_asset=Assets.AEG099_003_9000,
+        fog_region=15002800,
+        host_entered_fog_flag=15002805,
+        summon_entered_fog_flag=15002806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=15000800, asset=Assets.AEG099_003_9000, model_point=5, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, 15002800, 212000, 15002805, 15002806, 0, 15002802, 1, 1)
+    CommonFunc_ControlBossFog(0, flag=15000800, fog_asset=Assets.AEG099_003_9000, model_point=5, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, 15002800, 212000, 15002805, 15002806, 0, 15002802, 1, 1)
 
 
 @RestartOnRest(15002850)
@@ -2316,32 +2316,32 @@ def Event_15002861():
 @RestartOnRest(15002899)
 def Event_15002899():
     """Event 15002899"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=15000850,
-        entity=Assets.AEG099_003_9001,
-        region=15002850,
-        flag_1=15002855,
-        character=15005850,
+        boss_dead_flag=15000850,
+        fog_asset=Assets.AEG099_003_9001,
+        fog_region=15002850,
+        host_entered_fog_flag=15002855,
+        boss_characters=15005850,
         action_button_id=10000,
-        left=15000851,
-        region_1=15002851,
+        first_time_done_flag=15000851,
+        first_time_trigger_region=15002851,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=15000850,
-        entity=Assets.AEG099_003_9001,
-        region=15002850,
-        flag_1=15002855,
-        flag_2=15002856,
+        boss_dead_flag=15000850,
+        fog_asset=Assets.AEG099_003_9001,
+        fog_region=15002850,
+        host_entered_fog_flag=15002855,
+        summon_entered_fog_flag=15002856,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=15000850, asset=Assets.AEG099_003_9001, model_point=3, right=15000851)
-    CommonFunc_9005811(0, flag=15000850, asset=Assets.AEG099_003_9002, model_point=3, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, 15000850, 920200, 15002855, 15002856, 0, 15002852, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=15000850, fog_asset=Assets.AEG099_003_9001, model_point=3, first_time_done_flag=15000851)
+    CommonFunc_ControlBossFog(0, flag=15000850, fog_asset=Assets.AEG099_003_9002, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, 15000850, 920200, 15002855, 15002856, 0, 15002852, 0, 0)
 
 
-@NeverRestart(15000700)
+@ContinueOnRest(15000700)
 def Event_15000700():
     """Event 15000700"""
     if PlayerNotInOwnWorld():
@@ -2360,7 +2360,7 @@ def Event_15000700():
     SetCharacterTalkRange(character=Characters.Malenia, distance=17.0)
 
 
-@NeverRestart(15000701)
+@ContinueOnRest(15000701)
 def Event_15000701():
     """Event 15000701"""
     if PlayerNotInOwnWorld():

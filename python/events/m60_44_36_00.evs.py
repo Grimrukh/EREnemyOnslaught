@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m60_44_36_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     CommonFunc_RegisterGraceIfFlagEnabled(
@@ -59,7 +59,7 @@ def Constructor():
     CommonFunc_90005709(0, 1044360700, 200, 603051)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.SorceressSellen)
@@ -97,7 +97,7 @@ def Preconstructor():
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 1044360200, 30014, 20014, 1044362200, 10.0, 0.0, 0, 0, 0, 0)
 
 
-@NeverRestart(200)
+@ContinueOnRest(200)
 def Event_200():
     """Event 200"""
     CommonFunc_90005421(0, character=Characters.CaravanDummy, asset=Assets.AEG100_101_9000, flag=1044368301)
@@ -115,7 +115,7 @@ def Event_200():
     Event_1044362300()
 
 
-@NeverRestart(250)
+@ContinueOnRest(250)
 def Event_250():
     """Event 250"""
     CommonFunc_90005420(0, 1044360300, 1044361300, 1044361301, 1044360301, 1044360302, 1044360303, 0.0)
@@ -544,7 +544,7 @@ def Event_1044363713():
     End()
 
 
-@NeverRestart(1044363714)
+@ContinueOnRest(1044363714)
 def Event_1044363714(_, entity: uint):
     """Event 1044363714"""
     if FlagDisabled(3465):
@@ -604,28 +604,28 @@ def Event_1044362810():
 @RestartOnRest(1044362849)
 def Event_1044362849():
     """Event 1044362849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=1044360800,
-        entity=Assets.AEG099_001_9000,
-        region=1044362800,
-        flag_1=1044362805,
-        character=1044365800,
+        boss_dead_flag=1044360800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=1044362800,
+        host_entered_fog_flag=1044362805,
+        boss_characters=1044365800,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=1044360800,
-        entity=Assets.AEG099_001_9000,
-        region=1044362800,
-        flag_1=1044362805,
-        flag_2=1044362806,
+        boss_dead_flag=1044360800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=1044362800,
+        host_entered_fog_flag=1044362805,
+        summon_entered_fog_flag=1044362806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=1044360800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_BossMusicPhaseTransition(
+    CommonFunc_ControlBossFog(0, flag=1044360800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(
         0,
         dead_flag=1044360800,
         bgm_boss_conv_param_id=920900,

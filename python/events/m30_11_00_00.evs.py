@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m30_11_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=73011, asset=Assets.AEG099_060_9000)
@@ -55,7 +55,7 @@ def Constructor():
     Event_30110790(0, 30111520, 30110800)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
@@ -267,7 +267,7 @@ def Preconstructor():
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 30110217, 30003, 20003, 30112217, 3.0, 8.5, 0, 0, 0, 0)
 
 
-@NeverRestart(30112580)
+@ContinueOnRest(30112580)
 def Event_30112580():
     """Event 30112580"""
     RegisterLadder(start_climbing_flag=30110580, stop_climbing_flag=30110581, asset=30111580)
@@ -363,28 +363,28 @@ def Event_30112811():
 @RestartOnRest(30112849)
 def Event_30112849():
     """Event 30112849"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=30110800,
-        entity=Assets.AEG099_001_9000,
-        region=30112800,
-        flag_1=30112805,
-        character=30115800,
+        boss_dead_flag=30110800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=30112800,
+        host_entered_fog_flag=30112805,
+        boss_characters=30115800,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=30110800,
-        entity=Assets.AEG099_001_9000,
-        region=30112800,
-        flag_1=30112805,
-        flag_2=30112806,
+        boss_dead_flag=30110800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=30112800,
+        host_entered_fog_flag=30112805,
+        summon_entered_fog_flag=30112806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=30110800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, 30110800, 921500, 30112805, 30112806, 0, 30112802, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=30110800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, 30110800, 921500, 30112805, 30112806, 0, 30112802, 0, 0)
 
 
 @RestartOnRest(30112900)

@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m31_19_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=31190000, asset=Assets.AEG099_060_9000)
@@ -459,17 +459,17 @@ def Event_31192849():
         left=0,
         region_1=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=31190800,
-        entity=Assets.AEG099_001_9000,
-        region=31192800,
-        flag_1=31192805,
-        flag_2=31192806,
+        boss_dead_flag=31190800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=31192800,
+        host_entered_fog_flag=31192805,
+        summon_entered_fog_flag=31192806,
         action_button_id=10000,
     )
     CommonFunc_9005813(0, flag=31190800, asset=Assets.AEG099_001_9000, model_point=3, right=0, model_point_1=3)
-    CommonFunc_BossMusicPhaseTransition(0, 31190800, 921500, 31192805, 31192806, 0, 31192802, 0, 0)
+    CommonFunc_ControlBossMusic(0, 31190800, 921500, 31192805, 31192806, 0, 31192802, 0, 0)
 
 
 @RestartOnRest(31192899)
@@ -486,17 +486,17 @@ def Event_31192899():
         left=0,
         region_1=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=31190850,
-        entity=Assets.AEG099_001_9002,
-        region=31192850,
-        flag_1=31192855,
-        flag_2=31192856,
+        boss_dead_flag=31190850,
+        fog_asset=Assets.AEG099_001_9002,
+        fog_region=31192850,
+        host_entered_fog_flag=31192855,
+        summon_entered_fog_flag=31192856,
         action_button_id=10000,
     )
     CommonFunc_9005813(0, flag=31190850, asset=Assets.AEG099_001_9002, model_point=3, right=0, model_point_1=3)
-    CommonFunc_BossMusicPhaseTransition(0, 31190850, 920100, 31192855, 31192856, 0, 31192852, 0, 0)
+    CommonFunc_ControlBossMusic(0, 31190850, 920100, 31192855, 31192856, 0, 31192852, 0, 0)
 
 
 @RestartOnRest(31192845)

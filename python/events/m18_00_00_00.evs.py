@@ -21,7 +21,7 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m18_00_00_00_entities import *
 
 
-@NeverRestart(0)
+@ContinueOnRest(0)
 def Constructor():
     """Event 0"""
     GotoIfPlayerNotInOwnWorld(Label.L0)
@@ -260,17 +260,31 @@ def Constructor():
     CommonFunc_90005706(0, 18000701, 30025, 0)
 
 
-@NeverRestart(50)
+@ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.Commoner)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble1, radius=2.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=18000300, region=18002300, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.CastleGuard, radius=4.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.BanishedKnight, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Imp0, radius=4.0, seconds=0.0, animation_id=3000)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Imp1, radius=7.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Imp2, radius=5.0, seconds=2.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.WanderingNoble1, radius=2.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=18000300, region=18002300, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.CastleGuard, radius=4.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.BanishedKnight, radius=8.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.Imp0, radius=4.0, seconds=0.0, animation_id=3000
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.Imp1, radius=7.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.Imp2, radius=5.0, seconds=2.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.GraftedScion0,
@@ -340,7 +354,7 @@ def Event_18000020():
     if FlagDisabled(2000):
         return
     EnableFlag(9021)
-    PlayCutscene(60430000, cutscene_flags=CutsceneFlags.Unknown16, player_id=10000)
+    PlayCutscene(60430000, cutscene_flags=CutsceneFlags.Unknown16, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     SetCameraAngle(x_angle=6.980000019073486, y_angle=106.95999908447266)
 
@@ -813,7 +827,7 @@ def Event_18002450(_, asset_flag: uint, asset: uint, flag: uint):
     EnableFlag(18000400)
 
 
-@NeverRestart(18002510)
+@ContinueOnRest(18002510)
 def Event_18002510():
     """Event 18002510"""
     CommonFunc_90005500(
@@ -958,7 +972,7 @@ def Event_18002510():
         CommonFunc_90005682(0, 18000532, 18001530, 18002530, 18000530, 801100700, 801100705, 102, 0, 0, 0)
 
 
-@NeverRestart(18002520)
+@ContinueOnRest(18002520)
 def Event_18002520():
     """Event 18002520"""
     if ThisEventSlotFlagEnabled():
@@ -966,7 +980,7 @@ def Event_18002520():
     EnableFlag(18000530)
 
 
-@NeverRestart(18002569)
+@ContinueOnRest(18002569)
 def Event_18002569(_, flag: uint, asset: uint):
     """Event 18002569"""
     GotoIfFlagDisabled(Label.L0, flag=flag)
@@ -1296,28 +1310,28 @@ def Event_18002810():
 @RestartOnRest(18000820)
 def Event_18000820():
     """Event 18000820"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=18000800,
-        entity=Assets.AEG099_001_9000,
-        region=18002800,
-        flag_1=18002805,
-        character=18005800,
+        boss_dead_flag=18000800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=18002800,
+        host_entered_fog_flag=18002805,
+        boss_characters=18005800,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=18000800,
-        entity=Assets.AEG099_001_9000,
-        region=18002800,
-        flag_1=18002805,
-        flag_2=18002806,
+        boss_dead_flag=18000800,
+        fog_asset=Assets.AEG099_001_9000,
+        fog_region=18002800,
+        host_entered_fog_flag=18002805,
+        summon_entered_fog_flag=18002806,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=18000800, asset=Assets.AEG099_001_9000, model_point=3, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, 18000800, 920600, 18002805, 18002806, 0, 18002802, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=18000800, fog_asset=Assets.AEG099_001_9000, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, 18000800, 920600, 18002805, 18002806, 0, 18002802, 0, 0)
 
 
 @RestartOnRest(18002850)
@@ -1364,26 +1378,26 @@ def Event_18002860():
 @RestartOnRest(18000870)
 def Event_18000870():
     """Event 18000870"""
-    CommonFunc_9005800(
+    CommonFunc_HostEntersBossFog(
         0,
-        flag=18000850,
-        entity=Assets.AEG099_001_9010,
-        region=18002850,
-        flag_1=18002855,
-        character=18005850,
+        boss_dead_flag=18000850,
+        fog_asset=Assets.AEG099_001_9010,
+        fog_region=18002850,
+        host_entered_fog_flag=18002855,
+        boss_characters=18005850,
         action_button_id=10000,
-        left=0,
-        region_1=0,
+        first_time_done_flag=0,
+        first_time_trigger_region=0,
     )
-    CommonFunc_9005801(
+    CommonFunc_SummonEntersBossFog(
         0,
-        flag=18000850,
-        entity=Assets.AEG099_001_9010,
-        region=18002850,
-        flag_1=18002855,
-        flag_2=18002856,
+        boss_dead_flag=18000850,
+        fog_asset=Assets.AEG099_001_9010,
+        fog_region=18002850,
+        host_entered_fog_flag=18002855,
+        summon_entered_fog_flag=18002856,
         action_button_id=10000,
     )
-    CommonFunc_9005811(0, flag=18000850, asset=Assets.AEG099_001_9010, model_point=3, right=0)
-    CommonFunc_9005811(0, flag=18000850, asset=Assets.AEG099_001_9011, model_point=4, right=0)
-    CommonFunc_BossMusicPhaseTransition(0, 18000850, 931000, 18002855, 18002856, 0, 18002852, 0, 0)
+    CommonFunc_ControlBossFog(0, flag=18000850, fog_asset=Assets.AEG099_001_9010, model_point=3, first_time_done_flag=0)
+    CommonFunc_ControlBossFog(0, flag=18000850, fog_asset=Assets.AEG099_001_9011, model_point=4, first_time_done_flag=0)
+    CommonFunc_ControlBossMusic(0, 18000850, 931000, 18002855, 18002856, 0, 18002852, 0, 0)

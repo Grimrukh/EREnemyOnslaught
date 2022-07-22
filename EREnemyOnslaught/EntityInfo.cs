@@ -84,6 +84,16 @@ namespace EREnemyOnslaught
             [1052380340] = 1052380341,  // summon
             [1052380220] = 1052380221,  // summon
             [1052380240] = 1052380241,  // summon
+
+            [11000800] = 11000801,  // Morgott, the Omen King
+            [11000850] = 11000851,  // Godfrey Phantom
+
+            [11050801] = 11050803,  // Godfrey (before Hoarah Loux)
+            [11050800] = 11050802,  // Hoarah Loux
+            [11050850] = 11050858,  // Sir Gideon Ofnir (variants are using lower IDs)
+
+            [19000800] = 19000805,  // Elden Beast (801-804 used by Elden Beast stuff)
+            [19000810] = 19000812,  // Radagon (811 used by something else)
         };
 
         public readonly static Dictionary<int, int> CloneEntityGroupIDs = new Dictionary<int, int>()
@@ -95,6 +105,8 @@ namespace EREnemyOnslaught
 
         public readonly static HashSet<int> DoNotCloneEntityIDs = new HashSet<int>()
         {
+            // TODO: Starting to seem like I should ignore any entity ending in 7XX (NPCs).
+
             // m14_00_00_00
             14000710,  // SorceressSellen0
             14000712,  // SorceressSellen1
@@ -141,6 +153,15 @@ namespace EREnemyOnslaught
             1052380726,  // BlaiddNPC
             1052380699,  // CleanrotKnight
             1052380706,  // AlexanderNPC
+
+            // Gideon battle variants
+            11050851,
+            11050852,
+            11050853,
+            11050854,
+            11050855,
+            11050856,
+            11050857,
         };
 
         public readonly static Dictionary<int, (Vector3 position, float rotationY)> NewTransforms = new Dictionary<int, (Vector3, float)>()
