@@ -35,7 +35,7 @@ def Constructor():
     Event_13002805()
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
-        flag=13000830,
+        flag=Flags.DragonlodPlacidusaxDead,
         grace_flag=13000001,
         character=Characters.TalkDummy1,
         asset=Assets.AEG099_060_9001,
@@ -43,64 +43,72 @@ def Constructor():
     )
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
-        flag=13000850,
+        flag=Flags.GodskinDuoDead,
         grace_flag=13000002,
         character=Characters.TalkDummy2,
         asset=Assets.AEG099_060_9002,
         enemy_block_distance=5.0,
     )
     Event_13002500()
-    Event_13002800()
-    Event_13002810()
-    Event_13002811()
-    Event_13002829()
-    Event_13002820()
+
+    # MALIKETH, THE BLACK BLADE
+    # TODO: Clone event instances. Harder to find free event IDs here.
+    MalikethDies()
+    MalikethBattleTrigger()
+    MalikethPhaseTwoTransition()
+    MalikethCommonEvents()
+    SetMalikethPhaseTwoEventPoint()
     Event_13002827()
     Event_13002828()
-    Event_13002819()
+    MoveMalikethPhaseTwo()
+
+    # DRAGONLORD PLACIDUSAX
     Event_13002830()
     Event_13002834()
     Event_13002835()
     Event_13002840()
     Event_13002841()
     Event_13002849()
-    Event_13002850()
-    Event_13002860()
+
+    # GODSKIN DUO
+    GodskinDuoDies()
+    GodskinDuoBattleTrigger()
     Event_13002861()
     Event_13002865()
     Event_13002890(
         0,
         flag=13002944,
-        character=Characters.GodskinApostle0,
-        character_1=Characters.GodskinNoble,
+        character=Characters.GodskinDuoApostle,
+        character_1=Characters.GodskinDuoNoble,
         special_effect_id=15504,
     )
     Event_13002891(
         0,
         flag=13002944,
         character=13003851,
-        character_1=Characters.GodskinNoble,
+        character_1=Characters.GodskinDuoNoble,
         special_effect=15506,
-        character_2=Characters.GodskinApostle0,
+        character_2=Characters.GodskinDuoApostle,
         flag_1=13002873,
     )
     Event_13002890(
         1,
         flag=13002945,
-        character=Characters.GodskinNoble,
-        character_1=Characters.GodskinApostle0,
+        character=Characters.GodskinDuoNoble,
+        character_1=Characters.GodskinDuoApostle,
         special_effect_id=15454,
     )
     Event_13002891(
         1,
         flag=13002945,
         character=13003852,
-        character_1=Characters.GodskinApostle0,
+        character_1=Characters.GodskinDuoApostle,
         special_effect=15456,
-        character_2=Characters.GodskinNoble,
+        character_2=Characters.GodskinDuoNoble,
         flag_1=13002874,
     )
     Event_13002892()
+
     Event_13002236(0, region=13002314, character=Characters.BeastmanofFarumAzula29)
     CommonFunc_NonRespawningWithReward(0, dead_flag=13000340, character=13000340, item_lot=40770, reward_delay=0.0, skip_reward=0)
     CommonFunc_NonRespawningWithReward(0, dead_flag=13000341, character=Characters.Scarab, item_lot=40772, reward_delay=0.0, skip_reward=0)
@@ -231,7 +239,7 @@ def Constructor():
     CommonFunc_90005621(0, flag=13000570, asset=Assets.AEG099_270_9000)
     CommonFunc_90005780(
         0,
-        flag=13000850,
+        flag=Flags.GodskinDuoDead,
         summon_flag=13002160,
         dismissal_flag=13002161,
         character=Characters.RecusantBernahl1,
@@ -241,11 +249,13 @@ def Constructor():
         unknown=1,
         right_1=0,
     )
-    CommonFunc_90005781(0, flag=13000850, flag_1=13002160, flag_2=13002161, character=Characters.RecusantBernahl1)
+    CommonFunc_90005781(
+        0, flag=Flags.GodskinDuoDead, flag_1=13002160, flag_2=13002161, character=Characters.RecusantBernahl1
+    )
     Event_13002859()
     CommonFunc_90005780(
         0,
-        flag=13000850,
+        flag=Flags.GodskinDuoDead,
         summon_flag=13002164,
         dismissal_flag=13002165,
         character=Characters.RecusantBernahl2,
@@ -255,7 +265,9 @@ def Constructor():
         unknown=1,
         right_1=0,
     )
-    CommonFunc_90005781(0, flag=13000850, flag_1=13002164, flag_2=13002165, character=Characters.RecusantBernahl2)
+    CommonFunc_90005781(
+        0, flag=Flags.GodskinDuoDead, flag_1=13002164, flag_2=13002165, character=Characters.RecusantBernahl2
+    )
     CommonFunc_90005782(
         0,
         flag=13002164,
@@ -297,10 +309,10 @@ def Constructor():
         arg_types="IIIIIIi",
     )
     Event_13003700()
-    CommonFunc_90005704(0, attacked_entity=Characters.LivingPot, flag=13009256, flag_1=3660, flag_2=13009251, right=3)
+    CommonFunc_90005704(0, attacked_entity=Characters.Alexander, flag=13009256, flag_1=3660, flag_2=13009251, right=3)
     CommonFunc_90005703(
         0,
-        character=Characters.LivingPot,
+        character=Characters.Alexander,
         flag=3661,
         flag_1=3662,
         flag_2=13009251,
@@ -309,9 +321,9 @@ def Constructor():
         last_flag=3663,
         right=-1,
     )
-    CommonFunc_90005702(0, character=Characters.LivingPot, flag=3663, first_flag=3660, last_flag=3663)
-    Event_13003710(0, character=Characters.LivingPot)
-    Event_13003711(0, character=Characters.LivingPot)
+    CommonFunc_90005702(0, character=Characters.Alexander, flag=3663, first_flag=3660, last_flag=3663)
+    Event_13003710(0, character=Characters.Alexander)
+    Event_13003711(0, character=Characters.Alexander)
     CommonFunc_90005750(
         0,
         asset=Assets.AEG099_990_9009,
@@ -1581,9 +1593,9 @@ def Event_13002660(
 
 
 @RestartOnRest(13002800)
-def Event_13002800():
+def MalikethDies():
     """Event 13002800"""
-    GotoIfFlagDisabled(Label.L0, flag=13000800)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.MalikethDead)
     if PlayerNotInOwnWorld():
         return
     GotoIfFlagDisabled(Label.L1, flag=118)
@@ -1592,23 +1604,23 @@ def Event_13002800():
     # --- Label 0 --- #
     DefineLabel(0)
     
-    MAIN.Await(HealthValue(Characters.BeastClergyman1) <= 0)
+    MAIN.Await(HealthValue(Characters.MalikethPhaseTwo) <= 0)
     
-    Kill(Characters.BeastClergyman0)
-    Kill(Characters.BeastClergyman1)
+    Kill(Characters.MalikethPhaseOne)
+    Kill(Characters.MalikethPhaseTwo)
     Wait(4.0)
     PlaySoundEffect(13008000, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(PlayerInOwnWorld())
-    AND_2.Add(CharacterDead(Characters.BeastClergyman1))
+    AND_2.Add(CharacterDead(Characters.MalikethPhaseTwo))
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9646))
     OR_2.Add(AND_2)
-    OR_2.Add(FlagEnabled(13000800))
+    OR_2.Add(FlagEnabled(Flags.MalikethDead))
     
     MAIN.Await(OR_2)
     
-    SetBackreadStateAlternate(Characters.BeastClergyman1, True)
-    KillBossAndDisplayBanner(character=Characters.BeastClergyman1, banner_type=BannerType.LegendFelled)
-    EnableNetworkFlag(13000800)
+    SetBackreadStateAlternate(Characters.MalikethPhaseTwo, True)
+    KillBossAndDisplayBanner(character=Characters.MalikethPhaseTwo, banner_type=BannerType.LegendFelled)
+    EnableNetworkFlag(Flags.MalikethDead)
     EnableFlag(9116)
     if PlayerInOwnWorld():
         EnableFlag(61116)
@@ -1621,12 +1633,12 @@ def Event_13002800():
 @RestartOnRest(13002805)
 def Event_13002805():
     """Event 13002805"""
-    GotoIfFlagEnabled(Label.L0, flag=13000800)
+    GotoIfFlagEnabled(Label.L0, flag=Flags.MalikethDead)
     DisableCharacter(Characters.TalkDummy0)
     DisableAsset(Assets.AEG099_060_9000)
     Wait(1.0)
     
-    MAIN.Await(FlagEnabled(13000800))
+    MAIN.Await(FlagEnabled(Flags.MalikethDead))
     
     Wait(4.0)
     Wait(7.800000190734863)
@@ -1646,35 +1658,51 @@ def Event_13002805():
 
 
 @RestartOnRest(13002810)
-def Event_13002810():
+def MalikethBattleTrigger():
     """Event 13002810"""
-    GotoIfFlagDisabled(Label.L0, flag=13000800)
-    DisableCharacter(Characters.BeastClergyman1)
-    DisableCharacter(Characters.BeastClergyman0)
-    DisableAnimations(Characters.BeastClergyman1)
-    DisableAnimations(Characters.BeastClergyman0)
-    Kill(Characters.BeastClergyman1)
-    Kill(Characters.BeastClergyman0)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.MalikethDead)
+    DisableCharacter(Characters.MalikethPhaseTwo)
+    DisableCharacter(Characters.MalikethPhaseOne)
+    DisableAnimations(Characters.MalikethPhaseTwo)
+    DisableAnimations(Characters.MalikethPhaseOne)
+    Kill(Characters.MalikethPhaseTwo)
+    Kill(Characters.MalikethPhaseOne)
+    DisableCharacter(Characters.CLONE_MalikethPhaseTwo)
+    DisableCharacter(Characters.CLONE_MalikethPhaseOne)
+    DisableAnimations(Characters.CLONE_MalikethPhaseTwo)
+    DisableAnimations(Characters.CLONE_MalikethPhaseOne)
+    Kill(Characters.CLONE_MalikethPhaseTwo)
+    Kill(Characters.CLONE_MalikethPhaseOne)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(Characters.BeastClergyman0)
-    DisableAI(Characters.BeastClergyman1)
-    DisableHealthBar(Characters.BeastClergyman1)
-    DisableCharacter(Characters.BeastClergyman1)
-    DisableGravity(Characters.BeastClergyman1)
-    DisableAnimations(Characters.BeastClergyman1)
-    GotoIfFlagEnabled(Label.L1, flag=13000801)
-    ForceAnimation(Characters.BeastClergyman0, 30018, loop=True)
+    DisableAI(Characters.MalikethPhaseOne)
+    DisableAI(Characters.MalikethPhaseTwo)
+    DisableHealthBar(Characters.MalikethPhaseTwo)
+    DisableCharacter(Characters.MalikethPhaseTwo)
+    DisableGravity(Characters.MalikethPhaseTwo)
+    DisableAnimations(Characters.MalikethPhaseTwo)
+    DisableAI(Characters.CLONE_MalikethPhaseOne)
+    DisableAI(Characters.CLONE_MalikethPhaseTwo)
+    DisableHealthBar(Characters.CLONE_MalikethPhaseTwo)
+    DisableCharacter(Characters.CLONE_MalikethPhaseTwo)
+    DisableGravity(Characters.CLONE_MalikethPhaseTwo)
+    DisableAnimations(Characters.CLONE_MalikethPhaseTwo)
+
+    GotoIfFlagEnabled(Label.L1, flag=Flags.MalikethFirstTimeDone)
+
+    ForceAnimation(Characters.MalikethPhaseOne, 30018, loop=True)
+    ForceAnimation(Characters.CLONE_MalikethPhaseOne, 30018, loop=True)
     AND_1.Add(FlagEnabled(13002805))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=13002800))
     
     MAIN.Await(AND_1)
     
     Wait(3.0)
-    ForceAnimation(Characters.BeastClergyman0, 20038, loop=True)
-    EnableNetworkFlag(13000801)
+    ForceAnimation(Characters.MalikethPhaseOne, 20038, loop=True)
+    ForceAnimation(Characters.CLONE_MalikethPhaseOne, 20038, loop=True)
+    EnableNetworkFlag(Flags.MalikethFirstTimeDone)
     Goto(Label.L2)
 
     # --- Label 1 --- #
@@ -1688,20 +1716,27 @@ def Event_13002810():
 
     # --- Label 2 --- #
     DefineLabel(2)
-    EnableCharacter(Characters.BeastClergyman1)
-    ReferDamageToEntity(Characters.BeastClergyman0, target_entity=Characters.BeastClergyman1)
-    EnableAI(Characters.BeastClergyman0)
-    SetNetworkUpdateRate(Characters.BeastClergyman0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    SetNetworkUpdateRate(Characters.BeastClergyman1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.BeastClergyman0, name=902110000)
+    EnableCharacter(Characters.MalikethPhaseTwo)
+    EnableCharacter(Characters.CLONE_MalikethPhaseTwo)
+    ReferDamageToEntity(Characters.MalikethPhaseOne, target_entity=Characters.MalikethPhaseTwo)
+    ReferDamageToEntity(Characters.CLONE_MalikethPhaseOne, target_entity=Characters.CLONE_MalikethPhaseTwo)
+    EnableAI(Characters.MalikethPhaseOne)
+    EnableAI(Characters.CLONE_MalikethPhaseOne)
+    SetNetworkUpdateRate(Characters.MalikethPhaseOne, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.MalikethPhaseTwo, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_MalikethPhaseOne, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_MalikethPhaseTwo, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+
+    EnableBossHealthBar(Characters.MalikethPhaseOne, name=NameText.BeastClergyman, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_MalikethPhaseOne, name=NameText.CLONE_BeastClergyman, bar_slot=0)
 
 
 @RestartOnRest(13002811)
-def Event_13002811():
-    """Event 13002811"""
-    if FlagEnabled(13000800):
+def MalikethPhaseTwoTransition(_, maliketh_phase_one: uint, maliketh_phase_two: uint):
+    """Separate for each clone."""
+    if FlagEnabled(Flags.MalikethDead):
         return
-    AND_1.Add(HealthRatio(Characters.BeastClergyman0) <= 0.550000011920929)
+    AND_1.Add(HealthRatio(maliketh_phase_one) <= 0.550000011920929)
     
     MAIN.Await(AND_1)
     
@@ -1709,7 +1744,7 @@ def Event_13002811():
     OR_15.Add(CharacterInsideRegion(character=PLAYER, region=13002815))
     if OR_15:
         return
-    SetCharacterFadeOnEnable(character=Characters.BeastClergyman1, state=False)
+    SetCharacterFadeOnEnable(character=maliketh_phase_two, state=False)
     if PlayerInOwnWorld():
         PlayCutsceneToPlayerAndWarp(
             cutscene_id=13000040,
@@ -1724,49 +1759,49 @@ def Event_13002811():
         PlayCutscene(13000040, cutscene_flags=0, player_id=PLAYER)
     WaitFramesAfterCutscene(frames=1)
     EnableFlag(13002802)
-    DisableCharacter(Characters.BeastClergyman0)
-    SetNetworkUpdateRate(Characters.BeastClergyman0, is_fixed=False, update_rate=CharacterUpdateRate.Never)
-    DisableAI(Characters.BeastClergyman0)
-    ForceAnimation(Characters.BeastClergyman1, 20015)
+    DisableCharacter(maliketh_phase_one)
+    SetNetworkUpdateRate(maliketh_phase_one, is_fixed=False, update_rate=CharacterUpdateRate.Never)
+    DisableAI(maliketh_phase_one)
+    ForceAnimation(maliketh_phase_two, 20015)
     Move(
-        Characters.BeastClergyman1,
+        maliketh_phase_two,
         destination=13002825,
         destination_type=CoordEntityType.Region,
-        copy_draw_parent=Characters.BeastClergyman1,
+        copy_draw_parent=maliketh_phase_two,
     )
-    EnableGravity(Characters.BeastClergyman1)
-    EnableAnimations(Characters.BeastClergyman1)
-    EnableAI(Characters.BeastClergyman1)
-    SetNetworkUpdateRate(Characters.BeastClergyman1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.BeastClergyman1, name=902110001)
+    EnableGravity(maliketh_phase_two)
+    EnableAnimations(maliketh_phase_two)
+    EnableAI(maliketh_phase_two)
+    SetNetworkUpdateRate(maliketh_phase_two, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(maliketh_phase_two, name=902110001)
 
 
 @RestartOnRest(13002819)
-def Event_13002819():
+def MoveMalikethPhaseTwo(_, maliketh: uint):
     """Event 13002819"""
-    MAIN.Await(CharacterHasSpecialEffect(Characters.BeastClergyman1, 15272))
+    MAIN.Await(CharacterHasSpecialEffect(maliketh, 15272))
     
     Move(
-        Characters.BeastClergyman1,
+        maliketh,
         destination=13002825,
         destination_type=CoordEntityType.Region,
-        copy_draw_parent=Characters.BeastClergyman1,
+        copy_draw_parent=maliketh,
     )
     Wait(1.0)
     Restart()
 
 
 @RestartOnRest(13002820)
-def Event_13002820():
+def SetMalikethPhaseTwoEventPoint(_, maliketh: uint):
     """Event 13002820"""
-    AND_1.Add(HealthRatio(Characters.BeastClergyman1) != 0.0)
+    AND_1.Add(HealthRatio(maliketh) != 0.0)
     AND_1.Add(FlagEnabled(13002821))
     if FlagEnabled(13002822):
-        SetEventPoint(Characters.BeastClergyman1, region=13002810, reaction_range=200.0)
+        SetEventPoint(maliketh, region=13002810, reaction_range=200.0)
     if FlagEnabled(13002823):
-        SetEventPoint(Characters.BeastClergyman1, region=13002811, reaction_range=200.0)
+        SetEventPoint(maliketh, region=13002811, reaction_range=200.0)
     if FlagEnabled(13002824):
-        SetEventPoint(Characters.BeastClergyman1, region=13002812, reaction_range=200.0)
+        SetEventPoint(maliketh, region=13002812, reaction_range=200.0)
     DisableFlag(13002821)
     Restart()
 
@@ -1774,16 +1809,16 @@ def Event_13002820():
 @RestartOnRest(13002827)
 def Event_13002827():
     """Event 13002827"""
-    AND_1.Add(CharacterDoesNotHaveSpecialEffect(Characters.BeastClergyman1, 15270))
+    AND_1.Add(CharacterDoesNotHaveSpecialEffect(Characters.MalikethPhaseTwo, 15270))
     AND_1.Add(FlagDisabled(13002826))
-    OR_1.Add(CharacterInsideRegion(character=Characters.BeastClergyman1, region=13002840))
-    OR_1.Add(CharacterInsideRegion(character=Characters.BeastClergyman1, region=13002841))
-    OR_1.Add(CharacterInsideRegion(character=Characters.BeastClergyman1, region=13002842))
+    OR_1.Add(CharacterInsideRegion(character=Characters.MalikethPhaseTwo, region=13002840))
+    OR_1.Add(CharacterInsideRegion(character=Characters.MalikethPhaseTwo, region=13002841))
+    OR_1.Add(CharacterInsideRegion(character=Characters.MalikethPhaseTwo, region=13002842))
     AND_1.Add(OR_1)
     
     MAIN.Await(AND_1)
     
-    AddSpecialEffect(Characters.BeastClergyman1, 15270)
+    AddSpecialEffect(Characters.MalikethPhaseTwo, 15270)
     EnableFlag(13002826)
     Restart()
 
@@ -1792,9 +1827,9 @@ def Event_13002827():
 def Event_13002828():
     """Event 13002828"""
     AND_1.Add(FlagEnabled(13002826))
-    AND_1.Add(CharacterOutsideRegion(character=Characters.BeastClergyman1, region=13002840))
-    AND_1.Add(CharacterOutsideRegion(character=Characters.BeastClergyman1, region=13002841))
-    AND_1.Add(CharacterOutsideRegion(character=Characters.BeastClergyman1, region=13002842))
+    AND_1.Add(CharacterOutsideRegion(character=Characters.MalikethPhaseTwo, region=13002840))
+    AND_1.Add(CharacterOutsideRegion(character=Characters.MalikethPhaseTwo, region=13002841))
+    AND_1.Add(CharacterOutsideRegion(character=Characters.MalikethPhaseTwo, region=13002842))
     
     MAIN.Await(AND_1)
     
@@ -1803,11 +1838,11 @@ def Event_13002828():
 
 
 @RestartOnRest(13002829)
-def Event_13002829():
+def MalikethCommonEvents():
     """Event 13002829"""
     CommonFunc_HostEntersBossFog(
         0,
-        boss_dead_flag=13000800,
+        boss_dead_flag=Flags.MalikethDead,
         fog_asset=Assets.AEG099_002_9000,
         fog_region=13002800,
         host_entered_fog_flag=13002805,
@@ -1818,21 +1853,21 @@ def Event_13002829():
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=13000800,
+        boss_dead_flag=Flags.MalikethDead,
         fog_asset=Assets.AEG099_002_9000,
         fog_region=13002800,
         host_entered_fog_flag=13002805,
         summon_entered_fog_flag=13002806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=13000800, fog_asset=Assets.AEG099_002_9000, model_point=4, required_flag=0)
-    CommonFunc_ControlBossMusic(0, 13000800, 211000, 13002805, 13002806, 0, 13002802, 1, 1)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.MalikethDead, fog_asset=Assets.AEG099_002_9000, model_point=4, required_flag=0)
+    CommonFunc_ControlBossMusic(0, Flags.MalikethDead, 211000, 13002805, 13002806, 0, 13002802, 1, 1)
 
 
 @RestartOnRest(13002830)
 def Event_13002830():
     """Event 13002830"""
-    if FlagEnabled(13000830):
+    if FlagEnabled(Flags.DragonlodPlacidusaxDead):
         return
     
     MAIN.Await(HealthValue(Characters.DragonlordPlacidusax) <= 0)
@@ -1845,7 +1880,7 @@ def Event_13002830():
     
     KillBossAndDisplayBanner(character=Characters.DragonlordPlacidusax, banner_type=BannerType.LegendFelled)
     SetWeather(weather=Weather.Default, duration=-1.0, immediate_change=False)
-    EnableFlag(13000830)
+    EnableFlag(Flags.DragonlodPlacidusaxDead)
     EnableFlag(9115)
     if PlayerInOwnWorld():
         EnableFlag(61115)
@@ -1856,7 +1891,7 @@ def Event_13002830():
 @RestartOnRest(13002834)
 def Event_13002834():
     """Event 13002834"""
-    if FlagEnabled(13000830):
+    if FlagEnabled(Flags.DragonlodPlacidusaxDead):
         return
     GotoIfPlayerInOwnWorld(Label.L0)
     GotoIfFlagDisabled(Label.L0, flag=13002834)
@@ -1930,7 +1965,7 @@ def Event_13002834():
 @RestartOnRest(13002835)
 def Event_13002835():
     """Event 13002835"""
-    GotoIfFlagDisabled(Label.L3, flag=13000830)
+    GotoIfFlagDisabled(Label.L3, flag=Flags.DragonlodPlacidusaxDead)
     DisableCharacter(13005830)
     DisableAnimations(13005830)
     Kill(13005830)
@@ -1993,7 +2028,7 @@ def Event_13002835():
 @RestartOnRest(13002840)
 def Event_13002840():
     """Event 13002840"""
-    if FlagEnabled(13000830):
+    if FlagEnabled(Flags.DragonlodPlacidusaxDead):
         return
     AND_1.Add(CharacterHasSpecialEffect(Characters.DragonlordPlacidusax, 5029))
     
@@ -2006,7 +2041,7 @@ def Event_13002840():
 @RestartOnRest(13002841)
 def Event_13002841():
     """Event 13002841"""
-    if FlagEnabled(13000830):
+    if FlagEnabled(Flags.DragonlodPlacidusaxDead):
         return
     DisableNetworkSync()
     AND_1.Add(CharacterHasSpecialEffect(Characters.DragonlordPlacidusax, 5025))
@@ -2043,28 +2078,28 @@ def Event_13002846(_, flag: uint, flag_1: uint, flag_2: uint):
 @RestartOnRest(13002849)
 def Event_13002849():
     """Event 13002849"""
-    Event_13002846(0, flag=13000830, flag_1=13002835, flag_2=13002836)
-    CommonFunc_ControlBossMusic(0, 13000830, 452000, 13002835, 13002836, 0, 13002832, 0, 1)
+    Event_13002846(0, flag=Flags.DragonlodPlacidusaxDead, flag_1=13002835, flag_2=13002836)
+    CommonFunc_ControlBossMusic(0, Flags.DragonlodPlacidusaxDead, 452000, 13002835, 13002836, 0, 13002832, 0, 1)
 
 
 @RestartOnRest(13002850)
-def Event_13002850():
+def GodskinDuoDies():
     """Event 13002850"""
-    if FlagEnabled(13000850):
+    if FlagEnabled(Flags.GodskinDuoDead):
         return
     
-    MAIN.Await(HealthValue(Characters.GodskinApostle1) <= 0)
+    MAIN.Await(HealthValue(Characters.GodskinDuoHealthPool) <= 0)
     
-    Kill(Characters.GodskinApostle0)
-    Kill(Characters.GodskinNoble)
+    Kill(Characters.GodskinDuoApostle)
+    Kill(Characters.GodskinDuoNoble)
     EnableFlag(13002854)
     Wait(4.0)
-    PlaySoundEffect(Characters.GodskinApostle1, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(Characters.GodskinDuoHealthPool, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.GodskinApostle1))
+    MAIN.Await(CharacterDead(Characters.GodskinDuoHealthPool))
     
-    KillBossAndDisplayBanner(character=Characters.GodskinApostle1, banner_type=BannerType.GreatEnemyFelled)
-    EnableFlag(13000850)
+    KillBossAndDisplayBanner(character=Characters.GodskinDuoHealthPool, banner_type=BannerType.GreatEnemyFelled)
+    EnableFlag(Flags.GodskinDuoDead)
     EnableFlag(9114)
     if PlayerInOwnWorld():
         EnableFlag(61114)
@@ -2122,45 +2157,45 @@ def Event_13002859():
 
 
 @RestartOnRest(13002860)
-def Event_13002860():
+def GodskinDuoBattleTrigger():
     """Event 13002860"""
-    GotoIfFlagDisabled(Label.L6, flag=13000850)
-    DisableCharacter(Characters.GodskinApostle1)
-    DisableCharacter(Characters.GodskinApostle0)
-    DisableCharacter(Characters.GodskinNoble)
-    DisableAnimations(Characters.GodskinApostle1)
-    DisableAnimations(Characters.GodskinApostle0)
-    DisableAnimations(Characters.GodskinNoble)
-    Kill(Characters.GodskinApostle1)
-    Kill(Characters.GodskinApostle0)
-    Kill(Characters.GodskinNoble)
+    GotoIfFlagDisabled(Label.L6, flag=Flags.GodskinDuoDead)
+    DisableCharacter(Characters.GodskinDuoHealthPool)
+    DisableCharacter(Characters.GodskinDuoApostle)
+    DisableCharacter(Characters.GodskinDuoNoble)
+    DisableAnimations(Characters.GodskinDuoHealthPool)
+    DisableAnimations(Characters.GodskinDuoApostle)
+    DisableAnimations(Characters.GodskinDuoNoble)
+    Kill(Characters.GodskinDuoHealthPool)
+    Kill(Characters.GodskinDuoApostle)
+    Kill(Characters.GodskinDuoNoble)
     End()
 
     # --- Label 6 --- #
     DefineLabel(6)
-    DisableAI(Characters.GodskinApostle0)
-    DisableAI(Characters.GodskinNoble)
-    DisableCharacter(Characters.GodskinApostle1)
-    DisableGravity(Characters.GodskinApostle1)
-    DisableAnimations(Characters.GodskinApostle1)
+    DisableAI(Characters.GodskinDuoApostle)
+    DisableAI(Characters.GodskinDuoNoble)
+    DisableCharacter(Characters.GodskinDuoHealthPool)
+    DisableGravity(Characters.GodskinDuoHealthPool)
+    DisableAnimations(Characters.GodskinDuoHealthPool)
     GotoIfFlagEnabled(Label.L7, flag=13000851)
-    DisableCharacter(Characters.GodskinApostle0)
-    DisableCharacter(Characters.GodskinNoble)
-    ForceAnimation(Characters.GodskinApostle0, 30001, loop=True)
-    ForceAnimation(Characters.GodskinNoble, 30001, loop=True)
+    DisableCharacter(Characters.GodskinDuoApostle)
+    DisableCharacter(Characters.GodskinDuoNoble)
+    ForceAnimation(Characters.GodskinDuoApostle, 30001, loop=True)
+    ForceAnimation(Characters.GodskinDuoNoble, 30001, loop=True)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=13002851))
     OR_1.Add(AND_1)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.GodskinApostle0, attacker=PLAYER))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.GodskinNoble, attacker=PLAYER))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.GodskinDuoApostle, attacker=PLAYER))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.GodskinDuoNoble, attacker=PLAYER))
     
     MAIN.Await(OR_1)
     
     EnableNetworkFlag(13000851)
-    EnableCharacter(Characters.GodskinApostle0)
-    EnableCharacter(Characters.GodskinNoble)
-    ForceAnimation(Characters.GodskinApostle0, 20001)
-    ForceAnimation(Characters.GodskinNoble, 20001)
+    EnableCharacter(Characters.GodskinDuoApostle)
+    EnableCharacter(Characters.GodskinDuoNoble)
+    ForceAnimation(Characters.GodskinDuoApostle, 20001)
+    ForceAnimation(Characters.GodskinDuoNoble, 20001)
     Goto(Label.L8)
 
     # --- Label 7 --- #
@@ -2174,23 +2209,23 @@ def Event_13002860():
 
     # --- Label 8 --- #
     DefineLabel(8)
-    EnableCharacter(Characters.GodskinApostle1)
-    DisableAI(Characters.GodskinApostle1)
-    EnableAI(Characters.GodskinApostle0)
-    EnableAI(Characters.GodskinNoble)
-    SetNetworkUpdateRate(Characters.GodskinApostle1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    SetNetworkUpdateRate(Characters.GodskinApostle0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    SetNetworkUpdateRate(Characters.GodskinNoble, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    ReferDamageToEntity(13005851, target_entity=Characters.GodskinApostle1)
-    EnableBossHealthBar(Characters.GodskinApostle1, name=903575000)
+    EnableCharacter(Characters.GodskinDuoHealthPool)
+    DisableAI(Characters.GodskinDuoHealthPool)
+    EnableAI(Characters.GodskinDuoApostle)
+    EnableAI(Characters.GodskinDuoNoble)
+    SetNetworkUpdateRate(Characters.GodskinDuoHealthPool, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.GodskinDuoApostle, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.GodskinDuoNoble, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ReferDamageToEntity(13005851, target_entity=Characters.GodskinDuoHealthPool)
+    EnableBossHealthBar(Characters.GodskinDuoHealthPool, name=903575000)
 
 
 @RestartOnRest(13002861)
 def Event_13002861():
     """Event 13002861"""
-    if FlagEnabled(13000850):
+    if FlagEnabled(Flags.GodskinDuoDead):
         return
-    OR_1.Add(HealthRatio(Characters.GodskinApostle1) <= 0.5)
+    OR_1.Add(HealthRatio(Characters.GodskinDuoHealthPool) <= 0.5)
     OR_1.Add(FlagEnabled(13002873))
     OR_1.Add(FlagEnabled(13002874))
     
@@ -2204,7 +2239,7 @@ def Event_13002890(_, flag: uint, character: uint, character_1: uint, special_ef
     """Event 13002890"""
     if PlayerNotInOwnWorld():
         return
-    if FlagEnabled(13000850):
+    if FlagEnabled(Flags.GodskinDuoDead):
         return
     if FlagEnabled(13002854):
         return
@@ -2238,7 +2273,7 @@ def Event_13002891(
     """Event 13002891"""
     if PlayerNotInOwnWorld():
         return
-    if FlagEnabled(13000850):
+    if FlagEnabled(Flags.GodskinDuoDead):
         return
     if FlagEnabled(13002854):
         return
@@ -2249,7 +2284,7 @@ def Event_13002891(
     
     MAIN.Await(AND_1)
     
-    if FlagEnabled(13000850):
+    if FlagEnabled(Flags.GodskinDuoDead):
         return
     if FlagEnabled(13002854):
         return
@@ -2265,21 +2300,21 @@ def Event_13002892():
     """Event 13002892"""
     if PlayerNotInOwnWorld():
         return
-    if FlagEnabled(13000850):
+    if FlagEnabled(Flags.GodskinDuoDead):
         return
     if FlagEnabled(13002854):
         return
-    AND_1.Add(CharacterDead(Characters.GodskinApostle0))
-    AND_1.Add(CharacterDead(Characters.GodskinNoble))
+    AND_1.Add(CharacterDead(Characters.GodskinDuoApostle))
+    AND_1.Add(CharacterDead(Characters.GodskinDuoNoble))
     AND_1.Add(FlagDisabled(13002944))
     AND_1.Add(FlagDisabled(13002945))
     
     MAIN.Await(AND_1)
     
-    if FlagEnabled(13000850):
+    if FlagEnabled(Flags.GodskinDuoDead):
         return
     Wait(10.0)
-    if FlagEnabled(13000850):
+    if FlagEnabled(Flags.GodskinDuoDead):
         return
     if FlagEnabled(13002854):
         return
@@ -2307,7 +2342,7 @@ def Event_13002865():
     """Event 13002865"""
     CommonFunc_HostEntersBossFog(
         0,
-        boss_dead_flag=13000850,
+        boss_dead_flag=Flags.GodskinDuoDead,
         fog_asset=Assets.AEG099_001_9000,
         fog_region=13002850,
         host_entered_fog_flag=13002855,
@@ -2318,7 +2353,7 @@ def Event_13002865():
     )
     CommonFunc_HostEntersBossFog(
         0,
-        boss_dead_flag=13000850,
+        boss_dead_flag=Flags.GodskinDuoDead,
         fog_asset=Assets.AEG099_001_9003,
         fog_region=13002852,
         host_entered_fog_flag=13002855,
@@ -2329,7 +2364,7 @@ def Event_13002865():
     )
     CommonFunc_HostEntersBossFog(
         0,
-        boss_dead_flag=13000850,
+        boss_dead_flag=Flags.GodskinDuoDead,
         fog_asset=Assets.AEG099_001_9002,
         fog_region=13002853,
         host_entered_fog_flag=13002855,
@@ -2340,7 +2375,7 @@ def Event_13002865():
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=13000850,
+        boss_dead_flag=Flags.GodskinDuoDead,
         fog_asset=Assets.AEG099_001_9000,
         fog_region=13002850,
         host_entered_fog_flag=13002855,
@@ -2349,7 +2384,7 @@ def Event_13002865():
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=13000850,
+        boss_dead_flag=Flags.GodskinDuoDead,
         fog_asset=Assets.AEG099_001_9003,
         fog_region=13002852,
         host_entered_fog_flag=13002855,
@@ -2358,19 +2393,19 @@ def Event_13002865():
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=13000850,
+        boss_dead_flag=Flags.GodskinDuoDead,
         fog_asset=Assets.AEG099_001_9002,
         fog_region=13002853,
         host_entered_fog_flag=13002855,
         summon_entered_fog_flag=13002856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=13000850, fog_asset=Assets.AEG099_001_9000, model_point=5, required_flag=13000851)
-    CommonFunc_ControlBossFog(0, boss_dead_flag=13000850, fog_asset=Assets.AEG099_001_9003, model_point=5, required_flag=13000851)
-    CommonFunc_ControlBossFog(0, boss_dead_flag=13000850, fog_asset=Assets.AEG099_001_9002, model_point=5, required_flag=13000851)
-    CommonFunc_ControlBossFog(0, boss_dead_flag=13000850, fog_asset=Assets.AEG099_001_9001, model_point=5, required_flag=13000851)
-    CommonFunc_ControlBossFog(0, boss_dead_flag=13000850, fog_asset=Assets.AEG099_001_9004, model_point=5, required_flag=13000851)
-    CommonFunc_ControlBossMusic(0, 13000850, 356000, 13002855, 13002856, 0, 13002852, 0, 0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinDuoDead, fog_asset=Assets.AEG099_001_9000, model_point=5, required_flag=13000851)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinDuoDead, fog_asset=Assets.AEG099_001_9003, model_point=5, required_flag=13000851)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinDuoDead, fog_asset=Assets.AEG099_001_9002, model_point=5, required_flag=13000851)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinDuoDead, fog_asset=Assets.AEG099_001_9001, model_point=5, required_flag=13000851)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinDuoDead, fog_asset=Assets.AEG099_001_9004, model_point=5, required_flag=13000851)
+    CommonFunc_ControlBossMusic(0, Flags.GodskinDuoDead, 356000, 13002855, 13002856, 0, 13002852, 0, 0)
 
 
 @RestartOnRest(13002600)
@@ -2875,8 +2910,8 @@ def Event_13003700():
     
     MAIN.Await(FlagEnabled(13002805))
     
-    SetCharacterTalkRange(character=Characters.BeastClergyman0, distance=100.0)
-    SetCharacterTalkRange(character=Characters.BeastClergyman1, distance=100.0)
+    SetCharacterTalkRange(character=Characters.MalikethPhaseOne, distance=100.0)
+    SetCharacterTalkRange(character=Characters.MalikethPhaseTwo, distance=100.0)
     End()
 
 
@@ -3032,7 +3067,7 @@ def Event_13003721():
     OR_4.Add(FlagEnabled(13002721))
     if OR_4:
         return
-    if FlagEnabled(13000850):
+    if FlagEnabled(Flags.GodskinDuoDead):
         return
     if FlagDisabled(3880):
         return

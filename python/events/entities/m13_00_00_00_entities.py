@@ -1,6 +1,18 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    MalikethDead = 13000800
+    MalikethFirstTimeDone = 13000801
+    DragonlodPlacidusaxDead = 13000830
+    GodskinDuoDead = 13000850
+
+
+class NameText(NPCName):
+    BeastClergyman = 902110000
+    CLONE_BeastClergyman = 902110010
+
+
 class Characters(Character):
     RecusantBernahl0 = 13000710  # c0000_9030 col h016000 npc 543260072 think 543260100 chara 23262 talk 326201300
     RecusantBernahl1 = 13000720  # c0000_9031 col h007100 npc 533260072 think 533261000 chara 23262
@@ -31,8 +43,8 @@ class Characters(Character):
     TalkDummy15 = 13000840  # c1000_9021 col h015000 npc 10000000 think 1000000 group 13005830
     TalkDummy16 = 13000120  # c1000_9022 col h017000 npc 10001000 think 1 talk 2000
     TalkDummy17 = 13000122  # c1000_9023 col h015000 npc 10001000 think 1 talk 2000
-    BeastClergyman0 = 13000801  # c2110_9000 col h017000 npc 21100072 think 21100000 talk 202111300 group 13005800,13005120
-    BeastClergyman1 = 13000800  # c2110_9001 col h017000 npc 21101072 think 21101000 talk 202101300 group 13005800,13005120
+    MalikethPhaseOne = 13000801  # c2110_9000 col h017000 npc 21100072 think 21100000 talk 202111300 group 13005800,13005120
+    MalikethPhaseTwo = 13000800  # c2110_9001 col h017000 npc 21101072 think 21101000 talk 202101300 group 13005800,13005120
     CrucibleKnight0 = 13000295  # c2500_9000 col h011400 npc 25000172 think 25000110 group 13005114
     CrucibleKnight1 = 13000296  # c2500_9001 col h013500 npc 25000172 think 25000100
     BanishedKnight0 = 13000381  # c3010_9001 col h006400 npc 30102172 think 30102000
@@ -93,9 +105,9 @@ class Characters(Character):
     Skeleton32 = 13000472  # c3500_9072 col h009200 npc 35000172 think 35000000
     Skeleton33 = 13000473  # c3500_9073 col h009100 npc 35000172 think 35000000
     Skeleton34 = 13000474  # c3500_9074 col h007200 npc 35000172 think 35000000
-    GodskinApostle0 = 13000851  # c3560_9000 col h007500 npc 35600172 think 35600100 group 13005850,13005851,13005100
-    GodskinApostle1 = 13000850  # c3560_9001 col h007500 npc 35600972 think 1 group 13005850,13005100
-    GodskinNoble = 13000852  # c3570_9000 col h007500 npc 35700172 think 35700100 group 13005850,13005851,13005100
+    GodskinDuoApostle = 13000851  # c3560_9000 col h007500 npc 35600172 think 35600100 group 13005850,13005851,13005100
+    GodskinDuoHealthPool = 13000850  # c3560_9001 col h007500 npc 35600972 think 1 group 13005850,13005100
+    GodskinDuoNoble = 13000852  # c3570_9000 col h007500 npc 35700172 think 35700100 group 13005850,13005851,13005100
     BeastmanofFarumAzula0 = 13000200  # c3970_9000 col h002500 npc 39700072 think 39700000
     BeastmanofFarumAzula1 = 13000201  # c3970_9001 col h002500 npc 39700072 think 39700000
     BeastmanofFarumAzula2 = 13000202  # c3970_9002 col h002500 npc 39700072 think 39700000
@@ -175,7 +187,7 @@ class Characters(Character):
     BladedTalonEagle12 = 13000364  # c4210_9014 col h012600 npc 42102072 think 42100000
     BladedTalonEagle13 = 13000365  # c4210_9015 col h013000 npc 42102072 think 42100000
     BladedTalonEagle14 = 13000367  # c4210_9017 col h012400 npc 42102072 think 42100000
-    LivingPot = 13000700  # c4490_9000 col h005700 npc 44909972 think 44900000 talk 220001300
+    Alexander = 13000700  # c4490_9000 col h005700 npc 44909972 think 44900000 talk 220001300
     AncientDragon0 = 13000490  # c4510_9000 col h003300 npc 45102272 think 45100300 group 13005102
     AncientDragon1 = 13000492  # c4510_9002 col h009300 npc 45100572 think 45100200 group 13005110
     AncientDragon2 = 13000494  # c4510_9004 col h010100 npc 45100072 think 45100200
@@ -194,6 +206,14 @@ class Characters(Character):
     Wormface8 = 13000378  # c4570_9008 col h005400 npc 45701072 think 45700200
     Wormface9 = 13000379  # c4570_9009 col h005400 npc 45701072 think 45700200
     WormfaceLarge = 13000369  # c4580_9000 col h005400 npc 45801072 think 45800000 group 13005106
+
+    CLONE_DraconicTreeSentinel = 13000496
+    CLONE_MalikethPhaseOne = 13000801
+    CLONE_MalikethPhaseTwo = 13000800
+    CLONE_GodskinApostle0 = 13000851
+    CLONE_GodskinApostle1 = 13000850
+    CLONE_GodskinNoble = 13000852
+    CLONE_DragonlordPlacidusax = 13000830
 
 
 class Assets(Asset):

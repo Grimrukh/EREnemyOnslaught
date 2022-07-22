@@ -60,7 +60,7 @@ def PlayEldenLordEndingCutscene():
     Does NOT include Frenzied Flame ending or Age of the Stars (Ranni) ending.
     """
     GotoIfPlayerInOwnWorld(Label.L0)
-    DisableAsset(Assets.AEG227_018_1000)
+    DisableAsset(Assets.BrokenMarikaStatue)
     DisableAsset(Assets.AEG227_017_1000)
     End()
 
@@ -76,19 +76,19 @@ def PlayEldenLordEndingCutscene():
     OR_15.Add(FlagEnabled(9403))
     GotoIfConditionTrue(Label.L15, input_condition=OR_15)
 
-    DisableAsset(Assets.AEG227_018_1000)
+    DisableAsset(Assets.BrokenMarikaStatue)
     DisableAsset(Assets.AEG227_017_1000)
     AND_1.Add(FlagEnabled(Flags.EndingCanBeChosen))
     
     MAIN.Await(AND_1)
     
-    EnableAsset(Assets.AEG227_018_1000)
+    EnableAsset(Assets.BrokenMarikaStatue)
     EnableAsset(Assets.AEG227_017_1000)
     DisableCharacter(Characters.Radagon)
     DisableAnimations(Characters.Radagon)
     DisableCharacter(Characters.CLONE_Radagon)
     DisableAnimations(Characters.CLONE_Radagon)
-    DisableAsset(Assets.AEG301_240_1000)
+    DisableAsset(Assets.BrokenRadagonStatue)
     AND_2.Add(FlagDisabled(CommonFlags.FrenziedFlameEndingForced))
     OR_4.Add(AND_2)
     AND_3.Add(FlagEnabled(CommonFlags.FrenziedFlameEndingForced))
@@ -500,7 +500,7 @@ def RadagonBattleTrigger():
     DisableCharacter(Characters.CLONE_Radagon)
     DisableAnimations(Characters.CLONE_Radagon)
     SetCharacterFadeOnEnable(character=Characters.CLONE_Radagon, state=False)
-    DisableAsset(Assets.AEG301_240_1000)
+    DisableAsset(Assets.BrokenRadagonStatue)
 
     # Battle starts when host gets close to either Radagon.
     AND_1.Add(PlayerInOwnWorld())
@@ -514,7 +514,7 @@ def RadagonBattleTrigger():
     EnableNetworkFlag(Flags.RadagonFirstTimeDone)  # was unused
     EnableNetworkFlag(Flags.RadagonBattleStarted)
     EnableNetworkFlag(19002806)
-    DisableAsset(Assets.AEG301_240_1000)
+    DisableAsset(Assets.BrokenRadagonStatue)
     Goto(Label.L2)
 
     # --- Label 1 --- #
@@ -565,7 +565,7 @@ def EldenBeastBattleTrigger():
     Kill(Characters.CLONE_EldenBeast)
     DisableCharacter(Characters.Unknown)  # TODO: ?
     DisableAnimations(Characters.Unknown)
-    DisableAsset(Assets.AEG301_240_1000)
+    DisableAsset(Assets.BrokenRadagonStatue)
     End()
 
     # --- Label 0 --- #
@@ -580,7 +580,7 @@ def EldenBeastBattleTrigger():
     DisableAnimations(Characters.CLONE_EldenBeast)
     DisableCharacter(Characters.Unknown)  # TODO: ?
     DisableAnimations(Characters.Unknown)
-    DisableAsset(Assets.AEG301_240_1000)
+    DisableAsset(Assets.BrokenRadagonStatue)
 
     DisableHealthBar(Characters.EldenBeast)
     DisableHealthBar(Characters.CLONE_EldenBeast)

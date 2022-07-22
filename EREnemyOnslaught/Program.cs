@@ -253,9 +253,9 @@ namespace EREnemyOnslaught
         {
             if (NewTransforms.ContainsKey(part.EntityID))
             {
-                (Vector3 position, float rotationY) = NewTransforms[part.EntityID];
-                part.Position = position;
-                part.Rotation = new Vector3(0f, rotationY, 0f);
+                (float posX, float posY, float posZ, float rotY) = NewTransforms[part.EntityID];
+                part.Position = new Vector3(posX, posY, posZ);
+                part.Rotation = new Vector3(0f, rotY, 0f);
                 Console.WriteLine($"        Set new transform for part '{part.Name}' ({part.EntityID})");
             }
             else if (setDefaultXOffset)
@@ -269,9 +269,9 @@ namespace EREnemyOnslaught
         {
             if (NewTransforms.ContainsKey(region.EntityID))
             {
-                (Vector3 position, float rotationY) = NewTransforms[region.EntityID];
-                region.Position = position;
-                region.Rotation = new Vector3(0f, rotationY, 0f);
+                (float posX, float posY, float posZ, float rotY) = NewTransforms[region.EntityID];
+                region.Position = new Vector3(posX, posY, posZ);
+                region.Rotation = new Vector3(0f, rotY, 0f);
                 Console.WriteLine($"        Set new transform for region '{region.Name}' ({region.EntityID})");
             }
         }

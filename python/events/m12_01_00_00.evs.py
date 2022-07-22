@@ -379,7 +379,14 @@ def Constructor():
         trigger_on_ai_unknown6=0,
     )
     Event_12012421()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12010421, character=Characters.OnyxLord, item_lot=0, reward_delay=1.5, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0,
+        dead_flag=12010421,
+        character=Characters.OnyxLord,
+        item_lot=0,
+        reward_delay=1.5,
+        skip_reward=0,
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Snail0,

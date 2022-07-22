@@ -39,7 +39,7 @@ class Characters(Character):
     Unknown = 19000811
 
     CLONE_Radagon = 19000812  # something else using 811
-    CLONE_EldenBeast = 19000805  # TODO: some kind of assistant entity already uses 801-804
+    CLONE_EldenBeast = 19000805  # unused "spirits" use 801-804
 
 
 class Assets(Asset):
@@ -52,5 +52,5 @@ class Assets(Asset):
     AEG099_090_9001 = 19001110  # AEG099
     AEG099_090_9002 = 19001120  # AEG099
     AEG227_017_1000 = 19001101  # AEG227
-    AEG227_018_1000 = 19001100  # AEG227
-    AEG301_240_1000 = 19001810  # AEG301
+    BrokenMarikaStatue = 19001100  # AEG227
+    BrokenRadagonStatue = 19001810  # AEG301

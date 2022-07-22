@@ -102,6 +102,10 @@ class Characters(Character):
     DragonkinSoldierPhaseTwo = 12010802  # c4650_9002 col h004900 npc 46500160 think 46500100 group 12015102,12015800
     DragonkinSoldierLakeOfRot = 12010850  # c4650_9100 col h012100 npc 46500262 think 46500200 group 12015108
 
+    CLONE_MalformedStar0 = 12010450
+    CLONE_MalformedStar1 = 12010451
+    CLONE_UlceratedTreeSpirit = 12010470
+    CLONE_OnyxLord = 12010471
     CLONE_DragonkinSoldierHealthPool = 12010803
     CLONE_DragonkinSoldierPhaseOne = 12010804
     CLONE_DragonkinSoldierPhaseTwo = 12010805

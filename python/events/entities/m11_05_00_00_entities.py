@@ -20,7 +20,7 @@ class NameText(NPCName):
 
 
 class RegionPoints(RegionPoint):
-    # TODO: Two new regions for Godfrey post-cutscene. Both Hoarah Loux transitions can use the original one below.
+    # Two new regions for Godfrey post-cutscene. Both Hoarah Loux transitions can use the original one below.
     GodfreyPostCutscenePosition = 11052813
     CLONE_GodfreyPostCutscenePosition = 11052814
     HoarahLouxPostCutscenePosition = 11052815
@@ -74,7 +74,6 @@ class Characters(Character):
     HoarahLoux = 11050800  # c4721_9000 col h020100 npc 47210070 think 47210900 talk 206101105 group 11055800,11055100
     Gargoyle = 11050310  # c4770_9000 col h013200 npc 47700070 think 47700000
 
-    # TODO: New starting points for Godfrey and Gideon.
     CLONE_Godfrey = 11050803
     CLONE_HoarahLoux = 11050802
     CLONE_SirGideonOfnir = 11050858
