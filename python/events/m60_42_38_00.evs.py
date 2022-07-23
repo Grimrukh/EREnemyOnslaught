@@ -25,7 +25,7 @@ from .entities.m60_42_38_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1042380000, asset=Assets.AEG099_060_9000)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1042380800,
         extra_flag_to_enable=0,
@@ -47,7 +47,7 @@ def Constructor():
         flag_1=1042382718,
     )
     CommonFunc_90005770(0, flag=1042380701)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1042380850,
         extra_flag_to_enable=0,
@@ -57,7 +57,7 @@ def Constructor():
         seconds=0.0,
     )
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.BellBearingHunter, name=903100600, npc_threat_level=10)
-    CommonFunc_90005872(0, character=Characters.BellBearingHunter, npc_threat_level=10, right=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.BellBearingHunter, npc_threat_level=10, optional_trigger_flag=0)
     Event_1042383700(0, character=Characters.KnightBernahl)
     CommonFunc_90005704(0, attacked_entity=Characters.KnightBernahl, flag=3881, flag_1=3880, flag_2=1042389251, right=3)
     CommonFunc_90005703(

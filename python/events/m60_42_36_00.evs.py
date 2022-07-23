@@ -63,7 +63,7 @@ def Constructor():
         flag_11=78109,
     )
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.TreeSentinel, name=903251600, npc_threat_level=12)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1042360800,
         extra_flag_to_enable=0,
@@ -72,7 +72,7 @@ def Constructor():
         item_lot=30100,
         seconds=0.0,
     )
-    CommonFunc_90005872(0, character=Characters.TreeSentinel, npc_threat_level=12, right=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.TreeSentinel, npc_threat_level=12, optional_trigger_flag=0)
     CommonFunc_90005683(0, flag=62103, asset=Assets.AEG099_055_1500, vfx_id=210, flag_1=78190, flag_2=78190)
     Event_1042363700(0, character=Characters.WhiteMaskVarre, asset=Assets.AEG007_360_1000)
     CommonFunc_90005704(

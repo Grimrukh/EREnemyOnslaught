@@ -50,7 +50,7 @@ def Constructor():
         flag_11=78359,
     )
     CommonFunc_FieldBossMusicHealthBar(0, character=1038540800, name=904680601, npc_threat_level=19)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1038540800,
         extra_flag_to_enable=1038540800,

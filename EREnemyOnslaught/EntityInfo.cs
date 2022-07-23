@@ -19,7 +19,7 @@ namespace EREnemyOnslaught
             }
         }
 
-        public readonly static Dictionary<int, CloneInfo> CloneEntityIDs = new Dictionary<int, CloneInfo>()
+        public readonly static Dictionary<int, CloneInfo> Clones = new Dictionary<int, CloneInfo>()
         {
             // m10_00_00_00 (Stormveil Castle)
             [10000800] = new CloneInfo(10000801, new Vector4(-231.069f, 74.125f, 351.944f, -30.807f)),  // Godrick the Grafted
@@ -46,10 +46,44 @@ namespace EREnemyOnslaught
             [12010802] = new CloneInfo(12010805, new Vector4(-122.336f, -224.499f, 136.190f, -2.957f)),  // Dragonkin Soldier of Nokstella (Phase Two)
             [12010850] = new CloneInfo(12010851, new Vector4(-206.860f, -317.072f, -305.404f, -139.372f)),  // Dragonkin Soldier (Lake of Rot)
 
+            // m12_02_00_00 (Siofra River)
+            [12020800] = new CloneInfo(12020802),  // Gargoyle 1
+            [12020801] = new CloneInfo(12020803),  // Gargoyle 2
+            [12020830] = new CloneInfo(12020831),  // Dragonkin Soldier
+            [12020850] = new CloneInfo(12020851),  // Mimic Tear (c0000)
+            [12020860] = new CloneInfo(12020861),  // Mimic Tear (Silver Tear)
+
+            // m12_03_00_00 (Deeproot Depths)
+            [12030390] = new CloneInfo(12030392),  // Crucible Knight Siluria
+            [12030391] = new CloneInfo(12030393),  // Erdtree Avatar
+            [12030800] = new CloneInfo(12030820),  // FiasChampion0
+            [12030810] = new CloneInfo(12030830),  // SorcererRogier
+            [12030811] = new CloneInfo(12030831),  // LioneltheLionhearted
+            [12030812] = new CloneInfo(12030832),  // LionelSidekick2
+            [12030813] = new CloneInfo(12030833),  // LionelSidekick1
+            [12030814] = new CloneInfo(12030834),  // UnknownFiasChampion
+            [12030850] = new CloneInfo(12030851),  // LichdragonFortissax
+
+            // m12_04_00_00 (Astel)
+            [12040800] = new CloneInfo(12040801),  // Astel
+
+            // m12_05_00_00 (Mohgwyn Dynasty Palace)
+            [12050800] = new CloneInfo(12050801),  // Mohg, Lord of Blood
+
+            // m12_08_00_00 (Ancestor Spirit Arena)
+            [12080800] = new CloneInfo(12080801),  // Ancestor Spirit
+
             // m13_00_00_00 (Crumbling Farum Azula)
+            [13000496] = new CloneInfo(13000497),  // Draconic Tree Sentinel
             [13000800] = new CloneInfo(13000802),  // Maliketh Phase Two
             [13000801] = new CloneInfo(13000803, new Vector4(198.570f, -32.511f, 378.754f, 99.665f), new Vector4(195.375f, -32.511f, 369.344f, 116.612f)),  // Maliketh Phase One
             [13000830] = new CloneInfo(13000831, new Vector4(17.664f, 1009.676f, 316.889f, 75.706f), new Vector4(11.360f, 1009.676f, 341.630f, 75.706f)),  // Dragonlord Placidusax
+            [13000850] = new CloneInfo(13000860),  // Godskin Duo health pool
+            [13000851] = new CloneInfo(13000861),  // Godskin Duo Apostle
+            [13000852] = new CloneInfo(13000862),  // Godskin Duo Noble
+            // TODO: Clone spawners with new region locations. Also check cloned IDs are available.
+            [13003851] = new CloneInfo(13003853),  // Godskin Apostle spawner
+            [13003852] = new CloneInfo(13003854),  // Godskin Noble spawner
 
             // m14_00_00_00 (Academy of Raya Lucaria)
             // RENNALA
@@ -80,7 +114,7 @@ namespace EREnemyOnslaught
             [14000831] = new CloneInfo(14000881),
             [14000832] = new CloneInfo(14000882),
             [14000833] = new CloneInfo(14000883),
-            // Rennala student spawners
+            // Rennala student spawners (using same regions)
             [14003810] = new CloneInfo(14003710),
             [14003811] = new CloneInfo(14003711),
             [14003812] = new CloneInfo(14003712),
@@ -118,7 +152,6 @@ namespace EREnemyOnslaught
             // Radagon (811 used by something else)
             [19000810] = new CloneInfo(19000812, new Vector4(198.376f, 102.257f, -623.591f, 110.279f)),
 
-
             // Caelid
             [1051360800] = new CloneInfo(1051360802, new Vector4(90.810f, 91.750f, 34.136f, 12.908f)),  // Redmane Castle duo boss (Leonine Misbegotten) 
             [1051360801] = new CloneInfo(1051360803, new Vector4(97.482f, 105.500f, 38.728f, 93.109f)),  // Redmane Castle duo boss (Crucible Knight)
@@ -141,6 +174,8 @@ namespace EREnemyOnslaught
 
         public readonly static Dictionary<int, int> CloneEntityGroupIDs = new Dictionary<int, int>()
         {
+            [13005851] = 13005852,  // Godskin Duo
+
             [14005810] = 14005812,  // Rennala Students
             [14005811] = 14005813,  // Rennala Students (Unknown subgroup?)
             [14005820] = 14005830,  // Rennala Summons
@@ -217,7 +252,10 @@ namespace EREnemyOnslaught
             [904710010] = "Yet Another God-Devouring Serpent",
             [904710011] = "Ryktar, Definitely Also Intended to Be Devoured",
             [904730010] = "Moonman Mazohr",
+            [904770000] = "Valiant Gargoyles (Greatsword)",
+            [904770001] = "Valiant Gargoyles (Twinblade)",
             [902120010] = "Malonia, Middle Finger of Miyazaki",
+            [904520010] = "Dragonlord Eric",
         };
     }
 }

@@ -425,7 +425,7 @@ def Event_1038512849():
     CommonFunc_ControlBossFog(0, boss_dead_flag=1038510800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(
         0,
-        dead_flag=1038510800,
+        boss_dead_flag=1038510800,
         bgm_boss_conv_param_id=931000,
         host_in_battle=1038512805,
         summon_in_battle=1038512806,

@@ -97,7 +97,7 @@ def Constructor():
         model_point=30010,
     )
     SkipLinesIfCeremonyInactive(line_count=2, ceremony=40)
-    CommonFunc_90005796(
+    CommonFunc_InvadeAndKillNPC(
         0,
         flag=7607,
         character=Characters.BloodyFingerRavenmountAssassin,

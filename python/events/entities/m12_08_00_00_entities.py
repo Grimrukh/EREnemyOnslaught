@@ -1,10 +1,21 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    AncestorSpiritDead = 12080800
+
+
+class NameText(NPCName):
+    AncestorSpirit = 904670000
+    CLONE_AncestorSpirit = 904670010
+
+
 class Characters(Character):
     Dummy = 12080290  # c0100_9000 col h020300 npc 1002000 think 1
     TalkDummy = 12080100  # c1000_9000 col h020300 npc 10001000 think 1 talk 2000
     AncestorSpirit = 12080800  # c4670_9000 col h020300 npc 46700964 think 46700100 group 12085800,12085100
+
+    CLONE_AncestorSpirit = 12080801
 
 
 class Assets(Asset):

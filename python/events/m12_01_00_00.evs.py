@@ -304,7 +304,7 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=12010850,
         extra_flag_to_enable=0,
@@ -1528,7 +1528,7 @@ def Event_12012240():
     
     Wait(1.0)
     GotoIfFlagEnabled(Label.L0, flag=12012240)
-    MakeEnemyAppear(character=12013240)
+    ForceSpawnerToSpawn(spawner=12013240)
     EnableNetworkFlag(12012240)
     Wait(3.0)
     DisableSpawner(entity=12013240)
@@ -1537,7 +1537,7 @@ def Event_12012240():
     # --- Label 0 --- #
     DefineLabel(0)
     GotoIfFlagEnabled(Label.L1, flag=12012241)
-    MakeEnemyAppear(character=12013241)
+    ForceSpawnerToSpawn(spawner=12013241)
     EnableNetworkFlag(12012241)
     Wait(8.0)
     DisableSpawner(entity=12013241)
@@ -1546,7 +1546,7 @@ def Event_12012240():
     # --- Label 1 --- #
     DefineLabel(1)
     GotoIfFlagEnabled(Label.L2, flag=12012242)
-    MakeEnemyAppear(character=12013242)
+    ForceSpawnerToSpawn(spawner=12013242)
     EnableNetworkFlag(12012242)
     Wait(5.0)
     DisableSpawner(entity=12013242)
@@ -1555,7 +1555,7 @@ def Event_12012240():
     # --- Label 2 --- #
     DefineLabel(2)
     GotoIfFlagEnabled(Label.L3, flag=12012243)
-    MakeEnemyAppear(character=12013243)
+    ForceSpawnerToSpawn(spawner=12013243)
     EnableNetworkFlag(12012243)
     Wait(5.0)
     DisableSpawner(entity=12013243)
@@ -1564,7 +1564,7 @@ def Event_12012240():
     # --- Label 3 --- #
     DefineLabel(3)
     GotoIfFlagEnabled(Label.L4, flag=12012244)
-    MakeEnemyAppear(character=12013244)
+    ForceSpawnerToSpawn(spawner=12013244)
     EnableNetworkFlag(12012244)
     Wait(8.0)
     DisableSpawner(entity=12013244)
@@ -1573,7 +1573,7 @@ def Event_12012240():
     # --- Label 4 --- #
     DefineLabel(4)
     GotoIfFlagEnabled(Label.L5, flag=12012245)
-    MakeEnemyAppear(character=12013245)
+    ForceSpawnerToSpawn(spawner=12013245)
     EnableNetworkFlag(12012245)
     Wait(8.0)
     DisableSpawner(entity=12013245)
@@ -1582,7 +1582,7 @@ def Event_12012240():
     # --- Label 5 --- #
     DefineLabel(5)
     GotoIfFlagEnabled(Label.L6, flag=12012246)
-    MakeEnemyAppear(character=12013246)
+    ForceSpawnerToSpawn(spawner=12013246)
     EnableNetworkFlag(12012246)
     Wait(3.0)
     DisableSpawner(entity=12013246)
@@ -1591,7 +1591,7 @@ def Event_12012240():
     # --- Label 6 --- #
     DefineLabel(6)
     GotoIfFlagEnabled(Label.L1, flag=12012247)
-    MakeEnemyAppear(character=12013247)
+    ForceSpawnerToSpawn(spawner=12013247)
     EnableAI(Characters.GiantBall2)
     ForceAnimation(Characters.GiantBall2, 20003)
     EnableNetworkFlag(12012247)
@@ -2108,7 +2108,7 @@ def DragonkinSoldierOfNokstellaCommonEvents():
     CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.DragonkinSoldierOfNokstellaDead, fog_asset=Assets.AEG099_002_9001, model_point=4, required_flag=12010840)
     CommonFunc_ControlBossMusic(
         0,
-        dead_flag=Flags.DragonkinSoldierOfNokstellaDead,
+        boss_dead_flag=Flags.DragonkinSoldierOfNokstellaDead,
         bgm_boss_conv_param_id=920300,
         host_in_battle=12012805,
         summon_in_battle=12012806,

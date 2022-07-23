@@ -42,7 +42,7 @@ def Event_200():
     CommonFunc_90005451(0, character=Characters.WalkingMausoleum, asset_group=1038476420)
     CommonFunc_90005452(0, character=Characters.WalkingMausoleum, flag=1238470400)
     CommonFunc_90005454(0, character=Characters.WalkingMausoleum, flag=1238472400, flag_1=1238470400)
-    CommonFunc_90005458(0, character=Characters.WalkingMausoleum, asset=Assets.AEG300_015_9000)
+    CommonFunc_WalkingMausoleumDefeated(0, mausoleum=Characters.WalkingMausoleum, asset=Assets.AEG300_015_9000)
     CommonFunc_90005453(0, asset__character=1038470400, asset=Assets.AEG300_006_9000, model_point=101, seconds=0.0)
     CommonFunc_90005453(
         1,
@@ -105,4 +105,4 @@ def Event_200():
 @ContinueOnRest(250)
 def Event_250():
     """Event 250"""
-    CommonFunc_90005450(0, 1038470400, 1038471400, 1038471410, 1038471418)
+    CommonFunc_PrepareWalkingMausoleum(0, 1038470400, 1038471400, 1038471410, 1038471418)

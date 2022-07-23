@@ -1,6 +1,17 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    MohgDead = 12050800
+    MohgFirstTimeDone = 12050801
+    MohgInPhaseTwo = 12052802
+
+
+class NameText(NPCName):
+    MohgLordOfBlood = 904800000
+    CLONE_MohgLordOfBlood = 904800010
+
+
 class Characters(Character):
     NamelessWhiteMask0 = 12050410  # c0000_9004 col h003900 npc 523770068 think 523770000 chara 23770
     NamelessWhiteMask1 = 12050412  # c0000_9005 col h003900 npc 523770068 think 523770000 chara 23770
@@ -108,6 +119,8 @@ class Characters(Character):
     GiantSkeletonTorso1 = 12050361  # c4960_9001 col h004200 npc 49600168 think 49600068 group 12055100
     GiantSkeletonTorso2 = 12050362  # c4960_9002 col h003800 npc 49600168 think 49600068 group 12055100
     GiantSkeletonTorso3 = 12050363  # c4960_9003 col h004200 npc 49600168 think 49600068 group 12055100
+
+    CLONE_Mohg = 12050801
 
 
 class Assets(Asset):

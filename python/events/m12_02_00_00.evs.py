@@ -34,7 +34,7 @@ def Constructor():
     RegisterGrace(grace_flag=71229, asset=Assets.AEG099_060_9009)
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
-        flag=12020850,
+        flag=Flags.MimicTearDead,
         grace_flag=71221,
         character=Characters.TalkDummy1,
         asset=Assets.AEG099_060_9001,
@@ -42,7 +42,7 @@ def Constructor():
     )
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
-        flag=12020800,
+        flag=Flags.GargoylesDead,
         grace_flag=71220,
         character=Characters.TalkDummy0,
         asset=Assets.AEG099_060_9000,
@@ -53,15 +53,25 @@ def Constructor():
     CommonFunc_90005920(0, flag=12020900, asset=12021900, obj_act_id=12023900)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9002, vfx_id=100, model_point=800, right=0)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9003, vfx_id=100, model_point=800, right=0)
-    Event_12022800()
-    Event_12022810()
-    Event_12022849()
-    Event_12022820()
-    Event_12022821()
-    Event_12022850()
-    Event_12022860()
-    Event_12022865(0, character=Characters.SilverTear4, character_1=Characters.MimicTear, region=63010)
-    Event_12022899()
+
+    # GARGOYLES
+    # TODO: Place Gargoyle clones.
+    GargoylesDie()
+    GargoylesBattleTrigger()
+    GargoylesCommonEvents()
+    GargoylesPhaseTwoTransition()
+    OneGargoyleDead()
+    HandleGargoyleDeath(0, Characters.GargoyleGreatsword, Characters.CLONE_GargoyleGreatsword)
+    HandleGargoyleDeath(1, Characters.GargoyleTwinblade, Characters.CLONE_GargoyleTwinblade)  # 12022823
+
+    # MIMIC TEAR
+    MimicTearDies()
+    MimicTearBattleTrigger()
+    SpawnMimicTear(0, mimic_silver_tear=Characters.SilverTearMimic, mimic_c0000=Characters.MimicTear, region=63010)
+    # TODO: New nest region? Weird ID. Probably fine.
+    SpawnMimicTear(1, mimic_silver_tear=Characters.CLONE_SilverTearMimic, mimic_c0000=Characters.CLONE_MimicTear, region=63010)
+    MimicTearCommonEvents()
+
     CommonFunc_90005501(
         0,
         flag=12020520,
@@ -277,7 +287,7 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AncestralFollower12, region=12022350, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AncestralFollower16, region=12022366, seconds=0.0, animation_id=3006)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AncestralFollower16, region=12022368, seconds=0.0, animation_id=-1)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=12020830,
         extra_flag_to_enable=0,
@@ -456,7 +466,7 @@ def Constructor():
     CommonFunc_90005706(0, character=Characters.Commoner, animation_id=930023, left=0)
     CommonFunc_90005780(
         0,
-        flag=12020800,
+        flag=Flags.GargoylesDead,
         summon_flag=12022160,
         dismissal_flag=12022161,
         character=Characters.Human,
@@ -466,7 +476,7 @@ def Constructor():
         unknown=1,
         right_1=0,
     )
-    CommonFunc_90005781(0, flag=12020800, flag_1=12022160, flag_2=12022161, character=Characters.Human)
+    CommonFunc_90005781(0, flag=Flags.GargoylesDead, flag_1=12022160, flag_2=12022161, character=Characters.Human)
     Event_12022699()
     Event_12022698()
 
@@ -508,7 +518,7 @@ def Event_12022699():
 @RestartOnRest(12022698)
 def Event_12022698():
     """Event 12022698"""
-    if FlagEnabled(12020800):
+    if FlagEnabled(Flags.GargoylesDead):
         return
     OR_1.Add(FlagEnabled(12022160))
     
@@ -1341,10 +1351,10 @@ def Event_12022440(_, character: uint, character_1: uint, patrol_information_id:
 
 
 @ContinueOnRest(12022502)
-def Event_12022502():
+def RideCoffinToDeeprootDepths():
     """Event 12022502"""
     DisableNetworkSync()
-    AND_2.Add(FlagEnabled(12020800))
+    AND_2.Add(FlagEnabled(Flags.GargoylesDead))
     AND_2.Add(PlayerInOwnWorld())
     AND_2.Add(ActionButtonParamActivated(action_button_id=9710, entity=Assets.AEG237_018_5000))
     
@@ -1445,41 +1455,56 @@ def Event_12020500():
 
 
 @RestartOnRest(12022850)
-def Event_12022850():
+def MimicTearDies():
     """Event 12022850"""
-    if FlagEnabled(12020850):
+    if FlagEnabled(Flags.MimicTearDead):
         return
     OR_1.Add(HealthValue(Characters.MimicTear) <= 0)
-    OR_1.Add(HealthValue(Characters.SilverTear4) <= 0)
-    
-    MAIN.Await(OR_1)
+    OR_1.Add(HealthValue(Characters.SilverTearMimic) <= 0)
+    AND_1.Add(OR_1)
+    OR_2.Add(HealthValue(Characters.CLONE_MimicTear) <= 0)
+    OR_2.Add(HealthValue(Characters.CLONE_SilverTearMimic) <= 0)
+    AND_1.Add(OR_2)
+
+    MAIN.Await(AND_1)
     
     Wait(4.0)
     PlaySoundEffect(Characters.MimicTear, 888880000, sound_type=SoundType.s_SFX)
     OR_5.Add(CharacterDead(Characters.MimicTear))
-    OR_5.Add(CharacterDead(Characters.SilverTear4))
-    
-    MAIN.Await(OR_5)
+    OR_5.Add(CharacterDead(Characters.SilverTearMimic))
+    AND_2.Add(OR_5)
+    OR_6.Add(CharacterDead(Characters.CLONE_MimicTear))
+    OR_6.Add(CharacterDead(Characters.CLONE_SilverTearMimic))
+    AND_2.Add(OR_6)
+
+    MAIN.Await(AND_2)
     
     Kill(Characters.MimicTear, award_runes=True)
+    Kill(Characters.CLONE_MimicTear, award_runes=True)
     WaitFrames(frames=1)
     KillBossAndDisplayBanner(character=Characters.MimicTear, banner_type=BannerType.GreatEnemyFelled)
-    EnableFlag(12020850)
+    EnableFlag(Flags.MimicTearDead)
     EnableFlag(9134)
     if PlayerInOwnWorld():
         EnableFlag(91134)
 
 
 @RestartOnRest(12022860)
-def Event_12022860():
+def MimicTearBattleTrigger():
     """Event 12022860"""
-    GotoIfFlagDisabled(Label.L0, flag=12020850)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.MimicTearDead)
     DisableCharacter(Characters.MimicTear)
     DisableAnimations(Characters.MimicTear)
     Kill(Characters.MimicTear)
-    DisableCharacter(Characters.SilverTear4)
-    DisableAnimations(Characters.SilverTear4)
-    Kill(Characters.SilverTear4)
+    DisableCharacter(Characters.SilverTearMimic)
+    DisableAnimations(Characters.SilverTearMimic)
+    Kill(Characters.SilverTearMimic)
+    DisableCharacter(Characters.CLONE_MimicTear)
+    DisableAnimations(Characters.CLONE_MimicTear)
+    Kill(Characters.CLONE_MimicTear)
+    DisableCharacter(Characters.CLONE_SilverTearMimic)
+    DisableAnimations(Characters.CLONE_SilverTearMimic)
+    Kill(Characters.CLONE_SilverTearMimic)
     End()
 
     # --- Label 0 --- #
@@ -1491,18 +1516,26 @@ def Event_12022860():
     if PlayerInOwnWorld():
         EnableThisSlotFlag()
     DisableAI(Characters.MimicTear)
-    DisableAI(Characters.SilverTear4)
+    DisableAI(Characters.CLONE_MimicTear)
+    DisableAI(Characters.SilverTearMimic)
+    DisableAI(Characters.CLONE_SilverTearMimic)
     GotoIfFlagEnabled(Label.L1, flag=12020851)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12022851))
     OR_1.Add(AND_1)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.SilverTear4))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.SilverTear4, state_info=436))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.SilverTear4, state_info=2))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.SilverTear4, state_info=5))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.SilverTear4, state_info=6))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.SilverTear4, state_info=260))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.SilverTearMimic))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.SilverTearMimic, state_info=436))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.SilverTearMimic, state_info=2))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.SilverTearMimic, state_info=5))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.SilverTearMimic, state_info=6))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.SilverTearMimic, state_info=260))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_SilverTearMimic))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_SilverTearMimic, state_info=436))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_SilverTearMimic, state_info=2))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_SilverTearMimic, state_info=5))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_SilverTearMimic, state_info=6))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_SilverTearMimic, state_info=260))
+
     MAIN.Await(OR_1)
     
     EnableNetworkFlag(12020851)
@@ -1532,60 +1565,74 @@ def Event_12022860():
     DefineLabel(2)
     WaitFrames(frames=1)
     SetAIParamID(Characters.MimicTear, ai_param_id=90603100)
-    EnableAI(Characters.SilverTear4)
-    ForceAnimation(Characters.SilverTear4, 20010)
+    SetAIParamID(Characters.CLONE_MimicTear, ai_param_id=90603100)
+    EnableAI(Characters.CLONE_SilverTearMimic)
+    ForceAnimation(Characters.CLONE_SilverTearMimic, 20010)
+    # TODO: If a summon is present, clone Mimic Tear gets its data from them.
     if PlayerInOwnWorld():
         CopyPlayerCharacterData(source_character=PLAYER, dest_characterentity=Characters.MimicTear)
+        CopyPlayerCharacterData(source_character=PLAYER, dest_characterentity=Characters.CLONE_MimicTear)
     SetNetworkUpdateRate(Characters.MimicTear, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_MimicTear, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNest(Characters.MimicTear, region=12022852)
+    SetNest(Characters.CLONE_MimicTear, region=12022852)
     Wait(8.0)
-    DisableCharacter(Characters.SilverTear4)
-    DisableAI(Characters.SilverTear4)
+    DisableCharacter(Characters.SilverTearMimic)
+    DisableCharacter(Characters.CLONE_SilverTearMimic)
+    DisableAI(Characters.SilverTearMimic)
+    DisableAI(Characters.CLONE_SilverTearMimic)
     EnableAI(Characters.MimicTear)
+    EnableAI(Characters.CLONE_MimicTear)
+
     AND_8.Add(CharacterDead(Characters.MimicTear))
     SkipLinesIfConditionTrue(1, AND_8)
-    EnableBossHealthBar(Characters.MimicTear, name=903320000)
-    EnableNetworkFlag(12022858)
+    EnableBossHealthBar(Characters.MimicTear, name=NameText.MimicTear)
+
+    AND_9.Add(CharacterDead(Characters.CLONE_MimicTear))
+    SkipLinesIfConditionTrue(1, AND_9)
+    EnableBossHealthBar(Characters.CLONE_MimicTear, name=NameText.CLONE_MimicTear)
+
+    EnableNetworkFlag(12022858)  # "phase two" immediately
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
 
 
 @RestartOnRest(12022865)
-def Event_12022865(_, character: uint, character_1: uint, region: uint):
+def SpawnMimicTear(_, mimic_silver_tear: uint, mimic_c0000: uint, region: uint):
     """Event 12022865"""
     AND_1.Add(ThisEventSlotFlagEnabled())
     AND_1.Add(PlayerNotInOwnWorld())
     GotoIfConditionFalse(Label.L0, input_condition=AND_1)
-    DisableCharacter(character)
-    DisableAnimations(character)
+    DisableCharacter(mimic_silver_tear)
+    DisableAnimations(mimic_silver_tear)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     if PlayerInOwnWorld():
         EnableThisSlotFlag()
-    DisableCharacter(character_1)
-    DisableAnimations(character_1)
+    DisableCharacter(mimic_c0000)
+    DisableAnimations(mimic_c0000)
     
-    MAIN.Await(CharacterHasSpecialEffect(character, 16307))
+    MAIN.Await(CharacterHasSpecialEffect(mimic_silver_tear, 16307))
     
-    EnableCharacter(character_1)
-    EnableAnimations(character_1)
-    SetNest(character_1, region=region)
-    DisableAnimations(character)
+    EnableCharacter(mimic_c0000)
+    EnableAnimations(mimic_c0000)
+    SetNest(mimic_c0000, region=region)
+    DisableAnimations(mimic_silver_tear)
     WaitFrames(frames=15)
     Move(
-        character_1,
-        destination=character,
+        mimic_c0000,
+        destination=mimic_silver_tear,
         destination_type=CoordEntityType.Character,
         model_point=900,
-        copy_draw_parent=character,
+        copy_draw_parent=mimic_silver_tear,
     )
-    ForceAnimation(character_1, 63010, skip_transition=True)
-    AddSpecialEffect(character_1, 16316)
+    ForceAnimation(mimic_c0000, 63010, skip_transition=True)
+    AddSpecialEffect(mimic_c0000, 16316)
     Wait(4.0)
-    DisableCharacter(character)
-    DisableAnimations(character)
-    DisableAI(character)
+    DisableCharacter(mimic_silver_tear)
+    DisableAnimations(mimic_silver_tear)
+    DisableAI(mimic_silver_tear)
 
 
 @RestartOnRest(12022869)
@@ -1688,11 +1735,11 @@ def Event_12022869(
 
 
 @RestartOnRest(12022899)
-def Event_12022899():
+def MimicTearCommonEvents():
     """Event 12022899"""
     Event_12022869(
         0,
-        flag=12020850,
+        flag=Flags.MimicTearDead,
         entity=Assets.AEG099_002_9000,
         region=12022850,
         flag_1=12022855,
@@ -1703,75 +1750,98 @@ def Event_12022899():
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=12020850,
+        boss_dead_flag=Flags.MimicTearDead,
         fog_asset=Assets.AEG099_002_9000,
         fog_region=12022850,
         host_entered_fog_flag=12022855,
         summon_entered_fog_flag=12022856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=12020850, fog_asset=Assets.AEG099_002_9000, model_point=8, required_flag=0)
-    CommonFunc_9005812(0, flag=12020850, asset=Assets.AEG099_002_9001, model_point=8, right=0, model_point_1=0)
-    CommonFunc_ControlBossMusic(0, 12020850, 921100, 12022855, 12022856, 12022858, 12022852, 0, 0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.MimicTearDead, fog_asset=Assets.AEG099_002_9000, model_point=8, required_flag=0)
+    CommonFunc_9005812(0, flag=Flags.MimicTearDead, asset=Assets.AEG099_002_9001, model_point=8, right=0, model_point_1=0)
+    CommonFunc_ControlBossMusic(0, Flags.MimicTearDead, 921100, 12022855, 12022856, 12022858, 12022852, 0, 0)
 
 
 @RestartOnRest(12022800)
-def Event_12022800():
-    """Event 12022800"""
-    if FlagEnabled(12020800):
+def GargoylesDie():
+    """Cloned Gargoyles refer their damage to the original ones."""
+    if FlagEnabled(Flags.GargoylesDead):
         return
-    AND_1.Add(HealthValue(Characters.Gargoyle0) <= 0)
-    AND_1.Add(HealthValue(Characters.Gargoyle1) <= 0)
+    AND_1.Add(HealthValue(Characters.GargoyleGreatsword) <= 0)
+    AND_1.Add(HealthValue(Characters.GargoyleTwinblade) <= 0)
     
     MAIN.Await(AND_1)
     
     Wait(4.0)
-    PlaySoundEffect(Characters.Gargoyle0, 888880000, sound_type=SoundType.s_SFX)
-    AND_2.Add(CharacterDead(Characters.Gargoyle0))
-    AND_2.Add(CharacterDead(Characters.Gargoyle1))
-    
+    PlaySoundEffect(Characters.GargoyleGreatsword, 888880000, sound_type=SoundType.s_SFX)
+    AND_2.Add(CharacterDead(Characters.GargoyleGreatsword))
+    AND_2.Add(CharacterDead(Characters.CLONE_GargoyleGreatsword))
+    AND_2.Add(CharacterDead(Characters.GargoyleTwinblade))
+    AND_2.Add(CharacterDead(Characters.CLONE_GargoyleTwinblade))
+
     MAIN.Await(AND_2)
     
-    KillBossAndDisplayBanner(character=Characters.Gargoyle0, banner_type=BannerType.GreatEnemyFelled)
-    EnableFlag(12020800)
+    KillBossAndDisplayBanner(character=Characters.GargoyleGreatsword, banner_type=BannerType.GreatEnemyFelled)
+    EnableFlag(Flags.GargoylesDead)
     EnableFlag(9110)
     if PlayerInOwnWorld():
         EnableFlag(61110)
 
 
 @RestartOnRest(12022810)
-def Event_12022810():
+def GargoylesBattleTrigger():
     """Event 12022810"""
-    GotoIfFlagDisabled(Label.L0, flag=12020800)
-    DisableCharacter(Characters.Gargoyle0)
-    DisableAnimations(Characters.Gargoyle0)
-    Kill(Characters.Gargoyle0)
-    DisableCharacter(Characters.Gargoyle1)
-    DisableAnimations(Characters.Gargoyle1)
-    Kill(Characters.Gargoyle1)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.GargoylesDead)
+    DisableCharacter(Characters.GargoyleGreatsword)
+    DisableAnimations(Characters.GargoyleGreatsword)
+    Kill(Characters.GargoyleGreatsword)
+    DisableCharacter(Characters.GargoyleTwinblade)
+    DisableAnimations(Characters.GargoyleTwinblade)
+    Kill(Characters.GargoyleTwinblade)
+    DisableCharacter(Characters.CLONE_GargoyleGreatsword)
+    DisableAnimations(Characters.CLONE_GargoyleGreatsword)
+    Kill(Characters.CLONE_GargoyleGreatsword)
+    DisableCharacter(Characters.CLONE_GargoyleTwinblade)
+    DisableAnimations(Characters.CLONE_GargoyleTwinblade)
+    Kill(Characters.CLONE_GargoyleTwinblade)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(Characters.Gargoyle0)
-    DisableAI(Characters.Gargoyle1)
-    SetNetworkUpdateRate(Characters.Gargoyle0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    ForceAnimation(Characters.Gargoyle0, 30002)
+    DisableAI(Characters.GargoyleGreatsword)
+    DisableAI(Characters.CLONE_GargoyleGreatsword)
+    DisableAI(Characters.GargoyleTwinblade)
+    DisableAI(Characters.CLONE_GargoyleTwinblade)
+    SetNetworkUpdateRate(Characters.GargoyleGreatsword, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_GargoyleGreatsword, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ForceAnimation(Characters.GargoyleGreatsword, 30002)
+    ForceAnimation(Characters.CLONE_GargoyleGreatsword, 30002)
+    EnableImmortality(Characters.CLONE_GargoyleGreatsword)
+    DisableHealthBar(Characters.CLONE_GargoyleGreatsword)
+    ReferDamageToEntity(Characters.CLONE_GargoyleGreatsword, Characters.GargoyleGreatsword)
+
     GotoIfFlagEnabled(Label.L1, flag=12020801)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12022801))
     OR_1.Add(AND_1)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Gargoyle0))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.Gargoyle0, state_info=436))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.Gargoyle0, state_info=2))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.Gargoyle0, state_info=5))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.Gargoyle0, state_info=6))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.Gargoyle0, state_info=260))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.GargoyleGreatsword))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.GargoyleGreatsword, state_info=436))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.GargoyleGreatsword, state_info=2))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.GargoyleGreatsword, state_info=5))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.GargoyleGreatsword, state_info=6))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.GargoyleGreatsword, state_info=260))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_GargoyleGreatsword))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_GargoyleGreatsword, state_info=436))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_GargoyleGreatsword, state_info=2))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_GargoyleGreatsword, state_info=5))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_GargoyleGreatsword, state_info=6))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_GargoyleGreatsword, state_info=260))
+
     MAIN.Await(OR_1)
     
     EnableNetworkFlag(12020801)
-    ForceAnimation(Characters.Gargoyle0, 20002)
+    ForceAnimation(Characters.GargoyleGreatsword, 20002)
+    ForceAnimation(Characters.CLONE_GargoyleGreatsword, 20002)
     Goto(Label.L2)
 
     # --- Label 1 --- #
@@ -1781,71 +1851,92 @@ def Event_12022810():
     
     MAIN.Await(AND_2)
     
-    ForceAnimation(Characters.Gargoyle0, 20002)
+    ForceAnimation(Characters.GargoyleGreatsword, 20002)
+    ForceAnimation(Characters.CLONE_GargoyleGreatsword, 20002)
 
     # --- Label 2 --- #
     DefineLabel(2)
-    EnableAI(Characters.Gargoyle0)
-    EnableBossHealthBar(Characters.Gargoyle0, name=904770000)
+    EnableAI(Characters.GargoyleGreatsword)
+    EnableAI(Characters.CLONE_GargoyleGreatsword)
+    EnableBossHealthBar(Characters.GargoyleGreatsword, name=NameText.GargoyleGreatsword)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
 
 
 @RestartOnRest(12022820)
-def Event_12022820():
-    """Event 12022820"""
-    if FlagEnabled(12020800):
+def GargoylesPhaseTwoTransition():
+    """Second Gargoyle joins the fight."""
+    if FlagEnabled(Flags.GargoylesDead):
         return
-    ForceAnimation(Characters.Gargoyle1, 30003, loop=True)
-    DisableFlag(12022820)
-    AND_1.Add(HealthRatio(Characters.Gargoyle0) <= 0.550000011920929)
-    
+    ForceAnimation(Characters.GargoyleTwinblade, 30003, loop=True)
+    ForceAnimation(Characters.CLONE_GargoyleTwinblade, 30003, loop=True)
+    EnableImmortality(Characters.CLONE_GargoyleTwinblade)
+    DisableHealthBar(Characters.CLONE_GargoyleTwinblade)
+    ReferDamageToEntity(Characters.CLONE_GargoyleTwinblade, Characters.GargoyleTwinblade)
+    DisableFlag(Flags.GargoylesInPhaseTwo)
+
+    AND_1.Add(HealthRatio(Characters.GargoyleGreatsword) <= 0.550000011920929)
+
     MAIN.Await(AND_1)
     
-    ForceAnimation(Characters.Gargoyle1, 20003, loop=True)
+    ForceAnimation(Characters.GargoyleTwinblade, 20003, loop=True)
+    ForceAnimation(Characters.CLONE_GargoyleTwinblade, 20003, loop=True)
     WaitFrames(frames=1)
-    EnableAI(Characters.Gargoyle1)
-    SetNetworkUpdateRate(Characters.Gargoyle1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableAI(Characters.GargoyleTwinblade)
+    EnableAI(Characters.CLONE_GargoyleTwinblade)
+    SetNetworkUpdateRate(Characters.GargoyleTwinblade, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_GargoyleTwinblade, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     Wait(5.0)
-    EnableBossHealthBar(Characters.Gargoyle1, name=904770001, bar_slot=1)
-    AddSpecialEffect(Characters.Gargoyle0, 17648)
-    AddSpecialEffect(Characters.Gargoyle1, 17648)
-    EnableFlag(12022820)
+    EnableBossHealthBar(Characters.GargoyleTwinblade, name=NameText.GargoyleTwinblade, bar_slot=1)
+    AddSpecialEffect(Characters.GargoyleGreatsword, 17648)
+    AddSpecialEffect(Characters.CLONE_GargoyleGreatsword, 17648)
+    AddSpecialEffect(Characters.GargoyleTwinblade, 17648)
+    AddSpecialEffect(Characters.CLONE_GargoyleTwinblade, 17648)
+    EnableFlag(Flags.GargoylesInPhaseTwo)
 
 
 @RestartOnRest(12022821)
-def Event_12022821():
-    """Event 12022821"""
-    if FlagEnabled(12020800):
+def OneGargoyleDead():
+    """Removes a SpEffect from last Gargoyle that was probably reducing aggression while two were alive."""
+    if FlagEnabled(Flags.GargoylesDead):
         return
-    AND_1.Add(FlagEnabled(12022820))
-    OR_1.Add(CharacterDead(Characters.Gargoyle0))
-    OR_1.Add(CharacterDead(Characters.Gargoyle1))
+    AND_1.Add(FlagEnabled(Flags.GargoylesInPhaseTwo))
+    OR_1.Add(CharacterDead(Characters.GargoyleGreatsword))
+    OR_1.Add(CharacterDead(Characters.GargoyleTwinblade))
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
     
-    RemoveSpecialEffect(Characters.Gargoyle0, 17648)
-    RemoveSpecialEffect(Characters.Gargoyle1, 17648)
+    RemoveSpecialEffect(Characters.GargoyleGreatsword, 17648)
+    RemoveSpecialEffect(Characters.GargoyleTwinblade, 17648)
+
+
+@RestartOnRest(12022822)
+def HandleGargoyleDeath(_, gargoyle: uint, clone_gargoyle: uint):
+    """Simply kills the immortal clone Gargoyle when the original (with health pool) dies."""
+    if FlagEnabled(Flags.GargoylesDead):
+        return
+    MAIN.Await(HealthValue(gargoyle) <= 0)
+    Kill(clone_gargoyle)
 
 
 @RestartOnRest(12022849)
-def Event_12022849():
+def GargoylesCommonEvents():
     """Event 12022849"""
-    CommonFunc_ControlBossFog(0, boss_dead_flag=12020800, fog_asset=Assets.AEG099_002_9003, model_point=5, required_flag=12020801)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GargoylesDead, fog_asset=Assets.AEG099_002_9003, model_point=5, required_flag=12020801)
     CommonFunc_ControlBossMusic(
         0,
-        dead_flag=12020800,
+        boss_dead_flag=Flags.GargoylesDead,
         bgm_boss_conv_param_id=931000,
         host_in_battle=12022805,
         summon_in_battle=12022806,
         extra_required_flag=0,
-        phase_two_flag=12022820,
+        phase_two_flag=Flags.GargoylesInPhaseTwo,
         useless_phase_two_check=0,
         use_stop_type_1=0,
     )
     CommonFunc_HostEntersBossFog(
         0,
-        boss_dead_flag=12020800,
+        boss_dead_flag=Flags.GargoylesDead,
         fog_asset=Assets.AEG099_002_9002,
         fog_region=12022800,
         host_entered_fog_flag=12022805,
@@ -1856,15 +1947,15 @@ def Event_12022849():
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=12020800,
+        boss_dead_flag=Flags.GargoylesDead,
         fog_asset=Assets.AEG099_002_9002,
         fog_region=12022800,
         host_entered_fog_flag=12022805,
         summon_entered_fog_flag=12022806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=12020800, fog_asset=Assets.AEG099_002_9002, model_point=3, required_flag=12020801)
-    CommonFunc_ControlBossMusic(0, 12020800, 931000, 12022805, 12022806, 0, 12022802, 0, 0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GargoylesDead, fog_asset=Assets.AEG099_002_9002, model_point=3, required_flag=12020801)
+    CommonFunc_ControlBossMusic(0, Flags.GargoylesDead, 931000, 12022805, 12022806, 0, 12022802, 0, 0)
 
 
 @RestartOnRest(12020700)

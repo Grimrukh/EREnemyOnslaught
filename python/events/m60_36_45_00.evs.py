@@ -34,7 +34,7 @@ def Constructor():
         seconds=0.0,
         animation_id=1700,
     )
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1036450800,
         extra_flag_to_enable=0,

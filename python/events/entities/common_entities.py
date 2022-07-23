@@ -8,5 +8,6 @@ class CommonFlags(Flag):
     EndingDone = 120
     ReturnedToRoundtableAfterEnding = 121
 
+    MohgNPCUnavailable = 9112
     FestivalOfWarStarted = 9410
     # Flag 9413 seems to have to be DISABLED for the Festival to replace the Redmane Duo boss.

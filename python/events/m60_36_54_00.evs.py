@@ -53,7 +53,7 @@ def Constructor():
         animation_id=0,
     )
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.FallingstarBeast, name=904680603, npc_threat_level=19)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1036540800,
         extra_flag_to_enable=0,

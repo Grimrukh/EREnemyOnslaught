@@ -34,7 +34,7 @@ def Constructor():
         flag_1=1048412708,
     )
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.BellBearingHunter, name=903100603, npc_threat_level=10)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1048410800,
         extra_flag_to_enable=0,
@@ -43,7 +43,7 @@ def Constructor():
         item_lot=1048410800,
         seconds=0.0,
     )
-    CommonFunc_90005872(0, character=Characters.BellBearingHunter, npc_threat_level=10, right=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.BellBearingHunter, npc_threat_level=10, optional_trigger_flag=0)
     CommonFunc_90005702(0, character=Characters.Merchant, flag=4793, first_flag=4790, last_flag=4793)
     CommonFunc_90005703(
         0,

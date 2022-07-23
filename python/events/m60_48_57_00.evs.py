@@ -116,7 +116,7 @@ def Constructor():
         left_3=0,
     )
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DeathRiteBird, name=904980607, npc_threat_level=24)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1048570800,
         extra_flag_to_enable=0,

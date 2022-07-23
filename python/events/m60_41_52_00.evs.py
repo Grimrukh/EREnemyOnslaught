@@ -26,7 +26,7 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=76305, asset=Assets.AEG099_060_9002)
     Event_1041522320(0, character=Characters.AncientDragon, name=904510600, npc_threat_level=28)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1041520800,
         extra_flag_to_enable=0,

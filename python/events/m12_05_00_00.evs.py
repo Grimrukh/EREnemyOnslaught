@@ -18,6 +18,7 @@ strings:
 from .common_func import *
 from soulstruct.eldenring.events import *
 from soulstruct.eldenring.events.instructions import *
+from .entities.common_entities import CommonFlags
 from .entities.m12_05_00_00_entities import *
 from .entities.m60_35_45_00_entities import Characters as m60_35_Characters
 
@@ -30,25 +31,27 @@ def Constructor():
     RegisterGrace(grace_flag=71253, asset=Assets.AEG099_060_9003)
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
-        flag=12050800,
+        flag=Flags.MohgDead,
         grace_flag=12050000,
         character=Characters.TalkDummy0,
         asset=Assets.AEG099_060_9000,
         enemy_block_distance=5.0,
     )
-    Event_12052800()
-    Event_12052810()
-    Event_12052811()
-    Event_12052849()
-    Event_12052847()
+    MohgDies()
+    MohgBattleTrigger()
+    MohgPhaseTwoTransition()
+    MohgCommonEvents()
+    ControlMiquellaEgg()
     Event_12052848()
-    Event_12052820()
-    Event_12052821()
-    Event_12052822()
-    Event_12052823()
-    Event_12052824()
-    Event_12052825()
-    Event_12052826()
+    # TODO: How should clone handle Nihil events?
+    MohgCountdownThree()
+    MohgCountdownTwo()
+    MohgCountdownOne()
+    MohgFirstNihil()
+    MohgSecondNihil()
+    MohgThirdNihil()
+    MohgNihilClear()
+
     CommonFunc_90005221(
         0,
         character=Characters.Albinauric0,
@@ -643,7 +646,7 @@ def Constructor():
     CommonFunc_NonRespawningWithReward(0, dead_flag=12050403, character=Characters.Scarab, item_lot=40686, reward_delay=1.5, skip_reward=0)
     CommonFunc_90005790(
         0,
-        right=12050800,
+        right=Flags.MohgDead,
         flag=12050410,
         summon_flag=12052410,
         dismissal_flag=12052411,
@@ -668,7 +671,7 @@ def Constructor():
     )
     CommonFunc_90005790(
         0,
-        right=12050800,
+        right=Flags.MohgDead,
         flag=12050412,
         summon_flag=12052412,
         dismissal_flag=12052413,
@@ -693,7 +696,7 @@ def Constructor():
     )
     CommonFunc_90005790(
         0,
-        right=12050800,
+        right=Flags.MohgDead,
         flag=12050414,
         summon_flag=12052414,
         dismissal_flag=12052415,
@@ -753,11 +756,15 @@ def Constructor():
         asset=Assets.AEG099_090_9001,
         model_point=30010,
     )
+
     SkipLinesIfCeremonyInactive(line_count=2, ceremony=20)
-    CommonFunc_90005796(0, flag=7601, character=Characters.WhiteMaskVarre0, banner_type=5, region=12052141)
-    Event_1039532145()
+    CommonFunc_InvadeAndKillNPC(
+        0, flag=7601, character=Characters.WhiteMaskVarre0, banner_type=BannerType.HostVanquished, region=12052141
+    )
+    SetUpVarreInvasion()
+
     Event_12052690()
-    Event_12053700(0, character=Characters.Mohg, character_1=0, flag=9112, flag_1=12052805, distance=145.0)
+    ControlMohgNPC(0, mohg=Characters.Mohg, other_character=0, flag=CommonFlags.MohgNPCUnavailable, host_in_battle_flag=12052805, distance=145.0)
     Event_12053701(0, character=Characters.Mohg)
     CommonFunc_90005703(
         0,
@@ -810,9 +817,9 @@ def Preconstructor():
 
 
 @RestartOnRest(1039532145)
-def Event_1039532145():
+def SetUpVarreInvasion():
     """Event 1039532145"""
-    ReturnIfCeremonyState(event_return_type=EventReturnType.End, state=False, ceremony=20)
+    EndIfCeremonyInactive(ceremony=20)
     EnableBackread(Characters.WhiteMaskVarre0)
     SetTeamType(Characters.WhiteMaskVarre0, TeamType.Human)
     DeleteAssetVFX(12056710)
@@ -1118,48 +1125,58 @@ def Event_12052690():
 
 
 @RestartOnRest(12052800)
-def Event_12052800():
+def MohgDies():
     """Event 12052800"""
-    if FlagEnabled(12050800):
+    if FlagEnabled(Flags.MohgDead):
         return
-    
-    MAIN.Await(HealthValue(Characters.Mohg) <= 0)
+
+    AND_1.Add(HealthValue(Characters.Mohg) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_Mohg) <= 0)
+    MAIN.Await(AND_1)
     
     Wait(4.0)
     PlaySoundEffect(Characters.Mohg, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(PlayerInOwnWorld())
     AND_2.Add(CharacterDead(Characters.Mohg))
+    AND_2.Add(CharacterDead(Characters.CLONE_Mohg))
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9646))
     OR_2.Add(AND_2)
-    OR_2.Add(FlagEnabled(12050800))
+    OR_2.Add(FlagEnabled(Flags.MohgDead))
     
     MAIN.Await(OR_2)
     
     KillBossAndDisplayBanner(character=Characters.Mohg, banner_type=BannerType.DemigodFelled)
     if PlayerInOwnWorld():
         TriggerMultiplayerEvent(event_id=0)
-    EnableFlag(12050800)
-    EnableFlag(9112)
+    EnableFlag(Flags.MohgDead)
+    EnableFlag(CommonFlags.MohgNPCUnavailable)
     if PlayerInOwnWorld():
         EnableFlag(61112)
 
 
 @RestartOnRest(12052810)
-def Event_12052810():
+def MohgBattleTrigger():
     """Event 12052810"""
-    GotoIfFlagDisabled(Label.L0, flag=12050800)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.MohgDead)
     DisableCharacter(Characters.Mohg)
     DisableAnimations(Characters.Mohg)
     Kill(Characters.Mohg)
+    DisableCharacter(Characters.CLONE_Mohg)
+    DisableAnimations(Characters.CLONE_Mohg)
+    Kill(Characters.CLONE_Mohg)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.Mohg)
-    GotoIfFlagEnabled(Label.L1, flag=12050801)
+    DisableAI(Characters.CLONE_Mohg)
+    GotoIfFlagEnabled(Label.L1, flag=Flags.MohgFirstTimeDone)
     DisableCharacter(Characters.Mohg)
+    DisableCharacter(Characters.CLONE_Mohg)
     DisableAnimations(Characters.Mohg)
+    DisableAnimations(Characters.CLONE_Mohg)
     SetCharacterFadeOnEnable(character=Characters.Mohg, state=False)
+    SetCharacterFadeOnEnable(character=Characters.CLONE_Mohg, state=False)
     EnableAsset(Assets.AEG231_036_4000)
     DisableAsset(Assets.AEG231_037_4000)
     DisableAsset(Assets.AEG231_038_4000)
@@ -1167,10 +1184,11 @@ def Event_12052810():
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12052801))
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Mohg, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_Mohg, attacker=PLAYER))
+
     MAIN.Await(OR_1)
     
-    EnableNetworkFlag(12050801)
+    EnableNetworkFlag(Flags.MohgFirstTimeDone)
     if PlayerInOwnWorld():
         BanishInvaders(unknown=0)
     if PlayerInOwnWorld():
@@ -1188,44 +1206,55 @@ def Event_12052810():
     WaitFramesAfterCutscene(frames=1)
     EnableNetworkFlag(12050802)
     EnableCharacter(Characters.Mohg)
+    EnableCharacter(Characters.CLONE_Mohg)
     EnableAnimations(Characters.Mohg)
+    EnableAnimations(Characters.CLONE_Mohg)
     ForceAnimation(Characters.Mohg, 20020)
+    ForceAnimation(Characters.CLONE_Mohg, 20020)
     Goto(Label.L2)
 
     # --- Label 1 --- #
     DefineLabel(1)
     DisableAnimations(Characters.Mohg)
+    DisableAnimations(Characters.CLONE_Mohg)
     AND_2.Add(FlagEnabled(12052805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=12052800))
     
     MAIN.Await(AND_2)
     
     EnableAnimations(Characters.Mohg)
+    EnableAnimations(Characters.CLONE_Mohg)
 
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAsset(Assets.AEG231_037_4000)
     DisableAsset(Assets.AEG231_038_4000)
     EnableAI(Characters.Mohg)
+    EnableAI(Characters.CLONE_Mohg)
     SetNetworkUpdateRate(Characters.Mohg, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.Mohg, name=904800000)
+    SetNetworkUpdateRate(Characters.CLONE_Mohg, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.Mohg, name=NameText.MohgLordOfBlood, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_Mohg, name=NameText.CLONE_MohgLordOfBlood, bar_slot=0)
 
 
 @RestartOnRest(12052811)
-def Event_12052811():
+def MohgPhaseTwoTransition():
     """Event 12052811"""
-    if FlagEnabled(12050800):
+    if FlagEnabled(Flags.MohgDead):
         return
+
+    # Triggered by EITHER Mohg going to phase two.
+    OR_1.Add(CharacterHasSpecialEffect(Characters.Mohg, 10630))
+    OR_1.Add(CharacterHasSpecialEffect(Characters.CLONE_Mohg, 10630))
+    MAIN.Await(OR_1)
     
-    MAIN.Await(CharacterHasSpecialEffect(Characters.Mohg, 10630))
-    
-    EnableFlag(12052802)
+    EnableFlag(Flags.MohgInPhaseTwo)
 
 
 @RestartOnRest(12052820)
-def Event_12052820():
+def MohgCountdownThree():
     """Event 12052820"""
-    if FlagEnabled(12050800):
+    if FlagEnabled(Flags.MohgDead):
         return
     
     MAIN.Await(CharacterHasSpecialEffect(Characters.Mohg, 10641))
@@ -1234,9 +1263,9 @@ def Event_12052820():
 
 
 @RestartOnRest(12052821)
-def Event_12052821():
+def MohgCountdownTwo():
     """Event 12052821"""
-    if FlagEnabled(12050800):
+    if FlagEnabled(Flags.MohgDead):
         return
     
     MAIN.Await(CharacterHasSpecialEffect(Characters.Mohg, 10642))
@@ -1245,9 +1274,9 @@ def Event_12052821():
 
 
 @RestartOnRest(12052822)
-def Event_12052822():
+def MohgCountdownOne():
     """Event 12052822"""
-    if FlagEnabled(12050800):
+    if FlagEnabled(Flags.MohgDead):
         return
     
     MAIN.Await(CharacterHasSpecialEffect(Characters.Mohg, 10643))
@@ -1256,9 +1285,9 @@ def Event_12052822():
 
 
 @RestartOnRest(12052823)
-def Event_12052823():
+def MohgFirstNihil():
     """Event 12052823"""
-    if FlagEnabled(12050800):
+    if FlagEnabled(Flags.MohgDead):
         return
     
     MAIN.Await(CharacterHasSpecialEffect(Characters.Mohg, 10645))
@@ -1268,9 +1297,9 @@ def Event_12052823():
 
 
 @RestartOnRest(12052824)
-def Event_12052824():
+def MohgSecondNihil():
     """Event 12052824"""
-    if FlagEnabled(12050800):
+    if FlagEnabled(Flags.MohgDead):
         return
     
     MAIN.Await(CharacterHasSpecialEffect(Characters.Mohg, 10646))
@@ -1280,9 +1309,9 @@ def Event_12052824():
 
 
 @RestartOnRest(12052825)
-def Event_12052825():
+def MohgThirdNihil():
     """Event 12052825"""
-    if FlagEnabled(12050800):
+    if FlagEnabled(Flags.MohgDead):
         return
     
     MAIN.Await(CharacterHasSpecialEffect(Characters.Mohg, 10647))
@@ -1292,9 +1321,9 @@ def Event_12052825():
 
 
 @RestartOnRest(12052826)
-def Event_12052826():
+def MohgNihilClear():
     """Event 12052826"""
-    if FlagEnabled(12050800):
+    if FlagEnabled(Flags.MohgDead):
         return
     OR_1.Add(CharacterHasSpecialEffect(Characters.Mohg, 10648))
     OR_1.Add(CharacterDead(Characters.Mohg))
@@ -1305,12 +1334,12 @@ def Event_12052826():
 
 
 @RestartOnRest(12052847)
-def Event_12052847():
+def ControlMiquellaEgg():
     """Event 12052847"""
-    if FlagEnabled(12050801):
+    if FlagEnabled(Flags.MohgFirstTimeDone):
         return
     
-    MAIN.Await(FlagEnabled(12050801))
+    MAIN.Await(FlagEnabled(Flags.MohgFirstTimeDone))
     
     DisableAsset(Assets.AEG231_036_4000)
     DisableAsset(Assets.AEG231_037_4000)
@@ -1340,43 +1369,55 @@ def Event_12052848():
 
 
 @RestartOnRest(12052849)
-def Event_12052849():
+def MohgCommonEvents():
     """Event 12052849"""
-    CommonFunc_ControlBossFog(0, boss_dead_flag=12050800, fog_asset=Assets.AEG099_001_9000, model_point=12, required_flag=12050801)
-    CommonFunc_ControlBossFog(0, boss_dead_flag=12050800, fog_asset=Assets.AEG099_001_9001, model_point=12, required_flag=12050801)
+    CommonFunc_ControlBossFog(
+        0,
+        boss_dead_flag=Flags.MohgDead,
+        fog_asset=Assets.AEG099_001_9000,
+        model_point=12,
+        required_flag=Flags.MohgFirstTimeDone,
+    )
+    CommonFunc_ControlBossFog(
+        0,
+        boss_dead_flag=Flags.MohgDead,
+        fog_asset=Assets.AEG099_001_9001,
+        model_point=12,
+        required_flag=Flags.MohgFirstTimeDone,
+    )
     CommonFunc_ControlBossMusic(
         0,
-        dead_flag=12050800,
+        boss_dead_flag=Flags.MohgDead,
         bgm_boss_conv_param_id=90003101,
         host_in_battle=12052805,
         summon_in_battle=12052806,
         extra_required_flag=0,
-        phase_two_flag=12052802,
+        phase_two_flag=Flags.MohgInPhaseTwo,
         useless_phase_two_check=0,
         use_stop_type_1=0,
     )
     CommonFunc_HostEntersBossFog(
         0,
-        boss_dead_flag=12050800,
+        boss_dead_flag=Flags.MohgDead,
         fog_asset=Assets.AEG099_002_9000,
         fog_region=12052800,
         host_entered_fog_flag=12052805,
         boss_characters=12055800,
         action_button_id=10000,
-        first_time_done_flag=12050801,
+        first_time_done_flag=Flags.MohgFirstTimeDone,
         first_time_trigger_region=12052801,
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=12050800,
+        boss_dead_flag=Flags.MohgDead,
         fog_asset=Assets.AEG099_002_9000,
         fog_region=12052800,
         host_entered_fog_flag=12052805,
         summon_entered_fog_flag=12052806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=12050800, fog_asset=Assets.AEG099_002_9000, model_point=4, required_flag=12050801)
-    CommonFunc_ControlBossMusic(0, 12050800, 480000, 12052805, 12052806, 0, 12052802, 0, 0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.MohgDead, fog_asset=Assets.AEG099_002_9000, model_point=4, required_flag=Flags.MohgFirstTimeDone)
+    CommonFunc_ControlBossMusic(0, Flags.MohgDead, 480000, 12052805, 12052806, 0, Flags.MohgInPhaseTwo, 0, 0)
 
 
 @ContinueOnRest(12052510)
@@ -1384,47 +1425,47 @@ def Event_12052510():
     """Event 12052510"""
     CommonFunc_90005500(
         0,
-        12050510,
-        12050511,
-        0,
-        12051510,
-        12051511,
-        12053511,
-        12051512,
-        12053512,
-        12052511,
-        12052512,
-        12050512,
-        12050513,
-        0,
+        flag=12050510,
+        flag_1=12050511,
+        left=0,
+        asset=12051510,
+        asset_1=12051511,
+        obj_act_id=12053511,
+        asset_2=12051512,
+        obj_act_id_1=12053512,
+        region=12052511,
+        region_1=12052512,
+        flag_2=12050512,
+        flag_3=12050513,
+        left_1=0,
     )
 
 
 @RestartOnRest(12053700)
-def Event_12053700(_, character: uint, character_1: uint, flag: uint, flag_1: uint, distance: float):
+def ControlMohgNPC(_, mohg: uint, other_character: uint, flag: uint, host_in_battle_flag: uint, distance: float):
     """Event 12053700"""
     if PlayerNotInOwnWorld():
         return
-    SetCharacterTalkRange(character=character, distance=17.0)
-    if UnsignedNotEqual(left=0, right=character_1):
-        SetCharacterTalkRange(character=character_1, distance=17.0)
+    SetCharacterTalkRange(character=mohg, distance=17.0)
+    if UnsignedNotEqual(left=0, right=other_character):
+        SetCharacterTalkRange(character=other_character, distance=17.0)
     if FlagEnabled(flag):
         return
-    GotoIfFlagDisabled(Label.L1, flag=flag_1)
+    GotoIfFlagDisabled(Label.L1, flag=host_in_battle_flag)
     Goto(Label.L2)
 
     # --- Label 1 --- #
     DefineLabel(1)
     
-    MAIN.Await(FlagEnabled(flag_1))
+    MAIN.Await(FlagEnabled(host_in_battle_flag))
     
     Goto(Label.L2)
 
     # --- Label 2 --- #
     DefineLabel(2)
-    SetCharacterTalkRange(character=character, distance=distance)
-    if UnsignedNotEqual(left=0, right=character_1):
-        SetCharacterTalkRange(character=character_1, distance=distance)
+    SetCharacterTalkRange(character=mohg, distance=distance)
+    if UnsignedNotEqual(left=0, right=other_character):
+        SetCharacterTalkRange(character=other_character, distance=distance)
     End()
 
 
@@ -1433,7 +1474,7 @@ def Event_12053701(_, character: uint):
     """Event 12053701"""
     if PlayerNotInOwnWorld():
         return
-    if FlagEnabled(12050800):
+    if FlagEnabled(Flags.MohgDead):
         return
     
     MAIN.Await(CharacterDead(character))

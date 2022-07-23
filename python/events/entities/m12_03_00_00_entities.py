@@ -1,18 +1,38 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    ErdtreeAvatarDead = 12030391
+    FiasChampionsDead = 12030800
+    LichdragonFortissaxDead = 12030850
+    FiasChampionsBattleStarted = 12032810  # round one
+    SorcererRogierBattleStarted = 12032811  # round two
+    PlayerInFortissaxArena = 12032858
+    LichdragonFortissaxInPhaseTwo = 12032852
+
+
+class NameText(NPCName):
+    SorcererRogier = 132500
+    LionelTheLionhearted = 132900
+    FiasChampion0 = 136100
+    LionelSidekick1 = 137000
+    LionelSidekick2 = 137100
+    LichdragonFortissax = 904510000
+    CLONE_LichdragonFortissax = 904510010
+
+
 class Characters(Character):
     SorcererRogier = 12030810  # c0000_9012 col h006000 npc 523250066 think 523250100 chara 23252 group 12035800,12035104
     LioneltheLionhearted = 12030811  # c0000_9013 col h006000 npc 523290066 think 523290100 chara 23290 group 12035800,12035104
-    FiasChampion0 = 12030800  # c0000_9011 col h006000 npc 523610066 think 523610100 chara 23611 group 12035800,12035104
-    FiasChampion1 = 12030812  # c0000_9014 col h006000 npc 523610066 think 523610100 chara 23701 group 12035800,12035104
-    FiasChampion2 = 12030813  # c0000_9015 col h006000 npc 523610066 think 523610100 chara 23711 group 12035800,12035104
+    FirstFiasChampion = 12030800  # c0000_9011 col h006000 npc 523610066 think 523610100 chara 23611 group 12035800,12035104
+    LionelSidekick2 = 12030812  # c0000_9014 col h006000 npc 523610066 think 523610100 chara 23701 group 12035800,12035104
+    LionelSidekick1 = 12030813  # c0000_9015 col h006000 npc 523610066 think 523610100 chara 23711 group 12035800,12035104
     DHunteroftheDead = 12030710  # c0000_9016 col h006000 npc 523190066 think 523190000 chara 23193 talk 319201203
     FiaDeathbedCompanion0 = 12030700  # c0000_9010 col h006000 npc 523220066 think 523220000 chara 23221 talk 322001203
     FiaDeathbedCompanion1 = 12030701  # c0000_9017 col h006000 npc 523220166 think 500000000 chara 23221
     FiaDeathbedCompanion2 = 12030702  # c0000_9018 col h006000 npc 523220266 think 523220000 chara 23221 talk 322011203
     FiaDeathbedCompanion3 = 12030703  # c0000_9019 col h006000 npc 523220366 think 523220000 chara 23221
-    Human = 12030814  # c0000_9020 col h006000 npc 523610066 think 523610100 chara 23612 group 12035104
+    UnknownFiasChampion = 12030814  # c0000_9020 col h006000 npc 523610066 think 523610100 chara 23612 group 12035104
     TalkDummy0 = 12030950  # c1000_9000 col h006000 npc 10000000 think 1 talk 1000
     TalkDummy1 = 12030951  # c1000_9001 col h001000 npc 10000000 think 1 talk 1000
     TalkDummy2 = 12030952  # c1000_9002 col h002300 npc 10000000 think 1 talk 1000
@@ -25,7 +45,7 @@ class Characters(Character):
     TalkDummy9 = 12030106  # c1000_9009 col h006000 npc 10001000 think 1 talk 2000
     TalkDummy10 = 12030108  # c1000_9010 col h004700 npc 10001000 think 1 talk 2000
     FingerReader = 12030725  # c2160_9000 col h004000 npc 21601066 think 21600000 talk 101601203
-    CrucibleKnight = 12030390  # c2500_9000 col h004700 npc 25001066 think 25001066 group 12035108
+    CrucibleKnightSiluria = 12030390  # c2500_9000 col h004700 npc 25001066 think 25001066 group 12035108
     Scarab0 = 12030350  # c4191_9000 col h002400 npc 41912066 think 41910000
     Scarab1 = 12030354  # c4191_9004 col h004700 npc 41915066 think 41910000
     Scarab2 = 12030355  # c4191_9005 col h004600 npc 41915066 think 41910000
@@ -64,6 +84,17 @@ class Characters(Character):
     WalkingMausoleum = 12030400  # c4450_9000 col h004700 npc 44500066 think 44500000 talk 603001203 group 12035102
     LichdragonFortissax = 12030850  # c4511_9001 col h006000 npc 45110066 think 45110000 group 12035850,12035106
     ErdtreeAvatar = 12030391  # c4810_9000 col h002300 npc 48100066 think 48100000
+
+    # TODO: New positions.
+    CLONE_CrucibleKnightSiluria = 12030391
+    CLONE_ErdtreeAvatar = 12030393
+    CLONE_FiasChampion0 = 12030820
+    CLONE_SorcererRogier = 12030830
+    CLONE_LioneltheLionhearted = 12030831
+    CLONE_LionelSidekick2 = 12030832
+    CLONE_LionelSidekick1 = 12030833
+    CLONE_UnknownFiasChampion = 12030834
+    CLONE_LichdragonFortissax = 12030851
 
 
 class Assets(Asset):

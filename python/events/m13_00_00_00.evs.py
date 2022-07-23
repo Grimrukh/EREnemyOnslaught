@@ -32,7 +32,7 @@ def Constructor():
     RegisterGrace(grace_flag=13000008, asset=Assets.AEG099_060_9008)
     RegisterGrace(grace_flag=13000009, asset=Assets.AEG099_060_9009)
     RegisterGrace(grace_flag=13000010, asset=Assets.AEG099_060_9010)
-    Event_13002805()
+    ControlMalikethGrace()
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
         flag=Flags.DragonlodPlacidusaxDead,
@@ -55,59 +55,155 @@ def Constructor():
     # TODO: Clone event instances. Harder to find free event IDs here.
     MalikethDies()
     MalikethBattleTrigger()
-    MalikethPhaseTwoTransition()
+    MalikethPhaseTwoTransition(
+        0, maliketh_phase_one=Characters.MalikethPhaseOne, maliketh_phase_two=Characters.MalikethPhaseTwo
+    )
+    MalikethPhaseTwoTransition(
+        1, maliketh_phase_one=Characters.CLONE_MalikethPhaseOne, maliketh_phase_two=Characters.CLONE_MalikethPhaseTwo
+    )
     MalikethCommonEvents()
-    SetMalikethPhaseTwoEventPoint()
-    Event_13002827()
-    Event_13002828()
-    MoveMalikethPhaseTwo()
+    # SetMalikethPhaseTwoEventPoint()  # TODO: weird buggy/useless event that will keep restarting
+    MalikethEntersSpecialRegions(
+        0, maliketh=Characters.MalikethPhaseTwo, in_regions_flag=Flags.MalikethInSpecialRegions
+    )
+    MalikethEntersSpecialRegions(
+        1, maliketh=Characters.CLONE_MalikethPhaseTwo, in_regions_flag=Flags.CLONE_MalikethInSpecialRegions
+    )
+    MalikethLeavesSpecialRegions(
+        0, maliketh=Characters.MalikethPhaseTwo, in_regions_flag=Flags.MalikethInSpecialRegions
+    )
+    MalikethLeavesSpecialRegions(
+        1, maliketh=Characters.CLONE_MalikethPhaseTwo, in_regions_flag=Flags.CLONE_MalikethInSpecialRegions
+    )
+    MoveMalikethPhaseTwo(0, maliketh=Characters.MalikethPhaseTwo)
+    MoveMalikethPhaseTwo(1, maliketh=Characters.CLONE_MalikethPhaseTwo)
 
     # DRAGONLORD PLACIDUSAX
-    Event_13002830()
-    Event_13002834()
-    Event_13002835()
-    Event_13002840()
-    Event_13002841()
-    Event_13002849()
+    DragonlordPlacidusaxDies()
+    PlayerTravelsToDragonlord()
+    DragonlordPlacidusaxBattleTrigger()
+    DragonlordPlacidusaxPhaseTwoTransition()
+    DragonlordPlacidusaxCameraControl()
+    DragonlordPlacidusaxCommonEvents()
 
-    # GODSKIN DUO
+    # GODSKIN DUO (now QUARTET)
     GodskinDuoDies()
+    StopGodskinDuoRespawning(  # 13002760
+        0,
+        godskin_health_pool=Characters.GodskinDuoHealthPool,
+        apostle=Characters.GodskinDuoApostle,
+        noble=Characters.GodskinDuoNoble,
+        stop_respawning_flag=Flags.StopGodskinDuoRespawning,
+    )
+    StopGodskinDuoRespawning(  # 13002761
+        1,
+        godskin_health_pool=Characters.CLONE_GodskinDuoHealthPool,
+        apostle=Characters.CLONE_GodskinDuoApostle,
+        noble=Characters.CLONE_GodskinDuoNoble,
+        stop_respawning_flag=Flags.CLONE_StopGodskinDuoRespawning,
+    )
     GodskinDuoBattleTrigger()
-    Event_13002861()
-    Event_13002865()
-    Event_13002890(
+    GodskinDuoPhaseTwoTransition()
+    GodskinDuoCommonEvents()
+    FirstGodskinDies(
         0,
-        flag=13002944,
-        character=Characters.GodskinDuoApostle,
-        character_1=Characters.GodskinDuoNoble,
-        special_effect_id=15504,
+        solo_godskin_flag=Flags.NobleSoloFlag,
+        dead_godskin=Characters.GodskinDuoApostle,
+        remaining_godskin=Characters.GodskinDuoNoble,
+        remaining_godskin_special_effect=Effects.GodskinNobleSolo,
     )
-    Event_13002891(
+    GodskinRespawns(
         0,
-        flag=13002944,
-        character=13003851,
-        character_1=Characters.GodskinDuoNoble,
-        special_effect=15506,
-        character_2=Characters.GodskinDuoApostle,
-        flag_1=13002873,
+        solo_godskin_flag=Flags.NobleSoloFlag,
+        spawner=Spawners.ApostleSpawner,
+        remaining_godskin=Characters.GodskinDuoNoble,
+        revival_special_effect=Effects.GodskinNobleRevivingApostle,
+        respawned_godskin=Characters.GodskinDuoApostle,
+        respawned_flag=Flags.GodskinApostleHasRespawned,
     )
-    Event_13002890(
+    FirstGodskinDies(
         1,
-        flag=13002945,
-        character=Characters.GodskinDuoNoble,
-        character_1=Characters.GodskinDuoApostle,
-        special_effect_id=15454,
+        solo_godskin_flag=Flags.ApostleSoloFlag,
+        dead_godskin=Characters.GodskinDuoNoble,
+        remaining_godskin=Characters.GodskinDuoApostle,
+        remaining_godskin_special_effect=Effects.GodskinApostleSolo,
     )
-    Event_13002891(
+    GodskinRespawns(
         1,
-        flag=13002945,
-        character=13003852,
-        character_1=Characters.GodskinDuoApostle,
-        special_effect=15456,
-        character_2=Characters.GodskinDuoNoble,
-        flag_1=13002874,
+        solo_godskin_flag=Flags.ApostleSoloFlag,
+        spawner=Spawners.NobleSpawner,
+        remaining_godskin=Characters.GodskinDuoApostle,
+        revival_special_effect=Effects.GodskinApostleRevivingNoble,
+        respawned_godskin=Characters.GodskinDuoNoble,
+        respawned_flag=Flags.GodskinNobleHasRespawned,
     )
-    Event_13002892()
+    RespawnRandomGodskinDuoMember(
+        0,
+        apostle=Characters.GodskinDuoApostle,
+        noble=Characters.GodskinDuoNoble,
+        apostle_spawner=Spawners.ApostleSpawner,
+        noble_spawner=Spawners.NobleSpawner,
+        apostle_respawned_flag=Flags.GodskinApostleHasRespawned,
+        noble_respawned_flag=Flags.GodskinNobleHasRespawned,
+        random_flag_1=Flags.RandomApostleFlag,
+        random_flag_2=Flags.RandomNobleFlag,
+    )
+    RespawnRandomGodskinDuoMember(
+        0,
+        apostle=Characters.GodskinDuoApostle,
+        noble=Characters.GodskinDuoNoble,
+        apostle_spawner=Spawners.ApostleSpawner,
+        noble_spawner=Spawners.NobleSpawner,
+        apostle_respawned_flag=Flags.GodskinApostleHasRespawned,
+        noble_respawned_flag=Flags.GodskinNobleHasRespawned,
+        random_flag_1=Flags.RandomApostleFlag,
+        random_flag_2=Flags.RandomNobleFlag,
+    )
+
+    # CLONE RESPAWNING
+    FirstGodskinDies(  # 13002895
+        5,
+        solo_godskin_flag=Flags.CLONE_NobleSoloFlag,
+        dead_godskin=Characters.CLONE_GodskinDuoApostle,
+        remaining_godskin=Characters.CLONE_GodskinDuoNoble,
+        remaining_godskin_special_effect=Effects.GodskinNobleSolo,
+    )
+    GodskinRespawns(  # 13002896
+        5,
+        solo_godskin_flag=Flags.CLONE_NobleSoloFlag,
+        spawner=Spawners.CLONE_ApostleSpawner,
+        remaining_godskin=Characters.CLONE_GodskinDuoNoble,
+        revival_special_effect=Effects.GodskinNobleRevivingApostle,
+        respawned_godskin=Characters.CLONE_GodskinDuoApostle,
+        respawned_flag=Flags.GodskinApostleHasRespawned,
+    )
+    FirstGodskinDies(  # 13002896 (repeat doesn't matter)
+        6,
+        solo_godskin_flag=Flags.CLONE_ApostleSoloFlag,
+        dead_godskin=Characters.CLONE_GodskinDuoNoble,
+        remaining_godskin=Characters.CLONE_GodskinDuoApostle,
+        remaining_godskin_special_effect=Effects.GodskinApostleSolo,
+    )
+    GodskinRespawns(  # 13002897
+        6,
+        solo_godskin_flag=Flags.CLONE_ApostleSoloFlag,
+        spawner=Spawners.CLONE_NobleSpawner,
+        remaining_godskin=Characters.CLONE_GodskinDuoApostle,
+        revival_special_effect=Effects.GodskinApostleRevivingNoble,
+        respawned_godskin=Characters.CLONE_GodskinDuoNoble,
+        respawned_flag=Flags.GodskinNobleHasRespawned,
+    )
+    RespawnRandomGodskinDuoMember(  # 13002893
+        1,
+        apostle=Characters.CLONE_GodskinDuoApostle,
+        noble=Characters.CLONE_GodskinDuoNoble,
+        apostle_spawner=Spawners.CLONE_ApostleSpawner,
+        noble_spawner=Spawners.CLONE_NobleSpawner,
+        apostle_respawned_flag=Flags.GodskinApostleHasRespawned,
+        noble_respawned_flag=Flags.GodskinNobleHasRespawned,
+        random_flag_1=Flags.CLONE_RandomApostleFlag,
+        random_flag_2=Flags.CLONE_RandomNobleFlag,
+    )
 
     Event_13002236(0, region=13002314, character=Characters.BeastmanofFarumAzula29)
     CommonFunc_NonRespawningWithReward(0, dead_flag=13000340, character=13000340, item_lot=40770, reward_delay=0.0, skip_reward=0)
@@ -1603,15 +1699,21 @@ def MalikethDies():
 
     # --- Label 0 --- #
     DefineLabel(0)
-    
-    MAIN.Await(HealthValue(Characters.MalikethPhaseTwo) <= 0)
+
+    # TODO: Maliketh's death dialogue should only play when BOTH die.
+    AND_1.Add(HealthValue(Characters.MalikethPhaseTwo) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_MalikethPhaseTwo) <= 0)
+    MAIN.Await(AND_1)
     
     Kill(Characters.MalikethPhaseOne)
+    Kill(Characters.CLONE_MalikethPhaseOne)
     Kill(Characters.MalikethPhaseTwo)
+    Kill(Characters.CLONE_MalikethPhaseTwo)
     Wait(4.0)
     PlaySoundEffect(13008000, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(PlayerInOwnWorld())
     AND_2.Add(CharacterDead(Characters.MalikethPhaseTwo))
+    AND_2.Add(CharacterDead(Characters.CLONE_MalikethPhaseTwo))
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9646))
     OR_2.Add(AND_2)
     OR_2.Add(FlagEnabled(Flags.MalikethDead))
@@ -1619,6 +1721,7 @@ def MalikethDies():
     MAIN.Await(OR_2)
     
     SetBackreadStateAlternate(Characters.MalikethPhaseTwo, True)
+    SetBackreadStateAlternate(Characters.CLONE_MalikethPhaseTwo, True)
     KillBossAndDisplayBanner(character=Characters.MalikethPhaseTwo, banner_type=BannerType.LegendFelled)
     EnableNetworkFlag(Flags.MalikethDead)
     EnableFlag(9116)
@@ -1631,7 +1734,7 @@ def MalikethDies():
 
 
 @RestartOnRest(13002805)
-def Event_13002805():
+def ControlMalikethGrace():
     """Event 13002805"""
     GotoIfFlagEnabled(Label.L0, flag=Flags.MalikethDead)
     DisableCharacter(Characters.TalkDummy0)
@@ -1683,6 +1786,7 @@ def MalikethBattleTrigger():
     DisableCharacter(Characters.MalikethPhaseTwo)
     DisableGravity(Characters.MalikethPhaseTwo)
     DisableAnimations(Characters.MalikethPhaseTwo)
+
     DisableAI(Characters.CLONE_MalikethPhaseOne)
     DisableAI(Characters.CLONE_MalikethPhaseTwo)
     DisableHealthBar(Characters.CLONE_MalikethPhaseTwo)
@@ -1731,7 +1835,7 @@ def MalikethBattleTrigger():
     EnableBossHealthBar(Characters.CLONE_MalikethPhaseOne, name=NameText.CLONE_BeastClergyman, bar_slot=0)
 
 
-@RestartOnRest(13002811)
+@RestartOnRest(13002750)  # renumbered for more free slots
 def MalikethPhaseTwoTransition(_, maliketh_phase_one: uint, maliketh_phase_two: uint):
     """Separate for each clone."""
     if FlagEnabled(Flags.MalikethDead):
@@ -1776,14 +1880,14 @@ def MalikethPhaseTwoTransition(_, maliketh_phase_one: uint, maliketh_phase_two: 
     EnableBossHealthBar(maliketh_phase_two, name=902110001)
 
 
-@RestartOnRest(13002819)
+@RestartOnRest(13002756)  # new ID
 def MoveMalikethPhaseTwo(_, maliketh: uint):
     """Event 13002819"""
     MAIN.Await(CharacterHasSpecialEffect(maliketh, 15272))
     
     Move(
         maliketh,
-        destination=13002825,
+        destination=13002825,  # TODO: clone and move slightly?
         destination_type=CoordEntityType.Region,
         copy_draw_parent=maliketh,
     )
@@ -1792,48 +1896,50 @@ def MoveMalikethPhaseTwo(_, maliketh: uint):
 
 
 @RestartOnRest(13002820)
-def SetMalikethPhaseTwoEventPoint(_, maliketh: uint):
+def SetMalikethPhaseTwoEventPoint():
     """Event 13002820"""
-    AND_1.Add(HealthRatio(maliketh) != 0.0)
+    # TODO: This AND_1 condition isn't even used and flag 13002821 doesn't seem to be enabled anywhere.
+    #  In fact, none of these flags are enabled anywhere. Ignoring and disabling this event for now.
+    AND_1.Add(HealthRatio(Characters.MalikethPhaseTwo) != 0.0)
     AND_1.Add(FlagEnabled(13002821))
     if FlagEnabled(13002822):
-        SetEventPoint(maliketh, region=13002810, reaction_range=200.0)
+        SetEventPoint(Characters.MalikethPhaseTwo, region=13002810, reaction_range=200.0)
     if FlagEnabled(13002823):
-        SetEventPoint(maliketh, region=13002811, reaction_range=200.0)
+        SetEventPoint(Characters.MalikethPhaseTwo, region=13002811, reaction_range=200.0)
     if FlagEnabled(13002824):
-        SetEventPoint(maliketh, region=13002812, reaction_range=200.0)
+        SetEventPoint(Characters.MalikethPhaseTwo, region=13002812, reaction_range=200.0)
     DisableFlag(13002821)
     Restart()
 
 
-@RestartOnRest(13002827)
-def Event_13002827():
-    """Event 13002827"""
-    AND_1.Add(CharacterDoesNotHaveSpecialEffect(Characters.MalikethPhaseTwo, 15270))
-    AND_1.Add(FlagDisabled(13002826))
-    OR_1.Add(CharacterInsideRegion(character=Characters.MalikethPhaseTwo, region=13002840))
-    OR_1.Add(CharacterInsideRegion(character=Characters.MalikethPhaseTwo, region=13002841))
-    OR_1.Add(CharacterInsideRegion(character=Characters.MalikethPhaseTwo, region=13002842))
+@RestartOnRest(13002752)  # new ID
+def MalikethEntersSpecialRegions(_, maliketh: uint, in_regions_flag: int):
+    """Gives effect 15270 to Maliketh when he is in one of three regions."""
+    AND_1.Add(CharacterDoesNotHaveSpecialEffect(maliketh, 15270))
+    AND_1.Add(FlagDisabled(in_regions_flag))
+    OR_1.Add(CharacterInsideRegion(character=maliketh, region=13002840))
+    OR_1.Add(CharacterInsideRegion(character=maliketh, region=13002841))
+    OR_1.Add(CharacterInsideRegion(character=maliketh, region=13002842))
     AND_1.Add(OR_1)
     
     MAIN.Await(AND_1)
     
-    AddSpecialEffect(Characters.MalikethPhaseTwo, 15270)
-    EnableFlag(13002826)
+    AddSpecialEffect(maliketh, 15270)
+    EnableFlag(in_regions_flag)
     Restart()
 
 
-@RestartOnRest(13002828)
-def Event_13002828():
-    """Event 13002828"""
-    AND_1.Add(FlagEnabled(13002826))
-    AND_1.Add(CharacterOutsideRegion(character=Characters.MalikethPhaseTwo, region=13002840))
-    AND_1.Add(CharacterOutsideRegion(character=Characters.MalikethPhaseTwo, region=13002841))
-    AND_1.Add(CharacterOutsideRegion(character=Characters.MalikethPhaseTwo, region=13002842))
+@RestartOnRest(13002754)  # new ID
+def MalikethLeavesSpecialRegions(_, maliketh: uint, in_regions_flag: int):
+    """Removes effect 15270 from Maliketh once he leaves these three regions (see above)."""
+    AND_1.Add(FlagEnabled(in_regions_flag))
+    AND_1.Add(CharacterOutsideRegion(character=maliketh, region=13002840))
+    AND_1.Add(CharacterOutsideRegion(character=maliketh, region=13002841))
+    AND_1.Add(CharacterOutsideRegion(character=maliketh, region=13002842))
     
     MAIN.Await(AND_1)
     
-    DisableFlag(13002826)
+    DisableFlag(in_regions_flag)
     Restart()
 
 
@@ -1865,18 +1971,23 @@ def MalikethCommonEvents():
 
 
 @RestartOnRest(13002830)
-def Event_13002830():
+def DragonlordPlacidusaxDies():
     """Event 13002830"""
     if FlagEnabled(Flags.DragonlodPlacidusaxDead):
         return
     
-    MAIN.Await(HealthValue(Characters.DragonlordPlacidusax) <= 0)
-    
+    AND_1.Add(HealthValue(Characters.DragonlordPlacidusax) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_DragonlordPlacidusax) <= 0)
+    MAIN.Await(AND_1)
+
     Kill(Characters.DragonlordPlacidusax)
+    Kill(Characters.CLONE_DragonlordPlacidusax)
     Wait(4.0)
     PlaySoundEffect(13008000, 888880000, sound_type=SoundType.s_SFX)
-    
-    MAIN.Await(CharacterDead(Characters.DragonlordPlacidusax))
+
+    AND_2.Add(CharacterDead(Characters.DragonlordPlacidusax))
+    AND_2.Add(CharacterDead(Characters.CLONE_DragonlordPlacidusax))
+    MAIN.Await(AND_2)
     
     KillBossAndDisplayBanner(character=Characters.DragonlordPlacidusax, banner_type=BannerType.LegendFelled)
     SetWeather(weather=Weather.Default, duration=-1.0, immediate_change=False)
@@ -1889,7 +2000,7 @@ def Event_13002830():
 
 
 @RestartOnRest(13002834)
-def Event_13002834():
+def PlayerTravelsToDragonlord():
     """Event 13002834"""
     if FlagEnabled(Flags.DragonlodPlacidusaxDead):
         return
@@ -1963,12 +2074,12 @@ def Event_13002834():
 
 
 @RestartOnRest(13002835)
-def Event_13002835():
+def DragonlordPlacidusaxBattleTrigger():
     """Event 13002835"""
     GotoIfFlagDisabled(Label.L3, flag=Flags.DragonlodPlacidusaxDead)
-    DisableCharacter(13005830)
-    DisableAnimations(13005830)
-    Kill(13005830)
+    DisableCharacter(CharacterGroups.DragonlordPlacidusaxBoss)
+    DisableAnimations(CharacterGroups.DragonlordPlacidusaxBoss)
+    Kill(CharacterGroups.DragonlordPlacidusaxBoss)
     EnableFlag(71301)
     End()
 
@@ -2002,6 +2113,37 @@ def Event_13002835():
     SetCharacterEventTarget(Characters.DragonlordPlacidusax, region=13000840)
     SetBackreadStateAlternate(Characters.DragonlordPlacidusax, True)
     ForceAnimation(Characters.DragonlordPlacidusax, 30000, loop=True)
+
+    # CLONE
+    DisableAI(Characters.CLONE_DragonlordPlacidusax)
+    CreateNPCPart(Characters.CLONE_DragonlordPlacidusax, npc_part_id=0, part_index=NPCPartType.Part1, part_health=9999)
+    CreateNPCPart(Characters.CLONE_DragonlordPlacidusax, npc_part_id=1, part_index=NPCPartType.Part2, part_health=9999)
+    SetNPCPartEffects(
+        Characters.CLONE_DragonlordPlacidusax,
+        npc_part_id=0,
+        material_sfx_id=173,
+        material_vfx_id=173,
+        unk_16_20=139,
+        unk_20_24=139,
+        unk_24_28=0,
+    )
+    SetNPCPartEffects(
+        Characters.CLONE_DragonlordPlacidusax,
+        npc_part_id=1,
+        material_sfx_id=173,
+        material_vfx_id=173,
+        unk_16_20=139,
+        unk_20_24=139,
+        unk_24_28=0,
+    )
+    SetLockOnPoint(character=Characters.CLONE_DragonlordPlacidusax, lock_on_model_point=222, state=False)
+    SetLockOnPoint(character=Characters.CLONE_DragonlordPlacidusax, lock_on_model_point=223, state=False)
+    SetLockOnPoint(character=Characters.CLONE_DragonlordPlacidusax, lock_on_model_point=224, state=False)
+    SetLockOnPoint(character=Characters.CLONE_DragonlordPlacidusax, lock_on_model_point=225, state=False)
+    SetCharacterEventTarget(Characters.CLONE_DragonlordPlacidusax, region=13000840)
+    SetBackreadStateAlternate(Characters.CLONE_DragonlordPlacidusax, True)
+    ForceAnimation(Characters.CLONE_DragonlordPlacidusax, 30000, loop=True)
+
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=13002831))
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DragonlordPlacidusax))
@@ -2010,49 +2152,72 @@ def Event_13002835():
     OR_1.Add(CharacterHasStateInfo(character=Characters.DragonlordPlacidusax, state_info=5))
     OR_1.Add(CharacterHasStateInfo(character=Characters.DragonlordPlacidusax, state_info=6))
     OR_1.Add(CharacterHasStateInfo(character=Characters.DragonlordPlacidusax, state_info=260))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_DragonlordPlacidusax))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_DragonlordPlacidusax, state_info=436))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_DragonlordPlacidusax, state_info=2))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_DragonlordPlacidusax, state_info=5))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_DragonlordPlacidusax, state_info=6))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_DragonlordPlacidusax, state_info=260))
+
     MAIN.Await(OR_1)
     
     ForceAnimation(Characters.DragonlordPlacidusax, 20000)
     EnableAI(Characters.DragonlordPlacidusax)
     SetNetworkUpdateRate(Characters.DragonlordPlacidusax, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.DragonlordPlacidusax, name=904520000)
-    ActivateMultiplayerBuffs(13005830)
+    ForceAnimation(Characters.DragonlordPlacidusax, 20000)
+    EnableAI(Characters.DragonlordPlacidusax)
+    SetNetworkUpdateRate(Characters.DragonlordPlacidusax, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+
+    ForceAnimation(Characters.CLONE_DragonlordPlacidusax, 20000)
+    EnableAI(Characters.CLONE_DragonlordPlacidusax)
+    SetNetworkUpdateRate(Characters.CLONE_DragonlordPlacidusax, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ForceAnimation(Characters.CLONE_DragonlordPlacidusax, 20000)
+    EnableAI(Characters.CLONE_DragonlordPlacidusax)
+    SetNetworkUpdateRate(Characters.CLONE_DragonlordPlacidusax, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+
+    ActivateMultiplayerBuffs(CharacterGroups.DragonlordPlacidusaxBoss)
+    EnableBossHealthBar(Characters.DragonlordPlacidusax, name=NameText.DragonlordPlacidusax, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_DragonlordPlacidusax, name=NameText.CLONE_DragonlordPlacidusax, bar_slot=0)
+
     if PlayerNotInOwnWorld():
         return
     EnableNetworkFlag(13002835)
-    SetNetworkUpdateAuthority(13005830, authority_level=UpdateAuthority.Forced)
+    SetNetworkUpdateAuthority(CharacterGroups.DragonlordPlacidusaxBoss, authority_level=UpdateAuthority.Forced)
     NotifyBossBattleStart()
 
 
 @RestartOnRest(13002840)
-def Event_13002840():
+def DragonlordPlacidusaxPhaseTwoTransition():
     """Event 13002840"""
     if FlagEnabled(Flags.DragonlodPlacidusaxDead):
         return
-    AND_1.Add(CharacterHasSpecialEffect(Characters.DragonlordPlacidusax, 5029))
-    
-    MAIN.Await(AND_1)
+    OR_1.Add(CharacterHasSpecialEffect(Characters.DragonlordPlacidusax, 5029))
+    OR_1.Add(CharacterHasSpecialEffect(Characters.CLONE_DragonlordPlacidusax, 5029))
+
+    MAIN.Await(OR_1)
     
     SetWeather(weather=Weather.WindyRain, duration=-1.0, immediate_change=False)
-    EnableFlag(13002832)
+    EnableFlag(Flags.DragonlordPlacidusaxInPhaseTwo)
 
 
 @RestartOnRest(13002841)
-def Event_13002841():
+def DragonlordPlacidusaxCameraControl():
     """Event 13002841"""
     if FlagEnabled(Flags.DragonlodPlacidusaxDead):
         return
     DisableNetworkSync()
-    AND_1.Add(CharacterHasSpecialEffect(Characters.DragonlordPlacidusax, 5025))
-    
-    MAIN.Await(AND_1)
+
+    OR_1.Add(CharacterHasSpecialEffect(Characters.DragonlordPlacidusax, 5025))
+    OR_1.Add(CharacterHasSpecialEffect(Characters.CLONE_DragonlordPlacidusax, 5025))
+
+    MAIN.Await(OR_1)
     
     ChangeCamera(normal_camera_id=4525, locked_camera_id=4521)
     Wait(1.0)
-    AND_2.Add(CharacterDoesNotHaveSpecialEffect(Characters.DragonlordPlacidusax, 5025))
-    
-    MAIN.Await(AND_2)
+
+    AND_1.Add(CharacterDoesNotHaveSpecialEffect(Characters.DragonlordPlacidusax, 5025))
+    AND_1.Add(CharacterDoesNotHaveSpecialEffect(Characters.CLONE_DragonlordPlacidusax, 5025))
+    MAIN.Await(AND_1)
     
     ChangeCamera(normal_camera_id=4525, locked_camera_id=4520)
     Wait(1.0)
@@ -2076,10 +2241,10 @@ def Event_13002846(_, flag: uint, flag_1: uint, flag_2: uint):
 
 
 @RestartOnRest(13002849)
-def Event_13002849():
+def DragonlordPlacidusaxCommonEvents():
     """Event 13002849"""
     Event_13002846(0, flag=Flags.DragonlodPlacidusaxDead, flag_1=13002835, flag_2=13002836)
-    CommonFunc_ControlBossMusic(0, Flags.DragonlodPlacidusaxDead, 452000, 13002835, 13002836, 0, 13002832, 0, 1)
+    CommonFunc_ControlBossMusic(0, Flags.DragonlodPlacidusaxDead, 452000, 13002835, 13002836, 0, Flags.DragonlordPlacidusaxInPhaseTwo, 0, 1)
 
 
 @RestartOnRest(13002850)
@@ -2087,22 +2252,34 @@ def GodskinDuoDies():
     """Event 13002850"""
     if FlagEnabled(Flags.GodskinDuoDead):
         return
-    
-    MAIN.Await(HealthValue(Characters.GodskinDuoHealthPool) <= 0)
-    
-    Kill(Characters.GodskinDuoApostle)
-    Kill(Characters.GodskinDuoNoble)
-    EnableFlag(13002854)
+
+    AND_1.Add(HealthValue(Characters.GodskinDuoHealthPool) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_GodskinDuoHealthPool) <= 0)
+    MAIN.Await(AND_1)
+
+    # Spawns killed and respawns stopped in new separate event.
     Wait(4.0)
     PlaySoundEffect(Characters.GodskinDuoHealthPool, 888880000, sound_type=SoundType.s_SFX)
-    
-    MAIN.Await(CharacterDead(Characters.GodskinDuoHealthPool))
+
+    AND_2.Add(CharacterDead(Characters.GodskinDuoHealthPool))
+    AND_2.Add(CharacterDead(Characters.CLONE_GodskinDuoHealthPool))
+    MAIN.Await(AND_2)
     
     KillBossAndDisplayBanner(character=Characters.GodskinDuoHealthPool, banner_type=BannerType.GreatEnemyFelled)
     EnableFlag(Flags.GodskinDuoDead)
     EnableFlag(9114)
     if PlayerInOwnWorld():
         EnableFlag(61114)
+
+
+@RestartOnRest(13002760)
+def StopGodskinDuoRespawning(_, godskin_health_pool: uint, apostle: uint, noble: uint, stop_respawning_flag: int):
+    if FlagEnabled(Flags.GodskinDuoDead):
+        return
+    MAIN.Await(HealthValue(godskin_health_pool) <= 0)
+    Kill(apostle)
+    Kill(noble)
+    EnableFlag(stop_respawning_flag)
 
 
 @ContinueOnRest(13002859)
@@ -2169,6 +2346,15 @@ def GodskinDuoBattleTrigger():
     Kill(Characters.GodskinDuoHealthPool)
     Kill(Characters.GodskinDuoApostle)
     Kill(Characters.GodskinDuoNoble)
+    DisableCharacter(Characters.CLONE_GodskinDuoHealthPool)
+    DisableCharacter(Characters.CLONE_GodskinDuoApostle)
+    DisableCharacter(Characters.CLONE_GodskinDuoNoble)
+    DisableAnimations(Characters.CLONE_GodskinDuoHealthPool)
+    DisableAnimations(Characters.CLONE_GodskinDuoApostle)
+    DisableAnimations(Characters.CLONE_GodskinDuoNoble)
+    Kill(Characters.CLONE_GodskinDuoHealthPool)
+    Kill(Characters.CLONE_GodskinDuoApostle)
+    Kill(Characters.CLONE_GodskinDuoNoble)
     End()
 
     # --- Label 6 --- #
@@ -2178,24 +2364,43 @@ def GodskinDuoBattleTrigger():
     DisableCharacter(Characters.GodskinDuoHealthPool)
     DisableGravity(Characters.GodskinDuoHealthPool)
     DisableAnimations(Characters.GodskinDuoHealthPool)
-    GotoIfFlagEnabled(Label.L7, flag=13000851)
+
+    DisableAI(Characters.CLONE_GodskinDuoApostle)
+    DisableAI(Characters.CLONE_GodskinDuoNoble)
+    DisableCharacter(Characters.CLONE_GodskinDuoHealthPool)
+    DisableGravity(Characters.CLONE_GodskinDuoHealthPool)
+    DisableAnimations(Characters.CLONE_GodskinDuoHealthPool)
+
+    GotoIfFlagEnabled(Label.L7, flag=Flags.GodskinDuoFirstTimeDone)
+
     DisableCharacter(Characters.GodskinDuoApostle)
     DisableCharacter(Characters.GodskinDuoNoble)
     ForceAnimation(Characters.GodskinDuoApostle, 30001, loop=True)
     ForceAnimation(Characters.GodskinDuoNoble, 30001, loop=True)
+    DisableCharacter(Characters.CLONE_GodskinDuoApostle)
+    DisableCharacter(Characters.CLONE_GodskinDuoNoble)
+    ForceAnimation(Characters.CLONE_GodskinDuoApostle, 30001, loop=True)
+    ForceAnimation(Characters.CLONE_GodskinDuoNoble, 30001, loop=True)
+
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=13002851))
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.GodskinDuoApostle, attacker=PLAYER))
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.GodskinDuoNoble, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_GodskinDuoApostle, attacker=PLAYER))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_GodskinDuoNoble, attacker=PLAYER))
+
     MAIN.Await(OR_1)
     
-    EnableNetworkFlag(13000851)
+    EnableNetworkFlag(Flags.GodskinDuoFirstTimeDone)
     EnableCharacter(Characters.GodskinDuoApostle)
     EnableCharacter(Characters.GodskinDuoNoble)
     ForceAnimation(Characters.GodskinDuoApostle, 20001)
     ForceAnimation(Characters.GodskinDuoNoble, 20001)
+    EnableCharacter(Characters.CLONE_GodskinDuoApostle)
+    EnableCharacter(Characters.CLONE_GodskinDuoNoble)
+    ForceAnimation(Characters.CLONE_GodskinDuoApostle, 20001)
+    ForceAnimation(Characters.CLONE_GodskinDuoNoble, 20001)
     Goto(Label.L8)
 
     # --- Label 7 --- #
@@ -2216,98 +2421,120 @@ def GodskinDuoBattleTrigger():
     SetNetworkUpdateRate(Characters.GodskinDuoHealthPool, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.GodskinDuoApostle, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.GodskinDuoNoble, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    ReferDamageToEntity(13005851, target_entity=Characters.GodskinDuoHealthPool)
-    EnableBossHealthBar(Characters.GodskinDuoHealthPool, name=903575000)
+    ReferDamageToEntity(CharacterGroups.GodskinDuoBoss, target_entity=Characters.GodskinDuoHealthPool)
+
+    EnableCharacter(Characters.CLONE_GodskinDuoHealthPool)
+    DisableAI(Characters.CLONE_GodskinDuoHealthPool)
+    EnableAI(Characters.CLONE_GodskinDuoApostle)
+    EnableAI(Characters.CLONE_GodskinDuoNoble)
+    SetNetworkUpdateRate(Characters.CLONE_GodskinDuoHealthPool, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_GodskinDuoApostle, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_GodskinDuoNoble, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ReferDamageToEntity(CharacterGroups.CLONE_GodskinDuoBoss, target_entity=Characters.CLONE_GodskinDuoHealthPool)
+
+    EnableBossHealthBar(Characters.GodskinDuoHealthPool, name=NameText.GodskinDuo, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_GodskinDuoHealthPool, name=NameText.CLONE_GodskinDuo, bar_slot=0)
 
 
 @RestartOnRest(13002861)
-def Event_13002861():
-    """Event 13002861"""
+def GodskinDuoPhaseTwoTransition():
+    """Only changes music. Either Duo can trigger it."""
     if FlagEnabled(Flags.GodskinDuoDead):
         return
     OR_1.Add(HealthRatio(Characters.GodskinDuoHealthPool) <= 0.5)
-    OR_1.Add(FlagEnabled(13002873))
-    OR_1.Add(FlagEnabled(13002874))
+    OR_1.Add(HealthRatio(Characters.CLONE_GodskinDuoHealthPool) <= 0.5)
+    OR_1.Add(FlagEnabled(Flags.GodskinApostleHasRespawned))
+    OR_1.Add(FlagEnabled(Flags.GodskinNobleHasRespawned))
     
     MAIN.Await(OR_1)
     
-    EnableFlag(13002852)
+    EnableFlag(Flags.GodskinDuoInPhaseTwo)
 
 
 @RestartOnRest(13002890)
-def Event_13002890(_, flag: uint, character: uint, character_1: uint, special_effect_id: int):
+def FirstGodskinDies(_, solo_godskin_flag: uint, dead_godskin: uint, remaining_godskin: uint, remaining_godskin_special_effect: int):
     """Event 13002890"""
     if PlayerNotInOwnWorld():
         return
     if FlagEnabled(Flags.GodskinDuoDead):
         return
-    if FlagEnabled(13002854):
+    if FlagEnabled(Flags.StopGodskinDuoRespawning):
         return
-    AND_1.Add(FlagDisabled(flag))
-    AND_1.Add(CharacterDead(character))
+    AND_1.Add(FlagDisabled(solo_godskin_flag))
+    AND_1.Add(CharacterDead(dead_godskin))
     
     MAIN.Await(AND_1)
     
     Wait(20.0)
-    OR_1.Add(HealthValue(character_1) > 0)
+    OR_1.Add(HealthValue(remaining_godskin) > 0)
     GotoIfConditionTrue(Label.L0, input_condition=OR_1)
     Restart()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    AddSpecialEffect(character_1, special_effect_id)
-    EnableNetworkFlag(flag)
+    AddSpecialEffect(remaining_godskin, remaining_godskin_special_effect)
+    EnableNetworkFlag(solo_godskin_flag)
     Restart()
 
 
 @RestartOnRest(13002891)
-def Event_13002891(
+def GodskinRespawns(
     _,
-    flag: uint,
-    character: uint,
-    character_1: uint,
-    special_effect: int,
-    character_2: uint,
-    flag_1: uint,
+    solo_godskin_flag: uint,
+    spawner: uint,
+    remaining_godskin: uint,
+    revival_special_effect: int,
+    respawned_godskin: uint,
+    respawned_flag: uint,
 ):
     """Event 13002891"""
     if PlayerNotInOwnWorld():
         return
     if FlagEnabled(Flags.GodskinDuoDead):
         return
-    if FlagEnabled(13002854):
+    if FlagEnabled(Flags.StopGodskinDuoRespawning):
         return
-    OR_1.Add(CharacterHasSpecialEffect(character_1, special_effect))
-    OR_1.Add(CharacterDead(character_1))
+    OR_1.Add(CharacterHasSpecialEffect(remaining_godskin, revival_special_effect))
+    OR_1.Add(CharacterDead(remaining_godskin))
     AND_1.Add(OR_1)
-    AND_1.Add(FlagEnabled(flag))
+    AND_1.Add(FlagEnabled(solo_godskin_flag))
     
     MAIN.Await(AND_1)
     
     if FlagEnabled(Flags.GodskinDuoDead):
         return
-    if FlagEnabled(13002854):
+    if FlagEnabled(Flags.StopGodskinDuoRespawning):
         return
-    MakeEnemyAppear(character=character)
-    DisableNetworkFlag(flag)
-    EnableNetworkFlag(flag_1)
-    SetNetworkUpdateRate(character_2, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ForceSpawnerToSpawn(spawner=spawner)
+    DisableNetworkFlag(solo_godskin_flag)
+    EnableNetworkFlag(respawned_flag)
+    SetNetworkUpdateRate(respawned_godskin, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     Restart()
 
 
 @RestartOnRest(13002892)
-def Event_13002892():
+def RespawnRandomGodskinDuoMember(
+    _,
+    apostle: uint,
+    noble: uint,
+    apostle_spawner: int,
+    noble_spawner: int,
+    apostle_respawned_flag: int,
+    noble_respawned_flag: int,
+    random_flag_1: int,
+    random_flag_2: int,
+):
     """Event 13002892"""
     if PlayerNotInOwnWorld():
         return
     if FlagEnabled(Flags.GodskinDuoDead):
         return
-    if FlagEnabled(13002854):
+    if FlagEnabled(Flags.StopGodskinDuoRespawning):
         return
-    AND_1.Add(CharacterDead(Characters.GodskinDuoApostle))
-    AND_1.Add(CharacterDead(Characters.GodskinDuoNoble))
-    AND_1.Add(FlagDisabled(13002944))
-    AND_1.Add(FlagDisabled(13002945))
+    AND_1.Add(CharacterDead(apostle))
+    AND_1.Add(CharacterDead(noble))
+    AND_1.Add(FlagDisabled(Flags.NobleSoloFlag))
+    AND_1.Add(FlagDisabled(Flags.ApostleSoloFlag))
     
     MAIN.Await(AND_1)
     
@@ -2316,29 +2543,30 @@ def Event_13002892():
     Wait(10.0)
     if FlagEnabled(Flags.GodskinDuoDead):
         return
-    if FlagEnabled(13002854):
+    if FlagEnabled(Flags.StopGodskinDuoRespawning):
         return
-    EnableRandomFlagInRange(flag_range=(13002875, 13002876))
-    GotoIfFlagEnabled(Label.L0, flag=13002875)
-    GotoIfFlagEnabled(Label.L1, flag=13002876)
+
+    EnableRandomFlagInRange(flag_range=(random_flag_1, random_flag_2))
+    GotoIfFlagEnabled(Label.L0, flag=random_flag_1)
+    GotoIfFlagEnabled(Label.L1, flag=random_flag_2)
 
     # --- Label 0 --- #
     DefineLabel(0)
-    MakeEnemyAppear(character=13003851)
-    EnableFlag(13002873)
-    DisableFlag(13002875)
+    ForceSpawnerToSpawn(spawner=apostle_spawner)
+    EnableFlag(apostle_respawned_flag)
+    DisableFlag(random_flag_1)
     Restart()
 
     # --- Label 1 --- #
     DefineLabel(1)
-    MakeEnemyAppear(character=13003852)
-    EnableFlag(13002874)
-    DisableFlag(13002876)
+    ForceSpawnerToSpawn(spawner=noble_spawner)
+    EnableFlag(noble_respawned_flag)
+    DisableFlag(random_flag_2)
     Restart()
 
 
 @RestartOnRest(13002865)
-def Event_13002865():
+def GodskinDuoCommonEvents():
     """Event 13002865"""
     CommonFunc_HostEntersBossFog(
         0,
@@ -2348,7 +2576,7 @@ def Event_13002865():
         host_entered_fog_flag=13002855,
         boss_characters=13005850,
         action_button_id=10000,
-        first_time_done_flag=13000851,
+        first_time_done_flag=Flags.GodskinDuoFirstTimeDone,
         first_time_trigger_region=13002851,
     )
     CommonFunc_HostEntersBossFog(
@@ -2359,7 +2587,7 @@ def Event_13002865():
         host_entered_fog_flag=13002855,
         boss_characters=13005850,
         action_button_id=10000,
-        first_time_done_flag=13000851,
+        first_time_done_flag=Flags.GodskinDuoFirstTimeDone,
         first_time_trigger_region=13002851,
     )
     CommonFunc_HostEntersBossFog(
@@ -2370,7 +2598,7 @@ def Event_13002865():
         host_entered_fog_flag=13002855,
         boss_characters=13005850,
         action_button_id=10000,
-        first_time_done_flag=13000851,
+        first_time_done_flag=Flags.GodskinDuoFirstTimeDone,
         first_time_trigger_region=13002851,
     )
     CommonFunc_SummonEntersBossFog(
@@ -2400,12 +2628,12 @@ def Event_13002865():
         summon_entered_fog_flag=13002856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinDuoDead, fog_asset=Assets.AEG099_001_9000, model_point=5, required_flag=13000851)
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinDuoDead, fog_asset=Assets.AEG099_001_9003, model_point=5, required_flag=13000851)
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinDuoDead, fog_asset=Assets.AEG099_001_9002, model_point=5, required_flag=13000851)
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinDuoDead, fog_asset=Assets.AEG099_001_9001, model_point=5, required_flag=13000851)
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinDuoDead, fog_asset=Assets.AEG099_001_9004, model_point=5, required_flag=13000851)
-    CommonFunc_ControlBossMusic(0, Flags.GodskinDuoDead, 356000, 13002855, 13002856, 0, 13002852, 0, 0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinDuoDead, fog_asset=Assets.AEG099_001_9000, model_point=5, required_flag=Flags.GodskinDuoFirstTimeDone)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinDuoDead, fog_asset=Assets.AEG099_001_9003, model_point=5, required_flag=Flags.GodskinDuoFirstTimeDone)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinDuoDead, fog_asset=Assets.AEG099_001_9002, model_point=5, required_flag=Flags.GodskinDuoFirstTimeDone)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinDuoDead, fog_asset=Assets.AEG099_001_9001, model_point=5, required_flag=Flags.GodskinDuoFirstTimeDone)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodskinDuoDead, fog_asset=Assets.AEG099_001_9004, model_point=5, required_flag=Flags.GodskinDuoFirstTimeDone)
+    CommonFunc_ControlBossMusic(0, Flags.GodskinDuoDead, 356000, 13002855, 13002856, 0, Flags.GodskinDuoInPhaseTwo, 0, 0)
 
 
 @RestartOnRest(13002600)

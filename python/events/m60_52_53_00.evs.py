@@ -100,24 +100,24 @@ def Event_1052532510():
 @ContinueOnRest(200)
 def Event_200():
     """Event 200"""
-    CommonFunc_90005781(0, flag=1252520800, flag_1=1252532160, flag_2=1252532161, character=Characters.AlexanderSummon)
+    CommonFunc_90005781(0, flag=1252520800, flag_1=1252532160, flag_2=1252532161, character=Characters.AlexanderSummon1)
     CommonFunc_90005783(
         0,
         flag=1252520800,
         flag_1=1252532160,
         flag_2=1252532161,
-        character=Characters.AlexanderSummon,
+        character=Characters.AlexanderSummon1,
         other_entity=1052532700,
         region=1052532162,
         left=2,
     )
-    CommonFunc_90005781(0, flag=1252520800, flag_1=1252532164, flag_2=1252532165, character=Characters.LivingPot1)
+    CommonFunc_90005781(0, flag=1252520800, flag_1=1252532164, flag_2=1252532165, character=Characters.AlexanderSummon2)
     CommonFunc_90005783(
         0,
         flag=1252520800,
         flag_1=1252532164,
         flag_2=1252532165,
-        character=Characters.LivingPot1,
+        character=Characters.AlexanderSummon2,
         other_entity=1052532701,
         region=1052532162,
         left=2,
@@ -127,7 +127,7 @@ def Event_200():
         flag=1252520800,
         summon_flag=1252532160,
         dismissal_flag=1252532161,
-        character=Characters.AlexanderSummon,
+        character=Characters.AlexanderSummon1,
         region=1052532700,
         right=1035539209,
         unknown=0,

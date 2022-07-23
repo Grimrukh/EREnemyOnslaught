@@ -32,24 +32,27 @@ def Constructor():
     RegisterGrace(grace_flag=71235, asset=Assets.AEG099_060_9005)
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
-        flag=12030800,
+        flag=Flags.FiasChampionsDead,
         grace_flag=71230,
         character=Characters.TalkDummy0,
         asset=Assets.AEG099_060_9000,
         enemy_block_distance=5.0,
     )
-    Event_12032800()
-    Event_12032810()
-    Event_12032811()
-    Event_12032812()
-    Event_12032849()
+    FiasChampionsDie()
+    FiasChampionsBattleTrigger()
+    SorcererRogierTransition()
+    LionelTheLionheartedTransition()
+    FiasChampionsCommonEvents()
     Event_12032841()
-    Event_12032850()
-    Event_12032860()
-    Event_12032859()
-    Event_12032899()
-    Event_12032861()
-    Event_12032862()
+
+    LichdragonFortissaxDies()
+    LichdragonFortissaxBattleTrigger()
+    TravelToFortissaxBattle()
+    LichdragonFortissaxCommonEvents()
+    FortissaxLightning(0, Characters.LichdragonFortissax)
+    FortissaxLightning(2, Characters.CLONE_LichdragonFortissax)  # 12032863
+    LichdragonFortissaxPhaseTwoTransition()
+
     Event_12032310(0, character=Characters.GiantAnt14)
     Event_12032310(1, character=Characters.GiantAnt15)
     Event_12032310(2, character=Characters.GiantAnt16)
@@ -92,7 +95,7 @@ def Constructor():
         0,
         dead_flag=12030240,
         character=Characters.GiantAnt14,
-        item_lot=12030800,
+        item_lot=Flags.FiasChampionsDead,
         reward_delay=1.5,
         skip_reward=0,
     )
@@ -140,20 +143,20 @@ def Constructor():
     CommonFunc_NonRespawningWithReward(0, dead_flag=12030350, character=Characters.Scarab0, item_lot=40660, reward_delay=1.5, skip_reward=0)
     CommonFunc_NonRespawningWithReward(0, dead_flag=12030354, character=Characters.Scarab1, item_lot=40668, reward_delay=1.5, skip_reward=0)
     CommonFunc_NonRespawningWithReward(0, dead_flag=12030355, character=Characters.Scarab2, item_lot=40670, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=12030390,
         extra_flag_to_enable=0,
-        boss_character=Characters.CrucibleKnight,
+        boss_character=Characters.CrucibleKnightSiluria,
         boss_banner_choice=1,
         item_lot=12030950,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.CrucibleKnight, name=902500600, npc_threat_level=12)
-    CommonFunc_90005872(0, character=Characters.CrucibleKnight, npc_threat_level=12, right=0)
+    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.CrucibleKnightSiluria, name=902500600, npc_threat_level=12)
+    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.CrucibleKnightSiluria, npc_threat_level=12, optional_trigger_flag=0)
     CommonFunc_NonRespawningWithReward(
         0,
-        dead_flag=12030391,
+        dead_flag=Flags.ErdtreeAvatarDead,
         character=Characters.ErdtreeAvatar,
         item_lot=12030960,
         reward_delay=1.5,
@@ -173,71 +176,71 @@ def Constructor():
         asset_1=Assets.AEG300_005_9000,
         flag=12030400,
     )
-    CommonFunc_90005458(0, character=Characters.WalkingMausoleum, asset=Assets.AEG300_015_9000)
-    CommonFunc_90005453(0, asset__character=12030400, asset=Assets.AEG300_006_9000, model_point=60, seconds=0.0)
+    CommonFunc_WalkingMausoleumDefeated(0, mausoleum=Characters.WalkingMausoleum, asset=Assets.AEG300_015_9000)
+    CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=Assets.AEG300_006_9000, model_point=60, seconds=0.0)
     CommonFunc_90005453(
         1,
-        asset__character=12030400,
+        asset__character=Characters.WalkingMausoleum,
         asset=Assets.AEG300_006_9001,
         model_point=61,
         seconds=0.10000000149011612,
     )
     CommonFunc_90005453(
         0,
-        asset__character=12030400,
+        asset__character=Characters.WalkingMausoleum,
         asset=Assets.AEG300_006_9002,
         model_point=62,
         seconds=0.20000000298023224,
     )
     CommonFunc_90005453(
         0,
-        asset__character=12030400,
+        asset__character=Characters.WalkingMausoleum,
         asset=Assets.AEG300_006_9003,
         model_point=63,
         seconds=0.30000001192092896,
     )
     CommonFunc_90005453(
         0,
-        asset__character=12030400,
+        asset__character=Characters.WalkingMausoleum,
         asset=Assets.AEG300_006_9004,
         model_point=64,
         seconds=0.4000000059604645,
     )
-    CommonFunc_90005453(0, asset__character=12030400, asset=Assets.AEG300_006_9005, model_point=65, seconds=0.5)
+    CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=Assets.AEG300_006_9005, model_point=65, seconds=0.5)
     CommonFunc_90005453(
         0,
-        asset__character=12030400,
+        asset__character=Characters.WalkingMausoleum,
         asset=Assets.AEG300_006_9006,
         model_point=66,
         seconds=0.6000000238418579,
     )
     CommonFunc_90005453(
         0,
-        asset__character=12030400,
+        asset__character=Characters.WalkingMausoleum,
         asset=Assets.AEG300_006_9007,
         model_point=67,
         seconds=0.699999988079071,
     )
     CommonFunc_90005453(
         0,
-        asset__character=12030400,
+        asset__character=Characters.WalkingMausoleum,
         asset=Assets.AEG300_006_9008,
         model_point=68,
         seconds=0.800000011920929,
     )
     CommonFunc_90005453(
         0,
-        asset__character=12030400,
+        asset__character=Characters.WalkingMausoleum,
         asset=Assets.AEG300_006_9009,
         model_point=69,
         seconds=0.8999999761581421,
     )
-    CommonFunc_90005453(0, asset__character=12030400, asset=Assets.AEG300_006_9010, model_point=70, seconds=1.0)
-    CommonFunc_90005453(0, asset__character=12030400, asset=12031431, model_point=71, seconds=0.10000000149011612)
-    CommonFunc_90005453(0, asset__character=12030400, asset=12031432, model_point=72, seconds=0.20000000298023224)
-    CommonFunc_90005453(0, asset__character=12030400, asset=12031433, model_point=73, seconds=0.30000001192092896)
-    CommonFunc_90005453(0, asset__character=12030400, asset=12031434, model_point=74, seconds=0.4000000059604645)
-    CommonFunc_90005453(0, asset__character=12030400, asset=12031435, model_point=75, seconds=0.5)
+    CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=Assets.AEG300_006_9010, model_point=70, seconds=1.0)
+    CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=12031431, model_point=71, seconds=0.10000000149011612)
+    CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=12031432, model_point=72, seconds=0.20000000298023224)
+    CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=12031433, model_point=73, seconds=0.30000001192092896)
+    CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=12031434, model_point=74, seconds=0.4000000059604645)
+    CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=12031435, model_point=75, seconds=0.5)
     Event_12032300(0, character=12035380, seconds=1.0)
     Event_12032500()
     Event_12030050()
@@ -388,8 +391,8 @@ def Preconstructor():
     DisableBackread(12030721)
     DisableBackread(Characters.FingerReader)
     DisableAsset(Assets.AEG099_320_9003)
-    Event_12032820()
-    CommonFunc_90005450(0, 12030400, 12031400, 12031410, 12031418)
+    GetFiasChampionPlayerData()
+    CommonFunc_PrepareWalkingMausoleum(0, Characters.WalkingMausoleum, 12031400, 12031410, 12031418)
 
 
 @RestartOnRest(12030050)
@@ -430,7 +433,7 @@ def Event_12032500():
     OR_10.Add(FlagDisabled(182))
     OR_10.Add(FlagDisabled(105))
     OR_10.Add(FlagEnabled(300))
-    OR_10.Add(FlagDisabled(12030800))
+    OR_10.Add(FlagDisabled(Flags.FiasChampionsDead))
     OR_10.Add(FlagEnabled(12032870))
     GotoIfConditionTrue(Label.L1, input_condition=OR_10)
     GotoIfFlagEnabled(Label.L1, flag=12032503)
@@ -460,7 +463,7 @@ def Event_12032500():
     OR_9.Add(FlagState(FlagSetting.Change, FlagType.Absolute, 105))
     OR_9.Add(FlagState(FlagSetting.Change, FlagType.Absolute, 300))
     OR_9.Add(FlagState(FlagSetting.Change, FlagType.Absolute, 12032870))
-    OR_9.Add(FlagState(FlagSetting.Change, FlagType.Absolute, 12030800))
+    OR_9.Add(FlagState(FlagSetting.Change, FlagType.Absolute, Flags.FiasChampionsDead))
     AND_9.Add(OR_9)
     OR_14.Add(AND_1)
     OR_14.Add(AND_4)
@@ -481,7 +484,7 @@ def Event_12032500():
 
     # --- Label 3 --- #
     DefineLabel(3)
-    GotoIfFlagDisabled(Label.L10, flag=12030800)
+    GotoIfFlagDisabled(Label.L10, flag=Flags.FiasChampionsDead)
     GotoIfFlagEnabled(Label.L10, flag=12032870)
     GotoIfFlagEnabled(Label.L10, flag=300)
     GotoIfFlagDisabled(Label.L4, flag=182)
@@ -532,7 +535,7 @@ def Event_12032500():
     # --- Label 16 --- #
     DefineLabel(16)
     
-    MAIN.Await(FlagEnabled(12030800))
+    MAIN.Await(FlagEnabled(Flags.FiasChampionsDead))
     
     Restart()
 
@@ -706,31 +709,37 @@ def Event_12032241(_, character: uint, seconds: float):
 
 
 @RestartOnRest(12032800)
-def Event_12032800():
+def FiasChampionsDie():
     """Event 12032800"""
-    if FlagEnabled(12030800):
+    if FlagEnabled(Flags.FiasChampionsDead):
         return
-    AND_1.Add(HealthValue(Characters.FiasChampion0) <= 0)
+    AND_1.Add(HealthValue(Characters.FirstFiasChampion) <= 0)
     AND_1.Add(HealthValue(Characters.SorcererRogier) <= 0)
     AND_1.Add(HealthValue(Characters.LioneltheLionhearted) <= 0)
-    AND_1.Add(HealthValue(Characters.FiasChampion1) <= 0)
-    AND_1.Add(HealthValue(Characters.FiasChampion2) <= 0)
-    
+    AND_1.Add(HealthValue(Characters.LionelSidekick2) <= 0)
+    AND_1.Add(HealthValue(Characters.LionelSidekick1) <= 0)
+    # Clones are immortal and refer their damage to the originals.
+
     MAIN.Await(AND_1)
     
     Wait(1.0)
-    PlaySoundEffect(Characters.FiasChampion0, 888880000, sound_type=SoundType.s_SFX)
-    DisableCharacter(Characters.Human)
-    AND_2.Add(CharacterDead(Characters.FiasChampion0))
+    PlaySoundEffect(Characters.FirstFiasChampion, 888880000, sound_type=SoundType.s_SFX)
+    DisableCharacter(Characters.UnknownFiasChampion)
+    AND_2.Add(CharacterDead(Characters.FirstFiasChampion))
     AND_2.Add(CharacterDead(Characters.SorcererRogier))
     AND_2.Add(CharacterDead(Characters.LioneltheLionhearted))
-    AND_2.Add(CharacterDead(Characters.FiasChampion1))
-    AND_2.Add(CharacterDead(Characters.FiasChampion2))
-    
+    AND_2.Add(CharacterDead(Characters.LionelSidekick2))
+    AND_2.Add(CharacterDead(Characters.LionelSidekick1))
+    AND_2.Add(CharacterDead(Characters.CLONE_FiasChampion0))
+    AND_2.Add(CharacterDead(Characters.CLONE_SorcererRogier))
+    AND_2.Add(CharacterDead(Characters.CLONE_LioneltheLionhearted))
+    AND_2.Add(CharacterDead(Characters.CLONE_LionelSidekick2))
+    AND_2.Add(CharacterDead(Characters.CLONE_LionelSidekick1))
+
     MAIN.Await(AND_2)
     
-    KillBossAndDisplayBanner(character=Characters.FiasChampion0, banner_type=BannerType.GreatEnemyFelled)
-    EnableFlag(12030800)
+    KillBossAndDisplayBanner(character=Characters.FirstFiasChampion, banner_type=BannerType.GreatEnemyFelled)
+    EnableFlag(Flags.FiasChampionsDead)
     EnableTreasure(asset=12031490)
     DisableAsset(Assets.AEG099_120_9000)
     DeleteAssetVFX(Assets.AEG099_120_9000)
@@ -739,27 +748,45 @@ def Event_12032800():
 
 
 @RestartOnRest(12032810)
-def Event_12032810():
+def FiasChampionsBattleTrigger():
     """Event 12032810"""
-    GotoIfFlagDisabled(Label.L0, flag=12030800)
-    DisableCharacter(Characters.FiasChampion0)
-    DisableAnimations(Characters.FiasChampion0)
-    Kill(Characters.FiasChampion0)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.FiasChampionsDead)
+    DisableCharacter(Characters.FirstFiasChampion)
+    DisableAnimations(Characters.FirstFiasChampion)
+    Kill(Characters.FirstFiasChampion)
     DisableCharacter(Characters.SorcererRogier)
     DisableAnimations(Characters.SorcererRogier)
     Kill(Characters.SorcererRogier)
     DisableCharacter(Characters.LioneltheLionhearted)
     DisableAnimations(Characters.LioneltheLionhearted)
     Kill(Characters.LioneltheLionhearted)
-    DisableCharacter(Characters.FiasChampion1)
-    DisableAnimations(Characters.FiasChampion1)
-    Kill(Characters.FiasChampion1)
-    DisableCharacter(Characters.FiasChampion2)
-    DisableAnimations(Characters.FiasChampion2)
-    Kill(Characters.FiasChampion2)
-    DisableCharacter(Characters.Human)
-    DisableAnimations(Characters.Human)
-    Kill(Characters.Human)
+    DisableCharacter(Characters.LionelSidekick2)
+    DisableAnimations(Characters.LionelSidekick2)
+    Kill(Characters.LionelSidekick2)
+    DisableCharacter(Characters.LionelSidekick1)
+    DisableAnimations(Characters.LionelSidekick1)
+    Kill(Characters.LionelSidekick1)
+    DisableCharacter(Characters.UnknownFiasChampion)
+    DisableAnimations(Characters.UnknownFiasChampion)
+    Kill(Characters.UnknownFiasChampion)
+    DisableCharacter(Characters.CLONE_FiasChampion0)
+    DisableAnimations(Characters.CLONE_FiasChampion0)
+    Kill(Characters.CLONE_FiasChampion0)
+    DisableCharacter(Characters.CLONE_SorcererRogier)
+    DisableAnimations(Characters.CLONE_SorcererRogier)
+    Kill(Characters.CLONE_SorcererRogier)
+    DisableCharacter(Characters.CLONE_LioneltheLionhearted)
+    DisableAnimations(Characters.CLONE_LioneltheLionhearted)
+    Kill(Characters.CLONE_LioneltheLionhearted)
+    DisableCharacter(Characters.CLONE_LionelSidekick2)
+    DisableAnimations(Characters.CLONE_LionelSidekick2)
+    Kill(Characters.CLONE_LionelSidekick2)
+    DisableCharacter(Characters.CLONE_LionelSidekick1)
+    DisableAnimations(Characters.CLONE_LionelSidekick1)
+    Kill(Characters.CLONE_LionelSidekick1)
+    DisableCharacter(Characters.CLONE_UnknownFiasChampion)
+    DisableAnimations(Characters.CLONE_UnknownFiasChampion)
+    Kill(Characters.CLONE_UnknownFiasChampion)
     EnableTreasure(asset=12031490)
     DisableAsset(Assets.AEG099_120_9000)
     DeleteAssetVFX(Assets.AEG099_120_9000, erase_root=False)
@@ -767,18 +794,30 @@ def Event_12032810():
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(Characters.FiasChampion0)
+    DisableAI(Characters.FirstFiasChampion)
     DisableAI(Characters.SorcererRogier)
     DisableAI(Characters.LioneltheLionhearted)
-    DisableAI(Characters.FiasChampion1)
-    DisableAI(Characters.FiasChampion2)
-    DisableAI(Characters.Human)
-    DisableCharacter(Characters.FiasChampion0)
+    DisableAI(Characters.LionelSidekick2)
+    DisableAI(Characters.LionelSidekick1)
+    DisableAI(Characters.UnknownFiasChampion)
+    DisableCharacter(Characters.FirstFiasChampion)
     DisableCharacter(Characters.SorcererRogier)
     DisableCharacter(Characters.LioneltheLionhearted)
-    DisableCharacter(Characters.FiasChampion1)
-    DisableCharacter(Characters.FiasChampion2)
-    DisableCharacter(Characters.Human)
+    DisableCharacter(Characters.LionelSidekick2)
+    DisableCharacter(Characters.LionelSidekick1)
+    DisableCharacter(Characters.UnknownFiasChampion)
+    DisableAI(Characters.CLONE_FiasChampion0)
+    DisableAI(Characters.CLONE_SorcererRogier)
+    DisableAI(Characters.CLONE_LioneltheLionhearted)
+    DisableAI(Characters.CLONE_LionelSidekick2)
+    DisableAI(Characters.CLONE_LionelSidekick1)
+    DisableAI(Characters.CLONE_UnknownFiasChampion)
+    DisableCharacter(Characters.CLONE_FiasChampion0)
+    DisableCharacter(Characters.CLONE_SorcererRogier)
+    DisableCharacter(Characters.CLONE_LioneltheLionhearted)
+    DisableCharacter(Characters.CLONE_LionelSidekick2)
+    DisableCharacter(Characters.CLONE_LionelSidekick1)
+    DisableCharacter(Characters.CLONE_UnknownFiasChampion)
     DisableTreasure(asset=12031490)
     DisableAsset(Assets.AEG099_120_9000)
     AND_2.Add(PlayerInOwnWorld())
@@ -793,7 +832,13 @@ def Event_12032810():
     CreateAssetVFX(Assets.AEG099_120_9000, vfx_id=200, model_point=806700)
     CreateTemporaryVFX(
         vfx_id=600940,
-        anchor_entity=Characters.FiasChampion0,
+        anchor_entity=Characters.FirstFiasChampion,
+        model_point=900,
+        anchor_type=CoordEntityType.Character,
+    )
+    CreateTemporaryVFX(
+        vfx_id=600940,
+        anchor_entity=Characters.CLONE_FiasChampion0,
         model_point=900,
         anchor_type=CoordEntityType.Character,
     )
@@ -802,135 +847,237 @@ def Event_12032810():
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23611,
-            target_character=Characters.FiasChampion0,
+            target_character=Characters.FirstFiasChampion,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23611,
+            target_character=Characters.CLONE_FiasChampion0,
         )
         Goto(Label.L8)
     if FlagEnabled(51):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23612,
-            target_character=Characters.FiasChampion0,
+            target_character=Characters.FirstFiasChampion,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23612,
+            target_character=Characters.CLONE_FiasChampion0,
         )
         Goto(Label.L8)
     if FlagEnabled(52):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23613,
-            target_character=Characters.FiasChampion0,
+            target_character=Characters.FirstFiasChampion,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23613,
+            target_character=Characters.CLONE_FiasChampion0,
         )
         Goto(Label.L8)
     if FlagEnabled(52):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23614,
-            target_character=Characters.FiasChampion0,
+            target_character=Characters.FirstFiasChampion,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23614,
+            target_character=Characters.CLONE_FiasChampion0,
         )
         Goto(Label.L8)
     if FlagEnabled(54):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23615,
-            target_character=Characters.FiasChampion0,
+            target_character=Characters.FirstFiasChampion,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23615,
+            target_character=Characters.CLONE_FiasChampion0,
         )
         Goto(Label.L8)
     if FlagEnabled(55):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23616,
-            target_character=Characters.FiasChampion0,
+            target_character=Characters.FirstFiasChampion,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23616,
+            target_character=Characters.CLONE_FiasChampion0,
         )
         Goto(Label.L8)
     if FlagEnabled(56):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23617,
-            target_character=Characters.FiasChampion0,
+            target_character=Characters.FirstFiasChampion,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23617,
+            target_character=Characters.CLONE_FiasChampion0,
         )
         Goto(Label.L8)
     CopyPlayerCharacterDataFromOnlinePlayers(
         pool_type=0,
         failcase_player_param_id=23618,
-        target_character=Characters.FiasChampion0,
+        target_character=Characters.FirstFiasChampion,
+    )
+    CopyPlayerCharacterDataFromOnlinePlayers(
+        pool_type=0,
+        failcase_player_param_id=23618,
+        target_character=Characters.CLONE_FiasChampion0,
     )
 
     # --- Label 8 --- #
     DefineLabel(8)
     WaitFrames(frames=1)
-    EnableCharacter(Characters.FiasChampion0)
-    EnableCharacter(Characters.Human)
+    EnableCharacter(Characters.FirstFiasChampion)
+    EnableCharacter(Characters.CLONE_FiasChampion0)
+    EnableCharacter(Characters.UnknownFiasChampion)
+    EnableCharacter(Characters.CLONE_UnknownFiasChampion)
     WaitFrames(frames=1)
-    ForceAnimation(Characters.FiasChampion0, 63010)
-    EnableAI(Characters.FiasChampion0)
-    SetNetworkUpdateRate(Characters.FiasChampion0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ForceAnimation(Characters.FirstFiasChampion, 63010)
+    ForceAnimation(Characters.CLONE_FiasChampion0, 63010)
+    EnableAI(Characters.FirstFiasChampion)
+    EnableAI(Characters.CLONE_FiasChampion0)
+    SetNetworkUpdateRate(Characters.FirstFiasChampion, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_FiasChampion0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableImmortality(Characters.CLONE_FiasChampion0)
+    DisableHealthBar(Characters.CLONE_FiasChampion0)
+    ReferDamageToEntity(Characters.CLONE_FiasChampion0, Characters.FirstFiasChampion)
     Wait(3.0)
-    EnableBossHealthBar(Characters.FiasChampion0, name=136100)
+    EnableBossHealthBar(Characters.FirstFiasChampion, name=NameText.FiasChampion0)
+    # TODO: Second health bar? Or refer clone damage to original?
     WaitFrames(frames=1)
-    EnableNetworkFlag(12032810)
+    EnableNetworkFlag(Flags.FiasChampionsBattleStarted)
 
 
 @RestartOnRest(12032811)
-def Event_12032811():
+def SorcererRogierTransition():
     """Event 12032811"""
-    if FlagEnabled(12030800):
+    if FlagEnabled(Flags.FiasChampionsDead):
         return
-    AND_1.Add(CharacterDead(Characters.FiasChampion0))
-    AND_1.Add(FlagEnabled(12032810))
+    # NEW: Handle referred-damage clone.
+    AND_2.Add(HealthValue(Characters.FirstFiasChampion) <= 0)
+    AND_2.Add(FlagEnabled(Flags.FiasChampionsBattleStarted))
+    MAIN.Await(AND_2)
+
+    Kill(Characters.CLONE_FiasChampion0)
+
+    AND_1.Add(CharacterDead(Characters.FirstFiasChampion))
+    AND_1.Add(CharacterDead(Characters.CLONE_FiasChampion0))
+    AND_1.Add(FlagEnabled(Flags.FiasChampionsBattleStarted))
     
     MAIN.Await(AND_1)
     
     Wait(3.0)
-    DisableBossHealthBar(Characters.FiasChampion0, name=136100)
+    DisableBossHealthBar(Characters.FirstFiasChampion, name=NameText.FiasChampion0)
     CreateTemporaryVFX(
         vfx_id=600940,
         anchor_entity=Characters.SorcererRogier,
         model_point=900,
         anchor_type=CoordEntityType.Character,
     )
+    CreateTemporaryVFX(
+        vfx_id=600940,
+        anchor_entity=Characters.CLONE_SorcererRogier,
+        model_point=900,
+        anchor_type=CoordEntityType.Character,
+    )
     Wait(0.5)
     EnableCharacter(Characters.SorcererRogier)
+    EnableCharacter(Characters.CLONE_SorcererRogier)
     WaitFrames(frames=1)
     ForceAnimation(Characters.SorcererRogier, 63010)
+    ForceAnimation(Characters.CLONE_SorcererRogier, 63010)
     EnableAI(Characters.SorcererRogier)
+    EnableAI(Characters.CLONE_SorcererRogier)
     SetNetworkUpdateRate(Characters.SorcererRogier, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_SorcererRogier, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableImmortality(Characters.CLONE_SorcererRogier)
+    DisableHealthBar(Characters.CLONE_SorcererRogier)
+    ReferDamageToEntity(Characters.CLONE_SorcererRogier, Characters.SorcererRogier)
     WaitFrames(frames=1)
-    EnableNetworkFlag(12032811)
+    EnableNetworkFlag(Flags.SorcererRogierBattleStarted)
     Wait(3.0)
-    EnableBossHealthBar(Characters.SorcererRogier, name=132500)
+    EnableBossHealthBar(Characters.SorcererRogier, name=NameText.SorcererRogier)
 
 
 @RestartOnRest(12032812)
-def Event_12032812():
+def LionelTheLionheartedTransition():
     """Event 12032812"""
-    if FlagEnabled(12030800):
+    if FlagEnabled(Flags.FiasChampionsDead):
         return
+    AND_2.Add(HealthValue(Characters.SorcererRogier) <= 0)
+    AND_2.Add(FlagEnabled(Flags.SorcererRogierBattleStarted))
+    MAIN.Await(AND_2)
+
+    Kill(Characters.CLONE_SorcererRogier)
+
     AND_1.Add(CharacterDead(Characters.SorcererRogier))
-    AND_1.Add(FlagEnabled(12032811))
+    AND_1.Add(CharacterDead(Characters.CLONE_SorcererRogier))
+    AND_1.Add(FlagEnabled(Flags.SorcererRogierBattleStarted))
     
     MAIN.Await(AND_1)
     
     Wait(3.0)
-    DisableBossHealthBar(Characters.SorcererRogier, name=132500)
+    DisableBossHealthBar(Characters.SorcererRogier, name=NameText.SorcererRogier)
     CreateTemporaryVFX(
         vfx_id=600940,
         anchor_entity=Characters.LioneltheLionhearted,
         model_point=900,
         anchor_type=CoordEntityType.Character,
     )
+    CreateTemporaryVFX(
+        vfx_id=600940,
+        anchor_entity=Characters.CLONE_LioneltheLionhearted,
+        model_point=900,
+        anchor_type=CoordEntityType.Character,
+    )
     Wait(0.5)
     CreateTemporaryVFX(
         vfx_id=600940,
-        anchor_entity=Characters.FiasChampion2,
+        anchor_entity=Characters.LionelSidekick1,
+        model_point=900,
+        anchor_type=CoordEntityType.Character,
+    )
+    CreateTemporaryVFX(
+        vfx_id=600940,
+        anchor_entity=Characters.CLONE_LionelSidekick1,
         model_point=900,
         anchor_type=CoordEntityType.Character,
     )
     EnableCharacter(Characters.LioneltheLionhearted)
+    EnableCharacter(Characters.CLONE_LioneltheLionhearted)
+    EnableImmortality(Characters.CLONE_LioneltheLionhearted)
+    DisableHealthBar(Characters.CLONE_LioneltheLionhearted)
+    ReferDamageToEntity(Characters.CLONE_LioneltheLionhearted, Characters.LioneltheLionhearted)
     WaitFrames(frames=1)
     ForceAnimation(Characters.LioneltheLionhearted, 63010)
+    ForceAnimation(Characters.CLONE_LioneltheLionhearted, 63010)
     EnableAI(Characters.LioneltheLionhearted)
+    EnableAI(Characters.CLONE_LioneltheLionhearted)
     SetNetworkUpdateRate(Characters.LioneltheLionhearted, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_LioneltheLionhearted, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     CreateTemporaryVFX(
         vfx_id=600940,
-        anchor_entity=Characters.FiasChampion1,
+        anchor_entity=Characters.LionelSidekick2,
+        model_point=900,
+        anchor_type=CoordEntityType.Character,
+    )
+    CreateTemporaryVFX(
+        vfx_id=600940,
+        anchor_entity=Characters.CLONE_LionelSidekick2,
         model_point=900,
         anchor_type=CoordEntityType.Character,
     )
@@ -939,144 +1086,240 @@ def Event_12032812():
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23701,
-            target_character=Characters.FiasChampion2,
+            target_character=Characters.LionelSidekick1,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23701,
+            target_character=Characters.CLONE_LionelSidekick1,
         )
         Goto(Label.L8)
     if FlagEnabled(51):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23702,
-            target_character=Characters.FiasChampion2,
+            target_character=Characters.LionelSidekick1,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23702,
+            target_character=Characters.CLONE_LionelSidekick1,
         )
         Goto(Label.L8)
     if FlagEnabled(52):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23703,
-            target_character=Characters.FiasChampion2,
+            target_character=Characters.LionelSidekick1,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23703,
+            target_character=Characters.CLONE_LionelSidekick1,
         )
         Goto(Label.L8)
     if FlagEnabled(53):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23704,
-            target_character=Characters.FiasChampion2,
+            target_character=Characters.LionelSidekick1,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23704,
+            target_character=Characters.CLONE_LionelSidekick1,
         )
         Goto(Label.L8)
     if FlagEnabled(54):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23705,
-            target_character=Characters.FiasChampion2,
+            target_character=Characters.LionelSidekick1,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23705,
+            target_character=Characters.CLONE_LionelSidekick1,
         )
         Goto(Label.L8)
     if FlagEnabled(55):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23706,
-            target_character=Characters.FiasChampion2,
+            target_character=Characters.LionelSidekick1,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23706,
+            target_character=Characters.CLONE_LionelSidekick1,
         )
         Goto(Label.L8)
     if FlagEnabled(56):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23707,
-            target_character=Characters.FiasChampion2,
+            target_character=Characters.LionelSidekick1,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23707,
+            target_character=Characters.CLONE_LionelSidekick1,
         )
         Goto(Label.L8)
     CopyPlayerCharacterDataFromOnlinePlayers(
         pool_type=0,
         failcase_player_param_id=23708,
-        target_character=Characters.FiasChampion2,
+        target_character=Characters.LionelSidekick1,
+    )
+    CopyPlayerCharacterDataFromOnlinePlayers(
+        pool_type=0,
+        failcase_player_param_id=23708,
+        target_character=Characters.CLONE_LionelSidekick1,
     )
 
     # --- Label 8 --- #
     DefineLabel(8)
     WaitFrames(frames=1)
-    EnableCharacter(Characters.FiasChampion2)
+    EnableCharacter(Characters.LionelSidekick1)
+    EnableCharacter(Characters.CLONE_LionelSidekick1)
+    EnableImmortality(Characters.CLONE_LionelSidekick1)
+    DisableHealthBar(Characters.CLONE_LionelSidekick1)
+    ReferDamageToEntity(Characters.CLONE_LionelSidekick1, Characters.LionelSidekick1)
     WaitFrames(frames=1)
-    ForceAnimation(Characters.FiasChampion2, 63010)
-    EnableAI(Characters.FiasChampion2)
-    SetNetworkUpdateRate(Characters.FiasChampion2, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+
+    ForceAnimation(Characters.LionelSidekick1, 63010)
+    ForceAnimation(Characters.CLONE_LionelSidekick1, 63010)
+    EnableAI(Characters.LionelSidekick1)
+    EnableAI(Characters.CLONE_LionelSidekick1)
+    SetNetworkUpdateRate(Characters.LionelSidekick1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_LionelSidekick1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     Wait(0.5)
     if FlagEnabled(50):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23711,
-            target_character=Characters.FiasChampion1,
+            target_character=Characters.LionelSidekick2,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23711,
+            target_character=Characters.CLONE_LionelSidekick2,
         )
         Goto(Label.L9)
     if FlagEnabled(51):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23712,
-            target_character=Characters.FiasChampion1,
+            target_character=Characters.LionelSidekick2,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23712,
+            target_character=Characters.CLONE_LionelSidekick2,
         )
         Goto(Label.L9)
     if FlagEnabled(52):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23713,
-            target_character=Characters.FiasChampion1,
+            target_character=Characters.LionelSidekick2,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23713,
+            target_character=Characters.CLONE_LionelSidekick2,
         )
         Goto(Label.L9)
     if FlagEnabled(53):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23714,
-            target_character=Characters.FiasChampion1,
+            target_character=Characters.LionelSidekick2,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23714,
+            target_character=Characters.CLONE_LionelSidekick2,
         )
         Goto(Label.L9)
     if FlagEnabled(54):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23715,
-            target_character=Characters.FiasChampion1,
+            target_character=Characters.LionelSidekick2,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23715,
+            target_character=Characters.CLONE_LionelSidekick2,
         )
         Goto(Label.L9)
     if FlagEnabled(55):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23716,
-            target_character=Characters.FiasChampion1,
+            target_character=Characters.LionelSidekick2,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23716,
+            target_character=Characters.CLONE_LionelSidekick2,
         )
         Goto(Label.L9)
     if FlagEnabled(56):
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23717,
-            target_character=Characters.FiasChampion1,
+            target_character=Characters.LionelSidekick2,
+        )
+        CopyPlayerCharacterDataFromOnlinePlayers(
+            pool_type=0,
+            failcase_player_param_id=23717,
+            target_character=Characters.CLONE_LionelSidekick2,
         )
         Goto(Label.L9)
     CopyPlayerCharacterDataFromOnlinePlayers(
         pool_type=0,
         failcase_player_param_id=23718,
-        target_character=Characters.FiasChampion1,
+        target_character=Characters.LionelSidekick2,
+    )
+    CopyPlayerCharacterDataFromOnlinePlayers(
+        pool_type=0,
+        failcase_player_param_id=23718,
+        target_character=Characters.CLONE_LionelSidekick2,
     )
 
     # --- Label 9 --- #
     DefineLabel(9)
     WaitFrames(frames=1)
-    EnableCharacter(Characters.FiasChampion1)
+    EnableCharacter(Characters.LionelSidekick2)
+    EnableCharacter(Characters.CLONE_LionelSidekick2)
+    EnableImmortality(Characters.CLONE_LionelSidekick2)
+    DisableHealthBar(Characters.CLONE_LionelSidekick2)
+    ReferDamageToEntity(Characters.CLONE_LionelSidekick2, Characters.LionelSidekick2)
     WaitFrames(frames=1)
-    ForceAnimation(Characters.FiasChampion1, 63010)
-    EnableAI(Characters.FiasChampion1)
-    SetNetworkUpdateRate(Characters.FiasChampion1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+
+    ForceAnimation(Characters.LionelSidekick2, 63010)
+    ForceAnimation(Characters.CLONE_LionelSidekick2, 63010)
+    EnableAI(Characters.LionelSidekick2)
+    EnableAI(Characters.CLONE_LionelSidekick2)
+    SetNetworkUpdateRate(Characters.LionelSidekick2, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_LionelSidekick2, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     Wait(2.0)
-    EnableBossHealthBar(Characters.LioneltheLionhearted, name=132900)
-    EnableBossHealthBar(Characters.FiasChampion2, name=137000, bar_slot=1)
-    EnableBossHealthBar(Characters.FiasChampion1, name=137100, bar_slot=2)
+    EnableBossHealthBar(Characters.LioneltheLionhearted, name=NameText.LionelTheLionhearted)
+    EnableBossHealthBar(Characters.LionelSidekick1, name=NameText.LionelSidekick1, bar_slot=1)
+    EnableBossHealthBar(Characters.LionelSidekick2, name=NameText.LionelSidekick2, bar_slot=2)
 
 
 @ContinueOnRest(12032820)
-def Event_12032820():
+def GetFiasChampionPlayerData():
     """Event 12032820"""
     if PlayerNotInOwnWorld():
         return
     
     MAIN.Await(InsideMap(game_map=DEEPROOT_DEPTHS))
     
-    RequestPlayerCharacterDataFromOnlinePlayers(pool_type=0, unk_4_8=3)
+    RequestPlayerCharacterDataFromOnlinePlayers(pool_type=0, data_count=3)
 
 
 @RestartOnRest(12032830)
@@ -1169,9 +1412,9 @@ def Event_12032830(
 def Event_12032840():
     """Event 12032840"""
     DisableNetworkSync()
-    if FlagEnabled(12030800):
+    if FlagEnabled(Flags.FiasChampionsDead):
         return
-    AND_1.Add(FlagDisabled(12030800))
+    AND_1.Add(FlagDisabled(Flags.FiasChampionsDead))
     AND_1.Add(FlagEnabled(12032805))
     AND_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(ActionButtonParamActivated(action_button_id=10000, entity=Assets.AEG099_002_9000))
@@ -1302,11 +1545,11 @@ def Event_12032842(_, flag: uint, asset: uint, model_point: int, right: uint):
 
 
 @RestartOnRest(12032849)
-def Event_12032849():
+def FiasChampionsCommonEvents():
     """Event 12032849"""
     Event_12032830(
         0,
-        flag=12030800,
+        flag=Flags.FiasChampionsDead,
         entity=Assets.AEG099_002_9000,
         region=12032800,
         flag_1=12032805,
@@ -1316,15 +1559,16 @@ def Event_12032849():
         region_1=12032801,
     )
     Event_12032840()
-    RunCommonEvent(12032842, slot=0, args=(12030800, 12031800, 5, 12030801), arg_types="IIiI")
-    CommonFunc_ControlBossMusic(0, 12030800, 921100, 12032805, 12032806, 12032803, 0, 0, 0)
+    RunCommonEvent(12032842, slot=0, args=(Flags.FiasChampionsDead, 12031800, 5, 12030801), arg_types="IIiI")
+    CommonFunc_ControlBossMusic(0, Flags.FiasChampionsDead, 921100, 12032805, 12032806, 12032803, 0, 0, 0)
 
 
 @RestartOnRest(12032859)
-def Event_12032859():
+def TravelToFortissaxBattle():
     """Event 12032859"""
     DisableCharacter(Characters.LichdragonFortissax)
-    if FlagEnabled(12030850):
+    DisableCharacter(Characters.CLONE_LichdragonFortissax)
+    if FlagEnabled(Flags.LichdragonFortissaxDead):
         return
     
     MAIN.Await(FlagEnabled(12032859))
@@ -1347,15 +1591,16 @@ def Event_12032859():
     FadeToBlack(strength=0.0, duration=0.0, freeze_player=False, freeze_player_delay=0.0)
     WaitFramesAfterCutscene(frames=1)
     EnableCharacter(Characters.LichdragonFortissax)
+    EnableCharacter(Characters.CLONE_LichdragonFortissax)
     DisableCharacter(Characters.TalkDummy0)
     DisableAsset(Assets.AEG099_060_9000)
-    EnableFlag(12032858)
+    EnableFlag(Flags.PlayerInFortissaxArena)
 
 
 @RestartOnRest(12032850)
-def Event_12032850():
+def LichdragonFortissaxDies():
     """Event 12032850"""
-    GotoIfFlagDisabled(Label.L10, flag=12030850)
+    GotoIfFlagDisabled(Label.L10, flag=Flags.LichdragonFortissaxDead)
     EnableCharacter(Characters.TalkDummy0)
     EnableAsset(Assets.AEG099_060_9000)
     DisableAsset(Assets.AEG099_002_9001)
@@ -1367,17 +1612,20 @@ def Event_12032850():
     DefineLabel(10)
     AND_8.Add(FlagEnabled(12032859))
     AND_8.Add(HealthValue(Characters.LichdragonFortissax) <= 0)
-    
+    AND_8.Add(HealthValue(Characters.CLONE_LichdragonFortissax) <= 0)
+
     MAIN.Await(AND_8)
     
     SetLockedCameraSlot(area_id=12, block_id=3, camera_slot=0)
     Wait(4.0)
     PlaySoundEffect(Characters.LichdragonFortissax, 888880000, sound_type=SoundType.s_SFX)
-    
-    MAIN.Await(CharacterDead(Characters.LichdragonFortissax))
+
+    AND_1.Add(CharacterDead(Characters.LichdragonFortissax))
+    AND_1.Add(CharacterDead(Characters.CLONE_LichdragonFortissax))
+    MAIN.Await(AND_1)
     
     KillBossAndDisplayBanner(character=Characters.LichdragonFortissax, banner_type=BannerType.LegendFelled)
-    EnableFlag(12030850)
+    EnableFlag(Flags.LichdragonFortissaxDead)
     EnableFlag(9111)
     if PlayerInOwnWorld():
         EnableFlag(61111)
@@ -1385,6 +1633,7 @@ def Event_12032850():
         AddSpecialEffect(PLAYER, 4280)
         AddSpecialEffect(PLAYER, 4282)
     Wait(9.0)
+    # Return to Fia.
     PlayCutsceneToPlayerAndWarp(
         cutscene_id=12030021,
         cutscene_flags=0,
@@ -1409,22 +1658,26 @@ def Event_12032850():
 
 
 @RestartOnRest(12032860)
-def Event_12032860():
+def LichdragonFortissaxBattleTrigger():
     """Event 12032860"""
-    GotoIfFlagDisabled(Label.L0, flag=12030850)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.LichdragonFortissaxDead)
     DisableCharacter(Characters.LichdragonFortissax)
     DisableAnimations(Characters.LichdragonFortissax)
     Kill(Characters.LichdragonFortissax)
+    DisableCharacter(Characters.CLONE_LichdragonFortissax)
+    DisableAnimations(Characters.CLONE_LichdragonFortissax)
+    Kill(Characters.CLONE_LichdragonFortissax)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.LichdragonFortissax)
+    DisableAI(Characters.CLONE_LichdragonFortissax)
     DisableAsset(Assets.AEG099_002_9001)
     DeleteAssetVFX(Assets.AEG099_002_9001)
     DisableAsset(Assets.AEG099_053_9003)
     
-    MAIN.Await(FlagEnabled(12032858))
+    MAIN.Await(FlagEnabled(Flags.PlayerInFortissaxArena))
     
     DeleteAssetVFX(Assets.AEG099_002_9001)
     EnableAsset(Assets.AEG099_002_9001)
@@ -1432,8 +1685,11 @@ def Event_12032860():
     EnableAsset(Assets.AEG099_053_9003)
     EnableNetworkFlag(12030852)
     EnableAI(Characters.LichdragonFortissax)
+    EnableAI(Characters.CLONE_LichdragonFortissax)
     SetNetworkUpdateRate(Characters.LichdragonFortissax, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.LichdragonFortissax, name=904510000)
+    SetNetworkUpdateRate(Characters.CLONE_LichdragonFortissax, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.LichdragonFortissax, name=NameText.LichdragonFortissax, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_LichdragonFortissax, name=NameText.CLONE_LichdragonFortissax, bar_slot=0)
     ActivateMultiplayerBuffs(12035850)
     SetLockedCameraSlot(area_id=12, block_id=3, camera_slot=1)
     if PlayerNotInOwnWorld():
@@ -1462,22 +1718,22 @@ def Event_12032896(_, flag: uint, flag_1: uint, flag_2: uint):
 
 
 @RestartOnRest(12032899)
-def Event_12032899():
+def LichdragonFortissaxCommonEvents():
     """Event 12032899"""
-    RunCommonEvent(12032896, slot=0, args=(12030850, 12032860, 12032856), arg_types="III")
-    CommonFunc_ControlBossMusic(0, 12030850, 451000, 12032860, 12032856, 12030852, 12032852, 0, 0)
+    RunCommonEvent(12032896, slot=0, args=(Flags.LichdragonFortissaxDead, 12032860, 12032856), arg_types="III")
+    CommonFunc_ControlBossMusic(0, Flags.LichdragonFortissaxDead, 451000, 12032860, 12032856, 12030852, Flags.LichdragonFortissaxInPhaseTwo, 0, 0)
 
 
 @RestartOnRest(12032861)
-def Event_12032861():
+def FortissaxLightning(_, fortissax: uint):
     """Event 12032861"""
     if ThisEventSlotFlagDisabled():
         DisableNetworkSync()
     AND_1.Add(CharacterHasSpecialEffect(20000, 14898))
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(20000, 14899))
-    AND_1.Add(EntityWithinDistance(entity=Characters.LichdragonFortissax, other_entity=20000, radius=15.0))
-    AND_1.Add(CharacterHasSpecialEffect(Characters.LichdragonFortissax, 14896))
-    AND_1.Add(CharacterAlive(Characters.LichdragonFortissax))
+    AND_1.Add(EntityWithinDistance(entity=fortissax, other_entity=20000, radius=15.0))
+    AND_1.Add(CharacterHasSpecialEffect(fortissax, 14896))
+    AND_1.Add(CharacterAlive(fortissax))
     
     MAIN.Await(AND_1)
     
@@ -1485,8 +1741,8 @@ def Event_12032861():
     GotoIfCharacterDoesNotHaveSpecialEffect(Label.L0, character=20000, special_effect=14898)
     AddSpecialEffect(20000, 14899)
     ShootProjectile(
-        owner_entity=Characters.LichdragonFortissax,
-        source_entity=Characters.LichdragonFortissax,
+        owner_entity=fortissax,
+        source_entity=fortissax,
         model_point=900,
         behavior_id=1131,
         launch_angle_x=0,
@@ -1501,17 +1757,25 @@ def Event_12032861():
 
 
 @RestartOnRest(12032862)
-def Event_12032862():
+def LichdragonFortissaxPhaseTwoTransition():
     """Event 12032862"""
-    MAIN.Await(CharacterHasSpecialEffect(Characters.LichdragonFortissax, 14875))
-    
+    OR_1.Add(CharacterHasSpecialEffect(Characters.LichdragonFortissax, 14875))
+    OR_1.Add(CharacterHasSpecialEffect(Characters.CLONE_LichdragonFortissax, 14875))
+    MAIN.Await(OR_1)
+
     SetLockedCameraSlot(area_id=12, block_id=3, camera_slot=0)
-    EnableFlag(12032852)
+    EnableFlag(Flags.LichdragonFortissaxInPhaseTwo)
     Wait(7.0)
-    OR_10.Add(HealthRatio(Characters.LichdragonFortissax) == 0.0)
-    SkipLinesIfConditionTrue(2, OR_10)
+
+    # If BOTH Lichdragons died before the phase transition camera timer elapsed, don't set Phase Two camera.
+    AND_1.Add(HealthRatio(Characters.LichdragonFortissax) <= 0.0)
+    AND_1.Add(HealthRatio(Characters.CLONE_LichdragonFortissax) <= 0.0)
+    SkipLinesIfConditionTrue(2, AND_1)
+    # Phase Two camera.
     SetLockedCameraSlot(area_id=12, block_id=3, camera_slot=1)
     Goto(Label.L0)
+
+    # BOTH Lichdragons died before camera timer finished (unlikely).
     SetLockedCameraSlot(area_id=12, block_id=3, camera_slot=0)
 
     # --- Label 0 --- #
@@ -1685,9 +1949,9 @@ def Event_12030704():
     """Event 12030704"""
     if PlayerNotInOwnWorld():
         return
-    if FlagEnabled(12030800):
+    if FlagEnabled(Flags.FiasChampionsDead):
         return
-    AND_1.Add(FlagEnabled(12030800))
+    AND_1.Add(FlagEnabled(Flags.FiasChampionsDead))
     AND_1.Add(FlagEnabled(4127))
     
     MAIN.Await(AND_1)
@@ -1700,7 +1964,7 @@ def Event_12030705():
     """Event 12030705"""
     if PlayerNotInOwnWorld():
         return
-    if FlagEnabled(12030850):
+    if FlagEnabled(Flags.LichdragonFortissaxDead):
         return
     AND_1.Add(FlagEnabled(12032870))
     AND_1.Add(FlagEnabled(4130))
@@ -1715,11 +1979,11 @@ def Event_12030706():
     """Event 12030706"""
     if PlayerNotInOwnWorld():
         return
-    if FlagEnabled(12030850):
+    if FlagEnabled(Flags.LichdragonFortissaxDead):
         return
     OR_1.Add(FlagEnabled(4130))
     OR_1.Add(FlagEnabled(4137))
-    AND_1.Add(FlagEnabled(12030850))
+    AND_1.Add(FlagEnabled(Flags.LichdragonFortissaxDead))
     AND_1.Add(FlagDisabled(12032870))
     AND_1.Add(OR_1)
     

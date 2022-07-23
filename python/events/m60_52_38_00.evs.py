@@ -3862,7 +3862,7 @@ def RadahnMusicControl():
     """Event 1252382850"""
     CommonFunc_ControlBossMusic(
         0,
-        dead_flag=Flags.RadahnDead,
+        boss_dead_flag=Flags.RadahnDead,
         bgm_boss_conv_param_id=473000,
         host_in_battle=Flags.HostInRadahnBattle,
         summon_in_battle=Flags.SummonInRadahnBattle,

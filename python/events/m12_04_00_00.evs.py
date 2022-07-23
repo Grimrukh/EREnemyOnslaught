@@ -26,7 +26,7 @@ def Constructor():
     """Event 0"""
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
-        flag=12040800,
+        flag=Flags.AstelDead,
         grace_flag=71240,
         character=Characters.TalkDummy0,
         asset=Assets.AEG099_060_9000,
@@ -34,9 +34,9 @@ def Constructor():
     )
     Event_12042680()
     Event_12042400()
-    Event_12042849()
-    Event_12042800()
-    Event_12042810()
+    AstelCommonEvents()
+    AstelDies()
+    AstelBattleTrigger()
 
 
 @ContinueOnRest(12042400)
@@ -118,37 +118,45 @@ def Event_12042680():
 
 
 @ContinueOnRest(12042800)
-def Event_12042800():
+def AstelDies():
     """Event 12042800"""
-    if FlagEnabled(12040800):
+    if FlagEnabled(Flags.AstelDead):
         return
-    
-    MAIN.Await(HealthRatio(Characters.MalformedStar) <= 0.0)
-    
+
+    AND_1.Add(HealthRatio(Characters.Astel) <= 0.0)
+    AND_1.Add(HealthRatio(Characters.CLONE_Astel) <= 0.0)
+    MAIN.Await(AND_1)
+
     Wait(5.0)
-    PlaySoundEffect(Characters.MalformedStar, 77777777, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(Characters.Astel, 77777777, sound_type=SoundType.s_SFX)
+
+    AND_2.Add(CharacterDead(Characters.Astel))
+    AND_2.Add(CharacterDead(Characters.CLONE_Astel))
+    MAIN.Await(AND_2)
     
-    MAIN.Await(CharacterDead(Characters.MalformedStar))
-    
-    KillBossAndDisplayBanner(character=Characters.MalformedStar, banner_type=BannerType.LegendFelled)
-    EnableFlag(12040800)
+    KillBossAndDisplayBanner(character=Characters.Astel, banner_type=BannerType.LegendFelled)
+    EnableFlag(Flags.AstelDead)
     EnableFlag(9108)
     if PlayerInOwnWorld():
         EnableFlag(61108)
 
 
 @RestartOnRest(12042810)
-def Event_12042810():
+def AstelBattleTrigger():
     """Event 12042810"""
-    GotoIfFlagDisabled(Label.L0, flag=12040800)
-    DisableCharacter(Characters.MalformedStar)
-    DisableAnimations(Characters.MalformedStar)
-    Kill(Characters.MalformedStar)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.AstelDead)
+    DisableCharacter(Characters.Astel)
+    DisableAnimations(Characters.Astel)
+    Kill(Characters.Astel)
+    DisableCharacter(Characters.CLONE_Astel)
+    DisableAnimations(Characters.CLONE_Astel)
+    Kill(Characters.CLONE_Astel)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(Characters.MalformedStar)
+    DisableAI(Characters.Astel)
+    DisableAI(Characters.CLONE_Astel)
     EnableNavmeshType(navmesh_id=12044300, navmesh_type=NavmeshType.Solid)
     EnableNavmeshType(navmesh_id=12044301, navmesh_type=NavmeshType.Solid)
     AND_2.Add(FlagEnabled(12042805))
@@ -158,19 +166,23 @@ def Event_12042810():
 
     # --- Label 2 --- #
     DefineLabel(2)
-    EnableAI(Characters.MalformedStar)
-    SetNetworkUpdateRate(Characters.MalformedStar, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.MalformedStar, name=904620001)
-    SetCharacterEventTarget(Characters.MalformedStar, region=12040810)
+    EnableAI(Characters.Astel)
+    EnableAI(Characters.CLONE_Astel)
+    SetNetworkUpdateRate(Characters.Astel, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_Astel, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.Astel, name=NameText.Astel, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_Astel, name=NameText.CLONE_Astel, bar_slot=0)
+    SetCharacterEventTarget(Characters.Astel, region=12040810)
+    SetCharacterEventTarget(Characters.CLONE_Astel, region=12040810)
 
 
 @ContinueOnRest(12042849)
-def Event_12042849():
+def AstelCommonEvents():
     """Event 12042849"""
-    CommonFunc_ControlBossFog(0, boss_dead_flag=12040800, fog_asset=Assets.AEG099_002_9001, model_point=8, required_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.AstelDead, fog_asset=Assets.AEG099_002_9001, model_point=8, required_flag=0)
     CommonFunc_HostEntersBossFog(
         0,
-        boss_dead_flag=12040800,
+        boss_dead_flag=Flags.AstelDead,
         fog_asset=Assets.AEG099_002_9000,
         fog_region=12042800,
         host_entered_fog_flag=12042805,
@@ -181,12 +193,12 @@ def Event_12042849():
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=12040800,
+        boss_dead_flag=Flags.AstelDead,
         fog_asset=Assets.AEG099_002_9000,
         fog_region=12042800,
         host_entered_fog_flag=12042805,
         summon_entered_fog_flag=12042806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=12040800, fog_asset=Assets.AEG099_002_9000, model_point=8, required_flag=0)
-    CommonFunc_ControlBossMusic(0, 12040800, 920700, 12042805, 12042806, 0, 12042802, 0, 0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.AstelDead, fog_asset=Assets.AEG099_002_9000, model_point=8, required_flag=0)
+    CommonFunc_ControlBossMusic(0, Flags.AstelDead, 920700, 12042805, 12042806, 0, 12042802, 0, 0)

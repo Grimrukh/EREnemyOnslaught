@@ -27,7 +27,7 @@ def Constructor():
     RegisterGrace(grace_flag=76314, asset=Assets.AEG099_060_9000)
     Event_1045522500()
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DraconicTreeSentinel, name=903250600, npc_threat_level=12)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1045520800,
         extra_flag_to_enable=0,
@@ -36,7 +36,7 @@ def Constructor():
         item_lot=30315,
         seconds=0.0,
     )
-    CommonFunc_90005872(0, character=Characters.DraconicTreeSentinel, npc_threat_level=12, right=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.DraconicTreeSentinel, npc_threat_level=12, optional_trigger_flag=0)
     CommonFunc_ControlBossFog(0, boss_dead_flag=1045520800, fog_asset=Assets.AEG099_001_9000, model_point=5, required_flag=0)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GuardianGolem2, radius=70.0, seconds=0.0, animation_id=3006)
     Event_1045522200()

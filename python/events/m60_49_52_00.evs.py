@@ -38,7 +38,7 @@ def Constructor():
     )
     Event_1049522825(0, flag=1049520800, character=Characters.Gargoyle)
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.Gargoyle, name=904770600, npc_threat_level=16)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1049520800,
         extra_flag_to_enable=0,
@@ -47,7 +47,7 @@ def Constructor():
         item_lot=30505,
         seconds=0.0,
     )
-    CommonFunc_90005872(0, character=Characters.Gargoyle, npc_threat_level=16, right=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.Gargoyle, npc_threat_level=16, optional_trigger_flag=0)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1049520550, region=1049522550, radius=10.0, seconds=0.0, animation_id=-1)
     CommonFunc_90005780(
         0,

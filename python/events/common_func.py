@@ -1415,17 +1415,17 @@ def CommonFunc_90005440(_, character: uint, character_1: uint):
 
 
 @RestartOnRest(90005450)
-def CommonFunc_90005450(_, character: uint, asset: uint, asset_1: uint, asset_2: uint):
+def CommonFunc_PrepareWalkingMausoleum(_, mausoleum: uint, asset: uint, asset_1: uint, asset_2: uint):
     """CommonFunc 90005450"""
-    SetBackreadStateAlternate(character, True)
-    EnableImmortality(character)
-    SetCharacterEnableDistance(character=character, distance=2000.0)
-    SetCharacterDisableOnCollisionUnload(character=character, state=False)
-    SetDistanceBasedNetworkAuthorityUpdate(character=character, state=True)
-    DisableHealthBar(character)
-    AttachAssetToCharacter(character=character, model_point=100, asset=asset)
-    AttachAssetToCharacter(character=character, model_point=80, asset=asset_1)
-    AttachAssetToCharacter(character=character, model_point=165, asset=asset_2)
+    SetBackreadStateAlternate(mausoleum, True)
+    EnableImmortality(mausoleum)
+    SetCharacterEnableDistance(character=mausoleum, distance=2000.0)
+    SetCharacterDisableOnCollisionUnload(character=mausoleum, state=False)
+    SetDistanceBasedNetworkAuthorityUpdate(character=mausoleum, state=True)
+    DisableHealthBar(mausoleum)
+    AttachAssetToCharacter(character=mausoleum, model_point=100, asset=asset)
+    AttachAssetToCharacter(character=mausoleum, model_point=80, asset=asset_1)
+    AttachAssetToCharacter(character=mausoleum, model_point=165, asset=asset_2)
 
 
 @RestartOnRest(90005451)
@@ -1569,12 +1569,12 @@ def CommonFunc_90005457(_, character: uint, asset: uint, asset_1: uint, asset_2:
 
 
 @RestartOnRest(90005458)
-def CommonFunc_90005458(_, character: uint, asset: uint):
+def CommonFunc_WalkingMausoleumDefeated(_, mausoleum: uint, asset: uint):
     """CommonFunc 90005458"""
     GotoIfThisEventSlotFlagEnabled(Label.L0)
-    AttachAssetToCharacter(character=character, model_point=166, asset=asset)
+    AttachAssetToCharacter(character=mausoleum, model_point=166, asset=asset)
     DisableAsset(asset)
-    AND_1.Add(CharacterHasSpecialEffect(character, 12465))
+    AND_1.Add(CharacterHasSpecialEffect(mausoleum, 12465))
     
     MAIN.Await(AND_1)
 
@@ -8174,7 +8174,7 @@ def CommonFunc_90005795(
 
 
 @RestartOnRest(90005796)
-def CommonFunc_90005796(_, flag: uint, character: uint, banner_type: uchar, region: uint):
+def CommonFunc_InvadeAndKillNPC(_, flag: uint, character: uint, banner_type: uchar, region: uint):
     """CommonFunc 90005796"""
     DisableNetworkSync()
     if PlayerInOwnWorld():
@@ -8596,7 +8596,7 @@ def CommonFunc_9005813(_, flag: uint, asset: uint, model_point: int, right: uint
 @RestartOnRest(9005822)
 def CommonFunc_ControlBossMusic(
     _,
-    dead_flag: uint,
+    boss_dead_flag: uint,
     bgm_boss_conv_param_id: int,
     host_in_battle: uint,
     summon_in_battle: uint,
@@ -8607,7 +8607,7 @@ def CommonFunc_ControlBossMusic(
 ):
     """CommonFunc 9005822"""
     DisableNetworkSync()
-    GotoIfFlagDisabled(Label.L0, flag=dead_flag)
+    GotoIfFlagDisabled(Label.L0, flag=boss_dead_flag)
     End()
 
     # --- Label 0 --- #
@@ -8626,15 +8626,15 @@ def CommonFunc_ControlBossMusic(
     if FlagDisabled(phase_two_flag):
         SetBossMusic(bgm_boss_conv_param_id=bgm_boss_conv_param_id, state=BossMusicState.Start)
     OR_2.Add(FlagEnabled(phase_two_flag))
-    OR_2.Add(FlagEnabled(dead_flag))
+    OR_2.Add(FlagEnabled(boss_dead_flag))
     
     MAIN.Await(OR_2)
     
-    GotoIfFlagEnabled(Label.L1, flag=dead_flag)
+    GotoIfFlagEnabled(Label.L1, flag=boss_dead_flag)
     WaitFrames(frames=1)
     SkipLinesIfValueEqual(0, left=useless_phase_two_check, right=0)  # NOTE: useless skip
     SetBossMusic(bgm_boss_conv_param_id=bgm_boss_conv_param_id, state=BossMusicState.HeatUp)
-    OR_3.Add(FlagEnabled(dead_flag))
+    OR_3.Add(FlagEnabled(boss_dead_flag))
     
     MAIN.Await(OR_3)
 
@@ -8788,7 +8788,7 @@ def CommonFunc_9005845(_, flag: uint, character: uint):
 
 
 @RestartOnRest(90005860)
-def CommonFunc_NonRespawningBossWithReward(
+def CommonFunc_FieldBossNonRespawningWithReward(
     _,
     dead_flag: uint,
     extra_flag_to_enable: uint,
@@ -9069,24 +9069,24 @@ def CommonFunc_90005871(_, character: uint, name: int, npc_threat_level: uint, c
 
 
 @ContinueOnRest(90005872)
-def CommonFunc_90005872(_, character: uint, npc_threat_level: uint, right: uint):
-    """CommonFunc 90005872"""
+def CommonFunc_FieldBossMusicHeatUp(_, boss_character: uint, npc_threat_level: uint, optional_trigger_flag: uint):
+    """If `optional_trigger_flag` is not given, the trigger will be <= 55% HP."""
     DisableNetworkSync()
-    if UnsignedNotEqual(left=0, right=right):
-        AND_1.Add(FlagEnabled(right))
+    if UnsignedNotEqual(left=0, right=optional_trigger_flag):
+        AND_1.Add(FlagEnabled(optional_trigger_flag))
     else:
-        AND_1.Add(HealthRatio(character) <= 0.550000011920929)
+        AND_1.Add(HealthRatio(boss_character) <= 0.550000011920929)
     AND_1.Add(FieldBattleMusicEnabled(npc_threat_level=npc_threat_level))
     
     MAIN.Await(AND_1)
     
-    EnableFieldBattleMusicWindUp(npc_threat_level=npc_threat_level)
-    OR_2.Add(CharacterDead(character))
+    EnableFieldBattleMusicHeatUp(npc_threat_level=npc_threat_level)
+    OR_2.Add(CharacterDead(boss_character))
     OR_2.Add(FieldBattleMusicDisabled(npc_threat_level=npc_threat_level))
     
     MAIN.Await(OR_2)
     
-    DisableFieldBattleMusicWindUp(npc_threat_level=npc_threat_level)
+    DisableFieldBattleMusicHeatUp(npc_threat_level=npc_threat_level)
     Wait(0.30000001192092896)
     Restart()
 

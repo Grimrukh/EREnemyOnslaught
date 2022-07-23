@@ -67,7 +67,7 @@ def Constructor():
         character__region=1038520340,
     )
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.TibiaMariner, name=904950602, npc_threat_level=24)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1038520800,
         extra_flag_to_enable=0,

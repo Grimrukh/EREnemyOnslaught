@@ -26,7 +26,7 @@ def Constructor():
     """Event 0"""
     CommonFunc_90005600(0, grace_flag=1043330000, asset=1043331950, enemy_block_distance=5.0, character=1043330480)
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.ErdtreeAvatar, name=904810600, npc_threat_level=18)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1043330800,
         extra_flag_to_enable=0,
@@ -36,7 +36,7 @@ def Constructor():
         seconds=0.0,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.ErdtreeAvatar, radius=20.0, seconds=0.0, animation_id=0)
-    CommonFunc_90005872(0, character=Characters.ErdtreeAvatar, npc_threat_level=18, right=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.ErdtreeAvatar, npc_threat_level=18, optional_trigger_flag=0)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9003, vfx_id=100, model_point=800, right=1043338600)
     CommonFunc_90005550(0, flag=1043330530, asset=1043331530, obj_act_id=1043333530)
     Event_1043332270()

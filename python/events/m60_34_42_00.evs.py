@@ -26,7 +26,7 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1034420000, asset=Assets.AEG099_060_9000)
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.GlintstoneDragon0, name=904502602, npc_threat_level=25)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1034420800,
         extra_flag_to_enable=0,

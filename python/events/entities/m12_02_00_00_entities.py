@@ -1,6 +1,19 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    GargoylesDead = 12020800
+    MimicTearDead = 12020850
+    GargoylesInPhaseTwo = 12022820
+
+
+class NameText(NPCName):
+    MimicTear = 903320000
+    CLONE_MimicTear = 903320010
+    GargoyleGreatsword = 904770000
+    GargoyleTwinblade = 904770001
+
+
 class Characters(Character):
     MimicTear = 12020850  # c0000_9010 col h003300 npc 526100965 think 90603100 chara 24020 group 12025850,12025116
     SilverTear0 = 12020491  # c0000_9011 col h008500 npc 523680065 think 523680000 chara 23680
@@ -34,7 +47,7 @@ class Characters(Character):
     RedWolf = 12020221  # c3181_9001 col h007700 npc 31810065 think 31810000
     Merchant = 12020705  # c3200_9000 col h012100 npc 32002764 think 32000000 talk 801271202
     NoxFighter = 12020211  # c3300_9101 col h008700 npc 33001065 think 33100000
-    SilverTear4 = 12020860  # c3320_9000 col h003300 npc 33201065 think 33200200 group 12025850,12025116
+    SilverTearMimic = 12020860  # c3320_9000 col h003300 npc 33201065 think 33200200 group 12025850,12025116
     SilverTear5 = 12020400  # c3320_9100 col h008900 npc 33201165 think 33200000
     SilverTear6 = 12020380  # c3320_9101 col h008500 npc 33201065 think 33200000
     SilverTear7 = 12020402  # c3320_9102 col h008500 npc 33201065 think 33200000
@@ -87,8 +100,8 @@ class Characters(Character):
     GiantOctopus = 12020471  # c4220_9001 col h012100 npc 42200064 think 42200000 group 12025102
     Troll = 12020490  # c4600_9000 col h008900 npc 46000065 think 46000000 group 12025112
     DragonkinSoldier = 12020830  # c4650_9000 col h012200 npc 46500265 think 46500265 group 12025470,12025118
-    Gargoyle0 = 12020800  # c4770_9000 col h016700 npc 47701165 think 47701200 group 12025114,12025800
-    Gargoyle1 = 12020801  # c4770_9001 col h016700 npc 47700165 think 47700200 group 12025114,12025800
+    GargoyleGreatsword = 12020800  # c4770_9000 col h016700 npc 47701165 think 47701200 group 12025114,12025800
+    GargoyleTwinblade = 12020801  # c4770_9001 col h016700 npc 47700165 think 47700200 group 12025114,12025800
     Springhare0 = 12020340  # c6100_9030 col h012000 npc 61000064 think 61000000
     Springhare1 = 12020341  # c6100_9031 col h012000 npc 61000064 think 61000000
     Springhare2 = 12020342  # c6100_9032 col h012000 npc 61000064 think 61000000
@@ -103,6 +116,12 @@ class Characters(Character):
     FallenHawksSoldier6 = 12020447  # c7000_9037 col h015900 npc 70000065 think 70000000
     FallenHawksSoldier7 = 12020448  # c7000_9048 col h016000 npc 70002065 think 70002000
     FallenHawksSoldier8 = 12020449  # c7000_9049 col h016000 npc 70002065 think 70002000
+
+    CLONE_GargoyleGreatsword = 12020802
+    CLONE_GargoyleTwinblade = 12020803
+    CLONE_DragonkinSoldier = 12020831  # TODO: common events
+    CLONE_MimicTear = 12020851
+    CLONE_SilverTearMimic = 12020861
 
 
 class Assets(Asset):

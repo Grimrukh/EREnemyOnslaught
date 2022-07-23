@@ -214,19 +214,19 @@ def FireGiantBattleTrigger():
         entity=Characters.FireGiantPhaseOneTwo, other_entity=PLAYER, radius=120.0
     ))
     OR_1.Add(EntityWithinDistance(
-        entity=Characters.FireGiantPhaseOneTwo, other_entity=m60_52_Characters.AlexanderSummon, radius=120.0
+        entity=Characters.FireGiantPhaseOneTwo, other_entity=m60_52_Characters.AlexanderSummon1, radius=120.0
     ))
     OR_1.Add(EntityWithinDistance(
-        entity=Characters.FireGiantPhaseOneTwo, other_entity=m60_52_Characters.LivingPot1, radius=120.0
+        entity=Characters.FireGiantPhaseOneTwo, other_entity=m60_52_Characters.AlexanderSummon2, radius=120.0
     ))
     OR_1.Add(EntityWithinDistance(
         entity=Characters.CLONE_FireGiantPhaseOneTwo, other_entity=PLAYER, radius=120.0
     ))
     OR_1.Add(EntityWithinDistance(
-        entity=Characters.CLONE_FireGiantPhaseOneTwo, other_entity=m60_52_Characters.AlexanderSummon, radius=120.0
+        entity=Characters.CLONE_FireGiantPhaseOneTwo, other_entity=m60_52_Characters.AlexanderSummon1, radius=120.0
     ))
     OR_1.Add(EntityWithinDistance(
-        entity=Characters.CLONE_FireGiantPhaseOneTwo, other_entity=m60_52_Characters.LivingPot1, radius=120.0
+        entity=Characters.CLONE_FireGiantPhaseOneTwo, other_entity=m60_52_Characters.AlexanderSummon2, radius=120.0
     ))
 
     MAIN.Await(OR_1)

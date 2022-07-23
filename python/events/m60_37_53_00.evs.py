@@ -29,7 +29,7 @@ def Constructor():
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DemiHumanQueen, name=904130600, npc_threat_level=16)
     Event_1037532345()
     Event_1037532350()
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1037530800,
         extra_flag_to_enable=1037530800,
@@ -38,7 +38,7 @@ def Constructor():
         item_lot=30395,
         seconds=0.0,
     )
-    CommonFunc_90005872(0, character=Characters.DemiHumanQueen, npc_threat_level=16, right=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.DemiHumanQueen, npc_threat_level=16, optional_trigger_flag=0)
     Event_1037532450(
         0,
         character=Characters.DemiHumanQueen,

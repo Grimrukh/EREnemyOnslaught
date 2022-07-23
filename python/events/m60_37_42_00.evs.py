@@ -24,7 +24,7 @@ from .entities.m60_37_42_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1037420800,
         extra_flag_to_enable=0,

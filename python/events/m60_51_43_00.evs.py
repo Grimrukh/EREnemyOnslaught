@@ -26,7 +26,7 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1051430000, asset=Assets.AEG099_060_9000)
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.Gargoyle, name=904770600, npc_threat_level=16)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1051430800,
         extra_flag_to_enable=0,
@@ -35,7 +35,7 @@ def Constructor():
         item_lot=30425,
         seconds=0.0,
     )
-    CommonFunc_90005872(0, character=Characters.Gargoyle, npc_threat_level=16, right=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.Gargoyle, npc_threat_level=16, optional_trigger_flag=0)
     Event_1051432209()
     Event_1051432200(0, character=Characters.Gargoyle, radius=55.0, seconds=0.0, animation_id=-1)
     Event_1051430700(0, character=Characters.BeastClergyman)

@@ -88,7 +88,7 @@ def Constructor():
     Event_1034502610()
     Event_1034502620()
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.GlintstoneDragon, name=904502601, npc_threat_level=25)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1034500800,
         extra_flag_to_enable=0,

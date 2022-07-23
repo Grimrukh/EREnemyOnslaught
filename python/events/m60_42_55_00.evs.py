@@ -33,7 +33,7 @@ def Constructor():
         enemy_block_distance=5.0,
     )
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.GodskinApostle, name=903560600, npc_threat_level=27)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1042550800,
         extra_flag_to_enable=0,

@@ -1,11 +1,22 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    AstelDead = 12040800
+
+
+class NameText(NPCName):
+    Astel = 904620001
+    CLONE_Astel = 904620011
+
+
 class Characters(Character):
     TalkDummy0 = 12040950  # c1000_9000 col h020300 npc 10000000 think 1 talk 1000
     TalkDummy1 = 12040100  # c1000_9001 npc 10001000 think 1 talk 2000
     TalkDummy2 = 12040810  # c1000_9002 col h020300 npc 10000000 think 1
-    MalformedStar = 12040800  # c4620_9000 col h020300 npc 46200062 think 46200100 group 12045800,12045100
+    Astel = 12040800  # c4620_9000 col h020300 npc 46200062 think 46200100 group 12045800,12045100
+
+    CLONE_Astel = 12040801
 
 
 class Assets(Asset):

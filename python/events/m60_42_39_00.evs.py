@@ -92,7 +92,7 @@ def Constructor():
         model_point=30010,
     )
     SkipLinesIfCeremonyInactive(line_count=2, ceremony=20)
-    CommonFunc_90005796(0, flag=7602, character=Characters.OldKnightIstvan, banner_type=5, region=1042392141)
+    CommonFunc_InvadeAndKillNPC(0, flag=7602, character=Characters.OldKnightIstvan, banner_type=5, region=1042392141)
     Event_1042392145()
     Event_1042393700()
     Event_1042393710()

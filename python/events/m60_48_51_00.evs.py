@@ -47,7 +47,7 @@ def Constructor():
         character_1=Characters.NightsCavalryHorse,
     )
     RunCommonEvent(1048512800, slot=0, args=(1048510800, 0, 1048510800, 0, 1048510700, 0.0), arg_types="IIIIif")
-    CommonFunc_90005872(0, 1048510800, 10, 0)
+    CommonFunc_FieldBossMusicHeatUp(0, 1048510800, 10, 0)
 
 
 @RestartOnRest(1048512800)

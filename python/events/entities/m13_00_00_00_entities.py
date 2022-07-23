@@ -7,10 +7,56 @@ class Flags(Flag):
     DragonlodPlacidusaxDead = 13000830
     GodskinDuoDead = 13000850
 
+    GodskinDuoFirstTimeDone = 13000851
+    GodskinDuoInPhaseTwo = 13002852
+
+    StopGodskinDuoRespawning = 13002854
+    GodskinApostleHasRespawned = 13002873  # shared with clone
+    GodskinNobleHasRespawned = 13002874  # shared with clone
+    RandomApostleFlag = 13002875
+    RandomNobleFlag = 13002876
+    NobleSoloFlag = 13002944
+    ApostleSoloFlag = 13002945
+
+    CLONE_StopGodskinDuoRespawning = 13002770
+    CLONE_RandomApostleFlag = 13002775
+    CLONE_RandomNobleFlag = 13002776
+    CLONE_NobleSoloFlag = 13002946
+    CLONE_ApostleSoloFlag = 13002947
+
+    DragonlordPlacidusaxInPhaseTwo = 13002832
+
+    MalikethInSpecialRegions = 13002826
+    CLONE_MalikethInSpecialRegions = 13002749
+
+
+class Effects(SpecialEffectParam):
+    GodskinNobleSolo = 15504
+    GodskinNobleRevivingApostle = 15506
+    GodskinApostleSolo = 15454
+    GodskinApostleRevivingNoble = 15456
+
 
 class NameText(NPCName):
     BeastClergyman = 902110000
     CLONE_BeastClergyman = 902110010
+    GodskinDuo = 903575000
+    CLONE_GodskinDuo = 903575010
+    DragonlordPlacidusax = 904520000
+    CLONE_DragonlordPlacidusax = 904520010  # "Dragonlord Eric" or something like that
+
+
+class CharacterGroups(Character):
+    GodskinDuoBoss = 13005851
+    CLONE_GodskinDuoBoss = 13005852
+    DragonlordPlacidusaxBoss = 13005830
+
+
+class Spawners(SpawnerEvent):
+    ApostleSpawner = 13003851
+    NobleSpawner = 13003852
+    CLONE_ApostleSpawner = 13003853  # TODO: confirm IDs available
+    CLONE_NobleSpawner = 13003854
 
 
 class Characters(Character):
@@ -207,12 +253,12 @@ class Characters(Character):
     Wormface9 = 13000379  # c4570_9009 col h005400 npc 45701072 think 45700200
     WormfaceLarge = 13000369  # c4580_9000 col h005400 npc 45801072 think 45800000 group 13005106
 
-    CLONE_DraconicTreeSentinel = 13000496
-    CLONE_MalikethPhaseOne = 13000801
-    CLONE_MalikethPhaseTwo = 13000800
-    CLONE_GodskinApostle0 = 13000851
-    CLONE_GodskinApostle1 = 13000850
-    CLONE_GodskinNoble = 13000852
+    CLONE_DraconicTreeSentinel = 13000497
+    CLONE_MalikethPhaseOne = 13000803
+    CLONE_MalikethPhaseTwo = 13000802
+    CLONE_GodskinDuoHealthPool = 13000860
+    CLONE_GodskinDuoApostle = 13000861
+    CLONE_GodskinDuoNoble = 13000862
     CLONE_DragonlordPlacidusax = 13000830
 
 

@@ -99,7 +99,7 @@ def Constructor():
         model_point=30010,
     )
     SkipLinesIfCeremonyInactive(line_count=1, ceremony=30)
-    CommonFunc_90005796(0, flag=7611, character=Characters.Millicent2, banner_type=5, region=15002151)
+    CommonFunc_InvadeAndKillNPC(0, flag=7611, character=Characters.Millicent2, banner_type=5, region=15002151)
     Event_15002155()
     CommonFunc_NonRespawningWithReward(0, dead_flag=15000390, character=15000390, item_lot=15001250, reward_delay=0.0, skip_reward=0)
     CommonFunc_NonRespawningWithReward(0, dead_flag=15000391, character=15000391, item_lot=15001260, reward_delay=0.0, skip_reward=0)

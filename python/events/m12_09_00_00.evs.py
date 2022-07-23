@@ -1,5 +1,5 @@
 """
-Regal Ancestor (Upper)
+Regal Ancestor Arena
 
 linked:
 0
@@ -21,107 +21,111 @@ from soulstruct.eldenring.events.instructions import *
 from .entities.m12_09_00_00_entities import *
 
 
+# TODO: A lot of tricky animal events going on here. Probably just blindly duplicate everything.
+#  Good news is that this map has heaps of available ID ranges for clones and flags.
+
+
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    Event_12092849()
+    RegalAncestorSpiritCommonEvents()
     Event_12092800()
     Event_12092810()
-    Event_12092848()
-    Event_12092200(0, character=Characters.Deer0, flag=12092858)
-    Event_12092200(1, character=Characters.Deer1, flag=12092858)
-    Event_12092200(2, character=Characters.Deer2, flag=12092858)
-    Event_12092200(3, character=Characters.Deer3, flag=12092858)
-    Event_12092200(4, character=Characters.Deer4, flag=12092858)
-    Event_12092200(5, character=Characters.Deer5, flag=12092858)
-    Event_12092200(6, character=Characters.Deer6, flag=12092858)
-    Event_12092200(7, character=Characters.Boar0, flag=12092858)
-    Event_12092200(8, character=Characters.Boar1, flag=12092858)
-    Event_12092200(9, character=Characters.Boar2, flag=12092858)
-    Event_12092200(10, character=Characters.Boar3, flag=12092858)
-    Event_12092200(11, character=Characters.Boar4, flag=12092858)
-    Event_12092200(12, character=Characters.Boar5, flag=12092858)
-    Event_12092200(13, character=Characters.Boar6, flag=12092858)
-    Event_12092200(14, character=Characters.WildMouflon0, flag=12092858)
-    Event_12092200(15, character=Characters.WildMouflon1, flag=12092859)
-    Event_12092200(16, character=Characters.WildMouflon2, flag=12092858)
-    Event_12092200(17, character=Characters.WildMouflon3, flag=12092858)
-    Event_12092200(18, character=Characters.WildMouflon4, flag=12092858)
-    Event_12092200(19, character=Characters.WildMouflon5, flag=12092858)
-    Event_12092200(20, character=Characters.WildMouflon6, flag=12092858)
-    Event_12092200(21, character=Characters.Springhare0, flag=12092858)
-    Event_12092200(22, character=Characters.Springhare1, flag=12092859)
-    Event_12092200(23, character=Characters.Springhare2, flag=12092858)
-    Event_12092200(24, character=Characters.Springhare3, flag=12092858)
-    Event_12092200(25, character=Characters.Springhare4, flag=12092858)
-    Event_12092200(26, character=Characters.Springhare5, flag=12092858)
-    Event_12092200(27, character=Characters.Springhare6, flag=12092858)
-    Event_12092230(0, flag=12092870, character=Characters.Deer0)
-    Event_12092230(1, flag=12092871, character=Characters.Deer1)
-    Event_12092230(2, flag=12092872, character=Characters.Deer2)
-    Event_12092230(3, flag=12092873, character=Characters.Deer3)
-    Event_12092230(4, flag=12092874, character=Characters.Deer4)
-    Event_12092230(5, flag=12092875, character=Characters.Deer5)
-    Event_12092230(6, flag=12092876, character=Characters.Deer6)
-    Event_12092230(7, flag=12092877, character=Characters.Boar0)
-    Event_12092230(8, flag=12092878, character=Characters.Boar1)
-    Event_12092230(9, flag=12092879, character=Characters.Boar2)
-    Event_12092230(10, flag=12092880, character=Characters.Boar3)
-    Event_12092230(11, flag=12092881, character=Characters.Boar4)
-    Event_12092230(12, flag=12092882, character=Characters.Boar5)
-    Event_12092230(13, flag=12092883, character=Characters.Boar6)
-    Event_12092230(14, flag=12092884, character=Characters.WildMouflon0)
-    Event_12092230(15, flag=12092885, character=Characters.WildMouflon1)
-    Event_12092230(16, flag=12092886, character=Characters.WildMouflon2)
-    Event_12092230(17, flag=12092887, character=Characters.WildMouflon3)
-    Event_12092230(18, flag=12092888, character=Characters.WildMouflon4)
-    Event_12092230(19, flag=12092889, character=Characters.WildMouflon5)
-    Event_12092230(20, flag=12092890, character=Characters.WildMouflon6)
-    Event_12092230(21, flag=12092891, character=Characters.Springhare0)
-    Event_12092230(22, flag=12092892, character=Characters.Springhare1)
-    Event_12092230(23, flag=12092893, character=Characters.Springhare2)
-    Event_12092230(24, flag=12092894, character=Characters.Springhare3)
-    Event_12092230(25, flag=12092895, character=Characters.Springhare4)
-    Event_12092230(26, flag=12092896, character=Characters.Springhare5)
-    Event_12092230(27, flag=12092897, character=Characters.Springhare6)
-    Event_12092260(0, flag=12092870, character=Characters.Deer0, character_1=Characters.AncestorSpirit)
-    Event_12092260(1, flag=12092871, character=Characters.Deer1, character_1=Characters.AncestorSpirit)
-    Event_12092260(2, flag=12092872, character=Characters.Deer2, character_1=Characters.AncestorSpirit)
-    Event_12092260(3, flag=12092873, character=Characters.Deer3, character_1=Characters.AncestorSpirit)
-    Event_12092260(4, flag=12092874, character=Characters.Deer4, character_1=Characters.AncestorSpirit)
-    Event_12092260(5, flag=12092875, character=Characters.Deer5, character_1=Characters.AncestorSpirit)
-    Event_12092260(6, flag=12092876, character=Characters.Deer6, character_1=Characters.AncestorSpirit)
-    Event_12092260(7, flag=12092877, character=Characters.Boar0, character_1=Characters.AncestorSpirit)
-    Event_12092260(8, flag=12092878, character=Characters.Boar1, character_1=Characters.AncestorSpirit)
-    Event_12092260(9, flag=12092879, character=Characters.Boar2, character_1=Characters.AncestorSpirit)
-    Event_12092260(10, flag=12092880, character=Characters.Boar3, character_1=Characters.AncestorSpirit)
-    Event_12092260(11, flag=12092881, character=Characters.Boar4, character_1=Characters.AncestorSpirit)
-    Event_12092260(12, flag=12092882, character=Characters.Boar5, character_1=Characters.AncestorSpirit)
-    Event_12092260(13, flag=12092883, character=Characters.Boar6, character_1=Characters.AncestorSpirit)
-    Event_12092260(14, flag=12092884, character=Characters.WildMouflon0, character_1=Characters.AncestorSpirit)
-    Event_12092260(15, flag=12092885, character=Characters.WildMouflon1, character_1=Characters.AncestorSpirit)
-    Event_12092260(16, flag=12092886, character=Characters.WildMouflon2, character_1=Characters.AncestorSpirit)
-    Event_12092260(17, flag=12092887, character=Characters.WildMouflon3, character_1=Characters.AncestorSpirit)
-    Event_12092260(18, flag=12092888, character=Characters.WildMouflon4, character_1=Characters.AncestorSpirit)
-    Event_12092260(19, flag=12092889, character=Characters.WildMouflon5, character_1=Characters.AncestorSpirit)
-    Event_12092260(20, flag=12092890, character=Characters.WildMouflon6, character_1=Characters.AncestorSpirit)
-    Event_12092260(21, flag=12092891, character=Characters.Springhare0, character_1=Characters.AncestorSpirit)
-    Event_12092260(22, flag=12092892, character=Characters.Springhare1, character_1=Characters.AncestorSpirit)
-    Event_12092260(23, flag=12092893, character=Characters.Springhare2, character_1=Characters.AncestorSpirit)
-    Event_12092260(24, flag=12092894, character=Characters.Springhare3, character_1=Characters.AncestorSpirit)
-    Event_12092260(25, flag=12092895, character=Characters.Springhare4, character_1=Characters.AncestorSpirit)
-    Event_12092260(26, flag=12092896, character=Characters.Springhare5, character_1=Characters.AncestorSpirit)
-    Event_12092260(27, flag=12092897, character=Characters.Springhare6, character_1=Characters.AncestorSpirit)
+    ReturnToSiofraRiver()
+    AnimalDies(0, animal=Characters.Deer0, dead_flag=12092858)
+    AnimalDies(1, animal=Characters.Deer1, dead_flag=12092858)
+    AnimalDies(2, animal=Characters.Deer2, dead_flag=12092858)
+    AnimalDies(3, animal=Characters.Deer3, dead_flag=12092858)
+    AnimalDies(4, animal=Characters.Deer4, dead_flag=12092858)
+    AnimalDies(5, animal=Characters.Deer5, dead_flag=12092858)
+    AnimalDies(6, animal=Characters.Deer6, dead_flag=12092858)
+    AnimalDies(7, animal=Characters.Boar0, dead_flag=12092858)
+    AnimalDies(8, animal=Characters.Boar1, dead_flag=12092858)
+    AnimalDies(9, animal=Characters.Boar2, dead_flag=12092858)
+    AnimalDies(10, animal=Characters.Boar3, dead_flag=12092858)
+    AnimalDies(11, animal=Characters.Boar4, dead_flag=12092858)
+    AnimalDies(12, animal=Characters.Boar5, dead_flag=12092858)
+    AnimalDies(13, animal=Characters.Boar6, dead_flag=12092858)
+    AnimalDies(14, animal=Characters.WildMouflon0, dead_flag=12092858)
+    AnimalDies(15, animal=Characters.WildMouflon1, dead_flag=12092859)
+    AnimalDies(16, animal=Characters.WildMouflon2, dead_flag=12092858)
+    AnimalDies(17, animal=Characters.WildMouflon3, dead_flag=12092858)
+    AnimalDies(18, animal=Characters.WildMouflon4, dead_flag=12092858)
+    AnimalDies(19, animal=Characters.WildMouflon5, dead_flag=12092858)
+    AnimalDies(20, animal=Characters.WildMouflon6, dead_flag=12092858)
+    AnimalDies(21, animal=Characters.Springhare0, dead_flag=12092858)
+    AnimalDies(22, animal=Characters.Springhare1, dead_flag=12092859)
+    AnimalDies(23, animal=Characters.Springhare2, dead_flag=12092858)
+    AnimalDies(24, animal=Characters.Springhare3, dead_flag=12092858)
+    AnimalDies(25, animal=Characters.Springhare4, dead_flag=12092858)
+    AnimalDies(26, animal=Characters.Springhare5, dead_flag=12092858)
+    AnimalDies(27, animal=Characters.Springhare6, dead_flag=12092858)
+    AnimalWanders(0, request_flag=12092870, animal=Characters.Deer0)
+    AnimalWanders(1, request_flag=12092871, animal=Characters.Deer1)
+    AnimalWanders(2, request_flag=12092872, animal=Characters.Deer2)
+    AnimalWanders(3, request_flag=12092873, animal=Characters.Deer3)
+    AnimalWanders(4, request_flag=12092874, animal=Characters.Deer4)
+    AnimalWanders(5, request_flag=12092875, animal=Characters.Deer5)
+    AnimalWanders(6, request_flag=12092876, animal=Characters.Deer6)
+    AnimalWanders(7, request_flag=12092877, animal=Characters.Boar0)
+    AnimalWanders(8, request_flag=12092878, animal=Characters.Boar1)
+    AnimalWanders(9, request_flag=12092879, animal=Characters.Boar2)
+    AnimalWanders(10, request_flag=12092880, animal=Characters.Boar3)
+    AnimalWanders(11, request_flag=12092881, animal=Characters.Boar4)
+    AnimalWanders(12, request_flag=12092882, animal=Characters.Boar5)
+    AnimalWanders(13, request_flag=12092883, animal=Characters.Boar6)
+    AnimalWanders(14, request_flag=12092884, animal=Characters.WildMouflon0)
+    AnimalWanders(15, request_flag=12092885, animal=Characters.WildMouflon1)
+    AnimalWanders(16, request_flag=12092886, animal=Characters.WildMouflon2)
+    AnimalWanders(17, request_flag=12092887, animal=Characters.WildMouflon3)
+    AnimalWanders(18, request_flag=12092888, animal=Characters.WildMouflon4)
+    AnimalWanders(19, request_flag=12092889, animal=Characters.WildMouflon5)
+    AnimalWanders(20, request_flag=12092890, animal=Characters.WildMouflon6)
+    AnimalWanders(21, request_flag=12092891, animal=Characters.Springhare0)
+    AnimalWanders(22, request_flag=12092892, animal=Characters.Springhare1)
+    AnimalWanders(23, request_flag=12092893, animal=Characters.Springhare2)
+    AnimalWanders(24, request_flag=12092894, animal=Characters.Springhare3)
+    AnimalWanders(25, request_flag=12092895, animal=Characters.Springhare4)
+    AnimalWanders(26, request_flag=12092896, animal=Characters.Springhare5)
+    AnimalWanders(27, request_flag=12092897, animal=Characters.Springhare6)
+    AncestorSpiritWarpsToAnimal(0, request_flag=12092870, animal=Characters.Deer0, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(1, request_flag=12092871, animal=Characters.Deer1, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(2, request_flag=12092872, animal=Characters.Deer2, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(3, request_flag=12092873, animal=Characters.Deer3, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(4, request_flag=12092874, animal=Characters.Deer4, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(5, request_flag=12092875, animal=Characters.Deer5, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(6, request_flag=12092876, animal=Characters.Deer6, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(7, request_flag=12092877, animal=Characters.Boar0, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(8, request_flag=12092878, animal=Characters.Boar1, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(9, request_flag=12092879, animal=Characters.Boar2, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(10, request_flag=12092880, animal=Characters.Boar3, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(11, request_flag=12092881, animal=Characters.Boar4, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(12, request_flag=12092882, animal=Characters.Boar5, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(13, request_flag=12092883, animal=Characters.Boar6, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(14, request_flag=12092884, animal=Characters.WildMouflon0, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(15, request_flag=12092885, animal=Characters.WildMouflon1, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(16, request_flag=12092886, animal=Characters.WildMouflon2, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(17, request_flag=12092887, animal=Characters.WildMouflon3, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(18, request_flag=12092888, animal=Characters.WildMouflon4, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(19, request_flag=12092889, animal=Characters.WildMouflon5, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(20, request_flag=12092890, animal=Characters.WildMouflon6, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(21, request_flag=12092891, animal=Characters.Springhare0, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(22, request_flag=12092892, animal=Characters.Springhare1, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(23, request_flag=12092893, animal=Characters.Springhare2, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(24, request_flag=12092894, animal=Characters.Springhare3, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(25, request_flag=12092895, animal=Characters.Springhare4, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(26, request_flag=12092896, animal=Characters.Springhare5, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorSpiritWarpsToAnimal(27, request_flag=12092897, animal=Characters.Springhare6, ancestor_spirit=Characters.RegalAncestorSpirit)
     Event_12092290()
-    Event_12092295(0, character=12095200)
+    SetUpAncestorAnimals(0, animal_group=CharacterGroups.RegalAncestorAnimals)
     Event_12092854(
         0,
         flag=12092850,
         flag_1=12092851,
         flag_2=12092852,
         flag_3=12092853,
-        character=Characters.AncestorSpirit,
-        character_1=12095200,
+        ancestor_spirit=Characters.RegalAncestorSpirit,
+        animal_group=CharacterGroups.RegalAncestorAnimals,
     )
     Event_12092859(
         0,
@@ -132,12 +136,12 @@ def Constructor():
         first_flag=12092855,
         flag_4=12092856,
         last_flag=12092857,
-        character=Characters.AncestorSpirit,
-        character_1=12095200,
-        character_2=12095201,
-        character_3=12095202,
-        character_4=12095203,
-        character_5=12095204,
+        character=Characters.RegalAncestorSpirit,
+        character_1=CharacterGroups.RegalAncestorAnimals,
+        character_2=CharacterGroups.RegalAncestorDeer,
+        character_3=CharacterGroups.RegalAncestorBoars,
+        character_4=CharacterGroups.RegalAncestorWildMouflons,
+        character_5=CharacterGroups.RegalAncestorSpringhares,
         character_6=Characters.Deer0,
         character_7=Characters.Deer1,
         character_8=Characters.Deer2,
@@ -199,79 +203,79 @@ def Constructor():
     Event_12092860(
         0,
         flag=12092858,
-        character=Characters.AncestorSpirit,
-        character_1=12095201,
-        character_2=12095202,
-        character_3=12095203,
-        character_4=12095204,
-        character_5=12095200,
+        ancestor_spirit=Characters.RegalAncestorSpirit,
+        deer_group=CharacterGroups.RegalAncestorDeer,
+        boar_group=CharacterGroups.RegalAncestorBoars,
+        wild_mouflon_group=CharacterGroups.RegalAncestorWildMouflons,
+        springhare_group=CharacterGroups.RegalAncestorSpringhares,
+        animal_group=CharacterGroups.RegalAncestorAnimals,
     )
-    Event_12092861(0, character=Characters.AncestorSpirit)
-    Event_12092862(0, character=Characters.AncestorSpirit, character_1=12095200)
-    Event_12092863(0, character=Characters.AncestorSpirit, character_1=12095200, flag=12092862)
-    Event_12092864(0, character=Characters.AncestorSpirit, character_1=12095200, flag=12092862, flag_1=12092863)
-    Event_12092910(0, entity=Characters.Dummy)
-    Event_12092865(0, character=Characters.AncestorSpirit)
-    Event_12092920(0, left=12092907, owner_entity=Characters.Dummy, source_entity=12092300)
-    Event_12092920(1, left=12092907, owner_entity=Characters.Dummy, source_entity=12092301)
-    Event_12092920(2, left=12092907, owner_entity=Characters.Dummy, source_entity=12092302)
-    Event_12092920(3, left=12092907, owner_entity=Characters.Dummy, source_entity=12092303)
-    Event_12092920(4, left=12092907, owner_entity=Characters.Dummy, source_entity=12092304)
-    Event_12092920(5, left=12092907, owner_entity=Characters.Dummy, source_entity=12092305)
-    Event_12092920(6, left=12092907, owner_entity=Characters.Dummy, source_entity=12092306)
-    Event_12092920(7, left=12092907, owner_entity=Characters.Dummy, source_entity=12092307)
-    Event_12092920(8, left=12092907, owner_entity=Characters.Dummy, source_entity=12092308)
-    Event_12092920(9, left=12092907, owner_entity=Characters.Dummy, source_entity=12092309)
-    Event_12092920(10, left=12092907, owner_entity=Characters.Dummy, source_entity=12092310)
-    Event_12092920(11, left=12092908, owner_entity=Characters.Dummy, source_entity=12092311)
-    Event_12092920(12, left=12092908, owner_entity=Characters.Dummy, source_entity=12092312)
-    Event_12092920(13, left=12092908, owner_entity=Characters.Dummy, source_entity=12092313)
-    Event_12092920(14, left=12092908, owner_entity=Characters.Dummy, source_entity=12092314)
-    Event_12092920(15, left=12092908, owner_entity=Characters.Dummy, source_entity=12092315)
-    Event_12092920(16, left=12092908, owner_entity=Characters.Dummy, source_entity=12092316)
-    Event_12092920(17, left=12092908, owner_entity=Characters.Dummy, source_entity=12092317)
-    Event_12092920(18, left=12092908, owner_entity=Characters.Dummy, source_entity=12092318)
-    Event_12092920(19, left=12092908, owner_entity=Characters.Dummy, source_entity=12092319)
-    Event_12092920(20, left=12092908, owner_entity=Characters.Dummy, source_entity=12092320)
-    Event_12092920(21, left=12092908, owner_entity=Characters.Dummy, source_entity=12092321)
-    Event_12092920(22, left=12092908, owner_entity=Characters.Dummy, source_entity=12092322)
-    Event_12092920(23, left=12092908, owner_entity=Characters.Dummy, source_entity=12092323)
-    Event_12092920(24, left=12092908, owner_entity=Characters.Dummy, source_entity=12092324)
-    Event_12092920(25, left=12092908, owner_entity=Characters.Dummy, source_entity=12092325)
-    Event_12092920(26, left=12092908, owner_entity=Characters.Dummy, source_entity=12092326)
-    Event_12092920(27, left=12092908, owner_entity=Characters.Dummy, source_entity=12092327)
-    Event_12092920(28, left=12092908, owner_entity=Characters.Dummy, source_entity=12092328)
-    Event_12092920(29, left=12092908, owner_entity=Characters.Dummy, source_entity=12092329)
-    Event_12092920(30, left=12092908, owner_entity=Characters.Dummy, source_entity=12092330)
-    Event_12092920(31, left=12092909, owner_entity=Characters.Dummy, source_entity=12092331)
-    Event_12092920(32, left=12092909, owner_entity=Characters.Dummy, source_entity=12092332)
-    Event_12092920(33, left=12092909, owner_entity=Characters.Dummy, source_entity=12092333)
-    Event_12092920(34, left=12092909, owner_entity=Characters.Dummy, source_entity=12092334)
-    Event_12092920(35, left=12092909, owner_entity=Characters.Dummy, source_entity=12092335)
-    Event_12092920(36, left=12092909, owner_entity=Characters.Dummy, source_entity=12092336)
-    Event_12092920(37, left=12092909, owner_entity=Characters.Dummy, source_entity=12092337)
-    Event_12092920(38, left=12092909, owner_entity=Characters.Dummy, source_entity=12092338)
-    Event_12092920(39, left=12092909, owner_entity=Characters.Dummy, source_entity=12092339)
-    Event_12092920(40, left=12092909, owner_entity=Characters.Dummy, source_entity=12092340)
-    Event_12092920(41, left=12092909, owner_entity=Characters.Dummy, source_entity=12092341)
-    Event_12092920(42, left=12092909, owner_entity=Characters.Dummy, source_entity=12092342)
-    Event_12092920(43, left=12092909, owner_entity=Characters.Dummy, source_entity=12092343)
-    Event_12092920(44, left=12092909, owner_entity=Characters.Dummy, source_entity=12092344)
-    Event_12092920(45, left=12092909, owner_entity=Characters.Dummy, source_entity=12092345)
-    Event_12092920(46, left=12092909, owner_entity=Characters.Dummy, source_entity=12092346)
-    Event_12092920(47, left=12092909, owner_entity=Characters.Dummy, source_entity=12092347)
-    Event_12092920(48, left=12092909, owner_entity=Characters.Dummy, source_entity=12092348)
-    Event_12092920(49, left=12092909, owner_entity=Characters.Dummy, source_entity=12092349)
-    Event_12092920(50, 12092909, 12090290, 12092350)
+    Event_12092861(0, ancestor_spirit=Characters.RegalAncestorSpirit)
+    Event_12092862(0, ancestor_spirit=Characters.RegalAncestorSpirit, animal_group=CharacterGroups.RegalAncestorAnimals)
+    Event_12092863(0, ancestor_spirit=Characters.RegalAncestorSpirit, animal_group=CharacterGroups.RegalAncestorAnimals, flag=12092862)
+    Event_12092864(0, ancestor_spirit=Characters.RegalAncestorSpirit, animal_group=CharacterGroups.RegalAncestorAnimals, flag=12092862, flag_1=12092863)
+    CreateAncestorProjectileOwner(0, projectile_dummy=Characters.AncestorProjectileDummy)
+    AncestorMegaProjectileAttack(0, ancestor_spirit=Characters.RegalAncestorSpirit)
+    AncestorProjectile(0, request_flag=12092907, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092300)
+    AncestorProjectile(1, request_flag=12092907, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092301)
+    AncestorProjectile(2, request_flag=12092907, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092302)
+    AncestorProjectile(3, request_flag=12092907, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092303)
+    AncestorProjectile(4, request_flag=12092907, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092304)
+    AncestorProjectile(5, request_flag=12092907, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092305)
+    AncestorProjectile(6, request_flag=12092907, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092306)
+    AncestorProjectile(7, request_flag=12092907, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092307)
+    AncestorProjectile(8, request_flag=12092907, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092308)
+    AncestorProjectile(9, request_flag=12092907, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092309)
+    AncestorProjectile(10, request_flag=12092907, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092310)
+    AncestorProjectile(11, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092311)
+    AncestorProjectile(12, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092312)
+    AncestorProjectile(13, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092313)
+    AncestorProjectile(14, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092314)
+    AncestorProjectile(15, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092315)
+    AncestorProjectile(16, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092316)
+    AncestorProjectile(17, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092317)
+    AncestorProjectile(18, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092318)
+    AncestorProjectile(19, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092319)
+    AncestorProjectile(20, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092320)
+    AncestorProjectile(21, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092321)
+    AncestorProjectile(22, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092322)
+    AncestorProjectile(23, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092323)
+    AncestorProjectile(24, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092324)
+    AncestorProjectile(25, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092325)
+    AncestorProjectile(26, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092326)
+    AncestorProjectile(27, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092327)
+    AncestorProjectile(28, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092328)
+    AncestorProjectile(29, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092329)
+    AncestorProjectile(30, request_flag=12092908, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092330)
+    AncestorProjectile(31, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092331)
+    AncestorProjectile(32, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092332)
+    AncestorProjectile(33, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092333)
+    AncestorProjectile(34, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092334)
+    AncestorProjectile(35, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092335)
+    AncestorProjectile(36, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092336)
+    AncestorProjectile(37, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092337)
+    AncestorProjectile(38, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092338)
+    AncestorProjectile(39, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092339)
+    AncestorProjectile(40, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092340)
+    AncestorProjectile(41, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092341)
+    AncestorProjectile(42, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092342)
+    AncestorProjectile(43, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092343)
+    AncestorProjectile(44, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092344)
+    AncestorProjectile(45, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092345)
+    AncestorProjectile(46, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092346)
+    AncestorProjectile(47, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092347)
+    AncestorProjectile(48, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092348)
+    AncestorProjectile(49, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092349)
+    AncestorProjectile(50, request_flag=12092909, owner_entity=Characters.AncestorProjectileDummy, source_entity=12092350)
 
 
 @ContinueOnRest(12092848)
-def Event_12092848():
+def ReturnToSiofraRiver():
     """Event 12092848"""
-    GotoIfFlagEnabled(Label.L0, flag=12090800)
+    GotoIfFlagEnabled(Label.L0, flag=Flags.RegalAncestorSpiritDead)
     DeleteAssetVFX(Assets.AEG099_065_9000, erase_root=False)
     AND_1.Add(PlayerInOwnWorld())
-    AND_1.Add(FlagEnabled(12090800))
+    AND_1.Add(FlagEnabled(Flags.RegalAncestorSpiritDead))
     
     MAIN.Await(AND_1)
 
@@ -296,22 +300,24 @@ def Event_12092848():
 @ContinueOnRest(12092800)
 def Event_12092800():
     """Event 12092800"""
-    if FlagEnabled(12090800):
+    if FlagEnabled(Flags.RegalAncestorSpiritDead):
         return
-    
-    MAIN.Await(HealthRatio(Characters.AncestorSpirit) <= 0.0)
+
+    AND_1.Add(HealthRatio(Characters.RegalAncestorSpirit) <= 0.0)
+    AND_1.Add(HealthRatio(Characters.CLONE_AncestorSpirit) <= 0.0)
+    MAIN.Await(AND_1)
     
     DisableFlag(12092907)
     DisableFlag(12092908)
     DisableFlag(12092909)
-    Kill(12095200)
+    Kill(CharacterGroups.RegalAncestorAnimals)
     Wait(2.0)
-    PlaySoundEffect(Characters.AncestorSpirit, 77777777, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(Characters.RegalAncestorSpirit, 77777777, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.AncestorSpirit))
+    MAIN.Await(CharacterDead(Characters.RegalAncestorSpirit))
     
-    KillBossAndDisplayBanner(character=Characters.AncestorSpirit, banner_type=BannerType.LegendFelled)
-    EnableFlag(12090800)
+    KillBossAndDisplayBanner(character=Characters.RegalAncestorSpirit, banner_type=BannerType.LegendFelled)
+    EnableFlag(Flags.RegalAncestorSpiritDead)
     EnableFlag(9133)
     if PlayerInOwnWorld():
         EnableFlag(91133)
@@ -321,15 +327,15 @@ def Event_12092800():
 @RestartOnRest(12092810)
 def Event_12092810():
     """Event 12092810"""
-    GotoIfFlagDisabled(Label.L0, flag=12090800)
-    DisableCharacter(Characters.AncestorSpirit)
-    DisableAnimations(Characters.AncestorSpirit)
-    Kill(Characters.AncestorSpirit)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.RegalAncestorSpiritDead)
+    DisableCharacter(Characters.RegalAncestorSpirit)
+    DisableAnimations(Characters.RegalAncestorSpirit)
+    Kill(Characters.RegalAncestorSpirit)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(Characters.AncestorSpirit)
+    DisableAI(Characters.RegalAncestorSpirit)
     AND_2.Add(FlagEnabled(12092805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=12092800))
     
@@ -337,17 +343,17 @@ def Event_12092810():
 
     # --- Label 2 --- #
     DefineLabel(2)
-    EnableAI(Characters.AncestorSpirit)
-    SetNetworkUpdateRate(Characters.AncestorSpirit, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.AncestorSpirit, name=904670001)
+    EnableAI(Characters.RegalAncestorSpirit)
+    SetNetworkUpdateRate(Characters.RegalAncestorSpirit, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.RegalAncestorSpirit, name=904670001)
 
 
 @ContinueOnRest(12092849)
-def Event_12092849():
+def RegalAncestorSpiritCommonEvents():
     """Event 12092849"""
     CommonFunc_ControlBossMusic(
         0,
-        dead_flag=12090800,
+        boss_dead_flag=Flags.RegalAncestorSpiritDead,
         bgm_boss_conv_param_id=467000,
         host_in_battle=12090805,
         summon_in_battle=12090806,
@@ -358,7 +364,7 @@ def Event_12092849():
     )
     CommonFunc_HostEntersBossFog(
         0,
-        boss_dead_flag=12090800,
+        boss_dead_flag=Flags.RegalAncestorSpiritDead,
         fog_asset=Assets.AEG099_002_9000,
         fog_region=12092800,
         host_entered_fog_flag=12092805,
@@ -369,99 +375,105 @@ def Event_12092849():
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=12090800,
+        boss_dead_flag=Flags.RegalAncestorSpiritDead,
         fog_asset=Assets.AEG099_002_9000,
         fog_region=12092800,
         host_entered_fog_flag=12092805,
         summon_entered_fog_flag=12092806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=12090800, fog_asset=Assets.AEG099_002_9000, model_point=8, required_flag=0)
-    CommonFunc_ControlBossMusic(0, 12090800, 467000, 12092805, 12092806, 0, 12092802, 0, 0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.RegalAncestorSpiritDead, fog_asset=Assets.AEG099_002_9000, model_point=8, required_flag=0)
+    CommonFunc_ControlBossMusic(0, Flags.RegalAncestorSpiritDead, 467000, 12092805, 12092806, 0, 12092802, 0, 0)
 
 
 @RestartOnRest(12092200)
-def Event_12092200(_, character: uint, flag: uint):
+def AnimalDies(_, animal: uint, dead_flag: uint):
     """Event 12092200"""
-    AND_1.Add(CharacterHasSpecialEffect(character, 13605))
-    AND_1.Add(HealthRatio(character) == 0.0)
+    AND_1.Add(CharacterHasSpecialEffect(animal, Effects.AnimalActive))
+    AND_1.Add(HealthRatio(animal) == 0.0)
     
     MAIN.Await(AND_1)
     
-    RemoveSpecialEffect(character, 13605)
-    EnableFlag(flag)
+    RemoveSpecialEffect(animal, Effects.AnimalActive)
+    EnableFlag(dead_flag)
     Restart()
 
 
 @RestartOnRest(12092230)
-def Event_12092230(_, flag: uint, character: uint):
+def AnimalWanders(_, request_flag: uint, animal: uint):
     """Event 12092230"""
-    AND_1.Add(FlagEnabled(flag))
+    AND_1.Add(FlagEnabled(request_flag))
     
     MAIN.Await(AND_1)
     
-    RemoveSpecialEffect(character, 13605)
-    EnableInvincibility(character)
-    DisableAnimations(character)
-    DisableGravity(character)
-    DisableAI(character)
-    SetNetworkUpdateRate(character, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    ForceAnimation(character, 20000, wait_for_completion=True)
-    ForceAnimation(character, 20001, loop=True)
+    RemoveSpecialEffect(animal, Effects.AnimalActive)
+    EnableInvincibility(animal)
+    DisableAnimations(animal)
+    DisableGravity(animal)
+    DisableAI(animal)
+    SetNetworkUpdateRate(animal, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ForceAnimation(animal, 20000, wait_for_completion=True)
+    ForceAnimation(animal, 20001, loop=True)
     Wait(15.0)
     Restart()
 
 
 @RestartOnRest(12092260)
-def Event_12092260(_, flag: uint, character: uint, character_1: uint):
+def AncestorSpiritWarpsToAnimal(_, request_flag: uint, animal: uint, ancestor_spirit: uint):
     """Event 12092260"""
-    AND_1.Add(FlagEnabled(flag))
-    AND_1.Add(CharacterHasSpecialEffect(character_1, 13610))
+    AND_1.Add(FlagEnabled(request_flag))
+    AND_1.Add(CharacterHasSpecialEffect(ancestor_spirit, 13610))
     
     MAIN.Await(AND_1)
     
-    DisableFlag(flag)
-    DisableAnimations(character_1)
+    DisableFlag(request_flag)
+    DisableAnimations(ancestor_spirit)
     Move(
-        character_1,
-        destination=character,
+        ancestor_spirit,
+        destination=animal,
         destination_type=CoordEntityType.Character,
         model_point=260,
         short_move=True,
     )
-    AND_15.Add(EntityWithinDistance(entity=20000, other_entity=character, radius=40.0))
-    AND_15.Add(EntityBeyondDistance(entity=20000, other_entity=character, radius=7.0))
+
+    # Ancestor Spirit does attack 3037 if player is between 7 and 40 units away, or 3014 otherwise.
+    AND_15.Add(EntityWithinDistance(entity=20000, other_entity=animal, radius=40.0))
+    AND_15.Add(EntityBeyondDistance(entity=20000, other_entity=animal, radius=7.0))
     SkipLinesIfConditionTrue(2, AND_15)
-    ForceAnimation(character_1, 3014)
+    ForceAnimation(ancestor_spirit, 3014)
     SkipLines(1)
-    ForceAnimation(character_1, 3037)
-    SkipLinesIfCharacterDoesNotHaveSpecialEffect(line_count=3, character=character_1, special_effect=13601)
-    AddSpecialEffect(character_1, 13613)
-    AddSpecialEffect(character_1, 13618)
+    ForceAnimation(ancestor_spirit, 3037)
+
+    SkipLinesIfCharacterDoesNotHaveSpecialEffect(line_count=3, character=ancestor_spirit, special_effect=13601)
+    AddSpecialEffect(ancestor_spirit, 13613)
+    AddSpecialEffect(ancestor_spirit, 13618)
     Goto(Label.L0)
-    SkipLinesIfCharacterDoesNotHaveSpecialEffect(line_count=3, character=character_1, special_effect=13602)
-    AddSpecialEffect(character_1, 13614)
-    AddSpecialEffect(character_1, 13619)
+
+    SkipLinesIfCharacterDoesNotHaveSpecialEffect(line_count=3, character=ancestor_spirit, special_effect=13602)
+    AddSpecialEffect(ancestor_spirit, 13614)
+    AddSpecialEffect(ancestor_spirit, 13619)
     Goto(Label.L0)
-    SkipLinesIfCharacterDoesNotHaveSpecialEffect(line_count=3, character=character_1, special_effect=13603)
-    AddSpecialEffect(character_1, 13615)
-    AddSpecialEffect(character_1, 13620)
+
+    SkipLinesIfCharacterDoesNotHaveSpecialEffect(line_count=3, character=ancestor_spirit, special_effect=13603)
+    AddSpecialEffect(ancestor_spirit, 13615)
+    AddSpecialEffect(ancestor_spirit, 13620)
     Goto(Label.L0)
-    SkipLinesIfCharacterDoesNotHaveSpecialEffect(line_count=2, character=character_1, special_effect=13604)
-    AddSpecialEffect(character_1, 13616)
-    AddSpecialEffect(character_1, 13621)
+
+    SkipLinesIfCharacterDoesNotHaveSpecialEffect(line_count=2, character=ancestor_spirit, special_effect=13604)
+    AddSpecialEffect(ancestor_spirit, 13616)
+    AddSpecialEffect(ancestor_spirit, 13621)
 
     # --- Label 0 --- #
     DefineLabel(0)
-    ForceAnimation(character, 20002, wait_for_completion=True)
-    DisableAI(character)
-    EnableGravity(character)
-    DisableCharacter(character)
-    DisableInvincibility(character)
-    Kill(character)
-    SetNetworkUpdateRate(character, is_fixed=False, update_rate=CharacterUpdateRate.Always)
-    EnableAnimations(character_1)
-    DisableFlag(flag)
+    ForceAnimation(animal, 20002, wait_for_completion=True)
+    DisableAI(animal)
+    EnableGravity(animal)
+    DisableCharacter(animal)
+    DisableInvincibility(animal)
+    Kill(animal)
+    SetNetworkUpdateRate(animal, is_fixed=False, update_rate=CharacterUpdateRate.Always)
+    EnableAnimations(ancestor_spirit)
+    DisableFlag(request_flag)
     Restart()
 
 
@@ -469,85 +481,85 @@ def Event_12092260(_, flag: uint, character: uint, character_1: uint):
 def Event_12092290():
     """Event 12092290"""
     AND_1.Add(FlagEnabled(12092901))
-    AND_1.Add(CharacterHasSpecialEffect(Characters.AncestorSpirit, 13610))
+    AND_1.Add(CharacterHasSpecialEffect(Characters.RegalAncestorSpirit, 13610))
     
     MAIN.Await(AND_1)
     
     DisableFlag(12092901)
-    DisableAnimations(Characters.AncestorSpirit)
+    DisableAnimations(Characters.RegalAncestorSpirit)
     Move(
-        Characters.AncestorSpirit,
+        Characters.RegalAncestorSpirit,
         destination=12092308,
         destination_type=CoordEntityType.Region,
         model_point=0,
         short_move=True,
     )
-    ForceAnimation(Characters.AncestorSpirit, 3014)
+    ForceAnimation(Characters.RegalAncestorSpirit, 3014)
     SkipLinesIfCharacterDoesNotHaveSpecialEffect(
         line_count=3,
-        character=Characters.AncestorSpirit,
+        character=Characters.RegalAncestorSpirit,
         special_effect=13601,
     )
-    AddSpecialEffect(Characters.AncestorSpirit, 13613)
-    AddSpecialEffect(Characters.AncestorSpirit, 13618)
+    AddSpecialEffect(Characters.RegalAncestorSpirit, 13613)
+    AddSpecialEffect(Characters.RegalAncestorSpirit, 13618)
     Goto(Label.L0)
     SkipLinesIfCharacterDoesNotHaveSpecialEffect(
         line_count=3,
-        character=Characters.AncestorSpirit,
+        character=Characters.RegalAncestorSpirit,
         special_effect=13602,
     )
-    AddSpecialEffect(Characters.AncestorSpirit, 13614)
-    AddSpecialEffect(Characters.AncestorSpirit, 13619)
+    AddSpecialEffect(Characters.RegalAncestorSpirit, 13614)
+    AddSpecialEffect(Characters.RegalAncestorSpirit, 13619)
     Goto(Label.L0)
     SkipLinesIfCharacterDoesNotHaveSpecialEffect(
         line_count=3,
-        character=Characters.AncestorSpirit,
+        character=Characters.RegalAncestorSpirit,
         special_effect=13603,
     )
-    AddSpecialEffect(Characters.AncestorSpirit, 13615)
-    AddSpecialEffect(Characters.AncestorSpirit, 13620)
+    AddSpecialEffect(Characters.RegalAncestorSpirit, 13615)
+    AddSpecialEffect(Characters.RegalAncestorSpirit, 13620)
     Goto(Label.L0)
     SkipLinesIfCharacterDoesNotHaveSpecialEffect(
         line_count=2,
-        character=Characters.AncestorSpirit,
+        character=Characters.RegalAncestorSpirit,
         special_effect=13604,
     )
-    AddSpecialEffect(Characters.AncestorSpirit, 13616)
-    AddSpecialEffect(Characters.AncestorSpirit, 13621)
+    AddSpecialEffect(Characters.RegalAncestorSpirit, 13616)
+    AddSpecialEffect(Characters.RegalAncestorSpirit, 13621)
 
     # --- Label 0 --- #
     DefineLabel(0)
-    EnableAnimations(Characters.AncestorSpirit)
+    EnableAnimations(Characters.RegalAncestorSpirit)
     DisableFlag(12092901)
     Restart()
 
 
 @RestartOnRest(12092295)
-def Event_12092295(_, character: uint):
+def SetUpAncestorAnimals(_, animal_group: uint):
     """Event 12092295"""
-    SetLockOnPoint(character=character, lock_on_model_point=220, state=False)
-    DisableAnimations(character)
+    SetLockOnPoint(character=animal_group, lock_on_model_point=220, state=False)
+    DisableAnimations(animal_group)
 
 
 @RestartOnRest(12092854)
-def Event_12092854(_, flag: uint, flag_1: uint, flag_2: uint, flag_3: uint, character: uint, character_1: uint):
+def Event_12092854(_, flag: uint, flag_1: uint, flag_2: uint, flag_3: uint, ancestor_spirit: uint, animal_group: uint):
     """Event 12092854"""
-    MAIN.Await(CharacterHasSpecialEffect(character, 13642))
+    MAIN.Await(CharacterHasSpecialEffect(ancestor_spirit, 13642))
     
     DisableFlag(flag)
     DisableFlag(flag_1)
     DisableFlag(flag_2)
-    AND_15.Add(CharacterHasSpecialEffect(character_1, 13605, target_comparison_type=ComparisonType.LessThan, target_count=5.0))
+    AND_15.Add(CharacterHasSpecialEffect(animal_group, Effects.AnimalActive, target_comparison_type=ComparisonType.LessThan, target_count=5.0))
     SkipLinesIfConditionFalse(2, AND_15)
     EnableFlag(flag_2)
     Goto(Label.L0)
-    AND_14.Add(CharacterHasSpecialEffect(character_1, 13605, target_comparison_type=ComparisonType.LessThan, target_count=10.0))
+    AND_14.Add(CharacterHasSpecialEffect(animal_group, Effects.AnimalActive, target_comparison_type=ComparisonType.LessThan, target_count=10.0))
     SkipLinesIfConditionFalse(2, AND_14)
     EnableFlag(flag_1)
     Goto(Label.L0)
     AND_13.Add(CharacterHasSpecialEffect(
-        character_1,
-        13605,
+        animal_group,
+        Effects.AnimalActive,
         target_comparison_type=ComparisonType.GreaterThanOrEqual,
         target_count=10.0,
     ))
@@ -557,7 +569,7 @@ def Event_12092854(_, flag: uint, flag_1: uint, flag_2: uint, flag_3: uint, char
 
     # --- Label 0 --- #
     DefineLabel(0)
-    RemoveSpecialEffect(character_1, 13643)
+    RemoveSpecialEffect(animal_group, 13643)
     DisableFlag(flag_3)
     Wait(2.0)
     EnableFlag(flag_3)
@@ -653,15 +665,15 @@ def Event_12092859(
     GotoIfCharacterHasSpecialEffect(
         Label.L0,
         character=character_2,
-        special_effect=13605,
+        special_effect=Effects.AnimalActive,
         target_comparison_type=ComparisonType.GreaterThanOrEqual,
     )
     EnableCharacter(character_8)
     EnableAI(character_8)
-    MakeEnemyAppear(character=character_36)
+    ForceSpawnerToSpawn(spawner=character_36)
     WaitFrames(frames=1)
     AddSpecialEffect(character_8, 13643)
-    AddSpecialEffect(character_8, 13605)
+    AddSpecialEffect(character_8, Effects.AnimalActive)
     DisableAnimations(character_8)
     Goto(Label.L20)
 
@@ -671,29 +683,29 @@ def Event_12092859(
     SkipLinesIfCharacterHasSpecialEffect(
         line_count=8,
         character=character_3,
-        special_effect=13605,
+        special_effect=Effects.AnimalActive,
         target_comparison_type=ComparisonType.GreaterThanOrEqual,
     )
     EnableCharacter(character_13)
     EnableAI(character_13)
-    MakeEnemyAppear(character=character_41)
+    ForceSpawnerToSpawn(spawner=character_41)
     WaitFrames(frames=1)
     AddSpecialEffect(character_13, 13643)
-    AddSpecialEffect(character_13, 13605)
+    AddSpecialEffect(character_13, Effects.AnimalActive)
     DisableAnimations(character_13)
     Goto(Label.L20)
     GotoIfCharacterHasSpecialEffect(
         Label.L1,
         character=character_5,
-        special_effect=13605,
+        special_effect=Effects.AnimalActive,
         target_comparison_type=ComparisonType.GreaterThanOrEqual,
     )
     EnableCharacter(character_27)
     EnableAI(character_27)
-    MakeEnemyAppear(character=character_55)
+    ForceSpawnerToSpawn(spawner=character_55)
     WaitFrames(frames=1)
     AddSpecialEffect(character_27, 13643)
-    AddSpecialEffect(character_27, 13605)
+    AddSpecialEffect(character_27, Effects.AnimalActive)
     DisableAnimations(character_27)
     Goto(Label.L20)
 
@@ -703,15 +715,15 @@ def Event_12092859(
     GotoIfCharacterHasSpecialEffect(
         Label.L2,
         character=character_4,
-        special_effect=13605,
+        special_effect=Effects.AnimalActive,
         target_comparison_type=ComparisonType.GreaterThanOrEqual,
     )
     EnableCharacter(character_20)
     EnableAI(character_20)
-    MakeEnemyAppear(character=character_48)
+    ForceSpawnerToSpawn(spawner=character_48)
     WaitFrames(frames=1)
     AddSpecialEffect(character_20, 13643)
-    AddSpecialEffect(character_20, 13605)
+    AddSpecialEffect(character_20, Effects.AnimalActive)
     DisableAnimations(character_20)
     Goto(Label.L20)
 
@@ -720,262 +732,262 @@ def Event_12092859(
     if FlagDisabled(first_flag):
         GotoIfFlagEnabled(Label.L3, flag=flag_4)
         GotoIfFlagEnabled(Label.L4, flag=last_flag)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_6, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_6, special_effect=Effects.AnimalActive)
     EnableCharacter(character_6)
     EnableAI(character_6)
-    MakeEnemyAppear(character=character_34)
+    ForceSpawnerToSpawn(spawner=character_34)
     WaitFrames(frames=1)
     AddSpecialEffect(character_6, 13643)
-    AddSpecialEffect(character_6, 13605)
+    AddSpecialEffect(character_6, Effects.AnimalActive)
     DisableAnimations(character_6)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_13, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_13, special_effect=Effects.AnimalActive)
     EnableCharacter(character_13)
     EnableAI(character_13)
-    MakeEnemyAppear(character=character_41)
+    ForceSpawnerToSpawn(spawner=character_41)
     WaitFrames(frames=1)
     AddSpecialEffect(character_13, 13643)
-    AddSpecialEffect(character_13, 13605)
+    AddSpecialEffect(character_13, Effects.AnimalActive)
     DisableAnimations(character_13)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_20, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_20, special_effect=Effects.AnimalActive)
     EnableCharacter(character_20)
     EnableAI(character_20)
-    MakeEnemyAppear(character=character_48)
+    ForceSpawnerToSpawn(spawner=character_48)
     WaitFrames(frames=1)
     AddSpecialEffect(character_20, 13643)
-    AddSpecialEffect(character_20, 13605)
+    AddSpecialEffect(character_20, Effects.AnimalActive)
     DisableAnimations(character_20)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_27, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_27, special_effect=Effects.AnimalActive)
     EnableCharacter(character_27)
     EnableAI(character_27)
-    MakeEnemyAppear(character=character_55)
+    ForceSpawnerToSpawn(spawner=character_55)
     WaitFrames(frames=1)
     AddSpecialEffect(character_27, 13643)
-    AddSpecialEffect(character_27, 13605)
+    AddSpecialEffect(character_27, Effects.AnimalActive)
     DisableAnimations(character_27)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_7, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_7, special_effect=Effects.AnimalActive)
     EnableCharacter(character_7)
     EnableAI(character_7)
-    MakeEnemyAppear(character=character_35)
+    ForceSpawnerToSpawn(spawner=character_35)
     WaitFrames(frames=1)
     AddSpecialEffect(character_7, 13643)
-    AddSpecialEffect(character_7, 13605)
+    AddSpecialEffect(character_7, Effects.AnimalActive)
     DisableAnimations(character_7)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_14, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_14, special_effect=Effects.AnimalActive)
     EnableCharacter(character_14)
     EnableAI(character_14)
-    MakeEnemyAppear(character=character_42)
+    ForceSpawnerToSpawn(spawner=character_42)
     WaitFrames(frames=1)
     AddSpecialEffect(character_14, 13643)
-    AddSpecialEffect(character_14, 13605)
+    AddSpecialEffect(character_14, Effects.AnimalActive)
     DisableAnimations(character_14)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_21, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_21, special_effect=Effects.AnimalActive)
     EnableCharacter(character_21)
     EnableAI(character_21)
-    MakeEnemyAppear(character=character_49)
+    ForceSpawnerToSpawn(spawner=character_49)
     WaitFrames(frames=1)
     AddSpecialEffect(character_21, 13643)
-    AddSpecialEffect(character_21, 13605)
+    AddSpecialEffect(character_21, Effects.AnimalActive)
     DisableAnimations(character_21)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_28, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_28, special_effect=Effects.AnimalActive)
     EnableCharacter(character_28)
     EnableAI(character_28)
-    MakeEnemyAppear(character=character_56)
+    ForceSpawnerToSpawn(spawner=character_56)
     WaitFrames(frames=1)
     AddSpecialEffect(character_28, 13643)
-    AddSpecialEffect(character_28, 13605)
+    AddSpecialEffect(character_28, Effects.AnimalActive)
     DisableAnimations(character_28)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_8, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_8, special_effect=Effects.AnimalActive)
     EnableCharacter(character_8)
     EnableAI(character_8)
-    MakeEnemyAppear(character=character_36)
+    ForceSpawnerToSpawn(spawner=character_36)
     WaitFrames(frames=1)
     AddSpecialEffect(character_8, 13643)
-    AddSpecialEffect(character_8, 13605)
+    AddSpecialEffect(character_8, Effects.AnimalActive)
     DisableAnimations(character_8)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_15, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_15, special_effect=Effects.AnimalActive)
     EnableCharacter(character_15)
     EnableAI(character_15)
-    MakeEnemyAppear(character=character_43)
+    ForceSpawnerToSpawn(spawner=character_43)
     WaitFrames(frames=1)
     AddSpecialEffect(character_15, 13643)
-    AddSpecialEffect(character_15, 13605)
+    AddSpecialEffect(character_15, Effects.AnimalActive)
     DisableAnimations(character_15)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_22, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_22, special_effect=Effects.AnimalActive)
     EnableCharacter(character_22)
     EnableAI(character_22)
-    MakeEnemyAppear(character=character_50)
+    ForceSpawnerToSpawn(spawner=character_50)
     WaitFrames(frames=1)
     AddSpecialEffect(character_22, 13643)
-    AddSpecialEffect(character_22, 13605)
+    AddSpecialEffect(character_22, Effects.AnimalActive)
     DisableAnimations(character_22)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_29, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_29, special_effect=Effects.AnimalActive)
     EnableCharacter(character_29)
     EnableAI(character_29)
-    MakeEnemyAppear(character=character_57)
+    ForceSpawnerToSpawn(spawner=character_57)
     WaitFrames(frames=1)
     AddSpecialEffect(character_29, 13643)
-    AddSpecialEffect(character_29, 13605)
+    AddSpecialEffect(character_29, Effects.AnimalActive)
     DisableAnimations(character_29)
     Goto(Label.L20)
 
     # --- Label 3 --- #
     DefineLabel(3)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_23, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_23, special_effect=Effects.AnimalActive)
     EnableCharacter(character_23)
     EnableAI(character_23)
-    MakeEnemyAppear(character=character_51)
+    ForceSpawnerToSpawn(spawner=character_51)
     WaitFrames(frames=1)
     AddSpecialEffect(character_23, 13643)
-    AddSpecialEffect(character_23, 13605)
+    AddSpecialEffect(character_23, Effects.AnimalActive)
     DisableAnimations(character_23)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_9, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_9, special_effect=Effects.AnimalActive)
     EnableCharacter(character_9)
     EnableAI(character_9)
-    MakeEnemyAppear(character=character_37)
+    ForceSpawnerToSpawn(spawner=character_37)
     WaitFrames(frames=1)
     AddSpecialEffect(character_9, 13643)
-    AddSpecialEffect(character_9, 13605)
+    AddSpecialEffect(character_9, Effects.AnimalActive)
     DisableAnimations(character_9)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_30, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_30, special_effect=Effects.AnimalActive)
     EnableCharacter(character_30)
     EnableAI(character_30)
-    MakeEnemyAppear(character=character_58)
+    ForceSpawnerToSpawn(spawner=character_58)
     WaitFrames(frames=1)
     AddSpecialEffect(character_30, 13643)
-    AddSpecialEffect(character_30, 13605)
+    AddSpecialEffect(character_30, Effects.AnimalActive)
     DisableAnimations(character_30)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_16, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_16, special_effect=Effects.AnimalActive)
     EnableCharacter(character_16)
     EnableAI(character_16)
-    MakeEnemyAppear(character=character_44)
+    ForceSpawnerToSpawn(spawner=character_44)
     WaitFrames(frames=1)
     AddSpecialEffect(character_16, 13643)
-    AddSpecialEffect(character_16, 13605)
+    AddSpecialEffect(character_16, Effects.AnimalActive)
     DisableAnimations(character_16)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_24, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_24, special_effect=Effects.AnimalActive)
     EnableCharacter(character_24)
     EnableAI(character_24)
-    MakeEnemyAppear(character=character_52)
+    ForceSpawnerToSpawn(spawner=character_52)
     WaitFrames(frames=1)
     AddSpecialEffect(character_24, 13643)
-    AddSpecialEffect(character_24, 13605)
+    AddSpecialEffect(character_24, Effects.AnimalActive)
     DisableAnimations(character_24)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_10, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_10, special_effect=Effects.AnimalActive)
     EnableCharacter(character_10)
     EnableAI(character_10)
-    MakeEnemyAppear(character=character_38)
+    ForceSpawnerToSpawn(spawner=character_38)
     WaitFrames(frames=1)
     AddSpecialEffect(character_10, 13643)
-    AddSpecialEffect(character_10, 13605)
+    AddSpecialEffect(character_10, Effects.AnimalActive)
     DisableAnimations(character_10)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_31, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_31, special_effect=Effects.AnimalActive)
     EnableCharacter(character_31)
     EnableAI(character_31)
-    MakeEnemyAppear(character=character_59)
+    ForceSpawnerToSpawn(spawner=character_59)
     WaitFrames(frames=1)
     AddSpecialEffect(character_31, 13643)
-    AddSpecialEffect(character_31, 13605)
+    AddSpecialEffect(character_31, Effects.AnimalActive)
     DisableAnimations(character_31)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_17, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_17, special_effect=Effects.AnimalActive)
     EnableCharacter(character_17)
     EnableAI(character_17)
-    MakeEnemyAppear(character=character_45)
+    ForceSpawnerToSpawn(spawner=character_45)
     WaitFrames(frames=1)
     AddSpecialEffect(character_17, 13643)
-    AddSpecialEffect(character_17, 13605)
+    AddSpecialEffect(character_17, Effects.AnimalActive)
     DisableAnimations(character_17)
     Goto(Label.L20)
 
     # --- Label 4 --- #
     DefineLabel(4)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_32, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_32, special_effect=Effects.AnimalActive)
     EnableCharacter(character_32)
     EnableAI(character_32)
-    MakeEnemyAppear(character=character_60)
+    ForceSpawnerToSpawn(spawner=character_60)
     WaitFrames(frames=1)
     AddSpecialEffect(character_32, 13643)
-    AddSpecialEffect(character_32, 13605)
+    AddSpecialEffect(character_32, Effects.AnimalActive)
     DisableAnimations(character_32)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_25, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_25, special_effect=Effects.AnimalActive)
     EnableCharacter(character_25)
     EnableAI(character_25)
-    MakeEnemyAppear(character=character_53)
+    ForceSpawnerToSpawn(spawner=character_53)
     WaitFrames(frames=1)
     AddSpecialEffect(character_25, 13643)
-    AddSpecialEffect(character_25, 13605)
+    AddSpecialEffect(character_25, Effects.AnimalActive)
     DisableAnimations(character_25)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_18, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_18, special_effect=Effects.AnimalActive)
     EnableCharacter(character_18)
     EnableAI(character_18)
-    MakeEnemyAppear(character=character_46)
+    ForceSpawnerToSpawn(spawner=character_46)
     WaitFrames(frames=1)
     AddSpecialEffect(character_18, 13643)
-    AddSpecialEffect(character_18, 13605)
+    AddSpecialEffect(character_18, Effects.AnimalActive)
     DisableAnimations(character_18)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_11, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_11, special_effect=Effects.AnimalActive)
     EnableCharacter(character_11)
     EnableAI(character_11)
-    MakeEnemyAppear(character=character_39)
+    ForceSpawnerToSpawn(spawner=character_39)
     WaitFrames(frames=1)
     AddSpecialEffect(character_11, 13643)
-    AddSpecialEffect(character_11, 13605)
+    AddSpecialEffect(character_11, Effects.AnimalActive)
     DisableAnimations(character_11)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_33, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_33, special_effect=Effects.AnimalActive)
     EnableCharacter(character_33)
     EnableAI(character_33)
-    MakeEnemyAppear(character=character_61)
+    ForceSpawnerToSpawn(spawner=character_61)
     WaitFrames(frames=1)
     AddSpecialEffect(character_33, 13643)
-    AddSpecialEffect(character_33, 13605)
+    AddSpecialEffect(character_33, Effects.AnimalActive)
     DisableAnimations(character_33)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_26, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_26, special_effect=Effects.AnimalActive)
     EnableCharacter(character_26)
     EnableAI(character_26)
-    MakeEnemyAppear(character=character_54)
+    ForceSpawnerToSpawn(spawner=character_54)
     WaitFrames(frames=1)
     AddSpecialEffect(character_26, 13643)
-    AddSpecialEffect(character_26, 13605)
+    AddSpecialEffect(character_26, Effects.AnimalActive)
     DisableAnimations(character_26)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_19, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_19, special_effect=Effects.AnimalActive)
     EnableCharacter(character_19)
     EnableAI(character_19)
-    MakeEnemyAppear(character=character_47)
+    ForceSpawnerToSpawn(spawner=character_47)
     WaitFrames(frames=1)
     AddSpecialEffect(character_19, 13643)
-    AddSpecialEffect(character_19, 13605)
+    AddSpecialEffect(character_19, Effects.AnimalActive)
     DisableAnimations(character_19)
     Goto(Label.L20)
-    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_12, special_effect=13605)
+    SkipLinesIfCharacterHasSpecialEffect(line_count=8, character=character_12, special_effect=Effects.AnimalActive)
     EnableCharacter(character_12)
     EnableAI(character_12)
-    MakeEnemyAppear(character=character_40)
+    ForceSpawnerToSpawn(spawner=character_40)
     WaitFrames(frames=1)
     AddSpecialEffect(character_12, 13643)
-    AddSpecialEffect(character_12, 13605)
+    AddSpecialEffect(character_12, Effects.AnimalActive)
     DisableAnimations(character_12)
     Goto(Label.L20)
 
@@ -1016,69 +1028,74 @@ def Event_12092859(
 def Event_12092860(
     _,
     flag: uint,
-    character: uint,
-    character_1: uint,
-    character_2: uint,
-    character_3: uint,
-    character_4: uint,
-    character_5: uint,
+    ancestor_spirit: uint,
+    deer_group: uint,
+    boar_group: uint,
+    wild_mouflon_group: uint,
+    springhare_group: uint,
+    animal_group: uint,
 ):
     """Event 12092860"""
     DisableFlag(flag)
     
     MAIN.Await(FlagEnabled(flag))
     
-    AND_1.Add(CharacterHasSpecialEffect(character_1, 13605, target_count=0.0))
+    AND_1.Add(CharacterHasSpecialEffect(deer_group, Effects.AnimalActive, target_count=0.0))
     SkipLinesIfConditionTrue(2, AND_1)
-    AddSpecialEffect(character, 13606)
+    AddSpecialEffect(ancestor_spirit, 13606)
     SkipLines(1)
-    RemoveSpecialEffect(character, 13606)
-    AND_2.Add(CharacterHasSpecialEffect(character_2, 13605, target_count=0.0))
+    RemoveSpecialEffect(ancestor_spirit, 13606)
+
+    AND_2.Add(CharacterHasSpecialEffect(boar_group, Effects.AnimalActive, target_count=0.0))
     SkipLinesIfConditionTrue(2, AND_2)
-    AddSpecialEffect(character, 13607)
+    AddSpecialEffect(ancestor_spirit, 13607)
     SkipLines(1)
-    RemoveSpecialEffect(character, 13607)
-    AND_3.Add(CharacterHasSpecialEffect(character_3, 13605, target_count=0.0))
+    RemoveSpecialEffect(ancestor_spirit, 13607)
+
+    AND_3.Add(CharacterHasSpecialEffect(wild_mouflon_group, Effects.AnimalActive, target_count=0.0))
     SkipLinesIfConditionTrue(2, AND_3)
-    AddSpecialEffect(character, 13608)
+    AddSpecialEffect(ancestor_spirit, 13608)
     SkipLines(1)
-    RemoveSpecialEffect(character, 13608)
-    AND_4.Add(CharacterHasSpecialEffect(character_4, 13605, target_count=0.0))
+    RemoveSpecialEffect(ancestor_spirit, 13608)
+
+    AND_4.Add(CharacterHasSpecialEffect(springhare_group, Effects.AnimalActive, target_count=0.0))
     SkipLinesIfConditionTrue(2, AND_4)
-    AddSpecialEffect(character, 13609)
+    AddSpecialEffect(ancestor_spirit, 13609)
     SkipLines(1)
-    RemoveSpecialEffect(character, 13609)
+    RemoveSpecialEffect(ancestor_spirit, 13609)
+
     AND_5.Add(CharacterHasSpecialEffect(
-        character_5,
-        13605,
+        animal_group,
+        Effects.AnimalActive,
         target_comparison_type=ComparisonType.GreaterThanOrEqual,
         target_count=5.0,
     ))
     SkipLinesIfConditionTrue(2, AND_5)
-    AddSpecialEffect(character, 13625)
+    AddSpecialEffect(ancestor_spirit, 13625)
     SkipLines(1)
-    RemoveSpecialEffect(character, 13625)
+    RemoveSpecialEffect(ancestor_spirit, 13625)
+
     DisableFlag(12092907)
     DisableFlag(12092908)
     DisableFlag(12092909)
     SkipLinesIfCharacterHasSpecialEffect(
         line_count=3,
-        character=character_5,
-        special_effect=13605,
+        character=animal_group,
+        special_effect=Effects.AnimalActive,
         target_comparison_type=ComparisonType.GreaterThanOrEqual,
         target_count=20,
     )
     SkipLinesIfCharacterHasSpecialEffect(
         line_count=4,
-        character=character_5,
-        special_effect=13605,
+        character=animal_group,
+        special_effect=Effects.AnimalActive,
         target_comparison_type=ComparisonType.GreaterThanOrEqual,
         target_count=13,
     )
     SkipLinesIfCharacterHasSpecialEffect(
         line_count=5,
-        character=character_5,
-        special_effect=13605,
+        character=animal_group,
+        special_effect=Effects.AnimalActive,
         target_comparison_type=ComparisonType.GreaterThanOrEqual,
     )
     SkipLines(5)
@@ -1091,68 +1108,68 @@ def Event_12092860(
 
 
 @RestartOnRest(12092861)
-def Event_12092861(_, character: uint):
+def Event_12092861(_, ancestor_spirit: uint):
     """Event 12092861"""
-    MAIN.Await(CharacterHasSpecialEffect(character, 13623))
+    MAIN.Await(CharacterHasSpecialEffect(ancestor_spirit, 13623))
     
-    EnableAnimations(character)
-    ReplanAI(character)
+    EnableAnimations(ancestor_spirit)
+    ReplanAI(ancestor_spirit)
     Restart()
 
 
 @RestartOnRest(12092862)
-def Event_12092862(_, character: uint, character_1: uint):
+def Event_12092862(_, ancestor_spirit: uint, animal_group: uint):
     """Event 12092862"""
-    MAIN.Await(CharacterHasSpecialEffect(character, 13624))
+    MAIN.Await(CharacterHasSpecialEffect(ancestor_spirit, 13624))
     
-    AddSpecialEffect(character, 13632)
-    AddSpecialEffect(character, 13646)
-    AddSpecialEffect(character_1, 13617)
-    Kill(character_1)
+    AddSpecialEffect(ancestor_spirit, 13632)
+    AddSpecialEffect(ancestor_spirit, 13646)
+    AddSpecialEffect(animal_group, 13617)
+    Kill(animal_group)
     Wait(1.0)
     DisableThisSlotFlag()
     EnableFlag(12092802)
 
 
 @RestartOnRest(12092863)
-def Event_12092863(_, character: uint, character_1: uint, flag: uint):
+def Event_12092863(_, ancestor_spirit: uint, animal_group: uint, flag: uint):
     """Event 12092863"""
     AND_1.Add(FlagEnabled(flag))
-    AND_1.Add(CharacterHasSpecialEffect(character, 13624))
+    AND_1.Add(CharacterHasSpecialEffect(ancestor_spirit, 13624))
     
     MAIN.Await(AND_1)
     
-    AddSpecialEffect(character, 13633)
-    AddSpecialEffect(character, 13647)
-    AddSpecialEffect(character_1, 13617)
-    Kill(character_1)
+    AddSpecialEffect(ancestor_spirit, 13633)
+    AddSpecialEffect(ancestor_spirit, 13647)
+    AddSpecialEffect(animal_group, 13617)
+    Kill(animal_group)
     Wait(1.0)
     DisableThisSlotFlag()
 
 
 @RestartOnRest(12092864)
-def Event_12092864(_, character: uint, character_1: uint, flag: uint, flag_1: uint):
+def Event_12092864(_, ancestor_spirit: uint, animal_group: uint, flag: uint, flag_1: uint):
     """Event 12092864"""
     AND_1.Add(FlagEnabled(flag))
     AND_1.Add(FlagEnabled(flag_1))
-    AND_1.Add(CharacterHasSpecialEffect(character, 13624))
+    AND_1.Add(CharacterHasSpecialEffect(ancestor_spirit, 13624))
     
     MAIN.Await(AND_1)
     
-    AddSpecialEffect(character, 13634)
-    AddSpecialEffect(character_1, 13617)
-    Kill(character_1)
+    AddSpecialEffect(ancestor_spirit, 13634)
+    AddSpecialEffect(animal_group, 13617)
+    Kill(animal_group)
     Wait(1.0)
     Restart()
 
 
 @RestartOnRest(12092865)
-def Event_12092865(_, character: uint):
+def AncestorMegaProjectileAttack(_, ancestor_spirit: uint):
     """Event 12092865"""
-    MAIN.Await(CharacterHasSpecialEffect(character, 13624))
+    MAIN.Await(CharacterHasSpecialEffect(ancestor_spirit, 13624))
     
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092300,
         model_point=-1,
         behavior_id=246700910,
@@ -1161,7 +1178,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092301,
         model_point=-1,
         behavior_id=246700910,
@@ -1170,7 +1187,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092302,
         model_point=-1,
         behavior_id=246700910,
@@ -1179,7 +1196,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092303,
         model_point=-1,
         behavior_id=246700910,
@@ -1188,7 +1205,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092304,
         model_point=-1,
         behavior_id=246700910,
@@ -1197,7 +1214,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092305,
         model_point=-1,
         behavior_id=246700910,
@@ -1206,7 +1223,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092306,
         model_point=-1,
         behavior_id=246700910,
@@ -1215,7 +1232,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092307,
         model_point=-1,
         behavior_id=246700910,
@@ -1224,7 +1241,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092308,
         model_point=-1,
         behavior_id=246700910,
@@ -1233,7 +1250,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092309,
         model_point=-1,
         behavior_id=246700910,
@@ -1243,7 +1260,7 @@ def Event_12092865(_, character: uint):
     )
     Wait(1.0)
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092310,
         model_point=-1,
         behavior_id=246700910,
@@ -1252,7 +1269,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092311,
         model_point=-1,
         behavior_id=246700910,
@@ -1261,7 +1278,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092312,
         model_point=-1,
         behavior_id=246700910,
@@ -1270,7 +1287,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092313,
         model_point=-1,
         behavior_id=246700910,
@@ -1279,7 +1296,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092314,
         model_point=-1,
         behavior_id=246700910,
@@ -1288,7 +1305,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092315,
         model_point=-1,
         behavior_id=246700910,
@@ -1297,7 +1314,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092316,
         model_point=-1,
         behavior_id=246700910,
@@ -1306,7 +1323,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092317,
         model_point=-1,
         behavior_id=246700910,
@@ -1315,7 +1332,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092318,
         model_point=-1,
         behavior_id=246700910,
@@ -1324,7 +1341,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092319,
         model_point=-1,
         behavior_id=246700910,
@@ -1334,7 +1351,7 @@ def Event_12092865(_, character: uint):
     )
     Wait(1.0)
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092320,
         model_point=-1,
         behavior_id=246700910,
@@ -1343,7 +1360,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092321,
         model_point=-1,
         behavior_id=246700910,
@@ -1352,7 +1369,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092322,
         model_point=-1,
         behavior_id=246700910,
@@ -1361,7 +1378,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092323,
         model_point=-1,
         behavior_id=246700910,
@@ -1370,7 +1387,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092324,
         model_point=-1,
         behavior_id=246700910,
@@ -1379,7 +1396,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092325,
         model_point=-1,
         behavior_id=246700910,
@@ -1388,7 +1405,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092326,
         model_point=-1,
         behavior_id=246700910,
@@ -1397,7 +1414,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092327,
         model_point=-1,
         behavior_id=246700910,
@@ -1406,7 +1423,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092328,
         model_point=-1,
         behavior_id=246700910,
@@ -1415,7 +1432,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092329,
         model_point=-1,
         behavior_id=246700910,
@@ -1425,7 +1442,7 @@ def Event_12092865(_, character: uint):
     )
     Wait(1.0)
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092330,
         model_point=-1,
         behavior_id=246700910,
@@ -1434,7 +1451,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092331,
         model_point=-1,
         behavior_id=246700910,
@@ -1443,7 +1460,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092332,
         model_point=-1,
         behavior_id=246700910,
@@ -1452,7 +1469,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092333,
         model_point=-1,
         behavior_id=246700910,
@@ -1461,7 +1478,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092334,
         model_point=-1,
         behavior_id=246700910,
@@ -1470,7 +1487,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092335,
         model_point=-1,
         behavior_id=246700910,
@@ -1479,7 +1496,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092336,
         model_point=-1,
         behavior_id=246700910,
@@ -1488,7 +1505,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092337,
         model_point=-1,
         behavior_id=246700910,
@@ -1497,7 +1514,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092338,
         model_point=-1,
         behavior_id=246700910,
@@ -1506,7 +1523,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092339,
         model_point=-1,
         behavior_id=246700910,
@@ -1516,7 +1533,7 @@ def Event_12092865(_, character: uint):
     )
     Wait(1.0)
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092340,
         model_point=-1,
         behavior_id=246700910,
@@ -1525,7 +1542,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092341,
         model_point=-1,
         behavior_id=246700910,
@@ -1534,7 +1551,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092342,
         model_point=-1,
         behavior_id=246700910,
@@ -1543,7 +1560,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092343,
         model_point=-1,
         behavior_id=246700910,
@@ -1552,7 +1569,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092344,
         model_point=-1,
         behavior_id=246700910,
@@ -1561,7 +1578,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092345,
         model_point=-1,
         behavior_id=246700910,
@@ -1570,7 +1587,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092346,
         model_point=-1,
         behavior_id=246700910,
@@ -1579,7 +1596,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092347,
         model_point=-1,
         behavior_id=246700910,
@@ -1588,7 +1605,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092348,
         model_point=-1,
         behavior_id=246700910,
@@ -1597,7 +1614,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092349,
         model_point=-1,
         behavior_id=246700910,
@@ -1606,7 +1623,7 @@ def Event_12092865(_, character: uint):
         launch_angle_z=0,
     )
     ShootProjectile(
-        owner_entity=Characters.Dummy,
+        owner_entity=Characters.AncestorProjectileDummy,
         source_entity=12092350,
         model_point=-1,
         behavior_id=246700910,
@@ -1618,20 +1635,20 @@ def Event_12092865(_, character: uint):
 
 
 @RestartOnRest(12092910)
-def Event_12092910(_, entity: uint):
+def CreateAncestorProjectileOwner(_, projectile_dummy: uint):
     """Event 12092910"""
-    CreateProjectileOwner(entity=entity)
+    CreateProjectileOwner(entity=projectile_dummy)
 
 
 @RestartOnRest(12092920)
-def Event_12092920(_, left: uint, owner_entity: uint, source_entity: uint):
+def AncestorProjectile(_, request_flag: uint, owner_entity: uint, source_entity: uint):
     """Event 12092920"""
-    SkipLinesIfUnsignedEqual(2, left=left, right=12092908)
-    SkipLinesIfUnsignedEqual(2, left=left, right=12092909)
+    SkipLinesIfUnsignedEqual(2, left=request_flag, right=12092908)
+    SkipLinesIfUnsignedEqual(2, left=request_flag, right=12092909)
     OR_1.Add(FlagEnabled(12092907))
     OR_1.Add(FlagEnabled(12092908))
     OR_1.Add(FlagEnabled(12092909))
-    AND_1.Add(CharacterAlive(Characters.AncestorSpirit))
+    AND_1.Add(CharacterAlive(Characters.RegalAncestorSpirit))
     AND_1.Add(OR_1)
     
     MAIN.Await(AND_1)

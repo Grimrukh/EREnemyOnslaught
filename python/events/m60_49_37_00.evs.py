@@ -43,7 +43,7 @@ def Constructor():
         npc_threat_level=10,
         character_1=Characters.NightsCavalryHorse,
     )
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1049370800,
         extra_flag_to_enable=0,
@@ -52,9 +52,9 @@ def Constructor():
         item_lot=1049370100,
         seconds=0.0,
     )
-    CommonFunc_90005872(0, character=Characters.NightsCavalry, npc_threat_level=10, right=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.NightsCavalry, npc_threat_level=10, optional_trigger_flag=0)
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DeathRiteBird, name=904980606, npc_threat_level=24)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1049370850,
         extra_flag_to_enable=0,

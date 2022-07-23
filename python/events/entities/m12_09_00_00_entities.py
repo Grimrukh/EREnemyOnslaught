@@ -1,10 +1,26 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    RegalAncestorSpiritDead = 12090800
+
+
+class Effects(SpecialEffectParam):
+    AnimalActive = 13605
+
+
+class CharacterGroups(Character):
+    RegalAncestorAnimals = 12095200
+    RegalAncestorDeer = 12095201
+    RegalAncestorBoars = 12095202
+    RegalAncestorWildMouflons = 12095203
+    RegalAncestorSpringhares = 12095204
+
+
 class Characters(Character):
-    Dummy = 12090290  # c0100_9000 npc 1002000 think 1
+    AncestorProjectileDummy = 12090290  # c0100_9000 npc 1002000 think 1
     TalkDummy = 12090100  # c1000_9000 col h020300 npc 10001000 think 1 talk 2000
-    AncestorSpirit = 12090800  # c4670_9000 col h020300 npc 46700065 think 46700100 group 12095800,12095100
+    RegalAncestorSpirit = 12090800  # c4670_9000 col h020300 npc 46700065 think 46700100 group 12095800,12095100
     Deer0 = 12090200  # c6010_9000 col h020300 npc 60100965 think 60100000 group 12095200,12095201
     Deer1 = 12090201  # c6010_9001 col h020300 npc 60100965 think 60100000 group 12095200,12095201
     Deer2 = 12090202  # c6010_9002 col h020300 npc 60100965 think 60100000 group 12095200,12095201
@@ -33,6 +49,8 @@ class Characters(Character):
     Springhare4 = 12090264  # c6100_9004 col h020300 npc 61000965 think 60600000 group 12095200,12095204
     Springhare5 = 12090265  # c6100_9005 col h020300 npc 61000965 think 60600000 group 12095200,12095204
     Springhare6 = 12090266  # c6100_9006 col h020300 npc 61000965 think 60600000 group 12095200,12095204
+
+    CLONE_RegalAncestorSpirit = 12090801
 
 
 class Assets(Asset):

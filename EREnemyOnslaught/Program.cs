@@ -39,7 +39,7 @@ namespace EREnemyOnslaught
                 File.Copy(Path.Combine(ER_VANILLA_PATH, "oo2core_6_win64.dll"), "oo2core_6_win64.dll");
 
             //DupeCharacters();
-            DupeMapEntities(
+            GenerateMSBs(
                 //"m10_00_00_00.msb.dcx",
                 //"m11_00_00_00.msb.dcx",
                 "m14_00_00_00.msb.dcx",
@@ -76,7 +76,7 @@ namespace EREnemyOnslaught
             Console.ReadLine();
         }
 
-        static void DupeMapEntities(params string[] onlyMaps)
+        static void GenerateMSBs(params string[] onlyMaps)
         {
             string mapDir = GetVanillaPath(@"map\mapstudio");
             foreach (string msbFile in Directory.GetFiles(mapDir))
@@ -97,51 +97,35 @@ namespace EREnemyOnslaught
                 }
 
                 // Duplicate characters.
-                List<MSBE.Part.Enemy> dupedCharacters = new List<MSBE.Part.Enemy>();
+                List<MSBE.Part.Enemy> clonedCharacters = new List<MSBE.Part.Enemy>();
                 foreach (var character in msb.Parts.Enemies)
                 {
-                    // Move original character, if requested.
-                    SetNewTransform(character);
-                    MSBE.Part.Enemy duped = DupeCharacter(character);
+                    MSBE.Part.Enemy duped = CloneCharacter(character);
                     if (duped != null)
-                        dupedCharacters.Add(duped);
-
-                    if (character.EntityID == 666666)  // TODO: Nothing yet
-                    {
-                        // Extra copy of Radahn for health pool.
-                        // TODO: General extra dict for all bosses that do this.
-                        SetNewTransform(character);
-                        MSBE.Part.Enemy healthPool = DupeCharacter(character, name: "Radahn Health Pool", overrideEntityID: 1052380802);
-                        dupedCharacters.Add(healthPool);
-                    }
+                        clonedCharacters.Add(duped);
                 }
-                msb.Parts.Enemies.AddRange(dupedCharacters);
+                msb.Parts.Enemies.AddRange(clonedCharacters);
 
                 // Duplicate regions.
-                List<MSBE.Region> dupedRegions = new List<MSBE.Region>();
+                List<MSBE.Region> clonedRegions = new List<MSBE.Region>();
                 foreach (var region in msb.Regions.GetEntries())
                 {
-                    // Move original region, if requested.
-                    SetNewTransform(region);
-                    MSBE.Region duped = DupeRegion(region);
-                    if (duped != null)
-                        dupedRegions.Add(duped);
+                    MSBE.Region clone = CloneRegion(region);
+                    if (clone != null)
+                        clonedRegions.Add(clone);
                 }
-                foreach (var region in dupedRegions)
+                foreach (var region in clonedRegions)
                     msb.Regions.Add(region);
 
                 // Duplicate spawners.
-                List<MSBE.Event.Generator> dupedSpawners = new List<MSBE.Event.Generator>();
-                List<MSBE.Region> dupedSpawnerRegions = new List<MSBE.Region>();
+                List<MSBE.Event.Generator> clonedSpawners = new List<MSBE.Event.Generator>();
                 foreach (var spawner in msb.Events.Generators)
                 {
-                    MSBE.Event.Generator duped = DupeSpawner(spawner);
-                    if (duped != null)
-                        dupedSpawners.Add(duped);
+                    MSBE.Event.Generator clone = CloneSpawner(spawner);
+                    if (clone != null)
+                        clonedSpawners.Add(clone);
                 }
-                msb.Events.Generators.AddRange(dupedSpawners);
-                foreach (var dupedRegion in dupedSpawnerRegions)
-                    msb.Regions.Add(dupedRegion);
+                msb.Events.Generators.AddRange(clonedSpawners);
 
                 string outputMsbFile = Path.Combine(@"map\mapstudio", Path.GetFileName(msbFile));
                 msb.Write(GetModdingPath(outputMsbFile));
@@ -150,7 +134,7 @@ namespace EREnemyOnslaught
             }
         }
 
-        static MSBE.Part.Enemy DupeCharacter(MSBE.Part.Enemy character, string name = null, int overrideEntityID = -1)
+        static MSBE.Part.Enemy CloneCharacter(MSBE.Part.Enemy character, string name = null, int overrideEntityID = -1)
         {
             string modelName = Models.CharacterModels[character.ModelName];
             if (Models.IgnoreModels.Contains(modelName))
@@ -165,23 +149,26 @@ namespace EREnemyOnslaught
             }
 
             // Duplicate.
-            MSBE.Part.Enemy duped = (MSBE.Part.Enemy)character.DeepCopy();
+            MSBE.Part.Enemy clone = (MSBE.Part.Enemy)character.DeepCopy();
             if (name != null)
-                duped.Name = name;
+                clone.Name = name;
             else
-                duped.Name += " (Clone)";
+                clone.Name += " (Clone)";
 
-            // Update or nullify entity ID.
-            if (overrideEntityID != -1)
-                duped.EntityID = overrideEntityID;
-            else
-                duped.EntityID = CloneEntityIDs.ContainsKey(duped.EntityID) ? CloneEntityIDs[duped.EntityID] : 0;
+            // Use manually specified entity ID and transform, if given.
+            if (Clones.ContainsKey(character.EntityID))
+            {
+                CloneInfo info = Clones[character.EntityID];
+                clone.EntityID = overrideEntityID != -1 ? overrideEntityID : info.cloneEntityID;
+                SetNewTransform(character, info.newSourceTransform, setDefaultXOffset: false);
+                SetNewTransform(clone, info.cloneTransform, setDefaultXOffset: true);
+            }
                 
-            Console.WriteLine($"    CHARACTER: '{character.Name}' ({character.EntityID}) -> '{duped.Name}' ({duped.EntityID})");
+            Console.WriteLine($"    CHARACTER: '{character.Name}' ({character.EntityID}) -> '{clone.Name}' ({clone.EntityID})");
 
             // Update or leave group entity IDs.
             List<int> newEntityGroupIDs = new List<int>();
-            foreach (int groupID in duped.EntityGroupIDs)
+            foreach (int groupID in clone.EntityGroupIDs)
             {
                 if (CloneEntityGroupIDs.ContainsKey(groupID))
                 {
@@ -191,71 +178,68 @@ namespace EREnemyOnslaught
                 else
                     newEntityGroupIDs.Add(groupID);
             }
-            duped.EntityGroupIDs = newEntityGroupIDs.ToArray();
+            clone.EntityGroupIDs = newEntityGroupIDs.ToArray();
 
             // Nullify Talk ID (anything with a talk ID should eventually be ignored).
-            duped.TalkID = 0;
+            clone.TalkID = 0;
 
-            SetNewTransform(duped, setDefaultXOffset: true);
-
-            return duped;
+            return clone;
         }
 
-        static MSBE.Region DupeRegion(MSBE.Region region)
+        static MSBE.Region CloneRegion(MSBE.Region region)
         {
-            // Region MUST be in `CloneEntityIDs` to clone.
-            if (!CloneEntityIDs.ContainsKey(region.EntityID))
+            // Region MUST be in `Clones` to clone.
+            if (!Clones.ContainsKey(region.EntityID))
                 return null;
 
             // Duplicate.
-            MSBE.Region duped = region.DeepCopy();
-            duped.Name += " (Clone)";
-            duped.EntityID = CloneEntityIDs[duped.EntityID];
-            Console.WriteLine($"    REGION: '{region.Name}' ({region.EntityID}) -> '{duped.Name}' ({duped.EntityID})");
+            MSBE.Region clone = region.DeepCopy();
+            clone.Name += " (Clone)";
+            CloneInfo info = Clones[region.EntityID];
+            clone.EntityID = info.cloneEntityID;
+            SetNewTransform(region, info.newSourceTransform);
+            SetNewTransform(clone, info.cloneTransform);
+            Console.WriteLine($"    REGION: '{region.Name}' ({region.EntityID}) -> '{clone.Name}' ({clone.EntityID})");
 
-            SetNewTransform(duped);
-            
-            return duped;
+            return clone;
         }
 
-        static MSBE.Event.Generator DupeSpawner(MSBE.Event.Generator spawner)
+        static MSBE.Event.Generator CloneSpawner(MSBE.Event.Generator spawner)
         {
-            if (DoNotCloneEntityIDs.Contains(spawner.EntityID))
+            // Spawner entity ID MUST appear in `Clones`.
+            if (!Clones.ContainsKey(spawner.EntityID))
             {
                 Console.WriteLine($"    Ignoring Spawner with Entity ID: {spawner.Name} ({spawner.EntityID})");
                 return null;
             }
 
             // Duplicate spawner.
-            MSBE.Event.Generator duped = (MSBE.Event.Generator)spawner.DeepCopy();
-            duped.Name += " (Clone)";
+            MSBE.Event.Generator clone = (MSBE.Event.Generator)spawner.DeepCopy();
+            clone.Name += " (Clone)";
 
             // Update or nullify entity ID.
-            duped.EntityID = CloneEntityIDs.ContainsKey(duped.EntityID) ? CloneEntityIDs[duped.EntityID] : 0;
-            Console.WriteLine($"    SPAWNER: '{spawner.Name}' ({spawner.EntityID}) -> '{duped.Name}' ({duped.EntityID})");
-            if (duped.EntityID == 0)
-                Console.WriteLine($"        WARNING: Cloned spawner with entity ID 0 could be problematic!");
-
+            clone.EntityID = Clones[spawner.EntityID].cloneEntityID;
+            Console.WriteLine($"    SPAWNER: '{spawner.Name}' ({spawner.EntityID}) -> '{clone.Name}' ({clone.EntityID})");
+            
             // Rename non-empty character part names to Clones.
-            for (int i = 0; i < duped.SpawnPartNames.Length; i++)
+            for (int i = 0; i < clone.SpawnPartNames.Length; i++)
             {
-                if (duped.SpawnPartNames[i] != null)
-                    duped.SpawnPartNames[i] += " (Clone)";
+                if (clone.SpawnPartNames[i] != null)
+                    clone.SpawnPartNames[i] += " (Clone)";
             }
-                
 
             // Currently just using same spawn regions.
 
-            return duped;
+            return clone;
         }
 
-        static void SetNewTransform(MSBE.Part part, bool setDefaultXOffset = true)
+        static void SetNewTransform(MSBE.Part part, Vector4? newTransform, bool setDefaultXOffset = true)
         {
-            if (NewTransforms.ContainsKey(part.EntityID))
+            if (newTransform.HasValue)
             {
-                (float posX, float posY, float posZ, float rotY) = NewTransforms[part.EntityID];
-                part.Position = new Vector3(posX, posY, posZ);
-                part.Rotation = new Vector3(0f, rotY, 0f);
+                Vector4 transform = newTransform.Value;
+                part.Position = new Vector3(transform.X, transform.Y, transform.Z);
+                part.Rotation = new Vector3(0f, transform.W, 0f);
                 Console.WriteLine($"        Set new transform for part '{part.Name}' ({part.EntityID})");
             }
             else if (setDefaultXOffset)
@@ -265,13 +249,13 @@ namespace EREnemyOnslaught
             }
         }
 
-        static void SetNewTransform(MSBE.Region region)
+        static void SetNewTransform(MSBE.Region region, Vector4? newTransform)
         {
-            if (NewTransforms.ContainsKey(region.EntityID))
+            if (newTransform.HasValue)
             {
-                (float posX, float posY, float posZ, float rotY) = NewTransforms[region.EntityID];
-                region.Position = new Vector3(posX, posY, posZ);
-                region.Rotation = new Vector3(0f, rotY, 0f);
+                Vector4 transform = newTransform.Value;
+                region.Position = new Vector3(transform.X, transform.Y, transform.Z);
+                region.Rotation = new Vector3(0f, transform.W, 0f);
                 Console.WriteLine($"        Set new transform for region '{region.Name}' ({region.EntityID})");
             }
         }

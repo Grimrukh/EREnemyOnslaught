@@ -43,7 +43,7 @@ def Constructor():
         flag_10=78508,
         flag_11=78509,
     )
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1052560800,
         extra_flag_to_enable=0,
@@ -53,7 +53,7 @@ def Constructor():
         seconds=0.0,
     )
     Event_1052562815(0, character=Characters.ErdtreeAvatar0, name=904810601, npc_threat_level=18)
-    CommonFunc_90005872(0, character=Characters.ErdtreeAvatar0, npc_threat_level=18, right=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.ErdtreeAvatar0, npc_threat_level=18, optional_trigger_flag=0)
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.ErdtreeAvatar0,

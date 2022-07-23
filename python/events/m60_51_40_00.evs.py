@@ -35,7 +35,7 @@ def Constructor():
         asset_1=Assets.AEG099_990_9000,
     )
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.PutridAvatar, name=904811601, npc_threat_level=18)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1051400800,
         extra_flag_to_enable=0,
@@ -44,7 +44,7 @@ def Constructor():
         item_lot=30415,
         seconds=0.0,
     )
-    CommonFunc_90005872(0, character=Characters.PutridAvatar, npc_threat_level=18, right=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.PutridAvatar, npc_threat_level=18, optional_trigger_flag=0)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.ErdtreeGuardian0, region=1051402200, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.ErdtreeGuardian1, region=1051402200, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.ErdtreeGuardian2, region=1051402200, seconds=0.0, animation_id=-1)

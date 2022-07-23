@@ -25,7 +25,7 @@ from .entities.m60_41_50_00_entities import *
 def Constructor():
     """Event 0"""
     CommonFunc_FieldBossMusicHealthBar(0, character=Characters.FallingstarBeast, name=904680602, npc_threat_level=19)
-    CommonFunc_NonRespawningBossWithReward(
+    CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1041500800,
         extra_flag_to_enable=0,

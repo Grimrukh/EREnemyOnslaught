@@ -412,7 +412,7 @@ def Event_1040532849():
     CommonFunc_ControlBossFog(0, boss_dead_flag=1040530800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_ControlBossMusic(
         0,
-        dead_flag=1040530800,
+        boss_dead_flag=1040530800,
         bgm_boss_conv_param_id=920900,
         host_in_battle=1040532805,
         summon_in_battle=1040532806,
@@ -545,7 +545,7 @@ def Event_1040532690():
     
     EnableSpawner(entity=1040533610)
     ClearTargetList(Characters.Imp)
-    MakeEnemyAppear(character=1040533610)
+    ForceSpawnerToSpawn(spawner=1040533610)
 
     # --- Label 1 --- #
     DefineLabel(1)
@@ -554,7 +554,7 @@ def Event_1040532690():
     WaitRandomSeconds(min_seconds=10.0, max_seconds=10.0)
     EnableSpawner(entity=1040533610)
     ClearTargetList(Characters.Imp)
-    MakeEnemyAppear(character=1040533610)
+    ForceSpawnerToSpawn(spawner=1040533610)
     if FlagEnabled(1040530655):
         Wait(5.0)
     DisableSpawner(entity=1040533610)
