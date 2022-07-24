@@ -27,7 +27,7 @@ def Constructor():
     DisableAsset(Assets.AEG099_332_9000)
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
-        flag=15000800,
+        flag=Flags.MaleniaDead,
         grace_flag=15000000,
         character=Characters.TalkDummy0,
         asset=Assets.AEG099_060_9000,
@@ -35,7 +35,7 @@ def Constructor():
     )
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
-        flag=15000850,
+        flag=Flags.LorettaDead,
         grace_flag=15000005,
         character=Characters.TalkDummy5,
         asset=Assets.AEG099_060_9005,
@@ -48,29 +48,105 @@ def Constructor():
     RegisterGrace(grace_flag=15000006, asset=Assets.AEG099_060_9006, enemy_block_distance=8.0)
     RegisterGrace(grace_flag=15000007, asset=Assets.AEG099_060_9007, enemy_block_distance=8.0)
     RegisterGrace(grace_flag=15000008, asset=Assets.AEG099_060_9008, enemy_block_distance=8.0)
-    Event_15002800()
-    Event_15002810()
-    Event_15002811()
-    Event_15002820(0, character=Characters.MaleniaSpirit2, animation_id=3030, special_effect=18451)
-    Event_15002820(1, character=Characters.MaleniaSpirit3, animation_id=3031, special_effect=18452)
-    Event_15002820(2, character=Characters.MaleniaSpirit4, animation_id=3032, special_effect=18453)
-    Event_15002820(3, character=Characters.MaleniaSpirit5, animation_id=3033, special_effect=18454)
-    Event_15002830(0, special_effect_id=18410, special_effect=18420)
-    Event_15002830(1, special_effect_id=18411, special_effect=18421)
-    Event_15002830(2, special_effect_id=18412, special_effect=18422)
-    Event_15002830(3, special_effect_id=18413, special_effect=18423)
-    Event_15002830(4, special_effect_id=18414, special_effect=18424)
-    Event_15002830(5, special_effect_id=18415, special_effect=18425)
-    Event_15002830(6, special_effect_id=18416, special_effect=18426)
-    Event_15002830(7, special_effect_id=18417, special_effect=18427)
-    Event_15002830(8, special_effect_id=18418, special_effect=18428)
-    Event_15002830(9, special_effect_id=18419, special_effect=18429)
-    Event_15002848(0, special_effect=18031, locked_camera_id__normal_camera_id=2122)
-    Event_15002849()
-    Event_15002850()
-    Event_15002860()
-    Event_15002861()
-    Event_15002899()
+
+    MaleniaDies()
+    MaleniaBattleTrigger()
+    MaleniaPhaseTwoTransition(
+        0,
+        malenia=Characters.Malenia,
+        other_malenia=Characters.OtherMalenia,
+        new_name=NameText.MaleniaGoddessOfRot,
+        bar_slot=1,
+    )
+    MaleniaPhaseTwoTransition(  # 15002812
+        1,
+        malenia=Characters.CLONE_Malenia,
+        other_malenia=Characters.CLONE_OtherMalenia,
+        new_name=NameText.CLONE_MaleniaGoddessOfRot,
+        bar_slot=0,
+    )
+    ControlMaleniaSummon(
+        0,
+        malenia=Characters.Malenia,
+        other_malenia=Characters.OtherMalenia,
+        malenia_summon=Characters.MaleniaSummon0,
+        animation_id=3030,
+        special_effect=18451,
+    )
+    ControlMaleniaSummon(
+        1,
+        malenia=Characters.Malenia,
+        other_malenia=Characters.OtherMalenia,
+        malenia_summon=Characters.MaleniaSummon1,
+        animation_id=3031,
+        special_effect=18452,
+    )
+    ControlMaleniaSummon(
+        2,
+        malenia=Characters.Malenia,
+        other_malenia=Characters.OtherMalenia,
+        malenia_summon=Characters.MaleniaSummon2,
+        animation_id=3032,
+        special_effect=18453,
+    )
+    ControlMaleniaSummon(
+        3,
+        malenia=Characters.Malenia,
+        other_malenia=Characters.OtherMalenia,
+        malenia_summon=Characters.MaleniaSummon3,
+        animation_id=3033,
+        special_effect=18454,
+    )
+    ControlMaleniaSummon(  # 15002824
+        4,
+        malenia=Characters.CLONE_Malenia,
+        other_malenia=Characters.CLONE_OtherMalenia,
+        malenia_summon=Characters.CLONE_MaleniaSummon0,
+        animation_id=3030,
+        special_effect=18451,
+    )
+    ControlMaleniaSummon(  # 15002825
+        5,
+        malenia=Characters.CLONE_Malenia,
+        other_malenia=Characters.CLONE_OtherMalenia,
+        malenia_summon=Characters.CLONE_MaleniaSummon1,
+        animation_id=3031,
+        special_effect=18452,
+    )
+    ControlMaleniaSummon(  # 15002826
+        6,
+        malenia=Characters.CLONE_Malenia,
+        other_malenia=Characters.CLONE_OtherMalenia,
+        malenia_summon=Characters.CLONE_MaleniaSummon2,
+        animation_id=3032,
+        special_effect=18453,
+    )
+    ControlMaleniaSummon(  # 15002827
+        7,
+        malenia=Characters.CLONE_Malenia,
+        other_malenia=Characters.CLONE_OtherMalenia,
+        malenia_summon=Characters.CLONE_MaleniaSummon3,
+        animation_id=3033,
+        special_effect=18454,
+    )
+    UnknownMaleniaEffect(0, malenia_special_effect=18410, player_trigger_special_effect=18420)
+    UnknownMaleniaEffect(1, malenia_special_effect=18411, player_trigger_special_effect=18421)
+    UnknownMaleniaEffect(2, malenia_special_effect=18412, player_trigger_special_effect=18422)
+    UnknownMaleniaEffect(3, malenia_special_effect=18413, player_trigger_special_effect=18423)
+    UnknownMaleniaEffect(4, malenia_special_effect=18414, player_trigger_special_effect=18424)
+    UnknownMaleniaEffect(5, malenia_special_effect=18415, player_trigger_special_effect=18425)
+    UnknownMaleniaEffect(6, malenia_special_effect=18416, player_trigger_special_effect=18426)
+    UnknownMaleniaEffect(7, malenia_special_effect=18417, player_trigger_special_effect=18427)
+    UnknownMaleniaEffect(8, malenia_special_effect=18418, player_trigger_special_effect=18428)
+    UnknownMaleniaEffect(9, malenia_special_effect=18419, player_trigger_special_effect=18429)
+    MaleniaSpecialCameraControl(0, trigger_special_effect=18031, special_camera_id=2122)
+    MaleniaCommonEvents()
+
+    LorettaDies()
+    LorettaBattleTrigger()
+    LorettaPhaseTwoTransition()
+    LorettaCommonEvents()
+
     CommonFunc_90005795(
         0,
         flag=7610,
@@ -1578,7 +1654,7 @@ def Constructor():
     CommonFunc_90005621(0, flag=15000575, asset=Assets.AEG099_272_9001)
     Event_15002580()
     Event_15002680()
-    Event_15000700()
+    SetMaleniaTalkRange()
     Event_15000701()
     Event_15000702(0, asset=Assets.AEG099_332_9000, asset_1=Assets.AEG099_090_9001)
     Event_15000710(0, character=Characters.Millicent0)
@@ -1826,20 +1902,23 @@ def Event_15002680():
 
 
 @RestartOnRest(15002800)
-def Event_15002800():
+def MaleniaDies():
     """Event 15002800"""
-    if FlagEnabled(15000800):
+    if FlagEnabled(Flags.MaleniaDead):
         return
-    
-    MAIN.Await(HealthValue(Characters.Malenia) <= 0)
+
+    AND_1.Add(HealthValue(Characters.Malenia) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_Malenia) <= 0)
+    MAIN.Await(AND_1)
     
     Wait(4.0)
     PlaySoundEffect(15008000, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(PlayerInOwnWorld())
     AND_2.Add(CharacterDead(Characters.Malenia))
+    AND_2.Add(CharacterDead(Characters.CLONE_Malenia))
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9646))
     OR_2.Add(AND_2)
-    OR_2.Add(FlagEnabled(15000800))
+    OR_2.Add(FlagEnabled(Flags.MaleniaDead))
     
     MAIN.Await(OR_2)
     
@@ -1847,16 +1926,16 @@ def Event_15002800():
     if PlayerInOwnWorld():
         TriggerMultiplayerEvent(event_id=0)
     ChangeCamera(normal_camera_id=-1, locked_camera_id=-1)
-    EnableNetworkFlag(15000800)
+    EnableNetworkFlag(Flags.MaleniaDead)
     EnableFlag(9120)
     if PlayerInOwnWorld():
         EnableFlag(61120)
 
 
 @RestartOnRest(15002810)
-def Event_15002810():
+def MaleniaBattleTrigger():
     """Event 15002810"""
-    GotoIfFlagDisabled(Label.L0, flag=15000800)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.MaleniaDead)
     DisableCharacter(CharacterGroups.MaleniaBoss)
     DisableAnimations(CharacterGroups.MaleniaBoss)
     Kill(CharacterGroups.MaleniaBoss)
@@ -1866,24 +1945,44 @@ def Event_15002810():
 
     # --- Label 0 --- #
     DefineLabel(0)
+
     DisableAI(CharacterGroups.MaleniaBoss)
     EnableImmortality(Characters.Malenia)
-    DisableCharacter(Characters.MaleniaSpirit1)
-    DisableAnimations(Characters.MaleniaSpirit1)
+    EnableImmortality(Characters.CLONE_Malenia)
+
+    DisableCharacter(Characters.OtherMalenia)
+    DisableAnimations(Characters.OtherMalenia)
     SetLockOnPoint(character=0, lock_on_model_point=-1, state=True)
-    DisableCharacter(Characters.MaleniaSpirit2)
-    DisableAnimations(Characters.MaleniaSpirit2)
-    SetLockOnPoint(character=Characters.MaleniaSpirit2, lock_on_model_point=220, state=True)
-    DisableCharacter(Characters.MaleniaSpirit3)
-    DisableAnimations(Characters.MaleniaSpirit3)
-    SetLockOnPoint(character=Characters.MaleniaSpirit3, lock_on_model_point=220, state=True)
-    DisableCharacter(Characters.MaleniaSpirit4)
-    DisableAnimations(Characters.MaleniaSpirit4)
-    SetLockOnPoint(character=Characters.MaleniaSpirit4, lock_on_model_point=220, state=True)
-    DisableCharacter(Characters.MaleniaSpirit5)
-    DisableAnimations(Characters.MaleniaSpirit5)
-    SetLockOnPoint(character=Characters.MaleniaSpirit5, lock_on_model_point=220, state=True)
+    DisableCharacter(Characters.MaleniaSummon0)
+    DisableAnimations(Characters.MaleniaSummon0)
+    SetLockOnPoint(character=Characters.MaleniaSummon0, lock_on_model_point=220, state=True)
+    DisableCharacter(Characters.MaleniaSummon1)
+    DisableAnimations(Characters.MaleniaSummon1)
+    SetLockOnPoint(character=Characters.MaleniaSummon1, lock_on_model_point=220, state=True)
+    DisableCharacter(Characters.MaleniaSummon2)
+    DisableAnimations(Characters.MaleniaSummon2)
+    SetLockOnPoint(character=Characters.MaleniaSummon2, lock_on_model_point=220, state=True)
+    DisableCharacter(Characters.MaleniaSummon3)
+    DisableAnimations(Characters.MaleniaSummon3)
+    SetLockOnPoint(character=Characters.MaleniaSummon3, lock_on_model_point=220, state=True)
     DisableTreasure(asset=15001810)
+
+    DisableCharacter(Characters.CLONE_OtherMalenia)
+    DisableAnimations(Characters.CLONE_OtherMalenia)
+    SetLockOnPoint(character=0, lock_on_model_point=-1, state=True)
+    DisableCharacter(Characters.CLONE_MaleniaSummon0)
+    DisableAnimations(Characters.CLONE_MaleniaSummon0)
+    SetLockOnPoint(character=Characters.CLONE_MaleniaSummon0, lock_on_model_point=220, state=True)
+    DisableCharacter(Characters.CLONE_MaleniaSummon1)
+    DisableAnimations(Characters.CLONE_MaleniaSummon1)
+    SetLockOnPoint(character=Characters.CLONE_MaleniaSummon1, lock_on_model_point=220, state=True)
+    DisableCharacter(Characters.CLONE_MaleniaSummon2)
+    DisableAnimations(Characters.CLONE_MaleniaSummon2)
+    SetLockOnPoint(character=Characters.CLONE_MaleniaSummon2, lock_on_model_point=220, state=True)
+    DisableCharacter(Characters.CLONE_MaleniaSummon3)
+    DisableAnimations(Characters.CLONE_MaleniaSummon3)
+    SetLockOnPoint(character=Characters.CLONE_MaleniaSummon3, lock_on_model_point=220, state=True)
+
     OR_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     OR_15.Add(CharacterType(PLAYER, character_type=CharacterType.Invader))
     OR_15.Add(CharacterType(PLAYER, character_type=CharacterType.Invader2))
@@ -1891,7 +1990,9 @@ def Event_15002810():
     OR_15.Add(CharacterType(PLAYER, character_type=CharacterType.BluePhantom))
     if OR_15:
         return
-    GotoIfFlagEnabled(Label.L1, flag=15000801)
+
+    GotoIfFlagEnabled(Label.L1, flag=Flags.MaleniaFirstTimeDone)
+
     AddSpecialEffect(Characters.Malenia, 5402)
     DisableAnimations(Characters.Malenia)
     DisableGravity(Characters.Malenia)
@@ -1899,6 +2000,15 @@ def Event_15002810():
     SetDisplayMask(Characters.Malenia, bit_index=12, switch_type=OnOffChange.On)
     SetDisplayMask(Characters.Malenia, bit_index=13, switch_type=OnOffChange.On)
     ForceAnimation(Characters.Malenia, 30000)
+
+    AddSpecialEffect(Characters.CLONE_Malenia, 5402)
+    DisableAnimations(Characters.CLONE_Malenia)
+    DisableGravity(Characters.CLONE_Malenia)
+    SetDisplayMask(Characters.CLONE_Malenia, bit_index=0, switch_type=OnOffChange.On)
+    SetDisplayMask(Characters.CLONE_Malenia, bit_index=12, switch_type=OnOffChange.On)
+    SetDisplayMask(Characters.CLONE_Malenia, bit_index=13, switch_type=OnOffChange.On)
+    ForceAnimation(Characters.CLONE_Malenia, 30000)
+
     AND_1.Add(FlagEnabled(15002805))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=15002800))
     
@@ -1906,7 +2016,7 @@ def Event_15002810():
     
     if PlayerInOwnWorld():
         BanishInvaders(unknown=0)
-    EnableNetworkFlag(15000801)
+    EnableNetworkFlag(Flags.MaleniaFirstTimeDone)
     if PlayerInOwnWorld():
         PlayCutsceneToPlayerAndWarp(
             cutscene_id=15000000,
@@ -1922,20 +2032,32 @@ def Event_15002810():
     WaitFramesAfterCutscene(frames=1)
     if PlayerInOwnWorld():
         SetCameraAngle(x_angle=13.069999694824219, y_angle=34.47999954223633)
+
     AddSpecialEffect(Characters.Malenia, 5400)
+    AddSpecialEffect(Characters.CLONE_Malenia, 5400)
     Move(Characters.Malenia, destination=15002812, destination_type=CoordEntityType.Region, short_move=True)
+    # TODO: Clone region.
+    Move(Characters.CLONE_Malenia, destination=15002812, destination_type=CoordEntityType.Region, short_move=True)
     EnableGravity(Characters.Malenia)
     EnableAnimations(Characters.Malenia)
     SetDisplayMask(Characters.Malenia, bit_index=0, switch_type=OnOffChange.Off)
     SetDisplayMask(Characters.Malenia, bit_index=12, switch_type=OnOffChange.Off)
     SetDisplayMask(Characters.Malenia, bit_index=13, switch_type=OnOffChange.Off)
+    EnableGravity(Characters.CLONE_Malenia)
+    EnableAnimations(Characters.CLONE_Malenia)
+    SetDisplayMask(Characters.CLONE_Malenia, bit_index=0, switch_type=OnOffChange.Off)
+    SetDisplayMask(Characters.CLONE_Malenia, bit_index=12, switch_type=OnOffChange.Off)
+    SetDisplayMask(Characters.CLONE_Malenia, bit_index=13, switch_type=OnOffChange.Off)
     DisableAsset(Assets.AEG260_526_3000)
     ForceAnimation(Characters.Malenia, 3006)
+    ForceAnimation(Characters.CLONE_Malenia, 3006)
     Goto(Label.L2)
 
     # --- Label 1 --- #
     DefineLabel(1)
     Move(Characters.Malenia, destination=15002814, destination_type=CoordEntityType.Region, short_move=True)
+    # TODO: Clone region.
+    Move(Characters.CLONE_Malenia, destination=15002814, destination_type=CoordEntityType.Region, short_move=True)
     DisableAsset(Assets.AEG260_526_3000)
     AND_2.Add(FlagEnabled(15002805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=15002800))
@@ -1946,20 +2068,21 @@ def Event_15002810():
     DefineLabel(2)
     EnableAI(CharacterGroups.MaleniaBoss)
     SetNetworkUpdateRate(CharacterGroups.MaleniaBoss, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.Malenia, name=902120000)
-    EnableBossHealthBar(Characters.CLONE_Malenia, name=902120010, bar_slot=1)
+    EnableBossHealthBar(Characters.Malenia, name=NameText.MaleniaBladeOfMiquella, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_Malenia, name=NameText.CLONE_MaleniaBladeOfMiquella, bar_slot=0)
     RemoveSpecialEffect(Characters.Malenia, 16141)
     RemoveSpecialEffect(Characters.CLONE_Malenia, 16141)
 
 
 @RestartOnRest(15002811)
-def Event_15002811():
+def MaleniaPhaseTwoTransition(_, malenia: uint, other_malenia: uint, new_name: int, bar_slot: short):
     """Event 15002811"""
-    if FlagEnabled(15000800):
+    if FlagEnabled(Flags.MaleniaDead):
         return
-    AND_1.Add(HealthValue(Characters.Malenia) <= 1)
-    AND_1.Add(CharacterDoesNotHaveSpecialEffect(Characters.Malenia, 18480))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Malenia))
+
+    AND_1.Add(HealthValue(malenia) <= 1)
+    AND_1.Add(CharacterDoesNotHaveSpecialEffect(malenia, 18480))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=malenia))  # TODO: Removed `other_malenia` damage trigger maybe?
     AND_1.Add(OR_1)
     
     MAIN.Await(AND_1)
@@ -1980,20 +2103,22 @@ def Event_15002811():
     EnableFlag(15002802)
     if PlayerInOwnWorld():
         ChangeCamera(normal_camera_id=2121, locked_camera_id=2121)
-    Move(Characters.Malenia, destination=15002816, destination_type=CoordEntityType.Region, short_move=True)
+    # TODO: different region for clone? And for player movement?
+    Move(malenia, destination=15002816, destination_type=CoordEntityType.Region, short_move=True)
     SetCameraAngle(x_angle=-29.0, y_angle=68.80000305175781)
-    EnableBossHealthBar(Characters.Malenia, name=902120001)
-    AddSpecialEffect(Characters.Malenia, 18000)
-    AddSpecialEffect(Characters.Malenia, 18001)
-    AddSpecialEffect(Characters.Malenia, 18002)
-    RemoveSpecialEffect(Characters.Malenia, 18015)
-    AddSpecialEffect(Characters.Malenia, 18016)
-    SetDisplayMask(Characters.Malenia, bit_index=10, switch_type=OnOffChange.On)
-    SetDisplayMask(Characters.Malenia, bit_index=11, switch_type=OnOffChange.Off)
-    SetDisplayMask(Characters.Malenia, bit_index=12, switch_type=OnOffChange.On)
-    CreateNPCPart(Characters.Malenia, npc_part_id=10, part_index=NPCPartType.Part1, part_health=99999)
+    # TODO: Might disable other health bar.
+    EnableBossHealthBar(malenia, name=new_name, bar_slot=bar_slot)
+    AddSpecialEffect(malenia, 18000)
+    AddSpecialEffect(malenia, 18001)
+    AddSpecialEffect(malenia, 18002)
+    RemoveSpecialEffect(malenia, 18015)
+    AddSpecialEffect(malenia, 18016)
+    SetDisplayMask(malenia, bit_index=10, switch_type=OnOffChange.On)
+    SetDisplayMask(malenia, bit_index=11, switch_type=OnOffChange.Off)
+    SetDisplayMask(malenia, bit_index=12, switch_type=OnOffChange.On)
+    CreateNPCPart(malenia, npc_part_id=10, part_index=NPCPartType.Part1, part_health=99999)
     SetNPCPartEffects(
-        Characters.Malenia,
+        malenia,
         npc_part_id=10,
         material_sfx_id=109,
         material_vfx_id=109,
@@ -2001,9 +2126,9 @@ def Event_15002811():
         unk_20_24=139,
         unk_24_28=0,
     )
-    CreateNPCPart(Characters.Malenia, npc_part_id=310, part_index=NPCPartType.WeakPoint, part_health=99999)
+    CreateNPCPart(malenia, npc_part_id=310, part_index=NPCPartType.WeakPoint, part_health=99999)
     SetNPCPartEffects(
-        Characters.Malenia,
+        malenia,
         npc_part_id=310,
         material_sfx_id=110,
         material_vfx_id=110,
@@ -2011,59 +2136,61 @@ def Event_15002811():
         unk_20_24=139,
         unk_24_28=0,
     )
-    AddSpecialEffect(Characters.Malenia, 18400)
-    AddSpecialEffect(Characters.MaleniaSpirit1, 18400)
-    DisableHealthBar(Characters.MaleniaSpirit1)
-    ForceAnimation(Characters.Malenia, 20002)
+    AddSpecialEffect(malenia, 18400)
+    AddSpecialEffect(other_malenia, 18400)
+    DisableHealthBar(other_malenia)
+    ForceAnimation(malenia, 20002)
     WaitFrames(frames=1)
-    ReplanAI(Characters.Malenia)
+    ReplanAI(malenia)
     Wait(3.200000047683716)
-    DisableImmortality(Characters.Malenia)
+    DisableImmortality(malenia)
     if PlayerInOwnWorld():
         ChangeCamera(normal_camera_id=2120, locked_camera_id=2120)
 
 
 @ContinueOnRest(15002820)
-def Event_15002820(_, character: uint, animation_id: int, special_effect: int):
+def ControlMaleniaSummon(
+    _, malenia: uint, other_malenia: uint, malenia_summon: uint, animation_id: int, special_effect: int
+):
     """Event 15002820"""
-    if FlagEnabled(15000800):
+    if FlagEnabled(Flags.MaleniaDead):
         return
-    DisableCharacter(character)
-    DisableAnimations(character)
-    DisableAI(character)
-    AND_1.Add(FlagDisabled(15002803))
-    AND_1.Add(CharacterHasSpecialEffect(Characters.Malenia, special_effect))
-    AND_2.Add(FlagEnabled(15002803))
-    AND_2.Add(CharacterHasSpecialEffect(Characters.MaleniaSpirit1, special_effect))
+    DisableCharacter(malenia_summon)
+    DisableAnimations(malenia_summon)
+    DisableAI(malenia_summon)
+    AND_1.Add(FlagDisabled(Flags.OtherMaleniaActive))
+    AND_1.Add(CharacterHasSpecialEffect(malenia, special_effect))
+    AND_2.Add(FlagEnabled(Flags.OtherMaleniaActive))
+    AND_2.Add(CharacterHasSpecialEffect(other_malenia, special_effect))
     OR_1.Add(AND_1)
     OR_1.Add(AND_2)
     
     MAIN.Await(OR_1)
     
-    EnableCharacter(character)
+    EnableCharacter(malenia_summon)
     WaitFrames(frames=1)
-    if FlagDisabled(15002803):
+    if FlagDisabled(Flags.OtherMaleniaActive):
         Move(
-            character,
-            destination=Characters.Malenia,
+            malenia_summon,
+            destination=malenia,
             destination_type=CoordEntityType.Character,
             model_point=228,
-            copy_draw_parent=Characters.Malenia,
+            copy_draw_parent=malenia,
         )
     else:
         Move(
-            character,
-            destination=Characters.MaleniaSpirit1,
+            malenia_summon,
+            destination=other_malenia,
             destination_type=CoordEntityType.Character,
             model_point=228,
-            copy_draw_parent=Characters.MaleniaSpirit1,
+            copy_draw_parent=other_malenia,
         )
-    ForceAnimation(character, animation_id)
-    EnableAI(character)
+    ForceAnimation(malenia_summon, animation_id)
+    EnableAI(malenia_summon)
     Wait(0.699999988079071)
-    EnableAnimations(character)
+    EnableAnimations(malenia_summon)
     Wait(0.30000001192092896)
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(character, 5029))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(malenia_summon, 5029))
     
     MAIN.Await(AND_5)
     
@@ -2071,96 +2198,104 @@ def Event_15002820(_, character: uint, animation_id: int, special_effect: int):
 
 
 @ContinueOnRest(15002830)
-def Event_15002830(_, special_effect_id: int, special_effect: int):
-    """Event 15002830"""
-    if FlagEnabled(15000800):
+def UnknownMaleniaEffect(_, malenia_special_effect: int, player_trigger_special_effect: int):
+    """TODO: Confusing. Seems to trigger when a CLIENT player has `special_effect`, but then only applies the first
+        effect arg to Malenia if you are the HOST."""
+    if FlagEnabled(Flags.MaleniaDead):
         return
     AND_1.Add(PlayerNotInOwnWorld())
-    AND_1.Add(CharacterHasSpecialEffect(PLAYER, special_effect))
+    AND_1.Add(CharacterHasSpecialEffect(PLAYER, player_trigger_special_effect))
     
     MAIN.Await(AND_1)
     
     if PlayerInOwnWorld():
-        AddSpecialEffect(Characters.Malenia, special_effect_id)
+        AddSpecialEffect(Characters.Malenia, malenia_special_effect)
     Wait(0.20000000298023224)
     Restart()
 
 
 @ContinueOnRest(15002840)
-def Event_15002840(_, character: uint, character_1: uint, state: uchar):
-    """Event 15002840"""
-    if FlagEnabled(15000800):
+def UnusedMaleniaSwapEvent(_, old_malenia: uint, new_malenia: uint, other_malenia_flag_state: uchar):
+    """TODO: Unused event that swaps between "normal" and "summon" Malenia."""
+    if FlagEnabled(Flags.MaleniaDead):
         return
-    AND_1.Add(CharacterHasSpecialEffect(character, 18037))
+    AND_1.Add(CharacterHasSpecialEffect(old_malenia, Effects.MaleniaSwapRequest))
     
     MAIN.Await(AND_1)
     
-    EnableCharacter(character_1)
-    AddSpecialEffect(character_1, 18401)
+    EnableCharacter(new_malenia)
+    AddSpecialEffect(new_malenia, Effects.NewMaleniaAppearing)
     WaitFrames(frames=1)
     Move(
-        character_1,
-        destination=character,
+        new_malenia,
+        destination=old_malenia,
         destination_type=CoordEntityType.Character,
         model_point=228,
-        copy_draw_parent=character_1,
+        copy_draw_parent=new_malenia,  # TODO: surely should be `old_malenia`
     )
-    ReplanAI(character)
-    ReplanAI(character_1)
+    ReplanAI(old_malenia)
+    ReplanAI(new_malenia)
     Wait(0.699999988079071)
-    EnableAnimations(character_1)
-    RemoveSpecialEffect(character_1, 18401)
-    AND_2.Add(CharacterDoesNotHaveSpecialEffect(character, 5029))
+    EnableAnimations(new_malenia)
+    RemoveSpecialEffect(new_malenia, Effects.NewMaleniaAppearing)
+    AND_2.Add(CharacterDoesNotHaveSpecialEffect(old_malenia, 5029))
     
     MAIN.Await(AND_2)
     
-    DisableCharacter(character)
-    DisableAnimations(character)
-    SetAbsoluteNetworkFlagState(15002803, state=state)
+    DisableCharacter(old_malenia)
+    DisableAnimations(old_malenia)
+    SetAbsoluteNetworkFlagState(Flags.OtherMaleniaActive, state=other_malenia_flag_state)
     Restart()
 
 
 @ContinueOnRest(15002842)
-def Event_15002842(_, character: uint, special_effect_id: int, special_effect: int):
+def UnusedMaleniaSummonEvent(
+    _,
+    malenia: uint,
+    other_malenia: uint,
+    malenia_summon: uint,
+    special_effect_id: int,
+    special_effect: int,
+):
     """Event 15002842"""
-    if FlagEnabled(15000800):
+    if FlagEnabled(Flags.MaleniaDead):
         return
-    AddSpecialEffect(character, special_effect_id)
-    DisableCharacter(character)
-    DisableAnimations(character)
-    AND_1.Add(FlagDisabled(15002803))
-    AND_1.Add(CharacterHasSpecialEffect(Characters.Malenia, special_effect))
-    AND_2.Add(FlagEnabled(15002803))
-    AND_2.Add(CharacterHasSpecialEffect(Characters.MaleniaSpirit1, special_effect))
+    AddSpecialEffect(malenia_summon, special_effect_id)
+    DisableCharacter(malenia_summon)
+    DisableAnimations(malenia_summon)
+    AND_1.Add(FlagDisabled(Flags.OtherMaleniaActive))
+    AND_1.Add(CharacterHasSpecialEffect(malenia, special_effect))
+    AND_2.Add(FlagEnabled(Flags.OtherMaleniaActive))
+    AND_2.Add(CharacterHasSpecialEffect(other_malenia, special_effect))
     OR_1.Add(AND_1)
     OR_1.Add(AND_2)
     
     MAIN.Await(OR_1)
     
-    EnableCharacter(character)
+    EnableCharacter(malenia_summon)
     WaitFrames(frames=1)
-    EnableAI(character)
-    if FlagDisabled(15002803):
+    EnableAI(malenia_summon)
+    if FlagDisabled(Flags.OtherMaleniaActive):
         Move(
-            character,
-            destination=Characters.Malenia,
+            malenia_summon,
+            destination=malenia,
             destination_type=CoordEntityType.Character,
             model_point=228,
-            copy_draw_parent=Characters.Malenia,
+            copy_draw_parent=malenia,
         )
     else:
         Move(
-            character,
-            destination=Characters.MaleniaSpirit1,
+            malenia_summon,
+            destination=other_malenia,
             destination_type=CoordEntityType.Character,
             model_point=228,
-            copy_draw_parent=Characters.MaleniaSpirit1,
+            copy_draw_parent=other_malenia,
         )
-    ReplanAI(character)
+    ReplanAI(malenia_summon)
     Wait(0.699999988079071)
-    EnableAnimations(character)
+    EnableAnimations(malenia_summon)
     Wait(2.0)
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(character, 5029))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(malenia_summon, 5029))
     
     MAIN.Await(AND_5)
     
@@ -2168,49 +2303,57 @@ def Event_15002842(_, character: uint, special_effect_id: int, special_effect: i
 
 
 @ContinueOnRest(15002848)
-def Event_15002848(_, special_effect: int, locked_camera_id__normal_camera_id: int):
+def MaleniaSpecialCameraControl(_, trigger_special_effect: int, special_camera_id: int):
     """Event 15002848"""
     DisableNetworkSync()
-    if FlagEnabled(15000800):
+    if FlagEnabled(Flags.MaleniaDead):
         return
-    AND_2.Add(FlagEnabled(15002810))
+
+    AND_2.Add(FlagEnabled(Flags.MaleniaBattleTriggered))
     if PlayerInOwnWorld():
         AND_2.Add(FlagEnabled(15002805))
     else:
         AND_2.Add(FlagEnabled(15002806))
-    AND_2.Add(CharacterDoesNotHaveSpecialEffect(Characters.Malenia, special_effect))
+    AND_2.Add(CharacterDoesNotHaveSpecialEffect(Characters.Malenia, trigger_special_effect))
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(Characters.Malenia, 18032))
+    AND_2.Add(CharacterDoesNotHaveSpecialEffect(Characters.CLONE_Malenia, trigger_special_effect))
+    AND_2.Add(CharacterDoesNotHaveSpecialEffect(Characters.CLONE_Malenia, 18032))
     OR_2.Add(AND_2)
-    OR_2.Add(FlagEnabled(15000800))
+    OR_2.Add(FlagEnabled(Flags.MaleniaDead))
     
     MAIN.Await(OR_2)
     
-    if FlagEnabled(15000800):
+    if FlagEnabled(Flags.MaleniaDead):
         return
+
     ChangeCamera(normal_camera_id=2120, locked_camera_id=2120)
-    AND_1.Add(FlagEnabled(15002810))
-    AND_1.Add(CharacterHasSpecialEffect(Characters.Malenia, special_effect))
+    AND_1.Add(FlagEnabled(Flags.MaleniaBattleTriggered))
+    AND_1.Add(CharacterHasSpecialEffect(Characters.Malenia, trigger_special_effect))
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(Characters.Malenia, 18032))
+    AND_3.Add(FlagEnabled(Flags.MaleniaBattleTriggered))
+    AND_3.Add(CharacterHasSpecialEffect(Characters.CLONE_Malenia, trigger_special_effect))
+    AND_3.Add(CharacterDoesNotHaveSpecialEffect(Characters.CLONE_Malenia, 18032))
     OR_1.Add(AND_1)
-    OR_1.Add(FlagEnabled(15000800))
+    OR_1.Add(AND_3)
+    OR_1.Add(FlagEnabled(Flags.MaleniaDead))
     
     MAIN.Await(OR_1)
     
-    if FlagEnabled(15000800):
+    if FlagEnabled(Flags.MaleniaDead):
         return
     ChangeCamera(
-        normal_camera_id=locked_camera_id__normal_camera_id,
-        locked_camera_id=locked_camera_id__normal_camera_id,
+        normal_camera_id=special_camera_id,
+        locked_camera_id=special_camera_id,
     )
     Restart()
 
 
 @RestartOnRest(15002849)
-def Event_15002849():
+def MaleniaCommonEvents():
     """Event 15002849"""
     CommonFunc_HostEntersBossFog(
         0,
-        boss_dead_flag=15000800,
+        boss_dead_flag=Flags.MaleniaDead,
         fog_asset=Assets.AEG099_003_9000,
         fog_region=15002800,
         host_entered_fog_flag=15002805,
@@ -2221,60 +2364,66 @@ def Event_15002849():
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=15000800,
+        boss_dead_flag=Flags.MaleniaDead,
         fog_asset=Assets.AEG099_003_9000,
         fog_region=15002800,
         host_entered_fog_flag=15002805,
         summon_entered_fog_flag=15002806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=15000800, fog_asset=Assets.AEG099_003_9000, model_point=5, required_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.MaleniaDead, fog_asset=Assets.AEG099_003_9000, model_point=5, required_flag=0)
     CommonFunc_ControlBossMusic(0, 15002800, 212000, 15002805, 15002806, 0, 15002802, 1, 1)
 
 
 @RestartOnRest(15002850)
-def Event_15002850():
+def LorettaDies():
     """Event 15002850"""
-    if FlagEnabled(15000850):
+    if FlagEnabled(Flags.LorettaDead):
         return
     
-    MAIN.Await(HealthValue(Characters.Loretta) <= 0)
-    
+    AND_1.Add(HealthValue(Characters.Loretta) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_Loretta) <= 0)
+    MAIN.Await(AND_1)
+
     Wait(4.0)
     PlaySoundEffect(Characters.Loretta, 888880000, sound_type=SoundType.s_SFX)
-    
-    MAIN.Await(CharacterDead(Characters.Loretta))
+
+    AND_2.Add(CharacterDead(Characters.Loretta))
+    AND_2.Add(CharacterDead(Characters.CLONE_Loretta))
+    MAIN.Await(AND_2)
     
     KillBossAndDisplayBanner(character=Characters.Loretta, banner_type=BannerType.GreatEnemyFelled)
-    EnableFlag(15000850)
+    EnableFlag(Flags.LorettaDead)
     EnableFlag(9119)
     if PlayerInOwnWorld():
         EnableFlag(61119)
 
 
 @RestartOnRest(15002860)
-def Event_15002860():
+def LorettaBattleTrigger():
     """Event 15002860"""
-    GotoIfFlagDisabled(Label.L0, flag=15000850)
-    DisableCharacter(15005850)
-    DisableAnimations(15005850)
-    Kill(15005850)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.LorettaDead)
+    DisableCharacter(CharacterGroups.LorettaBoss)
+    DisableAnimations(CharacterGroups.LorettaBoss)
+    Kill(CharacterGroups.LorettaBoss)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(15005850)
+    DisableAI(CharacterGroups.LorettaBoss)
     ForceAnimation(Characters.Loretta, 30001)
-    GotoIfFlagEnabled(Label.L1, flag=15000851)
+    ForceAnimation(Characters.CLONE_Loretta, 30001)
+    GotoIfFlagEnabled(Label.L1, flag=Flags.LorettaFirstTimeDone)
     AddSpecialEffect(Characters.TalkDummy12, 9531)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=15002851))
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Loretta, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_Loretta, attacker=PLAYER))
+
     MAIN.Await(OR_1)
     
-    EnableNetworkFlag(15000851)
+    EnableNetworkFlag(Flags.LorettaFirstTimeDone)
     Goto(Label.L2)
 
     # --- Label 1 --- #
@@ -2285,6 +2434,12 @@ def Event_15002860():
         destination_type=CoordEntityType.Region,
         copy_draw_parent=Characters.Loretta,
     )
+    Move(
+        Characters.CLONE_Loretta,
+        destination=15002860,  # TODO: clone
+        destination_type=CoordEntityType.Region,
+        copy_draw_parent=Characters.Loretta,
+    )
     AND_2.Add(FlagEnabled(15002855))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=15002850))
     
@@ -2292,61 +2447,69 @@ def Event_15002860():
 
     # --- Label 2 --- #
     DefineLabel(2)
+    # TODO: No wait for first animation?
     ForceAnimation(Characters.Loretta, 20011)
     ForceAnimation(Characters.Loretta, 3005)
-    EnableAI(15005850)
-    SetNetworkUpdateRate(CharacterGroups.MaleniaBoss, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ForceAnimation(Characters.CLONE_Loretta, 20011)
+    ForceAnimation(Characters.CLONE_Loretta, 3005)
+    EnableAI(CharacterGroups.LorettaBoss)
+    # TODO: This was Malenia's group originally (typo).
+    SetNetworkUpdateRate(CharacterGroups.LorettaBoss, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     AddSpecialEffect(Characters.TalkDummy12, 9532)
     Wait(2.0)
-    EnableBossHealthBar(Characters.Loretta, name=903252000)
+    EnableBossHealthBar(Characters.Loretta, name=NameText.Loretta, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_Loretta, name=NameText.CLONE_Loretta, bar_slot=0)
 
 
 @RestartOnRest(15002861)
-def Event_15002861():
+def LorettaPhaseTwoTransition():
     """Event 15002861"""
-    if FlagEnabled(15000850):
+    if FlagEnabled(Flags.LorettaDead):
         return
-    AND_1.Add(HealthRatio(Characters.Loretta) <= 0.550000011920929)
-    
-    MAIN.Await(AND_1)
+    OR_1.Add(HealthRatio(Characters.Loretta) <= 0.550000011920929)
+    OR_1.Add(HealthRatio(Characters.CLONE_Loretta) <= 0.550000011920929)
+
+    MAIN.Await(OR_1)
     
     WaitFrames(frames=1)
+    # TODO: Does nothing? This event flag isn't even used.
+    #  Is phase two music not used? Flag 15002852
 
 
 @RestartOnRest(15002899)
-def Event_15002899():
+def LorettaCommonEvents():
     """Event 15002899"""
     CommonFunc_HostEntersBossFog(
         0,
-        boss_dead_flag=15000850,
+        boss_dead_flag=Flags.LorettaDead,
         fog_asset=Assets.AEG099_003_9001,
         fog_region=15002850,
         host_entered_fog_flag=15002855,
-        boss_characters=15005850,
+        boss_characters=CharacterGroups.LorettaBoss,
         action_button_id=10000,
-        first_time_done_flag=15000851,
+        first_time_done_flag=Flags.LorettaFirstTimeDone,
         first_time_trigger_region=15002851,
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=15000850,
+        boss_dead_flag=Flags.LorettaDead,
         fog_asset=Assets.AEG099_003_9001,
         fog_region=15002850,
         host_entered_fog_flag=15002855,
         summon_entered_fog_flag=15002856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=15000850, fog_asset=Assets.AEG099_003_9001, model_point=3, required_flag=15000851)
-    CommonFunc_ControlBossFog(0, boss_dead_flag=15000850, fog_asset=Assets.AEG099_003_9002, model_point=3, required_flag=0)
-    CommonFunc_ControlBossMusic(0, 15000850, 920200, 15002855, 15002856, 0, 15002852, 0, 0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.LorettaDead, fog_asset=Assets.AEG099_003_9001, model_point=3, required_flag=Flags.LorettaFirstTimeDone)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.LorettaDead, fog_asset=Assets.AEG099_003_9002, model_point=3, required_flag=0)
+    CommonFunc_ControlBossMusic(0, Flags.LorettaDead, 920200, 15002855, 15002856, 0, 15002852, 0, 0)
 
 
 @ContinueOnRest(15000700)
-def Event_15000700():
+def SetMaleniaTalkRange():
     """Event 15000700"""
     if PlayerNotInOwnWorld():
         return
-    if FlagEnabled(15000800):
+    if FlagEnabled(Flags.MaleniaDead):
         return
     if FlagEnabled(15002700):
         return
@@ -2365,7 +2528,7 @@ def Event_15000701():
     """Event 15000701"""
     if PlayerNotInOwnWorld():
         return
-    if FlagEnabled(15000800):
+    if FlagEnabled(Flags.MaleniaDead):
         return
     if FlagEnabled(15002700):
         return

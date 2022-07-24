@@ -1,0 +1,12 @@
+Some interesting typos/discoveries found during my event script deep dive for Double Trouble.
+
+- One of Rennala's students will never be chosen by Rennala (entity ID typo). Tweeted this.
+- Godfrey Phantom's first-time trigger requires you to damage Margit in Stormveil Castle, not him. Tweeted this.
+- When the Loretta, Knight of the Haligtree fight starts, the game sets *Malenia's* network update rate to Always
+rather than Loretta's.
+- Loretta's phase two music flag is apparently never enabled.
+- One of Malenia's spirit summons does not have its lock-on point adjusted like the others.
+- Actually, that Malenia summon is not one of the four spirits she creates in her big attack. Instead, it is used in
+some kind of cut attack handled by non-called event 15002840, which is triggered by Malenia effect 18037. Or, this
+could be an old version of Phase Two they did, since it seems to disable the original Malenia (and she isn't re-enabled
+anywhere else).

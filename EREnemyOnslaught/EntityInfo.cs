@@ -136,7 +136,13 @@ namespace EREnemyOnslaught
             [14000850] = new CloneInfo(14000851, new Vector4(149.847f, 110.182f, -224.778f, -93.632f), new Vector4(149.101f, 110.182f, -220.903f, -93.632f)), // Red Wolf of Radagon
             [14002856] = new CloneInfo(14002857, new Vector4(152.379f, 110.197f, -220.576f, -87.560f), new Vector4(152.552f, 110.197f, -224.625f, -87.560f)),  // Red Wolf first position
 
-            [15000800] = new CloneInfo(15000806),  // Malenia  TODO: Move
+            [15000800] = new CloneInfo(15000810),  // Malenia (MOVE)
+            [15000801] = new CloneInfo(15000811),  // Unused "swap" Malenia spirit
+            [15000802] = new CloneInfo(15000812),  // Temporary Malenia spirits
+            [15000803] = new CloneInfo(15000813),
+            [15000804] = new CloneInfo(15000814),
+            [15000805] = new CloneInfo(15000815),
+            // TODO: Clone and move both "first time" and "not first time" regions for Malenia.
 
             // m16_00_00_00 (Volcano Manor)
             [16000800] = new CloneInfo(16000802, new Vector4(85.891f, -439.508f, -120.969f, -162.615f), new Vector4(106.285f, -439.508f, -119.676f, 167.795f)),  // Rykard (Phase Two)
@@ -198,13 +204,6 @@ namespace EREnemyOnslaught
             14000700,  // RennalaNPC1
             14000701,  // RennalaNPC2
             14000711,  // GravenSchool (Sellen)
-
-            // Malenia spirits (for now)
-            15000801,
-            15000802,
-            15000803,
-            15000804,
-            15000805,
 
             // Volcano Manor NPCs
             16000710,  // Patches

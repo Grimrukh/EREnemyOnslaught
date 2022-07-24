@@ -1,8 +1,32 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    MaleniaDead = 15000800
+    MaleniaFirstTimeDone = 15000801
+    OtherMaleniaActive = 15002803  # unused
+    MaleniaBattleTriggered = 15002810
+    LorettaDead = 15000850
+    LorettaFirstTimeDone = 15000851
+
+
+class Effects(SpecialEffectParam):
+    MaleniaSwapRequest = 18037  # unused event. TODO: Find the animation that triggers this...
+    NewMaleniaAppearing = 18401  # unused event
+
+
+class NameText(NPCName):
+    Loretta = 903252000
+    CLONE_Loretta = 903252010
+    MaleniaBladeOfMiquella = 902120000
+    CLONE_MaleniaBladeOfMiquella = 902120010
+    MaleniaGoddessOfRot = 902120001
+    CLONE_MaleniaGoddessOfRot = 902120011
+
+
 class CharacterGroups(Character):
     MaleniaBoss = 15005800
+    LorettaBoss = 15005850
 
 
 class Characters(Character):
@@ -56,11 +80,11 @@ class Characters(Character):
     KindredofRotLarva25 = 15000598  # c2041_9028 col h013400 npc 20410056 think 20410000
     KindredofRotLarva26 = 15000599  # c2041_9029 col h013400 npc 20410056 think 20410000
     Malenia = 15000800  # c2120_9000 col h015000 npc 21200056 think 21200000 talk 203101500 group 15005800,15005100
-    MaleniaSpirit1 = 15000801  # c2120_9001 col h015000 npc 21202056 think 21200000 group 15005800
-    MaleniaSpirit2 = 15000802  # c2120_9002 col h015000 npc 21202056 think 21200000 group 15005800
-    MaleniaSpirit3 = 15000803  # c2120_9003 col h015000 npc 21202056 think 21200000 group 15005800
-    MaleniaSpirit4 = 15000804  # c2120_9004 col h015000 npc 21202056 think 21200000 group 15005800
-    MaleniaSpirit5 = 15000805  # c2120_9005 col h015000 npc 21202056 think 21200000 group 15005800
+    OtherMalenia = 15000801  # c2120_9001 col h015000 npc 21202056 think 21200000 group 15005800
+    MaleniaSummon0 = 15000802  # c2120_9002 col h015000 npc 21202056 think 21200000 group 15005800
+    MaleniaSummon1 = 15000803  # c2120_9003 col h015000 npc 21202056 think 21200000 group 15005800
+    MaleniaSummon2 = 15000804  # c2120_9004 col h015000 npc 21202056 think 21200000 group 15005800
+    MaleniaSummon3 = 15000805  # c2120_9005 col h015000 npc 21202056 think 21200000 group 15005800
     Loretta = 15000850  # c3252_9000 col h007400 npc 32520054 think 32520054 group 15005850,15005110
     Crystalian0 = 15000310  # c3350_9000 col h005200 npc 33501154 think 33501000
     Crystalian1 = 15000311  # c3350_9001 col h005300 npc 33500154 think 33500000
@@ -280,8 +304,16 @@ class Characters(Character):
     PutridAvatar0 = 15000392  # c4811_9002 col h012500 npc 48110056 think 48110000
     PutridAvatar1 = 15000393  # c4811_9003 col h010200 npc 48110056 think 48110000
 
-    CLONE_Malenia = 15000806
+    CLONE_Malenia = 15000810
+    CLONE_OtherMalenia = 15000811
+    CLONE_MaleniaSummon0 = 15000812
+    CLONE_MaleniaSummon1 = 15000813
+    CLONE_MaleniaSummon2 = 15000814
+    CLONE_MaleniaSummon3 = 15000815
     CLONE_Loretta = 15000851
+    CLONE_UlceratedTreeSpirit = 15000399
+    CLONE_PutridAvatar0 = 15000395
+    CLONE_PutridAvatar1 = 15000396
 
 
 class Assets(Asset):
