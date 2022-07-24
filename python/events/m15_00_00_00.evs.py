@@ -1950,7 +1950,7 @@ def MaleniaBattleTrigger():
     EnableImmortality(Characters.Malenia)
     EnableImmortality(Characters.CLONE_Malenia)
 
-    DisableCharacter(Characters.OtherMalenia)
+    DisableCharacter(Characters.OtherMalenia)  # never enabled (unused events)
     DisableAnimations(Characters.OtherMalenia)
     SetLockOnPoint(character=0, lock_on_model_point=-1, state=True)
     DisableCharacter(Characters.MaleniaSummon0)
@@ -2213,7 +2213,7 @@ def UnknownMaleniaEffect(_, malenia_special_effect: int, player_trigger_special_
 
 @ContinueOnRest(15002840)
 def UnusedMaleniaSwapEvent(_, old_malenia: uint, new_malenia: uint, other_malenia_flag_state: uchar):
-    """TODO: Unused event that swaps between "normal" and "summon" Malenia."""
+    """TODO: Unused event that swaps between "normal" and "butterfly" Malenia."""
     if FlagEnabled(Flags.MaleniaDead):
         return
     AND_1.Add(CharacterHasSpecialEffect(old_malenia, Effects.MaleniaSwapRequest))

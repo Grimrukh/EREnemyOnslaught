@@ -41,14 +41,16 @@ namespace EREnemyOnslaught
             //DupeCharacters();
             GenerateMSBs(
                 //"m10_00_00_00.msb.dcx",
-                //"m11_00_00_00.msb.dcx",
+                "m11_00_00_00.msb.dcx",
+                "m11_05_00_00.msb.dcx",
+                "m12_01_00_00.msb.dcx",
                 "m14_00_00_00.msb.dcx",
-                //"m15_00_00_00.msb.dcx"  // Haligtree
+                "m15_00_00_00.msb.dcx",  // Haligtree
                 "m16_00_00_00.msb.dcx",  // Volcano Manor
+                "m19_00_00_00.msb.dcx",  // Stone Platform
                 "m60_51_36_00.msb.dcx",  // Redmane Castle
                 "m60_13_09_02.msb.dcx"  // Radahn large tile
             );
-
 
             #region Param Edits
             string regulationPath = GetVanillaPath("regulation.bin");
