@@ -10,6 +10,17 @@ class Flags(Flag):
     LorettaFirstTimeDone = 15000851
 
 
+class RegionPoints(RegionPoint):
+    MaleniaStartFirstTime = 15002812
+    CLONE_MaleniaStartFirstTime = 15002813
+    MaleniaStartAfterFirstTime = 15002814
+    PlayerPositionForMaleniaPhaseTwo = 15002815
+    MaleniaPhaseTwoPosition = 15002816
+    CLONE_MaleniaStartAfterFirstTime = 15002817
+    LorettaStartAfterFirstTime = 15002860
+    CLONE_LorettaStartAfterFirstTime = 15002861
+
+
 class Effects(SpecialEffectParam):
     MaleniaSwapRequest = 18037  # unused event. TODO: Find the animation that triggers this...
     NewMaleniaAppearing = 18401  # unused event
@@ -345,7 +356,7 @@ class Assets(Asset):
     AEG099_272_9000 = 15001573  # AEG099
     AEG099_272_9001 = 15001578  # AEG099
     AEG099_320_9000 = 15001704  # AEG099
-    AEG099_332_9000 = 15001702  # AEG099
+    MaleniaFlower = 15001702  # AEG099
     AEG099_428_9001 = 15001722  # AEG099
     AEG099_591_9001 = 15001720  # AEG099
     AEG099_620_9084 = 15001721  # AEG099

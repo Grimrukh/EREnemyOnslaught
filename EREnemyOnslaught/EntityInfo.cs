@@ -136,14 +136,17 @@ namespace EREnemyOnslaught
             [14000850] = new CloneInfo(14000851, new Vector4(149.847f, 110.182f, -224.778f, -93.632f), new Vector4(149.101f, 110.182f, -220.903f, -93.632f)), // Red Wolf of Radagon
             [14002856] = new CloneInfo(14002857, new Vector4(152.379f, 110.197f, -220.576f, -87.560f), new Vector4(152.552f, 110.197f, -224.625f, -87.560f)),  // Red Wolf first position
 
-            [15000800] = new CloneInfo(15000810),  // Malenia (MOVE)
-            [15000801] = new CloneInfo(15000811),  // Unused "swap" Malenia spirit
-            [15000802] = new CloneInfo(15000812),  // Temporary Malenia spirits
-            [15000803] = new CloneInfo(15000813),
-            [15000804] = new CloneInfo(15000814),
-            [15000805] = new CloneInfo(15000815),
-            // TODO: Clone and move both "first time" and "not first time" regions for Malenia.
-
+            [15000800] = new CloneInfo(15000810, new Vector4(-19.105f, 52.343f, 469.117f, -77.392f)),  // Malenia
+            [15000801] = new CloneInfo(15000811, new Vector4(-19.105f, 52.343f, 469.117f, -77.392f)),  // Unused "swap" Malenia spirit
+            [15000802] = new CloneInfo(15000812, new Vector4(-19.105f, 52.343f, 469.117f, -77.392f)),  // Temporary Malenia spirits
+            [15000803] = new CloneInfo(15000813, new Vector4(-19.105f, 52.343f, 469.117f, -77.392f)),
+            [15000804] = new CloneInfo(15000814, new Vector4(-19.105f, 52.343f, 469.117f, -77.392f)),
+            [15000805] = new CloneInfo(15000815, new Vector4(-19.105f, 52.343f, 469.117f, -77.392f)),
+            [15002812] = new CloneInfo(15002813, new Vector4(-23.278f, 52.134f, 470.961f, -132.706f)),  // Malenia start position first time
+            [15002814] = new CloneInfo(15002817, new Vector4(-3.943f, 50.807f, 493.917f, -132.626f)),  // Malenia start position after first time
+            [15000850] = new CloneInfo(15000851, new Vector4(170.475f, 431.748f, 307.111f, -10.115f)),  // Loretta
+            [15002860] = new CloneInfo(15002861, new Vector4(184.504f, 431.894f, 278.272f, 22.549f)),  // Loretta start position after first time
+            
             // m16_00_00_00 (Volcano Manor)
             [16000800] = new CloneInfo(16000802, new Vector4(85.891f, -439.508f, -120.969f, -162.615f), new Vector4(106.285f, -439.508f, -119.676f, 167.795f)),  // Rykard (Phase Two)
             [16000801] = new CloneInfo(16000803, new Vector4(85.891f, -439.508f, -120.969f, -162.615f), new Vector4(106.285f, -439.508f, -119.676f, 167.795f)),  // Rykard (Phase One)

@@ -24,7 +24,7 @@ from .entities.m15_00_00_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    DisableAsset(Assets.AEG099_332_9000)
+    DisableAsset(Assets.MaleniaFlower)
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
         flag=Flags.MaleniaDead,
@@ -1656,7 +1656,7 @@ def Constructor():
     Event_15002680()
     SetMaleniaTalkRange()
     Event_15000701()
-    Event_15000702(0, asset=Assets.AEG099_332_9000, asset_1=Assets.AEG099_090_9001)
+    Event_15000702(0, asset=Assets.MaleniaFlower, asset_1=Assets.AEG099_090_9001)
     Event_15000710(0, character=Characters.Millicent0)
     CommonFunc_90005704(0, attacked_entity=Characters.Millicent0, flag=4181, flag_1=4180, flag_2=15002901, right=3)
     CommonFunc_90005703(
@@ -2035,9 +2035,8 @@ def MaleniaBattleTrigger():
 
     AddSpecialEffect(Characters.Malenia, 5400)
     AddSpecialEffect(Characters.CLONE_Malenia, 5400)
-    Move(Characters.Malenia, destination=15002812, destination_type=CoordEntityType.Region, short_move=True)
-    # TODO: Clone region.
-    Move(Characters.CLONE_Malenia, destination=15002812, destination_type=CoordEntityType.Region, short_move=True)
+    Move(Characters.Malenia, destination=RegionPoints.MaleniaStartFirstTime, destination_type=CoordEntityType.Region, short_move=True)
+    Move(Characters.CLONE_Malenia, destination=RegionPoints.CLONE_MaleniaStartFirstTime, destination_type=CoordEntityType.Region, short_move=True)
     EnableGravity(Characters.Malenia)
     EnableAnimations(Characters.Malenia)
     SetDisplayMask(Characters.Malenia, bit_index=0, switch_type=OnOffChange.Off)
@@ -2055,9 +2054,8 @@ def MaleniaBattleTrigger():
 
     # --- Label 1 --- #
     DefineLabel(1)
-    Move(Characters.Malenia, destination=15002814, destination_type=CoordEntityType.Region, short_move=True)
-    # TODO: Clone region.
-    Move(Characters.CLONE_Malenia, destination=15002814, destination_type=CoordEntityType.Region, short_move=True)
+    Move(Characters.Malenia, destination=RegionPoints.MaleniaStartAfterFirstTime, destination_type=CoordEntityType.Region, short_move=True)
+    Move(Characters.CLONE_Malenia, destination=RegionPoints.CLONE_MaleniaStartAfterFirstTime, destination_type=CoordEntityType.Region, short_move=True)
     DisableAsset(Assets.AEG260_526_3000)
     AND_2.Add(FlagEnabled(15002805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=15002800))
@@ -2091,7 +2089,7 @@ def MaleniaPhaseTwoTransition(_, malenia: uint, other_malenia: uint, new_name: i
         PlayCutsceneToPlayerAndWarp(
             cutscene_id=15000010,
             cutscene_flags=0,
-            move_to_region=15002815,
+            move_to_region=RegionPoints.PlayerPositionForMaleniaPhaseTwo,
             map_id=15000000,
             player_id=PLAYER,
             unk_20_24=0,
@@ -2103,10 +2101,9 @@ def MaleniaPhaseTwoTransition(_, malenia: uint, other_malenia: uint, new_name: i
     EnableFlag(15002802)
     if PlayerInOwnWorld():
         ChangeCamera(normal_camera_id=2121, locked_camera_id=2121)
-    # TODO: different region for clone? And for player movement?
-    Move(malenia, destination=15002816, destination_type=CoordEntityType.Region, short_move=True)
+    Move(malenia, destination=RegionPoints.MaleniaPhaseTwoPosition, destination_type=CoordEntityType.Region, short_move=True)
     SetCameraAngle(x_angle=-29.0, y_angle=68.80000305175781)
-    # TODO: Might disable other health bar.
+    # TODO: This might disable the other health bar.
     EnableBossHealthBar(malenia, name=new_name, bar_slot=bar_slot)
     AddSpecialEffect(malenia, 18000)
     AddSpecialEffect(malenia, 18001)
@@ -2430,13 +2427,13 @@ def LorettaBattleTrigger():
     DefineLabel(1)
     Move(
         Characters.Loretta,
-        destination=15002860,
+        destination=RegionPoints.LorettaStartAfterFirstTime,
         destination_type=CoordEntityType.Region,
         copy_draw_parent=Characters.Loretta,
     )
     Move(
         Characters.CLONE_Loretta,
-        destination=15002860,  # TODO: clone
+        destination=RegionPoints.CLONE_LorettaStartAfterFirstTime,
         destination_type=CoordEntityType.Region,
         copy_draw_parent=Characters.Loretta,
     )
