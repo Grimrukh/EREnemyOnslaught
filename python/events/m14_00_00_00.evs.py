@@ -1925,7 +1925,7 @@ def Event_14000519():
     """Event 14000519"""
     if ThisEventSlotFlagEnabled():
         return
-    DisableThisSlotFlag()
+    EnableThisSlotFlag()
 
 
 @RestartOnRest(14002498)
@@ -3797,7 +3797,7 @@ def StudentChosenAtBattleStart(_, flag: uint, rennala: uint, student_group: uint
     WaitFrames(frames=1)
 
     EnableFlag(flag)
-    DisableThisSlotFlag()
+    EnableThisSlotFlag()
     OR_1.Add(CharacterHasSpecialEffect(student_group, Effects.GlowingStudentHit, target_comparison_type=ComparisonType.GreaterThanOrEqual))
     AwaitConditionTrue(OR_1)
     EnableFlag(Flags.FirstGlowingStudentHit)
@@ -4975,7 +4975,7 @@ def Event_14003898(
     SkipLinesIfCharacterDoesNotHaveSpecialEffect(line_count=2, character=character_8, special_effect=14393)
     AddSpecialEffect(character_8, 14367)
     ReplanAI(character_8)
-    DisableThisSlotFlag()
+    EnableThisSlotFlag()
     Restart()
 
 
@@ -7121,7 +7121,7 @@ def CLONE_StudentChosenAtBattleStart(_, flag: uint, rennala: uint, student_group
     WaitFrames(frames=1)
 
     EnableFlag(flag)
-    DisableThisSlotFlag()
+    EnableThisSlotFlag()
     OR_1.Add(CharacterHasSpecialEffect(student_group, Effects.GlowingStudentHit, target_comparison_type=ComparisonType.GreaterThanOrEqual))
     AwaitConditionTrue(OR_1)
     EnableFlag(Flags.CLONE_FirstGlowingStudentHit)

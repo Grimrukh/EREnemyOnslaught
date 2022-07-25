@@ -1556,7 +1556,7 @@ def Event_13000519():
     if ThisEventSlotFlagEnabled():
         return
     EnableFlag(13000510)
-    DisableThisSlotFlag()
+    EnableThisSlotFlag()
 
 
 @RestartOnRest(13002236)
@@ -1642,7 +1642,7 @@ def Event_13002646(_, flag: uint, region: uint, character: uint, seconds: float)
     ForceAnimation(character, 20001)
     Wait(6.0)
     DisableCharacter(character)
-    DisableThisSlotFlag()
+    EnableThisSlotFlag()
 
 
 @RestartOnRest(13002660)
@@ -2679,7 +2679,7 @@ def Event_13002610():
         ForceAnimation(Characters.AncientDragon3, 3029)
     else:
         ForceAnimation(Characters.AncientDragon3, 20002)
-    DisableThisSlotFlag()
+    EnableThisSlotFlag()
     Wait(2.0)
     OR_10.Add(CharacterInsideRegion(character=PLAYER, region=13002495))
     OR_10.Add(FlagEnabled(13000495))
