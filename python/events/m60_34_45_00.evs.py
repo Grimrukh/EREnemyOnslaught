@@ -25,22 +25,39 @@ from .entities.m60_34_45_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.GlintstoneDragon, name=904502600, npc_threat_level=25)
-    CommonFunc_90005861(
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.GlintstoneDragonSmarag, name=NameText.GlintstoneDragonSmarag, npc_threat_level=25,
+        clone_boss=Characters.CLONE_GlintstoneDragonSmarag, clone_name=NameText.CLONE_GlintstoneDragonSmarag,
+    )
+    CommonFunc_FieldBossNonRespawningWithRewardAndMessage(
         0,
-        flag=1034450800,
-        left=0,
-        character=Characters.GlintstoneDragon,
-        left_1=1,
+        dead_flag=1034450800,
+        extra_flag_to_enable=0,
+        boss=Characters.GlintstoneDragonSmarag,
+        boss_banner_choice=1,
         item_lot=30210,
-        text=30061,
+        message=30061,
         seconds=0.0,
+        clone_boss=Characters.CLONE_GlintstoneDragonSmarag,
     )
     Event_1034452800()
     Event_1034452805()
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
-        character=Characters.GlintstoneDragon,
+        character=Characters.GlintstoneDragonSmarag,
+        animation_id=30000,
+        animation_id_1=20000,
+        region=1034452800,
+        radius=5.0,
+        seconds=0.0,
+        left=0,
+        left_1=0,
+        left_2=0,
+        left_3=0,
+    )
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
+        0,
+        character=Characters.CLONE_GlintstoneDragonSmarag,
         animation_id=30000,
         animation_id_1=20000,
         region=1034452800,
@@ -53,7 +70,15 @@ def Constructor():
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
-        character=Characters.GlintstoneDragon,
+        character=Characters.GlintstoneDragonSmarag,
+        region=1034452800,
+        radius=5.0,
+        seconds=0.0,
+        animation_id=-1,
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0,
+        character=Characters.CLONE_GlintstoneDragonSmarag,
         region=1034452800,
         radius=5.0,
         seconds=0.0,
@@ -114,7 +139,8 @@ def Event_1034452800():
     """Event 1034452800"""
     if FlagEnabled(1034450800):
         return
-    AddSpecialEffect(Characters.GlintstoneDragon, 10247)
+    AddSpecialEffect(Characters.GlintstoneDragonSmarag, 10247)
+    AddSpecialEffect(Characters.CLONE_GlintstoneDragonSmarag, 10247)
 
 
 @RestartOnRest(1034452805)
@@ -122,6 +148,7 @@ def Event_1034452805():
     """Event 1034452805"""
     if FlagEnabled(1034450800):
         return
-    SetNest(Characters.GlintstoneDragon, region=1034452810)
+    SetNest(Characters.GlintstoneDragonSmarag, region=1034452810)
+    SetNest(Characters.CLONE_GlintstoneDragonSmarag, region=1034452810)
     Wait(1.0)
     Restart()

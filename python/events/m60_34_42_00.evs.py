@@ -25,19 +25,26 @@ from .entities.m60_34_42_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1034420000, asset=Assets.AEG099_060_9000)
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.GlintstoneDragon0, name=904502602, npc_threat_level=25)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.GlintstoneDragonAdula, name=NameText.GlintstoneDragonAdula, npc_threat_level=25,
+        clone_boss=Characters.CLONE_GlintstoneDragonAdula, clone_name=NameText.CLONE_GlintstoneDragonAdula,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1034420800,
         extra_flag_to_enable=0,
-        boss_character=Characters.GlintstoneDragon0,
+        boss=Characters.GlintstoneDragonAdula,
         boss_banner_choice=1,
         item_lot=30260,
         seconds=0.0,
+        clone_boss=Characters.CLONE_GlintstoneDragonAdula,
     )
-    Event_1034422800()
-    Event_1034422801()
-    Event_1034422802()
+    GlintstoneDragonBattleTrigger()
+    Event_1034422801(0, Characters.GlintstoneDragonAdula)
+    Event_1034422801(1, Characters.CLONE_GlintstoneDragonAdula)
+    Event_1034422803(0, Characters.GlintstoneDragonAdula)
+    Event_1034422803(1, Characters.CLONE_GlintstoneDragonAdula)
+
     CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.GlintstoneDragon1,
@@ -50,7 +57,24 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GlintstoneDragon1, radius=17.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
+        0,
+        character=Characters.CLONE_GlintstoneDragon1,
+        inactive_animation=30000,
+        active_animation=20000,
+        radius=17.0,
+        delay=1.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.GlintstoneDragon1, radius=17.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.CLONE_GlintstoneDragon1, radius=17.0, seconds=1.0, animation_id=-1
+    )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1034420340,
@@ -58,6 +82,7 @@ def Constructor():
         item_lot=1034420400,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_GlintstoneDragon1,
     )
     Event_1034422600(0, asset=Assets.AEG099_045_9000, flag=1034422600, owner_entity=Characters.Dummy)
     Event_1034422600(1, asset=Assets.AEG099_045_9001, flag=1034422601, owner_entity=Characters.Dummy)
@@ -94,12 +119,24 @@ def Preconstructor():
     DisableBackread(Characters.NepheliLoux)
     DisableBackread(Characters.Commoner)
     Event_1034422230()
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.AlbinauricLookout0, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AlbinauricLookout2, region=1034422203, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.AlbinauricLookout3, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AlbinauricLookout4, region=1034422208, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AlbinauricLookout5, region=1034422208, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AlbinauricLookout6, region=1034422208, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.AlbinauricLookout0, radius=10.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.AlbinauricLookout2, region=1034422203, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.AlbinauricLookout3, radius=8.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.AlbinauricLookout4, region=1034422208, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.AlbinauricLookout5, region=1034422208, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.AlbinauricLookout6, region=1034422208, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1034420222, radius=20.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1034420228, radius=10.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerInactiveEnemy_WithRadius(
@@ -114,7 +151,9 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.LargeCrabSnow1, radius=16.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.LargeCrabSnow1, radius=16.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRadius(0, 1034420390, 30.0, 0.0, -1)
 
 
@@ -136,9 +175,9 @@ def Event_1034422230():
     OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout12))
     OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout13))
     OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.AlbinauricLookout14))
-    
+
     MAIN.Await(OR_2)
-    
+
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     EnableAI(Characters.AlbinauricLookout7)
     EnableAI(Characters.AlbinauricLookout8)
@@ -165,9 +204,9 @@ def Event_1034422600(_, asset: uint, flag: uint, owner_entity: uint):
     OR_2.Add(EntityWithinDistance(entity=asset, other_entity=20000, radius=2.0))
     AND_1.Add(OR_2)
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     DestroyAsset(asset, request_slot=0)
     if FlagEnabled(50):
         ShootProjectile(
@@ -253,12 +292,14 @@ def Event_1034422600(_, asset: uint, flag: uint, owner_entity: uint):
 
 
 @RestartOnRest(1034422800)
-def Event_1034422800():
+def GlintstoneDragonBattleTrigger():
     """Event 1034422800"""
     if FlagEnabled(1034420800):
         return
-    EndIffSpecialStandbyEndedFlagEnabled(character=Characters.GlintstoneDragon0)
-    DisableCharacter(Characters.GlintstoneDragon0)
+    EndIffSpecialStandbyEndedFlagEnabled(character=Characters.GlintstoneDragonAdula)
+    DisableCharacter(Characters.GlintstoneDragonAdula)
+    EndIffSpecialStandbyEndedFlagEnabled(character=Characters.CLONE_GlintstoneDragonAdula)
+    DisableCharacter(Characters.CLONE_GlintstoneDragonAdula)
     AND_9.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_9.Add(CharacterHasSpecialEffect(PLAYER, 3710))
     OR_1.Add(AND_9)
@@ -266,36 +307,43 @@ def Event_1034422800():
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.GrayPhantom))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.GlintstoneDragon0, attacker=PLAYER))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.GlintstoneDragonAdula, attacker=PLAYER))
     OR_2.Add(CharacterInsideRegion(character=PLAYER, region=1034422800))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.GlintstoneDragon0, state_info=436))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.GlintstoneDragon0, state_info=2))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.GlintstoneDragon0, state_info=5))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.GlintstoneDragon0, state_info=6))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.GlintstoneDragon0, state_info=260))
-    AND_4.Add(CharacterHasSpecialEffect(Characters.GlintstoneDragon0, 481))
-    AND_4.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90100))
-    AND_4.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90110))
-    AND_4.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90160))
-    AND_5.Add(CharacterHasSpecialEffect(Characters.GlintstoneDragon0, 482))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90100))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90120))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90160))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90162))
-    AND_6.Add(CharacterHasSpecialEffect(Characters.GlintstoneDragon0, 483))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90100))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90140))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90160))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90161))
-    AND_7.Add(CharacterHasSpecialEffect(Characters.GlintstoneDragon0, 484))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90100))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90130))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90161))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90162))
-    AND_8.Add(CharacterHasSpecialEffect(Characters.GlintstoneDragon0, 487))
-    AND_8.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90100))
-    AND_8.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90150))
-    AND_8.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragon0, 90160))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.GlintstoneDragonAdula, state_info=436))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.GlintstoneDragonAdula, state_info=2))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.GlintstoneDragonAdula, state_info=5))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.GlintstoneDragonAdula, state_info=6))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.GlintstoneDragonAdula, state_info=260))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_GlintstoneDragonAdula, attacker=PLAYER))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.CLONE_GlintstoneDragonAdula, state_info=436))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.CLONE_GlintstoneDragonAdula, state_info=2))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.CLONE_GlintstoneDragonAdula, state_info=5))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.CLONE_GlintstoneDragonAdula, state_info=6))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.CLONE_GlintstoneDragonAdula, state_info=260))
+    # Can't be bothered copying all this.
+    AND_4.Add(CharacterHasSpecialEffect(Characters.GlintstoneDragonAdula, 481))
+    AND_4.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90100))
+    AND_4.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90110))
+    AND_4.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90160))
+    AND_5.Add(CharacterHasSpecialEffect(Characters.GlintstoneDragonAdula, 482))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90100))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90120))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90160))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90162))
+    AND_6.Add(CharacterHasSpecialEffect(Characters.GlintstoneDragonAdula, 483))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90100))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90140))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90160))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90161))
+    AND_7.Add(CharacterHasSpecialEffect(Characters.GlintstoneDragonAdula, 484))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90100))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90130))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90161))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90162))
+    AND_8.Add(CharacterHasSpecialEffect(Characters.GlintstoneDragonAdula, 487))
+    AND_8.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90100))
+    AND_8.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90150))
+    AND_8.Add(CharacterDoesNotHaveSpecialEffect(Characters.GlintstoneDragonAdula, 90160))
     AND_1.Add(OR_2)
     OR_3.Add(AND_1)
     OR_3.Add(AND_4)
@@ -303,39 +351,43 @@ def Event_1034422800():
     OR_3.Add(AND_6)
     OR_3.Add(AND_7)
     OR_3.Add(AND_8)
-    
+
     MAIN.Await(OR_3)
-    
+
     EnableNetworkFlag(1034422800)
-    SetSpecialStandbyEndedFlag(character=Characters.GlintstoneDragon0, state=True)
-    EnableCharacter(Characters.GlintstoneDragon0)
-    ForceAnimation(Characters.GlintstoneDragon0, 20008)
+    SetSpecialStandbyEndedFlag(character=Characters.GlintstoneDragonAdula, state=True)
+    SetSpecialStandbyEndedFlag(character=Characters.CLONE_GlintstoneDragonAdula, state=True)
+    EnableCharacter(Characters.GlintstoneDragonAdula)
+    ForceAnimation(Characters.GlintstoneDragonAdula, 20008)
+    Wait(2.0)  # for desync
+    EnableCharacter(Characters.CLONE_GlintstoneDragonAdula)
+    ForceAnimation(Characters.CLONE_GlintstoneDragonAdula, 20008)
 
 
 @RestartOnRest(1034422801)
-def Event_1034422801():
+def Event_1034422801(_, dragon: uint):
     """Event 1034422801"""
     DisableNetworkSync()
     if FlagEnabled(1034420800):
         return
-    
-    MAIN.Await(CharacterInsideRegion(character=Characters.GlintstoneDragon0, region=1034422801))
-    
-    AddSpecialEffect(Characters.GlintstoneDragon0, 10285)
+
+    MAIN.Await(CharacterInsideRegion(character=dragon, region=1034422801))
+
+    AddSpecialEffect(dragon, 10285)
     Wait(1.0)
     Restart()
 
 
 @RestartOnRest(1034422802)
-def Event_1034422802():
+def Event_1034422803(_, dragon: uint):
     """Event 1034422802"""
     DisableNetworkSync()
     if FlagEnabled(1034420800):
         return
-    
-    MAIN.Await(CharacterInsideRegion(character=Characters.GlintstoneDragon0, region=1034422802))
-    
-    AddSpecialEffect(Characters.GlintstoneDragon0, 10286)
+
+    MAIN.Await(CharacterInsideRegion(character=dragon, region=1034422802))
+
+    AddSpecialEffect(dragon, 10286)
     Wait(1.0)
     Restart()
 

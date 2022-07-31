@@ -37,22 +37,22 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DeathRiteBird, name=904980600, npc_threat_level=24)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DeathRiteBird, name=904980600, npc_threat_level=24)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1050570800,
         extra_flag_to_enable=0,
-        boss_character=Characters.DeathRiteBird,
+        boss=Characters.DeathRiteBird,
         boss_banner_choice=0,
         item_lot=30530,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.PutridAvatar, name=904811600, npc_threat_level=18)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.PutridAvatar, name=904811600, npc_threat_level=18)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1050570850,
         extra_flag_to_enable=0,
-        boss_character=Characters.PutridAvatar,
+        boss=Characters.PutridAvatar,
         boss_banner_choice=0,
         item_lot=30555,
         seconds=0.0,

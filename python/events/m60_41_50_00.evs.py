@@ -24,12 +24,12 @@ from .entities.m60_41_50_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.FallingstarBeast, name=904680602, npc_threat_level=19)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.FallingstarBeast, name=904680602, npc_threat_level=19)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1041500800,
         extra_flag_to_enable=0,
-        boss_character=Characters.FallingstarBeast,
+        boss=Characters.FallingstarBeast,
         boss_banner_choice=0,
         item_lot=30310,
         seconds=0.0,

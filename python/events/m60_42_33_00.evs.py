@@ -37,12 +37,12 @@ def Constructor():
         cancel_flag__right_flag=1042332571,
         right=1042332572,
     )
-    CommonFunc_90005880(
+    CommonFunc_EvergaolBossDies(
         0,
-        flag=1042330800,
-        flag_1=1042330805,
+        dead_flag=1042330800,
+        required_flag=1042330805,
         flag_2=1042332800,
-        character=Characters.AncientHeroofZamor,
+        boss=Characters.AncientHeroofZamor,
         item_lot=1042330100,
         area_id=60,
         block_id=42,
@@ -50,22 +50,22 @@ def Constructor():
         dd_id=0,
         player_start=1042332805,
     )
-    CommonFunc_90005882(
+    CommonFunc_EvergaolBossBattleTrigger(
         0,
-        flag=1042330800,
-        flag_1=1042330805,
+        dead_flag=1042330800,
+        required_flag=1042330805,
         flag_2=1042332800,
-        character=Characters.AncientHeroofZamor,
-        flag_3=1042332806,
+        boss=Characters.AncientHeroofZamor,
+        battle_started_flag=1042332806,
         character_1=1042335810,
-        asset=Assets.AEG099_120_1000,
+        evergaol_gate=Assets.AEG099_120_1000,
         owner_entity=Characters.Dummy,
         source_entity=1042332810,
-        name=907100520,
-        animation_id=-1,
-        animation_id_1=20002,
+        boss_name=907100520,
+        standby_animation=-1,
+        appearance_animation=20002,
     )
-    CommonFunc_90005885(
+    CommonFunc_EvergaolBossMusic(
         0,
         flag=1042330800,
         bgm_boss_conv_param_id=0,
@@ -236,7 +236,7 @@ def Preconstructor():
 @ContinueOnRest(200)
 def Event_200():
     """Event 200"""
-    CommonFunc_90005451(0, character=Characters.WalkingMausoleum, asset_group=1042336420)
+    CommonFunc_MausoleumAssetDestruction(0, mausoleum=Characters.WalkingMausoleum, asset_group=1042336420)
     CommonFunc_90005452(0, character=Characters.WalkingMausoleum, flag=1242330400)
     CommonFunc_90005454(0, character=Characters.WalkingMausoleum, flag=1242332400, flag_1=1242330400)
     CommonFunc_WalkingMausoleumDefeated(0, mausoleum=Characters.WalkingMausoleum, asset=Assets.AEG300_015_9000)

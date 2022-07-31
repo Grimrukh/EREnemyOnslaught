@@ -55,7 +55,9 @@ def Constructor():
     RennalaPhaseTwoTransition()
     Event_14002849()
     Event_140028121()  # TODO: Rennala Phase 1 SpEffect <-> Flag communication. Not sure if it needs cloning.
-    Event_140028122(0, character=Characters.RennalaPhaseTwo, special_effect=14585, special_effect_1=Effects.RennalaDragonRequest)
+    Event_140028122(
+        0, character=Characters.RennalaPhaseTwo, special_effect=14585, special_effect_1=Effects.RennalaDragonRequest
+    )
     Event_14002606()
     Event_14002689()
     Event_14003500(0, region=14002700, flag=Flags.RennalaDefeated)
@@ -408,7 +410,7 @@ def Constructor():
     )
 
     # RENNALA PHASE TWO SUMMONS
-    
+
     # Summon order of events:
     #  - Rennala's AI enables a "summon request" SpEffect.
     #  - `RennalaSummonsCharacter` event triggers.
@@ -422,7 +424,7 @@ def Constructor():
     #    - This presumably 'cleans up' the entire summon event AFTER Rennala is given a chance to replan her AI.
     #    - The 'Disable' event is probably expected to trigger BEFORE this event removes the request effect, but there's
     #    no synchronization that enforces this - just a lucky race condition.
-    
+
     RennalaSummonsBloodhoundKnight(
         0,
         active_flag=Flags.RennalaBloodhoundActive,
@@ -529,7 +531,7 @@ def Constructor():
     )
     DragonSummonDefeated(0, active_flag=Flags.RennalaDragonActive, dragon=Characters.RennalaDragonSummon)
     DisableDragonSummon(0, dragon=Characters.RennalaDragonSummon)
-    
+
     # region CLONED RENNALA SUMMONS
 
     CLONE_RennalaSummonsBloodhoundKnight(
@@ -657,7 +659,7 @@ def Constructor():
     )
     DisableRennalaSpawners()
     KillStudentsWhenRennalaDies()
-    
+
     CommonFunc_90005511(
         0,
         flag=14000560,
@@ -728,6 +730,7 @@ def Constructor():
         item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -736,6 +739,7 @@ def Constructor():
         item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,
     )
     CommonFunc_90005525(0, flag=14000610, asset=Assets.AEG257_035_3000)
     CommonFunc_90005525(0, flag=14000611, asset=Assets.AEG257_035_3001)
@@ -780,8 +784,11 @@ def Constructor():
         item_lot=14000005,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=14000634, character=14000634, item_lot=14000015, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=14000634, character=14000634, item_lot=14000015, reward_delay=0.0, skip_reward=0, clone=0
+    )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=14000637,
@@ -789,6 +796,7 @@ def Constructor():
         item_lot=14000025,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -797,6 +805,7 @@ def Constructor():
         item_lot=14000035,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,
     )
     Event_14002491(0, character=Characters.Avionette2, region=14002492, radius=15.0, seconds=0.0, animation_id=3032)
     Event_14002491(1, character=Characters.Avionette3, region=14002493, radius=15.0, seconds=0.0, animation_id=3032)
@@ -805,7 +814,10 @@ def Constructor():
     Event_14002490(1, character=Characters.Avionette1, region=14002491, seconds=0.0, animation_id=3032)
     Event_14002490(2, character=Characters.Avionette6, region=14002496, seconds=0.0, animation_id=3032)
     Event_14002490(3, character=Characters.Avionette7, region=14002496, seconds=1.0, animation_id=3032)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=14000486, character=Characters.Scarab, item_lot=40272, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=14000486, character=Characters.Scarab, item_lot=40272, reward_delay=0.0, skip_reward=0,
+        clone=0
+    )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=14000499,
@@ -813,6 +825,7 @@ def Constructor():
         item_lot=14000980,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_MoongrumCarianKnight,
     )
     CommonFunc_90005780(
         0,
@@ -826,7 +839,9 @@ def Constructor():
         unknown=1,
         right_1=0,
     )
-    CommonFunc_90005781(0, flag=Flags.RedWolfDead, flag_1=14002160, flag_2=14002161, character=Characters.SorceressSellen3)
+    CommonFunc_90005781(
+        0, flag=Flags.RedWolfDead, flag_1=14002160, flag_2=14002161, character=Characters.SorceressSellen3
+    )
     CommonFunc_90005782(
         0,
         flag=14002160,
@@ -935,8 +950,12 @@ def Preconstructor():
     DisableBackread(Characters.SorcererThops)
     DisableAsset(14006710)
     Event_14000519()
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar0, region=14002200, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar1, region=14002200, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar0, region=14002200, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar1, region=14002200, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.RayaLucariaScholar2,
@@ -949,7 +968,7 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.RayaLucariaScholar6,
         animation_id=30000,
@@ -962,8 +981,10 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar7, region=14002228, seconds=0.0, animation_id=-1)
-    CommonFunc_90005210(
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar7, region=14002228, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.RayaLucariaScholar8,
         animation_id=30000,
@@ -976,20 +997,42 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar9, region=14002228, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar3, region=14002222, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar11, region=14002222, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar13, region=14002251, seconds=0.5, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar14, region=14002251, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar15, region=14002252, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar9, region=14002228, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar3, region=14002222, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar11, region=14002222, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar13, region=14002251, seconds=0.5, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar14, region=14002251, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar15, region=14002252, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=14000260, region=14002260, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=14000261, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar17, region=14002260, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar17, region=14002260, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=14000263, region=14002260, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar16, region=14002267, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar18, region=14002267, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar20, region=14002267, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar19, region=14002266, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar16, region=14002267, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar18, region=14002267, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar20, region=14002267, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar19, region=14002266, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.RayaLucariaScholar21,
@@ -1006,12 +1049,24 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar23, region=14002276, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar24, region=14002276, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar25, region=14002285, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar26, region=14002285, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RayaLucariaScholar27, region=14002285, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.PutridCorpse0, region=14002300, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar23, region=14002276, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar24, region=14002276, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar25, region=14002285, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar26, region=14002285, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.RayaLucariaScholar27, region=14002285, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.PutridCorpse0, region=14002300, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.PutridCorpse1,
@@ -1024,7 +1079,9 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.PutridCorpse2, region=14002310, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.PutridCorpse2, region=14002310, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.PutridCorpse3,
@@ -1133,7 +1190,9 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.PutridCorpse12, region=14002323, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.PutridCorpse12, region=14002323, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.PutridCorpse13,
@@ -1332,8 +1391,12 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.PutridCorpseBare0, radius=16.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.PutridCorpseBare2, region=14002345, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.PutridCorpseBare0, radius=16.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.PutridCorpseBare2, region=14002345, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=14000392,
@@ -1395,7 +1458,9 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SmallerDog0, region=14002345, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.SmallerDog0, region=14002345, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.SmallerDog1,
@@ -1519,7 +1584,9 @@ def Preconstructor():
         seconds=0.0,
         left=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.WanderingNoble13, region=14002267, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.WanderingNoble13, region=14002267, seconds=0.0, animation_id=-1
+    )
     CommonFunc_90005221(
         0,
         character=Characters.WanderingNoble12,
@@ -1744,7 +1811,9 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Marionette4, region=14002461, radius=20.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Marionette4, region=14002461, radius=20.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Marionette9, radius=3.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Marionette10, radius=3.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerInactiveEnemy_WithRegion(
@@ -1771,8 +1840,12 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Marionette11, region=14002487, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Marionette12, region=14002487, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Marionette11, region=14002487, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Marionette12, region=14002487, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Avionette5,
@@ -1786,12 +1859,22 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Avionette8, region=14002396, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Avionette9, region=14002396, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Avionette8, region=14002396, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Avionette9, region=14002396, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Page, region=14002675, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MadPumpkinHead, region=14002276, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.IronVirgin0, region=14002293, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.IronVirgin1, region=14002294, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.MadPumpkinHead, region=14002276, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.IronVirgin0, region=14002293, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.IronVirgin1, region=14002294, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegion(0, 14000499, 14002499, 0.0, -1)
 
 
@@ -1803,9 +1886,9 @@ def Event_14002080():
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=14002080))
     AND_1.Add(CharacterHasSpecialEffect(PLAYER, 14307))
-    
+
     MAIN.Await(AND_1)
-    
+
     SetRespawnPoint(respawn_point=16002080)
     SaveRequest()
     EnableFlag(16000540)
@@ -1844,9 +1927,9 @@ def Event_14002165(_, flag: uint, character: uint, banner_type: uchar, region: u
     if FlagEnabled(flag):
         return
     AND_1.Add(CharacterProportionDead(character=character))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(flag)
     DisplayBanner(banner_type)
     if UnsignedNotEqual(left=region, right=0):
@@ -1933,7 +2016,7 @@ def Event_14002498():
     """Event 14002498"""
     GotoIfFlagEnabled(Label.L0, flag=14000546)
     EnableNavmeshType(navmesh_id=14002498, navmesh_type=NavmeshType.Solid)
-    
+
     MAIN.Await(FlagEnabled(14000546))
 
     # --- Label 0 --- #
@@ -1948,18 +2031,18 @@ def Event_14003500(_, region: uint, flag: uint):
     DisableNetworkSync()
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=region))
     AND_2.Add(FlagEnabled(flag))
-    
+
     MAIN.Await(AND_2)
-    
+
     AddSpecialEffect(PLAYER, 9621)
     Wait(0.10000000149011612)
 
     # --- Label 0 --- #
     DefineLabel(0)
     AND_3.Add(CharacterOutsideRegion(character=PLAYER, region=region))
-    
+
     MAIN.Await(AND_3)
-    
+
     Wait(0.10000000149011612)
     RemoveSpecialEffect(PLAYER, 9621)
     Restart()
@@ -1982,9 +2065,9 @@ def Event_14002590():
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(FlagEnabled(14002595))
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     EndIfFlagRangeAllEnabled(flag_range=(14000276, 14000277))
     EnableAsset(Assets.AEG257_014_0500)
     ForceAnimation(Assets.AEG257_014_0500, 1)
@@ -2104,9 +2187,9 @@ def Event_14002594():
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=14002590))
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(14002595)
     Wait(10.0)
     DisableNetworkFlag(14002595)
@@ -2132,9 +2215,9 @@ def Event_14002650(
     DisableFlag(cancel_flag__right_flag)
     AND_1.Add(Singleplayer())
     AND_1.Add(ActionButtonParamActivated(action_button_id=9140, entity=anchor_entity))
-    
+
     MAIN.Await(AND_1)
-    
+
     DisplayDialogAndSetFlags(
         message=4300,
         button_type=ButtonType.Yes_or_No,
@@ -2217,9 +2300,9 @@ def Event_14002360(
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=6))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=260))
-    
+
     MAIN.Await(OR_2)
-    
+
     Wait(0.10000000149011612)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     SetSpecialStandbyEndedFlag(character=character, state=True)
@@ -2263,9 +2346,9 @@ def Event_14002490(_, character: uint, region: uint, seconds: float, animation_i
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=6))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=260))
     OR_2.Add(AND_1)
-    
+
     MAIN.Await(OR_2)
-    
+
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     Wait(seconds)
     if ValueNotEqual(left=animation_id, right=-1):
@@ -2302,9 +2385,9 @@ def Event_14002491(_, character: uint, region: uint, radius: float, seconds: flo
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=6))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=260))
     OR_2.Add(AND_1)
-    
+
     MAIN.Await(OR_2)
-    
+
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     Wait(seconds)
     if ValueNotEqual(left=animation_id, right=-1):
@@ -2324,15 +2407,15 @@ def Event_14002495():
     DisableNetworkSync()
     OR_1.Add(FlagEnabled(14002140))
     OR_1.Add(FlagEnabled(14002150))
-    
+
     MAIN.Await(OR_1)
-    
+
     AddSpecialEffect(Characters.TalkDummy7, 9531)
     AND_1.Add(FlagDisabled(14002140))
     AND_1.Add(FlagDisabled(14002150))
-    
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(Characters.TalkDummy7, 9532)
     Wait(1.0)
     Restart()
@@ -2345,9 +2428,9 @@ def Event_14002606():
     GotoIfFlagEnabled(Label.L0, flag=14000676)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(AssetActivated(obj_act_id=14003606))
-    
+
     MAIN.Await(AND_1)
-    
+
     Wait(0.10000000149011612)
     DisplayDialog(text=208199, anchor_entity=Assets.AEG099_630_9006)
 
@@ -2367,9 +2450,9 @@ def Event_14002665():
 def Event_14002689():
     """Event 14002689"""
     GotoIfFlagEnabled(Label.L0, flag=14000801)
-    
+
     MAIN.Await(CharacterInsideRegion(character=PLAYER, region=14002689))
-    
+
     ActivateGparamOverride(gparam_sub_id=500, change_duration=0.0)
     Wait(0.10000000149011612)
     Restart()
@@ -2393,9 +2476,9 @@ def RennalaDies():
     # --- Label 1 --- #
     DefineLabel(1)
     GotoIfFlagEnabled(Label.L0, flag=Flags.RennalaDefeated)
-    
+
     MAIN.Await(HealthValue(Characters.RennalaPhaseTwo) <= 0 and HealthValue(Characters.CLONE_RennalaPhaseTwo) <= 0)
-    
+
     Wait(4.0)
     PlaySoundEffect(14008000, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(PlayerInOwnWorld())
@@ -2404,9 +2487,9 @@ def RennalaDies():
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9646))
     OR_2.Add(AND_2)
     OR_2.Add(FlagEnabled(Flags.RennalaDefeated))
-    
+
     MAIN.Await(OR_2)
-    
+
     Kill(CharacterGroups.Students)
     Kill(CharacterGroups.CLONE_Students)
     KillBossAndDisplayBanner(character=Characters.RennalaPhaseTwo, banner_type=BannerType.LegendFelled)
@@ -2608,9 +2691,9 @@ def RennalaBattleTrigger():
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.RennalaPhaseOne, attacker=PLAYER))
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_RennalaPhaseOne, attacker=PLAYER))
-    
+
     MAIN.Await(OR_1)
-    
+
     EnableFlag(9021)
     if PlayerInOwnWorld():
         BanishInvaders(unknown=0)
@@ -2739,7 +2822,7 @@ def RennalaBattleTrigger():
     CreateVFX(14002687)
     AND_2.Add(FlagEnabled(Flags.RennalaBattleStarted))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=14002800))
-    
+
     MAIN.Await(AND_2)
 
     # --- Label 2 --- #
@@ -2751,7 +2834,8 @@ def RennalaBattleTrigger():
         CharacterGroups.Students, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryFiveFrames
     )
     SetNetworkUpdateRate(
-        CharacterGroups.CLONE_Students, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryFiveFrames)
+        CharacterGroups.CLONE_Students, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryFiveFrames
+    )
     EnableBossHealthBar(Characters.RennalaPhaseOne, name=NameText.RennalaQueenOfTheFullMoon, bar_slot=1)
     EnableBossHealthBar(Characters.CLONE_RennalaPhaseOne, name=NameText.RhondaQueenOfTheWhiteDust, bar_slot=0)
 
@@ -2764,9 +2848,9 @@ def RennalaPhaseTwoTransition():
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterDead(Characters.RennalaPhaseOne))
     AND_1.Add(CharacterDead(Characters.CLONE_RennalaPhaseOne))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(14002802)
     SetCharacterFadeOnEnable(character=Characters.RennalaPhaseTwo, state=False)
     SetCharacterFadeOnEnable(character=Characters.CLONE_RennalaPhaseTwo, state=False)
@@ -2890,15 +2974,15 @@ def Event_140028121():
     if FlagEnabled(Flags.RennalaDefeated):
         return
     OR_1.Add(CharacterHasSpecialEffect(Characters.RennalaPhaseOne, Effects.RennalaSpecialStudentRequest))
-    
+
     MAIN.Await(OR_1)
-    
+
     EnableFlag(14002707)
     AND_1.Add(FlagDisabled(14002707))
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(Characters.RennalaPhaseOne, Effects.RennalaSpecialStudentRequest))
-    
+
     MAIN.Await(AND_1)
-    
+
     Restart()
 
 
@@ -2911,9 +2995,9 @@ def Event_140028122(_, character: uint, special_effect: int, special_effect_1: i
         return
     OR_1.Add(CharacterHasSpecialEffect(character, special_effect))
     OR_1.Add(CharacterHasSpecialEffect(character, special_effect_1))
-    
+
     MAIN.Await(OR_1)
-    
+
     GotoIfCharacterHasSpecialEffect(Label.L1, character=character, special_effect=special_effect)
     GotoIfCharacterHasSpecialEffect(Label.L2, character=character, special_effect=special_effect_1)
 
@@ -2932,9 +3016,9 @@ def Event_140028122(_, character: uint, special_effect: int, special_effect_1: i
     AND_1.Add(FlagRangeAllDisabled(flag_range=(14002720, 14002723)))
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(character, special_effect))
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(character, special_effect_1))
-    
+
     MAIN.Await(AND_1)
-    
+
     Restart()
 
 
@@ -2961,8 +3045,12 @@ def Event_14002849():
         summon_entered_fog_flag=14002806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.RennalaDefeated, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=14000801)
-    CommonFunc_ControlBossMusic(0, Flags.RennalaDefeated, 203000, Flags.RennalaBattleStarted, 14002806, 0, 14002803, 1, 0)
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.RennalaDefeated, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=14000801
+    )
+    CommonFunc_ControlBossMusic(
+        0, Flags.RennalaDefeated, 203000, Flags.RennalaBattleStarted, 14002806, 0, 14002803, 1, 0
+    )
 
 
 @RestartOnRest(14002850)
@@ -2970,14 +3058,14 @@ def RedWolfDies():
     """Event 14002850"""
     if FlagEnabled(Flags.RedWolfDead):
         return
-    
+
     MAIN.Await(HealthRatio(Characters.RedWolf) <= 0.0 and HealthRatio(Characters.CLONE_RedWolf) <= 0.0)
-    
+
     Wait(2.0)
     PlaySoundEffect(Characters.RedWolf, 77777777, sound_type=SoundType.s_SFX)
-    
+
     MAIN.Await(CharacterDead(Characters.RedWolf) and CharacterDead(Characters.CLONE_RedWolf))
-    
+
     KillBossAndDisplayBanner(character=Characters.RedWolf, banner_type=BannerType.GreatEnemyFelled)
     EnableFlag(Flags.RedWolfDead)
     EnableFlag(9117)
@@ -3006,9 +3094,9 @@ def RedWolfBattleTrigger():
     ForceAnimation(Characters.CLONE_RedWolf, 30002, loop=True)
     AND_2.Add(FlagEnabled(14002855))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=14002850))
-    
+
     MAIN.Await(AND_2)
-    
+
     EnableNetworkFlag(14000851)
     ForceAnimation(Characters.RedWolf, 20002)
     ForceAnimation(Characters.CLONE_RedWolf, 20002)
@@ -3016,11 +3104,17 @@ def RedWolfBattleTrigger():
 
     # --- Label 1 --- #
     DefineLabel(1)
-    Move(Characters.RedWolf, destination=RegionPoints.RedWolfFirstPosition, destination_type=CoordEntityType.Region, short_move=True)
-    Move(Characters.CLONE_RedWolf, destination=RegionPoints.CLONE_RedWolfFirstPosition, destination_type=CoordEntityType.Region, short_move=True)
+    Move(
+        Characters.RedWolf, destination=RegionPoints.RedWolfFirstPosition, destination_type=CoordEntityType.Region,
+        short_move=True
+    )
+    Move(
+        Characters.CLONE_RedWolf, destination=RegionPoints.CLONE_RedWolfFirstPosition,
+        destination_type=CoordEntityType.Region, short_move=True
+    )
     AND_2.Add(FlagEnabled(14002855))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=14002850))
-    
+
     MAIN.Await(AND_2)
 
     # --- Label 2 --- #
@@ -3057,7 +3151,9 @@ def RedWolfFogGateEvents():
         summon_entered_fog_flag=14002856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.RedWolfDead, fog_asset=Assets.AEG099_003_9000, model_point=3, required_flag=0)
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.RedWolfDead, fog_asset=Assets.AEG099_003_9000, model_point=3, required_flag=0
+    )
     CommonFunc_9005813(
         0,
         flag=Flags.RedWolfDead,
@@ -3075,17 +3171,17 @@ def Event_14002820(_, character: uint):
     DisableAI(character)
     AND_1.Add(CharacterInsideRegion(character=20000, region=14002812))
     AND_1.Add(HasAIStatus(Characters.RennalaStudent0, ai_status=AIStatusType.Battle))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableAI(character)
     DisableAsset(Assets.AEG099_001_9000)
     DisableAsset(14006800)
     SetNetworkUpdateRate(Characters.RennalaPhaseOne, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     EnableBossHealthBar(character)
-    
+
     MAIN.Await(FlagEnabled(14002810))
-    
+
     WaitFrames(frames=1)
     DisableBossHealthBar(Characters.RennalaPhaseOne)
     EnableBossHealthBar(character)
@@ -3096,9 +3192,9 @@ def Event_14002821(_, character: uint):
     """Event 14002821"""
     OR_1.Add(EntityWithinDistance(entity=20000, other_entity=character, radius=30.0))
     OR_1.Add(HealthRatio(character, target_comparison_type=ComparisonType.NotEqual) == 1.0)
-    
+
     MAIN.Await(OR_1)
-    
+
     SetNetworkUpdateRate(Characters.RennalaPhaseOne, is_fixed=False, update_rate=CharacterUpdateRate.Always)
     EnableAI(character)
     EnableBossHealthBar(character)
@@ -3108,7 +3204,7 @@ def Event_14002821(_, character: uint):
 def Event_14002822(_, character: uint):
     """Event 14002822"""
     MAIN.Await(CharacterDead(character))
-    
+
     Wait(1.5)
     KillBossAndDisplayBanner(character=character, banner_type=BannerType.DemigodFelled)
     EnableFlag(14000899)
@@ -3151,15 +3247,17 @@ def ChooseRandomGlowingStudent(
     AND_10.Add(FlagEnabled(Flags.RennalaBattleStarted))
     AwaitConditionTrue(AND_10)
     AND_1.Add(FlagEnabled(required_flag))
-    AND_1.Add(CharacterHasSpecialEffect(student_group, Effects.StudentGlowing, target_comparison_type=ComparisonType.LessThan))
+    AND_1.Add(
+        CharacterHasSpecialEffect(student_group, Effects.StudentGlowing, target_comparison_type=ComparisonType.LessThan)
+    )
     OR_1.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaBarrierUnknown))
     OR_1.Add(CharacterHasSpecialEffect(rennala, Effects.FirstGlowingStudentChosen))
     OR_1.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaBarrierDamagedOnce))
     OR_1.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaBarrierDamagedTwice))
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     DisableFlag(Flags.RennalaRandomFlag1)
     DisableFlag(Flags.RennalaRandomFlag2)
     DisableFlag(Flags.RennalaRandomFlag3)
@@ -3330,12 +3428,14 @@ def RennalaBarrierBreaks(_, required_flag: uint, rennala: uint, student_group: u
     if PlayerNotInOwnWorld():
         return
     AND_1.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaBarrierDamaged))
-    AND_1.Add(CharacterHasSpecialEffect(student_group, Effects.GlowingStudentHit, target_count=0.0))  # NO students have it
+    AND_1.Add(
+        CharacterHasSpecialEffect(student_group, Effects.GlowingStudentHit, target_count=0.0)
+    )  # NO students have it
     AND_1.Add(CharacterHasSpecialEffect(student_group, Effects.StudentGlowing, target_count=0.0))  # NO students have it
     AND_1.Add(FlagEnabled(required_flag))
-    
+
     MAIN.Await(AND_1)  # Rennala vulnerable and no students are glowing (or have just been hit while glowing)
-    
+
     GotoIfCharacterHasSpecialEffect(Label.L1, character=rennala, special_effect=Effects.RennalaBarrierDamagedTwice)
     GotoIfCharacterHasSpecialEffect(Label.L0, character=rennala, special_effect=Effects.RennalaBarrierDamagedOnce)
     if CharacterDoesNotHaveSpecialEffect(character=rennala, special_effect=Effects.FirstGlowingStudentChosen):
@@ -3343,7 +3443,11 @@ def RennalaBarrierBreaks(_, required_flag: uint, rennala: uint, student_group: u
 
     # Barrier damaged ONCE.
     AddSpecialEffect(rennala, Effects.RennalaBarrierDamagedOnce)
-    OR_15.Add(CharacterHasSpecialEffect(student_group, Effects.StudentGlowing, target_comparison_type=ComparisonType.GreaterThanOrEqual))
+    OR_15.Add(
+        CharacterHasSpecialEffect(
+            student_group, Effects.StudentGlowing, target_comparison_type=ComparisonType.GreaterThanOrEqual
+        )
+    )
     AwaitConditionTrue(OR_15)  # wait for a new Glowing Student to be chosen
     Restart()
 
@@ -3351,7 +3455,11 @@ def RennalaBarrierBreaks(_, required_flag: uint, rennala: uint, student_group: u
     DefineLabel(0)
     # Barrier damaged TWICE.
     AddSpecialEffect(rennala, Effects.RennalaBarrierDamagedTwice)
-    OR_15.Add(CharacterHasSpecialEffect(student_group, Effects.StudentGlowing, target_comparison_type=ComparisonType.GreaterThanOrEqual))
+    OR_15.Add(
+        CharacterHasSpecialEffect(
+            student_group, Effects.StudentGlowing, target_comparison_type=ComparisonType.GreaterThanOrEqual
+        )
+    )
     AwaitConditionTrue(OR_15)  # wait for a new Glowing Student to be chosen
     Restart()
 
@@ -3376,10 +3484,14 @@ def RennalaBarrierDamaged(_, rennala: uint, student_group: uint):
         return
     AND_1.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaBarrierUnknown))
     AND_1.Add(CharacterHasSpecialEffect(rennala, 14358))
-    AND_1.Add(CharacterHasSpecialEffect(student_group, Effects.GlowingStudentHit, target_comparison_type=ComparisonType.GreaterThanOrEqual))
-    
+    AND_1.Add(
+        CharacterHasSpecialEffect(
+            student_group, Effects.GlowingStudentHit, target_comparison_type=ComparisonType.GreaterThanOrEqual
+        )
+    )
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(rennala, Effects.RennalaBarrierDamaged)
     AddSpecialEffect(student_group, Effects.StudentsReactToBarrierDamage)
     DisableFlag(Flags.RennalaBarrierReset)
@@ -3394,9 +3506,9 @@ def RennalaVulnerableTimer(_, barrier_active_flag: uint, rennala: uint):
     AND_1.Add(CharacterHasSpecialEffect(rennala, 14358))
     AND_1.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaBarrierUnknown))
     AND_1.Add(FlagDisabled(barrier_active_flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     Wait(10.0)  # vulnerability time for Rennala
     EnableFlag(barrier_active_flag)
     OR_15.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaBarrierDamaged))
@@ -3409,9 +3521,9 @@ def RennalaRequestsSpecialStudent(_, request_flag: uint, rennala: uint):
     """Event 14003809"""
     AND_1.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaSpecialStudentRequest))
     AND_1.Add(FlagDisabled(request_flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(request_flag)
     Wait(3.0)
     DisableFlag(request_flag)
@@ -3451,18 +3563,24 @@ def ChooseRandomSpecialStudent(
     """Event 14003811"""
 
     # If five or more students have effect 14351, ignore request (disable `flag` and restart this event).
-    OR_1.Add(CharacterHasSpecialEffect(
-        student_group,
-        Effects.SpecialStudent,
-        target_comparison_type=ComparisonType.GreaterThanOrEqual,
-        target_count=5.0,
-    ))
+    OR_1.Add(
+        CharacterHasSpecialEffect(
+            student_group,
+            Effects.SpecialStudent,
+            target_comparison_type=ComparisonType.GreaterThanOrEqual,
+            target_count=5.0,
+        )
+    )
     SkipLinesIfConditionFalse(2, OR_1)
     DisableFlag(request_flag)
     Restart()
 
     AND_1.Add(FlagEnabled(request_flag))
-    AND_1.Add(CharacterHasSpecialEffect(student_group, Effects.SpecialStudent, target_comparison_type=ComparisonType.LessThan, target_count=5.0))
+    AND_1.Add(
+        CharacterHasSpecialEffect(
+            student_group, Effects.SpecialStudent, target_comparison_type=ComparisonType.LessThan, target_count=5.0
+        )
+    )
     MAIN.Await(AND_1)
 
     # First die roll chooses one of three subsets of students to try.
@@ -3723,7 +3841,7 @@ def SyncRennalaSoundDummyPosition(_, rennala: uint, rennala_sound_dummy: uint):
 def RennalaSoundDummyLoop(_, rennala: uint, rennala_sound_dummy: uint):
     """Event 14003815"""
     MAIN.Await(HasAIStatus(rennala, ai_status=AIStatusType.Battle))
-    
+
     TriggerAISound(ai_sound_param_id=203000, anchor_entity=rennala_sound_dummy, unk_8_12=2)
     Wait(5.0)
     Restart()
@@ -3735,15 +3853,17 @@ def RennalaStudentsUnknownEffect(_, student_group: uint):
     if PlayerNotInOwnWorld():
         return
     AND_1.Add(FlagEnabled(Flags.RennalaBarrierReset))
-    AND_1.Add(CharacterProportionHasSpecialEffect(
-        character_group=student_group,
-        special_effect=14385,
-        target_comparison_type=ComparisonType.GreaterThanOrEqual,
-        target_proportion=1.0,
-    ))
-    
+    AND_1.Add(
+        CharacterProportionHasSpecialEffect(
+            character_group=student_group,
+            special_effect=14385,
+            target_comparison_type=ComparisonType.GreaterThanOrEqual,
+            target_proportion=1.0,
+        )
+    )
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(student_group, 14384)
     WaitFrames(frames=1)
     Restart()
@@ -3755,9 +3875,9 @@ def Event_14003820(_, asset: uint):
     if ThisEventSlotFlagDisabled():
         SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
         Restart()
-    
+
     MAIN.Await(ThisEventSlotFlagDisabled())
-    
+
     Wait(20.0)
     EnableAsset(asset)
     if AssetDestroyed(asset):
@@ -3798,7 +3918,11 @@ def StudentChosenAtBattleStart(_, flag: uint, rennala: uint, student_group: uint
 
     EnableFlag(flag)
     EnableThisSlotFlag()
-    OR_1.Add(CharacterHasSpecialEffect(student_group, Effects.GlowingStudentHit, target_comparison_type=ComparisonType.GreaterThanOrEqual))
+    OR_1.Add(
+        CharacterHasSpecialEffect(
+            student_group, Effects.GlowingStudentHit, target_comparison_type=ComparisonType.GreaterThanOrEqual
+        )
+    )
     AwaitConditionTrue(OR_1)
     EnableFlag(Flags.FirstGlowingStudentHit)
     End()
@@ -3809,9 +3933,9 @@ def Event_14003950(_, flag: uint, asset: uint):
     """Event 14003950"""
     AND_1.Add(AssetDestroyed(asset))
     AND_1.Add(FlagEnabled(flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     WaitFrames(frames=1)
     DisableNetworkFlag(flag)
     Restart()
@@ -3823,9 +3947,9 @@ def Event_14003834(_, asset: uint):
     if ThisEventSlotFlagDisabled():
         SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
         Restart()
-    
+
     MAIN.Await(ThisEventSlotFlagDisabled())
-    
+
     Wait(20.0)
     EnableAsset(asset)
     ForceAnimation(asset, 2, wait_for_completion=True)
@@ -3850,9 +3974,9 @@ def Event_14003840(_, character: uint, left: uint, left_1: uint, left_2: uint, f
     AND_1.Add(OR_1)
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(character, 14367))
     AND_1.Add(CharacterAlive(character))
-    
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(character, 14367)
     ReplanAI(character)
     Wait(8.0)
@@ -3872,7 +3996,7 @@ def Event_14003845(
 ):
     """Event 14003845"""
     MAIN.Await(CharacterHasSpecialEffect(character, 14362))
-    
+
     if FlagEnabled(asset_5):
         CreateAssetVFX(asset_2, vfx_id=200, model_point=814625)
     if FlagEnabled(asset_4):
@@ -3982,7 +4106,7 @@ def Event_14003850(
 ):
     """Event 14003850"""
     MAIN.Await(CharacterHasSpecialEffect(character, 14363))
-    
+
     SkipLinesIfCharacterOutsideRegion(line_count=24, character=20000, region=region)
     if FlagEnabled(flag):
         ShootProjectile(
@@ -4678,9 +4802,9 @@ def Event_14003880(
     OR_15.Add(CharacterType(20000, character_type=CharacterType.BlackPhantom))
     SkipLinesIfConditionFalse(1, OR_15)
     End()
-    
+
     MAIN.Await(HealthRatio(character) <= 0.0)
-    
+
     WaitFrames(frames=1)
     DisableAI(Characters.RennalaPhaseTwo)
     SetNetworkUpdateRate(CharacterGroups.Students, is_fixed=True, update_rate=CharacterUpdateRate.Never)
@@ -4855,7 +4979,7 @@ def Event_14003885(
 ):
     """Event 14003885"""
     MAIN.Await(CharacterHasSpecialEffect(character, 14372))
-    
+
     SkipLinesIfCharacterDoesNotHaveSpecialEffect(line_count=2, character=character, special_effect=special_effect)
     Move(character, destination=destination_2, destination_type=CoordEntityType.Region, copy_draw_parent=character)
     Goto(Label.L0)
@@ -4881,9 +5005,9 @@ def Event_14003886(_, character: uint, region: uint, special_effect__special_eff
     """Event 14003886"""
     AND_1.Add(CharacterInsideRegion(character=character, region=region))
     AND_1.Add(CharacterHasSpecialEffect(character, special_effect__special_effect_id, target_count=0.0))
-    
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(character, special_effect__special_effect_id)
     Restart()
 
@@ -4892,7 +5016,7 @@ def Event_14003886(_, character: uint, region: uint, special_effect__special_eff
 def RennalaForceStudentUpdate(_, rennala: uint, student_group: uint):
     """Event 14003892"""
     MAIN.Await(CharacterHasSpecialEffect(rennala, 14378))
-    
+
     SetNetworkUpdateRate(student_group, is_fixed=False, update_rate=CharacterUpdateRate.Always)
     Wait(1.0)
     Restart()
@@ -4902,7 +5026,7 @@ def RennalaForceStudentUpdate(_, rennala: uint, student_group: uint):
 def RennalaStudentsEffect14353(_, rennala: uint, student_group: uint):
     """Event 14003893"""
     MAIN.Await(CharacterHasSpecialEffect(rennala, 5028))
-    
+
     AddSpecialEffect(student_group, 14353)
     Wait(1.0)
     Restart()
@@ -4912,7 +5036,7 @@ def RennalaStudentsEffect14353(_, rennala: uint, student_group: uint):
 def RennalaStudentsEffect14355(_, rennala: uint, student_group: uint):
     """Event 14003894"""
     MAIN.Await(CharacterHasSpecialEffect(rennala, 5029))
-    
+
     AddSpecialEffect(student_group, 14355)
     Wait(1.0)
     Restart()
@@ -4933,7 +5057,9 @@ def Event_14003898(
 ):
     """Event 14003898"""
     if ThisEventSlotFlagDisabled():
-        MAIN.Await(HasAIStatus(character, ai_status=AIStatusType.Normal, target_comparison_type=ComparisonType.NotEqual))
+        MAIN.Await(
+            HasAIStatus(character, ai_status=AIStatusType.Normal, target_comparison_type=ComparisonType.NotEqual)
+        )
     Wait(40.0)
     SkipLinesIfCharacterHasSpecialEffect(line_count=4, character=character_1, special_effect=Effects.SpecialStudent)
     SkipLinesIfCharacterHasSpecialEffect(line_count=3, character=character_1, special_effect=Effects.StudentGlowing)
@@ -4999,7 +5125,7 @@ def Event_14003900(_, owner_entity: uint, source_entity: uint):
 def KillStudentsWhenRennalaDies():
     """Event 14003915"""
     MAIN.Await(FlagEnabled(Flags.RennalaDefeated))
-    
+
     Kill(CharacterGroups.Students)
     End()
 
@@ -5009,9 +5135,9 @@ def RennalaSummonsBloodhoundKnight(_, active_flag: uint, rennala: uint, bloodhou
     """Event 14003922"""
     AND_1.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaBloodhoundRequest))
     AND_1.Add(FlagDisabled(active_flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableCharacter(bloodhound)
     Move(
         bloodhound,
@@ -5039,9 +5165,9 @@ def RennalaResumesFightingAfterBloodhound(_, active_flag: uint, cleanup_flag: ui
     OR_1.Add(CharacterHasSpecialEffect(bloodhound, Effects.RennalaSummonDisableOnRennalaDeath))
     OR_1.Add(CharacterHasSpecialEffect(bloodhound, Effects.RequestSummonDisable))
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(cleanup_flag)
     RemoveSpecialEffect(rennala, Effects.RennalaLetsSummonFight)
     ReplanAI(rennala)
@@ -5055,9 +5181,9 @@ def BloodhoundCleanup(_, active_flag: uint, cleanup_flag: uint, bloodhound: uint
     AND_1.Add(FlagEnabled(active_flag))
     AND_1.Add(FlagEnabled(cleanup_flag))
     AND_1.Add(CharacterHasSpecialEffect(bloodhound, Effects.RequestSummonDisable))
-    
+
     MAIN.Await(AND_1)
-    
+
     DisableFlag(active_flag)
     DisableFlag(cleanup_flag)
     RemoveSpecialEffect(bloodhound, Effects.RequestSummonDisable)
@@ -5070,9 +5196,9 @@ def BloodhoundSummonDefeated(_, active_flag: uint, bloodhound: uint):
     AND_1.Add(HealthValue(bloodhound) <= 1)
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(bloodhound, Effects.RequestSummonDisable))
     AND_1.Add(FlagEnabled(active_flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     ForceAnimation(bloodhound, 20011)
     Wait(5.0)
     Restart()
@@ -5086,9 +5212,9 @@ def DisableBloodhoundSummon(_, bloodhound: uint):
         DisableAnimations(bloodhound)
     AND_1.Add(CharacterHasSpecialEffect(bloodhound, Effects.RequestSummonDisable))
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(bloodhound, Effects.RennalaSummonInactive))
-    
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(bloodhound, Effects.RennalaSummonHeal)
     AddSpecialEffect(bloodhound, Effects.RennalaSummonInactive)
     RemoveSpecialEffect(bloodhound, Effects.RennalaSummonDisableOnRennalaDeath)
@@ -5112,9 +5238,9 @@ def RennalaSummonsWolves(
     """Event 14003937"""
     AND_1.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaWolvesRequest))
     AND_1.Add(FlagDisabled(active_flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableCharacter(wolf_0)
     EnableAnimations(wolf_0)
     Move(
@@ -5204,9 +5330,9 @@ def RennalaResumesFightingAfterWolves(
     OR_4.Add(CharacterHasSpecialEffect(wolf_3, Effects.RennalaSummonDisableOnRennalaDeath))
     OR_4.Add(CharacterHasSpecialEffect(wolf_3, Effects.RequestSummonDisable))
     AND_1.Add(OR_4)
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(cleanup_flag)
     RemoveSpecialEffect(rennala, Effects.RennalaLetsSummonFight)
     ReplanAI(rennala)
@@ -5230,9 +5356,9 @@ def WolvesCleanup(
     AND_1.Add(CharacterHasSpecialEffect(wolf_1, Effects.RequestSummonDisable))
     AND_1.Add(CharacterHasSpecialEffect(wolf_2, Effects.RequestSummonDisable))
     AND_1.Add(CharacterHasSpecialEffect(wolf_3, Effects.RequestSummonDisable))
-    
+
     MAIN.Await(AND_1)
-    
+
     DisableFlag(active_flag)
     DisableFlag(flag_1)
     RemoveSpecialEffect(wolf_0, Effects.RequestSummonDisable)
@@ -5248,9 +5374,9 @@ def WolfSummonDefeated(_, active_flag: uint, wolf: uint):
     AND_1.Add(HealthValue(wolf) <= 1)
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(wolf, Effects.RequestSummonDisable))
     AND_1.Add(FlagEnabled(active_flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     DisableAnimations(wolf)
     ForceAnimation(wolf, 3035)
     Wait(5.0)
@@ -5265,9 +5391,9 @@ def DisableWolfSummon(_, wolf: uint):
         DisableAnimations(wolf)
     AND_1.Add(CharacterHasSpecialEffect(wolf, Effects.RequestSummonDisable))
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(wolf, Effects.RennalaSummonInactive))
-    
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(wolf, Effects.RennalaSummonHeal)
     AddSpecialEffect(wolf, Effects.RennalaSummonInactive)
     RemoveSpecialEffect(wolf, Effects.RennalaSummonDisableOnRennalaDeath)
@@ -5282,9 +5408,9 @@ def RennalaSummonsTroll(_, active_flag: uint, rennala: uint, troll: uint):
     """Event 14003962"""
     AND_1.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaTrollRequest))
     AND_1.Add(FlagDisabled(active_flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableCharacter(troll)
     Move(
         troll,
@@ -5313,9 +5439,9 @@ def RennalaResumesFightingAfterTroll(_, active_flag: uint, cleanup_flag: uint, t
     OR_1.Add(CharacterHasSpecialEffect(troll, Effects.RennalaSummonDisableOnRennalaDeath))
     OR_1.Add(CharacterHasSpecialEffect(troll, Effects.RequestSummonDisable))
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(cleanup_flag)
     RemoveSpecialEffect(rennala, Effects.RennalaLetsSummonFight)
     ReplanAI(rennala)
@@ -5328,9 +5454,9 @@ def TrollCleanup(_, active_flag: uint, cleanup_flag: uint, troll: uint):
     AND_1.Add(FlagEnabled(active_flag))
     AND_1.Add(FlagEnabled(cleanup_flag))
     AND_1.Add(CharacterHasSpecialEffect(troll, Effects.RequestSummonDisable))
-    
+
     MAIN.Await(AND_1)
-    
+
     DisableFlag(active_flag)
     DisableFlag(cleanup_flag)
     RemoveSpecialEffect(troll, Effects.RequestSummonDisable)
@@ -5343,9 +5469,9 @@ def TrollSummonDefeated(_, active_flag: uint, troll: uint):
     AND_1.Add(HealthValue(troll) <= 1)
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(troll, Effects.RequestSummonDisable))
     AND_1.Add(FlagEnabled(active_flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     ForceAnimation(troll, 20025)
     Wait(5.0)
     Restart()
@@ -5359,9 +5485,9 @@ def DisableTrollSummon(_, troll: uint):
         DisableAnimations(troll)
     AND_1.Add(CharacterHasSpecialEffect(troll, Effects.RequestSummonDisable))
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(troll, Effects.RennalaSummonInactive))
-    
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(troll, Effects.RennalaSummonHeal)
     AddSpecialEffect(troll, Effects.RennalaSummonInactive)
     RemoveSpecialEffect(troll, Effects.RennalaSummonDisableOnRennalaDeath)
@@ -5377,9 +5503,9 @@ def RennalaSummonsDragon(_, active_flag: uint, rennala: uint, dragon: uint):
     """Event 14003972"""
     AND_1.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaDragonRequest))
     AND_1.Add(FlagDisabled(active_flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableCharacter(dragon)
     Move(
         dragon,
@@ -5407,9 +5533,9 @@ def RennalaResumesFightingAfterDragon(_, active_flag: uint, cleanup_flag: uint, 
     OR_1.Add(CharacterHasSpecialEffect(dragon, Effects.RennalaSummonDisableOnRennalaDeath))
     OR_1.Add(CharacterHasSpecialEffect(dragon, Effects.RequestSummonDisable))
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(cleanup_flag)
     RemoveSpecialEffect(rennala, Effects.RennalaLetsSummonFight)
     ReplanAI(rennala)
@@ -5422,9 +5548,9 @@ def DragonCleanup(_, active_flag: uint, cleanup_flag: uint, dragon: uint):
     AND_1.Add(FlagEnabled(active_flag))
     AND_1.Add(FlagEnabled(cleanup_flag))
     AND_1.Add(CharacterHasSpecialEffect(dragon, Effects.RequestSummonDisable))
-    
+
     MAIN.Await(AND_1)
-    
+
     DisableFlag(active_flag)
     DisableFlag(cleanup_flag)
     RemoveSpecialEffect(dragon, Effects.RequestSummonDisable)
@@ -5437,9 +5563,9 @@ def DragonSummonDefeated(_, active_flag: uint, dragon: uint):
     AND_1.Add(HealthValue(dragon) <= 1)
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(dragon, Effects.RequestSummonDisable))
     AND_1.Add(FlagEnabled(active_flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     ForceAnimation(dragon, 20027)
     Wait(5.0)
     Restart()
@@ -5453,9 +5579,9 @@ def DisableDragonSummon(_, dragon: uint):
         DisableAnimations(dragon)
     AND_1.Add(CharacterHasSpecialEffect(dragon, Effects.RequestSummonDisable))
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(dragon, Effects.RennalaSummonInactive))
-    
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(dragon, Effects.RennalaSummonHeal)
     AddSpecialEffect(dragon, Effects.RennalaSummonInactive)
     RemoveSpecialEffect(dragon, Effects.RennalaSummonDisableOnRennalaDeath)
@@ -5470,7 +5596,7 @@ def DisableDragonSummon(_, dragon: uint):
 def DismissSummonsOnRennalaDeath(_, rennala: uint, summon_group: uint):
     """Event 14003977"""
     MAIN.Await(HealthValue(rennala) == 0)
-    
+
     AddSpecialEffect(summon_group, Effects.RennalaSummonDisableOnRennalaDeath)
     ReplanAI(summon_group)
 
@@ -5479,7 +5605,7 @@ def DismissSummonsOnRennalaDeath(_, rennala: uint, summon_group: uint):
 def DisableRennalaSpawners():
     """Event 14003978"""
     MAIN.Await(FlagEnabled(Flags.RennalaDefeated))
-    
+
     DisableSpawner(entity=Spawners.RennalaStudents0)
     DisableSpawner(entity=Spawners.RennalaStudents1)
     DisableSpawner(entity=Spawners.RennalaStudents2)
@@ -5510,9 +5636,9 @@ def Event_14000700():
     AND_1.Add(FlagEnabled(Flags.RennalaDefeated))
     AND_1.Add(FlagDisabled(3468))
     AND_1.Add(EntityWithinDistance(entity=Characters.RennalaNPC1, other_entity=PLAYER, radius=10.0))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(14002705)
     End()
 
@@ -5526,9 +5652,9 @@ def Event_14000701():
     AND_1.Add(FlagEnabled(Flags.RennalaDefeated))
     AND_1.Add(FlagEnabled(3468))
     AND_1.Add(EntityWithinDistance(entity=Characters.RennalaNPC2, other_entity=PLAYER, radius=10.0))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(14002706)
     End()
 
@@ -5571,9 +5697,9 @@ def Event_14000703():
         return
     AND_1.Add(CharacterHasSpecialEffect(PLAYER, 9614))
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9615))
-    
+
     MAIN.Await(AND_1)
-    
+
     ForceAnimation(PLAYER, 60540)
     Wait(0.20000000298023224)
     Restart()
@@ -5601,9 +5727,9 @@ def Event_14000710(_, asset__character: uint, asset__character_1: uint):
     GotoIfConditionTrue(Label.L0, input_condition=OR_1)
     OR_2.Add(FlagEnabled(3468))
     OR_2.Add(FlagEnabled(3469))
-    
+
     MAIN.Await(OR_2)
-    
+
     Restart()
 
     # --- Label 0 --- #
@@ -5656,9 +5782,9 @@ def Event_14000710(_, asset__character: uint, asset__character_1: uint):
     DefineLabel(20)
     OR_15.Add(FlagEnabled(3468))
     OR_15.Add(FlagEnabled(3469))
-    
+
     MAIN.Await(not OR_15)
-    
+
     Restart()
 
 
@@ -5671,14 +5797,14 @@ def Event_14000711():
         return
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(HealthValue(Characters.SorceressSellen0) == 0)
-    
+
     MAIN.Await(AND_1)
-    
+
     SetBackreadStateAlternate(Characters.SorceressSellen0, True)
     AND_2.Add(TimeElapsed(seconds=20.0))
-    
+
     MAIN.Await(AND_2)
-    
+
     SetBackreadStateAlternate(Characters.SorceressSellen0, False)
     End()
 
@@ -5726,9 +5852,9 @@ def Event_14000720():
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=14002080))
     AND_1.Add(CharacterHasSpecialEffect(PLAYER, 14307))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(14009300)
     End()
 
@@ -5747,9 +5873,9 @@ def Event_14000730(_, character: uint):
     GotoIfFlagEnabled(Label.L6, flag=3371)
     DisableCharacter(character)
     DisableBackread(character)
-    
+
     MAIN.Await(FlagEnabled(3371))
-    
+
     Restart()
 
     # --- Label 6 --- #
@@ -5781,9 +5907,9 @@ def Event_14000730(_, character: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    
+
     MAIN.Await(FlagDisabled(3371))
-    
+
     Restart()
 
 
@@ -5813,9 +5939,9 @@ def Event_14000740(_, character: uint):
     GotoIfFlagEnabled(Label.L6, flag=3948)
     DisableCharacter(character)
     DisableBackread(character)
-    
+
     MAIN.Await(FlagEnabled(3948))
-    
+
     Restart()
 
     # --- Label 6 --- #
@@ -5847,9 +5973,9 @@ def Event_14000740(_, character: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    
+
     MAIN.Await(FlagDisabled(3948))
-    
+
     Restart()
 
 
@@ -5865,9 +5991,9 @@ def Event_14000741(_, character: uint):
     GotoIfFlagEnabled(Label.L6, flag=3949)
     DisableCharacter(character)
     DisableBackread(character)
-    
+
     MAIN.Await(FlagEnabled(3949))
-    
+
     Restart()
 
     # --- Label 6 --- #
@@ -5879,9 +6005,9 @@ def Event_14000741(_, character: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    
+
     MAIN.Await(FlagDisabled(3949))
-    
+
     Restart()
 
 
@@ -5913,9 +6039,9 @@ def Event_14000750(_, character: uint, asset: uint):
     DisableCharacter(character)
     DisableBackread(character)
     EnableAsset(asset)
-    
+
     MAIN.Await(FlagEnabled(3806))
-    
+
     Restart()
 
     # --- Label 6 --- #
@@ -5935,9 +6061,9 @@ def Event_14000750(_, character: uint, asset: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    
+
     MAIN.Await(FlagDisabled(3806))
-    
+
     Restart()
 
 
@@ -6415,40 +6541,41 @@ def CLONE_DismissSummonsOnRennalaDeath(_, rennala: uint, summon_group: uint):
     AddSpecialEffect(summon_group, Effects.RennalaSummonDisableOnRennalaDeath)
     ReplanAI(summon_group)
 
+
 # endregion
 
 
 # region Rennala Phase One Clones
 @RestartOnRest(Flags.CLONE_EVENT_ChooseRandomGlowingStudent)
 def CLONE_ChooseRandomGlowingStudent(
-        _,
-        required_flag: uint,
-        rennala: uint,
-        student_group: uint,
-        student_2: uint,
-        student_3: uint,
-        student_4: uint,
-        student_5: uint,
-        student_6: uint,
-        student_7: uint,
-        student_8: uint,
-        student_9: uint,
-        student_10: uint,
-        student_11: uint,
-        student_12: uint,
-        student_13: uint,
-        student_14: uint,
-        student_15: uint,
-        student_16: uint,
-        student_17: uint,
-        student_18: uint,
-        student_19: uint,
-        student_20: uint,
-        student_21: uint,
-        student_22: uint,
-        student_23: uint,
-        student_24: uint,
-        student_25: uint,
+    _,
+    required_flag: uint,
+    rennala: uint,
+    student_group: uint,
+    student_2: uint,
+    student_3: uint,
+    student_4: uint,
+    student_5: uint,
+    student_6: uint,
+    student_7: uint,
+    student_8: uint,
+    student_9: uint,
+    student_10: uint,
+    student_11: uint,
+    student_12: uint,
+    student_13: uint,
+    student_14: uint,
+    student_15: uint,
+    student_16: uint,
+    student_17: uint,
+    student_18: uint,
+    student_19: uint,
+    student_20: uint,
+    student_21: uint,
+    student_22: uint,
+    student_23: uint,
+    student_24: uint,
+    student_25: uint,
 ):
     """Event 14003801"""
     if PlayerNotInOwnWorld():
@@ -6456,8 +6583,12 @@ def CLONE_ChooseRandomGlowingStudent(
     AND_10.Add(FlagEnabled(Flags.RennalaBattleStarted))
     AwaitConditionTrue(AND_10)
     AND_1.Add(FlagEnabled(required_flag))
-    AND_1.Add(CharacterHasSpecialEffect(student_group, Effects.StudentGlowing,
-                                        target_comparison_type=ComparisonType.LessThan))
+    AND_1.Add(
+        CharacterHasSpecialEffect(
+            student_group, Effects.StudentGlowing,
+            target_comparison_type=ComparisonType.LessThan
+        )
+    )
     OR_1.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaBarrierUnknown))
     OR_1.Add(CharacterHasSpecialEffect(rennala, Effects.FirstGlowingStudentChosen))
     OR_1.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaBarrierDamagedOnce))
@@ -6637,7 +6768,8 @@ def CLONE_RennalaBarrierBreaks(_, required_flag: uint, rennala: uint, student_gr
         return
     AND_1.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaBarrierDamaged))
     AND_1.Add(
-        CharacterHasSpecialEffect(student_group, Effects.GlowingStudentHit, target_count=0.0))  # NO students have it
+        CharacterHasSpecialEffect(student_group, Effects.GlowingStudentHit, target_count=0.0)
+    )  # NO students have it
     AND_1.Add(CharacterHasSpecialEffect(student_group, Effects.StudentGlowing, target_count=0.0))  # NO students have it
     AND_1.Add(FlagEnabled(required_flag))
 
@@ -6650,8 +6782,12 @@ def CLONE_RennalaBarrierBreaks(_, required_flag: uint, rennala: uint, student_gr
 
     # Barrier damaged ONCE.
     AddSpecialEffect(rennala, Effects.RennalaBarrierDamagedOnce)
-    OR_15.Add(CharacterHasSpecialEffect(student_group, Effects.StudentGlowing,
-                                        target_comparison_type=ComparisonType.GreaterThanOrEqual))
+    OR_15.Add(
+        CharacterHasSpecialEffect(
+            student_group, Effects.StudentGlowing,
+            target_comparison_type=ComparisonType.GreaterThanOrEqual
+        )
+    )
     AwaitConditionTrue(OR_15)  # wait for a new Glowing Student to be chosen
     Restart()
 
@@ -6659,8 +6795,12 @@ def CLONE_RennalaBarrierBreaks(_, required_flag: uint, rennala: uint, student_gr
     DefineLabel(0)
     # Barrier damaged TWICE.
     AddSpecialEffect(rennala, Effects.RennalaBarrierDamagedTwice)
-    OR_15.Add(CharacterHasSpecialEffect(student_group, Effects.StudentGlowing,
-                                        target_comparison_type=ComparisonType.GreaterThanOrEqual))
+    OR_15.Add(
+        CharacterHasSpecialEffect(
+            student_group, Effects.StudentGlowing,
+            target_comparison_type=ComparisonType.GreaterThanOrEqual
+        )
+    )
     AwaitConditionTrue(OR_15)  # wait for a new Glowing Student to be chosen
     Restart()
 
@@ -6685,8 +6825,12 @@ def CLONE_RennalaBarrierDamaged(_, rennala: uint, student_group: uint):
         return
     AND_1.Add(CharacterHasSpecialEffect(rennala, Effects.RennalaBarrierUnknown))
     AND_1.Add(CharacterHasSpecialEffect(rennala, 14358))
-    AND_1.Add(CharacterHasSpecialEffect(student_group, Effects.GlowingStudentHit,
-                                        target_comparison_type=ComparisonType.GreaterThanOrEqual))
+    AND_1.Add(
+        CharacterHasSpecialEffect(
+            student_group, Effects.GlowingStudentHit,
+            target_comparison_type=ComparisonType.GreaterThanOrEqual
+        )
+    )
 
     MAIN.Await(AND_1)
 
@@ -6761,20 +6905,25 @@ def CLONE_ChooseRandomSpecialStudent(
     """Event 14003811"""
 
     # If five or more students have effect 14351, ignore request (disable `flag` and restart this event).
-    OR_1.Add(CharacterHasSpecialEffect(
-        student_group,
-        Effects.SpecialStudent,
-        target_comparison_type=ComparisonType.GreaterThanOrEqual,
-        target_count=5.0,
-    ))
+    OR_1.Add(
+        CharacterHasSpecialEffect(
+            student_group,
+            Effects.SpecialStudent,
+            target_comparison_type=ComparisonType.GreaterThanOrEqual,
+            target_count=5.0,
+        )
+    )
     SkipLinesIfConditionFalse(2, OR_1)
     DisableFlag(request_flag)
     Restart()
 
     AND_1.Add(FlagEnabled(request_flag))
     AND_1.Add(
-        CharacterHasSpecialEffect(student_group, Effects.SpecialStudent, target_comparison_type=ComparisonType.LessThan,
-                                  target_count=5.0))
+        CharacterHasSpecialEffect(
+            student_group, Effects.SpecialStudent, target_comparison_type=ComparisonType.LessThan,
+            target_count=5.0
+        )
+    )
     MAIN.Await(AND_1)
 
     # First die roll chooses one of three subsets of students to try.
@@ -7047,12 +7196,14 @@ def CLONE_RennalaStudentsUnknownEffect(_, student_group: uint):
     if PlayerNotInOwnWorld():
         return
     AND_1.Add(FlagEnabled(Flags.RennalaBarrierReset))
-    AND_1.Add(CharacterProportionHasSpecialEffect(
-        character_group=student_group,
-        special_effect=14385,
-        target_comparison_type=ComparisonType.GreaterThanOrEqual,
-        target_proportion=1.0,
-    ))
+    AND_1.Add(
+        CharacterProportionHasSpecialEffect(
+            character_group=student_group,
+            special_effect=14385,
+            target_comparison_type=ComparisonType.GreaterThanOrEqual,
+            target_proportion=1.0,
+        )
+    )
 
     MAIN.Await(AND_1)
 
@@ -7122,7 +7273,11 @@ def CLONE_StudentChosenAtBattleStart(_, flag: uint, rennala: uint, student_group
 
     EnableFlag(flag)
     EnableThisSlotFlag()
-    OR_1.Add(CharacterHasSpecialEffect(student_group, Effects.GlowingStudentHit, target_comparison_type=ComparisonType.GreaterThanOrEqual))
+    OR_1.Add(
+        CharacterHasSpecialEffect(
+            student_group, Effects.GlowingStudentHit, target_comparison_type=ComparisonType.GreaterThanOrEqual
+        )
+    )
     AwaitConditionTrue(OR_1)
     EnableFlag(Flags.CLONE_FirstGlowingStudentHit)
     End()

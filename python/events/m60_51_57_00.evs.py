@@ -1888,7 +1888,7 @@ def Event_1051572849():
 def Event_200():
     """Event 200"""
     RunEvent(1051572581, slot=0, args=(0,))
-    CommonFunc_90005451(0, character=Characters.WalkingMausoleum, asset_group=1251576420)
+    CommonFunc_MausoleumAssetDestruction(0, mausoleum=Characters.WalkingMausoleum, asset_group=1251576420)
     CommonFunc_90005452(0, character=Characters.WalkingMausoleum, flag=1251570400)
     CommonFunc_90005454(0, character=Characters.WalkingMausoleum, flag=1251572400, flag_1=1251570400)
     CommonFunc_WalkingMausoleumDefeated(0, mausoleum=Characters.WalkingMausoleum, asset=Assets.AEG300_015_9000)

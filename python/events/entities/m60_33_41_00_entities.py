@@ -6,6 +6,10 @@ class Characters(Character):
     GlintstoneDragon0 = 1033410350  # c4502_9000 npc 45020022 think 45020000
     GlintstoneDragon1 = 1033410351  # c4502_9001 npc 45020022 think 45020000
 
+    CLONE_RedWolf = 1033410341
+    CLONE_GlintstoneDragon0 = 1033410352
+    CLONE_GlintstoneDragon1 = 1033410353
+
 
 class Assets(Asset):
     pass

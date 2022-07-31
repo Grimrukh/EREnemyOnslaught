@@ -25,12 +25,12 @@ from .entities.m60_51_43_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1051430000, asset=Assets.AEG099_060_9000)
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.Gargoyle, name=904770600, npc_threat_level=16)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.Gargoyle, name=904770600, npc_threat_level=16)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1051430800,
         extra_flag_to_enable=0,
-        boss_character=Characters.Gargoyle,
+        boss=Characters.Gargoyle,
         boss_banner_choice=0,
         item_lot=30425,
         seconds=0.0,

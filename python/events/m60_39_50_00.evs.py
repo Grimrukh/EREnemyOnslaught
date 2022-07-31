@@ -47,22 +47,22 @@ def Constructor():
         dd_id=0,
         player_start=1039502805,
     )
-    CommonFunc_90005882(
+    CommonFunc_EvergaolBossBattleTrigger(
         0,
-        flag=1039500800,
-        flag_1=1039500805,
+        dead_flag=1039500800,
+        required_flag=1039500805,
         flag_2=1039502800,
-        character=Characters.GodricktheGrafted,
-        flag_3=1039502806,
+        boss=Characters.GodricktheGrafted,
+        battle_started_flag=1039502806,
         character_1=1039505810,
-        asset=Assets.AEG099_120_3000,
+        evergaol_gate=Assets.AEG099_120_3000,
         owner_entity=Characters.Dummy,
         source_entity=1039502810,
-        name=904750520,
-        animation_id=-1,
-        animation_id_1=20012,
+        boss_name=904750520,
+        standby_animation=-1,
+        appearance_animation=20012,
     )
-    CommonFunc_90005885(
+    CommonFunc_EvergaolBossMusic(
         0,
         flag=1039500800,
         bgm_boss_conv_param_id=921100,

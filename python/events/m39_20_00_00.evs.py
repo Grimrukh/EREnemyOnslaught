@@ -295,7 +295,7 @@ def Preconstructor():
     CommonFunc_90005460(0, character=Characters.GiantOctopus)
     CommonFunc_90005461(0, character=Characters.GiantOctopus)
     CommonFunc_90005462(0, character=Characters.GiantOctopus)
-    CommonFunc_NonRespawningWithReward(0, 39200290, 39200290, 40290, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=39200290, character=39200290, item_lot=40290, reward_delay=0.0, skip_reward=0)
 
 
 @RestartOnRest(39202145)

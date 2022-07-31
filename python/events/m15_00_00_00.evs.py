@@ -54,21 +54,21 @@ def Constructor():
     MaleniaPhaseTwoTransition(
         0,
         malenia=Characters.Malenia,
-        other_malenia=Characters.OtherMalenia,
+        butterfly_malenia=Characters.ButterflyMalenia,
         new_name=NameText.MaleniaGoddessOfRot,
         bar_slot=1,
     )
     MaleniaPhaseTwoTransition(  # 15002812
         1,
         malenia=Characters.CLONE_Malenia,
-        other_malenia=Characters.CLONE_OtherMalenia,
+        butterfly_malenia=Characters.CLONE_OtherMalenia,
         new_name=NameText.CLONE_MaleniaGoddessOfRot,
         bar_slot=0,
     )
     ControlMaleniaSummon(
         0,
         malenia=Characters.Malenia,
-        other_malenia=Characters.OtherMalenia,
+        butterfly_malenia=Characters.ButterflyMalenia,
         malenia_summon=Characters.MaleniaSummon0,
         animation_id=3030,
         special_effect=18451,
@@ -76,7 +76,7 @@ def Constructor():
     ControlMaleniaSummon(
         1,
         malenia=Characters.Malenia,
-        other_malenia=Characters.OtherMalenia,
+        butterfly_malenia=Characters.ButterflyMalenia,
         malenia_summon=Characters.MaleniaSummon1,
         animation_id=3031,
         special_effect=18452,
@@ -84,7 +84,7 @@ def Constructor():
     ControlMaleniaSummon(
         2,
         malenia=Characters.Malenia,
-        other_malenia=Characters.OtherMalenia,
+        butterfly_malenia=Characters.ButterflyMalenia,
         malenia_summon=Characters.MaleniaSummon2,
         animation_id=3032,
         special_effect=18453,
@@ -92,7 +92,7 @@ def Constructor():
     ControlMaleniaSummon(
         3,
         malenia=Characters.Malenia,
-        other_malenia=Characters.OtherMalenia,
+        butterfly_malenia=Characters.ButterflyMalenia,
         malenia_summon=Characters.MaleniaSummon3,
         animation_id=3033,
         special_effect=18454,
@@ -100,7 +100,7 @@ def Constructor():
     ControlMaleniaSummon(  # 15002824
         4,
         malenia=Characters.CLONE_Malenia,
-        other_malenia=Characters.CLONE_OtherMalenia,
+        butterfly_malenia=Characters.CLONE_OtherMalenia,
         malenia_summon=Characters.CLONE_MaleniaSummon0,
         animation_id=3030,
         special_effect=18451,
@@ -108,7 +108,7 @@ def Constructor():
     ControlMaleniaSummon(  # 15002825
         5,
         malenia=Characters.CLONE_Malenia,
-        other_malenia=Characters.CLONE_OtherMalenia,
+        butterfly_malenia=Characters.CLONE_OtherMalenia,
         malenia_summon=Characters.CLONE_MaleniaSummon1,
         animation_id=3031,
         special_effect=18452,
@@ -116,7 +116,7 @@ def Constructor():
     ControlMaleniaSummon(  # 15002826
         6,
         malenia=Characters.CLONE_Malenia,
-        other_malenia=Characters.CLONE_OtherMalenia,
+        butterfly_malenia=Characters.CLONE_OtherMalenia,
         malenia_summon=Characters.CLONE_MaleniaSummon2,
         animation_id=3032,
         special_effect=18453,
@@ -124,7 +124,7 @@ def Constructor():
     ControlMaleniaSummon(  # 15002827
         7,
         malenia=Characters.CLONE_Malenia,
-        other_malenia=Characters.CLONE_OtherMalenia,
+        butterfly_malenia=Characters.CLONE_OtherMalenia,
         malenia_summon=Characters.CLONE_MaleniaSummon3,
         animation_id=3033,
         special_effect=18454,
@@ -177,25 +177,35 @@ def Constructor():
     SkipLinesIfCeremonyInactive(line_count=1, ceremony=30)
     CommonFunc_InvadeAndKillNPC(0, flag=7611, character=Characters.Millicent2, banner_type=5, region=15002151)
     Event_15002155()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=15000390, character=15000390, item_lot=15001250, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=15000391, character=15000391, item_lot=15001260, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=15000390, character=15000390, item_lot=15001250, reward_delay=0.0, skip_reward=0,
+        clone=0,
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=15000391, character=15000391, item_lot=15001260, reward_delay=0.0, skip_reward=0,
+        clone=0,
+    )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=15000392,
-        character=Characters.PutridAvatar0,
+        character=Characters.PutridAvatarAtDoor,
         item_lot=15001270,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_PutridAvatarAtDoor,
     )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=15000393,
-        character=Characters.PutridAvatar1,
+        character=Characters.PutridAvatarOnBattlement,
         item_lot=15001280,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_PutridAvatarOnBattlement,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=15000394, character=15000394, item_lot=15001290, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=15000394, character=15000394, item_lot=15001290, reward_delay=0.0, skip_reward=0, clone=0
+    )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=15000398,
@@ -203,7 +213,9 @@ def Constructor():
         item_lot=15001200,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_UlceratedTreeSpirit,
     )
+
     CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Scarab0,
@@ -361,7 +373,9 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Misbegotten0, region=15002360, radius=1.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Misbegotten0, region=15002360, radius=1.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Misbegotten1,
@@ -401,7 +415,9 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Misbegotten4, region=15002364, radius=1.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Misbegotten4, region=15002364, radius=1.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Misbegotten5,
@@ -415,8 +431,12 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Misbegotten6, region=15002387, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Misbegotten7, region=15002387, radius=1.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Misbegotten6, region=15002387, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Misbegotten7, region=15002387, radius=1.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Misbegotten8, radius=5.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
@@ -495,7 +515,9 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BattleMage0, region=15002340, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.BattleMage0, region=15002340, radius=5.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.PutridCorpse0,
@@ -801,7 +823,9 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.HaligtreeSoldier13, radius=2.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.HaligtreeSoldier13, radius=2.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.HaligtreeSoldier14,
@@ -886,7 +910,9 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.HaligtreeSoldier25, radius=1.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.HaligtreeSoldier25, radius=1.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.HaligtreeSoldier26,
@@ -999,7 +1025,9 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.HaligtreeSoldier42, radius=1.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.HaligtreeSoldier42, radius=1.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.HaligtreeSoldier43,
@@ -1249,7 +1277,9 @@ def Constructor():
         seconds=0.30000001192092896,
         animation_id=30002,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail2, region=15002346, radius=1.0, seconds=0.0, animation_id=30002)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Snail2, region=15002346, radius=1.0, seconds=0.0, animation_id=30002
+    )
     Event_15002344(0, character=Characters.Snail0, entity=15003344)
     Event_15002344(1, character=Characters.Snail1, entity=15003345)
     Event_15002344(2, character=Characters.Snail2, entity=15003346)
@@ -1569,7 +1599,15 @@ def Constructor():
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
-        character=Characters.PutridAvatar0,
+        character=Characters.PutridAvatarAtDoor,
+        region=15002392,
+        radius=3.0,
+        seconds=0.0,
+        animation_id=-1,
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0,
+        character=Characters.CLONE_PutridAvatarAtDoor,
         region=15002392,
         radius=3.0,
         seconds=0.0,
@@ -1578,6 +1616,19 @@ def Constructor():
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.UlceratedTreeSpirit,
+        animation_id=30002,
+        animation_id_1=20002,
+        region=15002398,
+        radius=10.0,
+        seconds=0.0,
+        left=0,
+        left_1=0,
+        left_2=0,
+        left_3=0,
+    )
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
+        0,
+        character=Characters.CLONE_UlceratedTreeSpirit,
         animation_id=30002,
         animation_id_1=20002,
         region=15002398,
@@ -1757,9 +1808,9 @@ def Event_15002200(_, character: uint, asset: uint):
     EnableAssetInvulnerability(asset)
     Wait(0.10000000149011612)
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(character, 5080))
-    
+
     MAIN.Await(AND_1)
-    
+
     DisableAssetInvulnerability(asset)
 
 
@@ -1767,9 +1818,9 @@ def Event_15002200(_, character: uint, asset: uint):
 def Event_15002310(_, character: uint, character_1: uint):
     """Event 15002310"""
     AND_1.Add(CharacterDead(character_1))
-    
+
     MAIN.Await(AND_1)
-    
+
     Kill(character)
 
 
@@ -1779,15 +1830,15 @@ def Event_15002344(_, character: uint, entity: uint):
     DisableSpawner(entity=entity)
     AND_1.Add(CharacterAlive(character))
     AND_1.Add(CharacterHasSpecialEffect(character, 15007))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableSpawner(entity=entity)
     AND_2.Add(CharacterAlive(character))
     AND_2.Add(CharacterHasSpecialEffect(character, 15007))
-    
+
     MAIN.Await(not AND_2)
-    
+
     DisableSpawner(entity=entity)
 
 
@@ -1910,7 +1961,7 @@ def MaleniaDies():
     AND_1.Add(HealthValue(Characters.Malenia) <= 0)
     AND_1.Add(HealthValue(Characters.CLONE_Malenia) <= 0)
     MAIN.Await(AND_1)
-    
+
     Wait(4.0)
     PlaySoundEffect(15008000, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(PlayerInOwnWorld())
@@ -1919,9 +1970,9 @@ def MaleniaDies():
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9646))
     OR_2.Add(AND_2)
     OR_2.Add(FlagEnabled(Flags.MaleniaDead))
-    
+
     MAIN.Await(OR_2)
-    
+
     KillBossAndDisplayBanner(character=Characters.Malenia, banner_type=BannerType.DemigodFelled)
     if PlayerInOwnWorld():
         TriggerMultiplayerEvent(event_id=0)
@@ -1950,8 +2001,8 @@ def MaleniaBattleTrigger():
     EnableImmortality(Characters.Malenia)
     EnableImmortality(Characters.CLONE_Malenia)
 
-    DisableCharacter(Characters.OtherMalenia)  # never enabled (unused events)
-    DisableAnimations(Characters.OtherMalenia)
+    DisableCharacter(Characters.ButterflyMalenia)  # never enabled (unused events)
+    DisableAnimations(Characters.ButterflyMalenia)
     SetLockOnPoint(character=0, lock_on_model_point=-1, state=True)
     DisableCharacter(Characters.MaleniaSummon0)
     DisableAnimations(Characters.MaleniaSummon0)
@@ -2011,9 +2062,9 @@ def MaleniaBattleTrigger():
 
     AND_1.Add(FlagEnabled(15002805))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=15002800))
-    
+
     MAIN.Await(AND_1)
-    
+
     if PlayerInOwnWorld():
         BanishInvaders(unknown=0)
     EnableNetworkFlag(Flags.MaleniaFirstTimeDone)
@@ -2035,8 +2086,14 @@ def MaleniaBattleTrigger():
 
     AddSpecialEffect(Characters.Malenia, 5400)
     AddSpecialEffect(Characters.CLONE_Malenia, 5400)
-    Move(Characters.Malenia, destination=RegionPoints.MaleniaStartFirstTime, destination_type=CoordEntityType.Region, short_move=True)
-    Move(Characters.CLONE_Malenia, destination=RegionPoints.CLONE_MaleniaStartFirstTime, destination_type=CoordEntityType.Region, short_move=True)
+    Move(
+        Characters.Malenia, destination=RegionPoints.MaleniaStartFirstTime, destination_type=CoordEntityType.Region,
+        short_move=True
+    )
+    Move(
+        Characters.CLONE_Malenia, destination=RegionPoints.CLONE_MaleniaStartFirstTime,
+        destination_type=CoordEntityType.Region, short_move=True
+    )
     EnableGravity(Characters.Malenia)
     EnableAnimations(Characters.Malenia)
     SetDisplayMask(Characters.Malenia, bit_index=0, switch_type=OnOffChange.Off)
@@ -2054,12 +2111,18 @@ def MaleniaBattleTrigger():
 
     # --- Label 1 --- #
     DefineLabel(1)
-    Move(Characters.Malenia, destination=RegionPoints.MaleniaStartAfterFirstTime, destination_type=CoordEntityType.Region, short_move=True)
-    Move(Characters.CLONE_Malenia, destination=RegionPoints.CLONE_MaleniaStartAfterFirstTime, destination_type=CoordEntityType.Region, short_move=True)
+    Move(
+        Characters.Malenia, destination=RegionPoints.MaleniaStartAfterFirstTime,
+        destination_type=CoordEntityType.Region, short_move=True
+    )
+    Move(
+        Characters.CLONE_Malenia, destination=RegionPoints.CLONE_MaleniaStartAfterFirstTime,
+        destination_type=CoordEntityType.Region, short_move=True
+    )
     DisableAsset(Assets.AEG260_526_3000)
     AND_2.Add(FlagEnabled(15002805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=15002800))
-    
+
     MAIN.Await(AND_2)
 
     # --- Label 2 --- #
@@ -2073,7 +2136,7 @@ def MaleniaBattleTrigger():
 
 
 @RestartOnRest(15002811)
-def MaleniaPhaseTwoTransition(_, malenia: uint, other_malenia: uint, new_name: int, bar_slot: short):
+def MaleniaPhaseTwoTransition(_, malenia: uint, butterfly_malenia: uint, new_name: int, bar_slot: short):
     """Event 15002811"""
     if FlagEnabled(Flags.MaleniaDead):
         return
@@ -2082,9 +2145,9 @@ def MaleniaPhaseTwoTransition(_, malenia: uint, other_malenia: uint, new_name: i
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(malenia, 18480))
     OR_1.Add(AttackedWithDamageType(attacked_entity=malenia))  # TODO: Removed `other_malenia` damage trigger maybe?
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     if PlayerInOwnWorld():
         PlayCutsceneToPlayerAndWarp(
             cutscene_id=15000010,
@@ -2101,7 +2164,12 @@ def MaleniaPhaseTwoTransition(_, malenia: uint, other_malenia: uint, new_name: i
     EnableFlag(15002802)
     if PlayerInOwnWorld():
         ChangeCamera(normal_camera_id=2121, locked_camera_id=2121)
-    Move(malenia, destination=RegionPoints.MaleniaPhaseTwoPosition, destination_type=CoordEntityType.Region, short_move=True)
+    Move(
+        malenia,
+        destination=RegionPoints.MaleniaPhaseTwoPosition,
+        destination_type=CoordEntityType.Region,
+        short_move=True,
+    )
     SetCameraAngle(x_angle=-29.0, y_angle=68.80000305175781)
     # TODO: This might disable the other health bar.
     EnableBossHealthBar(malenia, name=new_name, bar_slot=bar_slot)
@@ -2134,8 +2202,8 @@ def MaleniaPhaseTwoTransition(_, malenia: uint, other_malenia: uint, new_name: i
         unk_24_28=0,
     )
     AddSpecialEffect(malenia, 18400)
-    AddSpecialEffect(other_malenia, 18400)
-    DisableHealthBar(other_malenia)
+    AddSpecialEffect(butterfly_malenia, 18400)
+    DisableHealthBar(butterfly_malenia)
     ForceAnimation(malenia, 20002)
     WaitFrames(frames=1)
     ReplanAI(malenia)
@@ -2147,7 +2215,7 @@ def MaleniaPhaseTwoTransition(_, malenia: uint, other_malenia: uint, new_name: i
 
 @ContinueOnRest(15002820)
 def ControlMaleniaSummon(
-    _, malenia: uint, other_malenia: uint, malenia_summon: uint, animation_id: int, special_effect: int
+    _, malenia: uint, butterfly_malenia: uint, malenia_summon: uint, animation_id: int, special_effect: int
 ):
     """Event 15002820"""
     if FlagEnabled(Flags.MaleniaDead):
@@ -2155,18 +2223,18 @@ def ControlMaleniaSummon(
     DisableCharacter(malenia_summon)
     DisableAnimations(malenia_summon)
     DisableAI(malenia_summon)
-    AND_1.Add(FlagDisabled(Flags.OtherMaleniaActive))
+    AND_1.Add(FlagDisabled(Flags.ButterflyMaleniaActive))
     AND_1.Add(CharacterHasSpecialEffect(malenia, special_effect))
-    AND_2.Add(FlagEnabled(Flags.OtherMaleniaActive))
-    AND_2.Add(CharacterHasSpecialEffect(other_malenia, special_effect))
+    AND_2.Add(FlagEnabled(Flags.ButterflyMaleniaActive))
+    AND_2.Add(CharacterHasSpecialEffect(butterfly_malenia, special_effect))
     OR_1.Add(AND_1)
     OR_1.Add(AND_2)
-    
+
     MAIN.Await(OR_1)
-    
+
     EnableCharacter(malenia_summon)
     WaitFrames(frames=1)
-    if FlagDisabled(Flags.OtherMaleniaActive):
+    if FlagDisabled(Flags.ButterflyMaleniaActive):
         Move(
             malenia_summon,
             destination=malenia,
@@ -2177,10 +2245,10 @@ def ControlMaleniaSummon(
     else:
         Move(
             malenia_summon,
-            destination=other_malenia,
+            destination=butterfly_malenia,
             destination_type=CoordEntityType.Character,
             model_point=228,
-            copy_draw_parent=other_malenia,
+            copy_draw_parent=butterfly_malenia,
         )
     ForceAnimation(malenia_summon, animation_id)
     EnableAI(malenia_summon)
@@ -2188,9 +2256,9 @@ def ControlMaleniaSummon(
     EnableAnimations(malenia_summon)
     Wait(0.30000001192092896)
     AND_5.Add(CharacterDoesNotHaveSpecialEffect(malenia_summon, 5029))
-    
+
     MAIN.Await(AND_5)
-    
+
     Restart()
 
 
@@ -2202,9 +2270,9 @@ def UnknownMaleniaEffect(_, malenia_special_effect: int, player_trigger_special_
         return
     AND_1.Add(PlayerNotInOwnWorld())
     AND_1.Add(CharacterHasSpecialEffect(PLAYER, player_trigger_special_effect))
-    
+
     MAIN.Await(AND_1)
-    
+
     if PlayerInOwnWorld():
         AddSpecialEffect(Characters.Malenia, malenia_special_effect)
     Wait(0.20000000298023224)
@@ -2212,14 +2280,14 @@ def UnknownMaleniaEffect(_, malenia_special_effect: int, player_trigger_special_
 
 
 @ContinueOnRest(15002840)
-def UnusedMaleniaSwapEvent(_, old_malenia: uint, new_malenia: uint, other_malenia_flag_state: uchar):
+def UnusedMaleniaSwapEvent(_, old_malenia: uint, new_malenia: uint, butterfly_malenia_flag_setting: uchar):
     """TODO: Unused event that swaps between "normal" and "butterfly" Malenia."""
     if FlagEnabled(Flags.MaleniaDead):
         return
     AND_1.Add(CharacterHasSpecialEffect(old_malenia, Effects.MaleniaSwapRequest))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableCharacter(new_malenia)
     AddSpecialEffect(new_malenia, Effects.NewMaleniaAppearing)
     WaitFrames(frames=1)
@@ -2236,12 +2304,12 @@ def UnusedMaleniaSwapEvent(_, old_malenia: uint, new_malenia: uint, other_maleni
     EnableAnimations(new_malenia)
     RemoveSpecialEffect(new_malenia, Effects.NewMaleniaAppearing)
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(old_malenia, 5029))
-    
+
     MAIN.Await(AND_2)
-    
+
     DisableCharacter(old_malenia)
     DisableAnimations(old_malenia)
-    SetAbsoluteNetworkFlagState(Flags.OtherMaleniaActive, state=other_malenia_flag_state)
+    SetAbsoluteNetworkFlagState(Flags.ButterflyMaleniaActive, state=butterfly_malenia_flag_setting)
     Restart()
 
 
@@ -2249,7 +2317,7 @@ def UnusedMaleniaSwapEvent(_, old_malenia: uint, new_malenia: uint, other_maleni
 def UnusedMaleniaSummonEvent(
     _,
     malenia: uint,
-    other_malenia: uint,
+    butterfly_malenia: uint,
     malenia_summon: uint,
     special_effect_id: int,
     special_effect: int,
@@ -2260,19 +2328,19 @@ def UnusedMaleniaSummonEvent(
     AddSpecialEffect(malenia_summon, special_effect_id)
     DisableCharacter(malenia_summon)
     DisableAnimations(malenia_summon)
-    AND_1.Add(FlagDisabled(Flags.OtherMaleniaActive))
+    AND_1.Add(FlagDisabled(Flags.ButterflyMaleniaActive))
     AND_1.Add(CharacterHasSpecialEffect(malenia, special_effect))
-    AND_2.Add(FlagEnabled(Flags.OtherMaleniaActive))
-    AND_2.Add(CharacterHasSpecialEffect(other_malenia, special_effect))
+    AND_2.Add(FlagEnabled(Flags.ButterflyMaleniaActive))
+    AND_2.Add(CharacterHasSpecialEffect(butterfly_malenia, special_effect))
     OR_1.Add(AND_1)
     OR_1.Add(AND_2)
-    
+
     MAIN.Await(OR_1)
-    
+
     EnableCharacter(malenia_summon)
     WaitFrames(frames=1)
     EnableAI(malenia_summon)
-    if FlagDisabled(Flags.OtherMaleniaActive):
+    if FlagDisabled(Flags.ButterflyMaleniaActive):
         Move(
             malenia_summon,
             destination=malenia,
@@ -2283,19 +2351,19 @@ def UnusedMaleniaSummonEvent(
     else:
         Move(
             malenia_summon,
-            destination=other_malenia,
+            destination=butterfly_malenia,
             destination_type=CoordEntityType.Character,
             model_point=228,
-            copy_draw_parent=other_malenia,
+            copy_draw_parent=butterfly_malenia,
         )
     ReplanAI(malenia_summon)
     Wait(0.699999988079071)
     EnableAnimations(malenia_summon)
     Wait(2.0)
     AND_5.Add(CharacterDoesNotHaveSpecialEffect(malenia_summon, 5029))
-    
+
     MAIN.Await(AND_5)
-    
+
     Restart()
 
 
@@ -2317,9 +2385,9 @@ def MaleniaSpecialCameraControl(_, trigger_special_effect: int, special_camera_i
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(Characters.CLONE_Malenia, 18032))
     OR_2.Add(AND_2)
     OR_2.Add(FlagEnabled(Flags.MaleniaDead))
-    
+
     MAIN.Await(OR_2)
-    
+
     if FlagEnabled(Flags.MaleniaDead):
         return
 
@@ -2333,9 +2401,9 @@ def MaleniaSpecialCameraControl(_, trigger_special_effect: int, special_camera_i
     OR_1.Add(AND_1)
     OR_1.Add(AND_3)
     OR_1.Add(FlagEnabled(Flags.MaleniaDead))
-    
+
     MAIN.Await(OR_1)
-    
+
     if FlagEnabled(Flags.MaleniaDead):
         return
     ChangeCamera(
@@ -2368,7 +2436,9 @@ def MaleniaCommonEvents():
         summon_entered_fog_flag=15002806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.MaleniaDead, fog_asset=Assets.AEG099_003_9000, model_point=5, required_flag=0)
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.MaleniaDead, fog_asset=Assets.AEG099_003_9000, model_point=5, required_flag=0
+    )
     CommonFunc_ControlBossMusic(0, 15002800, 212000, 15002805, 15002806, 0, 15002802, 1, 1)
 
 
@@ -2377,7 +2447,7 @@ def LorettaDies():
     """Event 15002850"""
     if FlagEnabled(Flags.LorettaDead):
         return
-    
+
     AND_1.Add(HealthValue(Characters.Loretta) <= 0)
     AND_1.Add(HealthValue(Characters.CLONE_Loretta) <= 0)
     MAIN.Await(AND_1)
@@ -2388,7 +2458,7 @@ def LorettaDies():
     AND_2.Add(CharacterDead(Characters.Loretta))
     AND_2.Add(CharacterDead(Characters.CLONE_Loretta))
     MAIN.Await(AND_2)
-    
+
     KillBossAndDisplayBanner(character=Characters.Loretta, banner_type=BannerType.GreatEnemyFelled)
     EnableFlag(Flags.LorettaDead)
     EnableFlag(9119)
@@ -2419,7 +2489,7 @@ def LorettaBattleTrigger():
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_Loretta, attacker=PLAYER))
 
     MAIN.Await(OR_1)
-    
+
     EnableNetworkFlag(Flags.LorettaFirstTimeDone)
     Goto(Label.L2)
 
@@ -2439,7 +2509,7 @@ def LorettaBattleTrigger():
     )
     AND_2.Add(FlagEnabled(15002855))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=15002850))
-    
+
     MAIN.Await(AND_2)
 
     # --- Label 2 --- #
@@ -2467,7 +2537,7 @@ def LorettaPhaseTwoTransition():
     OR_1.Add(HealthRatio(Characters.CLONE_Loretta) <= 0.550000011920929)
 
     MAIN.Await(OR_1)
-    
+
     WaitFrames(frames=1)
     # TODO: Does nothing? This event flag isn't even used.
     #  Is phase two music not used? Flag 15002852
@@ -2496,8 +2566,13 @@ def LorettaCommonEvents():
         summon_entered_fog_flag=15002856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.LorettaDead, fog_asset=Assets.AEG099_003_9001, model_point=3, required_flag=Flags.LorettaFirstTimeDone)
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.LorettaDead, fog_asset=Assets.AEG099_003_9002, model_point=3, required_flag=0)
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.LorettaDead, fog_asset=Assets.AEG099_003_9001, model_point=3,
+        required_flag=Flags.LorettaFirstTimeDone
+    )
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.LorettaDead, fog_asset=Assets.AEG099_003_9002, model_point=3, required_flag=0
+    )
     CommonFunc_ControlBossMusic(0, Flags.LorettaDead, 920200, 15002855, 15002856, 0, 15002852, 0, 0)
 
 
@@ -2510,13 +2585,13 @@ def SetMaleniaTalkRange():
         return
     if FlagEnabled(15002700):
         return
-    
+
     MAIN.Await(FlagEnabled(15002805))
-    
+
     SetCharacterTalkRange(character=Characters.Malenia, distance=100.0)
-    
+
     MAIN.Await(FlagEnabled(15002701))
-    
+
     SetCharacterTalkRange(character=Characters.Malenia, distance=17.0)
 
 
@@ -2531,15 +2606,15 @@ def Event_15000701():
         return
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(HealthValue(Characters.Malenia) == 0)
-    
+
     MAIN.Await(AND_1)
-    
+
     SetBackreadStateAlternate(Characters.Malenia, True)
     OR_1.Add(TimeElapsed(seconds=100.0))
     OR_1.Add(FlagEnabled(15002701))
-    
+
     MAIN.Await(OR_1)
-    
+
     SetBackreadStateAlternate(Characters.Malenia, False)
 
 
@@ -2579,9 +2654,9 @@ def Event_15000710(_, character: uint):
     GotoIfFlagEnabled(Label.L6, flag=4190)
     DisableCharacter(character)
     DisableBackread(character)
-    
+
     MAIN.Await(FlagEnabled(4190))
-    
+
     Restart()
 
     # --- Label 6 --- #
@@ -2613,9 +2688,9 @@ def Event_15000710(_, character: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    
+
     MAIN.Await(FlagDisabled(4190))
-    
+
     Restart()
 
 

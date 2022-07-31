@@ -80,15 +80,15 @@ def Constructor():
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MagmaWyrm, region=1035532346, seconds=0.5, animation_id=3004)
     Event_1035532300()
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.MagmaWyrm, name=904910600, npc_threat_level=5)
-    CommonFunc_90005861(
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.MagmaWyrm, name=904910600, npc_threat_level=5)
+    CommonFunc_FieldBossNonRespawningWithRewardAndMessage(
         0,
-        flag=1035530800,
-        left=1035530800,
-        character=Characters.MagmaWyrm,
-        left_1=1,
+        dead_flag=1035530800,
+        extra_flag_to_enable=1035530800,
+        boss=Characters.MagmaWyrm,
+        boss_banner_choice=1,
         item_lot=30390,
-        text=30062,
+        message=30062,
         seconds=0.0,
     )
     Event_1035532500()

@@ -1,12 +1,21 @@
 from pathlib import Path
 from soulstruct.eldenring.events import EMEVD, EMEVDDirectory
-from soulstruct.bloodborne.text import MSGDirectory
 
 
 ELDEN_RING_PATH = Path("C:/Steam/steamapps/common/ELDEN RING (Modding)/Game")
 
 MAPS_TO_INSTALL = [
     "m10_00_00_00",
+    "m11_00_00_00",
+    "m11_05_00_00",
+    "m12_01_00_00",
+    "m12_02_00_00",
+    "m12_03_00_00",
+    "m12_04_00_00",
+    "m12_05_00_00",
+    "m12_07_00_00",
+    "m12_08_00_00",
+    "m12_09_00_00",
     "m14_00_00_00",
     "m15_00_00_00",
     "m16_00_00_00",

@@ -40,7 +40,7 @@ def Constructor():
         0,
         dead_flag=1039430800,
         extra_flag_to_enable=0,
-        boss_character=Characters.NightsCavalry,
+        boss=Characters.NightsCavalry,
         boss_banner_choice=0,
         item_lot=1039430400,
         seconds=0.0,
@@ -54,7 +54,7 @@ def Constructor():
         character_1=Characters.NightsCavalryHorse,
     )
     CommonFunc_90005706(0, character=Characters.WanderingNoble, animation_id=930023, left=0)
-    CommonFunc_NonRespawningWithReward(0, 1039430310, 1039430310, 40252, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1039430310, character=1039430310, item_lot=40252, reward_delay=0.0, skip_reward=0)
 
 
 @ContinueOnRest(50)

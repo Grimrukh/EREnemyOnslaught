@@ -24,20 +24,21 @@ from .entities.m60_33_45_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005880(
+    CommonFunc_EvergaolBossDies(
         0,
-        flag=1033450800,
-        flag_1=1033450805,
+        dead_flag=1033450800,
+        required_flag=1033450805,
         flag_2=1033452800,
-        character=Characters.LiurniaTroll,
+        boss=Characters.LiurniaTroll,
         item_lot=30250,
         area_id=60,
         block_id=33,
         cc_id=45,
         dd_id=0,
         player_start=1033452805,
+        clone=Characters.CLONE_LiurniaTroll,
     )
-    CommonFunc_90005881(
+    CommonFunc_EnterEvergaol(
         0,
         flag=1033450800,
         flag_1=1033450805,
@@ -51,23 +52,24 @@ def Constructor():
         dd_id=0,
         player_start=1033452805,
     )
-    CommonFunc_90005882(
+    CommonFunc_EvergaolBossBattleTrigger(
         0,
-        flag=1033450800,
-        flag_1=1033450805,
+        dead_flag=1033450800,
+        required_flag=1033450805,
         flag_2=1033452800,
-        character=Characters.LiurniaTroll,
-        flag_3=1033452806,
+        boss=Characters.LiurniaTroll,
+        battle_started_flag=1033452806,
         character_1=1033455810,
-        asset=Assets.AEG099_120_1000,
+        evergaol_gate=Assets.AEG099_120_1000,
         owner_entity=Characters.TalkDummy,
         source_entity=1033452810,
-        name=904600520,
-        animation_id=-1,
-        animation_id_1=20005,
+        boss_name=904600520,
+        standby_animation=-1,
+        appearance_animation=20005,
+        clone=Characters.CLONE_LiurniaTroll,
     )
     CommonFunc_90005883(0, flag=1033450800, flag_1=1033450805, entity=Assets.AEG099_170_1000)
-    CommonFunc_90005885(
+    CommonFunc_EvergaolBossMusic(
         0,
         flag=1033450800,
         bgm_boss_conv_param_id=0,
@@ -84,7 +86,7 @@ def Constructor():
         region_1=1033452201,
         region_2=1033452202,
     )
-    CommonFunc_NonRespawningWithReward(0, 1033450200, 1033450200, 40264, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1033450200, character=1033450200, item_lot=40264, reward_delay=0.0, skip_reward=0)
 
 
 @RestartOnRest(1033452360)

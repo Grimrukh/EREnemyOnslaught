@@ -2,6 +2,7 @@ from soulstruct.eldenring.game_types import *
 
 
 class Flags(Flag):
+    GraftedScionDead = 10000280
     GodrickDead = 10000800
     MargitDead = 10000850  # also his entity ID
 
@@ -190,6 +191,12 @@ class Characters(Character):
 
     CLONE_Godrick = 10000801
     CLONE_Margit = 10000851
+
+    # TODO: Use in common scripts (don't respawn).
+    CLONE_GraftedScion = 10000380
+    CLONE_LionGuardian = 10000288
+    CLONE_UlceratedTreeSpirit = 10000292
+    CLONE_CrucibleKnight = 10000499
 
 
 class Assets(Asset):

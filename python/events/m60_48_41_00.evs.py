@@ -33,12 +33,12 @@ def Constructor():
         region=1048412300,
         flag_1=1048412708,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.BellBearingHunter, name=903100603, npc_threat_level=10)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.BellBearingHunter, name=903100603, npc_threat_level=10)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1048410800,
         extra_flag_to_enable=0,
-        boss_character=Characters.BellBearingHunter,
+        boss=Characters.BellBearingHunter,
         boss_banner_choice=0,
         item_lot=1048410800,
         seconds=0.0,

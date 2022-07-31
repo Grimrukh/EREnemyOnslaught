@@ -45,12 +45,12 @@ def Constructor():
     )
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9002, vfx_id=100, model_point=800, right=0)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9003, vfx_id=100, model_point=800, right=0)
-    CommonFunc_90005880(
+    CommonFunc_EvergaolBossDies(
         0,
-        flag=1042370800,
-        flag_1=1042370805,
+        dead_flag=1042370800,
+        required_flag=1042370805,
         flag_2=1042372800,
-        character=Characters.CrucibleKnight,
+        boss=Characters.CrucibleKnight,
         item_lot=30120,
         area_id=60,
         block_id=42,
@@ -58,7 +58,7 @@ def Constructor():
         dd_id=0,
         player_start=1042372805,
     )
-    CommonFunc_90005881(
+    CommonFunc_EnterEvergaol(
         0,
         flag=1042370800,
         flag_1=1042370805,
@@ -72,23 +72,23 @@ def Constructor():
         dd_id=0,
         player_start=1042372805,
     )
-    CommonFunc_90005882(
+    CommonFunc_EvergaolBossBattleTrigger(
         0,
-        flag=1042370800,
-        flag_1=1042370805,
+        dead_flag=1042370800,
+        required_flag=1042370805,
         flag_2=1042372800,
-        character=Characters.CrucibleKnight,
-        flag_3=1042372806,
+        boss=Characters.CrucibleKnight,
+        battle_started_flag=1042372806,
         character_1=1042375810,
-        asset=Assets.AEG099_120_1000,
+        evergaol_gate=Assets.AEG099_120_1000,
         owner_entity=Characters.Dummy,
         source_entity=1042372810,
-        name=902500520,
-        animation_id=-1,
-        animation_id_1=20000,
+        boss_name=902500520,
+        standby_animation=-1,
+        appearance_animation=20000,
     )
     CommonFunc_90005883(0, flag=1042370800, flag_1=1042370805, entity=Assets.AEG099_170_1000)
-    CommonFunc_90005885(
+    CommonFunc_EvergaolBossMusic(
         0,
         flag=1042370800,
         bgm_boss_conv_param_id=0,

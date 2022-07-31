@@ -24,7 +24,7 @@ from soulstruct.eldenring.events.instructions import *
 def Constructor():
     """Event 0"""
     Event_1053572200(0, character=1053575200)
-    CommonFunc_NonRespawningWithReward(0, 1053570210, 1053570210, 40510, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1053570210, character=1053570210, item_lot=40510, reward_delay=0.0, skip_reward=0)
 
 
 @RestartOnRest(1053572200)

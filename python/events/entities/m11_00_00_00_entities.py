@@ -171,18 +171,18 @@ class Characters(Character):
     AlbinauricLookout3 = 11000428  # c3670_9003 col h007900 npc 36703034 think 36703000
     AlbinauricLookout4 = 11000464  # c3670_9004 col h007900 npc 36703034 think 36703000
     AlbinauricLookout5 = 11000465  # c3670_9005 col h007900 npc 36703034 think 36703000
-    DepravedPerfurmer0 = 11000250  # c3701_9000 col h003100 npc 37010034 think 37010000
-    DepravedPerfurmer1 = 11000252  # c3701_9002 col h003100 npc 37011034 think 37010000
-    DepravedPerfurmer2 = 11000253  # c3701_9003 col h003100 npc 37010034 think 37010000
-    DepravedPerfurmer3 = 11000254  # c3701_9004 col h003500 npc 37010034 think 37010000
-    DepravedPerfurmer4 = 11000255  # c3701_9005 col h003500 npc 37011034 think 37010000
-    DepravedPerfurmer5 = 11000256  # c3701_9006 col h005300 npc 37010034 think 37010000
-    DepravedPerfurmer6 = 11000257  # c3701_9007 col h018300 npc 37010034 think 37010000 group 11005106
-    DepravedPerfurmer7 = 11000258  # c3701_9008 col h018300 npc 37011034 think 37010000 group 11005106
-    DepravedPerfurmer8 = 11000259  # c3701_9009 col h004500 npc 37011034 think 37010000
-    DepravedPerfurmer9 = 11000420  # c3701_9010 col h004700 npc 37010034 think 37010010
-    DepravedPerfurmer10 = 11000345  # c3701_9011 col h005600 npc 37010034 think 37010000
-    DepravedPerfurmer11 = 11000346  # c3701_9012 col h005600 npc 37010034 think 37010000
+    DepravedPerfumer0 = 11000250  # c3701_9000 col h003100 npc 37010034 think 37010000
+    DepravedPerfumer1 = 11000252  # c3701_9002 col h003100 npc 37011034 think 37010000
+    DepravedPerfumer2 = 11000253  # c3701_9003 col h003100 npc 37010034 think 37010000
+    DepravedPerfumer3 = 11000254  # c3701_9004 col h003500 npc 37010034 think 37010000
+    DepravedPerfumer4 = 11000255  # c3701_9005 col h003500 npc 37011034 think 37010000
+    DepravedPerfumer5 = 11000256  # c3701_9006 col h005300 npc 37010034 think 37010000
+    DepravedPerfumer6 = 11000257  # c3701_9007 col h018300 npc 37010034 think 37010000 group 11005106
+    DepravedPerfumer7 = 11000258  # c3701_9008 col h018300 npc 37011034 think 37010000 group 11005106
+    DepravedPerfumer8 = 11000259  # c3701_9009 col h004500 npc 37011034 think 37010000
+    DepravedPerfumer9 = 11000420  # c3701_9010 col h004700 npc 37010034 think 37010010
+    DepravedPerfumer10 = 11000345  # c3701_9011 col h005600 npc 37010034 think 37010000
+    DepravedPerfumer11 = 11000346  # c3701_9012 col h005600 npc 37010034 think 37010000
     Page0 = 11000240  # c3703_9000 col h018200 npc 37030034 think 37030000
     Page1 = 11000242  # c3703_9002 col h004400 npc 37030034 think 37030000
     Page2 = 11000243  # c3703_9003 col h002800 npc 37031034 think 37030000
@@ -279,13 +279,22 @@ class Characters(Character):
     GodfreyPhantom = 11000850  # c4720_9000 col h013700 npc 47200134 think 47200000 group 11005850,11005102
     Gargoyle0 = 11000391  # c4770_9001 col h018200 npc 47702034 think 47702000
     Gargoyle1 = 11000392  # c4770_9002 col h005500 npc 47702034 think 47702100
-    Gargoyle2 = 11000393  # c4770_9003 col h012900 npc 47701034 think 47701000
+    NonRespawningGargoyle = 11000393  # c4770_9003 col h012900 npc 47701034 think 47701000
     Gargoyle3 = 11000394  # c4770_9004 col h008000 npc 47702034 think 47702100
     ErdtreeAvatar = 11000389  # c4810_9000 col h005700 npc 48100034 think 48100000 group 11005104
     Omenkiller = 11000469  # c4820_9000 col h007600 npc 48208034 think 48200000
 
     CLONE_Morgott = 11000801
     CLONE_GodfreyPhantom = 11000851
+
+    CLONE_ErdtreeAvatar = 11000330
+    CLONE_LionGuardian = 11000331
+    CLONE_CrucibleKnight0 = 11000332
+    CLONE_CrucibleKnight1 = 11000333
+    CLONE_UlceratedTreeSpirit = 11000334
+    CLONE_GuardianGolem = 11000335
+    CLONE_BlackKnifeAssassin = 11000336
+    CLONE_NonRespawningGargoyle = 11000337
 
 
 class Assets(Asset):

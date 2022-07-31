@@ -43,12 +43,12 @@ def Constructor():
         flag_10=78308,
         flag_11=78309,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.AncientDragon, name=904510600, npc_threat_level=28)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.AncientDragon, name=904510600, npc_threat_level=28)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1037510800,
         extra_flag_to_enable=0,
-        boss_character=Characters.AncientDragon,
+        boss=Characters.AncientDragon,
         boss_banner_choice=1,
         item_lot=30300,
         seconds=0.0,

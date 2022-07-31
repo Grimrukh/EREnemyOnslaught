@@ -55,15 +55,15 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DecayingEkzykes, name=904501600, npc_threat_level=25)
-    CommonFunc_90005861(
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DecayingEkzykes, name=904501600, npc_threat_level=25)
+    CommonFunc_FieldBossNonRespawningWithRewardAndMessage(
         0,
-        flag=1048370800,
-        left=0,
-        character=Characters.DecayingEkzykes,
-        left_1=1,
+        dead_flag=1048370800,
+        extra_flag_to_enable=0,
+        boss=Characters.DecayingEkzykes,
+        boss_banner_choice=1,
         item_lot=30400,
-        text=30064,
+        message=30064,
         seconds=0.0,
     )
     Event_1048372200(
@@ -74,7 +74,7 @@ def Constructor():
         region_1=1048372298,
         region_2=1048372297,
     )
-    CommonFunc_NonRespawningWithReward(0, 1048370299, 1048370299, 40406, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1048370299, character=1048370299, item_lot=40406, reward_delay=0.0, skip_reward=0)
 
 
 @ContinueOnRest(50)

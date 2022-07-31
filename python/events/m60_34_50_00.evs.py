@@ -87,12 +87,12 @@ def Constructor():
     Event_1034503600(0, region=1034502500, flag=1034500738)
     Event_1034502610()
     Event_1034502620()
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.GlintstoneDragon, name=904502601, npc_threat_level=25)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.GlintstoneDragon, name=904502601, npc_threat_level=25)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1034500800,
         extra_flag_to_enable=0,
-        boss_character=Characters.GlintstoneDragon,
+        boss=Characters.GlintstoneDragon,
         boss_banner_choice=1,
         item_lot=0,
         seconds=0.0,

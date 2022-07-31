@@ -133,7 +133,9 @@ def Constructor():
         seconds=0.0,
         left=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Albinauric13, radius=50.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.Albinauric13, radius=50.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_90005221(
         0,
         character=Characters.Albinauric14,
@@ -276,8 +278,12 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Albinauric24, region=12052240, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Albinauric25, region=12052240, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Albinauric24, region=12052240, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Albinauric25, region=12052240, seconds=0.0, animation_id=-1
+    )
     CommonFunc_90005271(0, character=12055240, seconds=0.0, animation_id=-1)
     Event_12052250(
         0,
@@ -315,7 +321,9 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=12055268, radius=20.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=12055270, radius=40.0, seconds=1.5, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=12055261, radius=15.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.PutridCorpse0, radius=25.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.PutridCorpse0, radius=25.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_90005221(
         0,
         character=Characters.PutridCorpse1,
@@ -580,24 +588,58 @@ def Constructor():
         seconds=0.0,
         left=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BleedDog0, region=12052311, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BleedDog1, region=12052314, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BleedDog2, region=12052314, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BleedDog3, region=12052311, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BleedDog4, region=12052311, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BleedDog5, region=12052311, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BleedDog6, region=12052311, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BleedDog7, region=12052312, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BleedDog8, region=12052312, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BleedDog9, region=12052312, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BleedDog10, region=12052313, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=12050321, region=12052313, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BleedDog11, region=12052313, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BleedDog12, region=12052313, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.BleedDog13, region=12052313, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=12050342, region=12052342, radius=20.0, seconds=0.0, animation_id=20000)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.BleedDog0, region=12052311, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.BleedDog1, region=12052314, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.BleedDog2, region=12052314, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.BleedDog3, region=12052311, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.BleedDog4, region=12052311, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.BleedDog5, region=12052311, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.BleedDog6, region=12052311, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.BleedDog7, region=12052312, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.BleedDog8, region=12052312, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.BleedDog9, region=12052312, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.BleedDog10, region=12052313, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=12050321, region=12052313, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.BleedDog11, region=12052313, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.BleedDog12, region=12052313, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.BleedDog13, region=12052313, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=12050342, region=12052342, radius=20.0, seconds=0.0, animation_id=20000
+    )
     Event_12052200()
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MohgwynMonstrousCrow1, region=12052346, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.MohgwynMonstrousCrow1, region=12052346, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.SanguineNoble0,
@@ -610,7 +652,9 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.SanguineNoble1, region=12052351, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.SanguineNoble1, region=12052351, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.SanguineNoble2,
@@ -640,10 +684,19 @@ def Constructor():
     Event_12052360(2, character=Characters.GiantSkeletonTorso2, character_1=Characters.Albinauric2_2)
     Event_12052360(3, character=Characters.GiantSkeletonTorso3, character_1=Characters.Albinauric2_3)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Dummy0, radius=60.0, seconds=0.0, animation_id=-1)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12050400, character=12050400, item_lot=40680, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12050401, character=12050401, item_lot=40682, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12050402, character=12050402, item_lot=40684, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12050403, character=Characters.Scarab, item_lot=40686, reward_delay=1.5, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12050400, character=12050400, item_lot=40680, reward_delay=1.5, skip_reward=0, clone=0
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12050401, character=12050401, item_lot=40682, reward_delay=1.5, skip_reward=0, clone=0
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12050402, character=12050402, item_lot=40684, reward_delay=1.5, skip_reward=0, clone=0
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12050403, character=Characters.Scarab, item_lot=40686, reward_delay=1.5, skip_reward=0,
+        clone=0
+    )
     CommonFunc_90005790(
         0,
         right=Flags.MohgDead,
@@ -764,7 +817,10 @@ def Constructor():
     SetUpVarreInvasion()
 
     Event_12052690()
-    ControlMohgNPC(0, mohg=Characters.Mohg, other_character=0, flag=CommonFlags.MohgNPCUnavailable, host_in_battle_flag=12052805, distance=145.0)
+    ControlMohgNPC(
+        0, mohg=Characters.Mohg, other_character=0, flag=CommonFlags.MohgNPCUnavailable, host_in_battle_flag=12052805,
+        distance=145.0
+    )
     Event_12053701(0, character=Characters.Mohg)
     CommonFunc_90005703(
         0,
@@ -947,9 +1003,9 @@ def Event_12052620(_, asset: uint, flag: uint, flag_1: uint, region: uint):
     AND_14.Add(OR_1)
     AND_14.Add(CharacterInsideRegion(character=PLAYER, region=region))
     AND_14.Add(FlagEnabled(flag_1))
-    
+
     MAIN.Await(AND_14)
-    
+
     DeleteAssetVFX(asset)
     WaitFrames(frames=1)
     CreateAssetVFX(asset, vfx_id=100, model_point=812611)
@@ -1011,9 +1067,9 @@ def Event_12052200():
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
-    
+
     MAIN.Await(OR_2)
-    
+
     SetNetworkUpdateRate(
         Characters.MohgwynMonstrousCrow0,
         is_fixed=True,
@@ -1042,9 +1098,9 @@ def Event_12052250(_, character: uint, frames: int, entity: uint, animation_id: 
         return
     ForceAnimation(entity, animation_id, loop=True, wait_for_completion=True)
     AND_14.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    
+
     MAIN.Await(AND_14)
-    
+
     ForceAnimation(character, 3007, loop=True, wait_for_completion=True)
     ForceAnimation(entity, animation_id_1, loop=True, wait_for_completion=True)
     End()
@@ -1058,9 +1114,9 @@ def Event_12052251(_, character: uint, frames: int, entity: uint, animation_id: 
         return
     ForceAnimation(entity, animation_id, loop=True, wait_for_completion=True)
     AND_14.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    
+
     MAIN.Await(AND_14)
-    
+
     ForceAnimation(character, 3007, loop=True, wait_for_completion=True)
     ForceAnimation(entity, animation_id_1, loop=True, wait_for_completion=True)
     End()
@@ -1077,9 +1133,9 @@ def Event_12052360(_, character: uint, character_1: uint):
     End()
     OR_12.Add(CharacterDead(character_1))
     OR_12.Add(HealthRatio(character_1) <= 0.5)
-    
+
     MAIN.Await(OR_12)
-    
+
     Kill(character)
     End()
 
@@ -1095,18 +1151,18 @@ def Event_12052680():
     OR_1.Add(PlayerStandingOnCollision(12054683))
     AND_1.Add(not OR_1)
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12052680))
-    
+
     MAIN.Await(AND_1)
-    
+
     CreateVFX(12053680)
     Wait(1.0)
     OR_2.Add(CharacterOutsideRegion(character=PLAYER, region=12052680))
     OR_2.Add(PlayerStandingOnCollision(12054681))
     OR_2.Add(PlayerStandingOnCollision(12054682))
     OR_2.Add(PlayerStandingOnCollision(12054683))
-    
+
     MAIN.Await(OR_2)
-    
+
     DeleteVFX(12053680)
     Wait(1.0)
     Restart()
@@ -1133,7 +1189,7 @@ def MohgDies():
     AND_1.Add(HealthValue(Characters.Mohg) <= 0)
     AND_1.Add(HealthValue(Characters.CLONE_Mohg) <= 0)
     MAIN.Await(AND_1)
-    
+
     Wait(4.0)
     PlaySoundEffect(Characters.Mohg, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(PlayerInOwnWorld())
@@ -1142,9 +1198,9 @@ def MohgDies():
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9646))
     OR_2.Add(AND_2)
     OR_2.Add(FlagEnabled(Flags.MohgDead))
-    
+
     MAIN.Await(OR_2)
-    
+
     KillBossAndDisplayBanner(character=Characters.Mohg, banner_type=BannerType.DemigodFelled)
     if PlayerInOwnWorld():
         TriggerMultiplayerEvent(event_id=0)
@@ -1187,7 +1243,7 @@ def MohgBattleTrigger():
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_Mohg, attacker=PLAYER))
 
     MAIN.Await(OR_1)
-    
+
     EnableNetworkFlag(Flags.MohgFirstTimeDone)
     if PlayerInOwnWorld():
         BanishInvaders(unknown=0)
@@ -1219,9 +1275,9 @@ def MohgBattleTrigger():
     DisableAnimations(Characters.CLONE_Mohg)
     AND_2.Add(FlagEnabled(12052805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=12052800))
-    
+
     MAIN.Await(AND_2)
-    
+
     EnableAnimations(Characters.Mohg)
     EnableAnimations(Characters.CLONE_Mohg)
 
@@ -1247,7 +1303,7 @@ def MohgPhaseTwoTransition():
     OR_1.Add(CharacterHasSpecialEffect(Characters.Mohg, 10630))
     OR_1.Add(CharacterHasSpecialEffect(Characters.CLONE_Mohg, 10630))
     MAIN.Await(OR_1)
-    
+
     EnableFlag(Flags.MohgInPhaseTwo)
 
 
@@ -1256,9 +1312,9 @@ def MohgCountdownThree():
     """Event 12052820"""
     if FlagEnabled(Flags.MohgDead):
         return
-    
+
     MAIN.Await(CharacterHasSpecialEffect(Characters.Mohg, 10641))
-    
+
     AddSpecialEffect(PLAYER, 10650)
 
 
@@ -1267,9 +1323,9 @@ def MohgCountdownTwo():
     """Event 12052821"""
     if FlagEnabled(Flags.MohgDead):
         return
-    
+
     MAIN.Await(CharacterHasSpecialEffect(Characters.Mohg, 10642))
-    
+
     AddSpecialEffect(PLAYER, 10651)
 
 
@@ -1278,9 +1334,9 @@ def MohgCountdownOne():
     """Event 12052822"""
     if FlagEnabled(Flags.MohgDead):
         return
-    
+
     MAIN.Await(CharacterHasSpecialEffect(Characters.Mohg, 10643))
-    
+
     AddSpecialEffect(PLAYER, 10652)
 
 
@@ -1289,9 +1345,9 @@ def MohgFirstNihil():
     """Event 12052823"""
     if FlagEnabled(Flags.MohgDead):
         return
-    
+
     MAIN.Await(CharacterHasSpecialEffect(Characters.Mohg, 10645))
-    
+
     AddSpecialEffect(PLAYER, 10660)
     AddSpecialEffect(PLAYER, 10665)
 
@@ -1301,9 +1357,9 @@ def MohgSecondNihil():
     """Event 12052824"""
     if FlagEnabled(Flags.MohgDead):
         return
-    
+
     MAIN.Await(CharacterHasSpecialEffect(Characters.Mohg, 10646))
-    
+
     AddSpecialEffect(PLAYER, 10661)
     AddSpecialEffect(PLAYER, 10666)
 
@@ -1313,9 +1369,9 @@ def MohgThirdNihil():
     """Event 12052825"""
     if FlagEnabled(Flags.MohgDead):
         return
-    
+
     MAIN.Await(CharacterHasSpecialEffect(Characters.Mohg, 10647))
-    
+
     AddSpecialEffect(PLAYER, 10662)
     AddSpecialEffect(PLAYER, 10667)
 
@@ -1327,9 +1383,9 @@ def MohgNihilClear():
         return
     OR_1.Add(CharacterHasSpecialEffect(Characters.Mohg, 10648))
     OR_1.Add(CharacterDead(Characters.Mohg))
-    
+
     MAIN.Await(OR_1)
-    
+
     AddSpecialEffect(PLAYER, 10653)
 
 
@@ -1338,9 +1394,9 @@ def ControlMiquellaEgg():
     """Event 12052847"""
     if FlagEnabled(Flags.MohgFirstTimeDone):
         return
-    
+
     MAIN.Await(FlagEnabled(Flags.MohgFirstTimeDone))
-    
+
     DisableAsset(Assets.AEG231_036_4000)
     DisableAsset(Assets.AEG231_037_4000)
     EnableAsset(Assets.AEG231_038_4000)
@@ -1358,9 +1414,9 @@ def Event_12052848():
 
     # --- Label 0 --- #
     DefineLabel(0)
-    
+
     MAIN.Await(FlagEnabled(12050802))
-    
+
     DisableAsset(Assets.AEG231_036_4000)
     EnableAsset(Assets.AEG231_037_4000)
     DisableAsset(Assets.AEG231_038_4000)
@@ -1416,7 +1472,10 @@ def MohgCommonEvents():
         summon_entered_fog_flag=12052806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.MohgDead, fog_asset=Assets.AEG099_002_9000, model_point=4, required_flag=Flags.MohgFirstTimeDone)
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.MohgDead, fog_asset=Assets.AEG099_002_9000, model_point=4,
+        required_flag=Flags.MohgFirstTimeDone
+    )
     CommonFunc_ControlBossMusic(0, Flags.MohgDead, 480000, 12052805, 12052806, 0, Flags.MohgInPhaseTwo, 0, 0)
 
 
@@ -1456,9 +1515,9 @@ def ControlMohgNPC(_, mohg: uint, other_character: uint, flag: uint, host_in_bat
 
     # --- Label 1 --- #
     DefineLabel(1)
-    
+
     MAIN.Await(FlagEnabled(host_in_battle_flag))
-    
+
     Goto(Label.L2)
 
     # --- Label 2 --- #
@@ -1476,15 +1535,15 @@ def Event_12053701(_, character: uint):
         return
     if FlagEnabled(Flags.MohgDead):
         return
-    
+
     MAIN.Await(CharacterDead(character))
-    
+
     SetBackreadStateAlternate(character, True)
     OR_1.Add(FlagEnabled(12059205))
     OR_1.Add(TimeElapsed(seconds=30.0))
-    
+
     MAIN.Await(OR_1)
-    
+
     SetBackreadStateAlternate(character, False)
     End()
 
@@ -1504,9 +1563,9 @@ def Event_12053710(_, character: uint):
     DisableCharacter(character)
     DisableBackread(character)
     OR_3.Add(FlagEnabled(3193))
-    
+
     MAIN.Await(OR_3)
-    
+
     Restart()
 
     # --- Label 5 --- #
@@ -1548,9 +1607,9 @@ def Event_12053710(_, character: uint):
     # --- Label 20 --- #
     DefineLabel(20)
     OR_4.Add(FlagEnabled(3193))
-    
+
     MAIN.Await(not OR_4)
-    
+
     Restart()
 
 
@@ -1565,9 +1624,9 @@ def Event_12053711(_, character: uint):
     if FlagDisabled(3193):
         return
     MoveAssetToCharacter(Assets.AEG099_090_9001, character=character)
-    
+
     MAIN.Await(FlagEnabled(12059166))
-    
+
     DisableAnimations(character)
     End()
 

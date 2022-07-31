@@ -57,13 +57,27 @@ def Preconstructor():
     DisableBackread(12070700)
     DisableBackread(12070701)
     Event_12070519()
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Clayman0, region=12072250, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Clayman1, region=12072250, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Clayman2, region=12072250, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Clayman3, region=12072250, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Clayman4, region=12072250, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Clayman5, region=12072250, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Clayman6, region=12072250, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Clayman0, region=12072250, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Clayman1, region=12072250, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Clayman2, region=12072250, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Clayman3, region=12072250, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Clayman4, region=12072250, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Clayman5, region=12072250, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Clayman6, region=12072250, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Clayman7,
@@ -220,7 +234,9 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.SilverTear6, region=12072300, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.SilverTear6, region=12072300, radius=5.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.SilverTear7,
@@ -358,7 +374,10 @@ def Preconstructor():
         trigger_on_ai_unknown6=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Dummy, region=12072382, seconds=0.0, animation_id=-1)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12070402, character=Characters.Scarab1, item_lot=40652, reward_delay=1.5, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12070402, character=Characters.Scarab1, item_lot=40652, reward_delay=1.5, skip_reward=0,
+        clone=0
+    )
     Event_12073700(0, 12070700, 12070701)
 
 
@@ -427,9 +446,9 @@ def Event_12073701():
     AND_1.Add(FlagEnabled(3506))
     AND_1.Add(FlagDisabled(12079006))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12072700))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(12079005)
     End()
 
@@ -444,8 +463,8 @@ def Event_12073702():
     AND_1.Add(FlagEnabled(3506))
     AND_1.Add(FlagDisabled(12079008))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12072701))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(12079007)
     End()

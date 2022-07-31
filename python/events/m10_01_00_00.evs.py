@@ -24,13 +24,16 @@ from .entities.m10_01_00_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    Event_10012682()
-    Event_10012800()
-    Event_10012810()
-    Event_10012811()
-    Event_10012849()
-    Event_10012500()
-    Event_10010790()
+    ShowUnknownTutorialMessage()
+
+    # GRAFTED SCION
+    GraftedScionDies()
+    GraftedScionBattleTrigger()
+    GraftedScionPhaseTwoTransition()
+    GraftedScionCommonEvents()
+
+    ButterflyOutcropBreaks()
+    ControlFingerMaiden()
     Event_10010791()
     Event_10010792()
 
@@ -40,9 +43,9 @@ def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.FingerMaiden)
     Event_10010020()
-    Event_10010030()
-    Event_10010031()
-    Event_10012502()
+    TakenToStrandedGraveyard()
+    ProloguePlayerImmortality()
+    DelayedAreaWelcomeMessage()
     Event_10012560()
     if PlayerNotInOwnWorld():
         return
@@ -94,25 +97,27 @@ def Event_10010020():
 
 
 @ContinueOnRest(10010030)
-def Event_10010030():
+def TakenToStrandedGraveyard():
     """Event 10010030"""
     AND_15.Add(ThisEventSlotFlagEnabled())
-    AND_15.Add(FlagEnabled(101))
+    AND_15.Add(FlagEnabled(Flags.PrologueGraftedScionBattleDone))
     if AND_15:
         return
     if OutsideMap(game_map=CHAPEL_OF_ANTICIPATION):
         return
     AND_1.Add(PlayerInOwnWorld())
-    AND_1.Add(FlagEnabled(10010801))
-    AND_2.Add(HealthValue(Characters.GraftedScion) > 0)
+    AND_1.Add(FlagEnabled(Flags.GraftedScionFirstTimeDone))
+    OR_2.Add(HealthValue(Characters.GraftedScion) > 0)
+    OR_2.Add(HealthValue(Characters.CLONE_GraftedScion) > 0)
+    AND_2.Add(OR_2)
     AND_2.Add(HealthValue(PLAYER) == 1)
     AND_3.Add(CharacterDead(PLAYER))
     OR_1.Add(AND_2)
     OR_1.Add(AND_3)
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     SetRespawnPoint(respawn_point=18002020)
     SaveRequest()
     DisableLoadingScreenText()
@@ -138,30 +143,33 @@ def Event_10010030():
 
 
 @ContinueOnRest(10010031)
-def Event_10010031():
+def ProloguePlayerImmortality():
     """Event 10010031"""
     if OutsideMap(game_map=CHAPEL_OF_ANTICIPATION):
         return
-    if FlagEnabled(101):
+    if FlagEnabled(Flags.PrologueGraftedScionBattleDone):
         return
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagEnabled(10012805))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableImmortality(PLAYER)
+
     OR_2.Add(CharacterOutsideRegion(character=PLAYER, region=10012031))
-    OR_2.Add(CharacterDead(Characters.GraftedScion))
-    
+    AND_2.Add(CharacterDead(Characters.GraftedScion))
+    AND_2.Add(CharacterDead(Characters.CLONE_GraftedScion))
+    OR_2.Add(AND_2)
+
     MAIN.Await(OR_2)
-    
+
     DisableImmortality(PLAYER)
 
 
 @RestartOnRest(10012500)
-def Event_10012500():
+def ButterflyOutcropBreaks():
     """Event 10012500"""
-    GotoIfFlagDisabled(Label.L0, flag=10010500)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.ButterflyOutcropBroken)
     DisableAsset(Assets.AEG210_451_0500)
     DisableAsset(10011501)
     End()
@@ -169,11 +177,11 @@ def Event_10012500():
     # --- Label 0 --- #
     DefineLabel(0)
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=10012500))
-    
+
     MAIN.Await(AND_1)
-    
+
     DestroyAsset(Assets.AEG210_451_0500)
-    EnableFlag(10010500)
+    EnableFlag(Flags.ButterflyOutcropBroken)
 
 
 @RestartOnRest(10012501)
@@ -192,23 +200,23 @@ def Event_10012501():
 
 
 @RestartOnRest(10012502)
-def Event_10012502():
+def DelayedAreaWelcomeMessage():
     """Event 10012502"""
     if PlayerNotInOwnWorld():
         return
-    if FlagEnabled(10010502):
+    if FlagEnabled(Flags.DelayedAreaWelcomeMessageDone):
         return
     if OutsideMap(game_map=CHAPEL_OF_ANTICIPATION):
         return
     SetAreaWelcomeMessageState(state=False)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterOutsideRegion(character=PLAYER, region=10012502))
-    
+
     MAIN.Await(AND_1)
-    
+
     SetAreaWelcomeMessageState(state=True)
     DisplayAreaWelcomeMessage(text=10010)
-    EnableFlag(10010502)
+    EnableFlag(Flags.DelayedAreaWelcomeMessageDone)
 
 
 @RestartOnRest(10012504)
@@ -220,9 +228,9 @@ def Event_10012504():
         return
     DisableAssetActivation(Assets.AEG219_002_0500, obj_act_id=-1)
     AND_1.Add(FlagEnabled(60210))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableAssetActivation(Assets.AEG219_002_0500, obj_act_id=-1)
 
 
@@ -232,9 +240,9 @@ def Event_10012560():
     GotoIfFlagEnabled(Label.L0, flag=10018560)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagEnabled(102))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(10018560)
 
     # --- Label 0 --- #
@@ -254,157 +262,196 @@ def Event_10012680():
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagEnabled(10010020))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=10012680))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(710000)
     DisplayTutorialMessage(tutorial_param_id=1000, unk_4_5=True, unk_5_6=True)
     AND_2.Add(CharacterOutsideRegion(character=PLAYER, region=10012680))
-    
+
     MAIN.Await(AND_2)
-    
+
     DisplayTutorialMessage(tutorial_param_id=1000, unk_4_5=False, unk_5_6=True)
 
 
 @RestartOnRest(10012682)
-def Event_10012682():
+def ShowUnknownTutorialMessage():
     """Event 10012682"""
     DisableNetworkSync()
     if FlagEnabled(18000020):
         return
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=10012682))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(710000)
     DisplayTutorialMessage(tutorial_param_id=1000, unk_4_5=True, unk_5_6=True)
 
 
 @RestartOnRest(10012800)
-def Event_10012800():
+def GraftedScionDies():
     """Event 10012800"""
-    if FlagEnabled(10010800):
+    if FlagEnabled(Flags.GraftedScionDead):
         return
-    
-    MAIN.Await(HealthValue(Characters.GraftedScion) <= 0)
-    
+
+    AND_1.Add(HealthValue(Characters.GraftedScion) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_GraftedScion) <= 0)
+    MAIN.Await(AND_1)
+
     Wait(4.0)
     PlaySoundEffect(10018000, 888880000, sound_type=SoundType.s_SFX)
-    
-    MAIN.Await(CharacterDead(Characters.GraftedScion))
-    
+
+    AND_2.Add(CharacterDead(Characters.GraftedScion))
+    AND_2.Add(CharacterDead(Characters.CLONE_GraftedScion))
+    MAIN.Await(AND_2)
+
     KillBossAndDisplayBanner(character=Characters.GraftedScion, banner_type=BannerType.EnemyFelled)
-    EnableFlag(10010800)
+    EnableFlag(Flags.GraftedScionDead)
     EnableFlag(9103)
     if PlayerInOwnWorld():
         EnableFlag(61103)
 
 
 @RestartOnRest(10012810)
-def Event_10012810():
+def GraftedScionBattleTrigger():
     """Event 10012810"""
-    GotoIfFlagDisabled(Label.L0, flag=10010800)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.GraftedScionDead)
     DisableCharacter(Characters.GraftedScion)
     DisableAnimations(Characters.GraftedScion)
     Kill(Characters.GraftedScion)
+    DisableCharacter(Characters.CLONE_GraftedScion)
+    DisableAnimations(Characters.CLONE_GraftedScion)
+    Kill(Characters.CLONE_GraftedScion)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
+
     DisableAI(Characters.GraftedScion)
-    GotoIfFlagEnabled(Label.L1, flag=10010801)
+    DisableAI(Characters.CLONE_GraftedScion)
+
+    GotoIfFlagEnabled(Label.L1, flag=Flags.GraftedScionFirstTimeDone)
+
     ForceAnimation(Characters.GraftedScion, 30003)
     DisableHealthBar(Characters.GraftedScion)
+    ForceAnimation(Characters.CLONE_GraftedScion, 30003)
+    DisableHealthBar(Characters.CLONE_GraftedScion)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=10012801))
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.GraftedScion, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_GraftedScion, attacker=PLAYER))
+
     MAIN.Await(OR_1)
-    
-    EnableNetworkFlag(10010801)
+
+    # Grafted Scion jumps down from statue.
+    EnableNetworkFlag(Flags.GraftedScionFirstTimeDone)
     SetNetworkUpdateRate(Characters.GraftedScion, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     ForceAnimation(Characters.GraftedScion, 20003)
+    SetNetworkUpdateRate(Characters.CLONE_GraftedScion, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ForceAnimation(Characters.CLONE_GraftedScion, 20003)
     Wait(4.0)
     Goto(Label.L2)
 
     # --- Label 1 --- #
     DefineLabel(1)
+
+    # Grafted Scion waiting in arena.
     DisableAnimations(Characters.GraftedScion)
-    Move(Characters.GraftedScion, destination=10012810, destination_type=CoordEntityType.Region, short_move=True)
+    Move(
+        Characters.GraftedScion, destination=Regions.GraftedScionPositionAfterFirstTime,
+        destination_type=CoordEntityType.Region, short_move=True
+    )
+    DisableAnimations(Characters.CLONE_GraftedScion)
+    Move(
+        Characters.GraftedScion, destination=Regions.CLONE_GraftedScionPositionAfterFirstTime,
+        destination_type=CoordEntityType.Region, short_move=True
+    )
     AND_2.Add(FlagEnabled(10012805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=10012800))
-    
+
     MAIN.Await(AND_2)
-    
+
     EnableAnimations(Characters.GraftedScion)
+    EnableAnimations(Characters.CLONE_GraftedScion)
 
     # --- Label 2 --- #
     DefineLabel(2)
     SetNetworkUpdateRate(Characters.GraftedScion, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_GraftedScion, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     EnableAI(Characters.GraftedScion)
-    EnableBossHealthBar(Characters.GraftedScion, name=904690000)
+    EnableAI(Characters.CLONE_GraftedScion)
+    EnableBossHealthBar(Characters.GraftedScion, name=NameText.GraftedScion, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_GraftedScion, name=NameText.CLONE_GraftedScion, bar_slot=0)
     if FlagEnabled(10010030):
         return
     AddSpecialEffect(PLAYER, 4290)
 
 
 @RestartOnRest(10012811)
-def Event_10012811():
+def GraftedScionPhaseTwoTransition():
     """Event 10012811"""
-    if FlagEnabled(10010800):
+    if FlagEnabled(Flags.GraftedScionDead):
         return
-    AND_1.Add(CharacterHasSpecialEffect(Characters.GraftedScion, 16265))
-    
-    MAIN.Await(AND_1)
-    
-    EnableFlag(10012802)
+    OR_1.Add(CharacterHasSpecialEffect(Characters.GraftedScion, 16265))
+    OR_1.Add(CharacterHasSpecialEffect(Characters.CLONE_GraftedScion, 16265))
+
+    MAIN.Await(OR_1)
+
+    EnableFlag(Flags.GraftedScionInPhaseTwo)
 
 
 @RestartOnRest(10012849)
-def Event_10012849():
+def GraftedScionCommonEvents():
     """Event 10012849"""
-    if FlagDisabled(101):
+    if FlagDisabled(Flags.PrologueGraftedScionBattleDone):
         CommonFunc_HostEntersBossFog(
             0,
-            boss_dead_flag=10010800,
+            boss_dead_flag=Flags.GraftedScionDead,
             fog_asset=Assets.AEG099_001_9000,
             fog_region=10012800,
             host_entered_fog_flag=10012805,
             boss_characters=10015800,
             action_button_id=10000,
-            first_time_done_flag=10010801,
+            first_time_done_flag=Flags.GraftedScionFirstTimeDone,
             first_time_trigger_region=10012801,
         )
     else:
         CommonFunc_HostEntersBossFog(
             0,
-            boss_dead_flag=10010800,
+            boss_dead_flag=Flags.GraftedScionDead,
             fog_asset=Assets.AEG099_001_9001,
             fog_region=10012800,
             host_entered_fog_flag=10012805,
             boss_characters=10015800,
             action_button_id=10000,
-            first_time_done_flag=10010801,
+            first_time_done_flag=Flags.GraftedScionFirstTimeDone,
             first_time_trigger_region=10012801,
         )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=10010800,
+        boss_dead_flag=Flags.GraftedScionDead,
         fog_asset=Assets.AEG099_001_9001,
         fog_region=10012800,
         host_entered_fog_flag=10012805,
         summon_entered_fog_flag=10012806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=10010800, fog_asset=Assets.AEG099_001_9000, model_point=16, required_flag=10010801)
-    CommonFunc_ControlBossFog(0, boss_dead_flag=10010800, fog_asset=Assets.AEG099_001_9001, model_point=16, required_flag=0)
-    CommonFunc_ControlBossMusic(0, 10010800, 920900, 10012805, 10012806, 0, 10012802, 0, 0)
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.GraftedScionDead, fog_asset=Assets.AEG099_001_9000, model_point=16,
+        required_flag=Flags.GraftedScionFirstTimeDone
+    )
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.GraftedScionDead, fog_asset=Assets.AEG099_001_9001, model_point=16, required_flag=0
+    )
+    CommonFunc_ControlBossMusic(
+        0, Flags.GraftedScionDead, 920900, 10012805, 10012806, 0, Flags.GraftedScionInPhaseTwo, 0, 0
+    )
 
 
 @RestartOnRest(10010790)
-def Event_10010790():
+def ControlFingerMaiden():
     """Event 10010790"""
     EnableBackread(Characters.FingerMaiden)
     EnableCharacter(Characters.FingerMaiden)
@@ -421,9 +468,9 @@ def Event_10010791():
         return
     if FlagDisabled(400031):
         return
-    
+
     MAIN.Await(ActionButtonParamActivated(action_button_id=6471, entity=Characters.FingerMaiden))
-    
+
     RemoveGoodFromPlayer(item=8154, quantity=1)
     AwardItemLot(100330, host_only=False)
     End()
@@ -442,9 +489,9 @@ def Event_10010792():
     OR_2.Add(TimeElapsed(seconds=5.0))
     OR_3.Add(OR_1)
     OR_3.Add(OR_2)
-    
+
     MAIN.Await(OR_3)
-    
+
     WaitFrames(frames=1)
     OR_5.Add(PlayerHasGood(9500))
     SkipLinesIfConditionFalse(3, OR_5)
@@ -459,6 +506,6 @@ def Event_10010792():
 def Event_10012900():
     """Event 10012900"""
     MAIN.Await(FlagEnabled(10010900))
-    
+
     IncrementEventValue(10010910, bit_count=32, max_value=999999999)
     Restart()

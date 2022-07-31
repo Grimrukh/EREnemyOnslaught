@@ -53,17 +53,17 @@ def Constructor():
     Event_1043362340(10, character=Characters.FlyingDragon, region=1043362350, destination=1043362370)
     Event_1043362340(11, character=Characters.FlyingDragon, region=1043362351, destination=1043362371)
     Event_1043362340(12, character=Characters.FlyingDragon, region=1043362352, destination=1043362372)
-    CommonFunc_90005861(
+    CommonFunc_FieldBossNonRespawningWithRewardAndMessage(
         0,
-        flag=1043360800,
-        left=0,
-        character=Characters.FlyingDragon,
-        left_1=1,
+        dead_flag=1043360800,
+        extra_flag_to_enable=0,
+        boss=Characters.FlyingDragon,
+        boss_banner_choice=1,
         item_lot=30110,
-        text=30060,
+        message=30060,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.FlyingDragon, name=904500600, npc_threat_level=25)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.FlyingDragon, name=904500600, npc_threat_level=25)
     Event_1043362380()
     Event_1043362510(0, asset=Assets.AEG099_290_9001, region=1043362510, flag=1043362500, obj_act_id=1043363600)
     CommonFunc_90005781(

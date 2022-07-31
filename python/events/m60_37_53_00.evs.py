@@ -26,14 +26,14 @@ from .entities.m60_37_54_00_entities import Characters as m60_37_Characters
 def Constructor():
     """Event 0"""
     CommonFunc_90005600(0, grace_flag=76357, asset=Assets.AEG099_060_9000, enemy_block_distance=5.0, character=0)
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DemiHumanQueen, name=904130600, npc_threat_level=16)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DemiHumanQueen, name=904130600, npc_threat_level=16)
     Event_1037532345()
     Event_1037532350()
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1037530800,
         extra_flag_to_enable=1037530800,
-        boss_character=Characters.DemiHumanQueen,
+        boss=Characters.DemiHumanQueen,
         boss_banner_choice=0,
         item_lot=30395,
         seconds=0.0,

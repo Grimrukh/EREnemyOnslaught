@@ -28,12 +28,12 @@ def Constructor():
         0,
         dead_flag=1037420800,
         extra_flag_to_enable=0,
-        boss_character=Characters.DeathRiteBird,
+        boss=Characters.DeathRiteBird,
         boss_banner_choice=0,
         item_lot=1037420400,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DeathRiteBird, name=904980603, npc_threat_level=24)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DeathRiteBird, name=904980603, npc_threat_level=24)
     RegisterGrace(grace_flag=1037420000, asset=Assets.AEG099_060_9001)
     CommonFunc_90005100(
         0,

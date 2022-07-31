@@ -25,12 +25,12 @@ from .entities.m60_43_33_00_entities import *
 def Constructor():
     """Event 0"""
     CommonFunc_90005600(0, grace_flag=1043330000, asset=1043331950, enemy_block_distance=5.0, character=1043330480)
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.ErdtreeAvatar, name=904810600, npc_threat_level=18)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.ErdtreeAvatar, name=904810600, npc_threat_level=18)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1043330800,
         extra_flag_to_enable=0,
-        boss_character=Characters.ErdtreeAvatar,
+        boss=Characters.ErdtreeAvatar,
         boss_banner_choice=0,
         item_lot=30185,
         seconds=0.0,
@@ -68,7 +68,7 @@ def Constructor():
     Event_1043332230(9, character=Characters.Bat9, region=1043332233)
     Event_1043332230(10, character=Characters.Bat10, region=1043332233)
     Event_1043332230(11, character=Characters.Bat11, region=1043332233)
-    CommonFunc_NonRespawningWithReward(0, 1043330221, 1043330221, 40136, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1043330221, character=1043330221, item_lot=40136, reward_delay=0.0, skip_reward=0)
 
 
 @ContinueOnRest(50)

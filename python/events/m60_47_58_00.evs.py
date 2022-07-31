@@ -52,7 +52,7 @@ def Constructor():
 @ContinueOnRest(200)
 def Event_200():
     """Event 200"""
-    CommonFunc_90005451(0, character=Characters.WalkingMausoleum, asset_group=1247586420)
+    CommonFunc_MausoleumAssetDestruction(0, mausoleum=Characters.WalkingMausoleum, asset_group=1247586420)
     CommonFunc_90005452(0, character=Characters.WalkingMausoleum, flag=1247580400)
     CommonFunc_90005454(0, character=Characters.WalkingMausoleum, flag=1247582400, flag_1=1247580400)
     CommonFunc_WalkingMausoleumDefeated(0, mausoleum=Characters.WalkingMausoleum, asset=Assets.AEG300_015_9000)

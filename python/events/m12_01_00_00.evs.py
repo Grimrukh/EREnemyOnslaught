@@ -82,7 +82,9 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GiantAnt3, region=12012200, seconds=0.5, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.GiantAnt3, region=12012200, seconds=0.5, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.GiantAnt8,
@@ -127,6 +129,7 @@ def Constructor():
         item_lot=12010105,
         reward_delay=3.5,
         skip_reward=0,
+        clone=0,
     )
     Event_12012220(0, character=Characters.GiantAnt11)
     Event_12012220(1, character=Characters.GiantAnt12)
@@ -143,7 +146,9 @@ def Constructor():
     Event_12012231(4, character=Characters.GiantAnt15, seconds=12.0)
     Event_12012231(5, character=Characters.GiantAnt16, seconds=12.0)
     Event_12012231(6, character=Characters.GiantAnt17, seconds=16.0)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.GiantBall0, region=12012245, radius=30.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.GiantBall0, region=12012245, radius=30.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=12010246, region=12012246, seconds=1.0, animation_id=-1)
     Event_12012239()
     Event_12012249()
@@ -152,12 +157,20 @@ def Constructor():
     Event_12012257()
     Event_12012288(0, character=Characters.SilverTear5, character_1=Characters.SilverTear0, region=12022298)
     Event_12012288(1, character=Characters.SilverTear6, character_1=Characters.SilverTear1, region=12022299)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.NoxFighter1, region=12012251, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.NoxFighter1, region=12012251, radius=10.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=12010260, region=12012260, seconds=0.5, animation_id=3006)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.NoxFighter2, region=12012260, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.NoxFighter3, region=12012260, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.NoxFighter2, region=12012260, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.NoxFighter3, region=12012260, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.NoxFighter0, radius=25.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=12015280, region=12012280, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=12015280, region=12012280, radius=10.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.SilverTear2,
@@ -308,13 +321,16 @@ def Constructor():
         0,
         dead_flag=12010850,
         extra_flag_to_enable=0,
-        boss_character=Characters.DragonkinSoldierLakeOfRot,
+        boss=Characters.DragonkinSoldierLakeOfRot,
         boss_banner_choice=1,
         item_lot=30600,
         seconds=0.0,
+        clone_boss=Characters.CLONE_DragonkinSoldierLakeOfRot,
     )
     CommonFunc_FieldBossMusicHealthBar(
-        0, character=Characters.DragonkinSoldierLakeOfRot, name=904650601, npc_threat_level=25
+        0, boss=Characters.DragonkinSoldierLakeOfRot, name=NameText.DragonkinSoldierLakeOfRot, npc_threat_level=25,
+        clone_boss=Characters.CLONE_DragonkinSoldierLakeOfRot, clone_name=NameText.CLONE_DragonkinSoldierLakeOfRot,
+
     )
     CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
@@ -328,12 +344,35 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.DragonkinSoldierLakeOfRot, radius=20.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
+        0,
+        character=Characters.CLONE_DragonkinSoldierLakeOfRot,
+        inactive_animation=30000,
+        active_animation=20000,
+        radius=20.0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.DragonkinSoldierLakeOfRot, radius=20.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.CLONE_DragonkinSoldierLakeOfRot, radius=20.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=12010373, radius=12.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Basilisk0, radius=18.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Basilisk1, region=12012377, seconds=0.0, animation_id=3000)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Basilisk2, region=12012377, seconds=2.0, animation_id=3001)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Basilisk3, region=12012377, seconds=2.0, animation_id=3001)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Basilisk1, region=12012377, seconds=0.0, animation_id=3000
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Basilisk2, region=12012377, seconds=2.0, animation_id=3001
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Basilisk3, region=12012377, seconds=2.0, animation_id=3001
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.MalformedStar0,
@@ -347,7 +386,23 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12010400, character=Characters.MalformedStar0, item_lot=0, reward_delay=3.5, skip_reward=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
+        0,
+        character=Characters.CLONE_MalformedStar0,
+        animation_id=30005,
+        animation_id_1=20005,
+        region=12012400,
+        radius=30.0,
+        seconds=0.0,
+        left=0,
+        left_1=0,
+        left_2=0,
+        left_3=0,
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12010400, character=Characters.MalformedStar0, item_lot=0, reward_delay=3.5, skip_reward=0,
+        clone=Characters.CLONE_MalformedStar0,
+    )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=12010401,
@@ -355,9 +410,16 @@ def Constructor():
         item_lot=12015995,
         reward_delay=3.5,
         skip_reward=0,
+        clone=Characters.CLONE_MalformedStar1,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12010403, character=Characters.Scarab0, item_lot=40600, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12010404, character=Characters.Scarab1, item_lot=40602, reward_delay=1.5, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12010403, character=Characters.Scarab0, item_lot=40600, reward_delay=1.5, skip_reward=0,
+        clone=0,
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12010404, character=Characters.Scarab1, item_lot=40602, reward_delay=1.5, skip_reward=0,
+        clone=0,
+    )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=12010420,
@@ -365,6 +427,7 @@ def Constructor():
         item_lot=12015997,
         reward_delay=3.5,
         skip_reward=0,
+        clone=Characters.CLONE_UlceratedTreeSpirit,
     )
     CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
@@ -378,7 +441,20 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    Event_12012421()
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
+        0,
+        character=Characters.CLONE_UlceratedTreeSpirit,
+        inactive_animation=30002,
+        active_animation=20002,
+        radius=15.0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
+    )
+    OnyxLordAppears(0, Characters.OnyxLord)
+    OnyxLordAppears(1, Characters.CLONE_OnyxLord)
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=12010421,
@@ -386,6 +462,7 @@ def Constructor():
         item_lot=0,
         reward_delay=1.5,
         skip_reward=0,
+        clone=Characters.CLONE_OnyxLord,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
@@ -473,6 +550,7 @@ def Constructor():
         2, phase_one=Characters.CLONE_DragonkinSoldierPhaseOne, phase_two=Characters.CLONE_DragonkinSoldierPhaseTwo
     )
     DragonkinSoldierOfNokstellaNetworkUpdate()
+
     CommonFunc_90005501(
         0,
         flag=12010510,
@@ -620,16 +698,16 @@ def Event_12010700():
     OR_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=Characters.TalkDummy16, radius=3.0))
     OR_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=Characters.TalkDummy17, radius=3.0))
     OR_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=Characters.TalkDummy18, radius=3.0))
-    
+
     MAIN.Await(OR_1)
-    
+
     EnableFlag(12012710)
     AND_1.Add(EntityBeyondDistance(entity=PLAYER, other_entity=Characters.TalkDummy16, radius=3.0))
     AND_1.Add(EntityBeyondDistance(entity=PLAYER, other_entity=Characters.TalkDummy17, radius=3.0))
     AND_1.Add(EntityBeyondDistance(entity=PLAYER, other_entity=Characters.TalkDummy18, radius=3.0))
-    
+
     MAIN.Await(AND_1)
-    
+
     DisableFlag(12012710)
     Restart()
 
@@ -641,15 +719,15 @@ def Event_12010701():
         return
     OR_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=Characters.TalkDummy17, radius=3.0))
     OR_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=Characters.TalkDummy18, radius=3.0))
-    
+
     MAIN.Await(OR_1)
-    
+
     EnableFlag(12012711)
     AND_1.Add(EntityBeyondDistance(entity=PLAYER, other_entity=Characters.TalkDummy17, radius=3.0))
     AND_1.Add(EntityBeyondDistance(entity=PLAYER, other_entity=Characters.TalkDummy18, radius=3.0))
-    
+
     MAIN.Await(AND_1)
-    
+
     DisableFlag(12012711)
     Restart()
 
@@ -660,14 +738,14 @@ def Event_12010702():
     if PlayerNotInOwnWorld():
         return
     OR_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=Characters.TalkDummy18, radius=3.0))
-    
+
     MAIN.Await(OR_1)
-    
+
     EnableFlag(12012712)
     AND_1.Add(EntityBeyondDistance(entity=PLAYER, other_entity=Characters.TalkDummy18, radius=3.0))
-    
+
     MAIN.Await(AND_1)
-    
+
     DisableFlag(12012712)
     Restart()
 
@@ -683,7 +761,7 @@ def Event_12010705():
     AND_1.Add(FlagEnabled(12019257))
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(EntityWithinDistance(entity=20000, other_entity=Characters.Blaidd, radius=53.0))
-    
+
     MAIN.Await(AND_1)
 
     # --- Label 0 --- #
@@ -706,9 +784,9 @@ def Event_12010706():
         return
     OR_1.Add(CharacterDead(Characters.Blaidd))
     OR_1.Add(HealthValue(Characters.Blaidd) <= 0)
-    
+
     MAIN.Await(OR_1)
-    
+
     EnableFlag(12019280)
     EnableFlag(12012716)
     End()
@@ -726,16 +804,16 @@ def Event_12010707():
     DisableFlag(12019270)
     AND_1.Add(FlagEnabled(12012715))
     AND_1.Add(EntityWithinDistance(entity=20000, other_entity=Characters.Blaidd, radius=25.0))
-    
+
     MAIN.Await(AND_1)
-    
+
     SetCharacterTalkRange(character=Characters.TalkDummy19, distance=100.0)
     EnableFlag(12019270)
     OR_1.Add(TimeElapsed(seconds=30.0))
     OR_1.Add(FlagEnabled(12019280))
-    
+
     MAIN.Await(OR_1)
-    
+
     if FlagDisabled(12019280):
         SetCharacterTalkRange(character=Characters.TalkDummy19, distance=17.0)
     End()
@@ -751,9 +829,9 @@ def Event_12010708():
     if FlagEnabled(12019273):
         return
     DisableFlag(12019272)
-    
+
     MAIN.Await(FlagEnabled(12019280))
-    
+
     Move(
         Characters.TalkDummy19,
         destination=20000,
@@ -763,9 +841,9 @@ def Event_12010708():
     )
     SetCharacterTalkRange(character=Characters.TalkDummy19, distance=100.0)
     EnableFlag(12019272)
-    
+
     MAIN.Await(TimeElapsed(seconds=30.0))
-    
+
     SetCharacterTalkRange(character=Characters.TalkDummy19, distance=17.0)
     End()
 
@@ -779,9 +857,9 @@ def Event_12012050():
     AddSpecialEffect(Characters.DragonkinSoldierLakeOfRot, 90010)
     AddSpecialEffect(Characters.UlceratedTreeSpirit, 90010)
     AddSpecialEffect(Characters.GiantBall0, 5490)
-    
+
     MAIN.Await(InsideMap(game_map=AINSEL_RIVER))
-    
+
     DisableAsset(12015650)
 
 
@@ -797,9 +875,9 @@ def Event_12012569(_, flag: uint, asset: uint):
     CreateAssetVFX(asset, vfx_id=101, model_point=806043)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagEnabled(flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     DeleteAssetVFX(asset)
     PlaySoundEffect(asset, 90011, sound_type=SoundType.s_SFX)
     Wait(0.5)
@@ -818,9 +896,9 @@ def Event_12012580(
     """Event 12012580"""
     if FlagEnabled(flag):
         return
-    
+
     MAIN.Await(FlagEnabled(flag))
-    
+
     Wait(1.0)
     SetCameraVibration(
         vibration_id=103,
@@ -899,9 +977,9 @@ def Event_12012581(
     """Event 12012581"""
     if FlagEnabled(flag):
         return
-    
+
     MAIN.Await(FlagEnabled(flag))
-    
+
     Wait(1.0)
     SetCameraVibration(
         vibration_id=103,
@@ -972,9 +1050,9 @@ def Event_12012582(
     """Event 12012582"""
     if FlagEnabled(flag):
         return
-    
+
     MAIN.Await(FlagEnabled(flag))
-    
+
     Wait(1.0)
     SetCameraVibration(
         vibration_id=103,
@@ -1045,9 +1123,9 @@ def Event_12012583(
     """Event 12012583"""
     if FlagEnabled(flag):
         return
-    
+
     MAIN.Await(FlagEnabled(flag))
-    
+
     Wait(1.0)
     SetCameraVibration(
         vibration_id=103,
@@ -1134,9 +1212,9 @@ def Event_12012584(
     """Event 12012584"""
     if FlagEnabled(flag):
         return
-    
+
     MAIN.Await(FlagEnabled(flag))
-    
+
     Wait(1.0)
     SetCameraVibration(
         vibration_id=105,
@@ -1210,9 +1288,9 @@ def Event_12012590():
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagDisabled(12010590))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12012590))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(12010590)
     ForceAnimation(Assets.AEG237_081_0500, 1, wait_for_completion=True)
     Wait(1.0)
@@ -1239,9 +1317,9 @@ def Event_12012591():
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagDisabled(12010591))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12012591))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(12010591)
     SetCameraVibration(
         vibration_id=107,
@@ -1275,9 +1353,9 @@ def Event_12012593():
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagDisabled(12010593))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12012593))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(12010593)
     ForceAnimation(Assets.AEG237_081_0502, 1, wait_for_completion=True)
     Wait(1.0)
@@ -1301,9 +1379,9 @@ def Event_12012594():
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagDisabled(12010594))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12012594))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(12010594)
     ForceAnimation(Assets.AEG237_068_0500, 0)
     EnableMapCollision(collision=12014591)
@@ -1325,9 +1403,9 @@ def Event_12012595():
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagDisabled(12010595))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12012595))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(12010595)
     ForceAnimation(Assets.AEG237_081_0503, 1)
     Wait(1.0)
@@ -1336,10 +1414,10 @@ def Event_12012595():
 
 
 @RestartOnRest(12012421)
-def Event_12012421():
+def OnyxLordAppears(_, onyx_lord: uint):
     """Event 12012421"""
-    EndIffSpecialStandbyEndedFlagEnabled(character=Characters.OnyxLord)
-    DisableCharacter(Characters.OnyxLord)
+    EndIffSpecialStandbyEndedFlagEnabled(character=onyx_lord)
+    DisableCharacter(onyx_lord)
     DisableMapCollision(collision=12014421)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -1351,49 +1429,49 @@ def Event_12012421():
     AND_1.Add(FlagEnabled(12010591))
     AND_1.Add(FlagEnabled(12010593))
     AND_1.Add(FlagEnabled(12010594))
-    AND_4.Add(CharacterHasSpecialEffect(Characters.OnyxLord, 481))
-    AND_4.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90100))
-    AND_4.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90110))
-    AND_4.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90160))
-    AND_5.Add(CharacterHasSpecialEffect(Characters.OnyxLord, 482))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90100))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90120))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90160))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90162))
-    AND_6.Add(CharacterHasSpecialEffect(Characters.OnyxLord, 483))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90100))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90140))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90160))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90161))
-    AND_7.Add(CharacterHasSpecialEffect(Characters.OnyxLord, 484))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90100))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90130))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90161))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90162))
-    AND_8.Add(CharacterHasSpecialEffect(Characters.OnyxLord, 487))
-    AND_8.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90100))
-    AND_8.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90150))
-    AND_8.Add(CharacterDoesNotHaveSpecialEffect(Characters.OnyxLord, 90160))
+    AND_4.Add(CharacterHasSpecialEffect(onyx_lord, 481))
+    AND_4.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90100))
+    AND_4.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90110))
+    AND_4.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90160))
+    AND_5.Add(CharacterHasSpecialEffect(onyx_lord, 482))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90100))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90120))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90160))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90162))
+    AND_6.Add(CharacterHasSpecialEffect(onyx_lord, 483))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90100))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90140))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90160))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90161))
+    AND_7.Add(CharacterHasSpecialEffect(onyx_lord, 484))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90100))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90130))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90161))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90162))
+    AND_8.Add(CharacterHasSpecialEffect(onyx_lord, 487))
+    AND_8.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90100))
+    AND_8.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90150))
+    AND_8.Add(CharacterDoesNotHaveSpecialEffect(onyx_lord, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.OnyxLord))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.OnyxLord, state_info=2))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.OnyxLord, state_info=5))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.OnyxLord, state_info=6))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.OnyxLord, state_info=260))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.OnyxLord, state_info=436))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=onyx_lord))
+    OR_2.Add(CharacterHasStateInfo(character=onyx_lord, state_info=2))
+    OR_2.Add(CharacterHasStateInfo(character=onyx_lord, state_info=5))
+    OR_2.Add(CharacterHasStateInfo(character=onyx_lord, state_info=6))
+    OR_2.Add(CharacterHasStateInfo(character=onyx_lord, state_info=260))
+    OR_2.Add(CharacterHasStateInfo(character=onyx_lord, state_info=436))
     OR_2.Add(AND_4)
     OR_2.Add(AND_5)
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
-    
+
     MAIN.Await(OR_2)
-    
+
     Wait(0.10000000149011612)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
-    SetSpecialStandbyEndedFlag(character=Characters.OnyxLord, state=True)
-    EnableCharacter(Characters.OnyxLord)
+    SetSpecialStandbyEndedFlag(character=onyx_lord, state=True)
+    EnableCharacter(onyx_lord)
     End()
 
 
@@ -1437,9 +1515,9 @@ def Event_12012220(_, character: uint):
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
-    
+
     MAIN.Await(OR_2)
-    
+
     EnableFlag(12012230)
 
 
@@ -1452,9 +1530,9 @@ def Event_12012231(_, character: uint, seconds: float):
     ForceAnimation(character, 30001, loop=True)
     OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(FlagEnabled(12012230))
-    
+
     MAIN.Await(OR_2)
-    
+
     Wait(0.10000000149011612)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     SetSpecialStandbyEndedFlag(character=character, state=True)
@@ -1492,9 +1570,9 @@ def Event_12012249():
     OR_2.Add(CharacterHasStateInfo(character=Characters.GiantBall2, state_info=260))
     AND_2.Add(OR_2)
     AND_2.Add(FlagDisabled(12012247))
-    
+
     MAIN.Await(AND_2)
-    
+
     EnableNetworkFlag(12012249)
     EnableAI(Characters.GiantBall2)
 
@@ -1503,12 +1581,12 @@ def Event_12012249():
 def Event_12012239():
     """Event 12012239"""
     MAIN.Await(CharacterInsideRegion(character=Characters.GiantBall0, region=12012239))
-    
+
     AddSpecialEffect(Characters.GiantBall0, 16318)
     Wait(1.0)
-    
+
     MAIN.Await(CharacterOutsideRegion(character=Characters.GiantBall0, region=12012239))
-    
+
     AddSpecialEffect(Characters.GiantBall0, 16319)
     Wait(1.0)
     Restart()
@@ -1523,9 +1601,9 @@ def Event_12012240():
         return
     AND_15.Add(CharacterInsideRegion(character=PLAYER, region=12012247))
     AND_15.Add(FlagDisabled(12012249))
-    
+
     MAIN.Await(AND_15)
-    
+
     Wait(1.0)
     GotoIfFlagEnabled(Label.L0, flag=12012240)
     ForceSpawnerToSpawn(spawner=12013240)
@@ -1628,9 +1706,9 @@ def Event_12012256():
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12012256))
     AND_1.Add(CharacterAlive(Characters.GiantBall1))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(12012256)
     ForceAnimation(Assets.AEG237_070_0500, 3)
     ForceAnimation(Characters.GiantBall1, 20003)
@@ -1647,9 +1725,9 @@ def Event_12012257():
     OR_1.Add(CharacterDead(Characters.GiantBall1))
     OR_1.Add(CharacterOutsideRegion(character=PLAYER, region=12012257))
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(12012257)
     ForceAnimation(Assets.AEG237_070_0500, 1)
 
@@ -1673,9 +1751,9 @@ def Event_12012288(_, character: uint, character_1: uint, region: uint):
         DisableThisSlotFlag()
     DisableCharacter(character_1)
     DisableAnimations(character_1)
-    
+
     MAIN.Await(CharacterHasSpecialEffect(character, 16307))
-    
+
     EnableCharacter(character_1)
     EnableAnimations(character_1)
     SetNest(character_1, region=region)
@@ -1709,9 +1787,9 @@ def Event_12012301():
     DefineLabel(0)
     AddSpecialEffect(12015301, 8081)
     AddSpecialEffect(12015301, 8082)
-    
+
     MAIN.Await(CharacterInsideRegion(character=PLAYER, region=12012301, min_target_count=0))
-    
+
     RemoveSpecialEffect(12015301, 8081)
     RemoveSpecialEffect(12015301, 8082)
     EnableNetworkFlag(12012301)
@@ -1723,9 +1801,9 @@ def Event_12012506():
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagDisabled(12040800))
     AND_1.Add(ActionButtonParamActivated(action_button_id=9711, entity=Assets.AEG237_018_2000))
-    
+
     MAIN.Await(AND_1)
-    
+
     BanishInvaders(unknown=0)
     EnableFlag(9021)
     if PlayerInOwnWorld():
@@ -1762,9 +1840,9 @@ def Event_12012507():
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagEnabled(12040800))
     AND_1.Add(ActionButtonParamActivated(action_button_id=9711, entity=Assets.AEG237_018_2000))
-    
+
     MAIN.Await(AND_1)
-    
+
     BanishPhantoms(unknown=0)
     Wait(1.0)
     EnableFlag(9021)
@@ -1885,7 +1963,7 @@ def DragonkinSoldierOfNokstellaDies():
     AND_2.Add(CharacterDead(Characters.DragonkinSoldierHealthPool))
     AND_2.Add(CharacterDead(Characters.CLONE_DragonkinSoldierOfNokstella))
     MAIN.Await(AND_2)
-    
+
     KillBossAndDisplayBanner(character=Characters.DragonkinSoldierHealthPool, banner_type=BannerType.GreatEnemyFelled)
     EnableFlag(Flags.DragonkinSoldierOfNokstellaDead)
     EnableFlag(9109)
@@ -1980,7 +2058,7 @@ def DragonkinSoldierOfNokstellaBattleTrigger():
     OR_2.Add(CharacterHasStateInfo(character=Characters.CLONE_DragonkinSoldierPhaseOne, state_info=260))
 
     MAIN.Await(OR_2)
-    
+
     Wait(0.10000000149011612)
     EnableCharacter(Characters.DragonkinSoldierHealthPool)
     EnableCharacter(Characters.DragonkinSoldierPhaseOne)
@@ -1994,9 +2072,9 @@ def DragonkinSoldierOfNokstellaBattleTrigger():
     DefineLabel(1)
     AND_10.Add(FlagEnabled(12012805))
     AND_10.Add(CharacterInsideRegion(character=PLAYER, region=12012800))
-    
+
     MAIN.Await(AND_10)
-    
+
     ForceAnimation(Characters.DragonkinSoldierPhaseOne, 20002)
     ForceAnimation(Characters.CLONE_DragonkinSoldierPhaseOne, 20002)
 
@@ -2034,7 +2112,7 @@ def DragonkinSoldierOfNokstellaChangeCamera():
     OR_1.Add(AND_2)
 
     MAIN.Await(OR_1)
-    
+
     ChangeCamera(normal_camera_id=-1, locked_camera_id=4651)
     WaitFrames(frames=1)
     Restart()
@@ -2054,7 +2132,7 @@ def DragonkinSoldierOfNokstellaChangeCameraNoNetworkSync():
     OR_1.Add(AND_2)
 
     MAIN.Await(OR_1)
-    
+
     ChangeCamera(normal_camera_id=-1, locked_camera_id=4650)
     WaitFrames(frames=1)
     Restart()
@@ -2066,9 +2144,9 @@ def DragonkinSoldierOfNokstellaPhaseTwoTransition(_, phase_one: uint, phase_two:
     if FlagEnabled(Flags.DragonkinSoldierOfNokstellaDead):
         return
     AND_1.Add(CharacterHasSpecialEffect(phase_one, 13209))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(12012811)  # unused?
     EnableFlag(Flags.DragonkinSoldierOfNokstellaInPhaseTwo)
     EnableCharacter(phase_two)
@@ -2093,19 +2171,26 @@ def DragonkinSoldierOfNokstellaNetworkUpdate():
     if FlagEnabled(Flags.DragonkinSoldierOfNokstellaDead):
         return
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=12012812))
-    
+
     MAIN.Await(AND_1)
-    
+
     SetNetworkUpdateRate(Characters.DragonkinSoldierHealthPool, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.DragonkinSoldierPhaseOne, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    SetNetworkUpdateRate(Characters.CLONE_DragonkinSoldierHealthPool, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    SetNetworkUpdateRate(Characters.CLONE_DragonkinSoldierPhaseOne, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(
+        Characters.CLONE_DragonkinSoldierHealthPool, is_fixed=True, update_rate=CharacterUpdateRate.Always
+    )
+    SetNetworkUpdateRate(
+        Characters.CLONE_DragonkinSoldierPhaseOne, is_fixed=True, update_rate=CharacterUpdateRate.Always
+    )
 
 
 @RestartOnRest(12012849)
 def DragonkinSoldierOfNokstellaCommonEvents():
     """Event 12012849"""
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.DragonkinSoldierOfNokstellaDead, fog_asset=Assets.AEG099_002_9001, model_point=4, required_flag=12010840)
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.DragonkinSoldierOfNokstellaDead, fog_asset=Assets.AEG099_002_9001, model_point=4,
+        required_flag=12010840
+    )
     CommonFunc_ControlBossMusic(
         0,
         boss_dead_flag=Flags.DragonkinSoldierOfNokstellaDead,
@@ -2137,8 +2222,14 @@ def DragonkinSoldierOfNokstellaCommonEvents():
         summon_entered_fog_flag=12012806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.DragonkinSoldierOfNokstellaDead, fog_asset=Assets.AEG099_002_9000, model_point=5, required_flag=12010801)
-    CommonFunc_ControlBossMusic(0, Flags.DragonkinSoldierOfNokstellaDead, 920300, 12012805, 12012806, 12012803, Flags.DragonkinSoldierOfNokstellaInPhaseTwo, 0, 0)
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.DragonkinSoldierOfNokstellaDead, fog_asset=Assets.AEG099_002_9000, model_point=5,
+        required_flag=12010801
+    )
+    CommonFunc_ControlBossMusic(
+        0, Flags.DragonkinSoldierOfNokstellaDead, 920300, 12012805, 12012806, 12012803,
+        Flags.DragonkinSoldierOfNokstellaInPhaseTwo, 0, 0
+    )
 
 
 @RestartOnRest(12012815)

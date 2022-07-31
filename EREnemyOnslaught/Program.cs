@@ -123,7 +123,7 @@ namespace EREnemyOnslaught
                 List<MSBE.Event.Generator> clonedSpawners = new List<MSBE.Event.Generator>();
                 foreach (var spawner in msb.Events.Generators)
                 {
-                    MSBE.Event.Generator clone = CloneSpawner(spawner);
+                    MSBE.Event.Generator clone = CloneSpawner(spawner, msb.Regions);
                     if (clone != null)
                         clonedSpawners.Add(clone);
                 }
@@ -206,7 +206,7 @@ namespace EREnemyOnslaught
             return clone;
         }
 
-        static MSBE.Event.Generator CloneSpawner(MSBE.Event.Generator spawner)
+        static MSBE.Event.Generator CloneSpawner(MSBE.Event.Generator spawner, MSBE.PointParam msbRegions)
         {
             // Spawner entity ID MUST appear in `Clones`.
             if (!Clones.ContainsKey(spawner.EntityID))
@@ -230,7 +230,24 @@ namespace EREnemyOnslaught
                     clone.SpawnPartNames[i] += " (Clone)";
             }
 
-            // Currently just using same spawn regions.
+            if (NewSpawnerInfo.ContainsKey(clone.EntityID))
+            {
+                // Create new regions at given coordinates and assign their names.
+                for (int i = 0; i < NewSpawnerInfo[clone.EntityID].Length; i++)
+                {
+                    Vector4 newRegionTransform = NewSpawnerInfo[clone.EntityID][i];
+                    // Find original region, clone it with new position, and assign its name to Spawner region names.
+                    string originalRegionName = spawner.SpawnRegionNames[i];
+                    MSBE.Region originalRegion = msbRegions.GetEntries().Find(region => region.Name == originalRegionName);
+                    MSBE.Region cloneRegion = originalRegion.DeepCopy();
+                    cloneRegion.Position = new Vector3(newRegionTransform.X, newRegionTransform.Y, newRegionTransform.Z);
+                    cloneRegion.Rotation = new Vector3(0f, newRegionTransform.W, 0f);
+                    cloneRegion.Name += " (Clone)";
+                    msbRegions.Add(cloneRegion);
+                    clone.SpawnRegionNames[i] = cloneRegion.Name;
+                }
+            }
+            // Otherwise, use same spawn regions.
 
             return clone;
         }
@@ -265,7 +282,7 @@ namespace EREnemyOnslaught
         static void AddNewRennalaGrace(MSBE m14)
         {
             // In Elden Ring, chr/obj position is the same, thankfully.
-            System.Numerics.Vector3 position = new System.Numerics.Vector3(95.878f, 154.105f, -59.438f);
+            Vector3 position = new System.Numerics.Vector3(95.878f, 154.105f, -59.438f);
             
             MSBE.Part.Enemy sourceGraceChr = m14.Parts.Enemies.Find(x => x.EntityID == 14000953);
             MSBE.Part.Asset sourceGraceObj = m14.Parts.Assets.Find(x => x.EntityID == 14001953);
@@ -337,13 +354,15 @@ namespace EREnemyOnslaught
             PARAM bonfireWarpParam = PARAM.Read(bonfireWarpFile.Bytes);
             bonfireWarpParam.ApplyParamdefCarefully(paramdefs);
 
-            PARAM.Row newGrace = new PARAM.Row(bonfireWarpParam.Rows.Find(x => x.ID == 140003));
-            newGrace.ID = 140005;  // to match entity ID
+            PARAM.Row newGrace = new PARAM.Row(bonfireWarpParam.Rows.Find(x => x.ID == 140003))
+            {
+                ID = 140005  // to match entity ID
+            };
             newGrace["bonfireSubCategorySortId"].Value = 40;
             newGrace["eventflagId"].Value = 71405;
             newGrace["bonfireEntityId"].Value = 14001955;  // new grace obj
-            newGrace["posX"].Value = 97.690f;
-            newGrace["posY"].Value = 154.093f;  // not used, apparently
+            newGrace["posX"].Value = 97.690f;  // icon position on map
+            newGrace["posY"].Value = 154.093f;
             newGrace["posZ"].Value = -54.869f;
             newGrace["textId1"].Value = 140005;  // new text ID
 

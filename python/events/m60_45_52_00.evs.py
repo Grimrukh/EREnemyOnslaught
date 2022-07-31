@@ -26,12 +26,12 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=76314, asset=Assets.AEG099_060_9000)
     Event_1045522500()
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DraconicTreeSentinel, name=903250600, npc_threat_level=12)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DraconicTreeSentinel, name=903250600, npc_threat_level=12)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1045520800,
         extra_flag_to_enable=0,
-        boss_character=Characters.DraconicTreeSentinel,
+        boss=Characters.DraconicTreeSentinel,
         boss_banner_choice=0,
         item_lot=30315,
         seconds=0.0,

@@ -6,6 +6,8 @@ class Characters(Character):
     Scarab = 1033430200  # c4191_9000 npc 41912020 think 41910000
     ErdtreeAvatar = 1033430800  # c4810_9000 npc 48100920 think 48100900 group 1033435100
 
+    CLONE_ErdtreeAvatar = 1033430801
+
 
 class Assets(Asset):
     AEG003_316_9000 = 1033431680  # AEG003

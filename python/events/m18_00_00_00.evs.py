@@ -50,9 +50,9 @@ def Constructor():
         cc_id=0,
         dd_id=0,
     )
-    Event_18002850()
-    Event_18002860()
-    Event_18000870()
+    SoldierOfGodrickDies()
+    SoldierOfGodrickBattleTrigger()
+    SoldierOfGodrickCommonEvents()
     Event_18002400()
     Event_18002440(
         0,
@@ -220,7 +220,7 @@ def Constructor():
     Event_18002654(0, region=18002654, tutorial_param_id=1050, flag=710050)
     Event_18002655(0, region=18002655, tutorial_param_id=1060, flag=18000655, flag_1=710060)
     Event_18002662(0, region=18002662, tutorial_param_id=1130, flag=18000662, flag_1=710130)
-    Event_18002663(0, tutorial_param_id=1180, flag=710180, item=9106, flag_1=69060, entity=Characters.GodrickSoldier1)
+    Event_18002663(0, tutorial_param_id=1180, flag=710180, item=9106, flag_1=69060, entity=Characters.SoldierOfGodrick)
     Event_18002665(0, flag=710660, tutorial_param_id=1660, item=9122, flag_1=69220)
     Event_18002200(
         0,
@@ -254,8 +254,9 @@ def Constructor():
     Event_18002671(20, flag=710210)
     Event_18002671(21, flag=710200)
     Event_18002671(22, flag=710190)
-    Event_18002250(0, character=Characters.GodrickSoldier1, special_effect_id=8041)
-    Event_18002250(1, character=Characters.WanderingNoble2, special_effect_id=8040)
+    Event_18002250(0, character=Characters.SoldierOfGodrick, special_effect_id=8041)
+    Event_18002250(1, character=Characters.CLONE_SoldierOfGodrick, special_effect_id=8041)
+    Event_18002250(2, character=Characters.WanderingNoble2, special_effect_id=8040)
     Event_18002690()
     CommonFunc_90005706(0, 18000701, 30025, 0)
 
@@ -299,7 +300,31 @@ def Preconstructor():
     )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
+        character=Characters.CLONE_GraftedScion0,
+        inactive_animation=30002,
+        active_animation=20002,
+        trigger_region=18002350,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
+    )
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
+        0,
         character=Characters.GraftedScion1,
+        inactive_animation=30002,
+        active_animation=20002,
+        trigger_region=18002350,
+        trigger_delay=3.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
+    )
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
+        0,
+        character=Characters.CLONE_GraftedScion1,
         inactive_animation=30002,
         active_animation=20002,
         trigger_region=18002350,
@@ -316,6 +341,7 @@ def Preconstructor():
         item_lot=18002000,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_GraftedScion0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -324,6 +350,7 @@ def Preconstructor():
         item_lot=18002010,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_GraftedScion1,
     )
     Event_18002520()
 
@@ -1335,34 +1362,42 @@ def Event_18000820():
 
 
 @RestartOnRest(18002850)
-def Event_18002850():
+def SoldierOfGodrickDies():
     """Event 18002850"""
-    if FlagEnabled(18000850):
+    if FlagEnabled(Flags.SoldierOfGodrickDead):
         return
     
-    MAIN.Await(HealthValue(Characters.GodrickSoldier1) <= 0)
+    AND_1.Add(HealthValue(Characters.SoldierOfGodrick) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_SoldierOfGodrick) <= 0)
+    MAIN.Await(AND_1)
     
     Wait(4.0)
-    PlaySoundEffect(Characters.GodrickSoldier1, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(Characters.SoldierOfGodrick, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.GodrickSoldier1))
+    AND_2.Add(CharacterDead(Characters.SoldierOfGodrick))
+    AND_2.Add(CharacterDead(Characters.CLONE_SoldierOfGodrick))
+    MAIN.Await(AND_2)
     
-    KillBossAndDisplayBanner(character=Characters.GodrickSoldier1, banner_type=BannerType.EnemyFelled)
-    EnableFlag(18000850)
+    KillBossAndDisplayBanner(character=Characters.SoldierOfGodrick, banner_type=BannerType.EnemyFelled)
+    EnableFlag(Flags.SoldierOfGodrickDead)
 
 
 @RestartOnRest(18002860)
-def Event_18002860():
+def SoldierOfGodrickBattleTrigger():
     """Event 18002860"""
-    GotoIfFlagDisabled(Label.L0, flag=18000850)
-    DisableCharacter(Characters.GodrickSoldier1)
-    DisableAnimations(Characters.GodrickSoldier1)
-    Kill(Characters.GodrickSoldier1)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.SoldierOfGodrickDead)
+    DisableCharacter(Characters.SoldierOfGodrick)
+    DisableAnimations(Characters.SoldierOfGodrick)
+    Kill(Characters.SoldierOfGodrick)
+    DisableCharacter(Characters.CLONE_SoldierOfGodrick)
+    DisableAnimations(Characters.CLONE_SoldierOfGodrick)
+    Kill(Characters.CLONE_SoldierOfGodrick)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(Characters.GodrickSoldier1)
+    DisableAI(Characters.SoldierOfGodrick)
+    DisableAI(Characters.CLONE_SoldierOfGodrick)
     AND_2.Add(FlagEnabled(18002855))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=18002850))
     
@@ -1370,17 +1405,20 @@ def Event_18002860():
 
     # --- Label 2 --- #
     DefineLabel(2)
-    EnableAI(Characters.GodrickSoldier1)
-    SetNetworkUpdateRate(Characters.GodrickSoldier1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.GodrickSoldier1, name=904311000)
+    EnableAI(Characters.SoldierOfGodrick)
+    EnableAI(Characters.CLONE_SoldierOfGodrick)
+    SetNetworkUpdateRate(Characters.SoldierOfGodrick, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_SoldierOfGodrick, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.SoldierOfGodrick, name=NameText.SoldierOfGodrick, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_SoldierOfGodrick, name=NameText.CLONE_SoldierOfGodrick, bar_slot=0)
 
 
 @RestartOnRest(18000870)
-def Event_18000870():
+def SoldierOfGodrickCommonEvents():
     """Event 18000870"""
     CommonFunc_HostEntersBossFog(
         0,
-        boss_dead_flag=18000850,
+        boss_dead_flag=Flags.SoldierOfGodrickDead,
         fog_asset=Assets.AEG099_001_9010,
         fog_region=18002850,
         host_entered_fog_flag=18002855,
@@ -1391,13 +1429,13 @@ def Event_18000870():
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=18000850,
+        boss_dead_flag=Flags.SoldierOfGodrickDead,
         fog_asset=Assets.AEG099_001_9010,
         fog_region=18002850,
         host_entered_fog_flag=18002855,
         summon_entered_fog_flag=18002856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=18000850, fog_asset=Assets.AEG099_001_9010, model_point=3, required_flag=0)
-    CommonFunc_ControlBossFog(0, boss_dead_flag=18000850, fog_asset=Assets.AEG099_001_9011, model_point=4, required_flag=0)
-    CommonFunc_ControlBossMusic(0, 18000850, 931000, 18002855, 18002856, 0, 18002852, 0, 0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.SoldierOfGodrickDead, fog_asset=Assets.AEG099_001_9010, model_point=3, required_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.SoldierOfGodrickDead, fog_asset=Assets.AEG099_001_9011, model_point=4, required_flag=0)
+    CommonFunc_ControlBossMusic(0, Flags.SoldierOfGodrickDead, 931000, 18002855, 18002856, 0, 18002852, 0, 0)

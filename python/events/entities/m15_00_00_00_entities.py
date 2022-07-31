@@ -4,7 +4,7 @@ from soulstruct.eldenring.game_types import *
 class Flags(Flag):
     MaleniaDead = 15000800
     MaleniaFirstTimeDone = 15000801
-    OtherMaleniaActive = 15002803  # unused
+    ButterflyMaleniaActive = 15002803  # unused
     MaleniaBattleTriggered = 15002810
     LorettaDead = 15000850
     LorettaFirstTimeDone = 15000851
@@ -91,7 +91,7 @@ class Characters(Character):
     KindredofRotLarva25 = 15000598  # c2041_9028 col h013400 npc 20410056 think 20410000
     KindredofRotLarva26 = 15000599  # c2041_9029 col h013400 npc 20410056 think 20410000
     Malenia = 15000800  # c2120_9000 col h015000 npc 21200056 think 21200000 talk 203101500 group 15005800,15005100
-    OtherMalenia = 15000801  # c2120_9001 col h015000 npc 21202056 think 21200000 group 15005800
+    ButterflyMalenia = 15000801  # c2120_9001 col h015000 npc 21202056 think 21200000 group 15005800
     MaleniaSummon0 = 15000802  # c2120_9002 col h015000 npc 21202056 think 21200000 group 15005800
     MaleniaSummon1 = 15000803  # c2120_9003 col h015000 npc 21202056 think 21200000 group 15005800
     MaleniaSummon2 = 15000804  # c2120_9004 col h015000 npc 21202056 think 21200000 group 15005800
@@ -312,8 +312,8 @@ class Characters(Character):
     MirandaRotFlower4 = 15000516  # c4483_9016 col h011800 npc 44831056 think 44831000
     MirandaRotFlower5 = 15000517  # c4483_9017 col h011800 npc 44831056 think 44831000
     UlceratedTreeSpirit = 15000398  # c4640_9000 col h013500 npc 46400156 think 46400056
-    PutridAvatar0 = 15000392  # c4811_9002 col h012500 npc 48110056 think 48110000
-    PutridAvatar1 = 15000393  # c4811_9003 col h010200 npc 48110056 think 48110000
+    PutridAvatarAtDoor = 15000392  # c4811_9002 col h012500 npc 48110056 think 48110000
+    PutridAvatarOnBattlement = 15000393  # c4811_9003 col h010200 npc 48110056 think 48110000
 
     CLONE_Malenia = 15000810
     CLONE_OtherMalenia = 15000811
@@ -323,8 +323,8 @@ class Characters(Character):
     CLONE_MaleniaSummon3 = 15000815
     CLONE_Loretta = 15000851
     CLONE_UlceratedTreeSpirit = 15000399
-    CLONE_PutridAvatar0 = 15000395
-    CLONE_PutridAvatar1 = 15000396
+    CLONE_PutridAvatarAtDoor = 15000395
+    CLONE_PutridAvatarOnBattlement = 15000396
 
 
 class Assets(Asset):

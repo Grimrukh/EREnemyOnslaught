@@ -24,12 +24,12 @@ from .entities.m60_41_53_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.WormfaceLarge, name=904580600, npc_threat_level=8)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.WormfaceLarge, name=904580600, npc_threat_level=8)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1041530800,
         extra_flag_to_enable=0,
-        boss_character=Characters.WormfaceLarge,
+        boss=Characters.WormfaceLarge,
         boss_banner_choice=0,
         item_lot=30320,
         seconds=0.0,
@@ -47,7 +47,7 @@ def Constructor():
         right=0,
     )
     CommonFunc_90005637(0, flag=32058691, character=Characters.WanderingNoble, region=1041531650)
-    CommonFunc_NonRespawningWithReward(0, 1041530500, 1041530500, 40308, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1041530500, character=1041530500, item_lot=40308, reward_delay=0.0, skip_reward=0)
 
 
 @ContinueOnRest(50)

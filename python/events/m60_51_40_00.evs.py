@@ -34,12 +34,12 @@ def Constructor():
         asset=Assets.AEG099_166_9000,
         asset_1=Assets.AEG099_990_9000,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.PutridAvatar, name=904811601, npc_threat_level=18)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.PutridAvatar, name=904811601, npc_threat_level=18)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1051400800,
         extra_flag_to_enable=0,
-        boss_character=Characters.PutridAvatar,
+        boss=Characters.PutridAvatar,
         boss_banner_choice=0,
         item_lot=30415,
         seconds=0.0,

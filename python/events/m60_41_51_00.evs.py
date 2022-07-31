@@ -24,8 +24,8 @@ from .entities.m60_41_51_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.TreeSentinel0, name=903251600, npc_threat_level=12)
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.TreeSentinel1, name=903251600, npc_threat_level=12)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.TreeSentinel0, name=903251600, npc_threat_level=12)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.TreeSentinel1, name=903251600, npc_threat_level=12)
     Event_1041512800(
         0,
         flag=1041510800,

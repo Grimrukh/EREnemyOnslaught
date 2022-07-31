@@ -447,7 +447,7 @@ def Constructor():
     )
     Event_1039442344(0, flag=1039440800, character=Characters.TibiaMariner, character_1=1039445250)
     Event_1039442345(0, character__targeting_character=Characters.TibiaMariner, region=1039442810)
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.TibiaMariner, name=904950601, npc_threat_level=24)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.TibiaMariner, name=904950601, npc_threat_level=24)
     CommonFunc_FieldBossNonRespawningWithReward(0, 1039440800, 0, 1039440800, 0, 30240, 0.0)
 
 

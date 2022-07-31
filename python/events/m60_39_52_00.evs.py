@@ -162,7 +162,7 @@ def Preconstructor():
         trigger_on_ai_unknown6=0,
     )
     Event_1039522400()
-    CommonFunc_NonRespawningWithReward(0, 1039520400, 1039520400, 0, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1039520400, character=1039520400, item_lot=0, reward_delay=0.0, skip_reward=0)
 
 
 @RestartOnRest(1039522220)

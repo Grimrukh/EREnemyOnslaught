@@ -1,6 +1,11 @@
 from soulstruct.eldenring.game_types import *
 
 
+class NameText(NPCName):
+    GlintstoneDragonAdula = 904502602
+    CLONE_GlintstoneDragonAdula = 904502612
+
+
 class Characters(Character):
     NepheliLoux = 1034420700  # c0000_9010 npc 523340020 think 523340000 chara 23340 talk 334006000
     Dummy = 1034420600  # c0100_9003 npc 1000000 think 1000000
@@ -25,8 +30,11 @@ class Characters(Character):
     AlbinauricLookout12 = 1034420229  # c3670_9029 npc 36700120 think 36700100 group 1034425100
     AlbinauricLookout13 = 1034420230  # c3670_9030 npc 36700120 think 36700100 group 1034425100
     AlbinauricLookout14 = 1034420231  # c3670_9031 npc 36700120 think 36700000 group 1034425100
-    GlintstoneDragon0 = 1034420800  # c4502_9000 npc 45021922 think 45020922 group 1034425102
+    GlintstoneDragonAdula = 1034420800  # c4502_9000 npc 45021922 think 45020922 group 1034425102
     GlintstoneDragon1 = 1034420340  # c4502_9001 npc 45020022 think 45020000
+
+    CLONE_GlintstoneDragonAdula = 1034420801
+    CLONE_GlintstoneDragon1 = 1034420341
 
 
 class Assets(Asset):

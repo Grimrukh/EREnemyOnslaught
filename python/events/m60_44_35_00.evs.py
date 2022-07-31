@@ -43,12 +43,12 @@ def Constructor():
         flag_10=78118,
         flag_11=78119,
     )
-    CommonFunc_90005880(
+    CommonFunc_EvergaolBossDies(
         0,
-        flag=1044350800,
-        flag_1=1044350805,
+        dead_flag=1044350800,
+        required_flag=1044350805,
         flag_2=1044352800,
-        character=Characters.BloodhoundKnight,
+        boss=Characters.BloodhoundKnight,
         item_lot=30130,
         area_id=60,
         block_id=44,
@@ -56,7 +56,7 @@ def Constructor():
         dd_id=0,
         player_start=1044352805,
     )
-    CommonFunc_90005881(
+    CommonFunc_EnterEvergaol(
         0,
         flag=1044350800,
         flag_1=1044350805,
@@ -70,23 +70,23 @@ def Constructor():
         dd_id=0,
         player_start=1044352805,
     )
-    CommonFunc_90005882(
+    CommonFunc_EvergaolBossBattleTrigger(
         0,
-        flag=1044350800,
-        flag_1=1044350805,
+        dead_flag=1044350800,
+        required_flag=1044350805,
         flag_2=1044352800,
-        character=Characters.BloodhoundKnight,
-        flag_3=1044352806,
+        boss=Characters.BloodhoundKnight,
+        battle_started_flag=1044352806,
         character_1=1044355810,
-        asset=Assets.AEG099_120_9000,
+        evergaol_gate=Assets.AEG099_120_9000,
         owner_entity=Characters.Dummy,
         source_entity=1044352810,
-        name=904290520,
-        animation_id=-1,
-        animation_id_1=20021,
+        boss_name=904290520,
+        standby_animation=-1,
+        appearance_animation=20021,
     )
     CommonFunc_90005883(0, flag=1044350800, flag_1=1044350805, entity=Assets.AEG099_170_1000)
-    CommonFunc_90005885(
+    CommonFunc_EvergaolBossMusic(
         0,
         flag=1044350800,
         bgm_boss_conv_param_id=0,

@@ -1,6 +1,15 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    SoldierOfGodrickDead = 18000850
+
+
+class NameText(NPCName):
+    SoldierOfGodrick = 904311000
+    CLONE_SoldierOfGodrick = 904311010
+
+
 class Characters(Character):
     TalkDummy0 = 18000950  # c1000_9000 npc 10000000 think 1 talk 1000
     TalkDummy1 = 18000951  # c1000_9001 npc 10000000 think 1 talk 1000
@@ -19,12 +28,16 @@ class Characters(Character):
     WanderingNoble3 = 18000202  # c4300_9009 col h002300 npc 43000006 think 43000006
     WanderingNoble4 = 18000220  # c4300_9010 col h001800 npc 43000006 think 43000010
     GodrickSoldier0 = 18000200  # c4311_9002 col h002200 npc 43111306 think 43110200
-    GodrickSoldier1 = 18000850  # c4311_9003 col h002400 npc 43113906 think 43113900
+    SoldierOfGodrick = 18000850  # c4311_9003 col h002400 npc 43113906 think 43113900
     GodrickSoldier2 = 18000257  # c4311_9007 col h002100 npc 43114006 think 43114006
     UlceratedTreeSpirit = 18000800  # c4640_9000 col h005200 npc 46400007 think 46400007 group 18005800,18005100
     GraftedScion0 = 18000350  # c4690_9000 col h006300 npc 46900007 think 46900007
     GraftedScion1 = 18000351  # c4690_9001 col h006300 npc 46900007 think 46900007
     MercilessChariot = 18000400  # c8120_9000 col h004200 npc 81200007 think 81200000
+
+    CLONE_SoldierOfGodrick = 18000851
+    CLONE_GraftedScion0 = 18000352
+    CLONE_GraftedScion1 = 18000353
 
 
 class Assets(Asset):

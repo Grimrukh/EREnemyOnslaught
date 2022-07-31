@@ -26,12 +26,12 @@ def Constructor():
     """Event 0"""
     Event_1035422150()
     RegisterGrace(grace_flag=1035420000, asset=Assets.AEG099_060_9000)
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.Omenkiller, name=904820600, npc_threat_level=5)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.Omenkiller, name=904820600, npc_threat_level=5)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1035420800,
         extra_flag_to_enable=0,
-        boss_character=Characters.Omenkiller,
+        boss=Characters.Omenkiller,
         boss_banner_choice=0,
         item_lot=30225,
         seconds=0.0,

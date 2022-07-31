@@ -69,7 +69,9 @@ def Constructor():
     MimicTearBattleTrigger()
     SpawnMimicTear(0, mimic_silver_tear=Characters.SilverTearMimic, mimic_c0000=Characters.MimicTear, region=63010)
     # TODO: New nest region? Weird ID. Probably fine.
-    SpawnMimicTear(1, mimic_silver_tear=Characters.CLONE_SilverTearMimic, mimic_c0000=Characters.CLONE_MimicTear, region=63010)
+    SpawnMimicTear(
+        1, mimic_silver_tear=Characters.CLONE_SilverTearMimic, mimic_c0000=Characters.CLONE_MimicTear, region=63010
+    )
     MimicTearCommonEvents()
 
     CommonFunc_90005501(
@@ -179,19 +181,32 @@ def Constructor():
     Event_12022621(5, flag=12020625, asset=Assets.AEG237_055_9012, asset_1=Assets.AEG237_039_3001)
     Event_12022621(6, flag=12020626, asset=12021626, asset_1=12021636)
     Event_12022621(7, flag=12020627, asset=12021627, asset_1=12021637)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.NoxFighter, region=12022211, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=12020220, region=12022220, radius=70.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.RedWolf, region=12022220, radius=70.0, seconds=0.0, animation_id=-1)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12020221, character=Characters.RedWolf, item_lot=0, reward_delay=0.0, skip_reward=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.NoxFighter, region=12022211, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=12020220, region=12022220, radius=70.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.RedWolf, region=12022220, radius=70.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12020221, character=Characters.RedWolf, item_lot=0, reward_delay=0.0, skip_reward=-1,
+        clone=Characters.CLONE_RedWolf,
+    )
     Event_12022300(0, character=12020300, region=12022300, seconds=0.0)
     Event_12022300(1, character=12020301, region=12022300, seconds=0.0)
     Event_12022300(2, character=Characters.AncestralFollower3, region=12022302, seconds=0.0)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AncestralFollower3, region=12022302, seconds=0.0, animation_id=3006)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.AncestralFollower3, region=12022302, seconds=0.0, animation_id=3006
+    )
     Event_12022300(3, character=12025303, region=12022303, seconds=0.0)
     Event_12022300(4, character=12025304, region=12022304, seconds=0.0)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Dummy0, region=12022304, seconds=0.0, animation_id=-1)
     Event_12022300(5, character=12025305, region=12022305, seconds=0.0)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AncestralFollower6, region=12022305, seconds=2.0, animation_id=3011)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.AncestralFollower6, region=12022305, seconds=2.0, animation_id=3011
+    )
     Event_12022300(6, character=12025306, region=12022306, seconds=0.0)
     Event_12022300(7, character=12025307, region=12022307, seconds=0.0)
     Event_12022300(8, character=12025308, region=12022308, seconds=0.0)
@@ -208,18 +223,24 @@ def Constructor():
     Event_12022300(13, character=Characters.AncestralFollower2, region=12022313, seconds=0.0)
     Event_12022300(15, character=12025315, region=12022315, seconds=0.0)
     Event_12022300(16, character=Characters.AncestralFollower5, region=12022316, seconds=0.0)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AncestralFollower5, region=12022316, seconds=0.0, animation_id=3006)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.AncestralFollower5, region=12022316, seconds=0.0, animation_id=3006
+    )
     Event_12022300(17, character=Characters.AncestralFollower4, region=12022317, seconds=0.0)
     Event_12022300(18, character=12025318, region=12022318, seconds=0.0)
     Event_12022300(19, character=Characters.AncestralFollower0, region=12022319, seconds=0.0)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AncestralFollower0, region=12022319, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.AncestralFollower0, region=12022319, seconds=0.0, animation_id=-1
+    )
     Event_12022300(20, character=Characters.AncestralFollower7, region=12022331, seconds=0.0)
     Event_12022300(21, character=Characters.AncestralFollower9, region=12022334, seconds=0.0)
     Event_12022300(22, character=Characters.AncestralFollower10, region=12022334, seconds=0.0)
     Event_12022300(23, character=12020336, region=12022336, seconds=3.0)
     Event_12022300(24, character=Characters.AncestralFollower8, region=12022336, seconds=0.0)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=12020336, region=12022336, seconds=0.0, animation_id=3006)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AncestralFollower8, region=12022336, seconds=0.0, animation_id=3006)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.AncestralFollower8, region=12022336, seconds=0.0, animation_id=3006
+    )
     Event_12022300(25, character=12025324, region=12022314, seconds=0.0)
     Event_12022300(26, character=12025325, region=12022314, seconds=0.0)
     Event_12022300(29, character=12025329, region=12022329, seconds=0.0)
@@ -283,32 +304,68 @@ def Constructor():
     Event_12022360(1, character=Characters.AncestralFollowerShaman0, character_1=12025351)
     Event_12022350(2, character=Characters.AncestralFollowerShaman1, character_1=12025352)
     Event_12022360(2, character=Characters.AncestralFollowerShaman1, character_1=12025352)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AncestralFollower11, region=12022350, seconds=3.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AncestralFollower12, region=12022350, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AncestralFollower16, region=12022366, seconds=0.0, animation_id=3006)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.AncestralFollower16, region=12022368, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.AncestralFollower11, region=12022350, seconds=3.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.AncestralFollower12, region=12022350, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.AncestralFollower16, region=12022366, seconds=0.0, animation_id=3006
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.AncestralFollower16, region=12022368, seconds=0.0, animation_id=-1
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=12020830,
         extra_flag_to_enable=0,
-        boss_character=Characters.DragonkinSoldier,
+        boss=Characters.DragonkinSoldier,
         boss_banner_choice=1,
         item_lot=30620,
         seconds=0.0,
+        clone_boss=Characters.CLONE_DragonkinSoldier,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DragonkinSoldier, name=904650600, npc_threat_level=25)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GiantOctopus, radius=30.0, seconds=0.0, animation_id=3009)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12020470, character=Characters.Scarab2, item_lot=40648, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12020472, character=Characters.Scarab0, item_lot=40630, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12020474, character=Characters.Scarab4, item_lot=40610, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12020477, character=Characters.Scarab3, item_lot=40642, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12020479, character=Characters.Scarab1, item_lot=40646, reward_delay=1.5, skip_reward=0)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.DragonkinSoldier, name=NameText.DragonkinSoldier, npc_threat_level=25,
+        clone_boss=Characters.CLONE_DragonkinSoldier, clone_name=NameText.CLONE_DragonkinSoldier,
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.GiantOctopus, radius=30.0, seconds=0.0, animation_id=3009
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12020470, character=Characters.Scarab2, item_lot=40648, reward_delay=1.5, skip_reward=0,
+        clone=0,
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12020472, character=Characters.Scarab0, item_lot=40630, reward_delay=1.5, skip_reward=0,
+        clone=0,
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12020474, character=Characters.Scarab4, item_lot=40610, reward_delay=1.5, skip_reward=0,
+        clone=0,
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12020477, character=Characters.Scarab3, item_lot=40642, reward_delay=1.5, skip_reward=0,
+        clone=0,
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12020479, character=Characters.Scarab1, item_lot=40646, reward_delay=1.5, skip_reward=0,
+        clone=0,
+    )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=12020420, region=12022420, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=12020421, radius=60.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Dummy1, radius=100.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Dummy3, region=12022422, radius=45.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Dummy3, region=12022422, radius=45.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Dummy1, radius=60.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.CrucibleKnight1, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.CrucibleKnight1, radius=10.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.CLONE_CrucibleKnight1, radius=10.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=12020430,
@@ -316,6 +373,7 @@ def Constructor():
         item_lot=12020435,
         reward_delay=1.5,
         skip_reward=0,
+        clone=Characters.CLONE_CrucibleKnight0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -324,6 +382,7 @@ def Constructor():
         item_lot=12020445,
         reward_delay=1.5,
         skip_reward=0,
+        clone=Characters.CLONE_CrucibleKnight1,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -332,6 +391,7 @@ def Constructor():
         item_lot=0,
         reward_delay=1.5,
         skip_reward=0,
+        clone=Characters.CLONE_CrucibleKnight2,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
@@ -406,9 +466,13 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=12025461, radius=20.0, seconds=0.0, animation_id=-1)
     Event_12022419(0, character=Characters.SilverTear5, character_1=Characters.Troll, region=12022400)
     Event_12022400(1, character=Characters.SilverTear6, character_1=Characters.SilverTear0, region=12022401)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.SilverTear6, region=12022411, radius=20.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.SilverTear6, region=12022411, radius=20.0, seconds=0.0, animation_id=-1
+    )
     Event_12022400(2, character=Characters.SilverTear7, character_1=Characters.SilverTear1, region=12022402)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.SilverTear7, region=12022412, radius=20.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.SilverTear7, region=12022412, radius=20.0, seconds=0.0, animation_id=-1
+    )
     Event_12022400(3, character=12020403, character_1=12020493, region=12022403)
     Event_12022400(4, character=12020404, character_1=12020494, region=12022404)
     Event_12022400(5, character=12020405, character_1=12020495, region=12022405)
@@ -496,7 +560,7 @@ def Preconstructor():
 def Event_12022699():
     """Event 12022699"""
     MAIN.Await(FlagEnabled(12022805))
-    
+
     AND_1.Add(CharacterInsideRegion(character=Characters.Human, region=12022717))
     GotoIfConditionTrue(Label.L10, input_condition=AND_1)
     CommonFunc_90005784(
@@ -521,9 +585,9 @@ def Event_12022698():
     if FlagEnabled(Flags.GargoylesDead):
         return
     OR_1.Add(FlagEnabled(12022160))
-    
+
     MAIN.Await(OR_1)
-    
+
     DisableMapCollision(collision=12021698)
 
 
@@ -533,9 +597,9 @@ def Event_12022569(_, flag: uint, flag_1: uint):
     DisableNetworkSync()
     if FlagEnabled(flag):
         return
-    
+
     MAIN.Await(FlagEnabled(flag_1))
-    
+
     if PlayerInOwnWorld():
         EnableNetworkFlag(flag)
     Restart()
@@ -554,9 +618,9 @@ def Event_12022568(_, flag: uint, asset: uint):
     CreateAssetVFX(asset, vfx_id=101, model_point=806043)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagEnabled(flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     DeleteAssetVFX(asset)
     PlaySoundEffect(asset, 90011, sound_type=SoundType.s_SFX)
     Wait(0.5)
@@ -569,9 +633,9 @@ def Event_12022567(_, flag: uint, region: uint):
     DisableNetworkSync()
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=region))
     AND_2.Add(FlagEnabled(flag))
-    
+
     MAIN.Await(AND_2)
-    
+
     AddSpecialEffect(PLAYER, 4150)
     Wait(3.0)
     Restart()
@@ -595,9 +659,9 @@ def Event_12022600():
     AND_15.Add(FlagEnabled(12020605))
     AND_15.Add(FlagEnabled(12020606))
     AND_15.Add(FlagEnabled(12020607))
-    
+
     MAIN.Await(AND_15)
-    
+
     EnableNetworkFlag(12020609)
     DeleteAssetVFX(Assets.AEG237_062_1000)
     CreateAssetVFX(Assets.AEG237_062_1000, vfx_id=200, model_point=812600)
@@ -622,9 +686,9 @@ def Event_12022601(_, flag: uint, asset: uint, asset_1: uint):
     GotoIfPlayerNotInOwnWorld(Label.L10)
     AND_2.Add(ActionButtonParamActivated(action_button_id=9524, entity=asset))
     AND_2.Add(PlayerInOwnWorld())
-    
+
     MAIN.Await(AND_2)
-    
+
     DisableAnimations(PLAYER)
     RotateToFaceEntity(PLAYER, asset, wait_for_completion=True)
     ForceAnimation(PLAYER, 60010)
@@ -641,9 +705,9 @@ def Event_12022601(_, flag: uint, asset: uint, asset_1: uint):
 
     # --- Label 10 --- #
     DefineLabel(10)
-    
+
     MAIN.Await(FlagEnabled(flag))
-    
+
     Wait(1.2999999523162842)
     DeleteAssetVFX(asset)
     DeleteAssetVFX(asset_1)
@@ -661,9 +725,9 @@ def Event_12022609():
     DisableNetworkFlag(12022610)
     AND_2.Add(PlayerInOwnWorld())
     AND_2.Add(ActionButtonParamActivated(action_button_id=9525, entity=Assets.AEG237_062_1000))
-    
+
     MAIN.Await(AND_2)
-    
+
     EnableNetworkFlag(12022610)
     RotateToFaceEntity(PLAYER, Assets.AEG237_062_1000, wait_for_completion=True)
     ForceAnimation(PLAYER, 60010)
@@ -684,9 +748,9 @@ def Event_12022609():
 
     # --- Label 1 --- #
     DefineLabel(1)
-    
+
     MAIN.Await(FlagEnabled(12020609))
-    
+
     Restart()
 
     # --- Label 10 --- #
@@ -694,9 +758,9 @@ def Event_12022609():
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     if AND_15:
         return
-    
+
     MAIN.Await(FlagEnabled(12022610))
-    
+
     MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
         destination_type=CoordEntityType.Region,
@@ -735,9 +799,9 @@ def Event_12022620():
     AND_15.Add(FlagEnabled(12020623))
     AND_15.Add(FlagEnabled(12020624))
     AND_15.Add(FlagEnabled(12020625))
-    
+
     MAIN.Await(AND_15)
-    
+
     EnableNetworkFlag(12020629)
     DeleteAssetVFX(Assets.AEG237_062_3000)
     CreateAssetVFX(Assets.AEG237_062_3000, vfx_id=200, model_point=812600)
@@ -762,9 +826,9 @@ def Event_12022621(_, flag: uint, asset: uint, asset_1: uint):
     EnableAnimations(PLAYER)
     AND_2.Add(ActionButtonParamActivated(action_button_id=9524, entity=asset))
     AND_2.Add(PlayerInOwnWorld())
-    
+
     MAIN.Await(AND_2)
-    
+
     RotateToFaceEntity(PLAYER, asset, wait_for_completion=True)
     ForceAnimation(PLAYER, 60010)
     DisableAnimations(PLAYER)
@@ -781,9 +845,9 @@ def Event_12022621(_, flag: uint, asset: uint, asset_1: uint):
 
     # --- Label 10 --- #
     DefineLabel(10)
-    
+
     MAIN.Await(FlagEnabled(flag))
-    
+
     Wait(1.2999999523162842)
     DeleteAssetVFX(asset)
     DeleteAssetVFX(asset_1)
@@ -801,9 +865,9 @@ def Event_12022629():
     DisableNetworkFlag(12022630)
     AND_2.Add(PlayerInOwnWorld())
     AND_2.Add(ActionButtonParamActivated(action_button_id=9525, entity=Assets.AEG237_062_3000))
-    
+
     MAIN.Await(AND_2)
-    
+
     RotateToFaceEntity(PLAYER, Assets.AEG237_062_3000, wait_for_completion=True)
     ForceAnimation(PLAYER, 60010)
     EnableNetworkFlag(12022630)
@@ -828,9 +892,9 @@ def Event_12022629():
 
     # --- Label 1 --- #
     DefineLabel(1)
-    
+
     MAIN.Await(FlagEnabled(12020629))
-    
+
     Restart()
 
     # --- Label 10 --- #
@@ -838,9 +902,9 @@ def Event_12022629():
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     if AND_15:
         return
-    
+
     MAIN.Await(FlagEnabled(12022630))
-    
+
     MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
         destination_type=CoordEntityType.Region,
@@ -874,9 +938,9 @@ def Event_12022670():
     GotoIfPlayerNotInOwnWorld(Label.L10)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(ActionButtonParamActivated(action_button_id=9140, entity=Assets.AEG099_510_9000))
-    
+
     MAIN.Await(AND_1)
-    
+
     DisplayDialogAndSetFlags(
         message=4300,
         button_type=ButtonType.Yes_or_No,
@@ -911,9 +975,9 @@ def Event_12022670():
 
     # --- Label 10 --- #
     DefineLabel(10)
-    
+
     MAIN.Await(FlagEnabled(12022670))
-    
+
     Wait(3.0)
     MoveCharacterAndCopyDrawParentWithFadeout(
         character=PLAYER,
@@ -955,9 +1019,9 @@ def Event_12022200(_, region: uint, character: uint, special_effect_id: int):
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_4.Add(OR_1)
     AND_4.Add(CharacterInsideRegion(character=PLAYER, region=region))
-    
+
     MAIN.Await(AND_4)
-    
+
     RemoveSpecialEffect(character, special_effect_id)
 
 
@@ -968,9 +1032,9 @@ def Event_12022404():
         return
     OR_15.Add(HasAIStatus(12020404, ai_status=AIStatusType.Battle))
     OR_15.Add(HasAIStatus(12020494, ai_status=AIStatusType.Battle))
-    
+
     MAIN.Await(OR_15)
-    
+
     ChangePatrolBehavior(12020405, patrol_information_id=12023405)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     End()
@@ -991,9 +1055,9 @@ def Event_12022300(_, character: uint, region: uint, seconds: float):
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_4.Add(OR_1)
     AND_4.Add(CharacterInsideRegion(character=PLAYER, region=region))
-    
+
     MAIN.Await(AND_4)
-    
+
     Wait(seconds)
     EnableCharacter(character)
     End()
@@ -1004,9 +1068,9 @@ def Event_12022350(_, character: uint, character_1: uint):
     """Event 12022350"""
     AND_1.Add(EntityWithinDistance(entity=character, other_entity=PLAYER, radius=60.0))
     AND_1.Add(CharacterHasSpecialEffect(character, 5080))
-    
+
     MAIN.Await(AND_1)
-    
+
     WaitFrames(frames=30)
     AddSpecialEffect(character_1, 13190)
     WaitFrames(frames=1)
@@ -1018,9 +1082,9 @@ def Event_12022360(_, character: uint, character_1: uint):
     """Event 12022360"""
     AND_1.Add(EntityWithinDistance(entity=character, other_entity=PLAYER, radius=60.0))
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(character, 5080))
-    
+
     MAIN.Await(AND_1)
-    
+
     RemoveSpecialEffect(character_1, 13190)
     WaitFrames(frames=30)
     Restart()
@@ -1034,9 +1098,9 @@ def Event_12022370():
     OR_15.Add(HasAIStatus(Characters.AncestralFollower11, ai_status=AIStatusType.Battle))
     OR_15.Add(HasAIStatus(Characters.AncestralFollower12, ai_status=AIStatusType.Battle))
     OR_15.Add(HasAIStatus(12020390, ai_status=AIStatusType.Battle))
-    
+
     MAIN.Await(OR_15)
-    
+
     ForceAnimation(12020390, 30003, loop=True)
     End()
 
@@ -1093,9 +1157,9 @@ def Event_12022371():
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
-    
+
     MAIN.Await(OR_2)
-    
+
     Wait(0.10000000149011612)
     SetSpecialStandbyEndedFlag(character=12020390, state=True)
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(12020390, 5080))
@@ -1165,9 +1229,9 @@ def Event_12022372():
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
-    
+
     MAIN.Await(OR_2)
-    
+
     Wait(0.10000000149011612)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     SetSpecialStandbyEndedFlag(character=Characters.AncestralFollowerShaman0, state=True)
@@ -1238,9 +1302,9 @@ def Event_12022373():
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
-    
+
     MAIN.Await(OR_2)
-    
+
     Wait(0.10000000149011612)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     SetSpecialStandbyEndedFlag(character=Characters.AncestralFollowerShaman1, state=True)
@@ -1274,9 +1338,9 @@ def Event_12022400(_, character: uint, character_1: uint, region: uint):
         DisableThisSlotFlag()
     DisableCharacter(character_1)
     DisableAnimations(character_1)
-    
+
     MAIN.Await(CharacterHasSpecialEffect(character, 16307))
-    
+
     EnableCharacter(character_1)
     EnableAnimations(character_1)
     DisableAnimations(character)
@@ -1317,9 +1381,9 @@ def Event_12022419(_, character: uint, character_1: uint, region: uint):
         DisableThisSlotFlag()
     DisableCharacter(character_1)
     DisableAnimations(character_1)
-    
+
     MAIN.Await(CharacterHasSpecialEffect(character, 16309))
-    
+
     EnableCharacter(character_1)
     EnableAnimations(character_1)
     DisableAnimations(character)
@@ -1344,7 +1408,7 @@ def Event_12022419(_, character: uint, character_1: uint, region: uint):
 def Event_12022440(_, character: uint, character_1: uint, patrol_information_id: uint):
     """Event 12022440"""
     MAIN.Await(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    
+
     ReplanAI(character_1)
     AddSpecialEffect(character_1, 5000)
     ChangePatrolBehavior(character_1, patrol_information_id=patrol_information_id)
@@ -1357,9 +1421,9 @@ def RideCoffinToDeeprootDepths():
     AND_2.Add(FlagEnabled(Flags.GargoylesDead))
     AND_2.Add(PlayerInOwnWorld())
     AND_2.Add(ActionButtonParamActivated(action_button_id=9710, entity=Assets.AEG237_018_5000))
-    
+
     MAIN.Await(AND_2)
-    
+
     EnableFlag(12020502)
     Wait(0.10000000149011612)
     EnableFlag(9021)
@@ -1386,9 +1450,9 @@ def Event_12022503():
     if FlagEnabled(12020502):
         DeleteAssetVFX(Assets.AEG099_060_9000, erase_root=False)
         End()
-    
+
     MAIN.Await(FlagEnabled(71220))
-    
+
     DeleteAssetVFX(Assets.AEG099_060_9000)
     CreateAssetVFX(Assets.AEG099_060_9000, vfx_id=100, model_point=6400)
 
@@ -1448,9 +1512,9 @@ def Event_12020500():
         return
     Wait(0.5)
     DisableAssetActivation(m60_49_Assets.AEG239_020_2000, obj_act_id=239020)
-    
+
     MAIN.Await(FlagEnabled(12020570))
-    
+
     EnableAssetActivation(m60_49_Assets.AEG239_020_2000, obj_act_id=239020)
 
 
@@ -1467,7 +1531,7 @@ def MimicTearDies():
     AND_1.Add(OR_2)
 
     MAIN.Await(AND_1)
-    
+
     Wait(4.0)
     PlaySoundEffect(Characters.MimicTear, 888880000, sound_type=SoundType.s_SFX)
     OR_5.Add(CharacterDead(Characters.MimicTear))
@@ -1478,7 +1542,7 @@ def MimicTearDies():
     AND_2.Add(OR_6)
 
     MAIN.Await(AND_2)
-    
+
     Kill(Characters.MimicTear, award_runes=True)
     Kill(Characters.CLONE_MimicTear, award_runes=True)
     WaitFrames(frames=1)
@@ -1537,11 +1601,11 @@ def MimicTearBattleTrigger():
     OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_SilverTearMimic, state_info=260))
 
     MAIN.Await(OR_1)
-    
+
     EnableNetworkFlag(12020851)
     GotoIfPlayerNotInOwnWorld(Label.L15)
     NotifyBossBattleStart()
-    SetNetworkUpdateAuthority(12025850, authority_level=UpdateAuthority.Forced)
+    SetNetworkUpdateAuthority(CharacterGroups.SilverTearMimicBoss, authority_level=UpdateAuthority.Forced)
 
     # --- Label 15 --- #
     DefineLabel(15)
@@ -1551,12 +1615,12 @@ def MimicTearBattleTrigger():
     DefineLabel(1)
     AND_2.Add(FlagEnabled(12022855))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=12022850))
-    
+
     MAIN.Await(AND_2)
-    
+
     GotoIfPlayerNotInOwnWorld(Label.L16)
     NotifyBossBattleStart()
-    SetNetworkUpdateAuthority(12025850, authority_level=UpdateAuthority.Forced)
+    SetNetworkUpdateAuthority(CharacterGroups.SilverTearMimicBoss, authority_level=UpdateAuthority.Forced)
 
     # --- Label 16 --- #
     DefineLabel(16)
@@ -1570,8 +1634,8 @@ def MimicTearBattleTrigger():
     ForceAnimation(Characters.CLONE_SilverTearMimic, 20010)
     # TODO: If a summon is present, clone Mimic Tear gets its data from them.
     if PlayerInOwnWorld():
-        CopyPlayerCharacterData(source_character=PLAYER, dest_characterentity=Characters.MimicTear)
-        CopyPlayerCharacterData(source_character=PLAYER, dest_characterentity=Characters.CLONE_MimicTear)
+        CopyPlayerCharacterData(source_character=PLAYER, dest_character=Characters.MimicTear)
+        CopyPlayerCharacterData(source_character=PLAYER, dest_character=Characters.CLONE_MimicTear)
     SetNetworkUpdateRate(Characters.MimicTear, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.CLONE_MimicTear, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNest(Characters.MimicTear, region=12022852)
@@ -1612,9 +1676,9 @@ def SpawnMimicTear(_, mimic_silver_tear: uint, mimic_c0000: uint, region: uint):
         DisableThisSlotFlag()
     DisableCharacter(mimic_c0000)
     DisableAnimations(mimic_c0000)
-    
+
     MAIN.Await(CharacterHasSpecialEffect(mimic_silver_tear, 16307))
-    
+
     EnableCharacter(mimic_c0000)
     EnableAnimations(mimic_c0000)
     SetNest(mimic_c0000, region=region)
@@ -1659,9 +1723,9 @@ def Event_12022869(
     AND_1.Add(PlayerInOwnWorld())
     OR_2.Add(AND_1)
     OR_2.Add(FlagEnabled(flag))
-    
+
     MAIN.Await(OR_2)
-    
+
     if FlagEnabled(flag):
         return RESTART
     Goto(Label.L1)
@@ -1674,9 +1738,9 @@ def Event_12022869(
     AND_3.Add(ActionButtonParamActivated(action_button_id=action_button_id, entity=entity))
     OR_3.Add(FlagEnabled(flag))
     OR_3.Add(AND_3)
-    
+
     MAIN.Await(OR_3)
-    
+
     GotoIfPlayerNotInOwnWorld(Label.L2)
     if FlagEnabled(flag):
         return RESTART
@@ -1696,9 +1760,9 @@ def Event_12022869(
     AND_4.Add(FlagDisabled(flag))
     OR_6.Add(AND_4)
     OR_6.Add(FlagEnabled(flag))
-    
+
     MAIN.Await(OR_6)
-    
+
     if FlagEnabled(flag):
         return RESTART
     RestartIfFinishedConditionTrue(input_condition=OR_4)
@@ -1726,9 +1790,9 @@ def Event_12022869(
     OR_10.Add(InvasionPending())
     AND_10.Add(OR_10)
     AND_10.Add(ActionButtonParamActivated(action_button_id=10000, entity=entity))
-    
+
     MAIN.Await(AND_10)
-    
+
     RotateToFaceEntity(PLAYER, region, animation=60060, wait_for_completion=True)
     BanishInvaders(unknown=0)
     Restart()
@@ -1743,7 +1807,7 @@ def MimicTearCommonEvents():
         entity=Assets.AEG099_002_9000,
         region=12022850,
         flag_1=12022855,
-        character=12025850,
+        character=CharacterGroups.SilverTearMimicBoss,
         action_button_id=10000,
         left=0,
         region_1=12022851,
@@ -1757,8 +1821,12 @@ def MimicTearCommonEvents():
         summon_entered_fog_flag=12022856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.MimicTearDead, fog_asset=Assets.AEG099_002_9000, model_point=8, required_flag=0)
-    CommonFunc_9005812(0, flag=Flags.MimicTearDead, asset=Assets.AEG099_002_9001, model_point=8, right=0, model_point_1=0)
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.MimicTearDead, fog_asset=Assets.AEG099_002_9000, model_point=8, required_flag=0
+    )
+    CommonFunc_9005812(
+        0, flag=Flags.MimicTearDead, asset=Assets.AEG099_002_9001, model_point=8, right=0, model_point_1=0
+    )
     CommonFunc_ControlBossMusic(0, Flags.MimicTearDead, 921100, 12022855, 12022856, 12022858, 12022852, 0, 0)
 
 
@@ -1769,9 +1837,9 @@ def GargoylesDie():
         return
     AND_1.Add(HealthValue(Characters.GargoyleGreatsword) <= 0)
     AND_1.Add(HealthValue(Characters.GargoyleTwinblade) <= 0)
-    
+
     MAIN.Await(AND_1)
-    
+
     Wait(4.0)
     PlaySoundEffect(Characters.GargoyleGreatsword, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(CharacterDead(Characters.GargoyleGreatsword))
@@ -1780,7 +1848,7 @@ def GargoylesDie():
     AND_2.Add(CharacterDead(Characters.CLONE_GargoyleTwinblade))
 
     MAIN.Await(AND_2)
-    
+
     KillBossAndDisplayBanner(character=Characters.GargoyleGreatsword, banner_type=BannerType.GreatEnemyFelled)
     EnableFlag(Flags.GargoylesDead)
     EnableFlag(9110)
@@ -1838,7 +1906,7 @@ def GargoylesBattleTrigger():
     OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_GargoyleGreatsword, state_info=260))
 
     MAIN.Await(OR_1)
-    
+
     EnableNetworkFlag(12020801)
     ForceAnimation(Characters.GargoyleGreatsword, 20002)
     ForceAnimation(Characters.CLONE_GargoyleGreatsword, 20002)
@@ -1848,9 +1916,9 @@ def GargoylesBattleTrigger():
     DefineLabel(1)
     AND_2.Add(FlagEnabled(12022805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=12022800))
-    
+
     MAIN.Await(AND_2)
-    
+
     ForceAnimation(Characters.GargoyleGreatsword, 20002)
     ForceAnimation(Characters.CLONE_GargoyleGreatsword, 20002)
 
@@ -1877,7 +1945,7 @@ def GargoylesPhaseTwoTransition():
     AND_1.Add(HealthRatio(Characters.GargoyleGreatsword) <= 0.550000011920929)
 
     MAIN.Await(AND_1)
-    
+
     ForceAnimation(Characters.GargoyleTwinblade, 20003, loop=True)
     ForceAnimation(Characters.CLONE_GargoyleTwinblade, 20003, loop=True)
     WaitFrames(frames=1)
@@ -1905,7 +1973,7 @@ def OneGargoyleDead():
     AND_1.Add(OR_1)
 
     MAIN.Await(AND_1)
-    
+
     RemoveSpecialEffect(Characters.GargoyleGreatsword, 17648)
     RemoveSpecialEffect(Characters.GargoyleTwinblade, 17648)
 
@@ -1922,7 +1990,9 @@ def HandleGargoyleDeath(_, gargoyle: uint, clone_gargoyle: uint):
 @RestartOnRest(12022849)
 def GargoylesCommonEvents():
     """Event 12022849"""
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GargoylesDead, fog_asset=Assets.AEG099_002_9003, model_point=5, required_flag=12020801)
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.GargoylesDead, fog_asset=Assets.AEG099_002_9003, model_point=5, required_flag=12020801
+    )
     CommonFunc_ControlBossMusic(
         0,
         boss_dead_flag=Flags.GargoylesDead,
@@ -1954,7 +2024,9 @@ def GargoylesCommonEvents():
         summon_entered_fog_flag=12022806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GargoylesDead, fog_asset=Assets.AEG099_002_9002, model_point=3, required_flag=12020801)
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.GargoylesDead, fog_asset=Assets.AEG099_002_9002, model_point=3, required_flag=12020801
+    )
     CommonFunc_ControlBossMusic(0, Flags.GargoylesDead, 931000, 12022805, 12022806, 0, 12022802, 0, 0)
 
 
@@ -1974,9 +2046,9 @@ def Event_12020700(_, character: uint, asset: uint, asset_1: uint):
     DisableBackread(character)
     DisableAsset(asset)
     DisableAsset(asset_1)
-    
+
     MAIN.Await(FlagEnabled(4065))
-    
+
     Restart()
 
     # --- Label 5 --- #
@@ -2014,9 +2086,9 @@ def Event_12020700(_, character: uint, asset: uint, asset_1: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    
+
     MAIN.Await(FlagDisabled(4065))
-    
+
     Restart()
 
 
@@ -2030,9 +2102,9 @@ def Event_12020701(_, entity: uint):
     AND_1.Add(FlagEnabled(12029016))
     AND_1.Add(FlagEnabled(4048))
     AND_1.Add(EntityWithinDistance(entity=entity, other_entity=PLAYER, radius=10.0))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(4078)
 
 
@@ -2055,13 +2127,13 @@ def Event_12023711(_, other_entity: uint, flag: uint):
         return
     if FlagEnabled(12029060):
         return
-    
+
     MAIN.Await(EntityWithinDistance(entity=PLAYER, other_entity=other_entity, radius=5.0))
-    
+
     EnableFlag(flag)
-    
+
     MAIN.Await(EntityBeyondDistance(entity=PLAYER, other_entity=other_entity, radius=5.0))
-    
+
     DisableFlag(flag)
     Restart()
 
@@ -2080,9 +2152,9 @@ def Event_12023720(_, character: uint):
     GotoIfFlagEnabled(Label.L10, flag=3610)
     DisableCharacter(character)
     DisableBackread(character)
-    
+
     MAIN.Await(FlagEnabled(3610))
-    
+
     Restart()
 
     # --- Label 10 --- #
@@ -2113,9 +2185,9 @@ def Event_12023720(_, character: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    
+
     MAIN.Await(FlagDisabled(3610))
-    
+
     Restart()
 
 
@@ -2127,9 +2199,9 @@ def Event_12023721(_, other_entity: uint, radius: float, special_effect_id: int,
         return
     AND_1.Add(FlagEnabled(flag))
     AND_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=other_entity, radius=radius))
-    
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(PLAYER, special_effect_id)
     Wait(3.0)
     Restart()

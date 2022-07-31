@@ -29,12 +29,12 @@ def Constructor():
         0,
         dead_flag=1042380800,
         extra_flag_to_enable=0,
-        boss_character=Characters.DeathRiteBird,
+        boss=Characters.DeathRiteBird,
         boss_banner_choice=0,
         item_lot=1042380400,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.DeathRiteBird, name=904980601, npc_threat_level=24)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DeathRiteBird, name=904980601, npc_threat_level=24)
     Event_1042382350()
     CommonFunc_90005460(0, character=Characters.GiantOctopus)
     CommonFunc_90005461(0, character=Characters.GiantOctopus)
@@ -51,12 +51,12 @@ def Constructor():
         0,
         dead_flag=1042380850,
         extra_flag_to_enable=0,
-        boss_character=Characters.BellBearingHunter,
+        boss=Characters.BellBearingHunter,
         boss_banner_choice=0,
         item_lot=1042380410,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.BellBearingHunter, name=903100600, npc_threat_level=10)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.BellBearingHunter, name=903100600, npc_threat_level=10)
     CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.BellBearingHunter, npc_threat_level=10, optional_trigger_flag=0)
     Event_1042383700(0, character=Characters.KnightBernahl)
     CommonFunc_90005704(0, attacked_entity=Characters.KnightBernahl, flag=3881, flag_1=3880, flag_2=1042389251, right=3)

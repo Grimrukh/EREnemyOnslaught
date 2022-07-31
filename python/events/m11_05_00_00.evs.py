@@ -826,11 +826,11 @@ def SirGideonOfnirBattleTrigger():
     DefineLabel(2)
     CopyPlayerCharacterData(
         source_character=Characters.SirGideonOfnirVariant1,
-        dest_characterentity=Characters.SirGideonOfnir,
+        dest_character=Characters.SirGideonOfnir,
     )
     CopyPlayerCharacterData(
         source_character=Characters.SirGideonOfnirVariant1,
-        dest_characterentity=Characters.CLONE_SirGideonOfnir,
+        dest_character=Characters.CLONE_SirGideonOfnir,
     )
     Goto(Label.L1)
 
@@ -838,11 +838,11 @@ def SirGideonOfnirBattleTrigger():
     DefineLabel(3)
     CopyPlayerCharacterData(
         source_character=Characters.SirGideonOfnirVariant2,
-        dest_characterentity=Characters.SirGideonOfnir,
+        dest_character=Characters.SirGideonOfnir,
     )
     CopyPlayerCharacterData(
         source_character=Characters.SirGideonOfnirVariant2,
-        dest_characterentity=Characters.CLONE_SirGideonOfnir,
+        dest_character=Characters.CLONE_SirGideonOfnir,
     )
     Goto(Label.L1)
 
@@ -850,11 +850,11 @@ def SirGideonOfnirBattleTrigger():
     DefineLabel(4)
     CopyPlayerCharacterData(
         source_character=Characters.SirGideonOfnirVariant3,
-        dest_characterentity=Characters.SirGideonOfnir,
+        dest_character=Characters.SirGideonOfnir,
     )
     CopyPlayerCharacterData(
         source_character=Characters.SirGideonOfnirVariant3,
-        dest_characterentity=Characters.CLONE_SirGideonOfnir,
+        dest_character=Characters.CLONE_SirGideonOfnir,
     )
     Goto(Label.L1)
 
@@ -862,11 +862,11 @@ def SirGideonOfnirBattleTrigger():
     DefineLabel(5)
     CopyPlayerCharacterData(
         source_character=Characters.SirGideonOfnirVariant4,
-        dest_characterentity=Characters.SirGideonOfnir,
+        dest_character=Characters.SirGideonOfnir,
     )
     CopyPlayerCharacterData(
         source_character=Characters.SirGideonOfnirVariant4,
-        dest_characterentity=Characters.CLONE_SirGideonOfnir,
+        dest_character=Characters.CLONE_SirGideonOfnir,
     )
     Goto(Label.L1)
 
@@ -874,11 +874,11 @@ def SirGideonOfnirBattleTrigger():
     DefineLabel(6)
     CopyPlayerCharacterData(
         source_character=Characters.SirGideonOfnirVariant5,
-        dest_characterentity=Characters.SirGideonOfnir,
+        dest_character=Characters.SirGideonOfnir,
     )
     CopyPlayerCharacterData(
         source_character=Characters.SirGideonOfnirVariant5,
-        dest_characterentity=Characters.CLONE_SirGideonOfnir,
+        dest_character=Characters.CLONE_SirGideonOfnir,
     )
     Goto(Label.L1)
 
@@ -886,11 +886,11 @@ def SirGideonOfnirBattleTrigger():
     DefineLabel(7)
     CopyPlayerCharacterData(
         source_character=Characters.SirGideonOfnirVariant6,
-        dest_characterentity=Characters.SirGideonOfnir,
+        dest_character=Characters.SirGideonOfnir,
     )
     CopyPlayerCharacterData(
         source_character=Characters.SirGideonOfnirVariant6,
-        dest_characterentity=Characters.CLONE_SirGideonOfnir,
+        dest_character=Characters.CLONE_SirGideonOfnir,
     )
     Goto(Label.L1)
 
@@ -898,11 +898,11 @@ def SirGideonOfnirBattleTrigger():
     DefineLabel(8)
     CopyPlayerCharacterData(
         source_character=Characters.SirGideonOfnirVariant7,
-        dest_characterentity=Characters.SirGideonOfnir,
+        dest_character=Characters.SirGideonOfnir,
     )
     CopyPlayerCharacterData(
         source_character=Characters.SirGideonOfnirVariant7,
-        dest_characterentity=Characters.CLONE_SirGideonOfnir,
+        dest_character=Characters.CLONE_SirGideonOfnir,
     )
     Goto(Label.L1)
 

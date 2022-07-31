@@ -104,7 +104,7 @@ def Preconstructor():
 @ContinueOnRest(200)
 def Event_200():
     """Event 200"""
-    CommonFunc_90005451(0, character=Characters.WalkingMausoleum, asset_group=1036476420)
+    CommonFunc_MausoleumAssetDestruction(0, mausoleum=Characters.WalkingMausoleum, asset_group=1036476420)
     CommonFunc_90005452(0, character=Characters.WalkingMausoleum, flag=1236470400)
     CommonFunc_90005454(0, character=Characters.WalkingMausoleum, flag=1236472400, flag_1=1236470400)
     CommonFunc_90005456(

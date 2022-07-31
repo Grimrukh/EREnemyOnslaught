@@ -44,12 +44,12 @@ def Constructor():
         flag_10=78318,
         flag_11=78319,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.BlackKnifeAssassin, name=902100600, npc_threat_level=14)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.BlackKnifeAssassin, name=902100600, npc_threat_level=14)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1040520800,
         extra_flag_to_enable=0,
-        boss_character=Characters.BlackKnifeAssassin,
+        boss=Characters.BlackKnifeAssassin,
         boss_banner_choice=0,
         item_lot=30350,
         seconds=0.0,

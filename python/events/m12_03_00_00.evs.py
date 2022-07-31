@@ -85,19 +85,32 @@ def Constructor():
     Event_12032241(11, character=Characters.GiantAnt27, seconds=28.0)
     Event_12032241(12, character=Characters.GiantAnt28, seconds=25.0)
     Event_12032241(13, character=Characters.GiantAnt29, seconds=20.0)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=12030200, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.GiantAnt1, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.GiantAnt2, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.GiantAnt3, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.GiantAnt4, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.GiantAnt5, region=12032200, radius=50.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=12030200, region=12032200, radius=50.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.GiantAnt1, region=12032200, radius=50.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.GiantAnt2, region=12032200, radius=50.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.GiantAnt3, region=12032200, radius=50.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.GiantAnt4, region=12032200, radius=50.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.GiantAnt5, region=12032200, radius=50.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=12030240,
         character=Characters.GiantAnt14,
-        item_lot=Flags.FiasChampionsDead,
+        item_lot=12030800,
         reward_delay=1.5,
         skip_reward=0,
+        clone=0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -106,6 +119,7 @@ def Constructor():
         item_lot=12030810,
         reward_delay=1.5,
         skip_reward=0,
+        clone=0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -114,6 +128,7 @@ def Constructor():
         item_lot=12030820,
         reward_delay=1.5,
         skip_reward=0,
+        clone=0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -122,6 +137,7 @@ def Constructor():
         item_lot=12030830,
         reward_delay=1.5,
         skip_reward=0,
+        clone=0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -130,6 +146,7 @@ def Constructor():
         item_lot=12030840,
         reward_delay=1.5,
         skip_reward=0,
+        clone=0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -138,22 +155,38 @@ def Constructor():
         item_lot=12030850,
         reward_delay=1.5,
         skip_reward=0,
+        clone=0,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=12030303, radius=8.0, seconds=0.0, animation_id=-1)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12030350, character=Characters.Scarab0, item_lot=40660, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12030354, character=Characters.Scarab1, item_lot=40668, reward_delay=1.5, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=12030355, character=Characters.Scarab2, item_lot=40670, reward_delay=1.5, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12030350, character=Characters.Scarab0, item_lot=40660, reward_delay=1.5, skip_reward=0,
+        clone=0,
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12030354, character=Characters.Scarab1, item_lot=40668, reward_delay=1.5, skip_reward=0,
+        clone=0,
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=12030355, character=Characters.Scarab2, item_lot=40670, reward_delay=1.5, skip_reward=0,
+        clone=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=12030390,
         extra_flag_to_enable=0,
-        boss_character=Characters.CrucibleKnightSiluria,
+        boss=Characters.CrucibleKnightSiluria,
         boss_banner_choice=1,
         item_lot=12030950,
         seconds=0.0,
+        clone_boss=Characters.CLONE_CrucibleKnightSiluria,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.CrucibleKnightSiluria, name=902500600, npc_threat_level=12)
-    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.CrucibleKnightSiluria, npc_threat_level=12, optional_trigger_flag=0)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.CrucibleKnightSiluria, name=NameText.CrucibleKnightSiluria, npc_threat_level=12,
+        clone_boss=Characters.CLONE_CrucibleKnightSiluria, clone_name=NameText.CLONE_CrucibleKnightSiluria,
+    )
+    CommonFunc_FieldBossMusicHeatUp(
+        0, boss_character=Characters.CrucibleKnightSiluria, npc_threat_level=12, optional_trigger_flag=0
+    )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=Flags.ErdtreeAvatarDead,
@@ -161,12 +194,17 @@ def Constructor():
         item_lot=12030960,
         reward_delay=1.5,
         skip_reward=0,
+        clone=Characters.CLONE_ErdtreeAvatar,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.ErdtreeAvatar, region=12032391, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.ErdtreeAvatar, region=12032391, seconds=0.0, animation_id=-1
+    )
     Event_12032504()
     Event_12032509()
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WalkingMausoleum, radius=200.0, seconds=10.0, animation_id=-1)
-    CommonFunc_90005451(0, character=Characters.WalkingMausoleum, asset_group=12036420)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.WalkingMausoleum, radius=200.0, seconds=10.0, animation_id=-1
+    )
+    CommonFunc_MausoleumAssetDestruction(0, mausoleum=Characters.WalkingMausoleum, asset_group=12036420)
     CommonFunc_90005452(0, character=Characters.WalkingMausoleum, flag=12030400)
     CommonFunc_90005454(0, character=Characters.WalkingMausoleum, flag=12032400, flag_1=12030400)
     CommonFunc_90005456(
@@ -177,7 +215,9 @@ def Constructor():
         flag=12030400,
     )
     CommonFunc_WalkingMausoleumDefeated(0, mausoleum=Characters.WalkingMausoleum, asset=Assets.AEG300_015_9000)
-    CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=Assets.AEG300_006_9000, model_point=60, seconds=0.0)
+    CommonFunc_90005453(
+        0, asset__character=Characters.WalkingMausoleum, asset=Assets.AEG300_006_9000, model_point=60, seconds=0.0
+    )
     CommonFunc_90005453(
         1,
         asset__character=Characters.WalkingMausoleum,
@@ -206,7 +246,9 @@ def Constructor():
         model_point=64,
         seconds=0.4000000059604645,
     )
-    CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=Assets.AEG300_006_9005, model_point=65, seconds=0.5)
+    CommonFunc_90005453(
+        0, asset__character=Characters.WalkingMausoleum, asset=Assets.AEG300_006_9005, model_point=65, seconds=0.5
+    )
     CommonFunc_90005453(
         0,
         asset__character=Characters.WalkingMausoleum,
@@ -235,11 +277,21 @@ def Constructor():
         model_point=69,
         seconds=0.8999999761581421,
     )
-    CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=Assets.AEG300_006_9010, model_point=70, seconds=1.0)
-    CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=12031431, model_point=71, seconds=0.10000000149011612)
-    CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=12031432, model_point=72, seconds=0.20000000298023224)
-    CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=12031433, model_point=73, seconds=0.30000001192092896)
-    CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=12031434, model_point=74, seconds=0.4000000059604645)
+    CommonFunc_90005453(
+        0, asset__character=Characters.WalkingMausoleum, asset=Assets.AEG300_006_9010, model_point=70, seconds=1.0
+    )
+    CommonFunc_90005453(
+        0, asset__character=Characters.WalkingMausoleum, asset=12031431, model_point=71, seconds=0.10000000149011612
+    )
+    CommonFunc_90005453(
+        0, asset__character=Characters.WalkingMausoleum, asset=12031432, model_point=72, seconds=0.20000000298023224
+    )
+    CommonFunc_90005453(
+        0, asset__character=Characters.WalkingMausoleum, asset=12031433, model_point=73, seconds=0.30000001192092896
+    )
+    CommonFunc_90005453(
+        0, asset__character=Characters.WalkingMausoleum, asset=12031434, model_point=74, seconds=0.4000000059604645
+    )
     CommonFunc_90005453(0, asset__character=Characters.WalkingMausoleum, asset=12031435, model_point=75, seconds=0.5)
     Event_12032300(0, character=12035380, seconds=1.0)
     Event_12032500()
@@ -469,9 +521,9 @@ def Event_12032500():
     OR_14.Add(AND_4)
     OR_14.Add(AND_7)
     OR_14.Add(AND_9)
-    
+
     MAIN.Await(OR_14)
-    
+
     GotoIfFinishedConditionTrue(Label.L3, input_condition=AND_1)
     GotoIfFinishedConditionFalse(Label.L2, input_condition=AND_4)
     DeleteAssetVFX(Assets.AEG099_510_9000)
@@ -534,17 +586,17 @@ def Event_12032500():
 
     # --- Label 16 --- #
     DefineLabel(16)
-    
+
     MAIN.Await(FlagEnabled(Flags.FiasChampionsDead))
-    
+
     Restart()
 
     # --- Label 18 --- #
     DefineLabel(18)
     DeleteAssetVFX(Assets.AEG099_510_9000)
-    
+
     MAIN.Await(FlagDisabled(12032870))
-    
+
     Restart()
 
 
@@ -557,9 +609,9 @@ def Event_12032504():
     AddSpecialEffect(PLAYER, 191)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(ActionButtonParamActivated(action_button_id=9710, entity=Assets.AEG237_018_0500))
-    
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(PLAYER, 190)
     Wait(0.10000000149011612)
     EnableFlag(9021)
@@ -595,9 +647,9 @@ def Event_12032509():
     AND_2.Add(FlagEnabled(12020800))
     AND_2.Add(PlayerInOwnWorld())
     AND_2.Add(ActionButtonParamActivated(action_button_id=9710, entity=m12_02_Assets.AEG237_018_5000))
-    
+
     MAIN.Await(AND_2)
-    
+
     EnableFlag(12020502)
     Wait(0.10000000149011612)
     EnableFlag(9021)
@@ -629,9 +681,9 @@ def Event_12032300(_, character: uint, seconds: float):
     # --- Label 0 --- #
     DefineLabel(0)
     OR_1.Add(FlagEnabled(12030400))
-    
+
     MAIN.Await(OR_1)
-    
+
     Wait(seconds)
     Kill(character)
 
@@ -678,9 +730,9 @@ def Event_12032310(_, character: uint):
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
-    
+
     MAIN.Await(OR_2)
-    
+
     EnableFlag(12032240)
 
 
@@ -697,9 +749,9 @@ def Event_12032241(_, character: uint, seconds: float):
     ForceAnimation(character, 30001, loop=True)
     OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(FlagEnabled(12032240))
-    
+
     MAIN.Await(OR_2)
-    
+
     Wait(0.10000000149011612)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     SetSpecialStandbyEndedFlag(character=character, state=True)
@@ -721,7 +773,7 @@ def FiasChampionsDie():
     # Clones are immortal and refer their damage to the originals.
 
     MAIN.Await(AND_1)
-    
+
     Wait(1.0)
     PlaySoundEffect(Characters.FirstFiasChampion, 888880000, sound_type=SoundType.s_SFX)
     DisableCharacter(Characters.UnknownFiasChampion)
@@ -737,7 +789,7 @@ def FiasChampionsDie():
     AND_2.Add(CharacterDead(Characters.CLONE_LionelSidekick1))
 
     MAIN.Await(AND_2)
-    
+
     KillBossAndDisplayBanner(character=Characters.FirstFiasChampion, banner_type=BannerType.GreatEnemyFelled)
     EnableFlag(Flags.FiasChampionsDead)
     EnableTreasure(asset=12031490)
@@ -822,9 +874,9 @@ def FiasChampionsBattleTrigger():
     DisableAsset(Assets.AEG099_120_9000)
     AND_2.Add(PlayerInOwnWorld())
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=12032801))
-    
+
     MAIN.Await(AND_2)
-    
+
     EnableFlag(12030801)
     EnableFlag(12032803)
     DeleteAssetVFX(Assets.AEG099_120_9000)
@@ -977,9 +1029,9 @@ def SorcererRogierTransition():
     AND_1.Add(CharacterDead(Characters.FirstFiasChampion))
     AND_1.Add(CharacterDead(Characters.CLONE_FiasChampion0))
     AND_1.Add(FlagEnabled(Flags.FiasChampionsBattleStarted))
-    
+
     MAIN.Await(AND_1)
-    
+
     Wait(3.0)
     DisableBossHealthBar(Characters.FirstFiasChampion, name=NameText.FiasChampion0)
     CreateTemporaryVFX(
@@ -1027,9 +1079,9 @@ def LionelTheLionheartedTransition():
     AND_1.Add(CharacterDead(Characters.SorcererRogier))
     AND_1.Add(CharacterDead(Characters.CLONE_SorcererRogier))
     AND_1.Add(FlagEnabled(Flags.SorcererRogierBattleStarted))
-    
+
     MAIN.Await(AND_1)
-    
+
     Wait(3.0)
     DisableBossHealthBar(Characters.SorcererRogier, name=NameText.SorcererRogier)
     CreateTemporaryVFX(
@@ -1316,9 +1368,9 @@ def GetFiasChampionPlayerData():
     """Event 12032820"""
     if PlayerNotInOwnWorld():
         return
-    
+
     MAIN.Await(InsideMap(game_map=DEEPROOT_DEPTHS))
-    
+
     RequestPlayerCharacterDataFromOnlinePlayers(pool_type=0, data_count=3)
 
 
@@ -1347,9 +1399,9 @@ def Event_12032830(
     AND_1.Add(PlayerInOwnWorld())
     OR_2.Add(AND_1)
     OR_2.Add(FlagEnabled(flag))
-    
+
     MAIN.Await(OR_2)
-    
+
     GotoIfPlayerNotInOwnWorld(Label.L2)
     if FlagDisabled(flag_2):
         BanishInvaders(unknown=0)
@@ -1368,9 +1420,9 @@ def Event_12032830(
     AND_4.Add(FlagDisabled(flag))
     OR_6.Add(AND_4)
     OR_6.Add(FlagEnabled(flag))
-    
+
     MAIN.Await(OR_6)
-    
+
     if FlagEnabled(flag):
         return RESTART
     RestartIfFinishedConditionTrue(input_condition=OR_4)
@@ -1399,9 +1451,9 @@ def Event_12032830(
     OR_10.Add(InvasionPending())
     AND_10.Add(OR_10)
     AND_10.Add(ActionButtonParamActivated(action_button_id=10000, entity=entity))
-    
+
     MAIN.Await(AND_10)
-    
+
     RotateToFaceEntity(PLAYER, region, animation=60060, wait_for_completion=True)
     BanishInvaders(unknown=0)
     Restart()
@@ -1418,9 +1470,9 @@ def Event_12032840():
     AND_1.Add(FlagEnabled(12032805))
     AND_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(ActionButtonParamActivated(action_button_id=10000, entity=Assets.AEG099_002_9000))
-    
+
     MAIN.Await(AND_1)
-    
+
     SuppressSoundForFogGate(duration=5.0)
     RotateToFaceEntity(PLAYER, 12032800, animation=60060, wait_for_completion=True)
     AND_2.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
@@ -1428,9 +1480,9 @@ def Event_12032840():
     OR_1.Add(TimeElapsed(seconds=3.0))
     OR_2.Add(OR_1)
     AND_2.Add(OR_2)
-    
+
     MAIN.Await(AND_2)
-    
+
     Wait(1.0)
     RestartIfFinishedConditionTrue(input_condition=OR_1)
     EnableFlag(12032806)
@@ -1457,9 +1509,9 @@ def Event_12032841():
     """Event 12032841"""
     AND_14.Add(PlayerInOwnWorld())
     AND_14.Add(CharacterInsideRegion(character=PLAYER, region=12032807))
-    
+
     MAIN.Await(AND_14)
-    
+
     BanishInvaders(unknown=0)
     Wait(1.0)
     Restart()
@@ -1501,9 +1553,9 @@ def Event_12032842(_, flag: uint, asset: uint, model_point: int, right: uint):
     OR_8.Add(AND_3)
     OR_8.Add(AND_4)
     OR_8.Add(AND_5)
-    
+
     MAIN.Await(OR_8)
-    
+
     if PlayerNotInOwnWorld():
         EnableAsset(asset)
         DeleteAssetVFX(asset)
@@ -1538,9 +1590,9 @@ def Event_12032842(_, flag: uint, asset: uint, model_point: int, right: uint):
     AND_9.Add(not AND_13)
     AND_9.Add(not AND_14)
     AND_9.Add(not AND_15)
-    
+
     MAIN.Await(AND_9)
-    
+
     Restart()
 
 
@@ -1570,9 +1622,9 @@ def TravelToFortissaxBattle():
     DisableCharacter(Characters.CLONE_LichdragonFortissax)
     if FlagEnabled(Flags.LichdragonFortissaxDead):
         return
-    
+
     MAIN.Await(FlagEnabled(12032859))
-    
+
     EnableFlag(9021)
     Wait(1.0)
     FadeToBlack(strength=1.0, duration=1.0, freeze_player=True, freeze_player_delay=1.0)
@@ -1615,7 +1667,7 @@ def LichdragonFortissaxDies():
     AND_8.Add(HealthValue(Characters.CLONE_LichdragonFortissax) <= 0)
 
     MAIN.Await(AND_8)
-    
+
     SetLockedCameraSlot(area_id=12, block_id=3, camera_slot=0)
     Wait(4.0)
     PlaySoundEffect(Characters.LichdragonFortissax, 888880000, sound_type=SoundType.s_SFX)
@@ -1623,7 +1675,7 @@ def LichdragonFortissaxDies():
     AND_1.Add(CharacterDead(Characters.LichdragonFortissax))
     AND_1.Add(CharacterDead(Characters.CLONE_LichdragonFortissax))
     MAIN.Await(AND_1)
-    
+
     KillBossAndDisplayBanner(character=Characters.LichdragonFortissax, banner_type=BannerType.LegendFelled)
     EnableFlag(Flags.LichdragonFortissaxDead)
     EnableFlag(9111)
@@ -1676,9 +1728,9 @@ def LichdragonFortissaxBattleTrigger():
     DisableAsset(Assets.AEG099_002_9001)
     DeleteAssetVFX(Assets.AEG099_002_9001)
     DisableAsset(Assets.AEG099_053_9003)
-    
+
     MAIN.Await(FlagEnabled(Flags.PlayerInFortissaxArena))
-    
+
     DeleteAssetVFX(Assets.AEG099_002_9001)
     EnableAsset(Assets.AEG099_002_9001)
     CreateAssetVFX(Assets.AEG099_002_9001, vfx_id=101, model_point=5)
@@ -1710,9 +1762,9 @@ def Event_12032896(_, flag: uint, flag_1: uint, flag_2: uint):
     AND_1.Add(FlagDisabled(flag))
     AND_1.Add(FlagEnabled(flag_1))
     AND_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(flag_2)
     Restart()
 
@@ -1721,7 +1773,10 @@ def Event_12032896(_, flag: uint, flag_1: uint, flag_2: uint):
 def LichdragonFortissaxCommonEvents():
     """Event 12032899"""
     RunCommonEvent(12032896, slot=0, args=(Flags.LichdragonFortissaxDead, 12032860, 12032856), arg_types="III")
-    CommonFunc_ControlBossMusic(0, Flags.LichdragonFortissaxDead, 451000, 12032860, 12032856, 12030852, Flags.LichdragonFortissaxInPhaseTwo, 0, 0)
+    CommonFunc_ControlBossMusic(
+        0, Flags.LichdragonFortissaxDead, 451000, 12032860, 12032856, 12030852, Flags.LichdragonFortissaxInPhaseTwo, 0,
+        0
+    )
 
 
 @RestartOnRest(12032861)
@@ -1734,9 +1789,9 @@ def FortissaxLightning(_, fortissax: uint):
     AND_1.Add(EntityWithinDistance(entity=fortissax, other_entity=20000, radius=15.0))
     AND_1.Add(CharacterHasSpecialEffect(fortissax, 14896))
     AND_1.Add(CharacterAlive(fortissax))
-    
+
     MAIN.Await(AND_1)
-    
+
     WaitRandomSeconds(min_seconds=0.0, max_seconds=3.0)
     GotoIfCharacterDoesNotHaveSpecialEffect(Label.L0, character=20000, special_effect=14898)
     AddSpecialEffect(20000, 14899)
@@ -1798,9 +1853,9 @@ def Event_12030700(_, character: uint):
     GotoIfFlagEnabled(Label.L9, flag=4129)
     DisableCharacter(character)
     DisableBackread(character)
-    
+
     MAIN.Await(FlagRangeAnyEnabled(flag_range=(4128, 4129)))
-    
+
     Restart()
 
     # --- Label 8 --- #
@@ -1836,9 +1891,9 @@ def Event_12030700(_, character: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    
+
     MAIN.Await(FlagRangeAllDisabled(flag_range=(4128, 4129)))
-    
+
     Restart()
 
 
@@ -1855,9 +1910,9 @@ def Event_12030701(_, character: uint, asset: uint):
     DisableCharacter(character)
     DisableBackread(character)
     DisableAsset(asset)
-    
+
     MAIN.Await(FlagEnabled(4130))
-    
+
     Restart()
 
     # --- Label 9 --- #
@@ -1870,9 +1925,9 @@ def Event_12030701(_, character: uint, asset: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    
+
     MAIN.Await(FlagDisabled(4130))
-    
+
     Restart()
 
 
@@ -1888,9 +1943,9 @@ def Event_12030702(_, character: uint):
     GotoIfFlagEnabled(Label.L10, flag=4131)
     DisableCharacter(character)
     DisableBackread(character)
-    
+
     MAIN.Await(FlagEnabled(4131))
-    
+
     Restart()
 
     # --- Label 10 --- #
@@ -1902,9 +1957,9 @@ def Event_12030702(_, character: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    
+
     MAIN.Await(FlagDisabled(4131))
-    
+
     Restart()
 
 
@@ -1922,9 +1977,9 @@ def Event_12030703(_, character: uint, asset: uint, asset_1: uint):
     DisableBackread(character)
     DisableAsset(asset)
     DisableAsset(asset_1)
-    
+
     MAIN.Await(FlagEnabled(4132))
-    
+
     Restart()
 
     # --- Label 11 --- #
@@ -1938,9 +1993,9 @@ def Event_12030703(_, character: uint, asset: uint, asset_1: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    
+
     MAIN.Await(FlagDisabled(4132))
-    
+
     Restart()
 
 
@@ -1953,9 +2008,9 @@ def Event_12030704():
         return
     AND_1.Add(FlagEnabled(Flags.FiasChampionsDead))
     AND_1.Add(FlagEnabled(4127))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(4138)
 
 
@@ -1968,9 +2023,9 @@ def Event_12030705():
         return
     AND_1.Add(FlagEnabled(12032870))
     AND_1.Add(FlagEnabled(4130))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(4138)
 
 
@@ -1986,9 +2041,9 @@ def Event_12030706():
     AND_1.Add(FlagEnabled(Flags.LichdragonFortissaxDead))
     AND_1.Add(FlagDisabled(12032870))
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(4138)
 
 
@@ -1998,9 +2053,9 @@ def Event_12030707():
     if PlayerNotInOwnWorld():
         return
     DisableFlag(12032720)
-    
+
     MAIN.Await(FlagEnabled(12032720))
-    
+
     ForceAnimation(PLAYER, 90207, wait_for_completion=True)
     EnableFlag(12032721)
     Restart()
@@ -2012,9 +2067,9 @@ def Event_12030708(_, entity: uint):
     if PlayerNotInOwnWorld():
         return
     DisableFlag(12032723)
-    
+
     MAIN.Await(FlagEnabled(12032723))
-    
+
     ForceAnimation(entity, 90208, wait_for_completion=True)
     EnableFlag(12032724)
     Restart()
@@ -2025,18 +2080,18 @@ def Event_12030709(_, flag: uint):
     """Event 12030709"""
     if PlayerNotInOwnWorld():
         return
-    
+
     MAIN.Await(FlagDisabled(flag))
-    
+
     MAIN.Await(FlagEnabled(flag))
-    
+
     DisableNetworkConnectedFlagRange(flag_range=(4120, 4124))
     EnableNetworkFlag(4120)
     DisableNetworkConnectedFlagRange(flag_range=(4125, 4137))
     EnableNetworkFlag(4130)
-    
+
     MAIN.Await(FlagDisabled(flag))
-    
+
     DisableNetworkConnectedFlagRange(flag_range=(4120, 4137))
     EnableFlag(4138)
     Restart()
@@ -2056,9 +2111,9 @@ def Event_12030710(_, character: uint):
     GotoIfFlagEnabled(Label.L6, flag=4066)
     DisableCharacter(character)
     DisableBackread(character)
-    
+
     MAIN.Await(FlagEnabled(4066))
-    
+
     Restart()
 
     # --- Label 6 --- #
@@ -2091,9 +2146,9 @@ def Event_12030710(_, character: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    
+
     MAIN.Await(FlagDisabled(4066))
-    
+
     Restart()
 
 
@@ -2108,9 +2163,9 @@ def Event_12030720(_, character: uint):
     if PlayerNotInOwnWorld():
         return
     EnableImmortality(character)
-    
+
     MAIN.Await(AttackedWithDamageType(attacked_entity=character, attacker=PLAYER))
-    
+
     ForceAnimation(character, 20025)
     DisableAnimations(character)
     Wait(10.0)

@@ -62,12 +62,12 @@ def Constructor():
         flag_10=78108,
         flag_11=78109,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.TreeSentinel, name=903251600, npc_threat_level=12)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.TreeSentinel, name=903251600, npc_threat_level=12)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1042360800,
         extra_flag_to_enable=0,
-        boss_character=Characters.TreeSentinel,
+        boss=Characters.TreeSentinel,
         boss_banner_choice=0,
         item_lot=30100,
         seconds=0.0,
@@ -186,7 +186,7 @@ def Preconstructor():
     DisableBackread(Characters.Merchant)
     DisableBackread(Characters.NomadMule)
     DisableBackread(Characters.Ranni)
-    CommonFunc_NonRespawningWithReward(0, 1042360200, 1042365200, 0, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1042360200, character=1042365200, item_lot=0, reward_delay=0.0, skip_reward=0)
 
 
 @RestartOnRest(1042362200)

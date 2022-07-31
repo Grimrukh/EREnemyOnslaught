@@ -42,7 +42,7 @@ def Constructor():
         0,
         dead_flag=1043370800,
         extra_flag_to_enable=0,
-        boss_character=Characters.NightsCavalry,
+        boss=Characters.NightsCavalry,
         boss_banner_choice=0,
         item_lot=1043370400,
         seconds=0.0,

@@ -95,12 +95,12 @@ def Constructor():
     Event_1049390800()
     Event_1049392810()
     CommonFunc_ControlBossFog(0, boss_dead_flag=1049390800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
-    CommonFunc_90005880(
+    CommonFunc_EvergaolBossDies(
         0,
-        flag=1049390850,
-        flag_1=1049390855,
+        dead_flag=1049390850,
+        required_flag=1049390855,
         flag_2=1049392850,
-        character=Characters.BattleMage,
+        boss=Characters.BattleMage,
         item_lot=1049390850,
         area_id=60,
         block_id=49,
@@ -108,7 +108,7 @@ def Constructor():
         dd_id=0,
         player_start=1049392855,
     )
-    CommonFunc_90005881(
+    CommonFunc_EnterEvergaol(
         0,
         flag=1049390850,
         flag_1=1049390855,
@@ -122,23 +122,23 @@ def Constructor():
         dd_id=0,
         player_start=1049392855,
     )
-    CommonFunc_90005882(
+    CommonFunc_EvergaolBossBattleTrigger(
         0,
-        flag=1049390850,
-        flag_1=1049390855,
+        dead_flag=1049390850,
+        required_flag=1049390855,
         flag_2=1049392850,
-        character=Characters.BattleMage,
-        flag_3=1049392856,
+        boss=Characters.BattleMage,
+        battle_started_flag=1049392856,
         character_1=1049395860,
-        asset=Assets.AEG099_120_1000,
+        evergaol_gate=Assets.AEG099_120_1000,
         owner_entity=Characters.TalkDummy3,
         source_entity=1049392860,
-        name=903704520,
-        animation_id=-1,
-        animation_id_1=20004,
+        boss_name=903704520,
+        standby_animation=-1,
+        appearance_animation=20004,
     )
     CommonFunc_90005883(0, flag=1049390850, flag_1=1049390855, entity=Assets.AEG099_170_1000)
-    CommonFunc_90005885(
+    CommonFunc_EvergaolBossMusic(
         0,
         flag=1049390850,
         bgm_boss_conv_param_id=0,

@@ -6,6 +6,8 @@ class Characters(Character):
     Scarab = 1033450200  # c4191_9001 npc 41915220 think 41910000 group 1033455810
     LiurniaTroll = 1033450800  # c4601_9001 npc 46010920 think 46010900
 
+    CLONE_LiurniaTroll = 1033450801
+
 
 class Assets(Asset):
     AEG099_170_1000 = 1033451805  # AEG099

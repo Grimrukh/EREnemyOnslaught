@@ -25,7 +25,7 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1037480000, asset=Assets.AEG099_060_9000)
     CommonFunc_NonRespawningWithReward(0, dead_flag=1037480200, character=Characters.Scarab1, item_lot=40236, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, 1037480210, 1037480210, 40254, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1037480210, character=1037480210, item_lot=40254, reward_delay=0.0, skip_reward=0)
 
 
 @ContinueOnRest(50)
@@ -37,7 +37,7 @@ def Preconstructor():
 @ContinueOnRest(200)
 def Event_200():
     """Event 200"""
-    CommonFunc_90005451(0, character=Characters.WalkingMausoleum, asset_group=1037486420)
+    CommonFunc_MausoleumAssetDestruction(0, mausoleum=Characters.WalkingMausoleum, asset_group=1037486420)
     CommonFunc_90005452(0, character=Characters.WalkingMausoleum, flag=1237480400)
     CommonFunc_90005454(0, character=Characters.WalkingMausoleum, flag=1237482400, flag_1=1237480400)
     CommonFunc_WalkingMausoleumDefeated(0, mausoleum=Characters.WalkingMausoleum, asset=Assets.AEG300_015_9000)

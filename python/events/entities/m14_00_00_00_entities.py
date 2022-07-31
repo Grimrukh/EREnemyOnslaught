@@ -414,6 +414,8 @@ class Characters(Character):
     CLONE_RennalaTrollSummon = 14000895
     CLONE_RennalaDragonSummon = 14000896
 
+    CLONE_MoongrumCarianKnight = 14000498
+
 
 class RegionPoints(RegionPoint):
     RedWolfFirstPosition = 14002856

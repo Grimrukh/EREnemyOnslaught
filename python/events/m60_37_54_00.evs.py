@@ -192,12 +192,12 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.UlceratedTreeSpirit, name=904640600, npc_threat_level=18)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.UlceratedTreeSpirit, name=904640600, npc_threat_level=18)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1037540810,
         extra_flag_to_enable=0,
-        boss_character=Characters.UlceratedTreeSpirit,
+        boss=Characters.UlceratedTreeSpirit,
         boss_banner_choice=0,
         item_lot=30380,
         seconds=0.0,

@@ -101,7 +101,9 @@ def Constructor():
         seconds=0.30000001192092896,
         animation_id=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Octopus6, region=30202257, radius=1.0, seconds=0.5, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Octopus6, region=30202257, radius=1.0, seconds=0.5, animation_id=0
+    )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Octopus7,
@@ -364,9 +366,9 @@ def Event_30202520(_, flag: uint, asset: uint, flag_1: uint):
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagEnabled(flag_1))
     AND_1.Add(FlagDisabled(flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(flag)
     EnableAssetActivation(asset, obj_act_id=-1)
 
@@ -383,14 +385,14 @@ def Event_30202800():
     """Event 30202800"""
     if FlagEnabled(30200800):
         return
-    
+
     MAIN.Await(HealthValue(Characters.StrayMimicTear) <= 0)
-    
+
     Wait(4.0)
     PlaySoundEffect(30208000, 888880000, sound_type=SoundType.s_SFX)
-    
+
     MAIN.Await(CharacterDead(Characters.StrayMimicTear))
-    
+
     KillBossAndDisplayBanner(character=Characters.StrayMimicTear, banner_type=BannerType.EnemyFelled)
     EnableAssetActivation(Assets.AEG099_630_9001, obj_act_id=-1)
     EnableFlag(30200800)
@@ -417,15 +419,15 @@ def Event_30202810():
     DisableAssetActivation(Assets.AEG099_630_9001, obj_act_id=-1)
     AND_2.Add(FlagEnabled(30202805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=30202800))
-    
+
     MAIN.Await(AND_2)
-    
+
     SetNetworkUpdateRate(Characters.StrayMimicTear, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     ForceAnimation(Characters.SilverTear, 20010)
-    CopyPlayerCharacterData(source_character=PLAYER, dest_characterentity=Characters.StrayMimicTear)
-    
+    CopyPlayerCharacterData(source_character=PLAYER, dest_character=Characters.StrayMimicTear)
+
     MAIN.Await(CharacterHasSpecialEffect(Characters.SilverTear, 16307))
-    
+
     EnableCharacter(Characters.StrayMimicTear)
     EnableAnimations(Characters.StrayMimicTear)
     DisableAnimations(Characters.SilverTear)
@@ -450,9 +452,9 @@ def Event_30202811():
     if FlagEnabled(30200800):
         return
     AND_1.Add(HealthRatio(Characters.StrayMimicTear) <= 0.6000000238418579)
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(30202802)
 
 
@@ -479,5 +481,7 @@ def Event_30202829():
         summon_entered_fog_flag=30202806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=30200800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=30200800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0
+    )
     CommonFunc_ControlBossMusic(0, 30200800, 921100, 30202805, 30202806, 0, 30202802, 0, 0)

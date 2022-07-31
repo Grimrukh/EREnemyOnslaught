@@ -139,6 +139,7 @@ class Characters(Character):
     CLONE_GodskinNoble = 16000851
     CLONE_IronVirginBoss0 = 16000863  # c4470_9003 col h014000 npc 44701938 think 44701900 group 16005860
     CLONE_IronVirginBoss1 = 16000862  # c4470_9005 col h014000 npc 44700938 think 44700900 group 16005860
+    CLONE_MagmaWyrm = 16000511
 
 
 class Assets(Asset):

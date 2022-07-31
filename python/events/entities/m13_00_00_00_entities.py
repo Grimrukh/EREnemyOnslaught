@@ -29,6 +29,8 @@ class Flags(Flag):
     MalikethInSpecialRegions = 13002826
     CLONE_MalikethInSpecialRegions = 13002749
 
+    AncientDragonLowerPlatformDead = 13000495
+
 
 class Effects(SpecialEffectParam):
     GodskinNobleSolo = 15504
@@ -40,6 +42,8 @@ class Effects(SpecialEffectParam):
 class NameText(NPCName):
     BeastClergyman = 902110000
     CLONE_BeastClergyman = 902110010
+    MalikethTheBlackBlade = 902110001
+    CLONE_MalikethTheBlackBlade = 902110011
     GodskinDuo = 903575000
     CLONE_GodskinDuo = 903575010
     DragonlordPlacidusax = 904520000
@@ -55,7 +59,7 @@ class CharacterGroups(Character):
 class Spawners(SpawnerEvent):
     ApostleSpawner = 13003851
     NobleSpawner = 13003852
-    CLONE_ApostleSpawner = 13003853  # TODO: confirm IDs available
+    CLONE_ApostleSpawner = 13003853
     CLONE_NobleSpawner = 13003854
 
 
@@ -234,10 +238,10 @@ class Characters(Character):
     BladedTalonEagle13 = 13000365  # c4210_9015 col h013000 npc 42102072 think 42100000
     BladedTalonEagle14 = 13000367  # c4210_9017 col h012400 npc 42102072 think 42100000
     Alexander = 13000700  # c4490_9000 col h005700 npc 44909972 think 44900000 talk 220001300
-    AncientDragon0 = 13000490  # c4510_9000 col h003300 npc 45102272 think 45100300 group 13005102
-    AncientDragon1 = 13000492  # c4510_9002 col h009300 npc 45100572 think 45100200 group 13005110
-    AncientDragon2 = 13000494  # c4510_9004 col h010100 npc 45100072 think 45100200
-    AncientDragon3 = 13000495  # c4510_9005 col h012600 npc 45101272 think 45100200
+    AncientDragonUpperCurve = 13000490  # c4510_9000 col h003300 npc 45102272 think 45100300 group 13005102
+    AncientDragonRespawning = 13000492  # c4510_9002 col h009300 npc 45100572 think 45100200 group 13005110
+    AncientDragonSidePlatform = 13000494  # c4510_9004 col h010100 npc 45100072 think 45100200
+    AncientDragonLowerPlatform = 13000495  # c4510_9005 col h012600 npc 45101272 think 45100200
     AncientDragon4 = 13000701  # c4510_9006 col h005700 npc 45100272 think 45100000
     AncientDragon5 = 13000702  # c4510_9007 col h005700 npc 45100172 think 45100300
     DragonlordPlacidusax = 13000830  # c4520_9000 col h015000 npc 45200072 think 45200000 group 13005830,13005122
@@ -260,6 +264,14 @@ class Characters(Character):
     CLONE_GodskinDuoApostle = 13000861
     CLONE_GodskinDuoNoble = 13000862
     CLONE_DragonlordPlacidusax = 13000830
+
+    CLONE_AncientDragonLowerPlatform = 13000330
+    CLONE_AncientDragonUpperCurve = 13000331
+    CLONE_AncientDragonSidePlatform = 13000332
+    # NOTE: Not cloning Ancient Dragons 701 and 702 (near Alexander).
+    CLONE_CrucibleKnight0 = 13000335
+    CLONE_CrucibleKnight1 = 13000336
+    CLONE_WormfaceLarge = 13000339
 
 
 class Assets(Asset):

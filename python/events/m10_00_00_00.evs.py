@@ -203,6 +203,7 @@ def Constructor():
     Event_10002350(4, character=Characters.Dog0, region=10002202, seconds=0.0, flag=10002354)
     Event_10002350(5, character=Characters.SmallerDog, region=10002202, seconds=1.0, flag=10002355)
     Event_10002350(8, character=Characters.GraftedScion, region=10002280, seconds=0.0, flag=10002358)
+    Event_10002350(6, character=Characters.CLONE_GraftedScion, region=10002280, seconds=0.0, flag=10002358)
     Event_10002350(9, character=10005370, region=10002217, seconds=0.0, flag=10002359)
     Event_10002350(11, character=10005360, region=10002219, seconds=0.0, flag=10002361)
     Event_1002200()
@@ -279,7 +280,17 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=10000280, character=Characters.GraftedScion, item_lot=0, reward_delay=0.0, skip_reward=0)
+
+    # region NON-RESPAWNING ENEMIES
+    CommonFunc_NonRespawningWithReward(
+        0,
+        dead_flag=Flags.GraftedScionDead,
+        character=Characters.GraftedScion,
+        item_lot=0,
+        reward_delay=0.0,
+        skip_reward=0,
+        clone=Characters.CLONE_GraftedScion,
+    )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=10000289,
@@ -287,8 +298,15 @@ def Constructor():
         item_lot=10001085,
         reward_delay=1.0,
         skip_reward=0,
+        clone=Characters.CLONE_LionGuardian,
     )
-    Event_11002291(0, character=Characters.UlceratedTreeSpirit, region=10002291, seconds=3.0)
+    UlceratedTreeSpiritAppears(
+        0,
+        tree_spirit=Characters.UlceratedTreeSpirit,
+        tree_spirit_clone=Characters.CLONE_UlceratedTreeSpirit,
+        trigger_region=10002291,
+        delay=3.0,
+    )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=10000291,
@@ -296,6 +314,7 @@ def Constructor():
         item_lot=10001095,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_UlceratedTreeSpirit,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -304,10 +323,37 @@ def Constructor():
         item_lot=10001295,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_CrucibleKnight,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=10000495, character=Characters.Scarab0, item_lot=40170, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=10000496, character=Characters.Scarab1, item_lot=40172, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=10000497, character=Characters.Scarab2, item_lot=40174, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0,
+        dead_flag=10000495,
+        character=Characters.Scarab0,
+        item_lot=40170,
+        reward_delay=0.0,
+        skip_reward=0,
+        clone=0,
+    )
+    CommonFunc_NonRespawningWithReward(
+        0,
+        dead_flag=10000496,
+        character=Characters.Scarab1,
+        item_lot=40172,
+        reward_delay=0.0,
+        skip_reward=0,
+        clone=0,
+    )
+    CommonFunc_NonRespawningWithReward(
+        0,
+        dead_flag=10000497,
+        character=Characters.Scarab2,
+        item_lot=40174,
+        reward_delay=0.0,
+        skip_reward=0,
+        clone=0,
+    )
+    # endregion
+
     CommonFunc_90005780(
         0,
         flag=Flags.GodrickDead,
@@ -619,15 +665,33 @@ def Preconstructor():
     DisableBackread(Characters.Commoner25)
     Event_10000519()
     CommonFunc_90005260(0, character=Characters.Dummy1, region=0, radius=0.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner0, region=10002218, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner1, region=10002218, seconds=1.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Commoner2, region=10002233, radius=3.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner3, region=10002204, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Commoner4, region=10002233, radius=3.0, seconds=3.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner5, region=10002204, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner6, region=10002231, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner7, region=10002236, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Commoner8, region=10002209, radius=3.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Commoner0, region=10002218, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Commoner1, region=10002218, seconds=1.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Commoner2, region=10002233, radius=3.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Commoner3, region=10002204, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Commoner4, region=10002233, radius=3.0, seconds=3.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Commoner5, region=10002204, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Commoner6, region=10002231, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Commoner7, region=10002236, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Commoner8, region=10002209, radius=3.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=10000210, region=10002211, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=10000211, region=10002211, seconds=0.0, animation_id=-1)
     CommonFunc_90005221(0, character=10000220, animation_id=30001, animation_id_1=20003, seconds=0.0, left=0)
@@ -651,12 +715,24 @@ def Preconstructor():
         seconds=0.0,
         left=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=10000227, region=10002255, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=10000228, region=10002255, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=10000229, region=10002255, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=10000230, region=10002255, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=10000231, region=10002255, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=10000232, region=10002255, radius=1.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=10000227, region=10002255, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=10000228, region=10002255, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=10000229, region=10002255, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=10000230, region=10002255, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=10000231, region=10002255, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=10000232, region=10002255, radius=1.0, seconds=0.0, animation_id=-1
+    )
     Event_10002240(
         0,
         character=Characters.Commoner11,
@@ -697,21 +773,51 @@ def Preconstructor():
         left_4=1,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Commoner14, radius=2.0, seconds=1.0, animation_id=0)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner17, region=10002208, seconds=2.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner18, region=10002208, seconds=1.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner19, region=10002208, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner20, region=10002208, seconds=2.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner21, region=10002208, seconds=1.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner22, region=10002208, seconds=3.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner23, region=10002208, seconds=2.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Commoner24, region=10002208, seconds=1.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard0, region=10002300, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard1, region=10002300, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard3, region=10002301, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.CastleGuard6, region=10002306, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.CastleGuard7, region=10002306, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard8, region=10002311, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.CastleGuard9, region=10002313, radius=3.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Commoner17, region=10002208, seconds=2.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Commoner18, region=10002208, seconds=1.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Commoner19, region=10002208, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Commoner20, region=10002208, seconds=2.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Commoner21, region=10002208, seconds=1.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Commoner22, region=10002208, seconds=3.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Commoner23, region=10002208, seconds=2.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Commoner24, region=10002208, seconds=1.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard0, region=10002300, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard1, region=10002300, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard3, region=10002301, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.CastleGuard6, region=10002306, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.CastleGuard7, region=10002306, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard8, region=10002311, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.CastleGuard9, region=10002313, radius=3.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.CastleGuard10,
@@ -721,10 +827,16 @@ def Preconstructor():
         animation_id=-1,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=10000325, radius=3.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.CastleGuard20, radius=3.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=10000323, region=10002323, radius=0.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.CastleGuard20, radius=3.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=10000323, region=10002323, radius=0.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.CastleGuard16, radius=4.0, seconds=0.0, animation_id=0)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=10005334, region=10002230, radius=0.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=10005334, region=10002230, radius=0.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.CastleGuard17,
@@ -749,16 +861,30 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard21, region=10002351, seconds=2.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard22, region=10002351, seconds=1.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard23, region=10002351, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard24, region=10002351, seconds=1.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard25, region=10002351, seconds=2.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard21, region=10002351, seconds=2.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard22, region=10002351, seconds=1.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard23, region=10002351, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard24, region=10002351, seconds=1.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard25, region=10002351, seconds=2.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=10000355, region=10002351, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1000393, radius=5.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1000394, radius=5.0, seconds=1.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.CastleGuard27, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.CastleGuard28, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.CastleGuard27, radius=10.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.CastleGuard28, radius=10.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_90005221(0, character=10000405, animation_id=30000, animation_id_1=20001, seconds=0.0, left=0)
     CommonFunc_90005221(0, character=10000406, animation_id=30000, animation_id_1=20001, seconds=0.0, left=0)
     CommonFunc_90005221(0, character=10000407, animation_id=30000, animation_id_1=20001, seconds=0.0, left=0)
@@ -774,9 +900,15 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard33, region=10002416, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard34, region=10002416, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard35, region=10002416, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard33, region=10002416, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard34, region=10002416, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard35, region=10002416, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.CastleGuard36,
@@ -785,7 +917,9 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard38, region=10002214, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard38, region=10002214, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.CastleGuard32,
@@ -798,8 +932,12 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard31, region=10002616, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard44, region=10002238, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard31, region=10002616, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard44, region=10002238, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.CastleGuard45,
@@ -824,7 +962,7 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.CastleGuard47,
         animation_id=30006,
@@ -837,10 +975,18 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.CastleGuard48, radius=7.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CastleGuard49, region=10002214, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BanishedKnight0, region=10002260, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BanishedKnight1, region=10002710, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.CastleGuard48, radius=7.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CastleGuard49, region=10002214, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BanishedKnight0, region=10002260, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BanishedKnight1, region=10002710, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.BanishedKnight2,
@@ -849,11 +995,21 @@ def Preconstructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BanishedKnight3, region=10002609, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BanishedKnight4, region=10002609, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BanishedKnight5, region=10002274, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BanishedKnight6, region=10002616, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BladedTalonEagle0, region=10002460, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BanishedKnight3, region=10002609, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BanishedKnight4, region=10002609, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BanishedKnight5, region=10002274, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BanishedKnight6, region=10002616, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BladedTalonEagle0, region=10002460, seconds=1.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.BladedTalonEagle1,
@@ -870,17 +1026,37 @@ def Preconstructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BladedTalonEagle3, region=10002463, seconds=0.5, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BladedTalonEagle4, region=10002463, seconds=0.0, animation_id=3009)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BladedTalonEagle5, region=10002463, seconds=3.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BladedTalonEagle6, region=10002470, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BladedTalonEagle7, region=10002471, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BladedTalonEagle8, region=10002471, seconds=1.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BladedTalonEagle9, region=10002473, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BladedTalonEagle10, region=10002475, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BladedTalonEagle3, region=10002463, seconds=0.5, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BladedTalonEagle4, region=10002463, seconds=0.0, animation_id=3009
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BladedTalonEagle5, region=10002463, seconds=3.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BladedTalonEagle6, region=10002470, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BladedTalonEagle7, region=10002471, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BladedTalonEagle8, region=10002471, seconds=1.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BladedTalonEagle9, region=10002473, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BladedTalonEagle10, region=10002475, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=10000476, region=10002475, seconds=1.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BladedTalonEagle11, region=10002477, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.BladedTalonEagle13, region=10002274, seconds=1.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BladedTalonEagle11, region=10002477, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.BladedTalonEagle13, region=10002274, seconds=1.0, animation_id=-1
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.BladedTalonEagle14,
@@ -894,12 +1070,26 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GiantRat, region=10002285, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=10000285, region=10002285, radius=2.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.GiantRat, region=10002285, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=10000285, region=10002285, radius=2.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Bat, region=10002544, seconds=0.0, animation_id=0)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Omen, region=10002213, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.LionGuardian, region=10002220, seconds=0.0, animation_id=0)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CrucibleKnight, region=10002498, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.LionGuardian, region=10002220, seconds=0.0, animation_id=0
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CLONE_LionGuardian, region=10002220, seconds=0.0, animation_id=0
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CrucibleKnight, region=10002498, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CLONE_CrucibleKnight, region=10002498, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Eagle0, region=10002211, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Eagle1, region=10002211, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Eagle2, region=10002211, seconds=0.0, animation_id=-1)
@@ -974,9 +1164,9 @@ def Event_10002281(_, character: uint, region: uint, seconds: float, animation_i
     AND_1.Add(OR_1)
     OR_2.Add(AttackedWithDamageType(attacked_entity=character))
     OR_2.Add(AND_1)
-    
+
     MAIN.Await(OR_2)
-    
+
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     GotoIfFinishedConditionFalse(Label.L1, input_condition=AND_1)
     Wait(seconds)
@@ -1019,9 +1209,9 @@ def Event_10002500():
     # --- Label 0 --- #
     DefineLabel(0)
     EnableAssetActivation(Assets.AEG219_030_0500, obj_act_id=219030)
-    
+
     MAIN.Await(FlagEnabled(10009355))
-    
+
     EnableNetworkFlag(10000500)
     EnableFlag(10009355)
     Wait(2.0)
@@ -1047,9 +1237,9 @@ def Event_10002501():
     EnableAssetActivation(Assets.AEG219_030_0500, obj_act_id=219030)
     AND_2.Add(PlayerInOwnWorld())
     AND_2.Add(AssetActivated(obj_act_id=10003501))
-    
+
     MAIN.Await(AND_2)
-    
+
     EnableNetworkFlag(10000501)
     EnableFlag(10009354)
     Wait(3.0)
@@ -1124,9 +1314,9 @@ def Event_1002200():
     """Event 1002200"""
     if ThisEventSlotFlagEnabled():
         return
-    
+
     MAIN.Await(CharacterHasSpecialEffect(Characters.CastleGuard29, 10180))
-    
+
     Wait(1.0)
     ForceAnimation(Characters.CastleGuard30, 3010)
     EnableThisSlotFlag()
@@ -1188,9 +1378,9 @@ def Event_10002240(
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=6))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=260))
-    
+
     MAIN.Await(OR_2)
-    
+
     Wait(0.10000000149011612)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     SetSpecialStandbyEndedFlag(character=character, state=True)
@@ -1223,45 +1413,54 @@ def Event_10002290(_, character: uint):
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=6))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=260))
-    
+
     MAIN.Await(OR_2)
-    
+
     RemoveSpecialEffect(character, 8081)
     RemoveSpecialEffect(character, 8082)
 
 
 @RestartOnRest(11002291)
-def Event_11002291(_, character: uint, region: uint, seconds: float):
+def UlceratedTreeSpiritAppears(_, tree_spirit: uint, tree_spirit_clone: uint, trigger_region: uint, delay: float):
     """Event 11002291"""
     if ThisEventSlotFlagEnabled():
         return
-    ForceAnimation(character, 30002)
+    ForceAnimation(tree_spirit, 30002)
+    ForceAnimation(tree_spirit_clone, 30002)
     AND_9.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_9.Add(CharacterHasSpecialEffect(PLAYER, 3710))
     OR_1.Add(AND_9)
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.Alive))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.GrayPhantom))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
-    AND_3.Add(CharacterInsideRegion(character=PLAYER, region=region))
+    AND_3.Add(CharacterInsideRegion(character=PLAYER, region=trigger_region))
     AND_1.Add(AND_3)
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
-    OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
-    OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
-    OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
-    OR_2.Add(CharacterHasStateInfo(character=character, state_info=6))
-    OR_2.Add(CharacterHasStateInfo(character=character, state_info=260))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=tree_spirit))
+    OR_2.Add(CharacterHasStateInfo(character=tree_spirit, state_info=436))
+    OR_2.Add(CharacterHasStateInfo(character=tree_spirit, state_info=2))
+    OR_2.Add(CharacterHasStateInfo(character=tree_spirit, state_info=5))
+    OR_2.Add(CharacterHasStateInfo(character=tree_spirit, state_info=6))
+    OR_2.Add(CharacterHasStateInfo(character=tree_spirit, state_info=260))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=tree_spirit_clone))
+    OR_2.Add(CharacterHasStateInfo(character=tree_spirit_clone, state_info=436))
+    OR_2.Add(CharacterHasStateInfo(character=tree_spirit_clone, state_info=2))
+    OR_2.Add(CharacterHasStateInfo(character=tree_spirit_clone, state_info=5))
+    OR_2.Add(CharacterHasStateInfo(character=tree_spirit_clone, state_info=6))
+    OR_2.Add(CharacterHasStateInfo(character=tree_spirit_clone, state_info=260))
     OR_2.Add(AND_1)
-    
+
     MAIN.Await(OR_2)
-    
+
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     GotoIfFinishedConditionFalse(Label.L1, input_condition=AND_1)
-    Wait(seconds)
+    Wait(delay)
 
     # --- Label 1 --- #
     DefineLabel(1)
-    ForceAnimation(character, 20002)
+    ForceAnimation(tree_spirit, 20002)
+    Wait(0.1)  # for desync
+    ForceAnimation(tree_spirit_clone, 20002)
 
 
 @RestartOnRest(10002310)
@@ -1273,9 +1472,9 @@ def Event_10002310():
     ForceAnimation(Characters.LivingPot, 30000, loop=True)
     AND_1.Add(HasAIStatus(10005231, ai_status=AIStatusType.Battle))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=10002222, min_target_count=0))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableAI(Characters.LivingPot)
     EnableThisSlotFlag()
     ForceAnimation(Characters.LivingPot, 20000, wait_for_completion=True)
@@ -1339,9 +1538,9 @@ def Event_10002311(
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=6))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=260))
-    
+
     MAIN.Await(OR_2)
-    
+
     Wait(0.10000000149011612)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     SetSpecialStandbyEndedFlag(character=character, state=True)
@@ -1385,9 +1584,9 @@ def Event_10002320():
     OR_2.Add(CharacterHasStateInfo(character=10000294, state_info=6))
     OR_2.Add(CharacterHasStateInfo(character=10000294, state_info=260))
     OR_2.Add(AND_1)
-    
+
     MAIN.Await(OR_2)
-    
+
     EnableCharacter(10000294)
     EnableAI(10000294)
     ForceAnimation(10000294, 20000, wait_for_completion=True)
@@ -1401,9 +1600,9 @@ def Event_10002330(_, character: uint, asset: uint):
     EnableNetworkSync()
     EnableAsset(asset)
     AttachAssetToCharacter(character=character, model_point=50, asset=asset)
-    
+
     MAIN.Await(CharacterHasSpecialEffect(character, 10941))
-    
+
     DisableAsset(asset)
     DestroyAsset(asset, request_slot=0)
     EnableThisSlotFlag()
@@ -1417,9 +1616,9 @@ def Event_10002340(_, character: uint, asset: uint):
     EnableNetworkSync()
     AddSpecialEffect(character, 10940)
     AddSpecialEffect(character, 10943)
-    
+
     MAIN.Await(AssetDestroyed(asset))
-    
+
     RemoveSpecialEffect(character, 10940)
     RemoveSpecialEffect(character, 10943)
     SkipLinesIfCharacterHasSpecialEffect(line_count=2, character=character, special_effect=10941)
@@ -1449,9 +1648,9 @@ def Event_10002350(_, character: uint, region: uint, seconds: float, flag: uint)
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=6))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=260))
     OR_2.Add(AND_1)
-    
+
     MAIN.Await(OR_2)
-    
+
     Wait(seconds)
     RemoveSpecialEffect(character, 8081)
     RemoveSpecialEffect(character, 8082)
@@ -1467,7 +1666,7 @@ def Event_10002423(_, character: uint):
 def Event_10002460():
     """Event 10002460"""
     MAIN.Await(TimeOfDayInRange(earliest=(19, 0, 0), latest=(5, 59, 0)))
-    
+
     AddSpecialEffect(10005460, 10930)
     WaitUntilRandomTimeOfDay(earliest=(6, 0, 0), latest=(18, 59, 0))
     RemoveSpecialEffect(10005460, 10930)
@@ -1504,16 +1703,16 @@ def Event_1002680():
     """Event 1002680"""
     AND_1.Add(CharacterOutsideRegion(character=PLAYER, region=10002680))
     AND_1.Add(InsideMap(game_map=STORMVEIL_CASTLE))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(10002681)
     Wait(2.0)
     AND_2.Add(CharacterOutsideRegion(character=PLAYER, region=10002680))
     AND_2.Add(InsideMap(game_map=STORMVEIL_CASTLE))
-    
+
     MAIN.Await(not AND_2)
-    
+
     DisableFlag(10002681)
     Wait(2.0)
     Restart()
@@ -1540,9 +1739,9 @@ def Event_10002670(_, tutorial_param_id: int, flag: uint):
     AND_1.Add(Singleplayer())
     AND_1.Add(InsideMap(game_map=STORMVEIL_CASTLE))
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     if Multiplayer():
         return
     if FlagEnabled(flag):
@@ -1575,9 +1774,9 @@ def Event_10002671(_, tutorial_param_id: int, flag: uint):
     AND_1.Add(PlayerDoesNotHaveGood(9111, including_storage=True))
     AND_1.Add(InsideMap(game_map=STORMVEIL_CASTLE))
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     if Multiplayer():
         return
     Wait(1.0)
@@ -1596,9 +1795,9 @@ def Event_10002672(_, tutorial_param_id: int, flag: uint):
     AND_1.Add(Singleplayer())
     AND_1.Add(InsideMap(game_map=STORMVEIL_CASTLE))
     AND_1.Add(PlayerDoesNotHaveGood(9114))
-    
+
     MAIN.Await(AND_1)
-    
+
     if Multiplayer():
         return
     EnableFlag(flag)
@@ -1618,9 +1817,9 @@ def Event_10002673(_, tutorial_param_id: int, flag: uint, flag_1: uint, tutorial
     AND_1.Add(Singleplayer())
     AND_1.Add(InsideMap(game_map=STORMVEIL_CASTLE))
     AND_1.Add(PlayerDoesNotHaveGood(9116, including_storage=True))
-    
+
     MAIN.Await(AND_1)
-    
+
     if Multiplayer():
         return
     EnableFlag(flag_1)
@@ -1644,9 +1843,9 @@ def Event_10002690():
     DisableNetworkSync()
     AND_1.Add(FlagEnabled(2001))
     AND_1.Add(ActionButtonParamActivated(action_button_id=9980, entity=Assets.AEG099_090_9000))
-    
+
     MAIN.Await(AND_1)
-    
+
     DisplayDialog(text=90000, anchor_entity=Assets.AEG099_090_9000)
     Wait(1.0)
     Restart()
@@ -1659,9 +1858,9 @@ def Event_10002691():
         return
     if FlagEnabled(10007490):
         return
-    
+
     MAIN.Await(FlagState(FlagSetting.On, FlagType.RelativeToThisEventSlot, 10007490))
-    
+
     AwardGesture(gesture_param_id=94)
 
 
@@ -1672,16 +1871,16 @@ def Event_10003500(_, region: uint):
     AND_1.Add(CharacterInsideRegion(character=20000, region=region))
     OR_1.Add(Invasion())
     AND_1.Add(not OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(20000, 9621)
     Wait(0.10000000149011612)
     OR_2.Add(CharacterOutsideRegion(character=20000, region=region))
     OR_2.Add(Invasion())
-    
+
     MAIN.Await(OR_2)
-    
+
     Wait(0.10000000149011612)
     RemoveSpecialEffect(20000, 9621)
     Restart()
@@ -1692,9 +1891,9 @@ def GodrickDies():
     """Event 10002800"""
     if FlagEnabled(Flags.GodrickDead):
         return
-    
+
     MAIN.Await(HealthRatio(Characters.Godrick) <= 0.0 and HealthRatio(Characters.CLONE_Godrick) <= 0.0)
-    
+
     Kill(10005810)
     Kill(10005820)
     CreateVFX(10003820)
@@ -1708,9 +1907,9 @@ def GodrickDies():
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9646))
     OR_2.Add(AND_2)
     OR_2.Add(FlagEnabled(Flags.GodrickDead))
-    
+
     MAIN.Await(OR_2)
-    
+
     KillBossAndDisplayBanner(character=Characters.Godrick, banner_type=BannerType.DemigodFelled)
     if PlayerInOwnWorld():
         TriggerMultiplayerEvent(event_id=0)
@@ -1725,9 +1924,9 @@ def GodrickDies():
     DeleteVFX(10003811)
     EnableAssetActivation(Assets.AEG219_001_0500, obj_act_id=219001)
     AND_9.Add(PlayerStandingOnCollision(10003840))
-    
+
     MAIN.Await(not AND_9)
-    
+
     SuppressSoundEvent(sound_id=6, unk_4_8=0, suppression_active=False)
 
 
@@ -1776,9 +1975,9 @@ def GodrickBattleTrigger():
     DisableAsset(Assets.AEG210_027_8500)
     AND_2.Add(FlagEnabled(10002805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=10002800))
-    
+
     MAIN.Await(AND_2)
-    
+
     DeleteVFX(10003830)
     DeleteVFX(10003831)
     DeleteVFX(10003832)
@@ -1851,7 +2050,7 @@ def GodrickBattleTrigger():
     )
     AND_2.Add(FlagEnabled(10002805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=10002800))
-    
+
     MAIN.Await(AND_2)
 
     # --- Label 2 --- #
@@ -1870,9 +2069,9 @@ def GodrickPhaseTwoTransition(_, character: uint):
         return
     OR_1.Add(CharacterHasSpecialEffect(character, 14785))
     OR_1.Add(FlagEnabled(Flags.GodrickDead))
-    
+
     MAIN.Await(OR_1)
-    
+
     if FlagEnabled(Flags.GodrickDead):
         return
     AND_14.Add(HealthValue(PLAYER) <= 0)
@@ -1948,15 +2147,15 @@ def Event_10002820(_, character: uint, region: uint, special_effect_id: int, spe
     if PlayerNotInOwnWorld():
         return
     AND_1.Add(CharacterInsideRegion(character=character, region=region))
-    
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(Characters.Godrick, special_effect_id)
     Wait(0.10000000149011612)
     AND_2.Add(CharacterOutsideRegion(character=character, region=region))
-    
+
     MAIN.Await(AND_2)
-    
+
     Wait(0.10000000149011612)
     AddSpecialEffect(character, special_effect_id_1)
     Restart()
@@ -1969,15 +2168,15 @@ def Event_10002821(_, region: uint, special_effect_id: int, special_effect_id_1:
         return
     DisableNetworkSync()
     AND_1.Add(CharacterInsideRegion(character=20000, region=region))
-    
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(20000, special_effect_id)
     Wait(0.10000000149011612)
     AND_2.Add(CharacterOutsideRegion(character=20000, region=region))
-    
+
     MAIN.Await(AND_2)
-    
+
     Wait(0.10000000149011612)
     AddSpecialEffect(20000, special_effect_id_1)
     Restart()
@@ -1991,15 +2190,15 @@ def Event_10002824(_, character: uint, region: uint, special_effect_id: int, spe
     if PlayerNotInOwnWorld():
         return
     AND_1.Add(CharacterInsideRegion(character=character, region=region))
-    
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(character, special_effect_id)
     Wait(0.10000000149011612)
     AND_2.Add(CharacterOutsideRegion(character=character, region=region))
-    
+
     MAIN.Await(AND_2)
-    
+
     Wait(0.10000000149011612)
     AddSpecialEffect(character, special_effect_id_1)
     Restart()
@@ -2012,15 +2211,15 @@ def Event_10002825(_, region: uint, special_effect_id: int, special_effect_id_1:
         return
     DisableNetworkSync()
     AND_1.Add(CharacterInsideRegion(character=20000, region=region))
-    
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(20000, special_effect_id)
     Wait(0.10000000149011612)
     AND_2.Add(CharacterOutsideRegion(character=20000, region=region))
-    
+
     MAIN.Await(AND_2)
-    
+
     Wait(0.10000000149011612)
     AddSpecialEffect(20000, special_effect_id_1)
     Restart()
@@ -2049,7 +2248,9 @@ def GodrickFogGateEvents():
         summon_entered_fog_flag=10002806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.GodrickDead, fog_asset=Assets.AEG099_002_9000, model_point=5, required_flag=0)
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.GodrickDead, fog_asset=Assets.AEG099_002_9000, model_point=5, required_flag=0
+    )
     CommonFunc_ControlBossMusic(0, Flags.GodrickDead, 475000, 10002805, 10002806, 0, 10002802, 1, 1)
 
 
@@ -2058,14 +2259,14 @@ def MargitDies():
     """Event 10002850"""
     if FlagEnabled(Flags.MargitDead):
         return
-    
+
     MAIN.Await(HealthValue(Characters.Margit) <= 0 and HealthValue(Characters.CLONE_Margit) <= 0)
-    
+
     Wait(2.0)
     PlaySoundEffect(Characters.Margit, 77777777, sound_type=SoundType.s_SFX)
-    
+
     MAIN.Await(CharacterDead(Characters.Margit) and CharacterDead(Characters.CLONE_Margit))
-    
+
     Kill(Characters.Margit)
     Kill(Characters.CLONE_Margit)
     KillBossAndDisplayBanner(character=Characters.Margit, banner_type=BannerType.GreatEnemyFelled)
@@ -2109,9 +2310,9 @@ def MargitBattleStart():
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Margit))
     AND_10.Add(OR_1)
     AND_10.Add(FlagDisabled(Flags.MargitDead))
-    
+
     MAIN.Await(AND_10)
-    
+
     SetCharacterFadeOnEnable(character=Characters.Margit, state=False)
     SetCharacterFadeOnEnable(character=Characters.CLONE_Margit, state=False)
     if PlayerInOwnWorld():
@@ -2140,9 +2341,9 @@ def MargitBattleStart():
     DefineLabel(1)
     AND_2.Add(FlagEnabled(10002855))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=10002850))
-    
+
     MAIN.Await(AND_2)
-    
+
     if PlayerInOwnWorld():
         BanishInvaders(unknown=0)
 
@@ -2163,9 +2364,9 @@ def MargitPhaseTwoMusicTrigger():
     if FlagEnabled(Flags.MargitDead):
         return
     AND_1.Add(CharacterHasSpecialEffect(Characters.Margit, 16205))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(10002852)
 
 
@@ -2180,13 +2381,13 @@ def MargitPostBattleBackread():
     AND_1.Add(HealthValue(Characters.Margit) == 0)
 
     MAIN.Await(AND_1)
-    
+
     SetBackreadStateAlternate(Characters.Margit, True)
     AND_2.Add(FlagEnabled(10002705))
     AND_2.Add(TimeElapsed(seconds=50.0))
-    
+
     MAIN.Await(AND_2)
-    
+
     SetBackreadStateAlternate(Characters.Margit, False)
 
 
@@ -2213,7 +2414,9 @@ def MargitFogGateEvents():
         summon_entered_fog_flag=10002856,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.MargitDead, fog_asset=Assets.AEG099_002_9001, model_point=3, required_flag=10000851)
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.MargitDead, fog_asset=Assets.AEG099_002_9001, model_point=3, required_flag=10000851
+    )
     CommonFunc_9005813(
         0,
         flag=Flags.MargitDead,
@@ -2245,9 +2448,9 @@ def Event_10003700(_, character: uint, asset: uint):
     GotoIfConditionTrue(Label.L5, input_condition=AND_1)
     AND_2.Add(FlagRangeAnyEnabled(flag_range=(3265, 3268)))
     AND_2.Add(FlagEnabled(10009514))
-    
+
     MAIN.Await(AND_2)
-    
+
     Restart()
 
     # --- Label 5 --- #
@@ -2284,9 +2487,9 @@ def Event_10003700(_, character: uint, asset: uint):
     DefineLabel(20)
     AND_10.Add(FlagRangeAnyEnabled(flag_range=(3265, 3268)))
     AND_10.Add(FlagEnabled(10009514))
-    
+
     MAIN.Await(not AND_10)
-    
+
     Restart()
 
 
@@ -2309,9 +2512,9 @@ def Event_10003701(_, character: uint, asset: uint, flag: uint, flag_1: uint):
     GotoIfConditionTrue(Label.L5, input_condition=AND_1)
     AND_2.Add(FlagRangeAnyEnabled(flag_range=(3265, 3268)))
     AND_2.Add(FlagEnabled(flag))
-    
+
     MAIN.Await(AND_2)
-    
+
     Restart()
 
     # --- Label 5 --- #
@@ -2358,9 +2561,9 @@ def Event_10003701(_, character: uint, asset: uint, flag: uint, flag_1: uint):
     DefineLabel(20)
     AND_10.Add(FlagRangeAnyEnabled(flag_range=(3265, 3268)))
     AND_10.Add(FlagEnabled(flag))
-    
+
     MAIN.Await(not AND_10)
-    
+
     Restart()
 
 
@@ -2379,9 +2582,9 @@ def Event_10003702(_, character: uint):
     DisableBackread(character)
     GotoIfFlagEnabled(Label.L5, flag=3269)
     OR_1.Add(FlagEnabled(3269))
-    
+
     MAIN.Await(OR_1)
-    
+
     Restart()
 
     # --- Label 5 --- #
@@ -2415,9 +2618,9 @@ def Event_10003702(_, character: uint):
     # --- Label 20 --- #
     DefineLabel(20)
     OR_10.Add(FlagDisabled(3269))
-    
+
     MAIN.Await(OR_10)
-    
+
     Restart()
 
 
@@ -2481,9 +2684,9 @@ def Event_10003705(_, entity: uint):
         return
     if FlagEnabled(3263):
         return
-    
+
     MAIN.Await(FlagEnabled(3261))
-    
+
     ForceAnimation(entity, 20019)
 
 
@@ -2492,14 +2695,14 @@ def Event_10003710():
     """Event 10003710"""
     if PlayerNotInOwnWorld():
         return
-    
+
     MAIN.Await(CharacterInsideRegion(character=PLAYER, region=10002709))
-    
+
     EnableNetworkFlag(10002765)
     EnableNetworkFlag(3278)
-    
+
     MAIN.Await(CharacterOutsideRegion(character=PLAYER, region=10002709))
-    
+
     Restart()
 
 
@@ -2510,19 +2713,19 @@ def Event_10003711(_, first_flag: uint, last_flag: uint, flag: uint, region: uin
         return
     if FlagEnabled(3261):
         return
-    
+
     MAIN.Await(CharacterInsideRegion(character=PLAYER, region=region))
-    
+
     MAIN.Await(FlagEnabled(10009397))
-    
+
     SkipLinesIfCharacterInsideRegion(line_count=1, character=PLAYER, region=10002704)
     if FlagEnabled(10009360):
         return
     DisableNetworkConnectedFlagRange(flag_range=(first_flag, last_flag))
     EnableNetworkFlag(flag)
-    
+
     MAIN.Await(CharacterOutsideRegion(character=PLAYER, region=region))
-    
+
     Restart()
 
 
@@ -2542,19 +2745,19 @@ def Event_10003715(
         return
     if FlagEnabled(3261):
         return
-    
+
     MAIN.Await(CharacterInsideRegion(character=PLAYER, region=region))
-    
+
     MAIN.Await(FlagEnabled(10009397))
-    
+
     if FlagEnabled(flag):
         DisableNetworkConnectedFlagRange(flag_range=(first_flag, last_flag))
         DisableNetworkConnectedFlagRange(flag_range=(first_flag_1, last_flag_1))
         EnableNetworkFlag(flag_1)
         EnableNetworkFlag(3278)
-    
+
     MAIN.Await(CharacterOutsideRegion(character=PLAYER, region=region))
-    
+
     Restart()
 
 
@@ -2566,9 +2769,9 @@ def Event_10003720(_, flag: uint, flag_1: uint):
     DisableNetworkFlag(10009389)
     if FlagEnabled(flag):
         EnableNetworkFlag(flag_1)
-    
+
     MAIN.Await(FlagEnabled(10009389))
-    
+
     Restart()
 
 
@@ -2588,9 +2791,9 @@ def Event_10003724():
 
     # --- Label 0 --- #
     DefineLabel(0)
-    
+
     MAIN.Await(CharacterInsideRegion(character=PLAYER, region=10002715))
-    
+
     EnableFlag(10002769)
     Goto(Label.L2)
 
@@ -2611,9 +2814,9 @@ def Event_10003724():
     OR_15.Add(OR_2)
     OR_15.Add(OR_3)
     OR_15.Add(OR_4)
-    
+
     MAIN.Await(OR_15)
-    
+
     GotoIfFinishedConditionTrue(Label.L3, input_condition=OR_1)
     GotoIfFinishedConditionTrue(Label.L4, input_condition=OR_2)
     GotoIfFinishedConditionTrue(Label.L5, input_condition=OR_3)
@@ -2649,9 +2852,9 @@ def Event_10003726():
     AND_1.Add(FlagEnabled(10002731))
     AND_1.Add(FlagDisabled(10009354))
     AND_1.Add(FlagDisabled(10009355))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(10009500)
 
 
@@ -2674,9 +2877,9 @@ def Event_10003729(_, region: uint):
     """Event 10003729"""
     if PlayerNotInOwnWorld():
         return
-    
+
     MAIN.Await(CharacterInsideRegion(character=PLAYER, region=region))
-    
+
     EnableNetworkFlag(10009356)
     End()
 
@@ -2691,9 +2894,9 @@ def Event_10003730():
     AND_3.Add(FlagEnabled(10009512))
     AND_3.Add(FlagEnabled(3260))
     AND_3.Add(FlagDisabled(3261))
-    
+
     MAIN.Await(AND_3)
-    
+
     EnableNetworkFlag(10009370)
     Goto(Label.L20)
 
@@ -2721,9 +2924,9 @@ def Event_10003731():
     OR_2.Add(FlagEnabled(10009377))
     OR_3.Add(OR_1)
     OR_3.Add(OR_2)
-    
+
     MAIN.Await(OR_3)
-    
+
     GotoIfFinishedConditionTrue(Label.L1, input_condition=OR_1)
     EndIfFinishedConditionTrue(input_condition=OR_2)
     End()
@@ -2779,17 +2982,17 @@ def Event_10003731():
     AND_5.Add(CharacterType(PLAYER, character_type=CharacterType.Alive))
     OR_5.Add(CharacterDead(Characters.BanishedKnight1))
     OR_5.Add(AND_5)
-    
+
     MAIN.Await(OR_5)
-    
+
     EnableNetworkFlag(10009377)
     EnableAssetActivation(Assets.AEG219_000_0501, obj_act_id=1219000, relative_index=0)
     EnableAssetActivation(Assets.AEG219_000_0501, obj_act_id=1219000, relative_index=1)
     DisableAssetActivation(Assets.AEG219_000_0501, obj_act_id=1219000, relative_index=2)
     DisableAssetActivation(Assets.AEG219_000_0501, obj_act_id=1219000, relative_index=3)
-    
+
     MAIN.Await(AssetActivated(obj_act_id=10003562))
-    
+
     EnableFlag(10000562)
     DisableAssetActivation(Assets.AEG219_000_0501, obj_act_id=1219000, relative_index=0)
     DisableAssetActivation(Assets.AEG219_000_0501, obj_act_id=1219000, relative_index=1)
@@ -2816,9 +3019,9 @@ def Event_10003732():
     OR_2.Add(FlagEnabled(10009377))
     OR_3.Add(OR_1)
     OR_3.Add(OR_2)
-    
+
     MAIN.Await(OR_3)
-    
+
     GotoIfFinishedConditionTrue(Label.L2, input_condition=OR_1)
     EndIfFinishedConditionTrue(input_condition=OR_2)
     End()
@@ -2827,9 +3030,9 @@ def Event_10003732():
     DefineLabel(2)
     OR_4.Add(ActionButtonParamActivated(action_button_id=9000, entity=Assets.AEG219_000_0501))
     OR_4.Add(FlagEnabled(10009377))
-    
+
     MAIN.Await(OR_4)
-    
+
     if FlagEnabled(10009377):
         return
     if FlagDisabled(10009377):
@@ -2863,9 +3066,9 @@ def Event_10003733():
     OR_5.Add(OR_2)
     OR_5.Add(OR_3)
     OR_5.Add(OR_4)
-    
+
     MAIN.Await(OR_5)
-    
+
     GotoIfFinishedConditionTrue(Label.L2, input_condition=OR_1)
     Goto(Label.L1)
 
@@ -2880,18 +3083,18 @@ def Event_10003733():
     AND_6.Add(CharacterType(PLAYER, character_type=CharacterType.Alive))
     OR_6.Add(CharacterDead(Characters.BanishedKnight1))
     OR_6.Add(AND_6)
-    
+
     MAIN.Await(OR_6)
-    
+
     EnableNetworkFlag(10009377)
     DisableNetworkFlag(10000562)
     EnableAssetActivation(Assets.AEG219_000_0501, obj_act_id=1219000, relative_index=0)
     EnableAssetActivation(Assets.AEG219_000_0501, obj_act_id=1219000, relative_index=1)
     DisableAssetActivation(Assets.AEG219_000_0501, obj_act_id=1219000, relative_index=2)
     DisableAssetActivation(Assets.AEG219_000_0501, obj_act_id=1219000, relative_index=3)
-    
+
     MAIN.Await(AssetActivated(obj_act_id=10003562))
-    
+
     EnableFlag(10000562)
     DisableAssetActivation(Assets.AEG219_000_0501, obj_act_id=1219000, relative_index=0)
     DisableAssetActivation(Assets.AEG219_000_0501, obj_act_id=1219000, relative_index=1)
@@ -2910,9 +3113,9 @@ def Event_10003734():
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=10002710))
     AND_1.Add(CharacterType(PLAYER, character_type=CharacterType.Alive))
     AND_1.Add(FlagDisabled(10009377))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(10009374)
     End()
 
@@ -2934,22 +3137,22 @@ def Event_10003735():
     DefineLabel(0)
     OR_1.Add(FlagEnabled(10009374))
     OR_1.Add(FlagEnabled(10009377))
-    
+
     MAIN.Await(OR_1)
-    
+
     Restart()
 
     # --- Label 1 --- #
     DefineLabel(1)
-    
+
     MAIN.Await(CharacterDoesNotHaveSpecialEffect(PLAYER, 4283))
-    
+
     AddSpecialEffect(PLAYER, 4282)
     OR_2.Add(FlagDisabled(10009374))
     OR_2.Add(FlagEnabled(10009377))
-    
+
     MAIN.Await(OR_2)
-    
+
     AddSpecialEffect(PLAYER, 4283)
     Restart()
 
@@ -2959,9 +3162,9 @@ def Event_10003736():
     """Event 10003736"""
     if PlayerNotInOwnWorld():
         return
-    
+
     MAIN.Await(InsideMap(game_map=STORMVEIL_CASTLE))
-    
+
     MultiplyBloodstainSouls(multiplier=0.0, bloodstain_save_slot_id=-1)
     OR_1.Add(FlagRangeAnyEnabled(flag_range=(10009510, 10009513)))
     AND_1.Add(FlagEnabled(10009360))
@@ -2973,9 +3176,9 @@ def Event_10003736():
     OR_4.Add(OR_1)
     OR_4.Add(OR_2)
     OR_4.Add(OR_3)
-    
+
     MAIN.Await(OR_4)
-    
+
     SkipLinesIfFinishedConditionFalse(2, input_condition=OR_2)
     MultiplyBloodstainSouls(multiplier=0.0, bloodstain_save_slot_id=-1)
     End()
@@ -2993,9 +3196,9 @@ def Event_10003736():
     OR_8.Add(OR_5)
     OR_8.Add(OR_6)
     OR_8.Add(OR_7)
-    
+
     MAIN.Await(OR_8)
-    
+
     MultiplyBloodstainSouls(multiplier=0.0, bloodstain_save_slot_id=-1)
     EndIfFinishedConditionTrue(input_condition=OR_6)
     Restart()
@@ -3008,9 +3211,9 @@ def Event_10003737():
         return
     if FlagEnabled(3263):
         return
-    
+
     MAIN.Await(FlagRangeAnyEnabled(flag_range=(2600, 2629)))
-    
+
     IncreaseCharacterSoulReward(
         character=Characters.GatekeeperGostoc0,
         fixed_increase_amount=0,
@@ -3054,9 +3257,9 @@ def Event_10003738():
     AND_5.Add(CharacterType(PLAYER, character_type=CharacterType.Alive))
     AND_6.Add(FlagEnabled(10009377))
     AND_6.Add(AND_5)
-    
+
     MAIN.Await(AND_6)
-    
+
     DisableAsset(Assets.AEG099_003_9000)
     DeleteAssetVFX(Assets.AEG099_003_9000)
     End()
@@ -3069,9 +3272,9 @@ def Event_10000739():
     OR_1.Add(FlagEnabled(10009374))
     OR_1.Add(FlagEnabled(10009377))
     OR_1.Add(FlagEnabled(10000379))
-    
+
     MAIN.Await(OR_1)
-    
+
     DisableInvincibility(Characters.BanishedKnight1)
     End()
 
@@ -3083,15 +3286,15 @@ def Event_10003740(_, character: uint, special_effect: int, flag: uint, seconds:
         return
     AND_1.Add(CharacterHasSpecialEffect(character, special_effect))
     AND_1.Add(FlagDisabled(flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(flag)
     OR_1.Add(TimeElapsed(seconds=seconds))
     OR_1.Add(FlagDisabled(flag))
-    
+
     MAIN.Await(OR_1)
-    
+
     DisableFlag(flag)
     Restart()
 
@@ -3103,15 +3306,15 @@ def Event_10003741(_, character: uint, special_effect: int, flag: uint, seconds:
         return
     AND_1.Add(CharacterHasSpecialEffect(character, special_effect))
     AND_1.Add(FlagDisabled(flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(flag)
     OR_1.Add(TimeElapsed(seconds=seconds))
     OR_1.Add(FlagDisabled(flag))
-    
+
     MAIN.Await(OR_1)
-    
+
     DisableFlag(flag)
     Restart()
 
@@ -3123,15 +3326,15 @@ def Event_10003742(_, character: uint, special_effect: int, flag: uint, seconds:
         return
     AND_1.Add(CharacterHasSpecialEffect(character, special_effect))
     AND_1.Add(FlagDisabled(flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(flag)
     OR_1.Add(TimeElapsed(seconds=seconds))
     OR_1.Add(FlagDisabled(flag))
-    
+
     MAIN.Await(OR_1)
-    
+
     DisableFlag(flag)
     Restart()
 
@@ -3143,15 +3346,15 @@ def Event_10003743(_, character: uint, special_effect: int, flag: uint, seconds:
         return
     AND_1.Add(CharacterHasSpecialEffect(character, special_effect))
     AND_1.Add(FlagDisabled(flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(flag)
     OR_1.Add(TimeElapsed(seconds=seconds))
     OR_1.Add(FlagDisabled(flag))
-    
+
     MAIN.Await(OR_1)
-    
+
     DisableFlag(flag)
     Restart()
 
@@ -3171,9 +3374,9 @@ def Event_10003744(_, character: uint, character_1: uint, flag: uint, flag_1: ui
 
     # --- Label 1 --- #
     DefineLabel(1)
-    
+
     MAIN.Await(FlagEnabled(flag_1))
-    
+
     Goto(Label.L2)
 
     # --- Label 2 --- #
@@ -3214,9 +3417,9 @@ def Event_10000760(_, character: uint):
     DisableBackread(character)
     AND_2.Add(FlagEnabled(3905))
     AND_2.Add(FlagDisabled(10002164))
-    
+
     MAIN.Await(AND_2)
-    
+
     Restart()
 
     # --- Label 5 --- #
@@ -3234,9 +3437,9 @@ def Event_10000760(_, character: uint):
     DefineLabel(20)
     AND_3.Add(FlagEnabled(3905))
     AND_3.Add(FlagDisabled(10002164))
-    
+
     MAIN.Await(not AND_3)
-    
+
     Restart()
 
 
@@ -3247,9 +3450,9 @@ def Event_10000761():
         return
     if FlagEnabled(9101):
         return
-    
+
     MAIN.Await(FlagEnabled(9101))
-    
+
     EnableFlag(3918)
 
 
@@ -3260,9 +3463,9 @@ def Event_10000762():
         return
     if FlagEnabled(11109528):
         return
-    
+
     MAIN.Await(FlagEnabled(10000291))
-    
+
     EnableFlag(11109528)
 
 
@@ -3278,9 +3481,9 @@ def Event_10000763(_, asset: uint, radius: float):
     AND_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=asset, radius=radius))
     AND_1.Add(FlagDisabled(10002164))
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(10009610)
     EnableFlag(3918)
 
@@ -3300,21 +3503,21 @@ def Event_10000764(_, character: uint, entity: uint):
     if PlayerNotInOwnWorld():
         return
     GotoIfFlagEnabled(Label.L0, flag=10009610)
-    
+
     MAIN.Await(FlagEnabled(10009610))
-    
+
     Wait(0.10000000149011612)
 
     # --- Label 0 --- #
     DefineLabel(0)
-    
+
     MAIN.Await(ActionButtonParamActivated(action_button_id=6511, entity=entity))
-    
+
     EnableCharacter(character)
     EnableBackread(character)
-    
+
     MAIN.Await(CharacterBackreadEnabled(character))
-    
+
     ResetAnimation(character, disable_interpolation=True)
     Wait(0.6000000238418579)
     ForceAnimation(character, 90203)
@@ -3336,16 +3539,16 @@ def Event_10003770(_, flag: uint, other_entity: uint, flag_1: uint):
     AND_1.Add(FlagEnabled(flag))
     AND_1.Add(EntityWithinDistance(entity=20000, other_entity=other_entity, radius=5.0))
     AND_1.Add(FlagDisabled(flag_1))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(1042372701)
     OR_1.Add(FlagDisabled(flag))
     OR_1.Add(EntityBeyondDistance(entity=20000, other_entity=other_entity, radius=5.0))
     OR_1.Add(FlagEnabled(flag_1))
-    
+
     MAIN.Await(OR_1)
-    
+
     DisableFlag(1042372701)
     Restart()
 
@@ -3358,9 +3561,9 @@ def Event_10003771(_, other_entity: uint, flag: uint):
         return
     if FlagEnabled(4680):
         return
-    
+
     MAIN.Await(FlagEnabled(4680))
-    
+
     AND_2.Add(EntityWithinDistance(entity=20000, other_entity=other_entity, radius=5.0))
     SkipLinesIfConditionFalse(1, AND_2)
     EnableFlag(flag)
@@ -3375,9 +3578,9 @@ def Event_10003772(_, other_entity: uint, flag: uint):
         return
     if FlagEnabled(1042379203):
         return
-    
+
     MAIN.Await(FlagEnabled(1042379203))
-    
+
     AND_2.Add(EntityWithinDistance(entity=20000, other_entity=other_entity, radius=5.0))
     SkipLinesIfConditionFalse(1, AND_2)
     EnableFlag(flag)
@@ -3394,13 +3597,13 @@ def Event_10003773(_, other_entity: uint, flag: uint):
         return
     AND_1.Add(EntityWithinDistance(entity=20000, other_entity=other_entity, radius=5.0))
     AND_1.Add(FlagEnabled(flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(1042372702)
-    
+
     MAIN.Await(EntityBeyondDistance(entity=20000, other_entity=other_entity, radius=5.0))
-    
+
     DisableFlag(1042372702)
     Restart()
 
@@ -3485,9 +3688,9 @@ def Event_10003776(_, character: uint):
     GotoIfFlagEnabled(Label.L6, flag=4229)
     DisableCharacter(character)
     DisableBackread(character)
-    
+
     MAIN.Await(FlagEnabled(4229))
-    
+
     Restart()
 
     # --- Label 6 --- #
@@ -3519,9 +3722,9 @@ def Event_10003776(_, character: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    
+
     MAIN.Await(FlagDisabled(4229))
-    
+
     Restart()
     End()
 
@@ -3660,7 +3863,7 @@ def Event_10002910():
     if FlagEnabled(Flags.GodrickDead):
         return
     OR_1.Add(FlagEnabled(10002160))
-    
+
     MAIN.Await(OR_1)
-    
+
     DisableMapCollision(collision=10004910)

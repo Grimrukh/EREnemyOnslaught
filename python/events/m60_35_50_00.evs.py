@@ -121,7 +121,7 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.LesserFingercreeper5,
         animation_id=30000,
@@ -146,7 +146,7 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.LesserFingercreeper8,
         animation_id=30003,
@@ -159,7 +159,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.LesserFingercreeper9,
         animation_id=30000,
@@ -172,7 +172,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.LesserFingercreeper10,
         animation_id=30000,
@@ -185,7 +185,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.LesserFingercreeper11,
         animation_id=30000,
@@ -210,7 +210,7 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.LesserFingercreeper13,
         animation_id=30000,
@@ -223,7 +223,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.LesserFingercreeper14,
         animation_id=30000,
@@ -236,7 +236,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.LesserFingercreeper15,
         animation_id=30000,
@@ -249,7 +249,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.LesserFingercreeper16,
         animation_id=30000,
@@ -495,7 +495,7 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.Fingercreeper2,
         animation_id=30003,
@@ -508,7 +508,7 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.Fingercreeper3,
         animation_id=30003,

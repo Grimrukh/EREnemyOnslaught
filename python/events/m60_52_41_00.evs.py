@@ -50,7 +50,7 @@ def Constructor():
         0,
         dead_flag=1052410850,
         extra_flag_to_enable=0,
-        boss_character=Characters.NightsCavalry,
+        boss=Characters.NightsCavalry,
         boss_banner_choice=0,
         item_lot=1052410100,
         seconds=0.0,
@@ -67,12 +67,12 @@ def Constructor():
         asset_2=Assets.AEG099_182_2000,
         flag_2=1052410512,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.FlyingDragon, name=904500601, npc_threat_level=25)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.FlyingDragon, name=904500601, npc_threat_level=25)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1052410800,
         extra_flag_to_enable=0,
-        boss_character=Characters.FlyingDragon,
+        boss=Characters.FlyingDragon,
         boss_banner_choice=1,
         item_lot=30420,
         seconds=0.0,

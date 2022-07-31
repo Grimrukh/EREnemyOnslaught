@@ -27,21 +27,24 @@ def Constructor():
     """Event 0"""
     Event_1033422211()
     Event_1033422611()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1033420610, character=Characters.GiantTurtle, item_lot=0, reward_delay=0.0, skip_reward=0)
-    CommonFunc_90005880(
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1033420610, character=Characters.GiantTurtle, item_lot=0, reward_delay=0.0, skip_reward=0, clone=0
+    )
+    CommonFunc_EvergaolBossDies(
         0,
-        flag=1033420800,
-        flag_1=1033420805,
+        dead_flag=1033420800,
+        required_flag=1033420805,
         flag_2=1033422800,
-        character=Characters.BlackKnifeAssassin,
+        boss=Characters.AlectoBlackKnifeRingleader,
         item_lot=30265,
         area_id=60,
         block_id=33,
         cc_id=42,
         dd_id=0,
         player_start=1033422805,
+        clone=Characters.CLONE_AlectoBlackKnifeRingleader,
     )
-    CommonFunc_90005881(
+    CommonFunc_EnterEvergaol(
         0,
         flag=1033420800,
         flag_1=1033420805,
@@ -55,23 +58,24 @@ def Constructor():
         dd_id=0,
         player_start=1033422805,
     )
-    CommonFunc_90005882(
+    CommonFunc_EvergaolBossBattleTrigger(
         0,
-        flag=1033420800,
-        flag_1=1033420805,
+        dead_flag=1033420800,
+        required_flag=1033420805,
         flag_2=1033422800,
-        character=Characters.BlackKnifeAssassin,
-        flag_3=1033422806,
+        boss=Characters.AlectoBlackKnifeRingleader,
+        battle_started_flag=1033422806,
         character_1=1033425810,
-        asset=Assets.AEG099_120_1000,
+        evergaol_gate=Assets.AEG099_120_1000,
         owner_entity=Characters.TalkDummy,
         source_entity=1033422810,
-        name=902100521,
-        animation_id=-1,
-        animation_id_1=20020,
+        boss_name=902100521,
+        standby_animation=-1,
+        appearance_animation=20020,
+        clone=Characters.CLONE_AlectoBlackKnifeRingleader,
     )
     CommonFunc_90005883(0, flag=1033420800, flag_1=1033420805, entity=Assets.AEG099_170_1000)
-    CommonFunc_90005885(0, 1033420800, 0, 1033422806, 1033422807, 0, 1)
+    CommonFunc_EvergaolBossMusic(0, 1033420800, 0, 1033422806, 1033422807, 0, 1)
 
 
 @RestartOnRest(1033422211)

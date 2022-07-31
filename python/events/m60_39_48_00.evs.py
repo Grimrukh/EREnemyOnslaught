@@ -41,7 +41,7 @@ def Constructor():
     )
     Event_1039482610()
     Event_1039482611()
-    CommonFunc_NonRespawningWithReward(0, 1039480340, 1039480340, 0, 0.0, 0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1039480340, character=1039480340, item_lot=0, reward_delay=0.0, skip_reward=0)
 
 
 @ContinueOnRest(50)

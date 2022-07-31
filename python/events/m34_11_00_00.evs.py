@@ -148,7 +148,7 @@ def Preconstructor():
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.LesserFingercreeper19, region=34112245, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.LesserFingercreeper20, region=34112245, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.LesserFingercreeper21, region=34112245, seconds=0.0, animation_id=-1)
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble0,
         animation_id=30004,
@@ -161,7 +161,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble1,
         animation_id=30004,
@@ -174,7 +174,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble2,
         animation_id=30004,
@@ -187,7 +187,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble3,
         animation_id=30004,
@@ -200,7 +200,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble4,
         animation_id=30004,
@@ -213,7 +213,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble5,
         animation_id=30004,
@@ -226,7 +226,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble6,
         animation_id=30004,
@@ -239,7 +239,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble7,
         animation_id=30004,
@@ -252,7 +252,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble8,
         animation_id=30004,
@@ -265,7 +265,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble9,
         animation_id=30004,
@@ -314,7 +314,7 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble13,
         animation_id=30004,
@@ -327,7 +327,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble14,
         animation_id=30004,
@@ -340,7 +340,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble15,
         animation_id=30004,
@@ -353,7 +353,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble16,
         animation_id=30004,
@@ -366,7 +366,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble17,
         animation_id=30004,
@@ -379,7 +379,7 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005210(
+    CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
         0,
         character=Characters.WanderingNoble18,
         animation_id=30004,

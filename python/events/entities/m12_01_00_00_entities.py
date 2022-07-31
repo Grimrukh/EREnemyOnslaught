@@ -9,6 +9,8 @@ class Flags(Flag):
 class NameText(NPCName):
     DragonkinSoldierOfNokstella = 904650000
     CLONE_DragonkinSoldierOfNokstella = 904650010
+    DragonkinSoldierLakeOfRot = 904650601
+    CLONE_DragonkinSoldierLakeOfRot = 904650611
 
 
 class Characters(Character):

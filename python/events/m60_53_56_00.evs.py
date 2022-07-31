@@ -176,12 +176,12 @@ def Constructor():
         seconds_3=0.0,
         flag_1=1053562251,
     )
-    CommonFunc_90005880(
+    CommonFunc_EvergaolBossDies(
         0,
-        flag=1053560800,
-        flag_1=1053560805,
+        dead_flag=1053560800,
+        required_flag=1053560805,
         flag_2=1053562800,
-        character=Characters.RoundtableKnightVyke,
+        boss=Characters.RoundtableKnightVyke,
         item_lot=30515,
         area_id=60,
         block_id=53,
@@ -189,7 +189,7 @@ def Constructor():
         dd_id=0,
         player_start=1053562805,
     )
-    CommonFunc_90005881(
+    CommonFunc_EnterEvergaol(
         0,
         flag=1053560800,
         flag_1=1053560805,
@@ -203,23 +203,23 @@ def Constructor():
         dd_id=0,
         player_start=1053562805,
     )
-    CommonFunc_90005882(
+    CommonFunc_EvergaolBossBattleTrigger(
         0,
-        flag=1053560800,
-        flag_1=1053560805,
+        dead_flag=1053560800,
+        required_flag=1053560805,
         flag_2=1053562800,
-        character=Characters.RoundtableKnightVyke,
-        flag_3=1053562806,
+        boss=Characters.RoundtableKnightVyke,
+        battle_started_flag=1053562806,
         character_1=1053565810,
-        asset=Assets.AEG099_120_1000,
+        evergaol_gate=Assets.AEG099_120_1000,
         owner_entity=Characters.TalkDummy,
         source_entity=1053562810,
-        name=130401,
-        animation_id=-1,
-        animation_id_1=90005,
+        boss_name=130401,
+        standby_animation=-1,
+        appearance_animation=90005,
     )
     CommonFunc_90005883(0, flag=1053560800, flag_1=1053560805, entity=Assets.AEG099_171_1000)
-    CommonFunc_90005885(
+    CommonFunc_EvergaolBossMusic(
         0,
         flag=1053560800,
         bgm_boss_conv_param_id=921100,

@@ -220,7 +220,7 @@ def CommonFunc_TriggerInactiveEnemy_WithRadius(
 
 
 @RestartOnRest(90005210)
-def CommonFunc_90005210(
+def CommonFunc_TriggerInactiveEnemy_WithRegionAndRadius(
     _,
     character: uint,
     animation_id: int,
@@ -1025,6 +1025,7 @@ def CommonFunc_NonRespawningWithReward(
     item_lot: int,
     reward_delay: float,
     skip_reward: int,
+    clone: uint,
 ):
     """CommonFunc for preventing a character from respawning and giving a reward when they die.
 
@@ -1034,16 +1035,27 @@ def CommonFunc_NonRespawningWithReward(
     if ValueNotEqual(left=skip_reward, right=0):
         DisableCharacter(character)
         DropMandatoryTreasure(character)
+        if clone != 0:
+            DisableCharacter(clone)
+            DropMandatoryTreasure(clone)
         End()
     DisableCharacter(character)
     DisableAnimations(character)
     Kill(character)
+    if clone != 0:
+        DisableCharacter(clone)
+        DisableAnimations(clone)
+        Kill(clone)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     
-    MAIN.Await(CharacterProportionDead(character=character))
+    # ALL characters in group (and clone group) must be dead.
+    AND_1.Add(CharacterProportionDead(character=character))
+    if clone != 0:
+        AND_1.Add(CharacterProportionDead(character=clone))
+    MAIN.Await(AND_1)
     
     Wait(reward_delay)
     EnableFlag(dead_flag)
@@ -1429,7 +1441,7 @@ def CommonFunc_PrepareWalkingMausoleum(_, mausoleum: uint, asset: uint, asset_1:
 
 
 @RestartOnRest(90005451)
-def CommonFunc_90005451(_, character: uint, asset_group: uint):
+def CommonFunc_MausoleumAssetDestruction(_, mausoleum: uint, asset_group: uint):
     """CommonFunc 90005451"""
     GotoIfThisEventSlotFlagEnabled(Label.L0)
     AND_1.Add(AssetProportionDestructionState(
@@ -1443,7 +1455,7 @@ def CommonFunc_90005451(_, character: uint, asset_group: uint):
 
     # --- Label 0 --- #
     DefineLabel(0)
-    AddSpecialEffect(character, 12450)
+    AddSpecialEffect(mausoleum, 12450)
 
 
 @RestartOnRest(90005452)
@@ -8792,18 +8804,23 @@ def CommonFunc_FieldBossNonRespawningWithReward(
     _,
     dead_flag: uint,
     extra_flag_to_enable: uint,
-    boss_character: uint,
+    boss: uint,
     boss_banner_choice: uint,
     item_lot: int,
     seconds: float,  # does nothing
+    clone_boss: uint,
 ):
     """CommonFunc 90005860"""
     if ValueNotEqual(left=item_lot, right=0):
         Unknown_2004_76(flag=dead_flag, item_lot=item_lot)
     GotoIfFlagDisabled(Label.L0, flag=dead_flag)
-    DisableCharacter(boss_character)
-    DisableAnimations(boss_character)
-    Kill(boss_character)
+    DisableCharacter(boss)
+    DisableAnimations(boss)
+    Kill(boss)
+    if clone_boss != 0:
+        DisableCharacter(clone_boss)
+        DisableAnimations(clone_boss)
+        Kill(clone_boss)
     if PlayerNotInOwnWorld():
         return
     if ValueEqual(left=item_lot, right=0):
@@ -8815,23 +8832,29 @@ def CommonFunc_FieldBossNonRespawningWithReward(
     # --- Label 0 --- #
     DefineLabel(0)
     
-    MAIN.Await(HealthValue(boss_character) <= 0)
+    AND_1.Add(HealthValue(boss) <= 0)
+    if clone_boss != 0:
+        AND_1.Add(HealthValue(clone_boss) <= 0)
+    MAIN.Await(AND_1)
     
     Wait(2.0)
-    PlaySoundEffect(boss_character, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(boss, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(boss_character))
+    AND_2.Add(CharacterDead(boss))
+    if clone_boss != 0:
+        AND_2.Add(CharacterDead(clone_boss))
+    MAIN.Await(AND_2)
     
     SkipLinesIfUnsignedEqual(6, left=boss_banner_choice, right=3)
     SkipLinesIfUnsignedEqual(4, left=boss_banner_choice, right=2)
     SkipLinesIfUnsignedEqual(2, left=boss_banner_choice, right=1)
-    KillBossAndDisplayBanner(character=boss_character, banner_type=BannerType.EnemyFelled)
+    KillBossAndDisplayBanner(character=boss, banner_type=BannerType.EnemyFelled)
     Goto(Label.L1)
-    KillBossAndDisplayBanner(character=boss_character, banner_type=BannerType.GreatEnemyFelled)
+    KillBossAndDisplayBanner(character=boss, banner_type=BannerType.GreatEnemyFelled)
     Goto(Label.L1)
-    KillBossAndDisplayBanner(character=boss_character, banner_type=BannerType.DemigodFelled)
+    KillBossAndDisplayBanner(character=boss, banner_type=BannerType.DemigodFelled)
     Goto(Label.L1)
-    KillBossAndDisplayBanner(character=boss_character, banner_type=BannerType.LegendFelled)
+    KillBossAndDisplayBanner(character=boss, banner_type=BannerType.LegendFelled)
 
     # --- Label 1 --- #
     DefineLabel(1)
@@ -8849,23 +8872,28 @@ def CommonFunc_FieldBossNonRespawningWithReward(
 
 
 @RestartOnRest(90005861)
-def CommonFunc_90005861(
+def CommonFunc_FieldBossNonRespawningWithRewardAndMessage(
     _,
-    flag: uint,
-    left: uint,
-    character: uint,
-    left_1: uint,
+    dead_flag: uint,
+    extra_flag_to_enable: uint,
+    boss: uint,
+    boss_banner_choice: uint,
     item_lot: int,
-    text: int,
+    message: int,
     seconds: float,
+    clone_boss: uint,
 ):
     """CommonFunc 90005861"""
     if ValueNotEqual(left=item_lot, right=0):
-        Unknown_2004_76(flag=flag, item_lot=item_lot)
-    GotoIfFlagDisabled(Label.L0, flag=flag)
-    DisableCharacter(character)
-    DisableAnimations(character)
-    Kill(character)
+        Unknown_2004_76(flag=dead_flag, item_lot=item_lot)
+    GotoIfFlagDisabled(Label.L0, flag=dead_flag)
+    DisableCharacter(boss)
+    DisableAnimations(boss)
+    Kill(boss)
+    if clone_boss != 0:
+        DisableCharacter(clone_boss)
+        DisableAnimations(clone_boss)
+        Kill(clone_boss)
     if PlayerNotInOwnWorld():
         return
     if ValueEqual(left=item_lot, right=0):
@@ -8876,30 +8904,36 @@ def CommonFunc_90005861(
 
     # --- Label 0 --- #
     DefineLabel(0)
-    
-    MAIN.Await(HealthValue(character) <= 0)
+
+    AND_1.Add(HealthValue(boss) <= 0)
+    if clone_boss != 0:
+        AND_1.Add(HealthValue(clone_boss) <= 0)
+    MAIN.Await(AND_1)
     
     Wait(2.0)
-    PlaySoundEffect(character, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(boss, 888880000, sound_type=SoundType.s_SFX)
+
+    AND_2.Add(CharacterDead(boss))
+    if clone_boss != 0:
+        AND_2.Add(CharacterDead(clone_boss))
+    MAIN.Await(AND_2)
     
-    MAIN.Await(CharacterDead(character))
-    
-    SkipLinesIfUnsignedEqual(6, left=left_1, right=3)
-    SkipLinesIfUnsignedEqual(4, left=left_1, right=2)
-    SkipLinesIfUnsignedEqual(2, left=left_1, right=1)
-    KillBossAndDisplayBanner(character=character, banner_type=BannerType.EnemyFelled)
+    SkipLinesIfUnsignedEqual(6, left=boss_banner_choice, right=3)
+    SkipLinesIfUnsignedEqual(4, left=boss_banner_choice, right=2)
+    SkipLinesIfUnsignedEqual(2, left=boss_banner_choice, right=1)
+    KillBossAndDisplayBanner(character=boss, banner_type=BannerType.EnemyFelled)
     Goto(Label.L1)
-    KillBossAndDisplayBanner(character=character, banner_type=BannerType.GreatEnemyFelled)
+    KillBossAndDisplayBanner(character=boss, banner_type=BannerType.GreatEnemyFelled)
     Goto(Label.L1)
-    KillBossAndDisplayBanner(character=character, banner_type=BannerType.DemigodFelled)
+    KillBossAndDisplayBanner(character=boss, banner_type=BannerType.DemigodFelled)
     Goto(Label.L1)
-    KillBossAndDisplayBanner(character=character, banner_type=BannerType.LegendFelled)
+    KillBossAndDisplayBanner(character=boss, banner_type=BannerType.LegendFelled)
 
     # --- Label 1 --- #
     DefineLabel(1)
-    EnableFlag(flag)
-    if UnsignedNotEqual(left=left, right=0):
-        EnableFlag(left)
+    EnableFlag(dead_flag)
+    if UnsignedNotEqual(left=extra_flag_to_enable, right=0):
+        EnableFlag(extra_flag_to_enable)
     if PlayerNotInOwnWorld():
         return
     if ValueEqual(left=item_lot, right=0):
@@ -8907,23 +8941,28 @@ def CommonFunc_90005861(
     Wait(5.0)
     AwardItemLot(item_lot, host_only=True)
     Wait(2.0)
-    DisplayFlashingMessage(text)
+    DisplayFlashingMessage(message)
     End()
     Wait(seconds)
 
 
 @ContinueOnRest(90005870)
-def CommonFunc_FieldBossMusicHealthBar(_, character: uint, name: int, npc_threat_level: uint):
+def CommonFunc_FieldBossMusicHealthBar(
+    _, boss: uint, name: int, npc_threat_level: uint, clone_boss: uint, clone_name: int
+):
     """CommonFunc 90005870"""
     DisableNetworkSync()
-    AND_1.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
+    OR_1.Add(HasAIStatus(boss, ai_status=AIStatusType.Battle))
+    if clone_boss != 0:
+        OR_1.Add(HasAIStatus(clone_boss, ai_status=AIStatusType.Battle))
+    AND_1.Add(OR_1)
+    AND_1.Add(HasAIStatus(boss, ai_status=AIStatusType.Battle))
     AND_1.Add(FieldBattleMusicEnabled(npc_threat_level=npc_threat_level))
     AND_1.Add(FlagDisabled(9000))
     
     MAIN.Await(AND_1)
     
-    GotoIfFlagDisabled(Label.L0, flag=9290)
-    GotoIfFlagDisabled(Label.L1, flag=9291)
+    GotoIfFlagDisabled(Label.L0, flag=9290)  # no field battle is already active
     Wait(5.0)
     Restart()
 
@@ -8931,59 +8970,51 @@ def CommonFunc_FieldBossMusicHealthBar(_, character: uint, name: int, npc_threat
     DefineLabel(0)
     EnableFlag(9290)
     Wait(1.0)
-    EnableBossHealthBar(character, name=name)
+    if clone_boss != 0:
+        EnableBossHealthBar(boss, name=name, bar_slot=1)
+        EnableBossHealthBar(clone_boss, name=clone_name, bar_slot=0)
+    else:
+        EnableBossHealthBar(boss, name=name, bar_slot=0)
     if PlayerInOwnWorld():
-        SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Forced)
-        SetNetworkUpdateRate(character, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-    AND_2.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
+        SetNetworkUpdateAuthority(boss, authority_level=UpdateAuthority.Forced)
+        SetNetworkUpdateRate(boss, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        if clone_boss != 0:
+            SetNetworkUpdateAuthority(clone_boss, authority_level=UpdateAuthority.Forced)
+            SetNetworkUpdateRate(clone_boss, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+    OR_4.Add(HasAIStatus(boss, ai_status=AIStatusType.Battle))
+    if clone_boss != 0:
+        OR_4.Add(HasAIStatus(clone_boss, ai_status=AIStatusType.Battle))
+    AND_2.Add(OR_4)
     AND_2.Add(FieldBattleMusicEnabled(npc_threat_level=npc_threat_level))
     OR_2.Add(not AND_2)
-    OR_2.Add(CharacterDead(character))
+    AND_3.Add(CharacterDead(boss))
+    if clone_boss != 0:
+        AND_3.Add(CharacterDead(clone_boss))
+    OR_2.Add(AND_3)
     OR_2.Add(FlagEnabled(9000))
     
     MAIN.Await(OR_2)
     
-    OR_3.Add(CharacterDead(character))
+    OR_3.Add(CharacterDead(boss))
     SkipLinesIfConditionFalse(2, OR_3)
     Wait(3.0)
     SkipLines(2)
     if FlagDisabled(9000):
         Wait(1.0)
-    DisableBossHealthBar(character, name=name)
+    if clone_boss != 0:
+        DisableBossHealthBar(boss, name=name, bar_slot=1)
+        DisableBossHealthBar(clone_boss, name=clone_name, bar_slot=0)
+    else:
+        DisableBossHealthBar(boss, name=name, bar_slot=0)
     if PlayerInOwnWorld():
-        SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Normal)
-        SetNetworkUpdateRate(character, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        SetNetworkUpdateAuthority(boss, authority_level=UpdateAuthority.Normal)
+        SetNetworkUpdateRate(boss, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        SetNetworkUpdateAuthority(clone_boss, authority_level=UpdateAuthority.Normal)
+        SetNetworkUpdateRate(clone_boss, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
     DisableFlag(9290)
     Restart()
 
-    # --- Label 1 --- #
-    DefineLabel(1)
-    EnableFlag(9291)
-    Wait(1.0)
-    EnableBossHealthBar(character, name=name, bar_slot=1)
-    if PlayerInOwnWorld():
-        SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Forced)
-        SetNetworkUpdateRate(character, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-    AND_12.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    AND_12.Add(FieldBattleMusicEnabled(npc_threat_level=npc_threat_level))
-    OR_12.Add(not AND_12)
-    OR_12.Add(CharacterDead(character))
-    OR_12.Add(FlagEnabled(9000))
-    
-    MAIN.Await(OR_12)
-    
-    OR_13.Add(CharacterDead(character))
-    SkipLinesIfConditionFalse(2, OR_13)
-    Wait(3.0)
-    SkipLines(2)
-    if FlagDisabled(9000):
-        Wait(1.0)
-    DisableBossHealthBar(character, name=name, bar_slot=1)
-    if PlayerInOwnWorld():
-        SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Normal)
-        SetNetworkUpdateRate(character, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-    DisableFlag(9291)
-    Restart()
+    # Second simultaneous field boss fight music/bar can no longer occur.
 
 
 @ContinueOnRest(90005871)
@@ -9092,35 +9123,37 @@ def CommonFunc_FieldBossMusicHeatUp(_, boss_character: uint, npc_threat_level: u
 
 
 @RestartOnRest(90005880)
-def CommonFunc_90005880(
+def CommonFunc_EvergaolBossDies(
     _,
-    flag: uint,
-    flag_1: uint,
+    dead_flag: uint,
+    required_flag: uint,
     flag_2: uint,
-    character: uint,
+    boss: uint,
     item_lot: int,
     area_id: uchar,
     block_id: uchar,
     cc_id: char,
     dd_id: char,
     player_start: uint,
+    clone: uint,
 ):
     """CommonFunc 90005880"""
-    if FlagEnabled(flag):
+    if FlagEnabled(dead_flag):
         return
     if PlayerNotInOwnWorld():
         return
-    if FlagDisabled(flag_1):
+    if FlagDisabled(required_flag):
         return
-    AND_1.Add(CharacterDead(character))
-    
+    AND_1.Add(CharacterDead(boss))
+    AND_1.Add(CharacterDead(clone))
+
     MAIN.Await(AND_1)
     
     Wait(3.0)
-    KillBossAndDisplayBanner(character=character, banner_type=BannerType.EnemyFelled)
+    KillBossAndDisplayBanner(character=boss, banner_type=BannerType.EnemyFelled)
     DeactivateGparamOverride(change_duration=10.0)
     AwardItemLot(item_lot, host_only=True)
-    EnableNetworkFlag(flag)
+    EnableNetworkFlag(dead_flag)
     Wait(5.0)
     AddSpecialEffect(20000, 8870)
     Wait(2.0)
@@ -9131,7 +9164,7 @@ def CommonFunc_90005880(
 
 
 @RestartOnRest(90005881)
-def CommonFunc_90005881(
+def CommonFunc_EnterEvergaol(
     _,
     flag: uint,
     flag_1: uint,
@@ -9197,39 +9230,48 @@ def CommonFunc_90005881(
 
 
 @RestartOnRest(90005882)
-def CommonFunc_90005882(
+def CommonFunc_EvergaolBossBattleTrigger(
     _,
-    flag: uint,
-    flag_1: uint,
+    dead_flag: uint,
+    required_flag: uint,
     flag_2: uint,
-    character: uint,
-    flag_3: uint,
+    boss: uint,
+    battle_started_flag: uint,
     character_1: uint,
-    asset: uint,
+    evergaol_gate: uint,
     owner_entity: uint,
     source_entity: uint,
-    name: int,
-    animation_id: int,
-    animation_id_1: int,
+    boss_name: int,
+    standby_animation: int,
+    appearance_animation: int,
+    clone: uint,
 ):
     """CommonFunc 90005882"""
-    GotoIfFlagDisabled(Label.L0, flag=flag)
-    DisableCharacter(character)
-    DisableAnimations(character)
-    Kill(character)
-    DisableAsset(asset)
+    GotoIfFlagDisabled(Label.L0, flag=dead_flag)
+    DisableCharacter(boss)
+    DisableAnimations(boss)
+    Kill(boss)
+    DisableCharacter(clone)
+    DisableAnimations(clone)
+    Kill(clone)
+    DisableAsset(evergaol_gate)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableCharacter(character)
-    DisableAnimations(character)
-    DisableAI(character)
-    DisableAsset(asset)
-    if FlagDisabled(flag_1):
+    DisableCharacter(boss)
+    DisableAnimations(boss)
+    DisableAI(boss)
+    DisableCharacter(clone)
+    DisableAnimations(clone)
+    DisableAI(clone)
+    DisableAsset(evergaol_gate)
+
+    if FlagDisabled(required_flag):
         return
     if PlayerNotInOwnWorld():
         return
+
     WaitFrames(frames=1)
     EnableFlag(1099002100)
     EnableFlag(flag_2)
@@ -9248,36 +9290,51 @@ def CommonFunc_90005882(
     DisableCharacter(character_1)
     DisableAnimations(character_1)
     DisableAI(character_1)
-    if ValueNotEqual(left=-1, right=animation_id):
-        ForceAnimation(character, animation_id)
+    if ValueNotEqual(left=-1, right=standby_animation):
+        ForceAnimation(boss, standby_animation)
+        ForceAnimation(clone, standby_animation)
     else:
-        DisableCharacter(character)
-        DisableAnimations(character)
-    DisableHealthBar(character)
-    DisableNetworkFlag(flag_1)
+        DisableCharacter(boss)
+        DisableAnimations(boss)
+        DisableCharacter(clone)
+        DisableAnimations(clone)
+    DisableHealthBar(boss)
+    DisableHealthBar(clone)
+    DisableNetworkFlag(required_flag)
     AddSpecialEffect(PLAYER, 514)
-    EnableAsset(asset)
-    CreateAssetVFX(asset, vfx_id=200, model_point=806700)
+    EnableAsset(evergaol_gate)
+    CreateAssetVFX(evergaol_gate, vfx_id=200, model_point=806700)
     ForceAnimation(PLAYER, 60451)
     Wait(1.0)
     AddSpecialEffect(20000, 8870)
-    OR_1.Add(EntityBeyondDistance(entity=PLAYER, other_entity=asset, radius=12.0))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=character, attacker=PLAYER))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=character))
+
+    OR_1.Add(EntityBeyondDistance(entity=PLAYER, other_entity=evergaol_gate, radius=12.0))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=boss, attacker=PLAYER))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=boss))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=clone, attacker=PLAYER))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=clone))
     
     MAIN.Await(OR_1)
     
     DisableFlag(1099002100)
-    if ValueEqual(left=-1, right=animation_id):
-        EnableCharacter(character)
-        EnableAnimations(character)
-    if ValueNotEqual(left=-1, right=animation_id_1):
-        ForceAnimation(character, animation_id_1)
-    EnableAI(character)
-    SetNetworkUpdateRate(character, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableFlag(flag_3)
+    if ValueEqual(left=-1, right=standby_animation):
+        EnableCharacter(boss)
+        EnableAnimations(boss)
+        EnableCharacter(clone)
+        EnableAnimations(clone)
+    if ValueNotEqual(left=-1, right=appearance_animation):
+        ForceAnimation(boss, appearance_animation)
+        ForceAnimation(clone, appearance_animation)
+
+    EnableAI(boss)
+    EnableAI(clone)
+    SetNetworkUpdateRate(boss, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(clone, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableFlag(battle_started_flag)
+
     Wait(1.0)
-    EnableBossHealthBar(character, name=name)
+    EnableBossHealthBar(boss, name=boss_name, bar_slot=1)
+    EnableBossHealthBar(clone, name=boss_name, bar_slot=0)
 
 
 @RestartOnRest(90005883)
@@ -9329,7 +9386,7 @@ def CommonFunc_90005884(_, flag: uint, flag_1: uint, character: uint, asset: uin
 
 
 @RestartOnRest(90005885)
-def CommonFunc_90005885(_, flag: uint, bgm_boss_conv_param_id: int, flag_1: uint, flag_2: uint, left: int, left_1: int):
+def CommonFunc_EvergaolBossMusic(_, flag: uint, bgm_boss_conv_param_id: int, flag_1: uint, flag_2: uint, left: int, left_1: int):
     """CommonFunc 90005885"""
     DisableNetworkSync()
     GotoIfFlagDisabled(Label.L0, flag=flag)

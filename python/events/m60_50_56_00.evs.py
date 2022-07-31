@@ -25,15 +25,15 @@ from .entities.m60_50_57_00_entities import Characters as m60_50_Characters
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.GreatWyrmTheodorix, name=904911600, npc_threat_level=5)
-    CommonFunc_90005861(
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.GreatWyrmTheodorix, name=904911600, npc_threat_level=5)
+    CommonFunc_FieldBossNonRespawningWithRewardAndMessage(
         0,
-        flag=1050560800,
-        left=0,
-        character=Characters.GreatWyrmTheodorix,
-        left_1=1,
+        dead_flag=1050560800,
+        extra_flag_to_enable=0,
+        boss=Characters.GreatWyrmTheodorix,
+        boss_banner_choice=1,
         item_lot=30550,
-        text=30065,
+        message=30065,
         seconds=0.0,
     )
     Event_1050562200(0, attacker__character=1050565200, region=1050562200)

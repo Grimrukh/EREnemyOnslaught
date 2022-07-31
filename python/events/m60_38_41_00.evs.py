@@ -43,12 +43,12 @@ def Constructor():
         flag_10=78208,
         flag_11=78209,
     )
-    CommonFunc_90005880(
+    CommonFunc_EvergaolBossDies(
         0,
-        flag=1038410800,
-        flag_1=1038410805,
+        dead_flag=1038410800,
+        required_flag=1038410805,
         flag_2=1038412800,
-        character=Characters.AdanThiefofFire,
+        boss=Characters.AdanThiefofFire,
         item_lot=30245,
         area_id=60,
         block_id=38,
@@ -56,7 +56,7 @@ def Constructor():
         dd_id=0,
         player_start=1038412805,
     )
-    CommonFunc_90005881(
+    CommonFunc_EnterEvergaol(
         0,
         flag=1038410800,
         flag_1=1038410805,
@@ -70,23 +70,23 @@ def Constructor():
         dd_id=0,
         player_start=1038412805,
     )
-    CommonFunc_90005882(
+    CommonFunc_EvergaolBossBattleTrigger(
         0,
-        flag=1038410800,
-        flag_1=1038410805,
+        dead_flag=1038410800,
+        required_flag=1038410805,
         flag_2=1038412800,
-        character=Characters.AdanThiefofFire,
-        flag_3=1038412806,
+        boss=Characters.AdanThiefofFire,
+        battle_started_flag=1038412806,
         character_1=1038415810,
-        asset=Assets.AEG099_120_1000,
+        evergaol_gate=Assets.AEG099_120_1000,
         owner_entity=Characters.TalkDummy0,
         source_entity=1038412810,
-        name=900000520,
-        animation_id=-1,
-        animation_id_1=90005,
+        boss_name=900000520,
+        standby_animation=-1,
+        appearance_animation=90005,
     )
     CommonFunc_90005883(0, flag=1038410800, flag_1=1038410805, entity=Assets.AEG099_170_1000)
-    CommonFunc_90005885(
+    CommonFunc_EvergaolBossMusic(
         0,
         flag=1038410800,
         bgm_boss_conv_param_id=0,

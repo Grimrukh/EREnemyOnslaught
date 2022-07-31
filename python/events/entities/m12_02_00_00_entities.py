@@ -12,6 +12,12 @@ class NameText(NPCName):
     CLONE_MimicTear = 903320010
     GargoyleGreatsword = 904770000
     GargoyleTwinblade = 904770001
+    DragonkinSoldier = 904650600
+    CLONE_DragonkinSoldier = 904650610
+
+
+class CharacterGroups(Character):
+    SilverTearMimicBoss = 12025850
 
 
 class Characters(Character):
@@ -119,9 +125,13 @@ class Characters(Character):
 
     CLONE_GargoyleGreatsword = 12020802
     CLONE_GargoyleTwinblade = 12020803
-    CLONE_DragonkinSoldier = 12020831  # TODO: common events
+    CLONE_DragonkinSoldier = 12020831
     CLONE_MimicTear = 12020851
     CLONE_SilverTearMimic = 12020861
+    CLONE_RedWolf = 12020222
+    CLONE_CrucibleKnight0 = 12020435
+    CLONE_CrucibleKnight1 = 12020436
+    CLONE_CrucibleKnight2 = 12020437
 
 
 class Assets(Asset):

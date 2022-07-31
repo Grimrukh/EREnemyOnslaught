@@ -47,15 +47,15 @@ def Event_1054562500():
 @ContinueOnRest(200)
 def Event_200():
     """Event 200"""
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.BorealistheFreezingFog, name=904503600, npc_threat_level=25)
-    CommonFunc_90005861(
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.BorealistheFreezingFog, name=904503600, npc_threat_level=25)
+    CommonFunc_FieldBossNonRespawningWithRewardAndMessage(
         0,
-        flag=1254560800,
-        left=0,
-        character=Characters.BorealistheFreezingFog,
-        left_1=1,
+        dead_flag=1254560800,
+        extra_flag_to_enable=0,
+        boss=Characters.BorealistheFreezingFog,
+        boss_banner_choice=1,
         item_lot=30510,
-        text=30066,
+        message=30066,
         seconds=0.0,
     )
     Event_1054562815()

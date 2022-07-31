@@ -120,12 +120,12 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CleanrotKnight3, region=1049382311, seconds=115.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CleanrotKnight4, region=1049382311, seconds=50.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Commander, radius=35.0, seconds=0.0, animation_id=-1)
-    CommonFunc_FieldBossMusicHealthBar(0, character=Characters.Commander, name=903050600, npc_threat_level=11)
+    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.Commander, name=903050600, npc_threat_level=11)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1049380800,
         extra_flag_to_enable=0,
-        boss_character=Characters.Commander,
+        boss=Characters.Commander,
         boss_banner_choice=1,
         item_lot=30405,
         seconds=0.0,

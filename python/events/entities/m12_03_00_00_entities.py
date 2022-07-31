@@ -19,6 +19,8 @@ class NameText(NPCName):
     LionelSidekick2 = 137100
     LichdragonFortissax = 904510000
     CLONE_LichdragonFortissax = 904510010
+    CrucibleKnightSiluria = 902500600
+    CLONE_CrucibleKnightSiluria = 902500610
 
 
 class Characters(Character):

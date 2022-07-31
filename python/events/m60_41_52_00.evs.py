@@ -30,7 +30,7 @@ def Constructor():
         0,
         dead_flag=1041520800,
         extra_flag_to_enable=0,
-        boss_character=Characters.AncientDragon,
+        boss=Characters.AncientDragon,
         boss_banner_choice=1,
         item_lot=30300,
         seconds=0.0,
