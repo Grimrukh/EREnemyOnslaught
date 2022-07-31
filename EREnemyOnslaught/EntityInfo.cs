@@ -401,11 +401,20 @@ namespace EREnemyOnslaught
         public readonly static Dictionary<int, string> NewNPCNames = new Dictionary<int, string>()
         {
             // m10_00_00_00
-            [902130010] = "Uncle Merbit",
+            [902130010] = "Cousin Merbit",
             [904750010] = "Godefroy the Gratuitous",
 
             // m10_01_00_00
             [904690010] = "Grafted Scion",
+
+            // m11_00_00_00
+            [902130012] = "Somehow, Cousin Merbit Returned",
+            [904720012] = "Mysteriously Foreshadowed Stranger",  // phantom
+
+            // m11_05_00_00
+            [904720010] = "Mysteriously Foreshadowed Stranger",
+            [904720011] = "Gadarigodfreon, Father of Merbit, Brother of Rhonda, Uncle of Mazohr, Former Roommate of Ryktar",
+            [132401] = "Sir Giddy-Up Ofnir, the Idiot",
 
             // m12_01_00_00
             [904650010] = "Dragonkin Soldier of Nokron",
@@ -418,7 +427,7 @@ namespace EREnemyOnslaught
 
             // m12_03_00_00
             [904510010] = "Lichdragon Fortissavan",
-            [902500610] = "Siluria's Good Friend",
+            [902500610] = "Crucible Knight Joanna",
 
             // m12_04_00_00
             [904620011] = "Astels... I Hate These Guys",
@@ -426,8 +435,8 @@ namespace EREnemyOnslaught
             // m13_00_00_00
             [903575000] = "Oneskin, Twoskin",
             [903575010] = "Threeskin, Fourskin",
-            [902110010] = "Beast Broseph",  // TODO: not fully happy with this one (Maliketh)
-            [902110011] = "Grumpy Cat",  // TODO: not fully happy with this one (Maliketh)
+            [902110010] = "Beast Clergyman",
+            [902110011] = "Big the Cat",
             [904520010] = "Dragonlord Dan",
 
             // m14_00_00_00
@@ -439,14 +448,17 @@ namespace EREnemyOnslaught
             [902120010] = "Malonia, Middle Finger of Miyazaki",
 
             // m16_00_00_00
-            [904710010] = "That Other God-Devouring Serpent",
-            [904710011] = "Ryktar, Definitely Also Intended to Be Devoured",
+            [904710010] = "A Second God-Devouring Serpent",
+            [904710011] = "Ryktar, Definitely Also Devoured On Purpose",
 
             // m18_00_00_00
             [904311010] = "A Second Soldier of Godrick",
 
+            // m19_00_00_00
+            [902190010] = "Renadin of the Weird Love Triangle",
+
             // m60_52_38_00
-            [904730010] = "Moonmurderer Mikey",
+            [904730010] = "Moonmurderer Mazohr",
 
             // Overworld
             [904502610] = "Glintstone Dragon Sam",
