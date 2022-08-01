@@ -85,7 +85,7 @@ def Constructor():
         region=1049382400,
         left=0,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1049380290, character=Characters.Scarab, item_lot=40404, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1049380290, character=Characters.Scarab, item_lot=40404, reward_delay=0.0, skip_reward=0, clone=0)
     Event_1049382210()
     Event_1049382211(0, source_entity=Assets.AEG099_046_9035, seconds=6.0)
     Event_1049382211(1, source_entity=Assets.AEG099_046_9036, seconds=12.0)

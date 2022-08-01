@@ -25,7 +25,7 @@ from .entities.m60_41_37_00_entities import *
 def Constructor():
     """Event 0"""
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=1041378540)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1041370200, character=Characters.Scarab, item_lot=40120, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1041370200, character=Characters.Scarab, item_lot=40120, reward_delay=0.0, skip_reward=0, clone=0)
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1041370340,

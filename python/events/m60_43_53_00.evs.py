@@ -44,7 +44,7 @@ def Constructor():
         flag_10=78308,
         flag_11=78309,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1043530500, character=Characters.Scarab, item_lot=40318, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1043530500, character=Characters.Scarab, item_lot=40318, reward_delay=0.0, skip_reward=0, clone=0)
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.LeyndellFootSoldier0,

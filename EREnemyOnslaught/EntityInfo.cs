@@ -346,6 +346,8 @@ namespace EREnemyOnslaught
             #region Mountaintops
             [1052520801] = new CloneInfo(1052520803, new Vector4(-337.454f, 1859.962f, -374.085f, -37.187f)),  // Fire Giant (Phase One/Two)
             [1052520800] = new CloneInfo(1052520802),  // Fire Giant (Phase Three)
+
+            [1054560800] = new CloneInfo(1054560801, new Vector4(37.749f, 1620.359f, -257.495f, -173.023f)),  // Borealis
             #endregion
 
             #region Catacombs
@@ -574,6 +576,7 @@ namespace EREnemyOnslaught
 
             // Overworld
             [904502610] = "Glintstone Dragon Samantha",
+            [904503610] = "Boris, the Reasonably Cold",
 
             // Generic
             [902500300] = "Crucible Knights Ordovis and Osmodis",

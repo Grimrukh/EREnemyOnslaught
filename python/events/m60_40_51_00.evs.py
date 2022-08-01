@@ -24,7 +24,7 @@ from .entities.m60_40_51_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1040510500, character=Characters.Scarab, item_lot=40310, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1040510500, character=Characters.Scarab, item_lot=40310, reward_delay=0.0, skip_reward=0, clone=0)
     CommonFunc_90005706(0, 1040510700, 930023, 0)
 
 

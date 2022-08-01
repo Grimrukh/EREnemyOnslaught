@@ -69,7 +69,7 @@ def Constructor():
         left=0,
     )
     CommonFunc_90005631(0, anchor_entity=Assets.AEG099_376_1000, text=61031)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1039520500, character=Characters.Scarab, item_lot=40306, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1039520500, character=Characters.Scarab, item_lot=40306, reward_delay=0.0, skip_reward=0, clone=0)
     Event_1039523700(0, character=Characters.YuraHunterofBloodyFingers)
     Event_1039523701(0, character=Characters.YuraHunterofBloodyFingers)
     Event_1039523703(0, asset=Assets.AEG099_429_9000, asset_1=Assets.AEG099_429_9001, asset_2=Assets.AEG099_429_9002)

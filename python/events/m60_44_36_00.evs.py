@@ -35,7 +35,7 @@ def Constructor():
     Event_1044362800()
     Event_1044362810()
     Event_1044362849()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1044360220, character=Characters.Scarab, item_lot=40112, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1044360220, character=Characters.Scarab, item_lot=40112, reward_delay=0.0, skip_reward=0, clone=0)
     Event_1044362500()
     CommonFunc_90005704(
         0,

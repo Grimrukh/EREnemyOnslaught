@@ -32,7 +32,7 @@ def Constructor():
         region_1=1044322201,
         region_2=1044322202,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1044320200, character=Characters.Scarab, item_lot=40138, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1044320200, character=Characters.Scarab, item_lot=40138, reward_delay=0.0, skip_reward=0, clone=0)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1044320800,

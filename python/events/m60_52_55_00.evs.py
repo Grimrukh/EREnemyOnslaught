@@ -75,7 +75,7 @@ def Constructor():
         left_3=0,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.SmallerDog1, region=1052552282, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1052550300, character=Characters.Scarab, item_lot=40516, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1052550300, character=Characters.Scarab, item_lot=40516, reward_delay=0.0, skip_reward=0, clone=0)
     Event_1052552580()
     CommonFunc_900005610(0, 1052551500, 100, 800, 0)
 

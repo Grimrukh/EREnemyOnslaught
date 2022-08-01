@@ -538,7 +538,7 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MonstrousCrow0, region=1047402259, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=1047400259, region=1047402259, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MonstrousCrow1, region=1047402260, seconds=0.0, animation_id=-1)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1047400290, character=Characters.Scarab, item_lot=40400, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1047400290, character=Characters.Scarab, item_lot=40400, reward_delay=0.0, skip_reward=0, clone=0)
     Event_1047402399()
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Dummy, region=1047402399, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.PutridCorpse0, region=1047402399, seconds=0.0, animation_id=-1)

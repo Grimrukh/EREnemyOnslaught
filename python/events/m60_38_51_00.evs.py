@@ -48,7 +48,7 @@ def Constructor():
     Event_1038512810()
     Event_1038512849()
     Event_1038512500()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1038510500, character=Characters.Scarab, item_lot=40302, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1038510500, character=Characters.Scarab, item_lot=40302, reward_delay=0.0, skip_reward=0, clone=0)
     Event_1038513700(0, character=Characters.RyatheScout, asset=Assets.AEG099_320_9000)
     CommonFunc_90005752(0, asset=Assets.AEG099_320_9000, vfx_id=200, model_point=120, seconds=3.0)
     Event_1038513701()

@@ -26,7 +26,7 @@ from .entities.m60_43_39_00_entities import Characters as m60_43_Characters
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1043370000, asset=Assets.AEG099_060_9000)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1043370210, character=Characters.Scarab, item_lot=40108, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1043370210, character=Characters.Scarab, item_lot=40108, reward_delay=0.0, skip_reward=0, clone=0)
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1043370800,

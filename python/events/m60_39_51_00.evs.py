@@ -70,7 +70,7 @@ def Constructor():
         skip_reward=0,
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.NightsCavalry, npc_threat_level=10, optional_trigger_flag=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1039510500, character=Characters.Scarab, item_lot=40304, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1039510500, character=Characters.Scarab, item_lot=40304, reward_delay=0.0, skip_reward=0, clone=0)
     CommonFunc_90005703(
         0,
         character=Characters.DemiHumanShaman,

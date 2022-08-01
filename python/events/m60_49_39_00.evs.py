@@ -178,8 +178,8 @@ def Constructor():
         region_1=1049392298,
         region_2=1049392297,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1049390299, character=Characters.Scarab0, item_lot=40418, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1049390298, character=Characters.Scarab1, item_lot=40416, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1049390299, character=Characters.Scarab0, item_lot=40418, reward_delay=0.0, skip_reward=0, clone=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1049390298, character=Characters.Scarab1, item_lot=40416, reward_delay=0.0, skip_reward=0, clone=0)
     Event_1049392201(0, character=Characters.WanderingNoble0, special_effect_id=10113, seconds=3.0, seconds_1=5.0)
     Event_1049392201(2, character=Characters.WanderingNoble2, special_effect_id=10113, seconds=6.0, seconds_1=2.0)
     Event_1049392201(3, character=Characters.RayaLucariaScholar3, special_effect_id=10113, seconds=9.0, seconds_1=3.0)
