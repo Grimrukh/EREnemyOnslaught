@@ -1,4 +1,4 @@
-"""
+"""DONE
 East Liurnia (SW) (SE)
 
 linked:
@@ -44,7 +44,7 @@ def Constructor():
         flag_10=78208,
         flag_11=78209,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1037440210, character=Characters.Scarab, item_lot=40262, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1037440210, character=Characters.Scarab, item_lot=40262, reward_delay=0.0, skip_reward=0, clone=0)
     CommonFunc_90005920(0, flag=1037440600, asset=1037441600, obj_act_id=1037443600)
     Event_1037442610(0, asset=1037441610, entity=1037441611, flag=82021)
     Event_1037443700(0, character=Characters.KnightDiallos, character_1=Characters.Human)

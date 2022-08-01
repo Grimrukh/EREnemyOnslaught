@@ -18,6 +18,8 @@ class Characters(Character):
     LivingPot = 1035530700  # c4490_9000 npc 44909732 think 44900000 talk 220036000
     MagmaWyrm = 1035530800  # c4910_9000 npc 49100032 think 49100932 group 1035535100
 
+    CLONE_MagmaWyrm = 1035530801
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1035531950  # AEG099

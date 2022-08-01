@@ -1,4 +1,4 @@
-"""
+"""DONE
 Liurnia to Altus Plateau (SW) (SW)
 
 linked:
@@ -58,10 +58,15 @@ def Constructor():
         item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_NightsCavalryHorse,
     )
-    CommonFunc_90005476(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
+    CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry, horse=Characters.NightsCavalryHorse)
+    CommonFunc_MoveNightsCavalryToHorse(
+        0, nights_cavalry=Characters.CLONE_NightsCavalry, horse=Characters.CLONE_NightsCavalryHorse
+    )
     RunCommonEvent(90005477)
     Event_1036482340(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
+    Event_1036482340(1, character=Characters.CLONE_NightsCavalry, character_1=Characters.CLONE_NightsCavalryHorse)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1036480800,
@@ -70,14 +75,19 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1036480400,
         seconds=0.0,
+        clone_boss=Characters.CLONE_NightsCavalry,
     )
-    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.NightsCavalry, npc_threat_level=10, optional_trigger_flag=0)
-    CommonFunc_90005871(
+    CommonFunc_FieldBossMusicHeatUp(
+        0, boss=Characters.NightsCavalry, npc_threat_level=10, optional_trigger_flag=0,
+    )
+    CommonFunc_NightsCavalryHealthBar(
         0,
-        character=Characters.NightsCavalry,
+        nights_cavalry=Characters.NightsCavalry,
         name=903150603,
         npc_threat_level=10,
-        character_1=Characters.NightsCavalryHorse,
+        horse=Characters.NightsCavalryHorse,
+        clone_cavalry=Characters.CLONE_NightsCavalry,
+        clone_horse=Characters.CLONE_NightsCavalryHorse,
     )
     CommonFunc_90005703(
         0,

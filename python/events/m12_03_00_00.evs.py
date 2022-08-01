@@ -185,7 +185,7 @@ def Constructor():
         clone_boss=Characters.CLONE_CrucibleKnightSiluria, clone_name=NameText.CLONE_CrucibleKnightSiluria,
     )
     CommonFunc_FieldBossMusicHeatUp(
-        0, boss_character=Characters.CrucibleKnightSiluria, npc_threat_level=12, optional_trigger_flag=0
+        0, boss=Characters.CrucibleKnightSiluria, npc_threat_level=12, optional_trigger_flag=0
     )
     CommonFunc_NonRespawningWithReward(
         0,

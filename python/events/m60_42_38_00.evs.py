@@ -57,7 +57,7 @@ def Constructor():
         seconds=0.0,
     )
     CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.BellBearingHunter, name=903100600, npc_threat_level=10)
-    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.BellBearingHunter, npc_threat_level=10, optional_trigger_flag=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.BellBearingHunter, npc_threat_level=10, optional_trigger_flag=0)
     Event_1042383700(0, character=Characters.KnightBernahl)
     CommonFunc_90005704(0, attacked_entity=Characters.KnightBernahl, flag=3881, flag_1=3880, flag_2=1042389251, right=3)
     CommonFunc_90005703(

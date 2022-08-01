@@ -43,7 +43,7 @@ def Constructor():
         item_lot=1048410800,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.BellBearingHunter, npc_threat_level=10, optional_trigger_flag=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.BellBearingHunter, npc_threat_level=10, optional_trigger_flag=0)
     CommonFunc_90005702(0, character=Characters.Merchant, flag=4793, first_flag=4790, last_flag=4793)
     CommonFunc_90005703(
         0,

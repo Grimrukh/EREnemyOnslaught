@@ -1,4 +1,4 @@
-"""
+"""DONE
 West Liurnia (SE) (SW)
 
 linked:
@@ -27,7 +27,9 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1034440000, asset=Assets.AEG099_060_9000)
     RunCommonEvent(1034442200)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1034440220, character=Characters.Scarab, item_lot=40218, reward_delay=0.0, skip_reward=0, clone=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1034440220, character=Characters.Scarab, item_lot=40218, reward_delay=0.0, skip_reward=0, clone=0
+    )
     Event_1034440700(0, 1034440700, 930023, 3409)
 
 

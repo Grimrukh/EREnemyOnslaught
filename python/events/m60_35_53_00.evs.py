@@ -1,4 +1,4 @@
-"""
+"""DONE
 Far West Altus Plateau (SE) (NE)
 
 linked:
@@ -80,7 +80,10 @@ def Constructor():
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MagmaWyrm, region=1035532346, seconds=0.5, animation_id=3004)
     Event_1035532300()
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.MagmaWyrm, name=904910600, npc_threat_level=5)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.MagmaWyrm, name=904910600, npc_threat_level=5,
+        clone_boss=Characters.CLONE_MagmaWyrm, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithRewardAndMessage(
         0,
         dead_flag=1035530800,
@@ -90,6 +93,7 @@ def Constructor():
         item_lot=30390,
         message=30062,
         seconds=0.0,
+        clone_boss=Characters.CLONE_MagmaWyrm,
     )
     Event_1035532500()
     Event_1035532450(0, asset=Assets.AEG007_434_9000)

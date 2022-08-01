@@ -28,6 +28,8 @@ class Characters(Character):
     Troll = 1036540450  # c4600_9001 npc 46004032 think 46004000
     FallingstarBeast = 1036540800  # c4680_9000 npc 46800032 think 46800930 group 1036545100
 
+    CLONE_FallingstarBeast = 1036540801
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1036541951  # AEG099

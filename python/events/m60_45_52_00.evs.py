@@ -36,7 +36,7 @@ def Constructor():
         item_lot=30315,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.DraconicTreeSentinel, npc_threat_level=12, optional_trigger_flag=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.DraconicTreeSentinel, npc_threat_level=12, optional_trigger_flag=0)
     CommonFunc_ControlBossFog(0, boss_dead_flag=1045520800, fog_asset=Assets.AEG099_001_9000, model_point=5, required_flag=0)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GuardianGolem2, radius=70.0, seconds=0.0, animation_id=3006)
     Event_1045522200()

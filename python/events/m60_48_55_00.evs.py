@@ -42,8 +42,8 @@ def Event_200():
     )
     CommonFunc_90005423(0, character=Characters.SnowTroll0)
     CommonFunc_90005423(0, character=Characters.SnowTroll1)
-    CommonFunc_90005476(0, character=Characters.NightsCavalry0, character_1=Characters.NightsCavalryHorse0)
-    CommonFunc_90005476(0, character=Characters.NightsCavalry1, character_1=Characters.NightsCavalryHorse1)
+    CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry0, horse=Characters.NightsCavalryHorse0)
+    CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry1, horse=Characters.NightsCavalryHorse1)
     Event_1248552820(0, character=Characters.NightsCavalry0, seconds=0.0)
     Event_1248552820(1, character=Characters.NightsCavalry1, seconds=0.0)
     Event_1248552830(0, character=Characters.NightsCavalry0, character_1=Characters.NightsCavalryHorse0)
@@ -60,19 +60,19 @@ def Event_200():
         character_1=Characters.NightsCavalryHorse1,
         destination=1248552801,
     )
-    CommonFunc_90005871(
+    CommonFunc_NightsCavalryHealthBar(
         0,
-        character=Characters.NightsCavalry0,
+        nights_cavalry=Characters.NightsCavalry0,
         name=903150608,
         npc_threat_level=10,
-        character_1=Characters.NightsCavalryHorse0,
+        horse=Characters.NightsCavalryHorse0,
     )
-    CommonFunc_90005871(
+    CommonFunc_NightsCavalryHealthBar(
         0,
-        character=Characters.NightsCavalry1,
+        nights_cavalry=Characters.NightsCavalry1,
         name=903150609,
         npc_threat_level=10,
-        character_1=Characters.NightsCavalryHorse1,
+        horse=Characters.NightsCavalryHorse1,
     )
     RunCommonEvent(
         1248552800,

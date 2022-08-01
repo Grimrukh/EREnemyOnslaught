@@ -1,4 +1,4 @@
-"""
+"""DONE
 Ruin-Strewn Precipice
 
 linked:
@@ -27,12 +27,14 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=39200001, asset=Assets.AEG099_060_9001)
     RegisterGrace(grace_flag=39200002, asset=Assets.AEG099_060_9002)
-    Event_39202800()
-    Event_39202810()
-    Event_39202829()
+
+    MagmaWyrmMakarDies()
+    MagmaWyrmMakarBattleTrigger()
+    MagmaWyrmMakarCommonEvents()
+
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
-        flag=39200800,
+        flag=Flags.MagmaWyrmMakarDead,
         grace_flag=39200000,
         character=Characters.TalkDummy0,
         asset=Assets.AEG099_060_9000,
@@ -85,7 +87,7 @@ def Constructor():
     Event_39202580()
     CommonFunc_90005780(
         0,
-        flag=39200800,
+        flag=Flags.MagmaWyrmMakarDead,
         summon_flag=39202160,
         dismissal_flag=39202161,
         character=Characters.GreatHornedTragoth0,
@@ -95,7 +97,7 @@ def Constructor():
         unknown=1,
         right_1=0,
     )
-    CommonFunc_90005781(0, flag=39200800, flag_1=39202160, flag_2=39202161, character=Characters.GreatHornedTragoth0)
+    CommonFunc_90005781(0, flag=Flags.MagmaWyrmMakarDead, flag_1=39202160, flag_2=39202161, character=Characters.GreatHornedTragoth0)
     CommonFunc_90005782(
         0,
         flag=39202160,
@@ -107,7 +109,7 @@ def Constructor():
     )
     CommonFunc_90005780(
         0,
-        flag=39200800,
+        flag=Flags.MagmaWyrmMakarDead,
         summon_flag=39202164,
         dismissal_flag=39202165,
         character=Characters.Millicent,
@@ -117,7 +119,7 @@ def Constructor():
         unknown=1,
         right_1=0,
     )
-    CommonFunc_90005781(0, flag=39200800, flag_1=39202164, flag_2=39202165, character=Characters.Millicent)
+    CommonFunc_90005781(0, flag=Flags.MagmaWyrmMakarDead, flag_1=39202164, flag_2=39202165, character=Characters.Millicent)
     CommonFunc_90005782(
         0,
         flag=39202164,
@@ -129,7 +131,7 @@ def Constructor():
     )
     CommonFunc_90005780(
         0,
-        flag=39200800,
+        flag=Flags.MagmaWyrmMakarDead,
         summon_flag=39202168,
         dismissal_flag=39202169,
         character=Characters.Blackguard,
@@ -139,7 +141,7 @@ def Constructor():
         unknown=1,
         right_1=0,
     )
-    CommonFunc_90005781(0, flag=39200800, flag_1=39202168, flag_2=39202169, character=Characters.Blackguard)
+    CommonFunc_90005781(0, flag=Flags.MagmaWyrmMakarDead, flag_1=39202168, flag_2=39202169, character=Characters.Blackguard)
     CommonFunc_90005782(
         0,
         flag=39202168,
@@ -970,55 +972,73 @@ def Event_39202351():
 
 
 @RestartOnRest(39202800)
-def Event_39202800():
+def MagmaWyrmMakarDies():
     """Event 39202800"""
-    if FlagEnabled(39200800):
+    if FlagEnabled(Flags.MagmaWyrmMakarDead):
         return
     
-    MAIN.Await(HealthValue(Characters.MagmaWyrm) <= 0)
+    AND_1.Add(HealthValue(Characters.MagmaWyrmMakar) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_MagmaWyrmMakar) <= 0)
+    MAIN.Await(AND_1)
     
     Wait(4.0)
-    PlaySoundEffect(Characters.MagmaWyrm, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(Characters.MagmaWyrmMakar, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(HealthValue(Characters.MagmaWyrm) == 0)
-    
-    KillBossAndDisplayBanner(character=Characters.MagmaWyrm, banner_type=BannerType.GreatEnemyFelled)
-    EnableFlag(39200800)
+    AND_2.Add(CharacterDead(Characters.MagmaWyrmMakar))
+    AND_2.Add(CharacterDead(Characters.CLONE_MagmaWyrmMakar))
+    MAIN.Await(AND_2)
+
+    KillBossAndDisplayBanner(character=Characters.MagmaWyrmMakar, banner_type=BannerType.GreatEnemyFelled)
+    EnableFlag(Flags.MagmaWyrmMakarDead)
     EnableFlag(9126)
     if PlayerInOwnWorld():
         EnableFlag(61126)
 
 
 @RestartOnRest(39202810)
-def Event_39202810():
+def MagmaWyrmMakarBattleTrigger():
     """Event 39202810"""
-    GotoIfFlagDisabled(Label.L0, flag=39200800)
-    DisableCharacter(Characters.MagmaWyrm)
-    DisableAnimations(Characters.MagmaWyrm)
-    Kill(Characters.MagmaWyrm)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.MagmaWyrmMakarDead)
+    DisableCharacter(Characters.MagmaWyrmMakar)
+    DisableAnimations(Characters.MagmaWyrmMakar)
+    Kill(Characters.MagmaWyrmMakar)
+    DisableCharacter(Characters.CLONE_MagmaWyrmMakar)
+    DisableAnimations(Characters.CLONE_MagmaWyrmMakar)
+    Kill(Characters.CLONE_MagmaWyrmMakar)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(Characters.MagmaWyrm)
+    DisableAI(Characters.MagmaWyrmMakar)
+    DisableAI(Characters.CLONE_MagmaWyrmMakar)
     GotoIfFlagEnabled(Label.L1, flag=39200801)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=39202801))
     OR_1.Add(AND_1)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.MagmaWyrm, attacker=PLAYER))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.MagmaWyrm, state_info=436))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.MagmaWyrm, state_info=2))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.MagmaWyrm, state_info=5))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.MagmaWyrm, state_info=6))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.MagmaWyrm, state_info=260))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.MagmaWyrmMakar, attacker=PLAYER))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.MagmaWyrmMakar, state_info=436))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.MagmaWyrmMakar, state_info=2))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.MagmaWyrmMakar, state_info=5))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.MagmaWyrmMakar, state_info=6))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.MagmaWyrmMakar, state_info=260))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_MagmaWyrmMakar, attacker=PLAYER))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_MagmaWyrmMakar, state_info=436))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_MagmaWyrmMakar, state_info=2))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_MagmaWyrmMakar, state_info=5))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_MagmaWyrmMakar, state_info=6))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_MagmaWyrmMakar, state_info=260))
     
     MAIN.Await(OR_1)
     
     EnableNetworkFlag(39200801)
-    DisableHealthBar(Characters.MagmaWyrm)
-    EnableAI(Characters.MagmaWyrm)
-    ForceAnimation(Characters.MagmaWyrm, 3004)
-    Wait(8.0)
+    DisableHealthBar(Characters.MagmaWyrmMakar)
+    DisableHealthBar(Characters.CLONE_MagmaWyrmMakar)
+    EnableAI(Characters.MagmaWyrmMakar)
+    EnableAI(Characters.CLONE_MagmaWyrmMakar)
+    ForceAnimation(Characters.MagmaWyrmMakar, 3004)
+    Wait(1.0)
+    ForceAnimation(Characters.CLONE_MagmaWyrmMakar, 3004)
+    Wait(7.0)
     Goto(Label.L2)
 
     # --- Label 1 --- #
@@ -1029,44 +1049,46 @@ def Event_39202810():
 
     # --- Label 2 --- #
     DefineLabel(2)
-    EnableAI(Characters.MagmaWyrm)
-    SetNetworkUpdateRate(Characters.MagmaWyrm, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableHealthBar(Characters.MagmaWyrm)
-    EnableBossHealthBar(Characters.MagmaWyrm, name=904910000)
+    EnableAI(Characters.MagmaWyrmMakar)
+    EnableAI(Characters.CLONE_MagmaWyrmMakar)
+    SetNetworkUpdateRate(Characters.MagmaWyrmMakar, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_MagmaWyrmMakar, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.MagmaWyrmMakar, name=NameText.MagmaWyrmMakar, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_MagmaWyrmMakar, name=NameText.CLONE_MagmaWyrmMakar, bar_slot=0)
 
 
 @RestartOnRest(39202829)
-def Event_39202829():
+def MagmaWyrmMakarCommonEvents():
     """Event 39202829"""
     CommonFunc_HostEntersBossFog(
         0,
-        boss_dead_flag=39200800,
+        boss_dead_flag=Flags.MagmaWyrmMakarDead,
         fog_asset=Assets.AEG099_002_9000,
         fog_region=39202800,
         host_entered_fog_flag=39202805,
-        boss_characters=Characters.MagmaWyrm,
+        boss_characters=Characters.MagmaWyrmMakar,
         action_button_id=10000,
         first_time_done_flag=0,
         first_time_trigger_region=39202801,
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=39200800,
+        boss_dead_flag=Flags.MagmaWyrmMakarDead,
         fog_asset=Assets.AEG099_002_9000,
         fog_region=39202800,
         host_entered_fog_flag=39202805,
         summon_entered_fog_flag=39202806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=39200800, fog_asset=Assets.AEG099_002_9000, model_point=5, required_flag=0)
-    CommonFunc_ControlBossFog(0, boss_dead_flag=39200800, fog_asset=Assets.AEG099_002_9001, model_point=5, required_flag=0)
-    CommonFunc_ControlBossMusic(0, 39200800, 920900, 39202805, 39202806, 0, 39202802, 0, 0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.MagmaWyrmMakarDead, fog_asset=Assets.AEG099_002_9000, model_point=5, required_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=Flags.MagmaWyrmMakarDead, fog_asset=Assets.AEG099_002_9001, model_point=5, required_flag=0)
+    CommonFunc_ControlBossMusic(0, Flags.MagmaWyrmMakarDead, 920900, 39202805, 39202806, 0, 39202802, 0, 0)
 
 
 @RestartOnRest(39203700)
 def Event_39203700():
     """Event 39203700"""
-    if FlagDisabled(39200800):
+    if FlagDisabled(Flags.MagmaWyrmMakarDead):
         return
     if FlagDisabled(400180):
         return
@@ -1105,7 +1127,7 @@ def Event_39203720():
     if PlayerNotInOwnWorld():
         return
     DisableFlag(39209250)
-    if FlagEnabled(39200800):
+    if FlagEnabled(Flags.MagmaWyrmMakarDead):
         return
     if FlagDisabled(4140):
         return

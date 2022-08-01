@@ -1,4 +1,4 @@
-"""
+"""DONE
 Southwest Liurnia (NE) (SE)
 
 linked:
@@ -26,7 +26,10 @@ def Constructor():
     """Event 0"""
     Event_1035422150()
     RegisterGrace(grace_flag=1035420000, asset=Assets.AEG099_060_9000)
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.Omenkiller, name=904820600, npc_threat_level=5)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.Omenkiller, name=904820600, npc_threat_level=5,
+        clone_boss=Characters.CLONE_Omenkiller, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1035420800,
@@ -35,8 +38,9 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30225,
         seconds=0.0,
+        clone_boss=Characters.CLONE_Omenkiller,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1035420220, character=Characters.Scarab, item_lot=40208, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1035420220, character=Characters.Scarab, item_lot=40208, reward_delay=0.0, skip_reward=0, clone=0)
     CommonFunc_90005780(
         0,
         flag=1035420800,

@@ -1,4 +1,4 @@
-"""
+"""DONE
 Southwest Liurnia (SW) (SE)
 
 linked:
@@ -54,7 +54,7 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1033400610, character=1033400610, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1033400610, character=1033400610, item_lot=0, reward_delay=0.0, skip_reward=0, clone=0)
 
 
 @ContinueOnRest(50)

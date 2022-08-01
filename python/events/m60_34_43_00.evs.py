@@ -1,4 +1,4 @@
-"""
+"""DONE
 Southwest Liurnia (NE) (NW)
 
 linked:
@@ -26,7 +26,9 @@ from .entities.m60_34_43_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1034430000, asset=Assets.AEG099_060_9000)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1034430310, character=Characters.Scarab, item_lot=40260, reward_delay=0.0, skip_reward=0, clone=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1034430310, character=Characters.Scarab, item_lot=40260, reward_delay=0.0, skip_reward=0, clone=0
+    )
     Event_1034432580(0, flag=1034430580, entity=Assets.AEG110_500_2000)
     Event_1034432610()
     Event_1034432260(

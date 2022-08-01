@@ -1,4 +1,4 @@
-"""
+"""DONE
 East Liurnia (SW) (NW)
 
 linked:
@@ -34,6 +34,14 @@ def Constructor():
         seconds=0.0,
         animation_id=1700,
     )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0,
+        character=Characters.CLONE_DeathRiteBird,
+        region=1036452340,
+        radius=10.0,
+        seconds=0.0,
+        animation_id=1700,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1036450800,
@@ -42,24 +50,28 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1036450400,
         seconds=0.0,
+        clone_boss=Characters.CLONE_DeathRiteBird,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DeathRiteBird, name=904980604, npc_threat_level=24)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.DeathRiteBird, name=904980604, npc_threat_level=24,
+        clone_boss=Characters.CLONE_DeathRiteBird, clone_name=0,
+    )
     CommonFunc_90005605(
         0,
-        1036451620,
-        60,
-        34,
-        48,
-        0,
-        1034482620,
-        0,
-        1036452620,
-        1036452621,
-        1036452622,
-        0,
-        0,
-        0.0,
-        0.0,
+        asset=1036451620,
+        area_id=60,
+        block_id=34,
+        cc_id=48,
+        dd_id=0,
+        player_start=1034482620,
+        unk_8_12=0,
+        flag=1036452620,
+        left_flag=1036452621,
+        cancel_flag__right_flag=1036452622,
+        left=0,
+        text=0,
+        seconds=0.0,
+        seconds_1=0.0,
     )
 
 

@@ -101,7 +101,7 @@ def Constructor():
         region=1043532400,
         flag_1=1043532708,
     )
-    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.BellBearingHunter, npc_threat_level=10, optional_trigger_flag=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.BellBearingHunter, npc_threat_level=10, optional_trigger_flag=0)
     CommonFunc_90005702(0, character=Characters.Merchant, flag=4763, first_flag=4760, last_flag=4763)
     CommonFunc_90005703(
         0,

@@ -57,7 +57,7 @@ def Constructor():
         item_lot=30555,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.PutridAvatar, npc_threat_level=18, optional_trigger_flag=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.PutridAvatar, npc_threat_level=18, optional_trigger_flag=0)
     Event_1050572320(0, character=Characters.GiantSkeletonTorso, destination=1051570320, special_effect=5030)
     Event_1050572330(0, character=Characters.GiantSkeletonTorso, special_effect_id=5021)
     Event_1050572340(0, character=Characters.GiantSkeletonTorso, region=1050572320, flag=1050572330)

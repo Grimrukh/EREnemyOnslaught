@@ -37,14 +37,14 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_90005476(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
+    CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry, horse=Characters.NightsCavalryHorse)
     Event_1048512820(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
-    CommonFunc_90005871(
+    CommonFunc_NightsCavalryHealthBar(
         0,
-        character=Characters.NightsCavalry,
+        nights_cavalry=Characters.NightsCavalry,
         name=903150607,
         npc_threat_level=10,
-        character_1=Characters.NightsCavalryHorse,
+        horse=Characters.NightsCavalryHorse,
     )
     RunCommonEvent(1048512800, slot=0, args=(1048510800, 0, 1048510800, 0, 1048510700, 0.0), arg_types="IIIIif")
     CommonFunc_FieldBossMusicHeatUp(0, 1048510800, 10, 0)

@@ -1,4 +1,4 @@
-"""
+"""DONE
 West Liurnia (SW) (NE)
 
 linked:
@@ -86,7 +86,7 @@ def Constructor():
         region_1=1033452201,
         region_2=1033452202,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1033450200, character=1033450200, item_lot=40264, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1033450200, character=1033450200, item_lot=40264, reward_delay=0.0, skip_reward=0, clone=0)
 
 
 @RestartOnRest(1033452360)

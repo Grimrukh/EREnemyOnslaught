@@ -47,7 +47,7 @@ def Constructor():
         item_lot=30505,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.Gargoyle, npc_threat_level=16, optional_trigger_flag=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.Gargoyle, npc_threat_level=16, optional_trigger_flag=0)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1049520550, region=1049522550, radius=10.0, seconds=0.0, animation_id=-1)
     CommonFunc_90005780(
         0,

@@ -21,6 +21,8 @@ class Characters(Character):
     Scarab = 1035420220  # c4191_9000 npc 41912020 think 41910000
     Omenkiller = 1035420800  # c4820_9000 npc 48200920 think 48200900 group 1035425100
 
+    CLONE_Omenkiller = 1035420801
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1035421950  # AEG099

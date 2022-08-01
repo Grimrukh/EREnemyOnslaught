@@ -130,7 +130,7 @@ def Constructor():
         item_lot=30405,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.Commander, npc_threat_level=11, optional_trigger_flag=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.Commander, npc_threat_level=11, optional_trigger_flag=0)
     Event_1049382820(
         0,
         character=Characters.Commander,

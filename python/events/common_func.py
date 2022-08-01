@@ -2197,26 +2197,26 @@ def CommonFunc_90005474(_, character: uint):
 
 
 @ContinueOnRest(90005476)
-def CommonFunc_90005476(_, character: uint, character_1: uint):
+def CommonFunc_MoveNightsCavalryToHorse(_, nights_cavalry: uint, horse: uint):
     """CommonFunc 90005476"""
-    AND_9.Add(CharacterAlive(character))
+    AND_9.Add(CharacterAlive(nights_cavalry))
     GotoIfConditionTrue(Label.L0, input_condition=AND_9)
-    DisableCharacter(character_1)
-    DisableAnimations(character_1)
+    DisableCharacter(horse)
+    DisableAnimations(horse)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    AND_1.Add(CharacterHasSpecialEffect(character, 11805))
+    AND_1.Add(CharacterHasSpecialEffect(nights_cavalry, 11805))
     
     MAIN.Await(AND_1)
     
     Move(
-        character_1,
-        destination=character,
+        horse,
+        destination=nights_cavalry,
         destination_type=CoordEntityType.Character,
         model_point=230,
-        copy_draw_parent=character_1,
+        copy_draw_parent=horse,
     )
     Wait(1.0)
     Restart()
@@ -9021,17 +9021,20 @@ def CommonFunc_FieldBossMusicHealthBar(
 
 
 @ContinueOnRest(90005871)
-def CommonFunc_90005871(_, character: uint, name: int, npc_threat_level: uint, character_1: uint):
+def CommonFunc_NightsCavalryHealthBar(
+    _, nights_cavalry: uint, name: int, npc_threat_level: uint, horse: uint, clone_cavalry: uint, clone_horse: uint
+):
     """CommonFunc 90005871"""
     DisableNetworkSync()
-    AND_1.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
+    OR_1.Add(HasAIStatus(nights_cavalry, ai_status=AIStatusType.Battle))
+    OR_1.Add(HasAIStatus(clone_cavalry, ai_status=AIStatusType.Battle))
+    AND_1.Add(OR_1)
     AND_1.Add(FieldBattleMusicEnabled(npc_threat_level=npc_threat_level))
     AND_1.Add(FlagDisabled(9000))
     
     MAIN.Await(AND_1)
     
     GotoIfFlagDisabled(Label.L0, flag=9290)
-    GotoIfFlagDisabled(Label.L1, flag=9291)
     Wait(5.0)
     Restart()
 
@@ -9039,83 +9042,66 @@ def CommonFunc_90005871(_, character: uint, name: int, npc_threat_level: uint, c
     DefineLabel(0)
     EnableFlag(9290)
     Wait(1.0)
-    EnableBossHealthBar(character, name=name)
+    EnableBossHealthBar(nights_cavalry, name=name, bar_slot=1)
+    EnableBossHealthBar(clone_cavalry, name=name, bar_slot=0)
     if PlayerInOwnWorld():
-        SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Forced)
-        SetNetworkUpdateRate(character, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-        SetNetworkUpdateAuthority(character_1, authority_level=UpdateAuthority.Forced)
-        SetNetworkUpdateRate(character_1, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-    AND_2.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
+        SetNetworkUpdateAuthority(nights_cavalry, authority_level=UpdateAuthority.Forced)
+        SetNetworkUpdateRate(nights_cavalry, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        SetNetworkUpdateAuthority(clone_cavalry, authority_level=UpdateAuthority.Forced)
+        SetNetworkUpdateRate(clone_cavalry, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        SetNetworkUpdateAuthority(horse, authority_level=UpdateAuthority.Forced)
+        SetNetworkUpdateRate(horse, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        SetNetworkUpdateAuthority(clone_horse, authority_level=UpdateAuthority.Forced)
+        SetNetworkUpdateRate(clone_horse, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+    OR_4.Add(HasAIStatus(nights_cavalry, ai_status=AIStatusType.Battle))
+    OR_4.Add(HasAIStatus(clone_cavalry, ai_status=AIStatusType.Battle))
+    AND_2.Add(OR_4)
     AND_2.Add(FieldBattleMusicEnabled(npc_threat_level=npc_threat_level))
     OR_2.Add(not AND_2)
-    OR_2.Add(CharacterDead(character))
+    AND_3.Add(CharacterDead(nights_cavalry))
+    AND_3.Add(CharacterDead(clone_cavalry))
+    OR_2.Add(AND_3)
     OR_2.Add(FlagEnabled(9000))
     
     MAIN.Await(OR_2)
     
-    OR_3.Add(CharacterDead(character))
+    OR_3.Add(CharacterDead(nights_cavalry))
     SkipLinesIfConditionFalse(2, OR_3)
     Wait(3.0)
     SkipLines(2)
     if FlagDisabled(9000):
         Wait(1.0)
-    DisableBossHealthBar(character, name=name)
+    DisableBossHealthBar(nights_cavalry, name=name, bar_slot=1)
+    DisableBossHealthBar(clone_cavalry, name=name, bar_slot=0)
     if PlayerInOwnWorld():
-        SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Normal)
-        SetNetworkUpdateRate(character, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-        SetNetworkUpdateAuthority(character_1, authority_level=UpdateAuthority.Normal)
-        SetNetworkUpdateRate(character_1, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        SetNetworkUpdateAuthority(nights_cavalry, authority_level=UpdateAuthority.Normal)
+        SetNetworkUpdateRate(nights_cavalry, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        SetNetworkUpdateAuthority(clone_cavalry, authority_level=UpdateAuthority.Normal)
+        SetNetworkUpdateRate(clone_cavalry, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        SetNetworkUpdateAuthority(horse, authority_level=UpdateAuthority.Normal)
+        SetNetworkUpdateRate(horse, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        SetNetworkUpdateAuthority(clone_horse, authority_level=UpdateAuthority.Normal)
+        SetNetworkUpdateRate(clone_horse, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
     DisableFlag(9290)
     Restart()
 
-    # --- Label 1 --- #
-    DefineLabel(1)
-    EnableFlag(9291)
-    Wait(1.0)
-    EnableBossHealthBar(character, name=name, bar_slot=1)
-    if PlayerInOwnWorld():
-        SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Forced)
-        SetNetworkUpdateRate(character, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-        SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Forced)
-        SetNetworkUpdateRate(character, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-    AND_12.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    AND_12.Add(FieldBattleMusicEnabled(npc_threat_level=npc_threat_level))
-    OR_12.Add(not AND_12)
-    OR_12.Add(CharacterDead(character))
-    OR_12.Add(FlagEnabled(9000))
-    
-    MAIN.Await(OR_12)
-    
-    OR_13.Add(CharacterDead(character))
-    SkipLinesIfConditionFalse(2, OR_13)
-    Wait(3.0)
-    SkipLines(2)
-    if FlagDisabled(9000):
-        Wait(1.0)
-    DisableBossHealthBar(character, name=name, bar_slot=1)
-    if PlayerInOwnWorld():
-        SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Normal)
-        SetNetworkUpdateRate(character, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-        SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Normal)
-        SetNetworkUpdateRate(character, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-    DisableFlag(9291)
-    Restart()
+    # Only one field boss can be active at a time.
 
 
 @ContinueOnRest(90005872)
-def CommonFunc_FieldBossMusicHeatUp(_, boss_character: uint, npc_threat_level: uint, optional_trigger_flag: uint):
+def CommonFunc_FieldBossMusicHeatUp(_, boss: uint, npc_threat_level: uint, optional_trigger_flag: uint):
     """If `optional_trigger_flag` is not given, the trigger will be <= 55% HP."""
     DisableNetworkSync()
     if UnsignedNotEqual(left=0, right=optional_trigger_flag):
         AND_1.Add(FlagEnabled(optional_trigger_flag))
     else:
-        AND_1.Add(HealthRatio(boss_character) <= 0.550000011920929)
+        AND_1.Add(HealthRatio(boss) <= 0.550000011920929)
     AND_1.Add(FieldBattleMusicEnabled(npc_threat_level=npc_threat_level))
     
     MAIN.Await(AND_1)
     
     EnableFieldBattleMusicHeatUp(npc_threat_level=npc_threat_level)
-    OR_2.Add(CharacterDead(boss_character))
+    OR_2.Add(CharacterDead(boss))
     OR_2.Add(FieldBattleMusicDisabled(npc_threat_level=npc_threat_level))
     
     MAIN.Await(OR_2)

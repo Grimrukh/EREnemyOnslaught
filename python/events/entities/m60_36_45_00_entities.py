@@ -15,6 +15,8 @@ class Characters(Character):
     Skeleton8 = 1036450243  # c3500_9013 npc 35002020 think 35002000
     DeathRiteBird = 1036450340  # c4980_9000 npc 49801020 think 49800100
 
+    CLONE_DeathRiteBird = 1036450341
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1036451950  # AEG099

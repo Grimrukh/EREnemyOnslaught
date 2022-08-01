@@ -36,7 +36,7 @@ def Constructor():
         item_lot=30200,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.ErdtreeAvatar, npc_threat_level=18, optional_trigger_flag=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.ErdtreeAvatar, npc_threat_level=18, optional_trigger_flag=0)
     Event_1038482580()
     CommonFunc_90005683(0, 62201, 1038481684, 209, 78290, 78290)
 

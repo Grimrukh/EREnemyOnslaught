@@ -1,4 +1,4 @@
-"""
+"""DONE
 Northwest Liurnia (NE) (SE)
 
 linked:
@@ -55,8 +55,12 @@ def Constructor():
         asset=Assets.AEG099_060_9000,
         enemy_block_distance=5.0,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1035500322, character=Characters.Scarab1, item_lot=40220, reward_delay=0.0, skip_reward=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1035500320, character=Characters.Scarab0, item_lot=40250, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1035500322, character=Characters.Scarab1, item_lot=40220, reward_delay=0.0, skip_reward=0, clone=0
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1035500320, character=Characters.Scarab0, item_lot=40250, reward_delay=0.0, skip_reward=0, clone=0
+    )
     Event_1035502580()
     CommonFunc_90005501(
         0,

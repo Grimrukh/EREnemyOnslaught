@@ -1,4 +1,4 @@
-"""
+"""DONE
 Liurnia to Altus Plateau (SW) (NW)
 
 linked:
@@ -51,6 +51,7 @@ def Constructor():
         item_lot=40204,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,
     )
     Event_1036492610()
     CommonFunc_90005704(0, attacked_entity=Characters.Hyetta, flag=3381, flag_1=3380, flag_2=1036499201, right=3)

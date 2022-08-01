@@ -33,7 +33,7 @@ def Constructor():
         reward_delay=0.0,
         skip_reward=0,
     )
-    CommonFunc_90005476(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
+    CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry, horse=Characters.NightsCavalryHorse)
     RunCommonEvent(90005477)
     Event_1039432340(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
     CommonFunc_FieldBossNonRespawningWithReward(
@@ -45,13 +45,13 @@ def Constructor():
         item_lot=1039430400,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.NightsCavalry, npc_threat_level=10, optional_trigger_flag=0)
-    CommonFunc_90005871(
+    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.NightsCavalry, npc_threat_level=10, optional_trigger_flag=0)
+    CommonFunc_NightsCavalryHealthBar(
         0,
-        character=Characters.NightsCavalry,
+        nights_cavalry=Characters.NightsCavalry,
         name=903150602,
         npc_threat_level=10,
-        character_1=Characters.NightsCavalryHorse,
+        horse=Characters.NightsCavalryHorse,
     )
     CommonFunc_90005706(0, character=Characters.WanderingNoble, animation_id=930023, left=0)
     CommonFunc_NonRespawningWithReward(0, dead_flag=1039430310, character=1039430310, item_lot=40252, reward_delay=0.0, skip_reward=0)

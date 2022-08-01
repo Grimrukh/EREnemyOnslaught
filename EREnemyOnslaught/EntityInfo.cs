@@ -307,6 +307,24 @@ namespace EREnemyOnslaught
             [1034450800] = new CloneInfo(1034450801, new Vector4(-37.301f, 237.685f, 34.946f, 60.295f)),  // Glintstone Dragon Smarag
 
             [1034500800] = new CloneInfo(1034500801, new Vector4(10.063f, 455.024f, 36.713f, -107.379f)),  // Glintstone Dragon Adula (Ranni's Rise)
+
+            [1035420800] = new CloneInfo(1035420801, new Vector4(-38.849f, 269.155f, -12.055f, 44.135f)),  // Omenkiller
+
+            [1036450340] = new CloneInfo(1036450341, new Vector4(-79.161f, 237.557f, 26.946f, -64.883f)),  // Deathrite Bird
+
+            [1036480340] = new CloneInfo(1036480342, new Vector4(37.775f, 321.602f, 27.538f, 34.351f)),  // Night's Cavalry
+            [1036480341] = new CloneInfo(1036480343, new Vector4(34.496f, 321.577f, 26.488f, 35.401f)),  // and horse
+
+            [1036500340] = new CloneInfo(1036500341),  // Red Wolf
+            [1036500800] = new CloneInfo(1036500801),  // Onyx Lord (Evergaol)
+
+            [1037420340] = new CloneInfo(1037420341, new Vector4(-65.198f, 237.647f, 84.754f, -96.931f)),  // Deathrite Bird
+            #endregion
+
+            #region Altus Plateau
+            [1035530800] = new CloneInfo(1035530801, new Vector4(12.650f, 824.102f, -77.946f, 166.660f)),  // Magma Wyrm
+            
+            [1036540800] = new CloneInfo(1036540801, new Vector4(102.266f, 1048.271f, -40.923f, 178.064f)),  // Fallingstar Beast
             #endregion
 
             #region Caelid
@@ -394,6 +412,16 @@ namespace EREnemyOnslaught
             // Mimic Tear
             [30200800] = new CloneInfo(30200802),
             [30200801] = new CloneInfo(30200803),
+            #endregion
+
+            #region Caves
+            #endregion
+
+            #region Tunnels
+            #endregion
+
+            #region m39_20_00_00 (Ruin-Strewn Precipice)
+            [39200800] = new CloneInfo(39200801, new Vector4(-114.822f, 353.113f, -1302.301f, -28.413f)),  // Magma Wyrm Makar
             #endregion
         };
 
@@ -490,7 +518,7 @@ namespace EREnemyOnslaught
 
             // m11_05_00_00
             [904720010] = "Mysterious Foreshadowed Stranger",
-            [904720011] = "Eric, Father of Merbit and Mulg, Husband of Rhonda, Uncle of Mazohr, Former Roommate of Ryktar",
+            [904720011] = "Eric (!), Father of Merbit and Mulg, Brother of Rhonda, Uncle of Mazohr, Former Roommate of Ryktar",
             [132401] = "Sir Giddy-Up Ofnir, the Idiot",
 
             // m12_01_00_00
@@ -516,8 +544,8 @@ namespace EREnemyOnslaught
             [903575000] = "Oneskin, Twoskin",
             [903575010] = "Threeskin, Fourskin",
             [902110010] = "Beast Clergyman",
-            [902110011] = "Big the Cat",
-            [904520010] = "Dragonlord Dan",
+            [902110011] = "Big the Cat... of Death",
+            [904520010] = "Dragonlord Daniel",
 
             // m14_00_00_00
             [902030010] = "Rhonda, Queen of the White Dust",
@@ -553,6 +581,9 @@ namespace EREnemyOnslaught
             [903700300] = "Depraved Perfurmers",
             [904260304] = "Erdtree Burial Watchdogs",
             [904260305] = "Erdtree Burial Watchdogs",
+
+            // m39_20_00_00
+            [904910010] = "Magma Wyrm Marge",
         };
     }
 }

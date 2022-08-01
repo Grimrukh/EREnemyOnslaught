@@ -1,4 +1,4 @@
-"""
+"""DONE
 Liurnia to Altus Plateau (NW) (SW)
 
 linked:
@@ -37,6 +37,7 @@ def Constructor():
         cc_id=50,
         dd_id=0,
         player_start=1036502805,
+        clone=Characters.CLONE_OnyxLord,
     )
     CommonFunc_EnterEvergaol(
         0,
@@ -66,6 +67,7 @@ def Constructor():
         boss_name=903600520,
         standby_animation=-1,
         appearance_animation=20001,
+        clone=Characters.CLONE_OnyxLord,
     )
     CommonFunc_90005883(0, flag=1036500800, flag_1=1036500805, entity=Assets.AEG099_170_1000)
     CommonFunc_EvergaolBossMusic(
@@ -77,7 +79,15 @@ def Constructor():
         left=0,
         left_1=1,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1036500340, character=Characters.RedWolf, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0,
+        dead_flag=1036500340,
+        character=Characters.RedWolf,
+        item_lot=0,
+        reward_delay=0.0,
+        skip_reward=0,
+        clone=Characters.CLONE_RedWolf,
+    )
     CommonFunc_90005633(0, 580310, 580010, 1036500600, 30016, 20016, 1036501600, 1036501610)
 
 

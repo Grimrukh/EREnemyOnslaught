@@ -44,7 +44,7 @@ def Constructor():
         item_lot=30415,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.PutridAvatar, npc_threat_level=18, optional_trigger_flag=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.PutridAvatar, npc_threat_level=18, optional_trigger_flag=0)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.ErdtreeGuardian0, region=1051402200, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.ErdtreeGuardian1, region=1051402200, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.ErdtreeGuardian2, region=1051402200, seconds=0.0, animation_id=-1)

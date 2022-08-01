@@ -35,7 +35,7 @@ def Constructor():
         item_lot=30425,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.Gargoyle, npc_threat_level=16, optional_trigger_flag=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.Gargoyle, npc_threat_level=16, optional_trigger_flag=0)
     Event_1051432209()
     Event_1051432200(0, character=Characters.Gargoyle, radius=55.0, seconds=0.0, animation_id=-1)
     Event_1051430700(0, character=Characters.BeastClergyman)

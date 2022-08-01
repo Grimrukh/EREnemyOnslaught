@@ -1,4 +1,4 @@
-"""
+"""DONE
 West Altus Plateau (NW) (SW)
 
 linked:
@@ -52,7 +52,18 @@ def Constructor():
         seconds=0.0,
         animation_id=0,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.FallingstarBeast, name=904680603, npc_threat_level=19)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0,
+        character=Characters.CLONE_FallingstarBeast,
+        region=1036542805,
+        radius=10.0,
+        seconds=0.0,
+        animation_id=0,
+    )
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.FallingstarBeast, name=904680603, npc_threat_level=19,
+        clone_boss=Characters.FallingstarBeast, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1036540800,
@@ -61,9 +72,10 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30375,
         seconds=0.0,
+        clone_boss=Characters.CLONE_FallingstarBeast,
     )
     Event_1036542350(0, region=1036542450, special_effect_id=16488, special_effect_id_1=16489)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1036540498, character=Characters.Scarab, item_lot=40334, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1036540498, character=Characters.Scarab, item_lot=40334, reward_delay=0.0, skip_reward=0, clone=0)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Marionette0,

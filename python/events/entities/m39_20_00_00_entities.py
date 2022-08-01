@@ -1,6 +1,15 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    MagmaWyrmMakarDead = 39200800
+
+
+class NameText(NPCName):
+    MagmaWyrmMakar = 904910000
+    CLONE_MagmaWyrmMakar = 904910010
+
+
 class Characters(Character):
     GreatHornedTragoth0 = 39200700  # c0000_9003 col h001000 npc 533440026 think 533440000 chara 23440
     GreatHornedTragoth1 = 39200701  # c0000_9004 col h001100 npc 523440026 think 523441000 chara 23440
@@ -49,7 +58,9 @@ class Characters(Character):
     TunnelMiner5 = 39200268  # c4382_9028 col h000200 npc 43825026 think 43823000
     TunnelMiner6 = 39200269  # c4382_9029 col h000200 npc 43822026 think 43822000
     TunnelMiner7 = 39200277  # c4382_9037 col h000200 npc 43822026 think 43822000
-    MagmaWyrm = 39200800  # c4910_9000 col h001100 npc 49100026 think 49100926 group 39205800,39205104
+    MagmaWyrmMakar = 39200800  # c4910_9000 col h001100 npc 49100026 think 49100926 group 39205800,39205104
+
+    CLONE_MagmaWyrmMakar = 39200801
 
 
 class Assets(Asset):

@@ -16,6 +16,9 @@ class Characters(Character):
     OnyxLord = 1036500800  # c3600_9000 npc 36001920 think 36001100
     WanderingNoble = 1036500600  # c4300_9000 npc 43007120 think 43007000
 
+    CLONE_RedWolf = 1036500341
+    CLONE_OnyxLord = 1036500801
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1036501950  # AEG099

@@ -72,7 +72,7 @@ def Constructor():
         item_lot=30100,
         seconds=0.0,
     )
-    CommonFunc_FieldBossMusicHeatUp(0, boss_character=Characters.TreeSentinel, npc_threat_level=12, optional_trigger_flag=0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.TreeSentinel, npc_threat_level=12, optional_trigger_flag=0)
     CommonFunc_90005683(0, flag=62103, asset=Assets.AEG099_055_1500, vfx_id=210, flag_1=78190, flag_2=78190)
     Event_1042363700(0, character=Characters.WhiteMaskVarre, asset=Assets.AEG007_360_1000)
     CommonFunc_90005704(

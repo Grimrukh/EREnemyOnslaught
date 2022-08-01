@@ -10,6 +10,9 @@ class Characters(Character):
     DemiHumanShaman = 1036480700  # c4110_9000 npc 41109120 think 41109000 talk 223006000
     WanderingNoble = 1036480200  # c4300_9001 npc 43002020 think 43002110 group 1036485100
 
+    CLONE_NightsCavalry = 1036480342
+    CLONE_NightsCavalryHorse = 1036480343
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1036481950  # AEG099

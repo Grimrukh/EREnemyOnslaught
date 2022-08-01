@@ -1,4 +1,4 @@
-"""
+"""DONE
 Southeast Liurnia (NW) (SE)
 
 linked:
@@ -32,8 +32,12 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1037420400,
         seconds=0.0,
+        clone_boss=Characters.CLONE_DeathRiteBird,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DeathRiteBird, name=904980603, npc_threat_level=24)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.DeathRiteBird, name=904980603, npc_threat_level=24,
+        clone_boss=Characters.CLONE_DeathRiteBird, clone_name=0,
+    )
     RegisterGrace(grace_flag=1037420000, asset=Assets.AEG099_060_9001)
     CommonFunc_90005100(
         0,

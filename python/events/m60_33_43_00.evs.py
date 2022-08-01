@@ -1,4 +1,4 @@
-"""
+"""DONE
 Southwest Liurnia (NW) (NE)
 
 linked:
@@ -49,7 +49,7 @@ def Constructor():
         0, character=Characters.CLONE_ErdtreeAvatar, radius=20.0, seconds=0.0, animation_id=0
     )
     CommonFunc_FieldBossMusicHeatUp(
-        0, boss_character=Characters.ErdtreeAvatar, npc_threat_level=18, optional_trigger_flag=0
+        0, boss=Characters.ErdtreeAvatar, npc_threat_level=18, optional_trigger_flag=0
     )
     CommonFunc_900005610(0, asset=Assets.AEG003_316_9000, vfx_id=100, model_point=800, right=1033438600)
     CommonFunc_NonRespawningWithReward(0, 1033430200, Characters.Scarab, 40238, 0.0, 0, clone=0)

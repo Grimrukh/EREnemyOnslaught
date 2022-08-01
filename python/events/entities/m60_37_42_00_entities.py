@@ -19,6 +19,8 @@ class Characters(Character):
     GiantOctopus1 = 1037420301  # c4220_9001 npc 42200020 think 42200000
     DeathRiteBird = 1037420340  # c4980_9000 npc 49800020 think 49800100
 
+    CLONE_DeathRiteBird = 1037420341
+
 
 class Assets(Asset):
     AEG003_363_1000 = 1037421720  # AEG003
