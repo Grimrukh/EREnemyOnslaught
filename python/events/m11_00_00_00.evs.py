@@ -1,4 +1,4 @@
-"""
+"""DONE (except proper miniboss clone placements)
 Leyndell, Royal Capital
 
 linked:

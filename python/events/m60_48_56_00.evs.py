@@ -36,10 +36,10 @@ def Constructor():
     )
     Event_1048562350(2, character__region=1048560352, character=Characters.BigWolf0)
     Event_1048562350(5, character__region=1048560355, character=Characters.BigWolf1)
-    CommonFunc_90005790(
+    CommonFunc_NPCInvaderSummonSign(
         0,
         right=0,
-        flag=1048560180,
+        dead_flag=1048560180,
         summon_flag=1048562181,
         dismissal_flag=1048562182,
         character=Characters.AnastasiaTarnishedEater,
@@ -51,19 +51,19 @@ def Constructor():
         unknown=0,
         right_2=0,
     )
-    CommonFunc_90005791(
+    CommonFunc_NPCInvaderAppearance(
         0,
-        flag=1048560180,
-        flag_1=1048562181,
-        flag_2=1048562182,
-        character=Characters.AnastasiaTarnishedEater,
+        dead_flag=1048560180,
+        summon_flag=1048562181,
+        dismissal_flag=1048562182,
+        npc=Characters.AnastasiaTarnishedEater,
     )
-    CommonFunc_90005792(
+    CommonFunc_NPCInvaderDies(
         0,
-        flag=1048560180,
-        flag_1=1048562181,
-        flag_2=1048562182,
-        character=Characters.AnastasiaTarnishedEater,
+        dead_flag=1048560180,
+        summon_flag=1048562181,
+        dismissal_flag=1048562182,
+        npc=Characters.AnastasiaTarnishedEater,
         item_lot=1048560800,
         seconds=0.0,
     )

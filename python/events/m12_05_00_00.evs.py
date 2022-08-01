@@ -1,4 +1,4 @@
-"""
+"""DONE
 Mohgwyn Palace
 
 linked:
@@ -697,10 +697,10 @@ def Constructor():
         0, dead_flag=12050403, character=Characters.Scarab, item_lot=40686, reward_delay=1.5, skip_reward=0,
         clone=0
     )
-    CommonFunc_90005790(
+    CommonFunc_NPCInvaderSummonSign(
         0,
         right=Flags.MohgDead,
-        flag=12050410,
+        dead_flag=12050410,
         summon_flag=12052410,
         dismissal_flag=12052411,
         character=Characters.NamelessWhiteMask0,
@@ -712,20 +712,20 @@ def Constructor():
         unknown=0,
         right_2=0,
     )
-    CommonFunc_90005791(0, flag=12050410, flag_1=12052410, flag_2=12052411, character=Characters.NamelessWhiteMask0)
-    CommonFunc_90005792(
+    CommonFunc_NPCInvaderAppearance(0, dead_flag=12050410, summon_flag=12052410, dismissal_flag=12052411, npc=Characters.NamelessWhiteMask0)
+    CommonFunc_NPCInvaderDies(
         0,
-        flag=12050410,
-        flag_1=12052410,
-        flag_2=12052411,
-        character=Characters.NamelessWhiteMask0,
+        dead_flag=12050410,
+        summon_flag=12052410,
+        dismissal_flag=12052411,
+        npc=Characters.NamelessWhiteMask0,
         item_lot=0,
         seconds=0.0,
     )
-    CommonFunc_90005790(
+    CommonFunc_NPCInvaderSummonSign(
         0,
         right=Flags.MohgDead,
-        flag=12050412,
+        dead_flag=12050412,
         summon_flag=12052412,
         dismissal_flag=12052413,
         character=Characters.NamelessWhiteMask1,
@@ -737,20 +737,20 @@ def Constructor():
         unknown=0,
         right_2=0,
     )
-    CommonFunc_90005791(0, flag=12050412, flag_1=12052412, flag_2=12052413, character=Characters.NamelessWhiteMask1)
-    CommonFunc_90005792(
+    CommonFunc_NPCInvaderAppearance(0, dead_flag=12050412, summon_flag=12052412, dismissal_flag=12052413, npc=Characters.NamelessWhiteMask1)
+    CommonFunc_NPCInvaderDies(
         0,
-        flag=12050412,
-        flag_1=12052412,
-        flag_2=12052413,
-        character=Characters.NamelessWhiteMask1,
+        dead_flag=12050412,
+        summon_flag=12052412,
+        dismissal_flag=12052413,
+        npc=Characters.NamelessWhiteMask1,
         item_lot=12050950,
         seconds=0.0,
     )
-    CommonFunc_90005790(
+    CommonFunc_NPCInvaderSummonSign(
         0,
         right=Flags.MohgDead,
-        flag=12050414,
+        dead_flag=12050414,
         summon_flag=12052414,
         dismissal_flag=12052415,
         character=Characters.NamelessWhiteMask2,
@@ -762,13 +762,13 @@ def Constructor():
         unknown=0,
         right_2=0,
     )
-    CommonFunc_90005791(0, flag=12050414, flag_1=12052414, flag_2=12052415, character=Characters.NamelessWhiteMask2)
-    CommonFunc_90005792(
+    CommonFunc_NPCInvaderAppearance(0, dead_flag=12050414, summon_flag=12052414, dismissal_flag=12052415, npc=Characters.NamelessWhiteMask2)
+    CommonFunc_NPCInvaderDies(
         0,
-        flag=12050414,
-        flag_1=12052414,
-        flag_2=12052415,
-        character=Characters.NamelessWhiteMask2,
+        dead_flag=12050414,
+        summon_flag=12052414,
+        dismissal_flag=12052415,
+        npc=Characters.NamelessWhiteMask2,
         item_lot=0,
         seconds=0.0,
     )

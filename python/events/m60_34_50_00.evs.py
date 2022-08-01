@@ -1,4 +1,4 @@
-"""
+"""DONE
 Northwest Liurnia (NE) (SW)
 
 linked:
@@ -87,22 +87,41 @@ def Constructor():
     Event_1034503600(0, region=1034502500, flag=1034500738)
     Event_1034502610()
     Event_1034502620()
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.GlintstoneDragon, name=904502601, npc_threat_level=25)
+
+    CommonFunc_FieldBossMusicHealthBar(
+        0,
+        boss=Characters.GlintstoneDragonAdula,
+        name=NameText.GlintstoneDragonAdula,
+        npc_threat_level=25,
+        clone_boss=Characters.CLONE_GlintstoneDragonAdula,
+        clone_name=NameText.GlintstoneDragonAdeline,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
-        dead_flag=1034500800,
+        dead_flag=Flags.AdulaDisappeared,
         extra_flag_to_enable=0,
-        boss=Characters.GlintstoneDragon,
+        boss=Characters.GlintstoneDragonAdula,
         boss_banner_choice=1,
         item_lot=0,
         seconds=0.0,
+        clone_boss=Characters.CLONE_GlintstoneDragonAdula,
     )
-    Event_1034502800()
-    Event_1034502801()
-    Event_1034502804()
-    Event_1034502802()
-    Event_1034502803()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1035510200, character=Characters.Scarab, item_lot=40200, reward_delay=0.0, skip_reward=0)
+    AdulaUnknownEffect()
+    AdulaInvincibility()
+    AdulaDisappears()
+    AdulaDefeatedAtPlateau()
+    AdulaRegionEffect(0, Characters.GlintstoneDragonAdula)
+    AdulaRegionEffect(2, Characters.CLONE_GlintstoneDragonAdula)  # 1034502805
+
+    CommonFunc_NonRespawningWithReward(
+        0,
+        dead_flag=1035510200,
+        character=Characters.Scarab,
+        item_lot=40200,
+        reward_delay=0.0,
+        skip_reward=0,
+        clone=0,
+    )
     CommonFunc_90005525(0, flag=1034500620, asset=Assets.AEG004_983_1000)
     CommonFunc_90005525(0, flag=1034500621, asset=Assets.AEG004_336_1000)
     Event_1034502580()
@@ -371,79 +390,101 @@ def Event_1034502620():
 
 
 @RestartOnRest(1034502800)
-def Event_1034502800():
+def AdulaUnknownEffect():
     """Event 1034502800"""
-    if FlagEnabled(1034500800):
+    if FlagEnabled(Flags.AdulaDisappeared):
         return
-    AddSpecialEffect(Characters.GlintstoneDragon, 10247)
+    AddSpecialEffect(Characters.GlintstoneDragonAdula, 10247)
+    AddSpecialEffect(Characters.CLONE_GlintstoneDragonAdula, 10247)
 
 
 @RestartOnRest(1034502801)
-def Event_1034502801():
+def AdulaInvincibility():
     """Event 1034502801"""
-    if FlagEnabled(1034500800):
+    if FlagEnabled(Flags.AdulaDisappeared):
         return
-    if CharacterHasSpecialEffect(character=Characters.GlintstoneDragon, special_effect=10207):
+    if CharacterHasSpecialEffect(character=Characters.GlintstoneDragonAdula, special_effect=10207):
         return
-    EnableImmortality(Characters.GlintstoneDragon)
-    OR_1.Add(HealthRatio(Characters.GlintstoneDragon) < 0.5)
-    
+    if CharacterHasSpecialEffect(character=Characters.CLONE_GlintstoneDragonAdula, special_effect=10207):
+        return
+    EnableImmortality(Characters.GlintstoneDragonAdula)
+    EnableImmortality(Characters.CLONE_GlintstoneDragonAdula)
+
+    OR_1.Add(HealthRatio(Characters.GlintstoneDragonAdula) < 0.5)
+    OR_1.Add(HealthRatio(Characters.CLONE_GlintstoneDragonAdula) < 0.5)
     MAIN.Await(OR_1)
     
     Wait(0.5)
-    OR_2.Add(HealthRatio(Characters.GlintstoneDragon) < 0.5)
+    OR_2.Add(HealthRatio(Characters.GlintstoneDragonAdula) < 0.5)
+    OR_2.Add(HealthRatio(Characters.CLONE_GlintstoneDragonAdula) < 0.5)
     SkipLinesIfConditionTrue(1, OR_2)
     Restart()
-    EnableInvincibility(Characters.GlintstoneDragon)
-    ReplanAI(Characters.GlintstoneDragon)
-    ForceAnimation(Characters.GlintstoneDragon, 20009)
-    if CharacterHasSpecialEffect(character=Characters.GlintstoneDragon, special_effect=10207):
+
+    EnableInvincibility(Characters.GlintstoneDragonAdula)
+    ReplanAI(Characters.GlintstoneDragonAdula)
+    ForceAnimation(Characters.GlintstoneDragonAdula, 20009)
+
+    EnableInvincibility(Characters.CLONE_GlintstoneDragonAdula)
+    ReplanAI(Characters.CLONE_GlintstoneDragonAdula)
+    ForceAnimation(Characters.CLONE_GlintstoneDragonAdula, 20009)
+
+    if CharacterHasSpecialEffect(character=Characters.GlintstoneDragonAdula, special_effect=10207):
         return
+    if CharacterHasSpecialEffect(character=Characters.CLONE_GlintstoneDragonAdula, special_effect=10207):
+        return
+
     Wait(1.0)
+
     Restart()
 
 
 @RestartOnRest(1034502802)
-def Event_1034502802():
+def AdulaDefeatedAtPlateau():
     """Event 1034502802"""
-    if FlagEnabled(1034500800):
+    if FlagEnabled(Flags.AdulaDisappeared):
         return
     
     MAIN.Await(FlagEnabled(1034420800))
-    
-    MAIN.Await(OR_1)
-    
-    DisableCharacter(Characters.GlintstoneDragon)
-    EnableFlag(1034500800)
+
+    DisableCharacter(Characters.GlintstoneDragonAdula)
+    EnableFlag(Flags.AdulaDisappeared)
 
 
 @RestartOnRest(1034502803)
-def Event_1034502803():
+def AdulaRegionEffect(_, adula: uint):
     """Event 1034502803"""
     DisableNetworkSync()
-    if FlagEnabled(1034500800):
+    if FlagEnabled(Flags.AdulaDisappeared):
         return
     
-    MAIN.Await(CharacterInsideRegion(character=Characters.GlintstoneDragon, region=1034502800))
+    MAIN.Await(CharacterInsideRegion(character=adula, region=1034502800))
     
-    AddSpecialEffect(Characters.GlintstoneDragon, 10285)
+    AddSpecialEffect(adula, 10285)
     Wait(1.0)
     Restart()
 
 
 @RestartOnRest(1034502804)
-def Event_1034502804():
+def AdulaDisappears():
     """Event 1034502804"""
-    if FlagEnabled(1034500800):
+    if FlagEnabled(Flags.AdulaDisappeared):
         return
-    AND_1.Add(HealthRatio(Characters.GlintstoneDragon) < 0.5)
-    AND_1.Add(CharacterHasSpecialEffect(Characters.GlintstoneDragon, 10207))
+    AND_1.Add(HealthRatio(Characters.GlintstoneDragonAdula) < 0.5)
+    AND_1.Add(CharacterHasSpecialEffect(Characters.GlintstoneDragonAdula, 10207))
+    OR_1.Add(AND_1)
+
+    AND_2.Add(HealthRatio(Characters.CLONE_GlintstoneDragonAdula) < 0.5)
+    AND_2.Add(CharacterHasSpecialEffect(Characters.CLONE_GlintstoneDragonAdula, 10207))
+    OR_1.Add(AND_2)
     
-    MAIN.Await(AND_1)
+    MAIN.Await(OR_1)
+
+    # Both dragons disappear when EITHER falls below 50% HP.
     
     Wait(4.699999809265137)
-    EnableFlag(1034500800)
-    DisableCharacter(Characters.GlintstoneDragon)
+    EnableFlag(Flags.AdulaDisappeared)
+    DisableCharacter(Characters.GlintstoneDragonAdula)
+    DisableCharacter(Characters.CLONE_GlintstoneDragonAdula)
 
 
 @RestartOnRest(1034500700)

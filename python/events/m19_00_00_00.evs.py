@@ -1,4 +1,4 @@
-"""
+"""DONE
 Stone Platform
 
 linked:
@@ -422,10 +422,11 @@ def EldenBeastDies():
         return
     GotoIfFlagEnabled(Label.L0, flag=Flags.EldenBeastDead)
 
-    AND_3.Add(HealthValue(Characters.EldenBeast) <= 0)
-    AND_3.Add(HealthValue(Characters.CLONE_EldenBeast) <= 0)
-    MAIN.Await(AND_3)
-    
+    # Shared health pool.
+    MAIN.Await(HealthValue(Characters.EldenBeast) <= 0)
+
+    Kill(Characters.CLONE_EldenBeast)
+
     Wait(4.0)
     PlaySoundEffect(19008000, 888880000, sound_type=SoundType.s_SFX)
     ChangeCamera(normal_camera_id=-1, locked_camera_id=-1)
@@ -651,6 +652,8 @@ def EldenBeastBattleTrigger():
     EnableCharacter(Characters.CLONE_EldenBeast)
     EnableAnimations(Characters.CLONE_EldenBeast)
     EnableAI(Characters.CLONE_EldenBeast)
+    EnableImmortality(Characters.CLONE_EldenBeast)
+    ReferDamageToEntity(Characters.CLONE_EldenBeast, Characters.EldenBeast)
     ForceAnimation(Characters.CLONE_EldenBeast, 20000)
 
     # TODO: Not sure how to manage this unknown entity. It's never disabled during the Radagon fight, so I assume
@@ -658,8 +661,8 @@ def EldenBeastBattleTrigger():
     # EnableCharacter(Characters.Unknown)
     # EnableAnimations(Characters.Unknown)
 
-    EnableBossHealthBar(Characters.EldenBeast, name=NameText.EldenBeast, bar_slot=1)
-    EnableBossHealthBar(Characters.CLONE_EldenBeast, name=NameText.CLONE_EldenBeast, bar_slot=0)
+    # Shared health pool.
+    EnableBossHealthBar(Characters.EldenBeast, name=NameText.EldenBeast, bar_slot=0)
 
     ChangeCamera(normal_camera_id=2200, locked_camera_id=2200)
     WaitFramesAfterCutscene(frames=1)

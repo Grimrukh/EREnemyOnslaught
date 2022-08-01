@@ -44,10 +44,10 @@ def Constructor():
     Event_1042392600(4, attacked_entity=Assets.AEG099_280_9004, region=1042392604)
     Event_1042392600(5, attacked_entity=Assets.AEG099_280_9005, region=1042392605)
     Event_1042392600(6, attacked_entity=Assets.AEG099_280_9006, region=1042392606)
-    CommonFunc_90005790(
+    CommonFunc_NPCInvaderSummonSign(
         0,
         right=0,
-        flag=1042390180,
+        dead_flag=1042390180,
         summon_flag=1042392181,
         dismissal_flag=1042392182,
         character=Characters.RecusantHenricus,
@@ -59,13 +59,13 @@ def Constructor():
         unknown=0,
         right_2=0,
     )
-    CommonFunc_90005791(0, flag=1042390180, flag_1=1042392181, flag_2=1042392182, character=Characters.RecusantHenricus)
-    CommonFunc_90005792(
+    CommonFunc_NPCInvaderAppearance(0, dead_flag=1042390180, summon_flag=1042392181, dismissal_flag=1042392182, npc=Characters.RecusantHenricus)
+    CommonFunc_NPCInvaderDies(
         0,
-        flag=1042390180,
-        flag_1=1042392181,
-        flag_2=1042392182,
-        character=Characters.RecusantHenricus,
+        dead_flag=1042390180,
+        summon_flag=1042392181,
+        dismissal_flag=1042392182,
+        npc=Characters.RecusantHenricus,
         item_lot=1042390700,
         seconds=0.0,
     )

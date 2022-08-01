@@ -7962,10 +7962,10 @@ def CommonFunc_90005785(
 
 
 @ContinueOnRest(90005790)
-def CommonFunc_90005790(
+def CommonFunc_NPCInvaderSummonSign(
     _,
     right: uint,
-    flag: uint,
+    dead_flag: uint,
     summon_flag: uint,
     dismissal_flag: uint,
     character: uint,
@@ -7984,7 +7984,7 @@ def CommonFunc_90005790(
     if UnsignedNotEqual(left=0, right=right):
         if FlagEnabled(right):
             return
-    if FlagEnabled(flag):
+    if FlagEnabled(dead_flag):
         return
     if PlayerInOwnWorld():
         SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Forced)
@@ -7992,7 +7992,7 @@ def CommonFunc_90005790(
         return
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagDisabled(right))
-    AND_1.Add(FlagDisabled(flag))
+    AND_1.Add(FlagDisabled(dead_flag))
     AND_1.Add(FlagDisabled(summon_flag))
     if UnsignedNotEqual(left=0, right=right_1):
         AND_1.Add(FlagEnabled(right_1))
@@ -8017,66 +8017,66 @@ def CommonFunc_90005790(
 
 
 @ContinueOnRest(90005791)
-def CommonFunc_90005791(_, flag: uint, flag_1: uint, flag_2: uint, character: uint):
+def CommonFunc_NPCInvaderAppearance(_, dead_flag: uint, summon_flag: uint, dismissal_flag: uint, npc: uint):
     """CommonFunc 90005791"""
-    DisableCharacter(character)
-    DisableAnimations(character)
-    DisableAI(character)
-    if FlagEnabled(flag):
+    DisableCharacter(npc)
+    DisableAnimations(npc)
+    DisableAI(npc)
+    if FlagEnabled(dead_flag):
         return
-    if FlagEnabled(flag_2):
+    if FlagEnabled(dismissal_flag):
         return
-    AND_1.Add(FlagEnabled(flag_1))
+    AND_1.Add(FlagEnabled(summon_flag))
     
     MAIN.Await(AND_1)
     
-    EnableBackread(character)
-    SetNetworkUpdateRate(character, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-    EnableCharacter(character)
-    EnableAnimations(character)
-    EnableAI(character)
-    SetBackreadStateAlternate(character, True)
-    AND_1.Add(FlagEnabled(flag_2))
+    EnableBackread(npc)
+    SetNetworkUpdateRate(npc, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+    EnableCharacter(npc)
+    EnableAnimations(npc)
+    EnableAI(npc)
+    SetBackreadStateAlternate(npc, True)
+    AND_1.Add(FlagEnabled(dismissal_flag))
     
     MAIN.Await(AND_1)
     
-    SetBackreadStateAlternate(character, False)
-    SetNetworkUpdateRate(character, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+    SetBackreadStateAlternate(npc, False)
+    SetNetworkUpdateRate(npc, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
 
 
 @RestartOnRest(90005792)
-def CommonFunc_90005792(
+def CommonFunc_NPCInvaderDies(
     _,
-    flag: uint,
-    flag_1: uint,
-    flag_2: uint,
-    character: uint,
+    dead_flag: uint,
+    summon_flag: uint,
+    dismissal_flag: uint,
+    npc: uint,
     item_lot: int,
     seconds: float,
 ):
     """CommonFunc 90005792"""
-    GotoIfFlagDisabled(Label.L0, flag=flag)
-    DisableCharacter(character)
-    DisableAnimations(character)
-    Kill(character)
+    GotoIfFlagDisabled(Label.L0, flag=dead_flag)
+    DisableCharacter(npc)
+    DisableAnimations(npc)
+    Kill(npc)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    AND_1.Add(CharacterProportionDead(character=character))
-    AND_1.Add(FlagEnabled(flag_1))
+    AND_1.Add(CharacterProportionDead(character=npc))
+    AND_1.Add(FlagEnabled(summon_flag))
     
     MAIN.Await(AND_1)
     
     Wait(seconds)
-    EnableFlag(flag)
+    EnableFlag(dead_flag)
     if PlayerNotInOwnWorld():
         return
     if ValueEqual(left=item_lot, right=0):
         return
     AwardItemLot(item_lot, host_only=True)
     End()
-    OR_1.Add(FlagEnabled(flag_2))
+    OR_1.Add(FlagEnabled(dismissal_flag))
 
 
 @RestartOnRest(90005793)
@@ -8972,7 +8972,10 @@ def CommonFunc_FieldBossMusicHealthBar(
     Wait(1.0)
     if clone_boss != 0:
         EnableBossHealthBar(boss, name=name, bar_slot=1)
-        EnableBossHealthBar(clone_boss, name=clone_name, bar_slot=0)
+        if clone_name != 0:
+            EnableBossHealthBar(clone_boss, name=clone_name, bar_slot=0)
+        else:
+            EnableBossHealthBar(clone_boss, name=name, bar_slot=0)  # same name
     else:
         EnableBossHealthBar(boss, name=name, bar_slot=0)
     if PlayerInOwnWorld():
@@ -9003,7 +9006,7 @@ def CommonFunc_FieldBossMusicHealthBar(
         Wait(1.0)
     if clone_boss != 0:
         DisableBossHealthBar(boss, name=name, bar_slot=1)
-        DisableBossHealthBar(clone_boss, name=clone_name, bar_slot=0)
+        DisableBossHealthBar(clone_boss, name=clone_name, bar_slot=0)  # name shouldn't matter
     else:
         DisableBossHealthBar(boss, name=name, bar_slot=0)
     if PlayerInOwnWorld():

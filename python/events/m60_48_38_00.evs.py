@@ -64,10 +64,10 @@ def Constructor():
         flag_11=78409,
     )
     CommonFunc_90005631(0, anchor_entity=Assets.AEG099_376_1000, text=61040)
-    CommonFunc_90005790(
+    CommonFunc_NPCInvaderSummonSign(
         0,
         right=0,
-        flag=1048380180,
+        dead_flag=1048380180,
         summon_flag=1048382181,
         dismissal_flag=1048382182,
         character=Characters.Millicent,
@@ -79,13 +79,13 @@ def Constructor():
         unknown=0,
         right_2=0,
     )
-    CommonFunc_90005791(0, flag=1048380180, flag_1=1048382181, flag_2=1048382182, character=Characters.Millicent)
-    CommonFunc_90005792(
+    CommonFunc_NPCInvaderAppearance(0, dead_flag=1048380180, summon_flag=1048382181, dismissal_flag=1048382182, npc=Characters.Millicent)
+    CommonFunc_NPCInvaderDies(
         0,
-        flag=1048380180,
-        flag_1=1048382181,
-        flag_2=1048382182,
-        character=Characters.Millicent,
+        dead_flag=1048380180,
+        summon_flag=1048382181,
+        dismissal_flag=1048382182,
+        npc=Characters.Millicent,
         item_lot=1048380500,
         seconds=0.0,
     )

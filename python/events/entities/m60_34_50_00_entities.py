@@ -1,6 +1,15 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    AdulaDisappeared = 1034500800
+
+
+class NameText(NPCName):
+    GlintstoneDragonAdula = 904502601
+    GlintstoneDragonAdeline = 904502611
+
+
 class Characters(Character):
     PreceptorSeluvis0 = 1034500700  # c0000_9000 npc 523070020 think 523070000 chara 23070 talk 307306000
     PreceptorSeluvis1 = 1034500701  # c0000_9001 npc 523070120 think 523070000 chara 23070 talk 307006000
@@ -24,9 +33,11 @@ class Characters(Character):
     BlackKnifeAssassin3 = 1034500745  # c2100_9003 npc 21009020 think 500000000
     NoxFighter = 1034500704  # c3300_9000 npc 33000820 think 500000000
     Scarab = 1034500200  # c4191_9000 npc 41912020 think 41910000
-    GlintstoneDragon = 1034500800  # c4502_9000 npc 45021920 think 45020920 group 1034505100
+    GlintstoneDragonAdula = 1034500800  # c4502_9000 npc 45021920 think 45020920 group 1034505100
     Iji = 1034500720  # c4604_9000 npc 46040120 think 46040000 talk 224206000
     Omenkiller = 1034500715  # c4820_9000 npc 48200820 think 500000000
+
+    CLONE_GlintstoneDragonAdula = 1034500801  # c4502_9000 npc 45021920 think 45020920 group 1034505100
 
 
 class Assets(Asset):

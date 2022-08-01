@@ -41,10 +41,10 @@ def Constructor():
         seconds=0.0,
         seconds_1=0.0,
     )
-    CommonFunc_90005790(
+    CommonFunc_NPCInvaderSummonSign(
         0,
         right=0,
-        flag=1047560180,
+        dead_flag=1047560180,
         summon_flag=1047562181,
         dismissal_flag=1047562182,
         character=Characters.BloodyFingerNerijus,
@@ -56,19 +56,19 @@ def Constructor():
         unknown=0,
         right_2=0,
     )
-    CommonFunc_90005791(
+    CommonFunc_NPCInvaderAppearance(
         0,
-        flag=1047560180,
-        flag_1=1047562181,
-        flag_2=1047562182,
-        character=Characters.BloodyFingerNerijus,
+        dead_flag=1047560180,
+        summon_flag=1047562181,
+        dismissal_flag=1047562182,
+        npc=Characters.BloodyFingerNerijus,
     )
-    CommonFunc_90005792(
+    CommonFunc_NPCInvaderDies(
         0,
-        flag=1047560180,
-        flag_1=1047562181,
-        flag_2=1047562182,
-        character=Characters.BloodyFingerNerijus,
+        dead_flag=1047560180,
+        summon_flag=1047562181,
+        dismissal_flag=1047562182,
+        npc=Characters.BloodyFingerNerijus,
         item_lot=1047560700,
         seconds=0.0,
     )

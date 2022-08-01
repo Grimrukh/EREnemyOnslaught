@@ -1,5 +1,17 @@
+"""Install selected EMEVD."""
+
+import re
 from pathlib import Path
 from soulstruct.eldenring.events import EMEVD, EMEVDDirectory
+
+
+def fix_evs_kwargs(evs: str):
+    pattern = re.compile(r"CommonFunc_NonRespawningWithReward\((\d+), (\d+), (\d+), (\d+), ([\d.]+), (\d+)\)")
+    return pattern.sub(
+        r"CommonFunc_NonRespawningWithReward(\1, dead_flag=\2, character=\3, "
+        r"item_lot=\4, reward_delay=\5, skip_reward=\6",
+        evs,
+    )
 
 
 ELDEN_RING_PATH = Path("C:/Steam/steamapps/common/ELDEN RING (Modding)/Game")

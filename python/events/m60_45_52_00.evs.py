@@ -129,10 +129,10 @@ def Constructor():
         region=1045522732,
         left=0,
     )
-    CommonFunc_90005790(
+    CommonFunc_NPCInvaderSummonSign(
         0,
         right=0,
-        flag=1045520180,
+        dead_flag=1045520180,
         summon_flag=1045522181,
         dismissal_flag=1045522182,
         character=Characters.DungEater,
@@ -144,13 +144,13 @@ def Constructor():
         unknown=0,
         right_2=0,
     )
-    CommonFunc_90005791(0, flag=1045520180, flag_1=1045522181, flag_2=1045522182, character=Characters.DungEater)
-    CommonFunc_90005792(
+    CommonFunc_NPCInvaderAppearance(0, dead_flag=1045520180, summon_flag=1045522181, dismissal_flag=1045522182, npc=Characters.DungEater)
+    CommonFunc_NPCInvaderDies(
         0,
-        flag=1045520180,
-        flag_1=1045522181,
-        flag_2=1045522182,
-        character=Characters.DungEater,
+        dead_flag=1045520180,
+        summon_flag=1045522181,
+        dismissal_flag=1045522182,
+        npc=Characters.DungEater,
         item_lot=113800,
         seconds=0.0,
     )

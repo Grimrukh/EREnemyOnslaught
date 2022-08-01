@@ -25,6 +25,8 @@ class Characters(Character):
     CatacombsSkeleton17 = 30000224  # c3510_9024 col h000400 npc 35102012 think 35102000
     CemeteryShade = 30000800  # c3664_9000 col h000300 npc 36640012 think 36640912 group 30005100,30005800
 
+    CLONE_CemeteryShade = 30000801
+
 
 class Assets(Asset):
     AEG027_041_0500 = 30001540  # AEG027

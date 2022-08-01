@@ -1,4 +1,4 @@
-"""
+"""DONE
 Volcano Manor
 
 linked:
@@ -220,10 +220,10 @@ def Constructor():
         right=16002567,
     )
     CommonFunc_90005621(0, flag=16000565, asset=Assets.AEG099_272_9001)
-    CommonFunc_90005790(
+    CommonFunc_NPCInvaderSummonSign(
         0,
         right=0,
-        flag=16000180,
+        dead_flag=16000180,
         summon_flag=16002181,
         dismissal_flag=16002182,
         character=Characters.InquisitorGhiza,
@@ -235,13 +235,13 @@ def Constructor():
         unknown=0,
         right_2=0,
     )
-    CommonFunc_90005791(0, flag=16000180, flag_1=16002181, flag_2=16002182, character=Characters.InquisitorGhiza)
-    CommonFunc_90005792(
+    CommonFunc_NPCInvaderAppearance(0, dead_flag=16000180, summon_flag=16002181, dismissal_flag=16002182, npc=Characters.InquisitorGhiza)
+    CommonFunc_NPCInvaderDies(
         0,
-        flag=16000180,
-        flag_1=16002181,
-        flag_2=16002182,
-        character=Characters.InquisitorGhiza,
+        dead_flag=16000180,
+        summon_flag=16002181,
+        dismissal_flag=16002182,
+        npc=Characters.InquisitorGhiza,
         item_lot=16000940,
         seconds=0.0,
     )

@@ -27,10 +27,10 @@ def Constructor():
     Event_1039522650()
     Event_1039522660()
     Event_1039522700()
-    CommonFunc_90005790(
+    CommonFunc_NPCInvaderSummonSign(
         0,
         right=0,
-        flag=1039520180,
+        dead_flag=1039520180,
         summon_flag=1039522181,
         dismissal_flag=1039522182,
         character=Characters.EleonoraVioletBloodyFinger,
@@ -42,19 +42,19 @@ def Constructor():
         unknown=0,
         right_2=0,
     )
-    CommonFunc_90005791(
+    CommonFunc_NPCInvaderAppearance(
         0,
-        flag=1039520180,
-        flag_1=1039522181,
-        flag_2=1039522182,
-        character=Characters.EleonoraVioletBloodyFinger,
+        dead_flag=1039520180,
+        summon_flag=1039522181,
+        dismissal_flag=1039522182,
+        npc=Characters.EleonoraVioletBloodyFinger,
     )
-    CommonFunc_90005792(
+    CommonFunc_NPCInvaderDies(
         0,
-        flag=1039520180,
-        flag_1=1039522181,
-        flag_2=1039522182,
-        character=Characters.EleonoraVioletBloodyFinger,
+        dead_flag=1039520180,
+        summon_flag=1039522181,
+        dismissal_flag=1039522182,
+        npc=Characters.EleonoraVioletBloodyFinger,
         item_lot=101620,
         seconds=0.0,
     )

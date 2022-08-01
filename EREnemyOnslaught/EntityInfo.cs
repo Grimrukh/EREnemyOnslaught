@@ -57,6 +57,11 @@ namespace EREnemyOnslaught
             [11050850] = new CloneInfo(11050858, new Vector4(-131.471f, 31.030f, -384.865f, 89.980f), new Vector4(-131.469f, 31.030f, -388.253f, 89.980f)),  // Sir Gideon Ofnir (data variants are using lower IDs)
             #endregion
 
+            #region m11_10_00_00 (Roundtable Hold)
+            [11100785] = new CloneInfo(11100786, new Vector4(-260.442f, -32.610f, -279.591f, 60.079f), new Vector4(-267.170f, -32.610f, -268.438f, 60.079f)),  // Mad Tongue Alberich (invader)
+            [11102385] = new CloneInfo(11102387, new Vector4(-260.442f, -32.610f, -279.591f, 60.079f), new Vector4(-267.170f, -32.610f, -268.438f, 60.079f)),  // Alberich invasion point
+            #endregion
+
             #region m12_01_00_00 (Ainsel River)
             [12010400] = new CloneInfo(12010450, new Vector4(18.331f, -182.710f, -52.475f, -57.083f), new Vector4(12.220f, -182.710f, -61.915f, -57.083f)),  // Malformed Star 1
             [12010401] = new CloneInfo(12010451, new Vector4(287.052f, -80.652f, 106.993f, -143.411f)),  // Malformed Star 2
@@ -255,7 +260,7 @@ namespace EREnemyOnslaught
             [15000392] = new CloneInfo(15000395, new Vector4(-1.401f, 211.421f, 608.525f, -70.207f), new Vector4(-2.577f, 211.421f, 601.708f, -94.581f)),  // Putrid Avatar (door)
             [15000393] = new CloneInfo(15000396, new Vector4(134.123f, 212.958f, 472.271f, 9.726f)),  // Putrid Avatar (battlement)
             [15000398] = new CloneInfo(15000399, new Vector4(18.614f, 179.795f, 457.245f, -91.005f)),  // Ulcerated Tree Spirit
-            
+
             #endregion
 
             #region m16_00_00_00 (Volcano Manor)
@@ -281,6 +286,10 @@ namespace EREnemyOnslaught
             [19000810] = new CloneInfo(19000812, new Vector4(198.376f, 102.257f, -623.591f, 110.279f)),
             #endregion
 
+            #region m35_00_00_00
+            [35000800] = new CloneInfo(35000801, new Vector4(75.117f, -298.550f, -83.080f, -117.328f), new Vector4(72.899f, -298.550f, -78.977f, -119.587f)),  // Mohg
+            #endregion
+
             #region Liurnia
             [1033410340] = new CloneInfo(1033410341),  // RedWolf 
             [1033410350] = new CloneInfo(1033410352),  // GlintstoneDragon0 
@@ -292,10 +301,12 @@ namespace EREnemyOnslaught
 
             [1033450800] = new CloneInfo(1033450801),  // Troll (Evergaol)
 
-            [1034420800] = new CloneInfo(1034420801),  // Glintstone Dragon Adula
+            [1034420800] = new CloneInfo(1034420801),  // Glintstone Dragon Adula (plateau)
             [1034420340] = new CloneInfo(1034420341),  // Glintstone Dragon (minor)
 
             [1034450800] = new CloneInfo(1034450801, new Vector4(-37.301f, 237.685f, 34.946f, 60.295f)),  // Glintstone Dragon Smarag
+
+            [1034500800] = new CloneInfo(1034500801, new Vector4(10.063f, 455.024f, 36.713f, -107.379f)),  // Glintstone Dragon Adula (Ranni's Rise)
             #endregion
 
             #region Caelid
@@ -409,11 +420,11 @@ namespace EREnemyOnslaught
 
             // m11_00_00_00
             [902130012] = "Somehow, Cousin Merbit Returned",
-            [904720012] = "Mysteriously Foreshadowed Stranger",  // phantom
+            [904720012] = "Mysterious Foreshadowed Stranger",  // phantom
 
             // m11_05_00_00
-            [904720010] = "Mysteriously Foreshadowed Stranger",
-            [904720011] = "Gadarigodfreon, Father of Merbit, Brother of Rhonda, Uncle of Mazohr, Former Roommate of Ryktar",
+            [904720010] = "Mysterious Foreshadowed Stranger",
+            [904720011] = "Eric, Father of Merbit and Mulg, Husband of Rhonda, Uncle of Mazohr, Former Roommate of Ryktar",
             [132401] = "Sir Giddy-Up Ofnir, the Idiot",
 
             // m12_01_00_00
@@ -430,7 +441,10 @@ namespace EREnemyOnslaught
             [902500610] = "Crucible Knight Joanna",
 
             // m12_04_00_00
-            [904620011] = "Astels... I Hate These Guys",
+            [904620001] = "Astels... I Hate These Guys",  // shared health bar
+
+            // m12_05_00_00
+            [904800010] = "Mulg, Lord of Gazpacho Soup",
 
             // m13_00_00_00
             [903575000] = "Oneskin, Twoskin",
@@ -450,18 +464,22 @@ namespace EREnemyOnslaught
             // m16_00_00_00
             [904710010] = "A Second God-Devouring Serpent",
             [904710011] = "Ryktar, Definitely Also Devoured On Purpose",
+            [903570010] = "Fred Durst",
 
             // m18_00_00_00
             [904311010] = "A Second Soldier of Godrick",
 
             // m19_00_00_00
-            [902190010] = "Renadin of the Weird Love Triangle",
+            [902190010] = "Ragadon of the Awkward Love Triangle",
+
+            // m35_00_00_00
+            [904800012] = "Mulg, the Other Omen",
 
             // m60_52_38_00
             [904730010] = "Moonmurderer Mazohr",
 
             // Overworld
-            [904502610] = "Glintstone Dragon Sam",
+            [904502610] = "Glintstone Dragon Samantha",
         };
     }
 }

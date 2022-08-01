@@ -7,7 +7,6 @@ class Flags(Flag):
 
 class NameText(NPCName):
     Astel = 904620001
-    CLONE_Astel = 904620011
 
 
 class Characters(Character):

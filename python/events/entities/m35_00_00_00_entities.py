@@ -1,6 +1,15 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    MohgDead = 35000800
+
+
+class NameText(NPCName):
+    MohgTheOmen = 904800002
+    CLONE_MohgTheOmen = 904800012
+
+
 class Characters(Character):
     Hyetta = 35000700  # c0000_9000 col h006700 npc 523100035 think 523100000 chara 23101 talk 310003500
     EsgarPriestofBlood = 35000850  # c0000_9001 col h002000 npc 523860000 think 523860000 chara 23860 group 35005850,35005102,35005150
@@ -204,6 +213,8 @@ class Characters(Character):
     SmallLivingPot2 = 35000422  # c4491_9002 col h003200 npc 44910035 think 44910000
     SmallLivingPot3 = 35000423  # c4491_9003 col h003200 npc 44910035 think 44910000
     Mohg = 35000800  # c4800_9000 col h004500 npc 48001935 think 48000000 group 35005800,35005100
+
+    CLONE_Mohg = 35000801
 
 
 class Assets(Asset):

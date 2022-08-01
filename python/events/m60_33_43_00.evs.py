@@ -24,7 +24,14 @@ from .entities.m60_33_43_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.ErdtreeAvatar, name=904810600, npc_threat_level=18)
+    CommonFunc_FieldBossMusicHealthBar(
+        0,
+        boss=Characters.ErdtreeAvatar,
+        name=904810600,
+        npc_threat_level=18,
+        clone_boss=Characters.CLONE_ErdtreeAvatar,
+        clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1033430800,

@@ -113,10 +113,10 @@ def Constructor():
         reward_delay=0.0,
         skip_reward=0,
     )
-    CommonFunc_90005790(
+    CommonFunc_NPCInvaderSummonSign(
         0,
         right=0,
-        flag=1051530180,
+        dead_flag=1051530180,
         summon_flag=1051532181,
         dismissal_flag=1051532182,
         character=Characters.BloodyFingerOkina,
@@ -128,19 +128,19 @@ def Constructor():
         unknown=0,
         right_2=0,
     )
-    CommonFunc_90005791(
+    CommonFunc_NPCInvaderAppearance(
         0,
-        flag=1051530180,
-        flag_1=1051532181,
-        flag_2=1051532182,
-        character=Characters.BloodyFingerOkina,
+        dead_flag=1051530180,
+        summon_flag=1051532181,
+        dismissal_flag=1051532182,
+        npc=Characters.BloodyFingerOkina,
     )
-    CommonFunc_90005792(
+    CommonFunc_NPCInvaderDies(
         0,
-        flag=1051530180,
-        flag_1=1051532181,
-        flag_2=1051532182,
-        character=Characters.BloodyFingerOkina,
+        dead_flag=1051530180,
+        summon_flag=1051532181,
+        dismissal_flag=1051532182,
+        npc=Characters.BloodyFingerOkina,
         item_lot=1051530500,
         seconds=0.0,
     )

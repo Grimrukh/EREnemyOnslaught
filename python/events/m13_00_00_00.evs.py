@@ -1,4 +1,4 @@
-"""
+"""DONE
 Crumbling Farum Azula
 
 linked:
@@ -422,10 +422,10 @@ def Constructor():
         region_1=13002869,
         animation=0,
     )
-    CommonFunc_90005790(
+    CommonFunc_NPCInvaderSummonSign(
         0,
         right=0,
-        flag=13000180,
+        dead_flag=13000180,
         summon_flag=13002181,
         dismissal_flag=13002182,
         character=Characters.RecusantBernahl0,
@@ -437,13 +437,13 @@ def Constructor():
         unknown=0,
         right_2=0,
     )
-    CommonFunc_90005791(0, flag=13000180, flag_1=13002181, flag_2=13002182, character=Characters.RecusantBernahl0)
-    CommonFunc_90005792(
+    CommonFunc_NPCInvaderAppearance(0, dead_flag=13000180, summon_flag=13002181, dismissal_flag=13002182, npc=Characters.RecusantBernahl0)
+    CommonFunc_NPCInvaderDies(
         0,
-        flag=13000180,
-        flag_1=13002181,
-        flag_2=13002182,
-        character=Characters.RecusantBernahl0,
+        dead_flag=13000180,
+        summon_flag=13002181,
+        dismissal_flag=13002182,
+        npc=Characters.RecusantBernahl0,
         item_lot=102920,
         seconds=0.0,
     )

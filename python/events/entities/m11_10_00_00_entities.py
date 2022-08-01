@@ -1,6 +1,21 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    MadTongueAlberichDead = 11100180
+    MadTongueAlberichSummoned = 11102180
+    MadTongueAlberichDismissed = 11102181
+    CLONE_MadTongueAlberichDead = 11100181
+    CLONE_MadTongueAlberichSummoned = 11102182
+    CLONE_MadTongueAlberichDismissed = 11102183
+
+
+class Regions(Region):
+    MadTongueAlberichInvasionPoint = 11102385
+    MadTongueAlberichInvasionTrigger = 11102386
+    CLONE_MadTongueAlberichInvasionPoint = 11102387
+
+
 class Characters(Character):
     Roderika0 = 11100710  # c0000_9010 col h016400 npc 523200079 think 523200000 chara 23200 talk 320001110
     Roderika1 = 11100711  # c0000_9011 col h016400 npc 523200179 think 523200000 chara 23201 talk 320001110
@@ -29,8 +44,9 @@ class Characters(Character):
     TalkDummy3 = 11100140  # c1000_9008 col h016500 npc 10005000 think 1 talk 1000
     TheTwoFingers = 11100720  # c2060_9000 col h016500 npc 20600079 think 20600000
     FingerReaderEnia = 11100705  # c2170_9000 col h016500 npc 21700079 think 21700000 talk 102001110
-    ScalyMisbegotten = 11100715  # c3451_9000 col h016600 npc 34510179 think 34519000 talk 213001110
+    MasterHewg = 11100715  # c3451_9000 col h016600 npc 34510179 think 34519000 talk 213001110
 
+    CLONE_MadTongueAlberich = 11100786  # c0000_9026 col h016000 npc 543850079 think 543850000 chara 23850
     # TODO: Clone of Gideon that stands near him (if he's enabled).
 
 

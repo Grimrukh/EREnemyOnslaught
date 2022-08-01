@@ -81,10 +81,10 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_90005790(
+    CommonFunc_NPCInvaderSummonSign(
         0,
         right=0,
-        flag=1038540410,
+        dead_flag=1038540410,
         summon_flag=1038542410,
         dismissal_flag=1038542411,
         character=Characters.AnastasiaTarnishedEater,
@@ -96,19 +96,19 @@ def Constructor():
         unknown=0,
         right_2=0,
     )
-    CommonFunc_90005791(
+    CommonFunc_NPCInvaderAppearance(
         0,
-        flag=1038540410,
-        flag_1=1038542410,
-        flag_2=1038542411,
-        character=Characters.AnastasiaTarnishedEater,
+        dead_flag=1038540410,
+        summon_flag=1038542410,
+        dismissal_flag=1038542411,
+        npc=Characters.AnastasiaTarnishedEater,
     )
-    CommonFunc_90005792(
+    CommonFunc_NPCInvaderDies(
         0,
-        flag=1038540410,
-        flag_1=1038542410,
-        flag_2=1038542411,
-        character=Characters.AnastasiaTarnishedEater,
+        dead_flag=1038540410,
+        summon_flag=1038542410,
+        dismissal_flag=1038542411,
+        npc=Characters.AnastasiaTarnishedEater,
         item_lot=1038540700,
         seconds=0.0,
     )

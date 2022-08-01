@@ -1,4 +1,4 @@
-"""
+"""DONE
 Astel Arena
 
 linked:
@@ -123,9 +123,10 @@ def AstelDies():
     if FlagEnabled(Flags.AstelDead):
         return
 
-    AND_1.Add(HealthRatio(Characters.Astel) <= 0.0)
-    AND_1.Add(HealthRatio(Characters.CLONE_Astel) <= 0.0)
-    MAIN.Await(AND_1)
+    # Shared health pool.
+    MAIN.Await(HealthRatio(Characters.Astel) <= 0.0)
+
+    Kill(Characters.CLONE_Astel)  # immortal
 
     Wait(5.0)
     PlaySoundEffect(Characters.Astel, 77777777, sound_type=SoundType.s_SFX)
@@ -157,6 +158,7 @@ def AstelBattleTrigger():
     DefineLabel(0)
     DisableAI(Characters.Astel)
     DisableAI(Characters.CLONE_Astel)
+    DisableHealthBar(Characters.CLONE_Astel)
     EnableNavmeshType(navmesh_id=12044300, navmesh_type=NavmeshType.Solid)
     EnableNavmeshType(navmesh_id=12044301, navmesh_type=NavmeshType.Solid)
     AND_2.Add(FlagEnabled(12042805))
@@ -168,12 +170,15 @@ def AstelBattleTrigger():
     DefineLabel(2)
     EnableAI(Characters.Astel)
     EnableAI(Characters.CLONE_Astel)
+    EnableImmortality(Characters.CLONE_Astel)
+    ReferDamageToEntity(Characters.CLONE_Astel, Characters.Astel)
     SetNetworkUpdateRate(Characters.Astel, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.CLONE_Astel, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.Astel, name=NameText.Astel, bar_slot=1)
-    EnableBossHealthBar(Characters.CLONE_Astel, name=NameText.CLONE_Astel, bar_slot=0)
     SetCharacterEventTarget(Characters.Astel, region=12040810)
     SetCharacterEventTarget(Characters.CLONE_Astel, region=12040810)
+
+    # Shared health pool
+    EnableBossHealthBar(Characters.Astel, name=NameText.Astel, bar_slot=0)
 
 
 @ContinueOnRest(12042849)

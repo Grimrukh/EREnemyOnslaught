@@ -136,8 +136,25 @@ namespace EREnemyOnslaught
             }
         }
 
+        /// <summary>
+        /// Clone given `character` according to information in `EntityInfo`.
+        /// 
+        /// Returns `null` if the character should not be cloned.
+        /// </summary>
+        /// <param name="character"></param>
+        /// <param name="name"></param>
+        /// <param name="overrideEntityID"></param>
+        /// <returns></returns>
         static MSBE.Part.Enemy CloneCharacter(MSBE.Part.Enemy character, string name = null, int overrideEntityID = -1)
         {
+            // Do NOT clone characters with entity ID ending in 7XX *unless* they explicitly appear in Clones.
+            if (!Clones.ContainsKey(character.EntityID))
+            {
+                int modEntityID = character.EntityID % 1000;
+                if (700 <= modEntityID && modEntityID <= 799)
+                    return null;
+            }
+            
             string modelName = Models.CharacterModels[character.ModelName];
             if (Models.IgnoreModels.Contains(modelName))
             {

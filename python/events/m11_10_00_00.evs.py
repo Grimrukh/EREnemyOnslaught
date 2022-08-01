@@ -1,4 +1,4 @@
-"""
+"""DONE
 Roundtable Hold
 
 linked:
@@ -29,38 +29,78 @@ def Constructor():
     Event_11100020()
     Event_11100030()
     Event_11100031()
-    CommonFunc_90005790(
+
+    # MAD TONGUE ALBERICH
+    CommonFunc_NPCInvaderSummonSign(
         0,
         right=0,
-        flag=11100180,
-        summon_flag=11102180,
-        dismissal_flag=11102181,
+        dead_flag=Flags.MadTongueAlberichDead,
+        summon_flag=Flags.MadTongueAlberichSummoned,
+        dismissal_flag=Flags.MadTongueAlberichDismissed,
         character=Characters.MadTongueAlberich,
         sign_type=23,
-        region=11102385,
-        region_1=11102386,
+        region=Regions.MadTongueAlberichInvasionPoint,
+        region_1=Regions.MadTongueAlberichInvasionTrigger,
         seconds=0.0,
         right_1=0,
         unknown=0,
         right_2=0,
     )
-    CommonFunc_90005791(0, flag=11100180, flag_1=11102180, flag_2=11102181, character=Characters.MadTongueAlberich)
-    CommonFunc_90005792(
+    CommonFunc_NPCInvaderSummonSign(
         0,
-        flag=11100180,
-        flag_1=11102180,
-        flag_2=11102181,
-        character=Characters.MadTongueAlberich,
+        right=0,
+        dead_flag=Flags.CLONE_MadTongueAlberichDead,
+        summon_flag=Flags.CLONE_MadTongueAlberichSummoned,
+        dismissal_flag=Flags.CLONE_MadTongueAlberichDismissed,
+        character=Characters.CLONE_MadTongueAlberich,
+        sign_type=23,
+        region=Regions.CLONE_MadTongueAlberichInvasionPoint,
+        region_1=Regions.MadTongueAlberichInvasionTrigger,
+        seconds=0.0,
+        right_1=0,
+        unknown=0,
+        right_2=0,
+    )
+    CommonFunc_NPCInvaderAppearance(
+        0,
+        dead_flag=Flags.MadTongueAlberichDead,
+        summon_flag=Flags.MadTongueAlberichSummoned,
+        dismissal_flag=Flags.MadTongueAlberichDismissed,
+        npc=Characters.MadTongueAlberich,
+    )
+    CommonFunc_NPCInvaderAppearance(
+        0,
+        dead_flag=Flags.CLONE_MadTongueAlberichDead,
+        summon_flag=Flags.CLONE_MadTongueAlberichSummoned,
+        dismissal_flag=Flags.CLONE_MadTongueAlberichDismissed,
+        npc=Characters.CLONE_MadTongueAlberich,
+    )
+    CommonFunc_NPCInvaderDies(
+        0,
+        dead_flag=Flags.MadTongueAlberichDead,
+        summon_flag=Flags.MadTongueAlberichSummoned,
+        dismissal_flag=Flags.MadTongueAlberichDismissed,
+        npc=Characters.MadTongueAlberich,
         item_lot=11100800,
         seconds=0.0,
     )
+    CommonFunc_NPCInvaderDies(
+        0,
+        dead_flag=Flags.CLONE_MadTongueAlberichDead,
+        summon_flag=Flags.CLONE_MadTongueAlberichSummoned,
+        dismissal_flag=Flags.CLONE_MadTongueAlberichDismissed,
+        npc=Characters.CLONE_MadTongueAlberich,
+        item_lot=0,
+        seconds=0.0,
+    )
+
     Event_11102600()
     Event_11102602()
     Event_11102605()
     Event_11102606()
     Event_11102620(
         0,
-        flag=11100180,
+        flag=Flags.MadTongueAlberichDead,
         left_flag=11102621,
         cancel_flag__right_flag=11102622,
         asset=Assets.AEG099_065_9000,
@@ -93,7 +133,7 @@ def Constructor():
     )
     CommonFunc_90005621(0, flag=11100575, asset=Assets.AEG099_270_9001)
     Event_11102680()
-    Event_11103700(0, character=Characters.ScalyMisbegotten)
+    Event_11103700(0, character=Characters.MasterHewg)
     RunCommonEvent(11103702)
     RunCommonEvent(11103703)
     Event_11103705(0, character=Characters.FingerReaderEnia)
@@ -227,7 +267,7 @@ def Preconstructor():
     DisableBackread(Characters.FingerReaderEnia)
     DisableBackread(Characters.Roderika0)
     DisableBackread(Characters.Roderika1)
-    DisableBackread(Characters.ScalyMisbegotten)
+    DisableBackread(Characters.MasterHewg)
     DisableBackread(Characters.KnightDiallos0)
     DisableBackread(Characters.KnightDiallos1)
     DisableBackread(Characters.DHunteroftheDead0)
@@ -700,7 +740,7 @@ def Event_11103700(_, character: uint):
 def Event_11103702():
     """Event 11103702"""
     OR_1.Add(CharacterInsideRegion(character=PLAYER, region=11102700))
-    OR_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=Characters.ScalyMisbegotten, radius=8.0))
+    OR_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=Characters.MasterHewg, radius=8.0))
     AND_1.Add(FlagEnabled(3225))
     AND_1.Add(FlagEnabled(11109205))
     AND_1.Add(FlagDisabled(11102702))
@@ -716,7 +756,7 @@ def Event_11103702():
 def Event_11103703():
     """Event 11103703"""
     OR_1.Add(CharacterInsideRegion(character=PLAYER, region=11102700))
-    OR_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=Characters.ScalyMisbegotten, radius=8.0))
+    OR_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=Characters.MasterHewg, radius=8.0))
     AND_1.Add(FlagEnabled(3225))
     AND_1.Add(FlagEnabled(11109205))
     AND_1.Add(FlagDisabled(11102702))
