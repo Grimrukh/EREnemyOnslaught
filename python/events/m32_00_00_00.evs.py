@@ -743,12 +743,16 @@ def Event_32002800():
     if FlagEnabled(32000800):
         return
     
-    MAIN.Await(HealthValue(Characters.ScalyMisbegotten) <= 0)
+    AND_7.Add(HealthValue(Characters.ScalyMisbegotten) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_ScalyMisbegotten) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.ScalyMisbegotten, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.ScalyMisbegotten))
+    AND_8.Add(CharacterDead(Characters.ScalyMisbegotten))
+    AND_8.Add(CharacterDead(Characters.CLONE_ScalyMisbegotten))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.ScalyMisbegotten, banner_type=BannerType.EnemyFelled)
     EnableFlag(32000800)

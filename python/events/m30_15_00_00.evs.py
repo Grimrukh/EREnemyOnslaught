@@ -1,4 +1,4 @@
-"""
+"""DONE
 Caelid Catacombs
 
 linked:
@@ -186,12 +186,16 @@ def Event_30152800():
     if FlagEnabled(30150800):
         return
     
-    MAIN.Await(HealthValue(Characters.CemeteryShade) <= 0)
+    AND_7.Add(HealthValue(Characters.CemeteryShade) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_CemeteryShade) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.CemeteryShade, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.CemeteryShade))
+    AND_8.Add(CharacterDead(Characters.CemeteryShade))
+    AND_8.Add(CharacterDead(Characters.CLONE_CemeteryShade))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.CemeteryShade, banner_type=BannerType.EnemyFelled)
     EnableFlag(30150800)
@@ -207,11 +211,15 @@ def Event_30152810():
     DisableCharacter(Characters.CemeteryShade)
     DisableAnimations(Characters.CemeteryShade)
     Kill(Characters.CemeteryShade)
+    DisableCharacter(Characters.CLONE_CemeteryShade)
+    DisableAnimations(Characters.CLONE_CemeteryShade)
+    Kill(Characters.CLONE_CemeteryShade)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.CemeteryShade)
+    DisableAI(Characters.CLONE_CemeteryShade)
     AND_2.Add(FlagEnabled(30152805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=30152800))
     
@@ -220,9 +228,12 @@ def Event_30152810():
     # --- Label 2 --- #
     DefineLabel(2)
     SetNetworkUpdateRate(Characters.CemeteryShade, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.CemeteryShade, name=903664301)
+    SetNetworkUpdateRate(Characters.CLONE_CemeteryShade, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.CemeteryShade, name=903664301, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_CemeteryShade, name=903664301, bar_slot=0)
     Wait(0.5)
     EnableAI(Characters.CemeteryShade)
+    EnableAI(Characters.CLONE_CemeteryShade)
 
 
 @RestartOnRest(30152811)

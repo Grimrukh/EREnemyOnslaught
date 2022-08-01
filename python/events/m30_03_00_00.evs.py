@@ -1,4 +1,4 @@
-"""
+"""DONE
 Road's End Catacombs
 
 linked:
@@ -26,7 +26,7 @@ def Constructor():
     """Event 0"""
     CommonFunc_90005646(
         0,
-        flag=30030800,
+        flag=Flags.SnailDead,
         left_flag=30032840,
         cancel_flag__right_flag=30032841,
         asset=Assets.AEG099_065_9000,
@@ -37,23 +37,203 @@ def Constructor():
         dd_id=0,
     )
     RegisterGrace(grace_flag=300300, asset=Assets.AEG099_060_9001)
-    Event_30032800()
-    Event_30032810()
-    Event_30032849()
-    Event_30032821()
-    Event_30032838()
-    Event_30032890()
-    Event_30032845()
-    Event_30032870(0, character=Characters.CrucibleKnight0, flag=30032882)
-    Event_30032871(0, character=Characters.CrucibleKnight3, flag=30032883)
-    Event_30032871(1, character=Characters.CrucibleKnight4, flag=30032884)
-    Event_30032871(2, character=Characters.CrucibleKnight5, flag=30032884)
-    Event_30032871(3, character=Characters.CrucibleKnight1, flag=30032885)
-    Event_30032871(4, character=Characters.CrucibleKnight2, flag=30032885)
-    Event_30032871(5, character=Characters.CrucibleKnight6, flag=30032886)
-    Event_30032871(6, character=Characters.CrucibleKnight7, flag=30032886)
-    Event_30032871(7, character=Characters.CrucibleKnight8, flag=30032887)
-    Event_30032871(8, character=Characters.CrucibleKnight9, flag=30032887)
+    SnailDies()
+    SnailBattleTrigger()
+    SnailCommonEvents()
+    SnailWarpRequest(
+        0,
+        snail=Characters.Snail,
+        flag_1=Flags.SnailWarpingDisabled,
+        flag_2=Flags.SnailWarpFlag0,
+        flag_3=Flags.SnailWarpFlag1,
+        flag_4=Flags.SnailWarpFlag2,
+        flag_5=Flags.SnailWarpFlag3,
+        flag_6=Flags.SnailWarpFlag4,
+        flag_7=Flags.SnailWarpFlag5,
+        flag_8=Flags.SnailWarpFlag6,
+        flag_9=Flags.SnailWarpFlag7,
+        flag_10=Flags.SnailWarpFlag8,
+        flag_11=Flags.SnailWarpFlag9,
+        flag_12=Flags.SnailWarpFlag10,
+        flag_13=Flags.SnailWarpFlag11,
+        warping_flag=Flags.SnailIsWarping,
+    )
+    SnailWarpRequest(
+        30,
+        snail=Characters.CLONE_Snail,
+        flag_1=Flags.CLONE_SnailWarpingDisabled,
+        flag_2=Flags.CLONE_SnailWarpFlag0,
+        flag_3=Flags.CLONE_SnailWarpFlag1,
+        flag_4=Flags.CLONE_SnailWarpFlag2,
+        flag_5=Flags.CLONE_SnailWarpFlag3,
+        flag_6=Flags.CLONE_SnailWarpFlag4,
+        flag_7=Flags.CLONE_SnailWarpFlag5,
+        flag_8=Flags.CLONE_SnailWarpFlag6,
+        flag_9=Flags.CLONE_SnailWarpFlag7,
+        flag_10=Flags.CLONE_SnailWarpFlag8,
+        flag_11=Flags.CLONE_SnailWarpFlag9,
+        flag_12=Flags.CLONE_SnailWarpFlag10,
+        flag_13=Flags.CLONE_SnailWarpFlag11,
+        warping_flag=Flags.CLONE_SnailIsWarping,
+    )
+    SnailWarps(
+        0,
+        snail=Characters.Snail,
+        warping_disabled_flag=Flags.SnailWarpingDisabled,
+        warp_flag_0=Flags.SnailWarpFlag0,
+        warp_flag_1=Flags.SnailWarpFlag1,
+        warp_flag_2=Flags.SnailWarpFlag2,
+        warp_flag_3=Flags.SnailWarpFlag3,
+        warp_flag_4=Flags.SnailWarpFlag4,
+        warp_flag_5=Flags.SnailWarpFlag5,
+        warp_flag_6=Flags.SnailWarpFlag6,
+        warp_flag_7=Flags.SnailWarpFlag7,
+        warp_flag_8=Flags.SnailWarpFlag8,
+        warp_flag_9=Flags.SnailWarpFlag9,
+        warp_flag_10=Flags.SnailWarpFlag10,
+        warp_flag_11=Flags.SnailWarpFlag11,
+        is_warping_flag=Flags.SnailIsWarping,
+    )
+    SnailWarps(  # 30032848
+        10,
+        snail=Characters.CLONE_Snail,
+        warping_disabled_flag=Flags.CLONE_SnailWarpingDisabled,
+        warp_flag_0=Flags.CLONE_SnailWarpFlag0,
+        warp_flag_1=Flags.CLONE_SnailWarpFlag1,
+        warp_flag_2=Flags.CLONE_SnailWarpFlag2,
+        warp_flag_3=Flags.CLONE_SnailWarpFlag3,
+        warp_flag_4=Flags.CLONE_SnailWarpFlag4,
+        warp_flag_5=Flags.CLONE_SnailWarpFlag5,
+        warp_flag_6=Flags.CLONE_SnailWarpFlag6,
+        warp_flag_7=Flags.CLONE_SnailWarpFlag7,
+        warp_flag_8=Flags.CLONE_SnailWarpFlag8,
+        warp_flag_9=Flags.CLONE_SnailWarpFlag9,
+        warp_flag_10=Flags.CLONE_SnailWarpFlag10,
+        warp_flag_11=Flags.CLONE_SnailWarpFlag11,
+        is_warping_flag=Flags.CLONE_SnailIsWarping,
+    )
+    SnailSummonSpawning(
+        0,
+        snail=Characters.Snail,
+        summon_0=Characters.CrucibleKnightSummon0,
+        summon_1=Characters.CrucibleKnightSummon1,
+        summon_2=Characters.CrucibleKnightSummon2,
+        summon_3=Characters.CrucibleKnightSummon3,
+        summon_4=Characters.CrucibleKnightSummon4,
+        summon_5=Characters.CrucibleKnightSummon5,
+        summon_6=Characters.CrucibleKnightSummon6,
+        summon_7=Characters.CrucibleKnightSummon7,
+        summon_8=Characters.CrucibleKnightSummon8,
+        summon_9=Characters.CrucibleKnightSummon9,
+        spawner_1=Spawners.SnailCrucibleKnightSpawner1,
+        spawner_2=Spawners.SnailCrucibleKnightSpawner2,
+        spawner_3=Spawners.SnailCrucibleKnightSpawner3,
+        spawner_4=Spawners.SnailCrucibleKnightSpawner4,
+        spawner_5=Spawners.SnailCrucibleKnightSpawner5,
+        spawner_6=Spawners.SnailCrucibleKnightSpawner6,
+        summoning_unlocked_flag=Flags.SnailSummoningActivated,
+        summon_0_unlocked_flag=Flags.CrucibleKnightSummon0Unlocked,
+        summon_1_unlocked_flag=Flags.CrucibleKnightSummon1Unlocked,
+        summons_23_unlocked_flag=Flags.CrucibleKnightSummons23Unlocked,
+        summons_45_unlocked_flag=Flags.CrucibleKnightSummons45Unlocked,
+        summons_67_unlocked_flag=Flags.CrucibleKnightSummons67Unlocked,
+        summons_89_unlocked_flag=Flags.CrucibleKnightSummons89Unlocked,
+        summon_0_killed_flag=Flags.CrucibleKnightSummon0Killed,
+        summon_1_killed_flag=Flags.CrucibleKnightSummon1Killed,
+        summons_23_killed_flag=Flags.CrucibleKnightSummons23Killed,
+        summons_45_killed_flag=Flags.CrucibleKnightSummons45Killed,
+        summons_67_killed_flag=Flags.CrucibleKnightSummons67Killed,
+        warping_disabled_flag=Flags.SnailWarpingDisabled,
+        is_warping_flag=Flags.SnailIsWarping,
+    )
+    SnailSummonSpawning(  # 30032891
+        1,
+        snail=Characters.CLONE_Snail,
+        summon_0=Characters.CLONE_CrucibleKnightSummon0,
+        summon_1=Characters.CLONE_CrucibleKnightSummon1,
+        summon_2=Characters.CLONE_CrucibleKnightSummon2,
+        summon_3=Characters.CLONE_CrucibleKnightSummon3,
+        summon_4=Characters.CLONE_CrucibleKnightSummon4,
+        summon_5=Characters.CLONE_CrucibleKnightSummon5,
+        summon_6=Characters.CLONE_CrucibleKnightSummon6,
+        summon_7=Characters.CLONE_CrucibleKnightSummon7,
+        summon_8=Characters.CLONE_CrucibleKnightSummon8,
+        summon_9=Characters.CLONE_CrucibleKnightSummon9,
+        spawner_1=Spawners.CLONE_SnailCrucibleKnightSpawner1,
+        spawner_2=Spawners.CLONE_SnailCrucibleKnightSpawner2,
+        spawner_3=Spawners.CLONE_SnailCrucibleKnightSpawner3,
+        spawner_4=Spawners.CLONE_SnailCrucibleKnightSpawner4,
+        spawner_5=Spawners.CLONE_SnailCrucibleKnightSpawner5,
+        spawner_6=Spawners.CLONE_SnailCrucibleKnightSpawner6,
+        summoning_unlocked_flag=Flags.CLONE_SnailSummoningActivated,
+        summon_0_unlocked_flag=Flags.CLONE_CrucibleKnightSummon0Unlocked,
+        summon_1_unlocked_flag=Flags.CLONE_CrucibleKnightSummon1Unlocked,
+        summons_23_unlocked_flag=Flags.CLONE_CrucibleKnightSummons23Unlocked,
+        summons_45_unlocked_flag=Flags.CLONE_CrucibleKnightSummons45Unlocked,
+        summons_67_unlocked_flag=Flags.CLONE_CrucibleKnightSummons67Unlocked,
+        summons_89_unlocked_flag=Flags.CLONE_CrucibleKnightSummons89Unlocked,
+        summon_0_killed_flag=Flags.CLONE_CrucibleKnightSummon0Killed,
+        summon_1_killed_flag=Flags.CLONE_CrucibleKnightSummon1Killed,
+        summons_23_killed_flag=Flags.CLONE_CrucibleKnightSummons23Killed,
+        summons_45_killed_flag=Flags.CLONE_CrucibleKnightSummons45Killed,
+        summons_67_killed_flag=Flags.CLONE_CrucibleKnightSummons67Killed,
+        warping_disabled_flag=Flags.CLONE_SnailWarpingDisabled,
+        is_warping_flag=Flags.CLONE_SnailIsWarping,
+    )
+    SnailPhaseTwoTransition(
+        0,
+        snail=Characters.Snail,
+        warping_disabled_flag=Flags.SnailWarpingDisabled,
+        warp_flag=Flags.SnailWarpFlag11,
+    )
+    SnailPhaseTwoTransition(  # 30032846
+        1,
+        snail=Characters.CLONE_Snail,
+        warping_disabled_flag=Flags.CLONE_SnailWarpingDisabled,
+        warp_flag=Flags.CLONE_SnailWarpFlag11,
+    )
+    BuffFirstSnailSummon(0, summon=Characters.CrucibleKnightSummon0, flag=Flags.CrucibleKnightSummon0Unlocked)
+    BuffAdditionalSnailSummon(0, summon=Characters.CrucibleKnightSummon1, flag=Flags.CrucibleKnightSummon1Unlocked)
+    BuffAdditionalSnailSummon(1, summon=Characters.CrucibleKnightSummon2, flag=Flags.CrucibleKnightSummons23Unlocked)
+    BuffAdditionalSnailSummon(2, summon=Characters.CrucibleKnightSummon3, flag=Flags.CrucibleKnightSummons23Unlocked)
+    BuffAdditionalSnailSummon(3, summon=Characters.CrucibleKnightSummon4, flag=Flags.CrucibleKnightSummons45Unlocked)
+    BuffAdditionalSnailSummon(4, summon=Characters.CrucibleKnightSummon5, flag=Flags.CrucibleKnightSummons45Unlocked)
+    BuffAdditionalSnailSummon(5, summon=Characters.CrucibleKnightSummon6, flag=Flags.CrucibleKnightSummons67Unlocked)
+    BuffAdditionalSnailSummon(6, summon=Characters.CrucibleKnightSummon7, flag=Flags.CrucibleKnightSummons67Unlocked)
+    BuffAdditionalSnailSummon(7, summon=Characters.CrucibleKnightSummon8, flag=Flags.CrucibleKnightSummons89Unlocked)
+    BuffAdditionalSnailSummon(8, summon=Characters.CrucibleKnightSummon9, flag=Flags.CrucibleKnightSummons89Unlocked)
+
+    BuffFirstSnailSummon(
+        10, summon=Characters.CLONE_CrucibleKnightSummon0, flag=Flags.CLONE_CrucibleKnightSummon0Unlocked
+    )
+    BuffAdditionalSnailSummon(
+        10, summon=Characters.CLONE_CrucibleKnightSummon1, flag=Flags.CLONE_CrucibleKnightSummon1Unlocked
+    )
+    BuffAdditionalSnailSummon(
+        11, summon=Characters.CLONE_CrucibleKnightSummon2, flag=Flags.CLONE_CrucibleKnightSummons23Unlocked
+    )
+    BuffAdditionalSnailSummon(
+        12, summon=Characters.CLONE_CrucibleKnightSummon3, flag=Flags.CLONE_CrucibleKnightSummons23Unlocked
+    )
+    BuffAdditionalSnailSummon(
+        13, summon=Characters.CLONE_CrucibleKnightSummon4, flag=Flags.CLONE_CrucibleKnightSummons45Unlocked
+    )
+    BuffAdditionalSnailSummon(
+        14, summon=Characters.CLONE_CrucibleKnightSummon5, flag=Flags.CLONE_CrucibleKnightSummons45Unlocked
+    )
+    BuffAdditionalSnailSummon(
+        15, summon=Characters.CLONE_CrucibleKnightSummon6, flag=Flags.CLONE_CrucibleKnightSummons67Unlocked
+    )
+    BuffAdditionalSnailSummon(
+        16, summon=Characters.CLONE_CrucibleKnightSummon7, flag=Flags.CLONE_CrucibleKnightSummons67Unlocked
+    )
+    BuffAdditionalSnailSummon(
+        17, summon=Characters.CLONE_CrucibleKnightSummon8, flag=Flags.CLONE_CrucibleKnightSummons89Unlocked
+    )
+    BuffAdditionalSnailSummon(
+        18, summon=Characters.CLONE_CrucibleKnightSummon9, flag=Flags.CLONE_CrucibleKnightSummons89Unlocked
+    )
+
     CommonFunc_90005650(
         0,
         flag=30030540,
@@ -84,7 +264,7 @@ def Constructor():
     Event_30032579()
     CommonFunc_90005410(0, flag=30032100, character=30031100, entity_b=30035100)
     CommonFunc_90005411(0, asset=Assets.AEG099_053_9000, character=Characters.TalkDummy1, left=10)
-    CommonFunc_91005600(0, flag=30030800, asset=30031695, model_point=3)
+    CommonFunc_91005600(0, flag=Flags.SnailDead, asset=30031695, model_point=3)
     CommonFunc_90005920(0, 30030520, 30031520, 30033520)
 
 
@@ -93,7 +273,9 @@ def Preconstructor():
     """Event 50"""
     Event_30030050()
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Imp0, region=30032200, seconds=0.0, animation_id=3005)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Imp1, region=30032201, radius=1.0, seconds=0.0, animation_id=3012)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Imp1, region=30032201, radius=1.0, seconds=0.0, animation_id=3012
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.Imp2,
@@ -193,9 +375,9 @@ def Event_30032400(
     """Event 30032400"""
     CreateProjectileOwner(entity=owner_entity)
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=region))
-    
+
     MAIN.Await(AND_1)
-    
+
     ForceAnimation(entity, 1, wait_for_completion=True)
     Wait(0.5)
     if ValueNotEqual(left=behavior_id, right=0):
@@ -969,9 +1151,9 @@ def Event_30032400(
     # --- Label 2 --- #
     DefineLabel(2)
     Wait(3.0)
-    
+
     MAIN.Await(AllPlayersOutsideRegion(region=region))
-    
+
     ForceAnimation(entity, 3, wait_for_completion=True)
     Restart()
 
@@ -1060,9 +1242,9 @@ def Event_30032205(
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
-    
+
     MAIN.Await(OR_2)
-    
+
     Wait(0.10000000149011612)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     SetSpecialStandbyEndedFlag(character=character, state=True)
@@ -1103,98 +1285,143 @@ def Event_30032207(_, character: uint, region: uint):
     AND_1.Add(OR_1)
     OR_2.Add(CharacterInsideRegion(character=PLAYER, region=region))
     OR_2.Add(AttackedWithDamageType(attacked_entity=character))
-    
+
     MAIN.Await(OR_2)
-    
+
     RemoveSpecialEffect(character, 17155)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
 
 
 @RestartOnRest(30032800)
-def Event_30032800():
+def SnailDies():
     """Event 30032800"""
-    if FlagEnabled(30030800):
+    if FlagEnabled(Flags.SnailDead):
         return
-    
-    MAIN.Await(HealthValue(Characters.Snail) <= 0)
-    
-    Kill(Characters.CrucibleKnight0)
-    Kill(Characters.CrucibleKnight3)
-    Kill(Characters.CrucibleKnight4)
-    Kill(Characters.CrucibleKnight5)
-    Kill(Characters.CrucibleKnight1)
-    Kill(Characters.CrucibleKnight2)
-    Kill(Characters.CrucibleKnight6)
-    Kill(Characters.CrucibleKnight7)
-    Kill(Characters.CrucibleKnight8)
-    Kill(Characters.CrucibleKnight9)
-    DisableSpawner(entity=30033801)
-    DisableSpawner(entity=30033802)
-    DisableSpawner(entity=30033803)
-    DisableSpawner(entity=30033804)
-    DisableSpawner(entity=30033805)
-    DisableSpawner(entity=30033806)
+
+    AND_7.Add(HealthValue(Characters.Snail) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_Snail) <= 0)
+    MAIN.Await(AND_7)
+
+    Kill(Characters.CrucibleKnightSummon0)
+    Kill(Characters.CrucibleKnightSummon1)
+    Kill(Characters.CrucibleKnightSummon2)
+    Kill(Characters.CrucibleKnightSummon3)
+    Kill(Characters.CrucibleKnightSummon4)
+    Kill(Characters.CrucibleKnightSummon5)
+    Kill(Characters.CrucibleKnightSummon6)
+    Kill(Characters.CrucibleKnightSummon7)
+    Kill(Characters.CrucibleKnightSummon8)
+    Kill(Characters.CrucibleKnightSummon9)
+    Kill(Characters.CLONE_CrucibleKnight0)
+    Kill(Characters.CLONE_CrucibleKnight3)
+    Kill(Characters.CLONE_CrucibleKnight4)
+    Kill(Characters.CLONE_CrucibleKnight5)
+    Kill(Characters.CLONE_CrucibleKnight1)
+    Kill(Characters.CLONE_CrucibleKnight2)
+    Kill(Characters.CLONE_CrucibleKnight6)
+    Kill(Characters.CLONE_CrucibleKnight7)
+    Kill(Characters.CLONE_CrucibleKnight8)
+    Kill(Characters.CLONE_CrucibleKnight9)
+    DisableSpawner(entity=Spawners.SnailCrucibleKnightSpawner1)
+    DisableSpawner(entity=Spawners.SnailCrucibleKnightSpawner2)
+    DisableSpawner(entity=Spawners.SnailCrucibleKnightSpawner3)
+    DisableSpawner(entity=Spawners.SnailCrucibleKnightSpawner4)
+    DisableSpawner(entity=Spawners.SnailCrucibleKnightSpawner5)
+    DisableSpawner(entity=Spawners.SnailCrucibleKnightSpawner6)
+    DisableSpawner(entity=Spawners.CLONE_SnailCrucibleKnightSpawner1)
+    DisableSpawner(entity=Spawners.CLONE_SnailCrucibleKnightSpawner2)
+    DisableSpawner(entity=Spawners.CLONE_SnailCrucibleKnightSpawner3)
+    DisableSpawner(entity=Spawners.CLONE_SnailCrucibleKnightSpawner4)
+    DisableSpawner(entity=Spawners.CLONE_SnailCrucibleKnightSpawner5)
+    DisableSpawner(entity=Spawners.CLONE_SnailCrucibleKnightSpawner6)
     Wait(4.0)
     PlaySoundEffect(Characters.Snail, 888880000, sound_type=SoundType.s_SFX)
-    
-    MAIN.Await(CharacterDead(Characters.Snail))
-    
+
+    AND_8.Add(CharacterDead(Characters.Snail))
+    AND_8.Add(CharacterDead(Characters.CLONE_Snail))
+    MAIN.Await(AND_8)
+
     KillBossAndDisplayBanner(character=Characters.Snail, banner_type=BannerType.EnemyFelled)
-    EnableFlag(30030800)
+    EnableFlag(Flags.SnailDead)
     if PlayerInOwnWorld():
         EnableFlag(61206)
     EnableFlag(9206)
 
 
 @RestartOnRest(30032810)
-def Event_30032810():
+def SnailBattleTrigger():
     """Event 30032810"""
-    GotoIfFlagDisabled(Label.L0, flag=30030800)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.SnailDead)
     DisableCharacter(Characters.Snail)
     DisableAnimations(Characters.Snail)
     Kill(Characters.Snail)
-    Kill(Characters.CrucibleKnight0)
-    DisableSpawner(entity=30033801)
-    DisableSpawner(entity=30033802)
-    DisableSpawner(entity=30033803)
-    DisableSpawner(entity=30033804)
-    DisableSpawner(entity=30033805)
-    DisableSpawner(entity=30033806)
+    Kill(Characters.CrucibleKnightSummon0)
+    DisableSpawner(entity=Spawners.SnailCrucibleKnightSpawner1)
+    DisableSpawner(entity=Spawners.SnailCrucibleKnightSpawner2)
+    DisableSpawner(entity=Spawners.SnailCrucibleKnightSpawner3)
+    DisableSpawner(entity=Spawners.SnailCrucibleKnightSpawner4)
+    DisableSpawner(entity=Spawners.SnailCrucibleKnightSpawner5)
+    DisableSpawner(entity=Spawners.SnailCrucibleKnightSpawner6)
+    DisableSpawner(entity=Spawners.CLONE_SnailCrucibleKnightSpawner1)
+    DisableSpawner(entity=Spawners.CLONE_SnailCrucibleKnightSpawner2)
+    DisableSpawner(entity=Spawners.CLONE_SnailCrucibleKnightSpawner3)
+    DisableSpawner(entity=Spawners.CLONE_SnailCrucibleKnightSpawner4)
+    DisableSpawner(entity=Spawners.CLONE_SnailCrucibleKnightSpawner5)
+    DisableSpawner(entity=Spawners.CLONE_SnailCrucibleKnightSpawner6)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.Snail)
+    DisableAI(Characters.CLONE_Snail)
     if PlayerInOwnWorld():
         ForceAnimation(Characters.Snail, 30013)
+        ForceAnimation(Characters.CLONE_Snail, 30013)
     AND_2.Add(FlagEnabled(30032805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=30032800))
-    
+
     MAIN.Await(AND_2)
-    
+
     EnableAI(Characters.Snail)
+    EnableAI(Characters.CLONE_Snail)
     SetNetworkUpdateRate(Characters.Snail, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.Snail, name=904140300)
+    SetNetworkUpdateRate(Characters.CLONE_Snail, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.Snail, name=904140300, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_Snail, name=904140300, bar_slot=0)
+
     GotoIfPlayerNotInOwnWorld(Label.L1)
+
+    # ORIGINAL
+    DisableNetworkConnectedFlagRange(flag_range=(Flags.SnailWarpingDisabled, Flags.SnailIsWarping))
+    EnableNetworkFlag(Flags.SnailWarpingDisabled)
+    EnableNetworkFlag(Flags.SnailIsWarping)
+    Wait(1.2000000476837158)
+    EnableFlag(30032812)
+    ForceSpawnerToSpawn(spawner=Spawners.SnailCrucibleKnightSpawner1)
+    EnableNetworkFlag(Flags.CrucibleKnightSummon0Unlocked)
+
+    # CLONE
     DisableNetworkConnectedFlagRange(flag_range=(30032822, 30032839))
     EnableNetworkFlag(30032822)
     EnableNetworkFlag(30032839)
     Wait(1.2000000476837158)
     EnableFlag(30032812)
-    ForceSpawnerToSpawn(spawner=30033801)
-    EnableNetworkFlag(30032882)
+    ForceSpawnerToSpawn(spawner=Spawners.SnailCrucibleKnightSpawner1)
+    EnableNetworkFlag(Flags.CrucibleKnightSummon0Unlocked)
+
     ForceAnimation(Characters.Snail, 20013)
+    ForceAnimation(Characters.CLONE_Snail, 20013)
 
     # --- Label 1 --- #
     DefineLabel(1)
 
 
 @RestartOnRest(30032849)
-def Event_30032849():
+def SnailCommonEvents():
     """Event 30032849"""
     CommonFunc_HostEntersBossFog(
         0,
-        boss_dead_flag=30030800,
+        boss_dead_flag=Flags.SnailDead,
         fog_asset=Assets.AEG099_001_9000,
         fog_region=30032800,
         host_entered_fog_flag=30032805,
@@ -1205,190 +1432,231 @@ def Event_30032849():
     )
     CommonFunc_SummonEntersBossFog(
         0,
-        boss_dead_flag=30030800,
+        boss_dead_flag=Flags.SnailDead,
         fog_asset=Assets.AEG099_001_9000,
         fog_region=30032800,
         host_entered_fog_flag=30032805,
         summon_entered_fog_flag=30032806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=30030800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
-    CommonFunc_ControlBossMusic(0, 30030800, 920200, 30032805, 30032806, 0, 30032860, 0, 0)
+    CommonFunc_ControlBossFog(
+        0, boss_dead_flag=Flags.SnailDead, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0
+    )
+    CommonFunc_ControlBossMusic(0, Flags.SnailDead, 920200, 30032805, 30032806, 0, 30032860, 0, 0)
 
 
 @RestartOnRest(30032890)
-def Event_30032890():
+def SnailSummonSpawning(
+    _,
+    snail: uint,
+    summon_0: uint,
+    summon_1: uint,
+    summon_2: uint,
+    summon_3: uint,
+    summon_4: uint,
+    summon_5: uint,
+    summon_6: uint,
+    summon_7: uint,
+    summon_8: uint,
+    summon_9: uint,
+    spawner_1: uint,
+    spawner_2: uint,
+    spawner_3: uint,
+    spawner_4: uint,
+    spawner_5: uint,
+    spawner_6: uint,
+    summoning_unlocked_flag: int,
+    summon_0_unlocked_flag: int,
+    summon_1_unlocked_flag: int,
+    summons_23_unlocked_flag: int,
+    summons_45_unlocked_flag: int,
+    summons_67_unlocked_flag: int,
+    summons_89_unlocked_flag: int,
+    summon_0_killed_flag: int,
+    summon_1_killed_flag: int,
+    summons_23_killed_flag: int,
+    summons_45_killed_flag: int,
+    summons_67_killed_flag: int,
+    warping_disabled_flag: int,
+    is_warping_flag: int,
+):
     """Event 30032890"""
     DisableNetworkSync()
-    if FlagEnabled(30030800):
+    if FlagEnabled(Flags.SnailDead):
         return
     if PlayerNotInOwnWorld():
         return
-    AwaitFlagEnabled(flag=30032805)
-    GotoIfFlagEnabled(Label.L1, flag=30032813)
-    
-    MAIN.Await(CharacterDead(Characters.CrucibleKnight0))
-    
+
+    AwaitFlagEnabled(flag=30032805)  # battle started
+
+    GotoIfFlagEnabled(Label.L1, flag=summon_0_killed_flag)
+
+    MAIN.Await(CharacterDead(summon_0))
+
     Wait(1.0)
-    AddSpecialEffect(Characters.Snail, 15044)
-    AND_1.Add(HealthRatio(Characters.Snail) < 0.8999999761581421)
+    AddSpecialEffect(snail, 15044)
+
+    AND_1.Add(HealthRatio(snail) < 0.8999999761581421)
     SkipLinesIfConditionTrue(4, AND_1)
-    DisableNetworkConnectedFlagRange(flag_range=(30032822, 30032839))
-    EnableNetworkFlag(30032822)
-    EnableNetworkFlag(30032839)
-    Goto(Label.L0)
-    DisableNetworkFlag(30032822)
-    EnableNetworkFlag(30032813)
+    # Snail still has >90% HP. Stay with first spawner only.
+    DisableNetworkConnectedFlagRange(flag_range=(warping_disabled_flag, is_warping_flag))
+    EnableNetworkFlag(warping_disabled_flag)
+    EnableNetworkFlag(is_warping_flag)
+    Goto(Label.L0)  # respawn Crucible Knight 0 and restart
+
+    # Snail has less than 90% HP and can start warping.
+    DisableNetworkFlag(warping_disabled_flag)
+    EnableNetworkFlag(summon_0_killed_flag)
     Goto(Label.L0)
 
     # --- Label 1 --- #
     DefineLabel(1)
-    GotoIfFlagEnabled(Label.L2, flag=30032814)
-    
-    MAIN.Await(CharacterDead(Characters.CrucibleKnight3))
-    
+    GotoIfFlagEnabled(Label.L2, flag=summon_1_killed_flag)
+
+    MAIN.Await(CharacterDead(summon_1))
+
     Wait(1.0)
-    AddSpecialEffect(Characters.Snail, 15044)
-    EnableNetworkFlag(30032814)
+    AddSpecialEffect(snail, 15044)
+    EnableNetworkFlag(summon_1_killed_flag)
     Goto(Label.L0)
 
     # --- Label 2 --- #
     DefineLabel(2)
-    GotoIfFlagEnabled(Label.L10, flag=30032815)
-    AND_9.Add(CharacterDead(Characters.CrucibleKnight4))
-    AND_9.Add(CharacterDead(Characters.CrucibleKnight5))
-    
+    GotoIfFlagEnabled(Label.L10, flag=summons_23_killed_flag)
+    AND_9.Add(CharacterDead(summon_2))
+    AND_9.Add(CharacterDead(summon_3))
+
     MAIN.Await(AND_9)
-    
+
     Wait(1.0)
-    AddSpecialEffect(Characters.Snail, 15044)
-    EnableNetworkFlag(30032815)
+    AddSpecialEffect(snail, 15044)
+    EnableNetworkFlag(summons_23_killed_flag)
     Goto(Label.L0)
 
     # --- Label 10 --- #
     DefineLabel(10)
-    GotoIfFlagEnabled(Label.L11, flag=30032816)
-    AND_10.Add(CharacterDead(Characters.CrucibleKnight1))
-    AND_10.Add(CharacterDead(Characters.CrucibleKnight2))
-    
+    GotoIfFlagEnabled(Label.L11, flag=summons_45_killed_flag)
+    AND_10.Add(CharacterDead(summon_4))
+    AND_10.Add(CharacterDead(summon_5))
+
     MAIN.Await(AND_10)
-    
+
     Wait(1.0)
-    AddSpecialEffect(Characters.Snail, 15044)
-    EnableNetworkFlag(30032816)
+    AddSpecialEffect(snail, 15044)
+    EnableNetworkFlag(summons_45_killed_flag)
     Goto(Label.L0)
 
     # --- Label 11 --- #
     DefineLabel(11)
-    GotoIfFlagEnabled(Label.L12, flag=30032817)
-    AND_2.Add(CharacterDead(Characters.CrucibleKnight6))
-    AND_2.Add(CharacterDead(Characters.CrucibleKnight7))
-    
+    GotoIfFlagEnabled(Label.L12, flag=summons_67_killed_flag)
+    AND_2.Add(CharacterDead(summon_6))
+    AND_2.Add(CharacterDead(summon_7))
+
     MAIN.Await(AND_2)
-    
+
     Wait(1.0)
-    AddSpecialEffect(Characters.Snail, 15044)
-    EnableNetworkFlag(30032817)
+    AddSpecialEffect(snail, 15044)
+    EnableNetworkFlag(summons_67_killed_flag)
     Goto(Label.L0)
 
     # --- Label 12 --- #
     DefineLabel(12)
-    AND_11.Add(CharacterDead(Characters.CrucibleKnight8))
-    AND_11.Add(CharacterDead(Characters.CrucibleKnight9))
-    
+    AND_11.Add(CharacterDead(summon_8))
+    AND_11.Add(CharacterDead(summon_9))
+
     MAIN.Await(AND_11)
-    
+
     Wait(1.0)
-    AddSpecialEffect(Characters.Snail, 15044)
+    AddSpecialEffect(snail, 15044)
 
     # --- Label 0 --- #
     DefineLabel(0)
-    
-    MAIN.Await(CharacterHasSpecialEffect(Characters.Snail, 15007))
-    
-    AND_3.Add(HealthRatio(Characters.Snail) >= 0.8999999761581421)
+
+    MAIN.Await(CharacterHasSpecialEffect(snail, 15007))
+
+    AND_3.Add(HealthRatio(snail) >= 0.8999999761581421)
     GotoIfConditionFalse(Label.L3, input_condition=AND_3)
-    ForceSpawnerToSpawn(spawner=30033801)
-    
-    MAIN.Await(CharacterAlive(Characters.CrucibleKnight0))
-    
-    EnableNetworkFlag(30032882)
-    AddSpecialEffect(Characters.Snail, 15045)
+    ForceSpawnerToSpawn(spawner=spawner_1)
+
+    MAIN.Await(CharacterAlive(summon_0))
+
+    EnableNetworkFlag(summon_0_unlocked_flag)
+    AddSpecialEffect(snail, 15045)
     Restart()
 
     # --- Label 3 --- #
     DefineLabel(3)
-    GotoIfFlagDisabled(Label.L9, flag=30032817)
-    ForceSpawnerToSpawn(spawner=30033806)
-    AND_8.Add(CharacterAlive(Characters.CrucibleKnight8))
-    AND_8.Add(CharacterAlive(Characters.CrucibleKnight9))
-    
+    GotoIfFlagDisabled(Label.L9, flag=summons_67_killed_flag)
+    ForceSpawnerToSpawn(spawner=spawner_6)
+    AND_8.Add(CharacterAlive(summon_8))
+    AND_8.Add(CharacterAlive(summon_9))
+
     MAIN.Await(AND_8)
-    
-    EnableNetworkFlag(30032887)
-    AddSpecialEffect(Characters.Snail, 15045)
+
+    EnableNetworkFlag(summons_89_unlocked_flag)
+    AddSpecialEffect(snail, 15045)
     Restart()
 
     # --- Label 9 --- #
     DefineLabel(9)
-    GotoIfFlagDisabled(Label.L8, flag=30032816)
-    ForceSpawnerToSpawn(spawner=30033805)
-    AND_6.Add(CharacterAlive(Characters.CrucibleKnight6))
-    AND_6.Add(CharacterAlive(Characters.CrucibleKnight7))
-    
+    GotoIfFlagDisabled(Label.L8, flag=summons_45_killed_flag)
+    ForceSpawnerToSpawn(spawner=spawner_5)
+    AND_6.Add(CharacterAlive(summon_6))
+    AND_6.Add(CharacterAlive(summon_7))
+
     MAIN.Await(AND_6)
-    
-    EnableNetworkFlag(30032886)
-    AddSpecialEffect(Characters.Snail, 15045)
+
+    EnableNetworkFlag(summons_67_unlocked_flag)
+    AddSpecialEffect(snail, 15045)
     Restart()
 
     # --- Label 8 --- #
     DefineLabel(8)
-    GotoIfFlagDisabled(Label.L4, flag=30032815)
-    ForceSpawnerToSpawn(spawner=30033804)
-    AND_5.Add(CharacterAlive(Characters.CrucibleKnight1))
-    AND_5.Add(CharacterAlive(Characters.CrucibleKnight2))
-    
+    GotoIfFlagDisabled(Label.L4, flag=summons_23_killed_flag)
+    ForceSpawnerToSpawn(spawner=spawner_4)
+    AND_5.Add(CharacterAlive(summon_4))
+    AND_5.Add(CharacterAlive(summon_5))
+
     MAIN.Await(AND_5)
-    
-    EnableNetworkFlag(30032885)
-    AddSpecialEffect(Characters.Snail, 15045)
+
+    EnableNetworkFlag(summons_45_unlocked_flag)
+    AddSpecialEffect(snail, 15045)
     Restart()
 
     # --- Label 4 --- #
     DefineLabel(4)
-    GotoIfFlagDisabled(Label.L5, flag=30032814)
-    ForceSpawnerToSpawn(spawner=30033803)
+    GotoIfFlagDisabled(Label.L5, flag=summon_1_killed_flag)
+    ForceSpawnerToSpawn(spawner=spawner_3)
     EnableFlag(30032860)
-    AND_7.Add(CharacterAlive(Characters.CrucibleKnight4))
-    AND_7.Add(CharacterAlive(Characters.CrucibleKnight5))
-    
+    AND_7.Add(CharacterAlive(summon_2))
+    AND_7.Add(CharacterAlive(summon_3))
+
     MAIN.Await(AND_7)
-    
-    EnableNetworkFlag(30032884)
-    AddSpecialEffect(Characters.Snail, 15045)
+
+    EnableNetworkFlag(summons_23_unlocked_flag)
+    AddSpecialEffect(snail, 15045)
     Restart()
 
     # --- Label 5 --- #
     DefineLabel(5)
-    GotoIfFlagDisabled(Label.L6, flag=30032813)
-    ForceSpawnerToSpawn(spawner=30033802)
-    
-    MAIN.Await(CharacterAlive(Characters.CrucibleKnight3))
-    
-    EnableNetworkFlag(30032883)
-    AddSpecialEffect(Characters.Snail, 15045)
+    GotoIfFlagDisabled(Label.L6, flag=summon_0_killed_flag)
+    ForceSpawnerToSpawn(spawner=spawner_2)
+
+    MAIN.Await(CharacterAlive(summon_1))
+
+    EnableNetworkFlag(summon_1_unlocked_flag)
+    AddSpecialEffect(snail, 15045)
     Restart()
 
     # --- Label 6 --- #
     DefineLabel(6)
-    GotoIfFlagDisabled(Label.L7, flag=30032812)
-    ForceSpawnerToSpawn(spawner=30033801)
-    EnableNetworkFlag(30032882)
-    
-    MAIN.Await(CharacterAlive(Characters.CrucibleKnight0))
-    
-    AddSpecialEffect(Characters.Snail, 15045)
+    GotoIfFlagDisabled(Label.L7, flag=summoning_unlocked_flag)
+    ForceSpawnerToSpawn(spawner=spawner_1)
+    EnableNetworkFlag(summon_0_unlocked_flag)
+
+    MAIN.Await(CharacterAlive(summon_0))
+
+    AddSpecialEffect(snail, 15045)
     Restart()
 
     # --- Label 7 --- #
@@ -1396,278 +1664,318 @@ def Event_30032890():
 
 
 @RestartOnRest(30032845)
-def Event_30032845():
+def SnailPhaseTwoTransition(_, snail: uint, warping_disabled_flag: int, warp_flag: int):
     """Event 30032845"""
     DisableNetworkSync()
-    if FlagEnabled(30030800):
+    if FlagEnabled(Flags.SnailDead):
         return
     if PlayerNotInOwnWorld():
         return
-    
-    MAIN.Await(HealthRatio(Characters.Snail) < 0.8999999761581421)
-    
-    DisableNetworkFlag(30032822)
-    EnableNetworkFlag(30032834)
+
+    MAIN.Await(HealthRatio(snail) < 0.8999999761581421)
+
+    DisableNetworkFlag(warping_disabled_flag)
+    EnableNetworkFlag(warp_flag)
 
 
 @RestartOnRest(30032821)
-def Event_30032821():
+def SnailWarpRequest(
+    _,
+    snail: uint,
+    flag_1: int,
+    flag_2: int,
+    flag_3: int,
+    flag_4: int,
+    flag_5: int,
+    flag_6: int,
+    flag_7: int,
+    flag_8: int,
+    flag_9: int,
+    flag_10: int,
+    flag_11: int,
+    flag_12: int,
+    flag_13: int,
+    warping_flag: int,
+):
     """Event 30032821"""
     DisableNetworkSync()
-    if FlagEnabled(30030800):
+    if FlagEnabled(Flags.SnailDead):
         return
     if PlayerNotInOwnWorld():
         return
-    AND_15.Add(CharacterHasSpecialEffect(Characters.Snail, 15046))
-    AND_15.Add(FlagEnabled(30032839))
-    
+    AND_15.Add(CharacterHasSpecialEffect(snail, 15046))
+    AND_15.Add(FlagEnabled(warping_flag))
+
     MAIN.Await(AND_15)
-    
-    OR_15.Add(HealthRatio(Characters.Snail) >= 0.8999999761581421)
+
+    OR_15.Add(HealthRatio(snail) >= 0.8999999761581421)
     GotoIfConditionTrue(Label.L0, input_condition=OR_15)
-    GotoIfFlagEnabled(Label.L0, flag=30032822)
-    GotoIfFlagEnabled(Label.L1, flag=30032823)
-    GotoIfFlagEnabled(Label.L1, flag=30032824)
-    GotoIfFlagEnabled(Label.L1, flag=30032825)
-    GotoIfFlagEnabled(Label.L2, flag=30032826)
-    GotoIfFlagEnabled(Label.L2, flag=30032827)
-    GotoIfFlagEnabled(Label.L2, flag=30032828)
-    GotoIfFlagEnabled(Label.L3, flag=30032829)
-    GotoIfFlagEnabled(Label.L3, flag=30032830)
-    GotoIfFlagEnabled(Label.L3, flag=30032831)
-    GotoIfFlagEnabled(Label.L4, flag=30032832)
-    GotoIfFlagEnabled(Label.L4, flag=30032833)
-    GotoIfFlagEnabled(Label.L4, flag=30032834)
+
+    GotoIfFlagEnabled(Label.L0, flag=flag_1)
+
+    GotoIfFlagEnabled(Label.L1, flag=flag_2)
+    GotoIfFlagEnabled(Label.L1, flag=flag_3)
+    GotoIfFlagEnabled(Label.L1, flag=flag_4)
+
+    GotoIfFlagEnabled(Label.L2, flag=flag_5)
+    GotoIfFlagEnabled(Label.L2, flag=flag_6)
+    GotoIfFlagEnabled(Label.L2, flag=flag_7)
+
+    GotoIfFlagEnabled(Label.L3, flag=flag_8)
+    GotoIfFlagEnabled(Label.L3, flag=flag_9)
+    GotoIfFlagEnabled(Label.L3, flag=flag_10)
+
+    GotoIfFlagEnabled(Label.L4, flag=flag_11)
+    GotoIfFlagEnabled(Label.L4, flag=flag_12)
+    GotoIfFlagEnabled(Label.L4, flag=flag_13)
 
     # --- Label 0 --- #
     DefineLabel(0)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 1 --- #
     DefineLabel(1)
-    DisableNetworkConnectedFlagRange(flag_range=(30032823, 30032834))
-    EnableRandomFlagInRange(flag_range=(30032829, 30032834))
-    DisableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    DisableNetworkConnectedFlagRange(flag_range=(flag_2, flag_13))
+    EnableRandomFlagInRange(flag_range=(flag_8, flag_13))
+    DisableNetworkFlag(warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 2 --- #
     DefineLabel(2)
-    DisableNetworkConnectedFlagRange(flag_range=(30032823, 30032834))
-    EnableRandomFlagInRange(flag_range=(30032829, 30032834))
-    DisableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    DisableNetworkConnectedFlagRange(flag_range=(flag_2, flag_13))
+    EnableRandomFlagInRange(flag_range=(flag_8, flag_13))
+    DisableNetworkFlag(warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 3 --- #
     DefineLabel(3)
-    DisableNetworkConnectedFlagRange(flag_range=(30032823, 30032834))
-    EnableRandomFlagInRange(flag_range=(30032823, 30032828))
-    DisableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    DisableNetworkConnectedFlagRange(flag_range=(flag_2, flag_13))
+    EnableRandomFlagInRange(flag_range=(flag_2, flag_7))
+    DisableNetworkFlag(warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 4 --- #
     DefineLabel(4)
-    DisableNetworkConnectedFlagRange(flag_range=(30032823, 30032834))
-    EnableRandomFlagInRange(flag_range=(30032823, 30032828))
-    DisableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    DisableNetworkConnectedFlagRange(flag_range=(flag_2, flag_13))
+    EnableRandomFlagInRange(flag_range=(flag_2, flag_7))
+    DisableNetworkFlag(warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
 
 @ContinueOnRest(30032838)
-def Event_30032838():
+def SnailWarps(
+    _,
+    snail: uint,
+    warping_disabled_flag: int,
+    warp_flag_0: int,
+    warp_flag_1: int,
+    warp_flag_2: int,
+    warp_flag_3: int,
+    warp_flag_4: int,
+    warp_flag_5: int,
+    warp_flag_6: int,
+    warp_flag_7: int,
+    warp_flag_8: int,
+    warp_flag_9: int,
+    warp_flag_10: int,
+    warp_flag_11: int,
+    is_warping_flag: int,
+):
     """Event 30032838"""
     DisableNetworkSync()
-    if FlagEnabled(30030800):
+    if FlagEnabled(Flags.SnailDead):
         return
     if PlayerNotInOwnWorld():
         return
-    AND_1.Add(FlagRangeAnyEnabled(flag_range=(30032823, 30032834)))
-    AND_1.Add(FlagDisabled(30032839))
-    AND_1.Add(CharacterHasSpecialEffect(Characters.Snail, 15046))
-    
+    AND_1.Add(FlagRangeAnyEnabled(flag_range=(warp_flag_0, warp_flag_11)))
+    AND_1.Add(FlagDisabled(is_warping_flag))
+    AND_1.Add(CharacterHasSpecialEffect(snail, 15046))
+
     MAIN.Await(AND_1)
-    
-    GotoIfFlagEnabled(Label.L0, flag=30032822)
-    GotoIfFlagEnabled(Label.L1, flag=30032823)
-    GotoIfFlagEnabled(Label.L2, flag=30032824)
-    GotoIfFlagEnabled(Label.L3, flag=30032825)
-    GotoIfFlagEnabled(Label.L4, flag=30032826)
-    GotoIfFlagEnabled(Label.L5, flag=30032827)
-    GotoIfFlagEnabled(Label.L6, flag=30032828)
-    GotoIfFlagEnabled(Label.L7, flag=30032829)
-    GotoIfFlagEnabled(Label.L8, flag=30032830)
-    GotoIfFlagEnabled(Label.L9, flag=30032831)
-    GotoIfFlagEnabled(Label.L10, flag=30032832)
-    GotoIfFlagEnabled(Label.L11, flag=30032833)
-    GotoIfFlagEnabled(Label.L12, flag=30032834)
+
+    GotoIfFlagEnabled(Label.L0, flag=warping_disabled_flag)
+    GotoIfFlagEnabled(Label.L1, flag=warp_flag_0)
+    GotoIfFlagEnabled(Label.L2, flag=warp_flag_1)
+    GotoIfFlagEnabled(Label.L3, flag=warp_flag_2)
+    GotoIfFlagEnabled(Label.L4, flag=warp_flag_3)
+    GotoIfFlagEnabled(Label.L5, flag=warp_flag_4)
+    GotoIfFlagEnabled(Label.L6, flag=warp_flag_5)
+    GotoIfFlagEnabled(Label.L7, flag=warp_flag_6)
+    GotoIfFlagEnabled(Label.L8, flag=warp_flag_7)
+    GotoIfFlagEnabled(Label.L9, flag=warp_flag_8)
+    GotoIfFlagEnabled(Label.L10, flag=warp_flag_9)
+    GotoIfFlagEnabled(Label.L11, flag=warp_flag_10)
+    GotoIfFlagEnabled(Label.L12, flag=warp_flag_11)
 
     # --- Label 0 --- #
     DefineLabel(0)
-    EnableNetworkFlag(30032839)
-    DisableNetworkFlag(30032822)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    EnableNetworkFlag(is_warping_flag)
+    DisableNetworkFlag(warping_disabled_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 1 --- #
     DefineLabel(1)
-    Move(Characters.Snail, destination=30032823, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
-    EnableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    Move(snail, destination=30032823, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
+    EnableNetworkFlag(is_warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 2 --- #
     DefineLabel(2)
-    Move(Characters.Snail, destination=30032824, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
-    EnableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    Move(snail, destination=30032824, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
+    EnableNetworkFlag(is_warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 3 --- #
     DefineLabel(3)
-    Move(Characters.Snail, destination=30032825, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
-    EnableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    Move(snail, destination=30032825, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
+    EnableNetworkFlag(is_warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 4 --- #
     DefineLabel(4)
-    Move(Characters.Snail, destination=30032826, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
-    EnableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    Move(snail, destination=30032826, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
+    EnableNetworkFlag(is_warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 5 --- #
     DefineLabel(5)
-    Move(Characters.Snail, destination=30032827, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
-    EnableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    Move(snail, destination=30032827, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
+    EnableNetworkFlag(is_warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 6 --- #
     DefineLabel(6)
-    Move(Characters.Snail, destination=30032828, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
-    EnableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    Move(snail, destination=30032828, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
+    EnableNetworkFlag(is_warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 7 --- #
     DefineLabel(7)
-    Move(Characters.Snail, destination=30032829, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
-    EnableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    Move(snail, destination=30032829, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
+    EnableNetworkFlag(is_warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 8 --- #
     DefineLabel(8)
-    Move(Characters.Snail, destination=30032830, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
-    EnableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    Move(snail, destination=30032830, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
+    EnableNetworkFlag(is_warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 9 --- #
     DefineLabel(9)
-    Move(Characters.Snail, destination=30032831, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
-    EnableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    Move(snail, destination=30032831, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
+    EnableNetworkFlag(is_warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 10 --- #
     DefineLabel(10)
-    Move(Characters.Snail, destination=30032832, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
-    EnableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    Move(snail, destination=30032832, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
+    EnableNetworkFlag(is_warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 11 --- #
     DefineLabel(11)
-    Move(Characters.Snail, destination=30032833, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
-    EnableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    Move(snail, destination=30032833, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
+    EnableNetworkFlag(is_warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
     # --- Label 12 --- #
     DefineLabel(12)
-    Move(Characters.Snail, destination=30032834, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
-    EnableNetworkFlag(30032839)
-    
-    MAIN.Await(CharacterDoesNotHaveSpecialEffect(Characters.Snail, 15046))
-    
+    Move(snail, destination=30032834, destination_type=CoordEntityType.Region, set_draw_parent=30034200)
+    EnableNetworkFlag(is_warping_flag)
+
+    MAIN.Await(CharacterDoesNotHaveSpecialEffect(snail, 15046))
+
     Restart()
 
 
 @RestartOnRest(30032870)
-def Event_30032870(_, character: uint, flag: uint):
+def BuffFirstSnailSummon(_, summon: uint, flag: uint):
     """Event 30032870"""
-    if FlagEnabled(30030800):
+    if FlagEnabled(Flags.SnailDead):
         return
     AND_1.Add(FlagEnabled(flag))
-    AND_1.Add(CharacterAlive(character))
-    
+    AND_1.Add(CharacterAlive(summon))
+
     MAIN.Await(AND_1)
-    
+
     Wait(1.0)
-    ActivateMultiplayerBuffs(character)
-    
-    MAIN.Await(CharacterDead(character))
-    
+    ActivateMultiplayerBuffs(summon)
+
+    MAIN.Await(CharacterDead(summon))
+
     Restart()
 
 
 @RestartOnRest(30032871)
-def Event_30032871(_, character: uint, flag: uint):
+def BuffAdditionalSnailSummon(_, summon: uint, flag: uint):
     """Event 30032871"""
-    if FlagEnabled(30030800):
+    if FlagEnabled(Flags.SnailDead):
         return
+
     AND_1.Add(FlagEnabled(flag))
-    AND_1.Add(CharacterAlive(character))
+    AND_1.Add(CharacterAlive(summon))
     AND_2.Add(AND_1)
     AND_3.Add(Singleplayer())
     AND_2.Add(not AND_3)
-    
+
     MAIN.Await(AND_2)
-    
-    ActivateMultiplayerBuffs(character)
+
+    ActivateMultiplayerBuffs(summon)
     Wait(1.0)
-    OR_1.Add(CharacterHasSpecialEffect(character, 7820))
-    OR_1.Add(CharacterHasSpecialEffect(character, 7821))
-    OR_1.Add(CharacterHasSpecialEffect(character, 7822))
+    OR_1.Add(CharacterHasSpecialEffect(summon, 7820))
+    OR_1.Add(CharacterHasSpecialEffect(summon, 7821))
+    OR_1.Add(CharacterHasSpecialEffect(summon, 7822))
     SkipLinesIfConditionTrue(1, OR_1)
     Restart()

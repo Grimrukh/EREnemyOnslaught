@@ -22,6 +22,8 @@ class Characters(Character):
     Troll = 30170400  # c4600_9002 col h000600 npc 46000150 think 46000000
     AncientHeroofZamor = 30170800  # c7100_9001 col h000700 npc 71000950 think 71000950 group 30175800,30175100
 
+    CLONE_AncientHeroofZamor = 30170801
+
 
 class Assets(Asset):
     AEG003_316_9000 = 30171900  # AEG003

@@ -329,6 +329,72 @@ namespace EREnemyOnslaught
             [1052520801] = new CloneInfo(1052520803, new Vector4(-337.454f, 1859.962f, -374.085f, -37.187f)),  // Fire Giant (Phase One/Two)
             [1052520800] = new CloneInfo(1052520802),  // Fire Giant (Phase Three)
             #endregion
+
+            #region Catacombs
+            [30000800] = new CloneInfo(30000801),
+            
+            [30010800] = new CloneInfo(30010801),
+            
+            [30020800] = new CloneInfo(30020801),
+
+            [30030800] = new CloneInfo(30030820),  // Snail
+            [30030801] = new CloneInfo(30030821),  // Snail summons
+            [30030805] = new CloneInfo(30030825),
+            [30030806] = new CloneInfo(30030826),
+            [30030802] = new CloneInfo(30030822),
+            [30030803] = new CloneInfo(30030823),
+            [30030804] = new CloneInfo(30030824),
+            [30030807] = new CloneInfo(30030827),
+            [30030808] = new CloneInfo(30030828),
+            [30030809] = new CloneInfo(30030829),
+            [30030810] = new CloneInfo(30030830),
+            [30033801] = new CloneInfo(30033811),  // Snail summon spawners
+            [30033802] = new CloneInfo(30033812),
+            [30033803] = new CloneInfo(30033813),
+            [30033804] = new CloneInfo(30033814),
+            [30033805] = new CloneInfo(30033815),
+            [30033806] = new CloneInfo(30033816),
+
+            [30040800] = new CloneInfo(30040801),
+
+            [30050800] = new CloneInfo(30050801),
+            [30050850] = new CloneInfo(30050851),
+
+            [30070800] = new CloneInfo(30070801),
+
+            [30080800] = new CloneInfo(30080801),
+
+            [30090800] = new CloneInfo(30090801),
+
+            // Crucible Knight Ordovis and friend
+            [30100800] = new CloneInfo(30100802, new Vector4(-112.033f, 761.696f, 352.485f, -18.650f)),
+            [30100801] = new CloneInfo(30100803, new Vector4(-96.853f, 761.726f, 354.661f, 21.637f)),
+
+            [30110800] = new CloneInfo(30110801),
+
+            [30120800] = new CloneInfo(30120802),
+            [30120801] = new CloneInfo(30120803),
+
+            [30130800] = new CloneInfo(30130801),
+
+            // Erdtree Burial Watchdogs
+            [30140800] = new CloneInfo(30140802),
+            [30140801] = new CloneInfo(30140803),
+
+            [30150800] = new CloneInfo(30150801),
+
+            [30160800] = new CloneInfo(30160801),
+
+            [30170800] = new CloneInfo(30170801),
+
+            [30180800] = new CloneInfo(30180801),
+
+            [30190800] = new CloneInfo(30190801),
+
+            // Mimic Tear
+            [30200800] = new CloneInfo(30200802),
+            [30200801] = new CloneInfo(30200803),
+            #endregion
         };
 
         public readonly static Dictionary<int, int> CloneEntityGroupIDs = new Dictionary<int, int>()
@@ -480,6 +546,13 @@ namespace EREnemyOnslaught
 
             // Overworld
             [904502610] = "Glintstone Dragon Samantha",
+
+            // Generic
+            [902500300] = "Crucible Knights Ordovis and Osmodis",
+            [902500301] = "Lesser Crucible Knights",
+            [903700300] = "Depraved Perfurmers",
+            [904260304] = "Erdtree Burial Watchdogs",
+            [904260305] = "Erdtree Burial Watchdogs",
         };
     }
 }

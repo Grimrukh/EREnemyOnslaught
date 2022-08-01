@@ -1,4 +1,4 @@
-"""
+"""DONE
 Tombsward Catacombs
 
 linked:
@@ -774,12 +774,16 @@ def Event_30002800():
     if FlagEnabled(30000800):
         return
     
-    MAIN.Await(HealthValue(Characters.CemeteryShade) <= 0)
+    AND_7.Add(HealthValue(Characters.CemeteryShade) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_CemeteryShade) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(30008000, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.CemeteryShade))
+    AND_8.Add(CharacterDead(Characters.CemeteryShade))
+    AND_8.Add(CharacterDead(Characters.CLONE_CemeteryShade))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.CemeteryShade, banner_type=BannerType.EnemyFelled)
     EnableFlag(30000800)

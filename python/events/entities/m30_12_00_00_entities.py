@@ -32,6 +32,9 @@ class Characters(Character):
     DepravedPerfumer = 30120801  # c3701_9000 col h000400 npc 37011930 think 37010900 group 30125800,30125100
     SmallerDog = 30120260  # c4161_9000 col h000300 npc 41610030 think 41610000
 
+    CLONE_LeonineMisbegotten = 30120802
+    CLONE_DepravedPerfumer = 30120803
+
 
 class Assets(Asset):
     AEG027_041_0500 = 30121540  # AEG027

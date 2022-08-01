@@ -396,12 +396,16 @@ def Event_31042800():
     if FlagEnabled(31040800):
         return
     
-    MAIN.Await(HealthValue(Characters.CleanrotKnight) <= 0)
+    AND_7.Add(HealthValue(Characters.CleanrotKnight) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_CleanrotKnight) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.CleanrotKnight, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.CleanrotKnight))
+    AND_8.Add(CharacterDead(Characters.CleanrotKnight))
+    AND_8.Add(CharacterDead(Characters.CLONE_CleanrotKnight))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.CleanrotKnight, banner_type=BannerType.EnemyFelled)
     EnableFlag(31040800)

@@ -1,4 +1,4 @@
-"""
+"""DONE
 Deathtouched Catacombs
 
 linked:
@@ -302,12 +302,16 @@ def Event_30112800():
     if FlagEnabled(30110800):
         return
     
-    MAIN.Await(HealthValue(Characters.BlackKnifeAssassin) <= 0)
+    AND_7.Add(HealthValue(Characters.BlackKnifeAssassin) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_BlackKnifeAssassin) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.BlackKnifeAssassin, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.BlackKnifeAssassin))
+    AND_8.Add(CharacterDead(Characters.BlackKnifeAssassin))
+    AND_8.Add(CharacterDead(Characters.CLONE_BlackKnifeAssassin))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.BlackKnifeAssassin, banner_type=BannerType.EnemyFelled)
     EnableAssetActivation(Assets.AEG099_630_9000, obj_act_id=-1)
@@ -324,14 +328,20 @@ def Event_30112810():
     DisableCharacter(Characters.BlackKnifeAssassin)
     DisableAnimations(Characters.BlackKnifeAssassin)
     Kill(Characters.BlackKnifeAssassin)
+    DisableCharacter(Characters.CLONE_BlackKnifeAssassin)
+    DisableAnimations(Characters.CLONE_BlackKnifeAssassin)
+    Kill(Characters.CLONE_BlackKnifeAssassin)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.BlackKnifeAssassin)
+    DisableAI(Characters.CLONE_BlackKnifeAssassin)
     DisableHealthBar(Characters.BlackKnifeAssassin)
+    DisableHealthBar(Characters.CLONE_BlackKnifeAssassin)
     DisableAssetActivation(Assets.AEG099_630_9000, obj_act_id=-1)
     ForceAnimation(Characters.BlackKnifeAssassin, 30000)
+    ForceAnimation(Characters.CLONE_BlackKnifeAssassin, 30000)
     AND_2.Add(FlagEnabled(30112805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=30112800))
     
@@ -340,12 +350,17 @@ def Event_30112810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.BlackKnifeAssassin)
+    EnableAI(Characters.CLONE_BlackKnifeAssassin)
     SetNetworkUpdateRate(Characters.BlackKnifeAssassin, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_BlackKnifeAssassin, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     AddSpecialEffect(Characters.BlackKnifeAssassin, 4404)
+    AddSpecialEffect(Characters.CLONE_BlackKnifeAssassin, 4404)
     Wait(1.0)
-    EnableBossHealthBar(Characters.BlackKnifeAssassin, name=902100300)
+    EnableBossHealthBar(Characters.BlackKnifeAssassin, name=902100300, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_BlackKnifeAssassin, name=902100300, bar_slot=0)
     Wait(0.699999988079071)
     ForceAnimation(Characters.BlackKnifeAssassin, 20000)
+    ForceAnimation(Characters.CLONE_BlackKnifeAssassin, 20000)
 
 
 @RestartOnRest(30112811)

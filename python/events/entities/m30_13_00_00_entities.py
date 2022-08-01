@@ -38,6 +38,8 @@ class Characters(Character):
     SmallLivingPot14 = 30130298  # c4491_9040 col h000101 npc 44910933 think 44910000
     SmallLivingPot15 = 30130299  # c4491_9041 col h000101 npc 44910933 think 44910000
 
+    CLONE_GraveWardenDuelist = 30130801
+
 
 class Assets(Asset):
     AEG027_034_0500 = 30131580  # AEG027

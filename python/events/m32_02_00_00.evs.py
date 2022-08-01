@@ -858,12 +858,16 @@ def Event_32022800():
     if FlagEnabled(32020800):
         return
     
-    MAIN.Await(HealthValue(Characters.Crystalian) <= 0)
+    AND_7.Add(HealthValue(Characters.Crystalian) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_Crystalian) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(32028000, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.Crystalian))
+    AND_8.Add(CharacterDead(Characters.Crystalian))
+    AND_8.Add(CharacterDead(Characters.CLONE_Crystalian))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.Crystalian, banner_type=BannerType.EnemyFelled)
     EnableFlag(32020800)

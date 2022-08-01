@@ -298,12 +298,16 @@ def Event_32072800():
     if FlagEnabled(32070800):
         return
     
-    MAIN.Await(HealthValue(Characters.MagmaWyrm) <= 0)
+    AND_7.Add(HealthValue(Characters.MagmaWyrm) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_MagmaWyrm) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(32048000, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.MagmaWyrm))
+    AND_8.Add(CharacterDead(Characters.MagmaWyrm))
+    AND_8.Add(CharacterDead(Characters.CLONE_MagmaWyrm))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.MagmaWyrm, banner_type=BannerType.GreatEnemyFelled)
     EnableFlag(32070800)

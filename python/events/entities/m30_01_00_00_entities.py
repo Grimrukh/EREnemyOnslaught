@@ -33,6 +33,8 @@ class Characters(Character):
     PutridCorpse15 = 30010321  # c3661_9021 col h000400 npc 36610812 think 36610000
     ErdtreeBurialWatchdog = 30010800  # c4260_9000 col h000200 npc 42600512 think 42600900 group 30015100,30015800
 
+    CLONE_ErdtreeBurialWatchdog = 30010801
+
 
 class Assets(Asset):
     AEG027_004_1000 = 30011500  # AEG027

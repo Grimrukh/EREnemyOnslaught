@@ -633,12 +633,16 @@ def Event_32042800():
     if FlagEnabled(32040800):
         return
     
-    MAIN.Await(HealthValue(Characters.MineTroll) <= 0)
+    AND_7.Add(HealthValue(Characters.MineTroll) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_MineTroll) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(32048000, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.MineTroll))
+    AND_8.Add(CharacterDead(Characters.MineTroll))
+    AND_8.Add(CharacterDead(Characters.CLONE_MineTroll))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.MineTroll, banner_type=BannerType.EnemyFelled)
     EnableFlag(32040800)

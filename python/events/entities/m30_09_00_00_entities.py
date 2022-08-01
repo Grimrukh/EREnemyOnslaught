@@ -32,6 +32,8 @@ class Characters(Character):
     MercilessChariot0 = 30090400  # c8120_9000 col h000200 npc 81200032 think 81200000
     MercilessChariot1 = 30090410  # c8120_9001 col h000300 npc 81200132 think 81200000
 
+    CLONE_RedWolf = 30090801
+
 
 class Assets(Asset):
     AEG027_002_0500 = 30091512  # AEG027

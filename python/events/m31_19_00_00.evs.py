@@ -228,12 +228,16 @@ def Event_31192800():
     if FlagEnabled(31190800):
         return
     
-    MAIN.Await(HealthValue(Characters.BlackKnifeAssassin) <= 0)
+    AND_7.Add(HealthValue(Characters.BlackKnifeAssassin) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_BlackKnifeAssassin) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.BlackKnifeAssassin, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.BlackKnifeAssassin))
+    AND_8.Add(CharacterDead(Characters.BlackKnifeAssassin))
+    AND_8.Add(CharacterDead(Characters.CLONE_BlackKnifeAssassin))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.BlackKnifeAssassin, banner_type=BannerType.EnemyFelled)
     EnableFlag(31190800)
@@ -303,12 +307,16 @@ def Event_31192850():
     if FlagEnabled(31190850):
         return
     
-    MAIN.Await(HealthValue(Characters.NecromancerGarris) <= 0)
+    AND_7.Add(HealthValue(Characters.NecromancerGarris) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_NecromancerGarris) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.NecromancerGarris, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.NecromancerGarris))
+    AND_8.Add(CharacterDead(Characters.NecromancerGarris))
+    AND_8.Add(CharacterDead(Characters.CLONE_NecromancerGarris))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.NecromancerGarris, banner_type=BannerType.EnemyFelled)
     Kill(31195850)

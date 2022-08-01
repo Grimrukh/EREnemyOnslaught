@@ -98,12 +98,16 @@ def Event_31122800():
     if FlagEnabled(31120800):
         return
     
-    MAIN.Await(HealthValue(Characters.LeonineMisbegotten) <= 0)
+    AND_7.Add(HealthValue(Characters.LeonineMisbegotten) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_LeonineMisbegotten) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.LeonineMisbegotten, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.LeonineMisbegotten))
+    AND_8.Add(CharacterDead(Characters.LeonineMisbegotten))
+    AND_8.Add(CharacterDead(Characters.CLONE_LeonineMisbegotten))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.LeonineMisbegotten, banner_type=BannerType.EnemyFelled)
     EnableFlag(31120800)

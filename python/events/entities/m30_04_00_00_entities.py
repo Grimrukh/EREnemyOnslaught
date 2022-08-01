@@ -17,6 +17,8 @@ class Characters(Character):
     Imp8 = 30040212  # c3080_9012 col h000200 npc 30800110 think 30800000
     GraveWardenDuelist = 30040800  # c3400_9000 col h000300 npc 34001110 think 34001010 group 30045800,30045100
 
+    CLONE_GraveWardenDuelist = 30040801  # c3400_9000 col h000300 npc 34001110 think 34001010 group 30045800,30045100
+
 
 class Assets(Asset):
     AEG027_041_0500 = 30041540  # AEG027

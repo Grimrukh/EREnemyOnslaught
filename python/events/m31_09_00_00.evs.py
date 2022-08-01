@@ -323,12 +323,16 @@ def Event_31092800():
     if FlagEnabled(31090800):
         return
     
-    MAIN.Await(HealthValue(Characters.DemiHumanQueen) <= 0)
+    AND_7.Add(HealthValue(Characters.DemiHumanQueen) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_DemiHumanQueen) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.DemiHumanQueen, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.DemiHumanQueen))
+    AND_8.Add(CharacterDead(Characters.DemiHumanQueen))
+    AND_8.Add(CharacterDead(Characters.CLONE_DemiHumanQueen))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.DemiHumanQueen, banner_type=BannerType.EnemyFelled)
     EnableFlag(31090800)

@@ -1,4 +1,4 @@
-"""
+"""DONE
 Black Knife Catacombs
 
 linked:
@@ -826,13 +826,17 @@ def Event_30052800():
     if FlagEnabled(30050800):
         return
     
-    MAIN.Await(HealthValue(Characters.CemeteryShade) <= 0)
+    AND_7.Add(HealthValue(Characters.CemeteryShade) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_CemeteryShade) <= 0)
+    MAIN.Await(AND_7)
     
     Kill(30055800)
     Wait(4.0)
     PlaySoundEffect(Characters.CemeteryShade, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.CemeteryShade))
+    AND_8.Add(CharacterDead(Characters.CemeteryShade))
+    AND_8.Add(CharacterDead(Characters.CLONE_CemeteryShade))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.CemeteryShade, banner_type=BannerType.EnemyFelled)
     EnableAssetActivation(Assets.AEG099_630_9000, obj_act_id=-1)
@@ -851,12 +855,16 @@ def Event_30052850():
     if FlagEnabled(30050850):
         return
     
-    MAIN.Await(HealthValue(Characters.BlackKnifeAssassin) <= 0)
+    AND_7.Add(HealthValue(Characters.BlackKnifeAssassin) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_BlackKnifeAssassin) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.BlackKnifeAssassin, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.BlackKnifeAssassin))
+    AND_8.Add(CharacterDead(Characters.BlackKnifeAssassin))
+    AND_8.Add(CharacterDead(Characters.CLONE_BlackKnifeAssassin))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.BlackKnifeAssassin, banner_type=BannerType.EnemyFelled)
     EnableFlag(30050850)
@@ -886,6 +894,7 @@ def Event_30052810():
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.CemeteryShade)
+    DisableAI(Characters.CLONE_CemeteryShade)
     DisableAssetActivation(Assets.AEG099_630_9000, obj_act_id=-1)
     AND_2.Add(FlagEnabled(30052805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=30052800))
@@ -893,8 +902,11 @@ def Event_30052810():
     MAIN.Await(AND_2)
     
     EnableAI(Characters.CemeteryShade)
+    EnableAI(Characters.CLONE_CemeteryShade)
     SetNetworkUpdateRate(Characters.CemeteryShade, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.CemeteryShade, name=903664301)
+    SetNetworkUpdateRate(Characters.CLONE_CemeteryShade, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.CemeteryShade, name=903664301, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_CemeteryShade, name=903664301, bar_slot=0)
 
 
 @RestartOnRest(30052811)
@@ -972,19 +984,26 @@ def Event_30052860():
     DisableCharacter(Characters.BlackKnifeAssassin)
     DisableAnimations(Characters.BlackKnifeAssassin)
     Kill(Characters.BlackKnifeAssassin)
+    DisableCharacter(Characters.CLONE_BlackKnifeAssassin)
+    DisableAnimations(Characters.CLONE_BlackKnifeAssassin)
+    Kill(Characters.CLONE_BlackKnifeAssassin)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.BlackKnifeAssassin)
+    DisableAI(Characters.CLONE_BlackKnifeAssassin)
     AND_2.Add(FlagEnabled(30052855))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=30052855))
     
     MAIN.Await(AND_2)
     
     EnableAI(Characters.BlackKnifeAssassin)
+    EnableAI(Characters.CLONE_BlackKnifeAssassin)
     SetNetworkUpdateRate(Characters.BlackKnifeAssassin, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.BlackKnifeAssassin, name=902100301)
+    SetNetworkUpdateRate(Characters.CLONE_BlackKnifeAssassin, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.BlackKnifeAssassin, name=902100301, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_BlackKnifeAssassin, name=902100301, bar_slot=0)
 
 
 @RestartOnRest(30052861)

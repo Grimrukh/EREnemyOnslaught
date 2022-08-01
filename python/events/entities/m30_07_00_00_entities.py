@@ -40,6 +40,8 @@ class Characters(Character):
     LeyndellKnight0 = 30070400  # c4353_9000 col h000400 npc 43530032 think 43530000
     LeyndellKnight1 = 30070401  # c4353_9001 col h000400 npc 43530032 think 43530000
 
+    CLONE_ErdtreeBurialWatchdog = 30070801
+
 
 class Assets(Asset):
     AEG003_316_9000 = 30071511  # AEG003

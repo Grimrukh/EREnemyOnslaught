@@ -1,4 +1,4 @@
-"""
+"""DONE
 Gelmir Hero's Grave
 
 linked:
@@ -757,12 +757,16 @@ def Event_30092800():
     if FlagEnabled(30090800):
         return
     
-    MAIN.Await(HealthValue(Characters.RedWolf) <= 0)
+    AND_7.Add(HealthValue(Characters.RedWolf) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_RedWolf) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.RedWolf, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.RedWolf))
+    AND_8.Add(CharacterDead(Characters.RedWolf))
+    AND_8.Add(CharacterDead(Characters.CLONE_RedWolf))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.RedWolf, banner_type=BannerType.EnemyFelled)
     EnableAssetActivation(30091520, obj_act_id=-1)
@@ -779,11 +783,15 @@ def Event_30092810():
     DisableCharacter(Characters.RedWolf)
     DisableAnimations(Characters.RedWolf)
     Kill(Characters.RedWolf)
+    DisableCharacter(Characters.CLONE_RedWolf)
+    DisableAnimations(Characters.CLONE_RedWolf)
+    Kill(Characters.CLONE_RedWolf)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.RedWolf)
+    DisableAI(Characters.CLONE_RedWolf)
     EnableAssetActivation(30091520, obj_act_id=-1)
     AND_2.Add(FlagEnabled(30092805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=30092800))
@@ -793,8 +801,11 @@ def Event_30092810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.RedWolf)
+    EnableAI(Characters.CLONE_RedWolf)
     SetNetworkUpdateRate(Characters.RedWolf, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.RedWolf, name=903181300)
+    SetNetworkUpdateRate(Characters.CLONE_RedWolf, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.RedWolf, name=903181300, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_RedWolf, name=903181300, bar_slot=0)
 
 
 @RestartOnRest(30092811)

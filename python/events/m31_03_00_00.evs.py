@@ -112,12 +112,16 @@ def Event_31032800():
     if FlagEnabled(31030800):
         return
     
-    MAIN.Await(HealthValue(Characters.BeastmanofFarumAzula) <= 0)
+    AND_7.Add(HealthValue(Characters.BeastmanofFarumAzula) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_BeastmanofFarumAzula) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.BeastmanofFarumAzula, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.BeastmanofFarumAzula))
+    AND_8.Add(CharacterDead(Characters.BeastmanofFarumAzula))
+    AND_8.Add(CharacterDead(Characters.CLONE_BeastmanofFarumAzula))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.BeastmanofFarumAzula, banner_type=BannerType.EnemyFelled)
     EnableFlag(31030800)

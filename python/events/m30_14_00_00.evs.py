@@ -1,4 +1,4 @@
-"""
+"""DONE
 Minor Erdtree Catacombs
 
 linked:
@@ -30,6 +30,8 @@ def Constructor():
     Event_30142801()
     Event_30142849()
     Event_30142811()
+    KillBossClones(0, Characters.ErdtreeBurialWatchdog0, Characters.CLONE_ErdtreeBurialWatchdog0)
+    KillBossClones(1, Characters.ErdtreeBurialWatchdog1, Characters.CLONE_ErdtreeBurialWatchdog1)
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Imp0,
@@ -411,6 +413,8 @@ def Event_30142800():
         return
     AND_1.Add(HealthValue(Characters.ErdtreeBurialWatchdog0) <= 0)
     AND_1.Add(HealthValue(Characters.ErdtreeBurialWatchdog1) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_ErdtreeBurialWatchdog0) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_ErdtreeBurialWatchdog1) <= 0)
     
     MAIN.Await(AND_1)
     
@@ -418,6 +422,8 @@ def Event_30142800():
     PlaySoundEffect(Characters.ErdtreeBurialWatchdog0, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(CharacterDead(Characters.ErdtreeBurialWatchdog0))
     AND_2.Add(CharacterDead(Characters.ErdtreeBurialWatchdog1))
+    AND_2.Add(CharacterDead(Characters.CLONE_ErdtreeBurialWatchdog0))
+    AND_2.Add(CharacterDead(Characters.CLONE_ErdtreeBurialWatchdog1))
     
     MAIN.Await(AND_2)
     
@@ -438,12 +444,20 @@ def Event_30142801():
     DisableCharacter(Characters.ErdtreeBurialWatchdog1)
     DisableAnimations(Characters.ErdtreeBurialWatchdog1)
     Kill(Characters.ErdtreeBurialWatchdog1)
+    DisableCharacter(Characters.CLONE_ErdtreeBurialWatchdog0)
+    DisableAnimations(Characters.CLONE_ErdtreeBurialWatchdog0)
+    Kill(Characters.CLONE_ErdtreeBurialWatchdog0)
+    DisableCharacter(Characters.CLONE_ErdtreeBurialWatchdog1)
+    DisableAnimations(Characters.CLONE_ErdtreeBurialWatchdog1)
+    Kill(Characters.CLONE_ErdtreeBurialWatchdog1)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.ErdtreeBurialWatchdog0)
     DisableAI(Characters.ErdtreeBurialWatchdog1)
+    DisableAI(Characters.CLONE_ErdtreeBurialWatchdog0)
+    DisableAI(Characters.CLONE_ErdtreeBurialWatchdog1)
     AND_2.Add(FlagEnabled(30142805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=30142800))
     
@@ -452,10 +466,17 @@ def Event_30142801():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.ErdtreeBurialWatchdog0)
+    EnableAI(Characters.CLONE_ErdtreeBurialWatchdog0)
     SetNetworkUpdateRate(Characters.ErdtreeBurialWatchdog0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_ErdtreeBurialWatchdog0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ReferDamageToEntity(Characters.CLONE_ErdtreeBurialWatchdog0, Characters.ErdtreeBurialWatchdog0)
     EnableBossHealthBar(Characters.ErdtreeBurialWatchdog0, name=904260304)
+
     EnableAI(Characters.ErdtreeBurialWatchdog1)
+    EnableAI(Characters.CLONE_ErdtreeBurialWatchdog1)
     SetNetworkUpdateRate(Characters.ErdtreeBurialWatchdog1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_ErdtreeBurialWatchdog1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ReferDamageToEntity(Characters.CLONE_ErdtreeBurialWatchdog1, Characters.ErdtreeBurialWatchdog1)
     EnableBossHealthBar(Characters.ErdtreeBurialWatchdog1, name=904260305, bar_slot=1)
 
 
@@ -469,6 +490,18 @@ def Event_30142811():
     MAIN.Await(AND_1)
     
     EnableFlag(30142802)
+
+
+@RestartOnRest(30142812)
+def KillBossClones(_, original: uint, clone: uint):
+    if FlagEnabled(30140800):
+        return
+    OR_1.Add(HealthValue(original) <= 0)
+    OR_1.Add(HealthValue(clone) <= 0)
+    MAIN.Await(OR_1)
+
+    Kill(original)
+    Kill(clone)
 
 
 @RestartOnRest(30142849)

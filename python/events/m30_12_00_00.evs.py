@@ -1,4 +1,4 @@
-"""
+"""DONE
 Unsightly Catacombs
 
 linked:
@@ -88,6 +88,8 @@ def Constructor():
     Event_30122810()
     Event_30122849()
     Event_30122811()
+    KillBossClones(0, Characters.LeonineMisbegotten, Characters.CLONE_LeonineMisbegotten)
+    KillBossClones(1, Characters.DepravedPerfumer, Characters.CLONE_DepravedPerfumer)
     CommonFunc_90005646(
         0,
         flag=30120800,
@@ -206,6 +208,8 @@ def Event_30122800():
         return
     AND_1.Add(HealthValue(Characters.LeonineMisbegotten) <= 0)
     AND_1.Add(HealthValue(Characters.DepravedPerfumer) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_LeonineMisbegotten) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_DepravedPerfumer) <= 0)
     
     MAIN.Await(AND_1)
     
@@ -213,6 +217,8 @@ def Event_30122800():
     PlaySoundEffect(m30_10_Characters.CrucibleKnight0, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(CharacterDead(Characters.LeonineMisbegotten))
     AND_2.Add(CharacterDead(Characters.DepravedPerfumer))
+    AND_2.Add(CharacterDead(Characters.CLONE_LeonineMisbegotten))
+    AND_2.Add(CharacterDead(Characters.CLONE_DepravedPerfumer))
     
     MAIN.Await(AND_2)
     
@@ -233,27 +239,44 @@ def Event_30122810():
     DisableCharacter(Characters.DepravedPerfumer)
     DisableAnimations(Characters.DepravedPerfumer)
     Kill(Characters.DepravedPerfumer)
+    DisableCharacter(Characters.CLONE_LeonineMisbegotten)
+    DisableAnimations(Characters.CLONE_LeonineMisbegotten)
+    Kill(Characters.CLONE_LeonineMisbegotten)
+    DisableCharacter(Characters.CLONE_DepravedPerfumer)
+    DisableAnimations(Characters.CLONE_DepravedPerfumer)
+    Kill(Characters.CLONE_DepravedPerfumer)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.LeonineMisbegotten)
     DisableAI(Characters.DepravedPerfumer)
+    DisableAI(Characters.CLONE_LeonineMisbegotten)
+    DisableAI(Characters.CLONE_DepravedPerfumer)
     ForceAnimation(Characters.LeonineMisbegotten, 30001, loop=True)
+    ForceAnimation(Characters.CLONE_LeonineMisbegotten, 30001, loop=True)
     AND_2.Add(FlagEnabled(30122805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=30122800))
     
     MAIN.Await(AND_2)
     
     ForceAnimation(Characters.LeonineMisbegotten, 20001)
+    ForceAnimation(Characters.CLONE_LeonineMisbegotten, 20001)
 
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.LeonineMisbegotten)
+    EnableAI(Characters.CLONE_LeonineMisbegotten)
     SetNetworkUpdateRate(Characters.LeonineMisbegotten, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_LeonineMisbegotten, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ReferDamageToEntity(Characters.CLONE_LeonineMisbegotten, Characters.LeonineMisbegotten)
     EnableBossHealthBar(Characters.LeonineMisbegotten, name=903460300)
+
     EnableAI(Characters.DepravedPerfumer)
+    EnableAI(Characters.CLONE_DepravedPerfumer)
     SetNetworkUpdateRate(Characters.DepravedPerfumer, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_DepravedPerfumer, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ReferDamageToEntity(Characters.CLONE_DepravedPerfumer, Characters.DepravedPerfumer)
     EnableBossHealthBar(Characters.DepravedPerfumer, name=903700300, bar_slot=1)
 
 
@@ -268,6 +291,18 @@ def Event_30122811():
     MAIN.Await(OR_1)
     
     EnableFlag(30122802)
+
+
+@RestartOnRest(30122812)
+def KillBossClones(_, original: uint, clone: uint):
+    if FlagEnabled(30120800):
+        return
+    OR_1.Add(HealthValue(original) <= 0)
+    OR_1.Add(HealthValue(clone) <= 0)
+    MAIN.Await(OR_1)
+
+    Kill(original)
+    Kill(clone)
 
 
 @RestartOnRest(30122849)

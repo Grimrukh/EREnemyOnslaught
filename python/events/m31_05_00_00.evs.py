@@ -276,12 +276,16 @@ def Event_31052800():
     if FlagEnabled(31050800):
         return
     
-    MAIN.Await(HealthValue(Characters.BloodhoundKnight) <= 0)
+    AND_7.Add(HealthValue(Characters.BloodhoundKnight) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_BloodhoundKnight) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.BloodhoundKnight, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.BloodhoundKnight))
+    AND_8.Add(CharacterDead(Characters.BloodhoundKnight))
+    AND_8.Add(CharacterDead(Characters.CLONE_BloodhoundKnight))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.BloodhoundKnight, banner_type=BannerType.EnemyFelled)
     EnableFlag(31050800)

@@ -256,12 +256,16 @@ def Event_31012800():
     if FlagEnabled(31010800):
         return
     
-    MAIN.Await(HealthValue(Characters.Runebear) <= 0)
+    AND_7.Add(HealthValue(Characters.Runebear) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_Runebear) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.Runebear, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.Runebear))
+    AND_8.Add(CharacterDead(Characters.Runebear))
+    AND_8.Add(CharacterDead(Characters.CLONE_Runebear))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.Runebear, banner_type=BannerType.EnemyFelled)
     EnableFlag(31010800)

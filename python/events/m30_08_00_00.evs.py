@@ -1,4 +1,4 @@
-"""
+"""DONE
 Sainted Hero's Grave
 
 linked:
@@ -984,12 +984,16 @@ def Event_30082800():
     if FlagEnabled(30080800):
         return
     
-    MAIN.Await(HealthValue(Characters.AncientHeroofZamor) <= 0)
+    AND_7.Add(HealthValue(Characters.AncientHeroofZamor) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_AncientHeroofZamor) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.AncientHeroofZamor, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.AncientHeroofZamor))
+    AND_8.Add(CharacterDead(Characters.AncientHeroofZamor))
+    AND_8.Add(CharacterDead(Characters.CLONE_AncientHeroofZamor))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.AncientHeroofZamor, banner_type=BannerType.EnemyFelled)
     EnableFlag(30080800)
@@ -1005,11 +1009,15 @@ def Event_30082810():
     DisableCharacter(Characters.AncientHeroofZamor)
     DisableAnimations(Characters.AncientHeroofZamor)
     Kill(Characters.AncientHeroofZamor)
+    DisableCharacter(Characters.CLONE_AncientHeroofZamor)
+    DisableAnimations(Characters.CLONE_AncientHeroofZamor)
+    Kill(Characters.CLONE_AncientHeroofZamor)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.AncientHeroofZamor)
+    DisableAI(Characters.CLONE_AncientHeroofZamor)
     AND_2.Add(FlagEnabled(30082805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=30082800))
     
@@ -1018,8 +1026,11 @@ def Event_30082810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.AncientHeroofZamor)
+    EnableAI(Characters.CLONE_AncientHeroofZamor)
     SetNetworkUpdateRate(Characters.AncientHeroofZamor, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.AncientHeroofZamor, name=907100300)
+    SetNetworkUpdateRate(Characters.CLONE_AncientHeroofZamor, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.AncientHeroofZamor, name=907100300, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_AncientHeroofZamor, name=907100300, bar_slot=0)
 
 
 @RestartOnRest(30082811)

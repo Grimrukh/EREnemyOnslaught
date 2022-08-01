@@ -1,4 +1,4 @@
-"""
+"""DONE
 Stormfoot Catacombs
 
 linked:
@@ -738,12 +738,16 @@ def Event_30022800():
     if FlagEnabled(30020800):
         return
     
-    MAIN.Await(HealthValue(Characters.ErdtreeBurialWatchdog) <= 0)
+    AND_7.Add(HealthValue(Characters.ErdtreeBurialWatchdog) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_ErdtreeBurialWatchdog) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.ErdtreeBurialWatchdog, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.ErdtreeBurialWatchdog))
+    AND_8.Add(CharacterDead(Characters.ErdtreeBurialWatchdog))
+    AND_8.Add(CharacterDead(Characters.CLONE_ErdtreeBurialWatchdog))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.ErdtreeBurialWatchdog, banner_type=BannerType.EnemyFelled)
     EnableFlag(30020800)
@@ -759,11 +763,15 @@ def Event_30022810():
     DisableCharacter(Characters.ErdtreeBurialWatchdog)
     DisableAnimations(Characters.ErdtreeBurialWatchdog)
     Kill(Characters.ErdtreeBurialWatchdog)
+    DisableCharacter(Characters.CLONE_ErdtreeBurialWatchdog)
+    DisableAnimations(Characters.CLONE_ErdtreeBurialWatchdog)
+    Kill(Characters.CLONE_ErdtreeBurialWatchdog)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.ErdtreeBurialWatchdog)
+    DisableAI(Characters.CLONE_ErdtreeBurialWatchdog)
     AND_2.Add(FlagEnabled(30022805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=30022800))
     
@@ -775,8 +783,11 @@ def Event_30022810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.ErdtreeBurialWatchdog)
+    EnableAI(Characters.CLONE_ErdtreeBurialWatchdog)
     SetNetworkUpdateRate(Characters.ErdtreeBurialWatchdog, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.ErdtreeBurialWatchdog, name=904260301)
+    SetNetworkUpdateRate(Characters.CLONE_ErdtreeBurialWatchdog, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.ErdtreeBurialWatchdog, name=904260301, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_ErdtreeBurialWatchdog, name=904260301, bar_slot=0)
 
 
 @RestartOnRest(30022811)

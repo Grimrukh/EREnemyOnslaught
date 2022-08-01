@@ -1,4 +1,4 @@
-"""
+"""DONE
 War-Dead Catacombs
 
 linked:
@@ -466,12 +466,16 @@ def Event_30162800():
     if FlagEnabled(30160800):
         return
     
-    MAIN.Await(HealthValue(Characters.UlceratedTreeSpirit) <= 0)
+    AND_7.Add(HealthValue(Characters.UlceratedTreeSpirit) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_UlceratedTreeSpirit) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.UlceratedTreeSpirit, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.UlceratedTreeSpirit))
+    AND_8.Add(CharacterDead(Characters.UlceratedTreeSpirit))
+    AND_8.Add(CharacterDead(Characters.CLONE_UlceratedTreeSpirit))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.UlceratedTreeSpirit, banner_type=BannerType.EnemyFelled)
     EnableFlag(30160800)
@@ -487,26 +491,35 @@ def Event_30162810():
     DisableCharacter(Characters.UlceratedTreeSpirit)
     DisableAnimations(Characters.UlceratedTreeSpirit)
     Kill(Characters.UlceratedTreeSpirit)
+    DisableCharacter(Characters.CLONE_UlceratedTreeSpirit)
+    DisableAnimations(Characters.CLONE_UlceratedTreeSpirit)
+    Kill(Characters.CLONE_UlceratedTreeSpirit)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.UlceratedTreeSpirit)
+    DisableAI(Characters.CLONE_UlceratedTreeSpirit)
     DisableHealthBar(Characters.UlceratedTreeSpirit)
+    DisableHealthBar(Characters.CLONE_UlceratedTreeSpirit)
     ForceAnimation(Characters.UlceratedTreeSpirit, 30002, loop=True)
+    ForceAnimation(Characters.CLONE_UlceratedTreeSpirit, 30002, loop=True)
     AND_2.Add(FlagEnabled(30162805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=30162800))
     
     MAIN.Await(AND_2)
     
     ForceAnimation(Characters.UlceratedTreeSpirit, 20002)
+    ForceAnimation(Characters.CLONE_UlceratedTreeSpirit, 20002)
 
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.UlceratedTreeSpirit)
+    EnableAI(Characters.CLONE_UlceratedTreeSpirit)
     SetNetworkUpdateRate(Characters.UlceratedTreeSpirit, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     Wait(4.300000190734863)
-    EnableBossHealthBar(Characters.UlceratedTreeSpirit, name=904640300)
+    EnableBossHealthBar(Characters.UlceratedTreeSpirit, name=904640300, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_UlceratedTreeSpirit, name=904640300, bar_slot=0)
     EnableNetworkFlag(30162803)
 
 

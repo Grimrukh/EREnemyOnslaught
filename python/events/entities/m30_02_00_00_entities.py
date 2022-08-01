@@ -24,6 +24,8 @@ class Characters(Character):
     Commoner = 30020700  # c3660_9000 col h000100 npc 36609010 think 500000000 talk 700003002
     ErdtreeBurialWatchdog = 30020800  # c4260_9000 col h000200 npc 42600110 think 42600000 group 30025800,30025100
 
+    CLONE_ErdtreeBurialWatchdog = 30020801
+
 
 class Assets(Asset):
     AEG027_009_0500 = 30021580  # AEG027

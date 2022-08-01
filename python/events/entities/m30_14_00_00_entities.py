@@ -28,6 +28,9 @@ class Characters(Character):
     ErdtreeBurialWatchdog0 = 30140800  # c4260_9000 col h000300 npc 42600940 think 42600000 group 30145100,30140800
     ErdtreeBurialWatchdog1 = 30140801  # c4260_9001 col h000300 npc 42601940 think 42601000 group 30145100,30140800
 
+    CLONE_ErdtreeBurialWatchdog0 = 30140802
+    CLONE_ErdtreeBurialWatchdog1 = 30140803
+
 
 class Assets(Asset):
     AEG027_002_0501 = 30141512  # AEG027

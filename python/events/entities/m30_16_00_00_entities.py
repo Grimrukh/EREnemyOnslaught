@@ -33,6 +33,8 @@ class Characters(Character):
     RadahnFootSoldier1 = 30160235  # c4374_9005 col h000200 npc 43740342 think 43740000
     UlceratedTreeSpirit = 30160800  # c4640_9001 col h000400 npc 46400942 think 46400842 group 30165800,30165100
 
+    CLONE_UlceratedTreeSpirit = 30160801
+
 
 class Assets(Asset):
     AEG027_041_0500 = 30161540  # AEG027

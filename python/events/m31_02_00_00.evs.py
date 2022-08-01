@@ -546,12 +546,16 @@ def Event_31022800():
     if FlagEnabled(31020800):
         return
     
-    MAIN.Await(HealthValue(Characters.GiantMirandaFlower) <= 0)
+    AND_7.Add(HealthValue(Characters.GiantMirandaFlower) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_GiantMirandaFlower) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.GiantMirandaFlower, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.GiantMirandaFlower))
+    AND_8.Add(CharacterDead(Characters.GiantMirandaFlower))
+    AND_8.Add(CharacterDead(Characters.CLONE_GiantMirandaFlower))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.GiantMirandaFlower, banner_type=BannerType.EnemyFelled)
     Kill(31025800)

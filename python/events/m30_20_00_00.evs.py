@@ -1,4 +1,4 @@
-"""
+"""DONE
 Hidden Path to the Haligtree
 
 linked:
@@ -28,6 +28,8 @@ def Constructor():
     Event_30202800()
     Event_30202810()
     Event_30202811()
+    SpawnMimicTear(0, Characters.SilverTear, Characters.StrayMimicTear)
+    SpawnMimicTear(1, Characters.CLONE_SilverTear, Characters.CLONE_StrayMimicTear)
     Event_30202829()
     CommonFunc_90005616(0, flag=30207910, region=30202700)
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
@@ -386,12 +388,16 @@ def Event_30202800():
     if FlagEnabled(30200800):
         return
 
-    MAIN.Await(HealthValue(Characters.StrayMimicTear) <= 0)
+    AND_7.Add(HealthValue(Characters.StrayMimicTear) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_StrayMimicTear) <= 0)
+    MAIN.Await(AND_7)
 
     Wait(4.0)
     PlaySoundEffect(30208000, 888880000, sound_type=SoundType.s_SFX)
 
-    MAIN.Await(CharacterDead(Characters.StrayMimicTear))
+    AND_8.Add(CharacterDead(Characters.StrayMimicTear))
+    AND_8.Add(CharacterDead(Characters.CLONE_StrayMimicTear))
+    MAIN.Await(AND_8)
 
     KillBossAndDisplayBanner(character=Characters.StrayMimicTear, banner_type=BannerType.EnemyFelled)
     EnableAssetActivation(Assets.AEG099_630_9001, obj_act_id=-1)
@@ -416,6 +422,9 @@ def Event_30202810():
     DisableCharacter(Characters.StrayMimicTear)
     DisableAnimations(Characters.StrayMimicTear)
     DisableHealthBar(Characters.StrayMimicTear)
+    DisableCharacter(Characters.CLONE_StrayMimicTear)
+    DisableAnimations(Characters.CLONE_StrayMimicTear)
+    DisableHealthBar(Characters.CLONE_StrayMimicTear)
     DisableAssetActivation(Assets.AEG099_630_9001, obj_act_id=-1)
     AND_2.Add(FlagEnabled(30202805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=30202800))
@@ -423,27 +432,13 @@ def Event_30202810():
     MAIN.Await(AND_2)
 
     SetNetworkUpdateRate(Characters.StrayMimicTear, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_StrayMimicTear, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     ForceAnimation(Characters.SilverTear, 20010)
+    ForceAnimation(Characters.CLONE_SilverTear, 20010)
     CopyPlayerCharacterData(source_character=PLAYER, dest_character=Characters.StrayMimicTear)
+    CopyPlayerCharacterData(source_character=PLAYER, dest_character=Characters.CLONE_StrayMimicTear)
 
-    MAIN.Await(CharacterHasSpecialEffect(Characters.SilverTear, 16307))
-
-    EnableCharacter(Characters.StrayMimicTear)
-    EnableAnimations(Characters.StrayMimicTear)
-    DisableAnimations(Characters.SilverTear)
-    Wait(0.5)
-    Move(
-        Characters.StrayMimicTear,
-        destination=Characters.SilverTear,
-        destination_type=CoordEntityType.Character,
-        model_point=900,
-        copy_draw_parent=Characters.SilverTear,
-    )
-    ForceAnimation(Characters.StrayMimicTear, 63010, skip_transition=True)
-    Wait(4.0)
-    EnableAI(30205800)
-    SetNetworkUpdateRate(30205800, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.StrayMimicTear, name=903320300)
+    EnableThisFlag()  # separate event now handles each Mimic spawn
 
 
 @RestartOnRest(30202811)
@@ -456,6 +451,33 @@ def Event_30202811():
     MAIN.Await(AND_1)
 
     EnableFlag(30202802)
+
+
+@RestartOnRest(30202812)
+def SpawnMimicTear(_, silver_tear: uint, mimic: uint, bar_slot: short):
+    if FlagEnabled(30200800):
+        return
+
+    AND_1.Add(FlagEnabled(30202810))
+    AND_1.Add(CharacterHasSpecialEffect(silver_tear, 16307))
+    MAIN.Await(AND_1)
+
+    EnableCharacter(mimic)
+    EnableAnimations(mimic)
+    DisableAnimations(silver_tear)
+    Wait(0.5)
+    Move(
+        mimic,
+        destination=silver_tear,
+        destination_type=CoordEntityType.Character,
+        model_point=900,
+        copy_draw_parent=silver_tear,
+    )
+    ForceAnimation(mimic, 63010, skip_transition=True)
+    Wait(4.0)
+    EnableAI(mimic)
+    SetNetworkUpdateRate(mimic, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(mimic, name=903320300, bar_slot=bar_slot)
 
 
 @RestartOnRest(30202829)

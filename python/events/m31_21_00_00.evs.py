@@ -781,12 +781,16 @@ def Event_31212800():
     if FlagEnabled(31210800):
         return
     
-    MAIN.Await(HealthValue(Characters.GraveWardenDuelist) <= 0)
+    AND_7.Add(HealthValue(Characters.GraveWardenDuelist) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_GraveWardenDuelist) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.GraveWardenDuelist, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.GraveWardenDuelist))
+    AND_8.Add(CharacterDead(Characters.GraveWardenDuelist))
+    AND_8.Add(CharacterDead(Characters.CLONE_GraveWardenDuelist))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.GraveWardenDuelist, banner_type=BannerType.EnemyFelled)
     EnableFlag(31210800)

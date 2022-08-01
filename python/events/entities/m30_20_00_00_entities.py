@@ -37,6 +37,9 @@ class Characters(Character):
     VulgarMilitia16 = 30200262  # c4321_9022 col h000400 npc 43210152 think 43210100
     VulgarMilitia17 = 30200263  # c4321_9023 col h000400 npc 43210152 think 43210100
 
+    CLONE_StrayMimicTear = 30200802
+    CLONE_SilverTear = 30200803
+
 
 class Assets(Asset):
     AEG020_940_1000 = 30201200  # AEG020

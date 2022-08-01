@@ -24,6 +24,8 @@ class Characters(Character):
     CatacombsSkeleton16 = 30110216  # c3510_9016 col h000400 npc 35102010 think 35102010
     CatacombsSkeleton17 = 30110217  # c3510_9017 col h000400 npc 35102010 think 35102010
 
+    CLONE_BlackKnifeAssassin = 30110801
+
 
 class Assets(Asset):
     AEG027_041_0500 = 30111540  # AEG027

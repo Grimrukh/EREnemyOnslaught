@@ -66,6 +66,8 @@ class Characters(Character):
     SmallLivingPot21 = 30180335  # c4491_9056 col h000300 npc 44910350 think 44910000
     UlceratedTreeSpirit = 30180800  # c4640_9000 col h000500 npc 46400950 think 46400800 group 30185800,30185100
 
+    CLONE_UlceratedTreeSpirit = 30180801
+
 
 class Assets(Asset):
     AEG027_002_0501 = 30181516  # AEG027

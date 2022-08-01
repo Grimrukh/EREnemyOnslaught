@@ -372,12 +372,16 @@ def Event_31222800():
     if FlagEnabled(31220800):
         return
     
-    MAIN.Await(HealthValue(Characters.Snail5) <= 0)
+    AND_7.Add(HealthValue(Characters.Snail5) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_Snail5) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.Snail5, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.Snail5))
+    AND_8.Add(CharacterDead(Characters.Snail5))
+    AND_8.Add(CharacterDead(Characters.CLONE_Snail5))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.Snail5, banner_type=BannerType.EnemyFelled)
     Kill(Characters.Human)

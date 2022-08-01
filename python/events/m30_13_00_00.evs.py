@@ -1,4 +1,4 @@
-"""
+"""DONE
 Auriza Side Tomb
 
 linked:
@@ -617,12 +617,16 @@ def Event_30132800():
     if FlagEnabled(30130800):
         return
     
-    MAIN.Await(HealthValue(Characters.GraveWardenDuelist) <= 0)
+    AND_7.Add(HealthValue(Characters.GraveWardenDuelist) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_GraveWardenDuelist) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.GraveWardenDuelist, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.GraveWardenDuelist))
+    AND_8.Add(CharacterDead(Characters.GraveWardenDuelist))
+    AND_8.Add(CharacterDead(Characters.CLONE_GraveWardenDuelist))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.GraveWardenDuelist, banner_type=BannerType.EnemyFelled)
     Kill(Characters.SmallLivingPot12, award_runes=True)
@@ -659,6 +663,9 @@ def Event_30132810():
     DisableCharacter(Characters.GraveWardenDuelist)
     DisableAnimations(Characters.GraveWardenDuelist)
     Kill(Characters.GraveWardenDuelist)
+    DisableCharacter(Characters.CLONE_GraveWardenDuelist)
+    DisableAnimations(Characters.CLONE_GraveWardenDuelist)
+    Kill(Characters.CLONE_GraveWardenDuelist)
     DisableCharacter(Characters.SmallLivingPot12)
     DisableAnimations(Characters.SmallLivingPot12)
     Kill(Characters.SmallLivingPot12)
@@ -676,6 +683,7 @@ def Event_30132810():
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.GraveWardenDuelist)
+    DisableAI(Characters.CLONE_GraveWardenDuelist)
     AND_2.Add(FlagEnabled(30132805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=30132800))
     
@@ -684,8 +692,11 @@ def Event_30132810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.GraveWardenDuelist)
+    EnableAI(Characters.CLONE_GraveWardenDuelist)
     SetNetworkUpdateRate(Characters.GraveWardenDuelist, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.GraveWardenDuelist, name=903400301)
+    SetNetworkUpdateRate(Characters.CLONE_GraveWardenDuelist, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.GraveWardenDuelist, name=903400301, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_GraveWardenDuelist, name=903400301, bar_slot=0)
 
 
 @RestartOnRest(30132811)

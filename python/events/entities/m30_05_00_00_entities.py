@@ -47,6 +47,9 @@ class Characters(Character):
     Commoner2 = 30050302  # c3660_9002 col h000300 npc 36603020 think 36600000
     CemeteryShade = 30050800  # c3664_9000 col h000200 npc 36640920 think 36640920 group 30055100,30055800
 
+    CLONE_CemeteryShade = 30050801  # c3664_9000 col h000200 npc 36640920 think 36640920 group 30055100,30055800
+    CLONE_BlackKnifeAssassin = 30050851  # c2100_9000 col h000400 npc 21000820 think 21000000 group 30055850
+
 
 class Assets(Asset):
     AEG027_000_0500 = 30051580  # AEG027

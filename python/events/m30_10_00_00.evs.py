@@ -1,4 +1,4 @@
-"""
+"""DONE
 Auriza Hero's Grave
 
 linked:
@@ -373,6 +373,8 @@ def Constructor():
     Event_30102810()
     Event_30102849()
     Event_30102811()
+    KillCrucibleKnightClones(0, Characters.CrucibleKnight0, Characters.CLONE_CrucibleKnight0)
+    KillCrucibleKnightClones(1, Characters.CrucibleKnight1, Characters.CLONE_CrucibleKnight1)
 
 
 @ContinueOnRest(50)
@@ -2164,6 +2166,8 @@ def Event_30102800():
         return
     AND_1.Add(HealthValue(Characters.CrucibleKnight0) <= 0)
     AND_1.Add(HealthValue(Characters.CrucibleKnight1) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_CrucibleKnight0) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_CrucibleKnight1) <= 0)
     
     MAIN.Await(AND_1)
     
@@ -2171,6 +2175,8 @@ def Event_30102800():
     PlaySoundEffect(Characters.CrucibleKnight0, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(CharacterDead(Characters.CrucibleKnight0))
     AND_2.Add(CharacterDead(Characters.CrucibleKnight1))
+    AND_2.Add(CharacterDead(Characters.CLONE_CrucibleKnight0))
+    AND_2.Add(CharacterDead(Characters.CLONE_CrucibleKnight1))
     
     MAIN.Await(AND_2)
     
@@ -2191,12 +2197,22 @@ def Event_30102810():
     DisableCharacter(Characters.CrucibleKnight1)
     DisableAnimations(Characters.CrucibleKnight1)
     Kill(Characters.CrucibleKnight1)
+    DisableCharacter(Characters.CLONE_CrucibleKnight0)
+    DisableAnimations(Characters.CLONE_CrucibleKnight0)
+    Kill(Characters.CLONE_CrucibleKnight0)
+    DisableCharacter(Characters.CLONE_CrucibleKnight1)
+    DisableAnimations(Characters.CLONE_CrucibleKnight1)
+    Kill(Characters.CLONE_CrucibleKnight1)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.CrucibleKnight0)
     DisableAI(Characters.CrucibleKnight1)
+    DisableAI(Characters.CLONE_CrucibleKnight0)
+    DisableAI(Characters.CLONE_CrucibleKnight1)
+    DisableHealthBar(Characters.CLONE_CrucibleKnight0)
+    DisableHealthBar(Characters.CLONE_CrucibleKnight1)
     AND_2.Add(FlagEnabled(30102805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=30102800))
     
@@ -2204,11 +2220,19 @@ def Event_30102810():
 
     # --- Label 2 --- #
     DefineLabel(2)
+
     EnableAI(Characters.CrucibleKnight0)
+    EnableAI(Characters.CLONE_CrucibleKnight0)
     SetNetworkUpdateRate(Characters.CrucibleKnight0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_CrucibleKnight0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ReferDamageToEntity(Characters.CLONE_CrucibleKnight0, Characters.CrucibleKnight0)
     EnableBossHealthBar(Characters.CrucibleKnight0, name=902500300)
+
     EnableAI(Characters.CrucibleKnight1)
+    EnableAI(Characters.CLONE_CrucibleKnight1)
     SetNetworkUpdateRate(Characters.CrucibleKnight1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_CrucibleKnight1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ReferDamageToEntity(Characters.CLONE_CrucibleKnight1, Characters.CrucibleKnight1)
     EnableBossHealthBar(Characters.CrucibleKnight1, name=902500301, bar_slot=1)
 
 
@@ -2223,6 +2247,18 @@ def Event_30102811():
     MAIN.Await(OR_1)
     
     EnableFlag(30102802)
+
+
+@RestartOnRest(30102812)
+def KillCrucibleKnightClones(_, original: uint, clone: uint):
+    if FlagEnabled(30100800):
+        return
+    OR_1.Add(HealthValue(original) <= 0)
+    OR_1.Add(HealthValue(clone) <= 0)
+    MAIN.Await(OR_1)
+
+    Kill(original)
+    Kill(clone)
 
 
 @RestartOnRest(30102849)
