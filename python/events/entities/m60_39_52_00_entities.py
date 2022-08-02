@@ -16,6 +16,8 @@ class Characters(Character):
     Troll0 = 1039520360  # c4600_9000 npc 46001130 think 46000000
     Troll1 = 1039520361  # c4600_9001 npc 46001130 think 46000000
 
+    CLONE_SanguineNoble = 1039520401
+
 
 class Assets(Asset):
     AEG003_316_9000 = 1039521650  # AEG003

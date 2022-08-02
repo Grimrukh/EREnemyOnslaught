@@ -40,6 +40,8 @@ class Characters(Character):
     Eagle4 = 1038540384  # c6001_9006 npc 60010032 think 60010000
     Eagle5 = 1038540385  # c6001_9007 npc 60010032 think 60010000
 
+    CLONE_MaleighMarais = 1038540401
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1038541950  # AEG099

@@ -1,4 +1,4 @@
-"""
+"""DONE
 West Limgrave (SW) (NE)
 
 linked:
@@ -25,7 +25,9 @@ from .entities.m60_41_37_00_entities import *
 def Constructor():
     """Event 0"""
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=1041378540)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1041370200, character=Characters.Scarab, item_lot=40120, reward_delay=0.0, skip_reward=0, clone=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1041370200, character=Characters.Scarab, item_lot=40120, reward_delay=0.0, skip_reward=0, clone=0
+    )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1041370340,
@@ -33,6 +35,7 @@ def Constructor():
         item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_GuardianGolem,
     )
     CommonFunc_90005570(0, 60833, 91, 1041371520, 0, 1, 0)
 
@@ -41,7 +44,10 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     Event_1041372340()
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1041370340, 1041372340, 5.0, 0.0, 1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, Characters.GuardianGolem, Regions.GolemTrigger, 5.0, 0.0, 1700)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, Characters.CLONE_GuardianGolem, Regions.CLONE_GolemTrigger, 5.0, 0.0, 1700
+    )
 
 
 @RestartOnRest(1041372340)
@@ -50,10 +56,14 @@ def Event_1041372340():
     if FlagEnabled(1041370340):
         return
     DisableHealthBar(Characters.GuardianGolem)
+    DisableHealthBar(Characters.CLONE_GuardianGolem)
     AddSpecialEffect(Characters.GuardianGolem, 12189)
+    AddSpecialEffect(Characters.CLONE_GuardianGolem, 12189)
     Wait(3.0)
     RemoveSpecialEffect(Characters.GuardianGolem, 12189)
+    RemoveSpecialEffect(Characters.CLONE_GuardianGolem, 12189)
     EnableHealthBar(Characters.GuardianGolem)
+    EnableHealthBar(Characters.CLONE_GuardianGolem)
 
 
 @RestartOnRest(1041372670)
@@ -65,8 +75,8 @@ def Event_1041372670():
         return
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(ActionButtonParamActivated(action_button_id=9240, entity=Assets.AEG099_375_1001))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(1041370670)
     DisplayDialog(text=90010, anchor_entity=0, display_distance=1.0, number_buttons=NumberButtons.OneButton)

@@ -6,6 +6,22 @@ class NameText(NPCName):
     CLONE_BorealisTheFreezingFog = 904503610
 
 
+class Regions(Region):
+    BorealisPoint0 = 1054562820
+    BorealisPoint1 = 1054562821
+    BorealisPoint2 = 1054562822
+    BorealisPoint3 = 1054562823
+    BorealisPoint4 = 1054562824
+    BorealisPoint5 = 1054562825
+
+    CLONE_BorealisPoint0 = 1054562840
+    CLONE_BorealisPoint1 = 1054562841
+    CLONE_BorealisPoint2 = 1054562842
+    CLONE_BorealisPoint3 = 1054562843
+    CLONE_BorealisPoint4 = 1054562844
+    CLONE_BorealisPoint5 = 1054562845
+
+
 class Characters(Character):
     BorealistheFreezingFog = 1054560800  # c4503_9000 npc 45030050 think 45030900 group 1054565800,1054565100
     Dummy = 1054560100  # c0100_9000 npc 1000000 think 1000000 talk 2000

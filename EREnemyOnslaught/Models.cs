@@ -301,6 +301,7 @@ namespace EREnemyOnslaught
             "Torrent",
             "TextSphere",
             "Merciless Chariot",
+            "Walking Mausoleum",
         };
 
         public readonly static List<string> BossModels = new List<string>()

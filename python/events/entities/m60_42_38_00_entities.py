@@ -16,6 +16,9 @@ class Characters(Character):
     Troll1 = 1042380350  # c4600_9003 npc 46000010 think 46000010
     DeathRiteBird = 1042380800  # c4980_9000 npc 49800010 think 49800100
 
+    CLONE_DeathRiteBird = 1042380801
+    CLONE_BellBearingHunter = 1042380851
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1042381950  # AEG099

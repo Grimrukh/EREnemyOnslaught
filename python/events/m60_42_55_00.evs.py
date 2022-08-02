@@ -1,4 +1,4 @@
-"""
+"""DONE
 North Altus Plateau (NE) (NW)
 
 linked:
@@ -32,7 +32,10 @@ def Constructor():
         asset=Assets.AEG099_060_9000,
         enemy_block_distance=5.0,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.GodskinApostle, name=903560600, npc_threat_level=27)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.GodskinApostle, name=NameText.GodskinApostle, npc_threat_level=27,
+        clone_boss=Characters.CLONE_GodskinApostle, clone_name=NameText.CLONE_GodskinApostle,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1042550800,
@@ -41,6 +44,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30325,
         seconds=0.0,
+        clone_boss=Characters.CLONE_GodskinApostle,
     )
     CommonFunc_90005780(
         0,

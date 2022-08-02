@@ -5,6 +5,8 @@ class Characters(Character):
     GravenSchool = 1039480200  # c3730_9000 npc 37300020 think 37300000
     LiurniaTroll = 1039480340  # c4601_9001 npc 46010020 think 46010000
 
+    CLONE_LiurniaTroll = 1039480341  # c4601_9001 npc 46010020 think 46010000
+
 
 class Assets(Asset):
     AEG003_316_9000 = 1039481680  # AEG003

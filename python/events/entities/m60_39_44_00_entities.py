@@ -25,6 +25,8 @@ class Characters(Character):
     SmallLivingPot8 = 1039440708  # c4491_9016 col h394400 npc 44919320 think 44919000 talk 226006000
     TibiaMariner = 1039440800  # c4950_9000 npc 49500020 think 49500900 group 1039445100
 
+    CLONE_TibiaMariner = 1039440801
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1039441950  # AEG099

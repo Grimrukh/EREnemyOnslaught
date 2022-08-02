@@ -5001,14 +5001,14 @@ def Event_14003885(
 
 
 @RestartOnRest(14003886)
-def Event_14003886(_, character: uint, region: uint, special_effect__special_effect_id: int):
+def Event_14003886(_, character: uint, region: uint, special_effect: int):
     """Event 14003886"""
     AND_1.Add(CharacterInsideRegion(character=character, region=region))
-    AND_1.Add(CharacterHasSpecialEffect(character, special_effect__special_effect_id, target_count=0.0))
+    AND_1.Add(CharacterHasSpecialEffect(character, special_effect, target_count=0.0))
 
     MAIN.Await(AND_1)
 
-    AddSpecialEffect(character, special_effect__special_effect_id)
+    AddSpecialEffect(character, special_effect)
     Restart()
 
 

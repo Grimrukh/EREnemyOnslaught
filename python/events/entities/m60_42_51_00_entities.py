@@ -6,6 +6,8 @@ class Characters(Character):
     TalkDummy1 = 1042510100  # c1000_9001 npc 10001000 think 1 talk 2000
     Gargoyle = 1042510300  # c4770_9001 npc 47700033 think 47700000 group 1042515100
 
+    CLONE_Gargoyle = 1042510301
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1042511950  # AEG099

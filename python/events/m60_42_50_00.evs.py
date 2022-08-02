@@ -1,4 +1,4 @@
-"""
+"""DONE
 South Altus Plateau (NE) (SW)
 
 linked:
@@ -24,7 +24,10 @@ from .entities.m60_42_50_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1042500300, character=1042500300, item_lot=1042500020, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1042500300, character=Characters.UlceratedTreeSpirit, item_lot=1042500020, reward_delay=0.0,
+        skip_reward=0, clone=Characters.CLONE_UlceratedTreeSpirit
+    )
 
 
 @ContinueOnRest(50)
@@ -33,6 +36,18 @@ def Preconstructor():
     CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.UlceratedTreeSpirit,
+        inactive_animation=30000,
+        active_animation=20000,
+        radius=30.0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
+    )
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
+        0,
+        character=Characters.CLONE_UlceratedTreeSpirit,
         inactive_animation=30000,
         active_animation=20000,
         radius=30.0,

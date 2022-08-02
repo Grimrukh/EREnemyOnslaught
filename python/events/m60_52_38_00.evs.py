@@ -3111,7 +3111,7 @@ def ControlSummonCharacter(
     ClearTargetList(summon)
     EnableHealthBar(summon)
     SetTeamType(summon, TeamType.WhitePhantom)
-    SetCharacterEventTarget(summon, region=1052380800)
+    SetCharacterEventTarget(summon, entity=1052380800)
 
     # CLONE
     SetNetworkUpdateRate(summon_clone, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
@@ -3133,7 +3133,7 @@ def ControlSummonCharacter(
     ClearTargetList(summon_clone)
     EnableHealthBar(summon_clone)
     SetTeamType(summon_clone, TeamType.WhitePhantom)
-    SetCharacterEventTarget(summon_clone, region=1052380800)
+    SetCharacterEventTarget(summon_clone, entity=1052380800)
 
     DisplayFlashingMessage(summoned_message)
     DeleteAssetVFX(asset)

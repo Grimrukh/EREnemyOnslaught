@@ -1,4 +1,4 @@
-"""
+"""DONE
 Liurnia to Altus Plateau (NW) (NE)
 
 linked:
@@ -43,20 +43,28 @@ def Constructor():
         flag_10=78308,
         flag_11=78309,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.AncientDragon, name=904510600, npc_threat_level=28)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.AncientDragonLansseax, name=NameText.AncientDragonLansseax, npc_threat_level=28,
+        clone_boss=Characters.CLONE_AncientDragonLansseax, clone_name=NameText.CLONE_AncientDragonLansseax,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1037510800,
         extra_flag_to_enable=0,
-        boss=Characters.AncientDragon,
+        boss=Characters.AncientDragonLansseax,
         boss_banner_choice=1,
         item_lot=30300,
         seconds=0.0,
+        clone_boss=Characters.CLONE_AncientDragonLansseax,
     )
     Event_1037512208(0, character=Characters.Omen1, region=1037512208, radius=5.0, seconds=0.0, animation_id=20005)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1037510200, radius=45.0, seconds=0.0, animation_id=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1037510210, character=Characters.Scarab0, item_lot=40224, reward_delay=0.0, skip_reward=0, clone=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1037510500, character=Characters.Scarab1, item_lot=40300, reward_delay=0.0, skip_reward=0, clone=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1037510210, character=Characters.Scarab0, item_lot=40224, reward_delay=0.0, skip_reward=0, clone=0
+    )
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1037510500, character=Characters.Scarab1, item_lot=40300, reward_delay=0.0, skip_reward=0, clone=0
+    )
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=39200514)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9001, vfx_id=100, model_point=800, right=39200514)
     CommonFunc_90005771(0, 1037510950, 1037512700)
@@ -65,8 +73,8 @@ def Constructor():
 @ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
-    Event_1037512350(0, character=Characters.AncientDragon)
-    Event_1037512301(0, 1037510800)
+    LansseaxAppears(0, lansseax=Characters.AncientDragonLansseax, clone=Characters.CLONE_AncientDragonLansseax)
+    LansseaxDisappears(0, Characters.AncientDragonLansseax, Characters.CLONE_AncientDragonLansseax)
 
 
 @RestartOnRest(1037512208)
@@ -120,9 +128,9 @@ def Event_1037512208(_, character: uint, region: uint, radius: float, seconds: f
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
-    
+
     MAIN.Await(OR_2)
-    
+
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     Wait(seconds)
     ForceAnimation(character, animation_id, loop=True)
@@ -130,40 +138,52 @@ def Event_1037512208(_, character: uint, region: uint, radius: float, seconds: f
 
 
 @RestartOnRest(1037512301)
-def Event_1037512301(_, character: uint):
+def LansseaxDisappears(_, lansseax: uint, clone: uint):
     """Event 1037512301"""
     if FlagEnabled(1037510810):
         return
-    
-    MAIN.Await(CharacterHasSpecialEffect(character, 14887))
-    
+
+    OR_1.Add(CharacterHasSpecialEffect(lansseax, 14887))
+    OR_1.Add(CharacterHasSpecialEffect(clone, 14887))
+    MAIN.Await(OR_1)
+
     EnableFlag(1037510810)
-    DisableCharacter(character)
-    DisableAnimations(character)
+    DisableCharacter(lansseax)
+    DisableAnimations(lansseax)
+    DisableCharacter(clone)
+    DisableAnimations(clone)
     End()
 
 
 @RestartOnRest(1037512350)
-def Event_1037512350(_, character: uint):
+def LansseaxAppears(_, lansseax: uint, clone: uint):
     """Event 1037512350"""
     GotoIfFlagEnabled(Label.L0, flag=1037510810)
     GotoIfFlagEnabled(Label.L0, flag=1037510800)
     GotoIfFlagEnabled(Label.L0, flag=1041520820)
-    DisableCharacter(character)
-    DisableAnimations(character)
+    DisableCharacter(lansseax)
+    DisableAnimations(lansseax)
+    DisableCharacter(clone)
+    DisableAnimations(clone)
     AND_1.Add(CharacterType(PLAYER, character_type=CharacterType.Alive))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=1037512300))
-    
+
     MAIN.Await(AND_1)
-    
-    SetCharacterFadeOnEnable(character=character, state=True)
-    EnableCharacter(character)
-    EnableAnimations(character)
-    ForceAnimation(character, 20019)
+
+    SetCharacterFadeOnEnable(character=lansseax, state=True)
+    EnableCharacter(lansseax)
+    EnableAnimations(lansseax)
+    ForceAnimation(lansseax, 20019)
+    SetCharacterFadeOnEnable(character=clone, state=True)
+    EnableCharacter(clone)
+    EnableAnimations(clone)
+    ForceAnimation(clone, 20019)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableCharacter(character)
-    DisableAnimations(character)
+    DisableCharacter(lansseax)
+    DisableAnimations(lansseax)
+    DisableCharacter(clone)
+    DisableAnimations(clone)
     End()

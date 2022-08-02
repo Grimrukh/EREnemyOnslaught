@@ -1,4 +1,4 @@
-"""
+"""DONE
 North Altus Plateau (SW) (NE)
 
 linked:
@@ -24,7 +24,10 @@ from .entities.m60_41_53_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.WormfaceLarge, name=904580600, npc_threat_level=8)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.WormfaceLarge, name=904580600, npc_threat_level=8,
+        clone_boss=Characters.CLONE_WormfaceLarge, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1041530800,
@@ -33,6 +36,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30320,
         seconds=0.0,
+        clone_boss=Characters.CLONE_WormfaceLarge,
     )
     CommonFunc_90005636(
         0,

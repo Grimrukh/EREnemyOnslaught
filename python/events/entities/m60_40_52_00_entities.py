@@ -11,6 +11,8 @@ class Characters(Character):
     LeyndellSoldier0 = 1040520303  # c4313_9003 npc 43132030 think 43132000
     LeyndellSoldier1 = 1040520304  # c4313_9004 npc 43130030 think 43130000
 
+    CLONE_BlackKnifeAssassin = 1040520801
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1040521950  # AEG099

@@ -1,4 +1,4 @@
-"""
+"""DONE
 West Altus Plateau (SE) (SE)
 
 linked:
@@ -69,7 +69,9 @@ def Constructor():
         left=0,
     )
     CommonFunc_90005631(0, anchor_entity=Assets.AEG099_376_1000, text=61031)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1039520500, character=Characters.Scarab, item_lot=40306, reward_delay=0.0, skip_reward=0, clone=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1039520500, character=Characters.Scarab, item_lot=40306, reward_delay=0.0, skip_reward=0, clone=0
+    )
     Event_1039523700(0, character=Characters.YuraHunterofBloodyFingers)
     Event_1039523701(0, character=Characters.YuraHunterofBloodyFingers)
     Event_1039523703(0, asset=Assets.AEG099_429_9000, asset_1=Assets.AEG099_429_9001, asset_2=Assets.AEG099_429_9002)
@@ -144,7 +146,9 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.RevenantFollower, radius=150.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.RevenantFollower, radius=150.0, seconds=0.0, animation_id=0
+    )
     Event_1039522220(0, character=Characters.Troll0)
     CommonFunc_90005423(0, character=Characters.Troll0)
     Event_1039522220(1, character=Characters.Troll1)
@@ -161,8 +165,23 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    Event_1039522400()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1039520400, character=1039520400, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
+        0,
+        character=Characters.CLONE_SanguineNoble,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1039522400,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
+    )
+    InitializeSanguineNoble()
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1039520400, character=Characters.SanguineNoble, item_lot=0, reward_delay=0.0, skip_reward=0,
+        clone=Characters.CLONE_SanguineNoble
+    )
 
 
 @RestartOnRest(1039522220)
@@ -173,22 +192,24 @@ def Event_1039522220(_, character: uint):
 
 
 @RestartOnRest(1039522400)
-def Event_1039522400():
+def InitializeSanguineNoble():
     """Event 1039522400"""
     GotoIfThisEventSlotFlagEnabled(Label.L0)
     OR_1.Add(FlagEnabled(3630))
     AND_2.Add(FlagEnabled(3631))
     AND_2.Add(FlagDisabled(1039520180))
     OR_1.Add(AND_2)
-    
+
     MAIN.Await(OR_1)
-    
+
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableCharacter(Characters.SanguineNoble)
     DisableAnimations(Characters.SanguineNoble)
+    DisableCharacter(Characters.CLONE_SanguineNoble)
+    DisableAnimations(Characters.CLONE_SanguineNoble)
     End()
 
 
@@ -198,9 +219,9 @@ def Event_1039522650():
     GotoIfFlagEnabled(Label.L0, flag=1039520655)
     DisableAsset(Assets.AEG003_316_9000)
     DeleteVFX(1039522650, erase_root_only=False)
-    
+
     MAIN.Await(FlagEnabled(1039530505))
-    
+
     EnableAsset(Assets.AEG003_316_9000)
     CreateVFX(1039522650)
     End()
@@ -222,9 +243,9 @@ def Event_1039522660():
     AND_1.Add(FlagEnabled(1039530505))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=1039522651))
     AND_1.Add(ActionButtonParamActivated(action_button_id=9521, entity=Assets.AEG003_316_9000))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(1039520655)
     DisableAsset(Assets.AEG003_316_9000)
     RotateToFaceEntity(PLAYER, Assets.AEG003_316_9000, wait_for_completion=True)
@@ -257,9 +278,9 @@ def Event_1039522700():
     DisableSpawner(entity=1039523200)
     AND_1.Add(FlagEnabled(1039530505))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=1039522260))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableSpawner(entity=1039523200)
     ClearTargetList(Characters.Imp0)
     ForceSpawnerToSpawn(spawner=1039523200)
@@ -303,9 +324,9 @@ def Event_1039523700(_, character: uint):
     DisableCharacter(character)
     DisableBackread(character)
     OR_3.Add(FlagEnabled(3630))
-    
+
     MAIN.Await(OR_3)
-    
+
     Restart()
 
     # --- Label 5 --- #
@@ -348,9 +369,9 @@ def Event_1039523700(_, character: uint):
     # --- Label 20 --- #
     DefineLabel(20)
     OR_4.Add(FlagEnabled(3630))
-    
+
     MAIN.Await(not OR_4)
-    
+
     Restart()
 
 
@@ -367,9 +388,9 @@ def Event_1039523701(_, character: uint):
         return
     OR_1.Add(FlagEnabled(1039529205))
     OR_1.Add(AttackedWithDamageType(attacked_entity=character, attacker=PLAYER))
-    
+
     MAIN.Await(OR_1)
-    
+
     EnableFlag(1039529209)
     DisableAnimations(character)
     if FlagEnabled(1039529205):
@@ -395,9 +416,9 @@ def Event_1039523702(_, flag: uint):
         End()
     OR_1.Add(FlagEnabled(1039529209))
     OR_1.Add(FlagEnabled(3631))
-    
+
     MAIN.Await(OR_1)
-    
+
     EnableFlag(flag)
     End()
 
@@ -434,9 +455,9 @@ def Event_1039523704(_, character: uint):
     if FlagEnabled(1035469209):
         return
     GotoIfFlagEnabled(Label.L1, flag=1039529209)
-    
+
     MAIN.Await(FlagEnabled(1039529209))
-    
+
     DisableNetworkConnectedFlagRange(flag_range=(3620, 3624))
     EnableNetworkFlag(3623)
     SaveRequest()

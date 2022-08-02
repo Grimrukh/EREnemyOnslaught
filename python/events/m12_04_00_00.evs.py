@@ -174,8 +174,8 @@ def AstelBattleTrigger():
     ReferDamageToEntity(Characters.CLONE_Astel, Characters.Astel)
     SetNetworkUpdateRate(Characters.Astel, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.CLONE_Astel, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    SetCharacterEventTarget(Characters.Astel, region=12040810)
-    SetCharacterEventTarget(Characters.CLONE_Astel, region=12040810)
+    SetCharacterEventTarget(Characters.Astel, entity=12040810)
+    SetCharacterEventTarget(Characters.CLONE_Astel, entity=12040810)
 
     # Shared health pool
     EnableBossHealthBar(Characters.Astel, name=NameText.Astel, bar_slot=0)

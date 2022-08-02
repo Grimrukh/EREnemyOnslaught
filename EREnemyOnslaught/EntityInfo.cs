@@ -290,6 +290,19 @@ namespace EREnemyOnslaught
             [35000800] = new CloneInfo(35000801, new Vector4(75.117f, -298.550f, -83.080f, -117.328f), new Vector4(72.899f, -298.550f, -78.977f, -119.587f)),  // Mohg
             #endregion
 
+            #region Limgrave / Weeping Peninsula
+            [1041370340] = new CloneInfo(1041370341, new Vector4(46.312f, 158.010f, 75.708f, 87.283f)),  // Guardian Golem
+            [1041372340] = new CloneInfo(1041372341, new Vector4(48.062f, 155.011f, 74.530f, 0f)),  // and trigger region
+
+            [1042360800] = new CloneInfo(1042360801, new Vector4(-15.967f, 90.233f, 52.275f, -35.597f)),  // Tree Sentinel
+
+            [1042380800] = new CloneInfo(1042380801, new Vector4(123.558f, 183.694f, 47.226f, 134.359f)),  // Deathrite Bird
+            [1042380850] = new CloneInfo(1042380851, new Vector4(10.343f, 188.006f, 88.935f, 130.245f), new Vector4(12.089f, 188.006f, 90.998f, 130.245f)),  // Bell-Bearing Hunter
+
+            [1043330800] = new CloneInfo(1043330801),  // Erdtree Avatar
+
+            #endregion
+
             #region Liurnia
             [1033410340] = new CloneInfo(1033410341),  // RedWolf 
             [1033410350] = new CloneInfo(1033410352),  // GlintstoneDragon0 
@@ -319,12 +332,61 @@ namespace EREnemyOnslaught
             [1036500800] = new CloneInfo(1036500801),  // Onyx Lord (Evergaol)
 
             [1037420340] = new CloneInfo(1037420341, new Vector4(-65.198f, 237.647f, 84.754f, -96.931f)),  // Deathrite Bird
+
+            [1037460800] = new CloneInfo(1037460801, new Vector4(-48.897f, 398.292f, 11.946f, -101.466f), new Vector4(-48.158f, 398.292f, 8.302f, -101.466f)),  // Bell-Bearing Hunter
+
+            [1038460340] = new CloneInfo(1038460341, new Vector4(94.425f, 247.617f, 44.989f, -27.670f)),  // Guardian Golem
+
+            [1038480800] = new CloneInfo(1038480801),  // Erdtree Avatar
+
+            [1039430340] = new CloneInfo(1039430342, new Vector4(-119.097f, 252.115f, -14.508f, -52.904f)),  // Night's Cavalry
+            [1039430341] = new CloneInfo(1039430343, new Vector4(-117.365f, 251.947f, -14.129f, -52.904f)),  // and horse
+
+            [1039440800] = new CloneInfo(1039440801, new Vector4(-75.760f, 294.788f, -54.586f, -23.798f)),  // Tibia Mariner
+
+            [1039480340] = new CloneInfo(1039480341),  // Troll
+
+            [1039510800] = new CloneInfo(1039510802, new Vector4(-8.315f, 756.418f, -102.654f, -133.421f)),  // Night's Cavalry
+            [1039510801] = new CloneInfo(1039510803, new Vector4(-7.967f, 754.993f, -102.381f, -133.217f)),  // and horse
             #endregion
 
             #region Altus Plateau
             [1035530800] = new CloneInfo(1035530801, new Vector4(12.650f, 824.102f, -77.946f, 166.660f)),  // Magma Wyrm
             
             [1036540800] = new CloneInfo(1036540801, new Vector4(102.266f, 1048.271f, -40.923f, 178.064f)),  // Fallingstar Beast
+
+            [1037510800] = new CloneInfo(1037510801, new Vector4(91.524f, 711.600f, 60.454f, 31.040f)),  // Ancient Dragon Lansseax (west)
+
+            [1037530800] = new CloneInfo(1037530801, new Vector4(17.712f, 901.338f, -93.704f, 40.495f)),  // Demi-Human Queen
+
+            [1037540810] = new CloneInfo(1037540811, new Vector4(-30.081f, 857.116f, -60.175f, 128.392f)),  // Ulcerated Tree Spirit
+            [1037540341] = new CloneInfo(1037540342, new Vector4(74.079f, 931.970f, 72.843f, -14.060f)),  // Grafted Scion
+
+            [1038520340] = new CloneInfo(1038520341, new Vector4(-51.929f, 792.940f, -21.334f, -73.012f)),  // Tibia Mariner
+            [1038520350] = new CloneInfo(1038520351, new Vector4(-39.888f, 792.783f, -24.137f, -72.182f)),  // Giant Skeleton Torso
+
+            [1038540400] = new CloneInfo(1038540401, new Vector4(30.322f, 730.431f, 50.403f, -70.936f)),  // Maleigh Marais
+
+            [1039520400] = new CloneInfo(1039520401, new Vector4(28.190f, 771.836f, 54.728f, -70.325f), new Vector4(29.019f, 771.836f, 57.046f, -70.325f)),  // Sanguine Noble
+
+            [1040520800] = new CloneInfo(1040520801, new Vector4(51.817f, 884.000f, 9.096f, -80.198f), new Vector4(51.335f, 884f, 5.594f, -89.354f)),  // Black Knife Assassin
+
+            [1041500800] = new CloneInfo(1041500801, new Vector4(40.033f, 833.699f, 115.255f, 55.553f)),  // Fallingstar Beast
+
+            [1041510410] = new CloneInfo(1041510411),  // Giant Miranda Flower
+
+            [1041510800] = new CloneInfo(1041510802, new Vector4(91.641f, 851.270f, -38.015f, 85.293f)),  // Tree Sentinel Duo (Left)
+            [1041510801] = new CloneInfo(1041510803, new Vector4(92.240f, 851.311f, -46.437f, 93.573f)),  // Tree Sentinel Duo (Right)
+
+            [1041520800] = new CloneInfo(1041520801, new Vector4(32.142f, 920.477f, -78.896f, 33.399f)),  // Ancient Dragon Lansseax (east)
+
+            [1041530800] = new CloneInfo(1041530801, new Vector4(-74.592f, 784.957f, 36.986f, -33.459f)),  // Wormface
+
+            [1042500300] = new CloneInfo(1042500301, new Vector4(-41.693f, 684.995f, 67.740f, -115.543f)),  // Ulcerated Tree Spirit
+
+            [1042510300] = new CloneInfo(1042510301, new Vector4(41.110f, 880.269f, 82.568f, 50.509f), new Vector4(32.828f, 880.269f, 88.856f, 12.221f)),  // Gargoyle
+
+            [1042550800] = new CloneInfo(1042550801, new Vector4(-30.954f, 968.164f, -37.932f, -11.389f)),  // Godskin Apostle
             #endregion
 
             #region Caelid
@@ -341,6 +403,8 @@ namespace EREnemyOnslaught
             [1052380340] = new CloneInfo(1052380341),  // summon
             [1052380220] = new CloneInfo(1052380221),  // summon
             [1052380240] = new CloneInfo(1052380241),  // summon
+
+            [1048410800] = new CloneInfo(1048410801, new Vector4(-89.996f, 225.781f, -69.942f, -2.860f)),  // Bell-Bearing Hunter
             #endregion
 
             #region Mountaintops
@@ -348,6 +412,12 @@ namespace EREnemyOnslaught
             [1052520800] = new CloneInfo(1052520802),  // Fire Giant (Phase Three)
 
             [1054560800] = new CloneInfo(1054560801, new Vector4(37.749f, 1620.359f, -257.495f, -173.023f)),  // Borealis
+            [1054562820] = new CloneInfo(1054562840, new Vector4(-61.578f, 1620.184f, -294.852f, 150f)),  // Borealis appearance points
+            [1054562821] = new CloneInfo(1054562841, new Vector4(-36.884f, 1620.187f, -250.605f, 135f)),
+            [1054562822] = new CloneInfo(1054562842, new Vector4(-0.380f, 1618.527f, -213.091f, 130f)),
+            [1054562823] = new CloneInfo(1054562843, new Vector4(31.460f, 1620.184f, -180.204f, 145f)),
+            [1054562824] = new CloneInfo(1054562844, new Vector4(19.465f, 1620.184f, -172.957f, 125f)),
+            [1054562825] = new CloneInfo(1054562845, new Vector4(63.988f, 1620.184f, -117.742f, 125.684f)),
             #endregion
 
             #region Catacombs
@@ -516,12 +586,12 @@ namespace EREnemyOnslaught
 
             // m11_00_00_00
             [902130012] = "Somehow, Cousin Merbit Returned",
-            [904720012] = "Mysterious Foreshadowed Stranger",  // phantom
+            [904720012] = "Mysterious Stranger",  // phantom
 
             // m11_05_00_00
-            [904720010] = "Mysterious Foreshadowed Stranger",
-            [904720011] = "Eric (!), Father of Merbit and Mulg, Brother of Rhonda, Uncle of Mazohr, Former Roommate of Ryktar",
-            [132401] = "Sir Giddy-Up Ofnir, the Idiot",
+            [904720010] = "Mysterious Stranger",
+            [904720011] = "Eric the Foreshadowed, Father of Merbit and Mulg, Husband of Rhonda, Uncle of Mazohr, Former Roommate of Ryktar",
+            [132401] = "Sir Goomba Ofnir, the Idiot",
 
             // m12_01_00_00
             [904650010] = "Dragonkin Soldier of Nokron",
@@ -566,22 +636,25 @@ namespace EREnemyOnslaught
             [904311010] = "A Second Soldier of Godrick",
 
             // m19_00_00_00
-            [902190010] = "Ragadon of the Awkward Love Triangle",
+            [902190010] = "Ragadon of the Weird Love Triangle",
 
             // m35_00_00_00
-            [904800012] = "Mulg, the Other Omen",
+            [904800012] = "Hangry Mulg",
 
             // m60_52_38_00
-            [904730010] = "Moonmurderer Mazohr",
+            [904730010] = "Meteorman Mazohr",
 
             // Overworld
             [904502610] = "Glintstone Dragon Samantha",
-            [904503610] = "Boris, the Reasonably Cold",
+            [904503610] = "Boris, the Uncomfortably Cold",
+            [904510610] = "Ancient Dragon Larry",  // both appearances
+            [904130610] = "Demi-Human Queen Morgan",
+            [903560610] = "Stretch Dude",
 
             // Generic
-            [902500300] = "Crucible Knights Ordovis and Osmodis",
+            [902500300] = "Crucible Knights Ordovis and Olga",
             [902500301] = "Lesser Crucible Knights",
-            [903700300] = "Depraved Perfurmers",
+            [903700300] = "Perfumers Tricia and Helga",
             [904260304] = "Erdtree Burial Watchdogs",
             [904260305] = "Erdtree Burial Watchdogs",
 

@@ -8,6 +8,9 @@ class Characters(Character):
     Scarab = 1039430310  # c4191_9000 npc 41915020 think 41910000
     WanderingNoble = 1039430700  # c4300_9000 npc 43009220 think 500000000 talk 701066000
 
+    CLONE_NightsCavalry = 1039430342
+    CLONE_NightsCavalryHorse = 1039430343  # c3160_9000 npc 31600020 think 31600000
+
 
 class Assets(Asset):
     AEG099_090_9001 = 1039431215  # AEG099

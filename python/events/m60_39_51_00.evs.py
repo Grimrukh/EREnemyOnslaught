@@ -1,4 +1,4 @@
-"""
+"""DONE
 Liurnia to Altus Plateau (NE) (NE)
 
 linked:
@@ -44,13 +44,19 @@ def Constructor():
         flag_11=78309,
     )
     CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry, horse=Characters.NightsCavalryHorse)
-    Event_1039512451(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
+    CommonFunc_MoveNightsCavalryToHorse(
+        1, nights_cavalry=Characters.CLONE_NightsCavalry, horse=Characters.CLONE_NightsCavalryHorse
+    )
+    NightsCavalryNoHorse(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
+    NightsCavalryNoHorse(0, character=Characters.CLONE_NightsCavalry, character_1=Characters.CLONE_NightsCavalryHorse)
     CommonFunc_NightsCavalryHealthBar(
         0,
         nights_cavalry=Characters.NightsCavalry,
         name=903150604,
         npc_threat_level=10,
         horse=Characters.NightsCavalryHorse,
+        clone_cavalry=Characters.CLONE_NightsCavalry,
+        clone_horse=Characters.CLONE_NightsCavalryHorse,
     )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
@@ -60,6 +66,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1039510200,
         seconds=0.0,
+        clone_boss=Characters.CLONE_NightsCavalry,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -68,9 +75,12 @@ def Constructor():
         item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_NightsCavalryHorse,
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.NightsCavalry, npc_threat_level=10, optional_trigger_flag=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1039510500, character=Characters.Scarab, item_lot=40304, reward_delay=0.0, skip_reward=0, clone=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1039510500, character=Characters.Scarab, item_lot=40304, reward_delay=0.0, skip_reward=0, clone=0
+    )
     CommonFunc_90005703(
         0,
         character=Characters.DemiHumanShaman,
@@ -169,7 +179,9 @@ def Preconstructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.MadPumpkinHead, region=1039512350, seconds=0.0, animation_id=3003)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.MadPumpkinHead, region=1039512350, seconds=0.0, animation_id=3003
+    )
     CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.LeyndellKnight1,
@@ -186,7 +198,7 @@ def Preconstructor():
 
 
 @RestartOnRest(1039512451)
-def Event_1039512451(_, character: uint, character_1: uint):
+def NightsCavalryNoHorse(_, character: uint, character_1: uint):
     """Event 1039512451"""
     AND_1.Add(CharacterAlive(character))
     SkipLinesIfConditionTrue(1, AND_1)
@@ -194,9 +206,9 @@ def Event_1039512451(_, character: uint, character_1: uint):
     AND_2.Add(CharacterHasSpecialEffect(character, 11825))
     GotoIfConditionTrue(Label.L0, input_condition=AND_2)
     AND_3.Add(CharacterBackreadEnabled(character_1))
-    
+
     MAIN.Await(AND_3)
-    
+
     AddSpecialEffect(character, 11825)
     Wait(1.0)
     Restart()
@@ -204,9 +216,9 @@ def Event_1039512451(_, character: uint, character_1: uint):
     # --- Label 0 --- #
     DefineLabel(0)
     AND_4.Add(CharacterBackreadDisabled(character_1))
-    
+
     MAIN.Await(AND_4)
-    
+
     AddSpecialEffect(character, 11826)
     Wait(1.0)
     Restart()
@@ -234,9 +246,9 @@ def Event_1039513700(_, character: uint):
     AND_6.Add(FlagEnabled(3947))
     AND_6.Add(FlagDisabled(11109819))
     AND_6.Add(FlagDisabled(3957))
-    
+
     MAIN.Await(AND_6)
-    
+
     Restart()
 
     # --- Label 5 --- #
@@ -286,9 +298,9 @@ def Event_1039513700(_, character: uint):
     AND_15.Add(FlagEnabled(3947))
     AND_15.Add(FlagDisabled(11109819))
     AND_15.Add(FlagDisabled(3957))
-    
+
     MAIN.Await(not AND_15)
-    
+
     Restart()
 
 

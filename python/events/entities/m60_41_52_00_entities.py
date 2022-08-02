@@ -1,13 +1,20 @@
 from soulstruct.eldenring.game_types import *
 
 
+class NameText(NPCName):
+    AncientDragonLansseax = 904510600
+    CLONE_AncientDragonLansseax = 904510610
+
+
 class Characters(Character):
     Dummy0 = 1041520270  # c0100_9000 npc 1000000 think 1000000
     Dummy1 = 1041520280  # c0100_9002 npc 1000000 think 1000000
     TalkDummy0 = 1041520100  # c1000_9000 npc 10001000 think 1 talk 2000
     TalkDummy1 = 1041520951  # c1000_9001 npc 10000000 think 1 talk 1000
     WanderingNoble = 1041520300  # c4300_9003 npc 43007130 think 43006100
-    AncientDragon = 1041520800  # c4510_9000 npc 45102030 think 45100900 group 1041525100,1041525800
+    AncientDragonLansseax = 1041520800  # c4510_9000 npc 45102030 think 45100900 group 1041525100,1041525800
+
+    CLONE_AncientDragonLansseax = 1041520801
 
 
 class Assets(Asset):

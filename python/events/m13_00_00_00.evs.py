@@ -2275,7 +2275,7 @@ def DragonlordPlacidusaxBattleTrigger():
     SetLockOnPoint(character=Characters.DragonlordPlacidusax, lock_on_model_point=223, state=False)
     SetLockOnPoint(character=Characters.DragonlordPlacidusax, lock_on_model_point=224, state=False)
     SetLockOnPoint(character=Characters.DragonlordPlacidusax, lock_on_model_point=225, state=False)
-    SetCharacterEventTarget(Characters.DragonlordPlacidusax, region=13000840)
+    SetCharacterEventTarget(Characters.DragonlordPlacidusax, entity=13000840)
     SetBackreadStateAlternate(Characters.DragonlordPlacidusax, True)
     ForceAnimation(Characters.DragonlordPlacidusax, 30000, loop=True)
 
@@ -2305,7 +2305,7 @@ def DragonlordPlacidusaxBattleTrigger():
     SetLockOnPoint(character=Characters.CLONE_DragonlordPlacidusax, lock_on_model_point=223, state=False)
     SetLockOnPoint(character=Characters.CLONE_DragonlordPlacidusax, lock_on_model_point=224, state=False)
     SetLockOnPoint(character=Characters.CLONE_DragonlordPlacidusax, lock_on_model_point=225, state=False)
-    SetCharacterEventTarget(Characters.CLONE_DragonlordPlacidusax, region=13000840)
+    SetCharacterEventTarget(Characters.CLONE_DragonlordPlacidusax, entity=13000840)
     SetBackreadStateAlternate(Characters.CLONE_DragonlordPlacidusax, True)
     ForceAnimation(Characters.CLONE_DragonlordPlacidusax, 30000, loop=True)
 

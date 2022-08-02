@@ -1,4 +1,4 @@
-"""
+"""DONE
 South Altus Plateau (NW) (NE)
 
 linked:
@@ -24,20 +24,28 @@ from .entities.m60_41_51_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.TreeSentinel0, name=903251600, npc_threat_level=12)
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.TreeSentinel1, name=903251600, npc_threat_level=12)
-    Event_1041512800(
+
+    # DOUBLE TREE SENTINEL
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.TreeSentinelLeft, name=903251600, npc_threat_level=12,
+        clone_boss=0, clone_name=0,  # no health bar for clones
+    )
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.TreeSentinelRight, name=903251600, npc_threat_level=12,
+        clone_boss=0, clone_name=0,  # no health bar for clones
+    )
+    TreeSentinelDuoDies(
         0,
         flag=1041510800,
         left=0,
-        character=Characters.TreeSentinel0,
+        sentinel_1=Characters.TreeSentinelLeft,
         left_1=0,
         item_lot=30335,
-        character_1=Characters.TreeSentinel1,
+        sentinel_2=Characters.TreeSentinelRight,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
-        character=Characters.TreeSentinel0,
+        character=Characters.TreeSentinelLeft,
         region=1041512500,
         radius=10.0,
         seconds=0.0,
@@ -45,21 +53,47 @@ def Constructor():
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
-        character=Characters.TreeSentinel1,
+        character=Characters.CLONE_TreeSentinelLeft,
         region=1041512500,
         radius=10.0,
         seconds=0.0,
         animation_id=0,
     )
-    Event_1041512310(0, character__region=1041510800, character__region_1=1041510801)
-    Event_1041512321(
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
-        character=Characters.TreeSentinel0,
-        character_1=Characters.TreeSentinel1,
+        character=Characters.TreeSentinelRight,
+        region=1041512500,
+        radius=10.0,
+        seconds=0.0,
+        animation_id=0,
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0,
+        character=Characters.CLONE_TreeSentinelRight,
+        region=1041512500,
+        radius=10.0,
+        seconds=0.0,
+        animation_id=0,
+    )
+    TreeSentinelEventTargets(
+        0, character=Characters.TreeSentinelLeft, character_1=Characters.TreeSentinelRight
+    )
+    TreeSentinelEventTargets(
+        1, character=Characters.CLONE_TreeSentinelLeft, character_1=Characters.CLONE_TreeSentinelRight
+    )
+    TreeSentinelMusicHeatUp(
+        0,
+        character=Characters.TreeSentinelLeft,
+        character_1=Characters.TreeSentinelRight,
         npc_threat_level=12,
         flag=1041512815,
     )
-    Event_1041512320(0, character=Characters.TreeSentinel0, character_1=Characters.TreeSentinel1)
+    TreeSentinelDuoPhaseTwoTransition(
+        0, character=Characters.TreeSentinelLeft, character_1=Characters.TreeSentinelRight
+    )
+    TreeSentinelCloneDies(0, Characters.TreeSentinelLeft, Characters.CLONE_TreeSentinelLeft)
+    TreeSentinelCloneDies(1, Characters.TreeSentinelRight, Characters.CLONE_TreeSentinelRight)
+
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.LeyndellKnight2,
@@ -77,6 +111,7 @@ def Constructor():
         item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_GiantMirandaFlower,
     )
     Event_1041512270()
     Event_1041512270(slot=1)
@@ -231,25 +266,25 @@ def Event_1041512270():
 
 
 @RestartOnRest(1041512310)
-def Event_1041512310(_, character__region: uint, character__region_1: uint):
+def TreeSentinelEventTargets(_, character: uint, character_1: uint):
     """Event 1041512310"""
     if FlagEnabled(1041510800):
         return
-    OR_1.Add(HasAIStatus(character__region, ai_status=AIStatusType.Battle))
-    OR_1.Add(HasAIStatus(character__region_1, ai_status=AIStatusType.Battle))
+    OR_1.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
+    OR_1.Add(HasAIStatus(character_1, ai_status=AIStatusType.Battle))
     
     MAIN.Await(OR_1)
     
     Wait(30.0)
-    EnableAI(character__region)
-    EnableAI(character__region_1)
-    SetCharacterEventTarget(character__region, region=character__region_1)
-    SetCharacterEventTarget(character__region_1, region=character__region)
+    EnableAI(character)
+    EnableAI(character_1)
+    SetCharacterEventTarget(character, entity=character_1)
+    SetCharacterEventTarget(character_1, entity=character)
     Restart()
 
 
 @RestartOnRest(1041512320)
-def Event_1041512320(_, character: uint, character_1: uint):
+def TreeSentinelDuoPhaseTwoTransition(_, character: uint, character_1: uint):
     """Event 1041512320"""
     if FlagEnabled(1041510800):
         return
@@ -266,7 +301,7 @@ def Event_1041512320(_, character: uint, character_1: uint):
 
 
 @ContinueOnRest(1041512321)
-def Event_1041512321(_, character: uint, character_1: uint, npc_threat_level: uint, flag: uint):
+def TreeSentinelMusicHeatUp(_, character: uint, character_1: uint, npc_threat_level: uint, flag: uint):
     """Event 1041512321"""
     DisableNetworkSync()
     AND_1.Add(FlagEnabled(flag))
@@ -288,25 +323,33 @@ def Event_1041512321(_, character: uint, character_1: uint, npc_threat_level: ui
 
 
 @RestartOnRest(1041512800)
-def Event_1041512800(
+def TreeSentinelDuoDies(
     _,
     flag: uint,
     left: uint,
-    character: uint,
+    sentinel_1: uint,
+    clone_1: uint,
     left_1: uint,
     item_lot: int,
-    character_1: uint,
+    sentinel_2: uint,
+    clone_2: uint,
 ):
     """Event 1041512800"""
     if ValueNotEqual(left=item_lot, right=0):
         Unknown_2004_76(flag=flag, item_lot=item_lot)
     GotoIfFlagDisabled(Label.L0, flag=flag)
-    DisableCharacter(character)
-    DisableCharacter(character_1)
-    DisableAnimations(character)
-    DisableAnimations(character_1)
-    Kill(character)
-    Kill(character_1)
+    DisableCharacter(sentinel_1)
+    DisableCharacter(clone_1)
+    DisableCharacter(sentinel_2)
+    DisableCharacter(clone_2)
+    DisableAnimations(sentinel_1)
+    DisableAnimations(clone_1)
+    DisableAnimations(sentinel_2)
+    DisableAnimations(clone_2)
+    Kill(sentinel_1)
+    Kill(clone_1)
+    Kill(sentinel_2)
+    Kill(clone_2)
     if PlayerNotInOwnWorld():
         return
     if ValueEqual(left=item_lot, right=0):
@@ -317,32 +360,43 @@ def Event_1041512800(
 
     # --- Label 0 --- #
     DefineLabel(0)
-    EnableCharacter(character)
-    EnableCharacter(character_1)
-    EnableAnimations(character)
-    EnableAnimations(character_1)
-    AND_15.Add(HealthValue(character) <= 0)
-    AND_15.Add(HealthValue(character_1) <= 0)
+    EnableCharacter(sentinel_1)
+    EnableCharacter(clone_1)
+    EnableCharacter(sentinel_2)
+    EnableCharacter(clone_2)
+    EnableAnimations(sentinel_1)
+    EnableAnimations(clone_1)
+    EnableAnimations(sentinel_2)
+    EnableAnimations(clone_2)
+
+    # Clones are immortal and refer their damage to the originals.
+    EnableImmortality(clone_1)
+    ReferDamageToEntity(clone_1, sentinel_1)
+    EnableImmortality(clone_2)
+    ReferDamageToEntity(clone_2, sentinel_2)
+
+    AND_15.Add(HealthValue(sentinel_1) <= 0)
+    AND_15.Add(HealthValue(sentinel_2) <= 0)
     
     MAIN.Await(AND_15)
     
     Wait(2.0)
-    PlaySoundEffect(character, 888880000, sound_type=SoundType.s_SFX)
-    AND_14.Add(CharacterDead(character))
-    AND_14.Add(CharacterDead(character_1))
+    PlaySoundEffect(sentinel_1, 888880000, sound_type=SoundType.s_SFX)
+    AND_14.Add(CharacterDead(sentinel_1))
+    AND_14.Add(CharacterDead(sentinel_2))
     
     MAIN.Await(AND_14)
     
     SkipLinesIfUnsignedEqual(6, left=left_1, right=3)
     SkipLinesIfUnsignedEqual(4, left=left_1, right=2)
     SkipLinesIfUnsignedEqual(2, left=left_1, right=1)
-    KillBossAndDisplayBanner(character=character, banner_type=BannerType.EnemyFelled)
+    KillBossAndDisplayBanner(character=sentinel_1, banner_type=BannerType.EnemyFelled)
     Goto(Label.L1)
-    KillBossAndDisplayBanner(character=character, banner_type=BannerType.GreatEnemyFelled)
+    KillBossAndDisplayBanner(character=sentinel_1, banner_type=BannerType.GreatEnemyFelled)
     Goto(Label.L1)
-    KillBossAndDisplayBanner(character=character, banner_type=BannerType.DemigodFelled)
+    KillBossAndDisplayBanner(character=sentinel_1, banner_type=BannerType.DemigodFelled)
     Goto(Label.L1)
-    KillBossAndDisplayBanner(character=character, banner_type=BannerType.LegendFelled)
+    KillBossAndDisplayBanner(character=sentinel_1, banner_type=BannerType.LegendFelled)
 
     # --- Label 1 --- #
     DefineLabel(1)
@@ -356,3 +410,14 @@ def Event_1041512800(
     Wait(5.0)
     AwardItemLot(item_lot, host_only=True)
     End()
+
+
+@RestartOnRest(1041512810)
+def TreeSentinelCloneDies(_, sentinel: uint, clone: uint):
+    """Immortal clone dies when Sentinel dies."""
+    if FlagEnabled(1041510800):
+        return
+
+    MAIN.Await(HealthValue(sentinel) <= 0)
+
+    Kill(clone)

@@ -299,7 +299,7 @@ def Event_32112810():
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.MalformedStar0)
-    SetCharacterEventTarget(Characters.MalformedStar0, region=32110810)
+    SetCharacterEventTarget(Characters.MalformedStar0, entity=32110810)
     SetBackreadStateAlternate(Characters.TalkDummy2, True)
     GotoIfFlagEnabled(Label.L1, flag=32110801)
     DisableCharacter(Characters.MalformedStar0)

@@ -16,6 +16,9 @@ class Characters(Character):
     LeyndellFootSoldier2 = 1039510408  # c4373_9008 npc 43730530 think 43730000
     LeyndellFootSoldier3 = 1039510409  # c4373_9009 npc 43731530 think 43730200
 
+    CLONE_NightsCavalry = 1039510802
+    CLONE_NightsCavalryHorse = 1039510803
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1039511950  # AEG099

@@ -5,7 +5,9 @@ class Characters(Character):
     TalkDummy0 = 1037460715  # c1000_9000 npc 503300020 think 500000000 talk 330016000
     TalkDummy1 = 1037460950  # c1000_9001 npc 10000000 think 1 talk 1000
     BellBearingHunter = 1037460800  # c3100_9000 npc 31000020 think 31001000
-    GiantTurtle = 1037460710  # c6091_9000 npc 60910020 think 60910000 talk 330006000
+    Miriel = 1037460710  # c6091_9000 npc 60910020 think 60910000 talk 330006000
+
+    CLONE_BellBearingHunter = 1037460801
 
 
 class Assets(Asset):

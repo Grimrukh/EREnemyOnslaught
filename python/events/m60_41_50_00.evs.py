@@ -1,4 +1,4 @@
-"""
+"""DONE
 South Altus Plateau (NW) (SE)
 
 linked:
@@ -24,7 +24,10 @@ from .entities.m60_41_50_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.FallingstarBeast, name=904680602, npc_threat_level=19)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.FallingstarBeast, name=904680602, npc_threat_level=19,
+        clone_boss=Characters.CLONE_FallingstarBeast, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1041500800,
@@ -33,6 +36,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30310,
         seconds=0.0,
+        clone_boss=Characters.CLONE_FallingstarBeast,
     )
     Event_1041502200()
 
@@ -40,7 +44,10 @@ def Constructor():
 @ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_TriggerInactiveEnemy_WithRadius(0, 1041500800, 30009, 20009, 30.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRadius(0, Characters.FallingstarBeast, 30009, 20009, 30.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
+        0, Characters.CLONE_FallingstarBeast, 30009, 20009, 30.0, 0.0, 0, 0, 0, 0
+    )
 
 
 @RestartOnRest(1041502200)

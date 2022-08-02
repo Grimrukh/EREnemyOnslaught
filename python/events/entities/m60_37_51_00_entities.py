@@ -1,6 +1,11 @@
 from soulstruct.eldenring.game_types import *
 
 
+class NameText(NPCName):
+    AncientDragonLansseax = 904510600
+    CLONE_AncientDragonLansseax = 904510610
+
+
 class Characters(Character):
     TalkDummy0 = 1037510950  # c1000_9000 npc 10000000 think 1 talk 1000
     TalkDummy1 = 1037510100  # c1000_9001 npc 10001000 think 1 talk 2000
@@ -8,7 +13,9 @@ class Characters(Character):
     Omen1 = 1037510208  # c2140_9008 npc 21401030 think 21401000
     Scarab0 = 1037510210  # c4191_9000 npc 41912020 think 41910000
     Scarab1 = 1037510500  # c4191_9002 npc 41912030 think 41910000
-    AncientDragon = 1037510800  # c4510_9000 npc 45102030 think 45100930 group 1037515100
+    AncientDragonLansseax = 1037510800  # c4510_9000 npc 45102030 think 45100930 group 1037515100
+
+    CLONE_AncientDragonLansseax = 1037510801
 
 
 class Assets(Asset):

@@ -23,6 +23,8 @@ class Characters(Character):
     Wormface7 = 1041530365  # c4570_9015 npc 45700030 think 45700000
     WormfaceLarge = 1041530800  # c4580_9000 npc 45800030 think 45800900 group 1041535100,1041535800
 
+    CLONE_WormfaceLarge = 1041530801
+
 
 class Assets(Asset):
     AEG099_053_9000 = 1041531100  # AEG099

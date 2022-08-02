@@ -1,4 +1,4 @@
-"""
+"""DONE
 West Altus Plateau (NW) (SE)
 
 linked:
@@ -24,15 +24,35 @@ from .entities.m60_37_54_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GraftedScion, region=1037542341, seconds=0.0, animation_id=0)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.GraftedScion, region=1037542342, seconds=0.0, animation_id=0)
-    Event_1037542500()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1037540341, character=Characters.GraftedScion, item_lot=0, reward_delay=3.0, skip_reward=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.GraftedScion, region=1037542341, seconds=0.0, animation_id=0
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CLONE_GraftedScion, region=1037542341, seconds=0.0, animation_id=0
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.GraftedScion, region=1037542342, seconds=0.0, animation_id=0
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.CLONE_GraftedScion, region=1037542342, seconds=0.0, animation_id=0
+    )
+    GraftedScionRegionEffect(0, Characters.GraftedScion)
+    GraftedScionRegionEffect(1, Characters.CLONE_GraftedScion)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1037540341, character=Characters.GraftedScion, item_lot=0, reward_delay=3.0, skip_reward=0,
+        clone=Characters.CLONE_GraftedScion
+    )
     CommonFunc_90005271(0, character=Characters.LeyndellSoldier0, seconds=0.0, animation_id=-1)
     Event_1037542260()
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Marionette2, region=1037542250, seconds=0.0, animation_id=0)
-    CommonFunc_TriggerEnemyAI_WithRegion(1, character=Characters.Marionette3, region=1037542250, seconds=0.0, animation_id=0)
-    CommonFunc_TriggerEnemyAI_WithRegion(2, character=Characters.Marionette4, region=1037542250, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Marionette2, region=1037542250, seconds=0.0, animation_id=0
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        1, character=Characters.Marionette3, region=1037542250, seconds=0.0, animation_id=0
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        2, character=Characters.Marionette4, region=1037542250, seconds=0.0, animation_id=0
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Marionette0,
@@ -45,7 +65,9 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1037540235, region=1037542235, radius=5.0, seconds=0.0, animation_id=3004)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=1037540235, region=1037542235, radius=5.0, seconds=0.0, animation_id=3004
+    )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.Marionette1,
@@ -54,9 +76,15 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(1, character=1037540352, region=1037542351, radius=0.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Basilisk0, region=1037542210, seconds=0.0, animation_id=0)
-    CommonFunc_TriggerEnemyAI_WithRegion(1, character=Characters.Basilisk2, region=1037542210, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        1, character=1037540352, region=1037542351, radius=0.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        0, character=Characters.Basilisk0, region=1037542210, seconds=0.0, animation_id=0
+    )
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        1, character=Characters.Basilisk2, region=1037542210, seconds=0.0, animation_id=0
+    )
     CommonFunc_TriggerEnemyAI_WithRegion(
         2,
         character=Characters.Basilisk3,
@@ -64,7 +92,9 @@ def Constructor():
         seconds=0.20000000298023224,
         animation_id=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegion(3, character=1037540213, region=1037542210, seconds=0.10000000149011612, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        3, character=1037540213, region=1037542210, seconds=0.10000000149011612, animation_id=0
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
         character=Characters.Basilisk1,
@@ -129,7 +159,9 @@ def Constructor():
     Event_1037542220(13, character=1037540273, region=1037542360, destination=1037542273, seconds=2.5)
     Event_1037542220(14, character=1037540274, region=1037542360, destination=1037542274, seconds=2.0999999046325684)
     Event_1037542220(15, character=1037540275, region=1037542360, destination=1037542275, seconds=2.200000047683716)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.LeyndellFootSoldier2, radius=6.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.LeyndellFootSoldier2, radius=6.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.LeyndellSoldier1,
@@ -192,7 +224,22 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.UlceratedTreeSpirit, name=904640600, npc_threat_level=18)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(
+        0,
+        character=Characters.CLONE_UlceratedTreeSpirit,
+        inactive_animation=30000,
+        active_animation=20000,
+        trigger_region=1037542810,
+        trigger_delay=0.0,
+        disable_gravity_and_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
+    )
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.UlceratedTreeSpirit, name=904640600, npc_threat_level=18,
+        clone_boss=Characters.CLONE_UlceratedTreeSpirit, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1037540810,
@@ -201,8 +248,11 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30380,
         seconds=0.0,
+        clone_boss=Characters.CLONE_UlceratedTreeSpirit,
     )
-    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.UlceratedTreeSpirit, npc_threat_level=18, optional_trigger_flag=0)
+    CommonFunc_FieldBossMusicHeatUp(
+        0, boss=Characters.UlceratedTreeSpirit, npc_threat_level=18, optional_trigger_flag=0
+    )
     Event_1037542255()
     Event_1037542270(0, attacker__character=1037545810, region=1037542810)
     Event_1037542580()
@@ -327,9 +377,15 @@ def Preconstructor():
     DisableBackread(Characters.Patches1)
     DisableBackread(Characters.Merchant)
     DisableBackread(Characters.NomadMule)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Avionette0, region=1037542450, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Avionette1, region=1037542452, radius=5.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(1, character=Characters.Avionette2, region=1037542452, radius=5.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Avionette0, region=1037542450, radius=5.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Avionette1, region=1037542452, radius=5.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        1, character=Characters.Avionette2, region=1037542452, radius=5.0, seconds=0.0, animation_id=-1
+    )
     Event_1037542400(0, character=Characters.Avionette0)
     Event_1037542400(2, character=Characters.Avionette1)
     Event_1037542400(3, character=Characters.Avionette2)
@@ -347,9 +403,9 @@ def Event_1037542210(_, character__targeting_character: uint, region: uint):
         return
     AND_1.Add(CharacterTargeting(targeting_character=character__targeting_character, targeted_character=20000))
     AND_1.Add(CharacterOutsideRegion(character=20000, region=region))
-    
+
     MAIN.Await(AND_1)
-    
+
     ClearTargetList(character__targeting_character)
     Wait(5.0)
     Restart()
@@ -367,9 +423,9 @@ def Event_1037542220(_, character: uint, region: uint, destination: uint, second
     OR_1.Add(PlayerInOwnWorld())
     AND_1.Add(OR_1)
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=region))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableThisSlotFlag()
     Wait(seconds)
     Move(character, destination=destination, destination_type=CoordEntityType.Region, short_move=True)
@@ -1273,6 +1329,7 @@ def Event_1037542255():
     if ThisEventSlotFlagEnabled():
         return
     AddSpecialEffect(Characters.UlceratedTreeSpirit, 8087)
+    AddSpecialEffect(Characters.CLONE_UlceratedTreeSpirit, 8087)
     EnableThisSlotFlag()
     End()
 
@@ -1317,9 +1374,9 @@ def Event_1037542270(_, attacker__character: uint, region: uint):
     OR_2.Add(CharacterInsideRegion(character=PLAYER, region=region))
     OR_2.Add(CharacterInsideRegion(character=35000, region=region))
     AND_1.Add(OR_2)
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(1050562200)
     RemoveSpecialEffect(attacker__character, 4800)
     RemoveSpecialEffect(attacker__character, 5661)
@@ -1330,9 +1387,9 @@ def Event_1037542300():
     """Event 1037542300"""
     if ThisEventSlotFlagEnabled():
         return
-    
+
     MAIN.Await(HasAIStatus(Characters.LeyndellKnight0, ai_status=AIStatusType.Battle))
-    
+
     Wait(1.2999999523162842)
     ForceAnimation(Characters.LeyndellKnight0, 3014)
     EnableThisSlotFlag()
@@ -1348,9 +1405,9 @@ def Event_1037542350():
     DeleteVFX(1037542222, erase_root_only=False)
     DeleteVFX(1037542223, erase_root_only=False)
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=1037542225))
-    
+
     MAIN.Await(AND_1)
-    
+
     SkipLinesIfPlayerNotInOwnWorld(8)
     SkipLinesIfFlagEnabled(1, 1037540220)
     CreateVFX(1037542220)
@@ -1360,7 +1417,7 @@ def Event_1037542350():
     CreateVFX(1037542222)
     SkipLinesIfFlagEnabled(1, 1037540223)
     CreateVFX(1037542223)
-    
+
     MAIN.Await(CharacterOutsideRegion(character=PLAYER, region=1037542225))
 
     # --- Label 0 --- #
@@ -1376,7 +1433,7 @@ def Event_1037542350():
 def Event_1037542351(_, flag: uint, flag_1: uint):
     """Event 1037542351"""
     MAIN.Await(FlagEnabled(flag))
-    
+
     EnableFlag(flag_1)
     End()
 
@@ -1387,9 +1444,9 @@ def Event_1037542400(_, character: uint):
     if ThisEventSlotFlagEnabled():
         return
     ForceAnimation(character, 30010, loop=True, skip_transition=True)
-    
+
     MAIN.Await(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    
+
     ForceAnimation(character, 20010, skip_transition=True)
     EnableThisSlotFlag()
     End()
@@ -1403,15 +1460,15 @@ def Event_1037542450(_, asset: uint):
 
 
 @RestartOnRest(1037542500)
-def Event_1037542500():
+def GraftedScionRegionEffect(_, scion: uint):
     """Event 1037542500"""
     MAIN.Await(CharacterInsideRegion(character=PLAYER, region=1037542342))
-    
-    RemoveSpecialEffect(Characters.GraftedScion, 16283)
-    
+
+    RemoveSpecialEffect(scion, 16283)
+
     MAIN.Await(CharacterOutsideRegion(character=PLAYER, region=1037542342))
-    
-    AddSpecialEffect(Characters.GraftedScion, 16283)
+
+    AddSpecialEffect(scion, 16283)
     Restart()
 
 
@@ -1427,51 +1484,13 @@ def Event_1037542569(_, flag: uint, asset: uint):
     CreateAssetVFX(asset, vfx_id=101, model_point=806043)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagEnabled(flag))
-    
+
     MAIN.Await(AND_1)
-    
+
     DeleteAssetVFX(asset)
     PlaySoundEffect(asset, 90011, sound_type=SoundType.s_SFX)
     Wait(0.5)
     DisableAsset(asset)
-
-
-@RestartOnRest(1037542801)
-def Event_1037542801():
-    """Event 1037542801"""
-    if FlagEnabled(1037540810):
-        return
-    
-    MAIN.Await(HealthValue(Characters.UlceratedTreeSpirit) <= 0)
-    
-    Wait(4.0)
-    PlaySoundEffect(Characters.UlceratedTreeSpirit, 888880000, sound_type=SoundType.s_SFX)
-    
-    MAIN.Await(CharacterDead(Characters.UlceratedTreeSpirit))
-    
-    KillBossAndDisplayBanner(character=Characters.UlceratedTreeSpirit, banner_type=BannerType.EnemyFelled)
-    EnableFlag(1037540810)
-
-
-@RestartOnRest(1037542810)
-def Event_1037542810():
-    """Event 1037542810"""
-    DisableAI(Characters.UlceratedTreeSpirit)
-    DisableCharacter(Characters.UlceratedTreeSpirit)
-    AND_9.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
-    AND_9.Add(CharacterHasSpecialEffect(PLAYER, 3710))
-    OR_1.Add(AND_9)
-    OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.Alive))
-    AND_1.Add(CharacterInsideRegion(character=PLAYER, region=1037542810))
-    AND_1.Add(OR_1)
-    OR_2.Add(AND_1)
-    
-    MAIN.Await(OR_2)
-    
-    EnableCharacter(Characters.UlceratedTreeSpirit)
-    EnableAI(Characters.UlceratedTreeSpirit)
-    EnableFlag(1037542810)
-    End()
 
 
 @RestartOnRest(1037543700)
@@ -1489,9 +1508,9 @@ def Event_1037543700(_, character: uint):
     DisableCharacter(character)
     DisableBackread(character)
     OR_3.Add(FlagEnabled(3688))
-    
+
     MAIN.Await(OR_3)
-    
+
     Restart()
 
     # --- Label 5 --- #
@@ -1533,9 +1552,9 @@ def Event_1037543700(_, character: uint):
     # --- Label 20 --- #
     DefineLabel(20)
     OR_4.Add(FlagEnabled(3688))
-    
+
     MAIN.Await(not OR_4)
-    
+
     Restart()
 
 
@@ -1553,9 +1572,9 @@ def Event_1037543701():
     AND_1.Add(FlagEnabled(3688))
     AND_1.Add(CharacterNotMounted(character=PLAYER))
     AND_1.Add(PlayerInOwnWorld())
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(1037549210)
     AND_2.Add(CharacterMounted(character=PLAYER))
     SkipLinesIfConditionFalse(1, AND_2)
@@ -1635,9 +1654,9 @@ def Event_1037543702(_, character: uint, flag: uint, flag_1: uint, character_1: 
 
     # --- Label 1 --- #
     DefineLabel(1)
-    
+
     MAIN.Await(FlagEnabled(3681))
-    
+
     Restart()
 
     # --- Label 2 --- #
@@ -1650,9 +1669,9 @@ def Event_1037543702(_, character: uint, flag: uint, flag_1: uint, character_1: 
     OR_4.Add(AND_3)
     AND_4.Add(CharacterHasSpecialEffect(PLAYER, 9700))
     AND_4.Add(OR_4)
-    
+
     MAIN.Await(AND_4)
-    
+
     DisableNetworkConnectedFlagRange(flag_range=(3680, 3684))
     EnableNetworkFlag(3680)
     SaveRequest()
@@ -1710,9 +1729,9 @@ def Event_1037543704(_, character: uint):
     DisableCharacter(character)
     DisableBackread(character)
     OR_3.Add(FlagEnabled(3693))
-    
+
     MAIN.Await(OR_3)
-    
+
     Restart()
 
     # --- Label 5 --- #
@@ -1754,9 +1773,9 @@ def Event_1037543704(_, character: uint):
     # --- Label 20 --- #
     DefineLabel(20)
     OR_4.Add(FlagEnabled(3693))
-    
+
     MAIN.Await(not OR_4)
-    
+
     Restart()
 
 
@@ -1782,9 +1801,9 @@ def Event_1037543705():
         return
     EndIfFlagRangeAnyEnabled(flag_range=(3689, 3697))
     OR_3.Add(FlagEnabled(3688))
-    
+
     MAIN.Await(OR_3)
-    
+
     CreateVFX(1045522711)
     CreateVFX(1037542710)
     CreateVFX(1037542711)
@@ -1792,9 +1811,9 @@ def Event_1037543705():
     CreateVFX(1037542713)
     EnableFlag(1037549212)
     OR_4.Add(FlagEnabled(3688))
-    
+
     MAIN.Await(not OR_4)
-    
+
     Restart()
 
 
@@ -1806,8 +1825,8 @@ def Event_1037543706():
     EndIfFlagRangeAnyEnabled(flag_range=(3689, 3697))
     AND_1.Add(FlagEnabled(3688))
     AND_1.Add(FlagEnabled(3683))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(1037542705)
     End()

@@ -39,6 +39,9 @@ class Characters(Character):
     UlceratedTreeSpirit = 1037540810  # c4640_9000 npc 46400032 think 46400032 group 1037545100,1037545810
     GraftedScion = 1037540341  # c4690_9002 npc 46900032 think 46900032
 
+    CLONE_UlceratedTreeSpirit = 1037540811
+    CLONE_GraftedScion = 1037540342
+
 
 class Assets(Asset):
     AEG004_180_1000 = 1037541580  # AEG004

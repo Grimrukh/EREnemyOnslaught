@@ -1,4 +1,4 @@
-"""
+"""DONE
 North Altus Plateau (SE) (NW)
 
 linked:
@@ -24,7 +24,8 @@ from .entities.m60_42_53_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1042530501, character=1042530501, item_lot=1042530300, reward_delay=0.0, skip_reward=0)
+    # UNUSED
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1042530501, character=1042530501, item_lot=1042530300, reward_delay=0.0, skip_reward=0, clone=0)
     CommonFunc_90005390(
         0,
         flag=1042530350,

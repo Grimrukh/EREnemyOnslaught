@@ -1,4 +1,4 @@
-"""
+"""DONE
 North Caelid (SW) (NW)
 
 linked:
@@ -26,14 +26,18 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1048410000, asset=Assets.AEG099_060_9000)
     CommonFunc_NonRespawningWithReward(0, dead_flag=1048410290, character=Characters.Scarab, item_lot=40412, reward_delay=0.0, skip_reward=0, clone=0)
-    CommonFunc_90005760(
+    CommonFunc_TriggerBellBearingHunter(
         0,
-        flag=1048410800,
-        character=Characters.BellBearingHunter,
+        dead_flag=1048410800,
+        hunter=Characters.BellBearingHunter,
         region=1048412300,
-        flag_1=1048412708,
+        required_flag=1048412708,
+        clone=Characters.CLONE_BellBearingHunter,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.BellBearingHunter, name=903100603, npc_threat_level=10)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.BellBearingHunter, name=903100603, npc_threat_level=10,
+        clone_boss=Characters.CLONE_BellBearingHunter, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1048410800,
@@ -42,6 +46,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1048410800,
         seconds=0.0,
+        clone_boss=Characters.CLONE_BellBearingHunter,
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.BellBearingHunter, npc_threat_level=10, optional_trigger_flag=0)
     CommonFunc_90005702(0, character=Characters.Merchant, flag=4793, first_flag=4790, last_flag=4793)

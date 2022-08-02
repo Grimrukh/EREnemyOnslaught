@@ -1,4 +1,4 @@
-"""
+"""DONE
 West Limgrave (NE) (SW)
 
 linked:
@@ -33,18 +33,23 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1042380400,
         seconds=0.0,
+        clone_boss=Characters.CLONE_DeathRiteBird,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DeathRiteBird, name=904980601, npc_threat_level=24)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.DeathRiteBird, name=904980601, npc_threat_level=24,
+        clone_boss=Characters.CLONE_DeathRiteBird, clone_name=0,
+    )
     Event_1042382350()
     CommonFunc_90005460(0, character=Characters.GiantOctopus)
     CommonFunc_90005461(0, character=Characters.GiantOctopus)
     CommonFunc_90005462(0, character=Characters.GiantOctopus)
-    CommonFunc_90005760(
+    CommonFunc_TriggerBellBearingHunter(
         0,
-        flag=1042380850,
-        character=Characters.BellBearingHunter,
+        dead_flag=1042380850,
+        hunter=Characters.BellBearingHunter,
         region=1042382360,
-        flag_1=1042382718,
+        required_flag=1042382718,
+        clone=Characters.CLONE_BellBearingHunter,
     )
     CommonFunc_90005770(0, flag=1042380701)
     CommonFunc_FieldBossNonRespawningWithReward(
@@ -55,8 +60,12 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1042380410,
         seconds=0.0,
+        clone_boss=Characters.CLONE_BellBearingHunter,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.BellBearingHunter, name=903100600, npc_threat_level=10)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.BellBearingHunter, name=903100600, npc_threat_level=10,
+        clone_boss=Characters.CLONE_BellBearingHunter, clone_name=0,
+    )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.BellBearingHunter, npc_threat_level=10, optional_trigger_flag=0)
     Event_1042383700(0, character=Characters.KnightBernahl)
     CommonFunc_90005704(0, attacked_entity=Characters.KnightBernahl, flag=3881, flag_1=3880, flag_2=1042389251, right=3)

@@ -34,8 +34,8 @@ def Constructor():
         left_1=1,
         left_2=1,
     )
-    Event_1048562350(2, character__region=1048560352, character=Characters.BigWolf0)
-    Event_1048562350(5, character__region=1048560355, character=Characters.BigWolf1)
+    Event_1048562350(2, character_1=1048560352, character=Characters.BigWolf0)
+    Event_1048562350(5, character_1=1048560355, character=Characters.BigWolf1)
     CommonFunc_NPCInvaderSummonSign(
         0,
         right=0,
@@ -71,32 +71,32 @@ def Constructor():
 
 
 @RestartOnRest(1048562350)
-def Event_1048562350(_, character__region: uint, character: uint):
+def Event_1048562350(_, character_1: uint, character: uint):
     """Event 1048562350"""
     if ThisEventSlotFlagDisabled():
-        SetCharacterEventTarget(character, region=character__region)
+        SetCharacterEventTarget(character, entity=character_1)
     AND_1.Add(CharacterHasSpecialEffect(character, 11893))
-    AND_1.Add(CharacterAlive(character__region))
+    AND_1.Add(CharacterAlive(character_1))
     AND_1.Add(CharacterAlive(character))
     
     MAIN.Await(AND_1)
     
-    SetNetworkUpdateRate(character__region, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(character_1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(character, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     Move(
         character,
-        destination=character__region,
+        destination=character_1,
         destination_type=CoordEntityType.Character,
         model_point=283,
         set_draw_parent=0,
     )
     WaitFrames(frames=1)
     ForceAnimation(character, 20003)
-    AddSpecialEffect(character__region, 11880)
+    AddSpecialEffect(character_1, 11880)
     AddSpecialEffect(character, 11880)
-    ReplanAI(character__region)
+    ReplanAI(character_1)
     Wait(5.0)
-    SetNetworkUpdateRate(character__region, is_fixed=False, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(character_1, is_fixed=False, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(character, is_fixed=False, update_rate=CharacterUpdateRate.Always)
     Restart()
 

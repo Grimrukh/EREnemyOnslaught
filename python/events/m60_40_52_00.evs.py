@@ -1,4 +1,4 @@
-"""
+"""DONE
 North Altus Plateau (SW) (SW)
 
 linked:
@@ -44,7 +44,10 @@ def Constructor():
         flag_10=78318,
         flag_11=78319,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.BlackKnifeAssassin, name=902100600, npc_threat_level=14)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.BlackKnifeAssassin, name=902100600, npc_threat_level=14,
+        clone_boss=Characters.CLONE_BlackKnifeAssassin, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1040520800,
@@ -53,6 +56,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30350,
         seconds=0.0,
+        clone_boss=Characters.CLONE_BlackKnifeAssassin,
     )
     Event_1040522240(0, asset=Assets.AEG099_070_9000, entity=Assets.AEG099_071_9000, flag=62030)
     AttachAssetToAsset(child_asset=1040521201, parent_asset=1040521200, parent_model_point=151)

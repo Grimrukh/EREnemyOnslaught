@@ -1,4 +1,4 @@
-"""
+"""DONE
 West Altus Plateau (NE) (SW)
 
 linked:
@@ -49,7 +49,12 @@ def Constructor():
         flag_10=78358,
         flag_11=78359,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=1038540800, name=904680601, npc_threat_level=19)
+
+    # This field boss seems unused/cut.
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=1038540800, name=904680601, npc_threat_level=19,
+        clone_boss=1038540801, clone_name=0,  # also missing
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1038540800,
@@ -58,10 +63,13 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=0,
         seconds=0.0,
+        clone_boss=1038540801,  # also missing
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.Dog, region=1038542229, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(1, character=1038540227, region=1038542229, seconds=1.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegion(2, character=Characters.SmallerDog1, region=1038542229, seconds=6.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegion(
+        2, character=Characters.SmallerDog1, region=1038542229, seconds=6.0, animation_id=-1
+    )
     Event_1038542260(0, character=Characters.Dog)
     Event_1038542260(1, character=1038540227)
     Event_1038542260(2, character=Characters.SmallerDog1)
@@ -149,12 +157,24 @@ def Constructor():
     Event_1038542270(0, character=Characters.LeyndellFootSoldier2)
     Event_1038542270(1, character=Characters.LeyndellFootSoldier3)
     Event_1038542270(2, character=Characters.LeyndellFootSoldier1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Eagle2, region=1038542380, radius=5.0, seconds=0.0, animation_id=3020)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(1, character=Characters.Eagle0, region=1038542381, radius=5.0, seconds=0.0, animation_id=3020)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(2, character=Characters.Eagle3, region=1038542382, radius=5.0, seconds=0.0, animation_id=3020)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(3, character=Characters.Eagle1, region=1038542383, radius=5.0, seconds=0.0, animation_id=3020)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(4, character=Characters.Eagle4, region=1038542384, radius=5.0, seconds=0.0, animation_id=3020)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(5, character=Characters.Eagle5, region=1038542385, radius=5.0, seconds=0.0, animation_id=3020)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Eagle2, region=1038542380, radius=5.0, seconds=0.0, animation_id=3020
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        1, character=Characters.Eagle0, region=1038542381, radius=5.0, seconds=0.0, animation_id=3020
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        2, character=Characters.Eagle3, region=1038542382, radius=5.0, seconds=0.0, animation_id=3020
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        3, character=Characters.Eagle1, region=1038542383, radius=5.0, seconds=0.0, animation_id=3020
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        4, character=Characters.Eagle4, region=1038542384, radius=5.0, seconds=0.0, animation_id=3020
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        5, character=Characters.Eagle5, region=1038542385, radius=5.0, seconds=0.0, animation_id=3020
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         4,
         character=Characters.MadPumpkinHead,
@@ -591,10 +611,16 @@ def Constructor():
         left_3=0,
     )
     Event_1038542250(0, attacker__character=1038545200, region=1038542200)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1038540340, region=1039532350, radius=10.0, seconds=1.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(1, character=1038540341, region=1039532350, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=1038540340, region=1039532350, radius=10.0, seconds=1.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        1, character=1038540341, region=1039532350, radius=10.0, seconds=0.0, animation_id=-1
+    )
     Event_1038542340()
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.LeyndellSoldier3, radius=8.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.LeyndellSoldier3, radius=8.0, seconds=0.0, animation_id=-1
+    )
     Event_1038542580()
     CommonFunc_NonRespawningWithReward(
         0,
@@ -603,6 +629,7 @@ def Constructor():
         item_lot=1038540100,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_MaleighMarais,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
@@ -665,9 +692,9 @@ def Event_1038542250(_, attacker__character: uint, region: uint):
     OR_2.Add(CharacterInsideRegion(character=PLAYER, region=region))
     OR_2.Add(CharacterInsideRegion(character=35000, region=region))
     AND_1.Add(OR_2)
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(1050562200)
     RemoveSpecialEffect(attacker__character, 4800)
     RemoveSpecialEffect(attacker__character, 5660)
@@ -691,7 +718,7 @@ def Event_1038542270(_, character: uint):
 def Event_1038542340():
     """Event 1038542340"""
     MAIN.Await(CharacterInsideRegion(character=1038540340, region=1038542340))
-    
+
     ChangePatrolBehavior(1038540340, patrol_information_id=1038543340)
     End()
 

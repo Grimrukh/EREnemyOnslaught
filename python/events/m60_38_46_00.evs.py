@@ -1,4 +1,4 @@
-"""
+"""DONE
 East Liurnia (NE) (SW)
 
 linked:
@@ -39,6 +39,7 @@ def Constructor():
         item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_GuardianGolem,
     )
     Event_1038460510()
     CommonFunc_90005501(0, 1038460650, 1038460651, 0, 1038461650, 1038461651, 1038461652, 1038460652)
@@ -78,10 +79,14 @@ def Event_1038462340():
     if FlagEnabled(1038460340):
         return
     DisableHealthBar(Characters.GuardianGolem)
+    DisableHealthBar(Characters.CLONE_GuardianGolem)
     AddSpecialEffect(Characters.GuardianGolem, 12189)
+    AddSpecialEffect(Characters.CLONE_GuardianGolem, 12189)
     Wait(3.0)
     RemoveSpecialEffect(Characters.GuardianGolem, 12189)
+    RemoveSpecialEffect(Characters.CLONE_GuardianGolem, 12189)
     EnableHealthBar(Characters.GuardianGolem)
+    EnableHealthBar(Characters.CLONE_GuardianGolem)
 
 
 @ContinueOnRest(1038460510)

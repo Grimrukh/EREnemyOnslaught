@@ -15,6 +15,8 @@ class Characters(Character):
     Bat0 = 1042360215  # c4200_9005 npc 42000010 think 42000001
     Bat1 = 1042360217  # c4200_9007 npc 42000010 think 42000001
 
+    CLONE_TreeSentinel = 1042360801
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1042361950  # AEG099

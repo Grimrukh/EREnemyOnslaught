@@ -1,4 +1,4 @@
-"""
+"""DONE
 Liurnia to Altus Plateau (SE) (SW)
 
 linked:
@@ -26,7 +26,10 @@ from .entities.m60_37_49_00_entities import Characters as m60_37_Characters
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1038480000, asset=Assets.AEG099_060_9000)
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.ErdtreeAvatar, name=904810601, npc_threat_level=18)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.ErdtreeAvatar, name=904810601, npc_threat_level=18,
+        clone_boss=Characters.CLONE_ErdtreeAvatar, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1038480800,
@@ -35,6 +38,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30200,
         seconds=0.0,
+        clone_boss=Characters.CLONE_ErdtreeAvatar,
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.ErdtreeAvatar, npc_threat_level=18, optional_trigger_flag=0)
     Event_1038482580()

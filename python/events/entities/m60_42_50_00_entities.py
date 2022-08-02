@@ -8,6 +8,8 @@ class Characters(Character):
     LeyndellFootSoldier2 = 1042500403  # c4373_9003 npc 43730033 think 43730000 group 1042505100
     UlceratedTreeSpirit = 1042500300  # c4640_9000 npc 46400033 think 46400033 group 1042505100
 
+    CLONE_UlceratedTreeSpirit = 1042500301
+
 
 class Assets(Asset):
     AEG100_101_1000 = 1042501501  # AEG100

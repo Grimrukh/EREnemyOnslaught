@@ -25,6 +25,8 @@ class Characters(Character):
     Bat11 = 1043330241  # c4200_9011 npc 42000012 think 42000001
     ErdtreeAvatar = 1043330800  # c4810_9000 npc 48100012 think 48100900 group 1043335102
 
+    CLONE_ErdtreeAvatar = 1043330801
+
 
 class Assets(Asset):
     AEG004_544_9000 = 1043331501  # AEG004

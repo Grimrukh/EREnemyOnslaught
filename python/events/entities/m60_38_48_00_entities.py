@@ -18,6 +18,8 @@ class Characters(Character):
     RevenantFollower11 = 1038480211  # c4000_9011 npc 40000120 think 40000000
     ErdtreeAvatar = 1038480800  # c4810_9000 npc 48100020 think 48100000 group 1038485800,1038485100
 
+    CLONE_ErdtreeAvatar = 1038480800
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1038481950  # AEG099

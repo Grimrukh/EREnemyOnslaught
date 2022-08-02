@@ -7644,12 +7644,14 @@ def CommonFunc_90005752(_, asset: uint, vfx_id: int, model_point: int, seconds: 
 
 
 @RestartOnRest(90005760)
-def CommonFunc_90005760(_, flag: uint, character: uint, region: uint, flag_1: uint):
+def CommonFunc_TriggerBellBearingHunter(
+    _, dead_flag: uint, hunter: uint, region: uint, required_flag: uint, clone: uint
+):
     """CommonFunc 90005760"""
-    if FlagEnabled(flag):
+    if FlagEnabled(dead_flag):
         return
     GotoIfThisEventSlotFlagEnabled(Label.L0)
-    AND_1.Add(FlagEnabled(flag_1))
+    AND_1.Add(FlagEnabled(required_flag))
     AND_1.Add(FlagDisabled(9000))
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=region))
@@ -7658,9 +7660,12 @@ def CommonFunc_90005760(_, flag: uint, character: uint, region: uint, flag_1: ui
 
     # --- Label 0 --- #
     DefineLabel(0)
-    EnableCharacter(character)
-    EnableBackread(character)
-    ForceAnimation(character, 20000)
+    EnableCharacter(hunter)
+    EnableBackread(hunter)
+    ForceAnimation(hunter, 20000)
+    EnableCharacter(clone)
+    EnableBackread(clone)
+    ForceAnimation(clone, 20000)
     End()
 
 

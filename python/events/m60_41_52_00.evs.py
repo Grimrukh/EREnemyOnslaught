@@ -1,4 +1,4 @@
-"""
+"""DONE
 North Altus Plateau (SW) (SE)
 
 linked:
@@ -25,15 +25,19 @@ from .entities.m60_41_52_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=76305, asset=Assets.AEG099_060_9002)
-    Event_1041522320(0, character=Characters.AncientDragon, name=904510600, npc_threat_level=28)
+    LansseaxHealthBar(
+        0, lansseax=Characters.AncientDragonLansseax, name=904510600, npc_threat_level=28,
+        clone=Characters.CLONE_AncientDragonLansseax, clone_name=Characters.CLONE_AncientDragonLansseax,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1041520800,
         extra_flag_to_enable=0,
-        boss=Characters.AncientDragon,
+        boss=Characters.AncientDragonLansseax,
         boss_banner_choice=1,
         item_lot=30300,
         seconds=0.0,
+        clone_boss=Characters.CLONE_AncientDragonLansseax,
     )
     Event_1041522270(0, owner_entity=Characters.Dummy0, region=1041522270, source_entity=1041522271)
     Event_1041522270(1, owner_entity=Characters.Dummy0, region=1041522270, source_entity=1041522271)
@@ -55,7 +59,7 @@ def Constructor():
 @ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
-    Event_1041522300(0, 1041520800)
+    LansseaxAppears(0, Characters.AncientDragonLansseax, Characters.CLONE_AncientDragonLansseax)
 
 
 @RestartOnRest(1041522270)
@@ -153,13 +157,15 @@ def Event_1041522270(_, owner_entity: uint, region: uint, source_entity: uint):
 
 
 @RestartOnRest(1041522300)
-def Event_1041522300(_, character: uint):
+def LansseaxAppears(_, lansseax: uint, clone: uint):
     """Event 1041522300"""
     GotoIfFlagEnabled(Label.L0, flag=1041520800)
     GotoIfFlagEnabled(Label.L0, flag=1037510800)
     GotoIfFlagEnabled(Label.L1, flag=1041522810)
-    DisableCharacter(character)
-    DisableAnimations(character)
+    DisableCharacter(lansseax)
+    DisableAnimations(lansseax)
+    DisableCharacter(clone)
+    DisableAnimations(clone)
     AND_1.Add(CharacterType(PLAYER, character_type=CharacterType.Alive))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=1041522800))
     
@@ -167,10 +173,14 @@ def Event_1041522300(_, character: uint):
     
     EnableFlag(1041520820)
     EnableFlag(1041522810)
-    SetCharacterFadeOnEnable(character=character, state=True)
-    EnableCharacter(character)
-    EnableAnimations(character)
-    ForceAnimation(character, 20019)
+    SetCharacterFadeOnEnable(character=lansseax, state=True)
+    SetCharacterFadeOnEnable(character=clone, state=True)
+    EnableCharacter(lansseax)
+    EnableCharacter(clone)
+    EnableAnimations(lansseax)
+    EnableAnimations(clone)
+    ForceAnimation(lansseax, 20019)
+    ForceAnimation(clone, 20019)
 
     # --- Label 1 --- #
     DefineLabel(1)
@@ -178,24 +188,28 @@ def Event_1041522300(_, character: uint):
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableCharacter(character)
-    DisableAnimations(character)
+    DisableCharacter(lansseax)
+    DisableAnimations(lansseax)
+    DisableCharacter(clone)
+    DisableAnimations(clone)
     End()
 
 
 @ContinueOnRest(1041522320)
-def Event_1041522320(_, character: uint, name: int, npc_threat_level: uint):
+def LansseaxHealthBar(_, lansseax: uint, name: int, npc_threat_level: uint, clone: uint, clone_name: uint):
     """Event 1041522320"""
     DisableNetworkSync()
-    DisableHealthBar(character)
-    AND_1.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
+    DisableHealthBar(lansseax)
+    DisableHealthBar(clone)
+    OR_1.Add(HasAIStatus(lansseax, ai_status=AIStatusType.Battle))
+    OR_1.Add(HasAIStatus(clone, ai_status=AIStatusType.Battle))
+    AND_1.Add(OR_1)
     AND_1.Add(FieldBattleMusicEnabled(npc_threat_level=npc_threat_level))
     AND_1.Add(FlagDisabled(9000))
     
     MAIN.Await(AND_1)
     
     GotoIfFlagDisabled(Label.L0, flag=9290)
-    GotoIfFlagDisabled(Label.L1, flag=9291)
     Wait(5.0)
     Restart()
 
@@ -203,60 +217,41 @@ def Event_1041522320(_, character: uint, name: int, npc_threat_level: uint):
     DefineLabel(0)
     EnableFlag(9290)
     if FlagEnabled(1037510810):
-        AddSpecialEffect(character, 4401)
+        AddSpecialEffect(lansseax, 4401)
+        AddSpecialEffect(clone, 4401)
     Wait(1.0)
-    EnableBossHealthBar(character, name=name)
+    EnableBossHealthBar(lansseax, name=name, bar_slot=1)
+    EnableBossHealthBar(clone, name=clone_name, bar_slot=0)
     if PlayerInOwnWorld():
-        SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Forced)
-        SetNetworkUpdateRate(character, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-    AND_2.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
+        SetNetworkUpdateAuthority(lansseax, authority_level=UpdateAuthority.Forced)
+        SetNetworkUpdateAuthority(clone, authority_level=UpdateAuthority.Forced)
+        SetNetworkUpdateRate(lansseax, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        SetNetworkUpdateRate(clone, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+    OR_3.Add(HasAIStatus(lansseax, ai_status=AIStatusType.Battle))
+    OR_3.Add(HasAIStatus(clone, ai_status=AIStatusType.Battle))
+    AND_2.Add(OR_3)
     AND_2.Add(FieldBattleMusicEnabled(npc_threat_level=npc_threat_level))
     OR_2.Add(not AND_2)
-    OR_2.Add(CharacterDead(character))
+    OR_2.Add(CharacterDead(lansseax))
     OR_2.Add(FlagEnabled(9000))
     
     MAIN.Await(OR_2)
     
-    OR_3.Add(CharacterDead(character))
-    SkipLinesIfConditionFalse(2, OR_3)
+    OR_4.Add(CharacterDead(lansseax))
+    OR_4.Add(CharacterDead(clone))
+    SkipLinesIfConditionFalse(2, OR_4)
     Wait(3.0)
     SkipLines(2)
     if FlagDisabled(9000):
         Wait(1.0)
-    DisableBossHealthBar(character, name=name)
+    DisableBossHealthBar(lansseax, name=name, bar_slot=1)
+    DisableBossHealthBar(clone, name=clone_name, bar_slot=0)
     if PlayerInOwnWorld():
-        SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Normal)
-        SetNetworkUpdateRate(character, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        SetNetworkUpdateAuthority(lansseax, authority_level=UpdateAuthority.Normal)
+        SetNetworkUpdateAuthority(clone, authority_level=UpdateAuthority.Normal)
+        SetNetworkUpdateRate(lansseax, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        SetNetworkUpdateRate(clone, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
     DisableFlag(9290)
     Restart()
 
-    # --- Label 1 --- #
-    DefineLabel(1)
-    EnableFlag(9291)
-    if FlagEnabled(1037510810):
-        AddSpecialEffect(character, 4401)
-    Wait(1.0)
-    EnableBossHealthBar(character, name=name, bar_slot=1)
-    if PlayerInOwnWorld():
-        SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Forced)
-        SetNetworkUpdateRate(character, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-    AND_12.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    AND_12.Add(FieldBattleMusicEnabled(npc_threat_level=npc_threat_level))
-    OR_12.Add(not AND_12)
-    OR_12.Add(CharacterDead(character))
-    OR_12.Add(FlagEnabled(9000))
-    
-    MAIN.Await(OR_12)
-    
-    OR_13.Add(CharacterDead(character))
-    SkipLinesIfConditionFalse(2, OR_13)
-    Wait(3.0)
-    SkipLines(2)
-    if FlagDisabled(9000):
-        Wait(1.0)
-    DisableBossHealthBar(character, name=name, bar_slot=1)
-    if PlayerInOwnWorld():
-        SetNetworkUpdateAuthority(character, authority_level=UpdateAuthority.Normal)
-        SetNetworkUpdateRate(character, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-    DisableFlag(9291)
-    Restart()
+    # Only one field boss active at a time.

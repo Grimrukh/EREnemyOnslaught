@@ -1,4 +1,4 @@
-"""
+"""DONE
 South Altus Plateau (NE) (NW)
 
 linked:
@@ -50,6 +50,7 @@ def Constructor():
         item_lot=1042510900,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_Gargoyle,
     )
     Event_1042512240(0, 1042511690, 1042511691, 62031)
 
@@ -57,7 +58,8 @@ def Constructor():
 @ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_TriggerInactiveEnemy_WithRegion(0, 1042510300, 30004, 20004, 1042512301, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(0, Characters.Gargoyle, 30004, 20004, 1042512301, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegion(0, Characters.CLONE_Gargoyle, 30004, 20004, 1042512301, 0.0, 0, 0, 0, 0)
 
 
 @RestartOnRest(1042512240)

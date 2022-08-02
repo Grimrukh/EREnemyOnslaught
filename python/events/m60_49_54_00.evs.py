@@ -68,7 +68,7 @@ def Constructor():
     Event_1049542216(0, character=Characters.WanderingNoble3)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Wolf, region=1049542260, radius=10.0, seconds=0.0, animation_id=20010)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1049540373, region=1049542260, radius=10.0, seconds=0.0, animation_id=20002)
-    Event_1049542350(0, character__region=1049540350, character=Characters.BigWolf)
+    Event_1049542350(0, character=1049540350, character_1=Characters.BigWolf)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9001, vfx_id=100, model_point=800, right=0)
     Event_1049543700(0, character=Characters.TalkDummy1, region=1049542700, distance=155.0)
     CommonFunc_90005706(0, 1049540710, 930023, 0)
@@ -212,33 +212,33 @@ def Event_1049542216(_, character: uint):
 
 
 @RestartOnRest(1049542350)
-def Event_1049542350(_, character__region: uint, character: uint):
+def Event_1049542350(_, character: uint, character_1: uint):
     """Event 1049542350"""
     if ThisEventSlotFlagDisabled():
-        SetCharacterEventTarget(character, region=character__region)
-    AND_1.Add(CharacterHasSpecialEffect(character, 11893))
-    AND_1.Add(CharacterAlive(character__region))
+        SetCharacterEventTarget(character_1, entity=character)
+    AND_1.Add(CharacterHasSpecialEffect(character_1, 11893))
     AND_1.Add(CharacterAlive(character))
+    AND_1.Add(CharacterAlive(character_1))
     
     MAIN.Await(AND_1)
     
-    SetNetworkUpdateRate(character__region, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(character, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(character_1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     Move(
-        character,
-        destination=character__region,
+        character_1,
+        destination=character,
         destination_type=CoordEntityType.Character,
         model_point=283,
         set_draw_parent=0,
     )
     WaitFrames(frames=1)
-    ForceAnimation(character, 20003)
-    AddSpecialEffect(character__region, 11880)
+    ForceAnimation(character_1, 20003)
     AddSpecialEffect(character, 11880)
-    ReplanAI(character__region)
+    AddSpecialEffect(character_1, 11880)
+    ReplanAI(character)
     Wait(5.0)
-    SetNetworkUpdateRate(character__region, is_fixed=False, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(character, is_fixed=False, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(character_1, is_fixed=False, update_rate=CharacterUpdateRate.Always)
     Restart()
 
 

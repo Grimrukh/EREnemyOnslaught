@@ -8,6 +8,8 @@ class Characters(Character):
     ThornSorcerer = 1038460202  # c4381_9002 npc 43811020 think 43810100
     GuardianGolem = 1038460340  # c4660_9000 npc 46606020 think 46600000
 
+    CLONE_GuardianGolem = 1038460341
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1038461950  # AEG099

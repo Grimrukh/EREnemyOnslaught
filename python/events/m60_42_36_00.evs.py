@@ -1,4 +1,4 @@
-"""
+"""DONE
 West Limgrave (SE) (SW)
 
 linked:
@@ -62,7 +62,10 @@ def Constructor():
         flag_10=78108,
         flag_11=78109,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.TreeSentinel, name=903251600, npc_threat_level=12)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.TreeSentinel, name=903251600, npc_threat_level=12,
+        clone_boss=Characters.CLONE_TreeSentinel, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1042360800,
@@ -71,6 +74,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30100,
         seconds=0.0,
+        clone_boss=Characters.CLONE_TreeSentinel,
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.TreeSentinel, npc_threat_level=12, optional_trigger_flag=0)
     CommonFunc_90005683(0, flag=62103, asset=Assets.AEG099_055_1500, vfx_id=210, flag_1=78190, flag_2=78190)
@@ -186,7 +190,7 @@ def Preconstructor():
     DisableBackread(Characters.Merchant)
     DisableBackread(Characters.NomadMule)
     DisableBackread(Characters.Ranni)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1042360200, character=1042365200, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1042360200, character=1042365200, item_lot=0, reward_delay=0.0, skip_reward=0, clone=0)
 
 
 @RestartOnRest(1042362200)

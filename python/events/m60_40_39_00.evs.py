@@ -1,4 +1,4 @@
-"""
+"""DONE
 West Limgrave (NW) (NW)
 
 linked:
@@ -23,4 +23,4 @@ from soulstruct.eldenring.events.instructions import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1040390200, character=1040390200, item_lot=40100, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1040390200, character=1040390200, item_lot=40100, reward_delay=0.0, skip_reward=0, clone=0)

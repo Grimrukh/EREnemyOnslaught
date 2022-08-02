@@ -1,4 +1,4 @@
-"""
+"""DONE
 West Altus Plateau (SW) (NE)
 
 linked:
@@ -26,7 +26,10 @@ from .entities.m60_37_54_00_entities import Characters as m60_37_Characters
 def Constructor():
     """Event 0"""
     CommonFunc_90005600(0, grace_flag=76357, asset=Assets.AEG099_060_9000, enemy_block_distance=5.0, character=0)
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DemiHumanQueen, name=904130600, npc_threat_level=16)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.DemiHumanQueen, name=NameText.DemiHumanQueen, npc_threat_level=16,
+        clone_boss=Characters.CLONE_DemiHumanQueen, clone_name=NameText.CLONE_DemiHumanQueen,
+    )
     Event_1037532345()
     Event_1037532350()
     CommonFunc_FieldBossNonRespawningWithReward(
@@ -37,11 +40,13 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30395,
         seconds=0.0,
+        clone_boss=Characters.CLONE_DemiHumanQueen,
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.DemiHumanQueen, npc_threat_level=16, optional_trigger_flag=0)
-    Event_1037532450(
+    TriggerDemiHumanQueenMaggie(
         0,
-        character=Characters.DemiHumanQueen,
+        maggie=Characters.DemiHumanQueen,
+        clone=Characters.CLONE_DemiHumanQueen,
         region=1037532400,
         radius=10.0,
         seconds=0.0,
@@ -78,6 +83,7 @@ def Constructor():
         item_lot=40332,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
@@ -482,50 +488,82 @@ def Event_1037532400(_, character: uint, region: uint, owner_entity: uint):
 
 
 @RestartOnRest(1037532450)
-def Event_1037532450(_, character: uint, region: uint, radius: float, seconds: float, animation_id: int):
+def TriggerDemiHumanQueenMaggie(
+    _, maggie: uint, clone: uint, region: uint, radius: float, seconds: float, animation_id: int):
     """Event 1037532450"""
     if ThisEventSlotFlagEnabled():
         return
-    DisableAI(character)
+    DisableAI(maggie)
+    DisableAI(clone)
     AND_9.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_9.Add(CharacterHasSpecialEffect(PLAYER, 3710))
     OR_1.Add(AND_9)
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.Alive))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.BluePhantom))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
-    AND_4.Add(CharacterHasSpecialEffect(character, 481))
-    AND_4.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
-    AND_4.Add(CharacterDoesNotHaveSpecialEffect(character, 90110))
-    AND_4.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
-    AND_5.Add(CharacterHasSpecialEffect(character, 482))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(character, 90120))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(character, 90162))
-    AND_6.Add(CharacterHasSpecialEffect(character, 483))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(character, 90140))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(character, 90161))
-    AND_7.Add(CharacterHasSpecialEffect(character, 484))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(character, 90130))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(character, 90161))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(character, 90162))
-    AND_8.Add(CharacterHasSpecialEffect(character, 487))
-    AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
-    AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
-    AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
+    AND_4.Add(CharacterHasSpecialEffect(maggie, 481))
+    AND_4.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90100))
+    AND_4.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90110))
+    AND_4.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90160))
+    AND_5.Add(CharacterHasSpecialEffect(maggie, 482))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90100))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90120))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90160))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90162))
+    AND_6.Add(CharacterHasSpecialEffect(maggie, 483))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90100))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90140))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90160))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90161))
+    AND_7.Add(CharacterHasSpecialEffect(maggie, 484))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90100))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90130))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90161))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90162))
+    AND_8.Add(CharacterHasSpecialEffect(maggie, 487))
+    AND_8.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90100))
+    AND_8.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90150))
+    AND_8.Add(CharacterDoesNotHaveSpecialEffect(maggie, 90160))
+    AND_9.Add(CharacterHasSpecialEffect(clone, 481))
+    AND_9.Add(CharacterDoesNotHaveSpecialEffect(clone, 90100))
+    AND_9.Add(CharacterDoesNotHaveSpecialEffect(clone, 90110))
+    AND_9.Add(CharacterDoesNotHaveSpecialEffect(clone, 90160))
+    AND_10.Add(CharacterHasSpecialEffect(clone, 482))
+    AND_10.Add(CharacterDoesNotHaveSpecialEffect(clone, 90100))
+    AND_10.Add(CharacterDoesNotHaveSpecialEffect(clone, 90120))
+    AND_10.Add(CharacterDoesNotHaveSpecialEffect(clone, 90160))
+    AND_10.Add(CharacterDoesNotHaveSpecialEffect(clone, 90162))
+    AND_11.Add(CharacterHasSpecialEffect(clone, 483))
+    AND_11.Add(CharacterDoesNotHaveSpecialEffect(clone, 90100))
+    AND_11.Add(CharacterDoesNotHaveSpecialEffect(clone, 90140))
+    AND_11.Add(CharacterDoesNotHaveSpecialEffect(clone, 90160))
+    AND_11.Add(CharacterDoesNotHaveSpecialEffect(clone, 90161))
+    AND_12.Add(CharacterHasSpecialEffect(clone, 484))
+    AND_12.Add(CharacterDoesNotHaveSpecialEffect(clone, 90100))
+    AND_12.Add(CharacterDoesNotHaveSpecialEffect(clone, 90130))
+    AND_12.Add(CharacterDoesNotHaveSpecialEffect(clone, 90161))
+    AND_12.Add(CharacterDoesNotHaveSpecialEffect(clone, 90162))
+    AND_13.Add(CharacterHasSpecialEffect(clone, 487))
+    AND_13.Add(CharacterDoesNotHaveSpecialEffect(clone, 90100))
+    AND_13.Add(CharacterDoesNotHaveSpecialEffect(clone, 90150))
+    AND_13.Add(CharacterDoesNotHaveSpecialEffect(clone, 90160))
     OR_3.Add(CharacterInsideRegion(character=PLAYER, region=region))
-    OR_3.Add(EntityWithinDistance(entity=PLAYER, other_entity=character, radius=radius))
+    OR_3.Add(EntityWithinDistance(entity=PLAYER, other_entity=maggie, radius=radius))
+    OR_3.Add(EntityWithinDistance(entity=PLAYER, other_entity=clone, radius=radius))
     AND_1.Add(OR_3)
     AND_1.Add(OR_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
-    OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
-    OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
-    OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
-    OR_2.Add(CharacterHasStateInfo(character=character, state_info=6))
-    OR_2.Add(CharacterHasStateInfo(character=character, state_info=260))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=maggie))
+    OR_2.Add(CharacterHasStateInfo(character=maggie, state_info=436))
+    OR_2.Add(CharacterHasStateInfo(character=maggie, state_info=2))
+    OR_2.Add(CharacterHasStateInfo(character=maggie, state_info=5))
+    OR_2.Add(CharacterHasStateInfo(character=maggie, state_info=6))
+    OR_2.Add(CharacterHasStateInfo(character=maggie, state_info=260))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=clone))
+    OR_2.Add(CharacterHasStateInfo(character=clone, state_info=436))
+    OR_2.Add(CharacterHasStateInfo(character=clone, state_info=2))
+    OR_2.Add(CharacterHasStateInfo(character=clone, state_info=5))
+    OR_2.Add(CharacterHasStateInfo(character=clone, state_info=6))
+    OR_2.Add(CharacterHasStateInfo(character=clone, state_info=260))
     OR_2.Add(HasAIStatus(Characters.RayaLucariaScholar2, ai_status=AIStatusType.Search))
     OR_2.Add(HasAIStatus(Characters.RayaLucariaScholar2, ai_status=AIStatusType.Battle))
     OR_2.Add(HasAIStatus(Characters.RayaLucariaScholar0, ai_status=AIStatusType.Search))
@@ -536,6 +574,11 @@ def Event_1037532450(_, character: uint, region: uint, radius: float, seconds: f
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
+    OR_2.Add(AND_9)
+    OR_2.Add(AND_10)
+    OR_2.Add(AND_11)
+    OR_2.Add(AND_12)
+    OR_2.Add(AND_13)
     
     MAIN.Await(OR_2)
     
@@ -543,11 +586,13 @@ def Event_1037532450(_, character: uint, region: uint, radius: float, seconds: f
     GotoIfFinishedConditionFalse(Label.L1, input_condition=AND_1)
     Wait(seconds)
     if ValueNotEqual(left=animation_id, right=-1):
-        ForceAnimation(character, animation_id, loop=True)
+        ForceAnimation(maggie, animation_id, loop=True)
+        ForceAnimation(clone, animation_id, loop=True)
 
     # --- Label 1 --- #
     DefineLabel(1)
-    EnableAI(character)
+    EnableAI(maggie)
+    EnableAI(clone)
 
 
 @RestartOnRest(1037533700)

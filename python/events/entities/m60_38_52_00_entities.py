@@ -38,6 +38,9 @@ class Characters(Character):
     TibiaMariner = 1038520340  # c4950_9000 npc 49500032 think 49500932 group 1038525350
     GiantSkeletonTorso = 1038520350  # c4960_9003 npc 49600032 think 49600932 group 1038525350
 
+    CLONE_TibiaMariner = 1038520341
+    CLONE_GiantSkeletonTorso = 1038520351
+
 
 class Assets(Asset):
     AEG027_079_9000 = 1038521570  # AEG027

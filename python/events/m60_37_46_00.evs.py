@@ -1,4 +1,4 @@
-"""
+"""DONE
 East Liurnia (NW) (SE)
 
 linked:
@@ -24,12 +24,13 @@ from .entities.m60_37_46_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1037460000, asset=Assets.AEG099_060_9001)
-    CommonFunc_90005760(
+    CommonFunc_TriggerBellBearingHunter(
         0,
-        flag=1037460800,
-        character=Characters.BellBearingHunter,
+        dead_flag=1037460800,
+        hunter=Characters.BellBearingHunter,
         region=1037462340,
-        flag_1=1037462716,
+        required_flag=1037462716,
+        clone=Characters.CLONE_BellBearingHunter,
     )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
@@ -39,12 +40,17 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1037460400,
         seconds=0.0,
+        clone_boss=Characters.CLONE_BellBearingHunter,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.BellBearingHunter, name=903100601, npc_threat_level=10)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.BellBearingHunter, name=903100601, npc_threat_level=10,
+        clone_boss=Characters.CLONE_BellBearingHunter, clone_name=0,
+    )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.BellBearingHunter, npc_threat_level=10, optional_trigger_flag=0)
-    CommonFunc_90005702(0, character=Characters.GiantTurtle, flag=3723, first_flag=3720, last_flag=3723)
-    Event_1037460700(0, character=Characters.GiantTurtle)
-    Event_1037460702(0, character=Characters.GiantTurtle)
+
+    CommonFunc_90005702(0, character=Characters.Miriel, flag=3723, first_flag=3720, last_flag=3723)
+    Event_1037460700(0, character=Characters.Miriel)
+    Event_1037460702(0, character=Characters.Miriel)
     CommonFunc_90005770(0, flag=1037460701)
     Event_1037460710(0, flag=1037469280)
     Event_1037460711(0, flag=1037469281)
@@ -55,11 +61,19 @@ def Constructor():
 @ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
-    DisableBackread(Characters.GiantTurtle)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1037460200, region=1037462600, radius=3.0, seconds=0.0, animation_id=3020)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1037460201, region=1037462600, radius=3.0, seconds=0.0, animation_id=3020)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1037460202, region=1037462600, radius=3.0, seconds=0.0, animation_id=3020)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1037460203, region=1037462600, radius=3.0, seconds=0.0, animation_id=1700)
+    DisableBackread(Characters.Miriel)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=1037460200, region=1037462600, radius=3.0, seconds=0.0, animation_id=3020
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=1037460201, region=1037462600, radius=3.0, seconds=0.0, animation_id=3020
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=1037460202, region=1037462600, radius=3.0, seconds=0.0, animation_id=3020
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=1037460203, region=1037462600, radius=3.0, seconds=0.0, animation_id=1700
+    )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, 1037460204, 1037462600, 3.0, 0.0, 1700)
 
 
@@ -88,9 +102,9 @@ def Event_1037460700(_, character: uint):
     GotoIfFlagEnabled(Label.L5, flag=3725)
     DisableCharacter(character)
     DisableBackread(character)
-    
+
     MAIN.Await(FlagEnabled(3725))
-    
+
     Restart()
 
     # --- Label 5 --- #
@@ -118,9 +132,9 @@ def Event_1037460700(_, character: uint):
 
     # --- Label 20 --- #
     DefineLabel(20)
-    
+
     MAIN.Await(FlagDisabled(3725))
-    
+
     Restart()
 
 
@@ -129,9 +143,9 @@ def Event_1037460702(_, character: uint):
     """Event 1037460702"""
     if PlayerNotInOwnWorld():
         return
-    
+
     MAIN.Await(AttackedWithDamageType(attacked_entity=character))
-    
+
     AddSpecialEffect(character, 9750)
     Restart()
 
@@ -230,9 +244,9 @@ def Event_1037460710(_, flag: uint):
     OR_1.Add(FlagEnabled(4801))
     OR_1.Add(FlagEnabled(4806))
     OR_1.Add(FlagEnabled(4811))
-    
+
     MAIN.Await(OR_1)
-    
+
     EnableFlag(flag)
     OR_2.Add(FlagEnabled(3101))
     OR_2.Add(FlagEnabled(3121))
@@ -322,9 +336,9 @@ def Event_1037460710(_, flag: uint):
     OR_2.Add(FlagEnabled(4801))
     OR_2.Add(FlagEnabled(4806))
     OR_2.Add(FlagEnabled(4811))
-    
+
     MAIN.Await(not OR_2)
-    
+
     Restart()
 
 
@@ -337,16 +351,16 @@ def Event_1037460711(_, flag: uint):
     AND_1.Add(FlagDisabled(3617))
     AND_1.Add(FlagEnabled(3603))
     OR_1.Add(AND_1)
-    
+
     MAIN.Await(OR_1)
-    
+
     EnableFlag(flag)
     AND_2.Add(FlagDisabled(3617))
     AND_2.Add(FlagEnabled(3603))
     OR_2.Add(AND_2)
-    
+
     MAIN.Await(not OR_2)
-    
+
     Restart()
 
 
@@ -356,9 +370,9 @@ def Event_1037460719(_, flag: uint):
     if PlayerNotInOwnWorld():
         return
     DisableFlag(flag)
-    
+
     MAIN.Await(FlagEnabled(flag))
-    
+
     if FlagEnabled(3101):
         DisableNetworkConnectedFlagRange(flag_range=(3100, 3103))
         EnableNetworkFlag(3100)

@@ -8,6 +8,8 @@ class Characters(Character):
     NomadMule = 1048410701  # c3210_9000 npc 32102542 think 32100000
     Scarab = 1048410290  # c4191_9000 npc 41912042 think 41910000
 
+    CLONE_BellBearingHunter = 1048410801
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1048411950  # AEG099

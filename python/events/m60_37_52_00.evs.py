@@ -1,4 +1,4 @@
-"""
+"""DONE
 West Altus Plateau (SW) (SE)
 
 linked:
@@ -25,9 +25,15 @@ from .entities.m60_37_52_00_entities import *
 def Constructor():
     """Event 0"""
     CommonFunc_90005600(0, grace_flag=76354, asset=1037521950, enemy_block_distance=3.0, character=0)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1037520204, region=1037522204, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1037520205, region=1037522204, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1037520206, region=1037522204, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=1037520204, region=1037522204, radius=10.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=1037520205, region=1037522204, radius=10.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=1037520206, region=1037522204, radius=10.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.DemiHuman2,
@@ -97,7 +103,9 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.DemiHuman6, region=1037522302, radius=5.0, seconds=2.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.DemiHuman6, region=1037522302, radius=5.0, seconds=2.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
         character=Characters.DemiHuman1,
@@ -114,7 +122,9 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(2, character=1037520312, region=1037522350, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        2, character=1037520312, region=1037522350, radius=10.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         3,
         character=Characters.DemiHuman4,
@@ -131,7 +141,9 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(5, character=1037520315, region=1037522350, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        5, character=1037520315, region=1037522350, radius=10.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         6,
         character=Characters.RayaLucariaScholar,
@@ -146,7 +158,9 @@ def Constructor():
 @ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1037520355, character=1037525350, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1037520355, character=1037525350, item_lot=0, reward_delay=0.0, skip_reward=0, clone=0
+    )
     CommonFunc_90005600(0, grace_flag=1037520001, asset=Assets.AEG099_060_9001, enemy_block_distance=5.0, character=0)
     CommonFunc_TriggerInactiveEnemy_WithRegion(
         0,
@@ -254,9 +268,9 @@ def Event_1035542210(_, character: uint):
     if AND_1:
         return
     DisableCharacter(character)
-    
+
     MAIN.Await(HealthRatio(Characters.RayaLucariaScholar) < 0.699999988079071)
-    
+
     EnableCharacter(character)
     AddSpecialEffect(character, 8971)
 
@@ -293,9 +307,9 @@ def Event_1037522900(
     DisableCharacter(character_2)
     DisableAsset(asset)
     Wait(1.0)
-    
+
     MAIN.Await(CharacterDead(character_1))
-    
+
     CreateTemporaryVFX(vfx_id=1060, anchor_entity=asset, model_point=200, anchor_type=CoordEntityType.Asset)
     EnableFlag(flag)
     Wait(0.5)
@@ -326,9 +340,9 @@ def Event_1037522350(_, character: uint):
     """Event 1037522350"""
     if ThisEventSlotFlagEnabled():
         return
-    
+
     MAIN.Await(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    
+
     ForceAnimation(character, 3021, wait_for_completion=True)
     EnableThisSlotFlag()
     End()
@@ -339,9 +353,9 @@ def Event_1037522370(_, character: uint):
     """Event 1037522370"""
     if ThisEventSlotFlagEnabled():
         return
-    
+
     MAIN.Await(HasAIStatus(character, ai_status=AIStatusType.Battle))
-    
+
     ForceAnimation(character, 3022, wait_for_completion=True)
     EnableThisSlotFlag()
     End()

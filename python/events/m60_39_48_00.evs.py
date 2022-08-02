@@ -1,4 +1,4 @@
-"""
+"""DONE
 Liurnia to Altus Plateau (SE) (SE)
 
 linked:
@@ -41,7 +41,10 @@ def Constructor():
     )
     Event_1039482610()
     Event_1039482611()
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1039480340, character=1039480340, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1039480340, character=Characters.LiurniaTroll, item_lot=0, reward_delay=0.0, skip_reward=0,
+        clone=Characters.CLONE_LiurniaTroll
+    )
 
 
 @ContinueOnRest(50)
@@ -97,9 +100,9 @@ def Event_1039482610():
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=1039480610))
     AND_1.Add(CharacterHasSpecialEffect(PLAYER, 485))
     AND_1.Add(CharacterHasSpecialEffect(PLAYER, 486))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableNetworkFlag(1039480610)
     DisplayDialog(text=20210, anchor_entity=0, display_distance=5.0)
     PlaySoundEffect(Assets.AEG099_251_2000, 1500, sound_type=SoundType.s_SFX)
@@ -116,9 +119,9 @@ def Event_1039482611():
         return
     OR_1.Add(ActionButtonParamActivated(action_button_id=9320, entity=Assets.AEG099_251_2000))
     OR_1.Add(FlagEnabled(1039480610))
-    
+
     MAIN.Await(OR_1)
-    
+
     if FlagEnabled(1039480610):
         return
     DisplayDialog(text=20200, anchor_entity=Assets.AEG099_251_2000)

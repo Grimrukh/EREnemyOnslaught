@@ -25,7 +25,10 @@ from .entities.m60_43_33_00_entities import *
 def Constructor():
     """Event 0"""
     CommonFunc_90005600(0, grace_flag=1043330000, asset=1043331950, enemy_block_distance=5.0, character=1043330480)
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.ErdtreeAvatar, name=904810600, npc_threat_level=18)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.ErdtreeAvatar, name=904810600, npc_threat_level=18,
+        clone_boss=Characters.CLONE_ErdtreeAvatar, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1043330800,
@@ -34,8 +37,14 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30185,
         seconds=0.0,
+        clone_boss=Characters.CLONE_ErdtreeAvatar,
     )
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.ErdtreeAvatar, radius=20.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.ErdtreeAvatar, radius=20.0, seconds=0.0, animation_id=0
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.CLONE_ErdtreeAvatar, radius=20.0, seconds=0.0, animation_id=0
+    )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.ErdtreeAvatar, npc_threat_level=18, optional_trigger_flag=0)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9003, vfx_id=100, model_point=800, right=1043338600)
     CommonFunc_90005550(0, flag=1043330530, asset=1043331530, obj_act_id=1043333530)
@@ -68,20 +77,34 @@ def Constructor():
     Event_1043332230(9, character=Characters.Bat9, region=1043332233)
     Event_1043332230(10, character=Characters.Bat10, region=1043332233)
     Event_1043332230(11, character=Characters.Bat11, region=1043332233)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1043330221, character=1043330221, item_lot=40136, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1043330221, character=1043330221, item_lot=40136, reward_delay=0.0, skip_reward=0, clone=0
+    )
 
 
 @ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
     Event_1043330050()
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1043330210, region=1043332210, radius=1.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1043330211, region=1043332211, radius=1.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=1043330210, region=1043332210, radius=1.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=1043330211, region=1043332211, radius=1.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Rat0, radius=5.0, seconds=0.0, animation_id=3005)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat1, region=1043332200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat2, region=1043332200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat3, region=1043332200, radius=5.0, seconds=0.0, animation_id=0)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Rat4, region=1043332200, radius=5.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Rat1, region=1043332200, radius=5.0, seconds=0.0, animation_id=0
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Rat2, region=1043332200, radius=5.0, seconds=0.0, animation_id=0
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Rat3, region=1043332200, radius=5.0, seconds=0.0, animation_id=0
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0, character=Characters.Rat4, region=1043332200, radius=5.0, seconds=0.0, animation_id=0
+    )
     CommonFunc_TriggerInactiveEnemy_WithRadius(0, 1043330250, 30000, 20000, 10.0, 0.0, 0, 0, 0, 0)
 
 
@@ -140,9 +163,9 @@ def Event_1043332230(_, character: uint, region: uint):
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
-    
+
     MAIN.Await(OR_2)
-    
+
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     SetSpecialStandbyEndedFlag(character=character, state=True)
     AddSpecialEffect(character, 8080)
@@ -154,9 +177,9 @@ def Event_1043332270():
     DisableNetworkSync()
     CreateProjectileOwner(entity=Characters.Dummy)
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=1043332270))
-    
+
     MAIN.Await(AND_1)
-    
+
     WaitRandomSeconds(min_seconds=1.0, max_seconds=10.0)
     if FlagEnabled(50):
         ShootProjectile(
@@ -281,5 +304,5 @@ def Event_1043332520():
 def Event_1043332680():
     """Event 1043332680"""
     MAIN.Await(FlagEnabled(1043338600))
-    
+
     CreateAssetVFX(Assets.AEG099_090_9003, vfx_id=100, model_point=800)
