@@ -10,6 +10,11 @@ class Characters(Character):
     LionGuardian = 1049370299  # c4270_9000 npc 42700040 think 42700000
     DeathRiteBird = 1049370850  # c4980_9000 npc 49801040 think 49800100
 
+    CLONE_NightsCavalry = 1049370802
+    CLONE_NightsCavalryHorse = 1049370803
+    CLONE_LionGuardian = 1049370298
+    CLONE_DeathRiteBird = 1049370851
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1049371950  # AEG099

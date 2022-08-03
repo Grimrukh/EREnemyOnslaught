@@ -17,6 +17,10 @@ class Characters(Character):
     WanderingNoble4 = 1045520304  # c4300_9004 npc 43006633 think 43006000
     GuardianGolem2 = 1045520201  # c4660_9001 npc 46600133 think 46600000
 
+    CLONE_DraconicTreeSentinel = 1045520801
+    CLONE_GuardianGolem0 = 1045520210  # c4660_9000 npc 46607033 think 46601233
+    CLONE_GuardianGolem1 = 1045520212  # c4660_9002 npc 46607033 think 46601133
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1045521950  # AEG099

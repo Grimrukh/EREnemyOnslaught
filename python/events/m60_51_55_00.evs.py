@@ -1,4 +1,4 @@
-"""
+"""TODO
 Southwest Mountaintops (NE) (NE)
 
 linked:
@@ -18,12 +18,13 @@ strings:
 from .common_func import *
 from soulstruct.eldenring.events import *
 from soulstruct.eldenring.events.instructions import *
+from .entities.m60_51_55_00_entities import *
 
 
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1051550300, character=1051550300, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1051550300, character=Characters.GuardianGolem, item_lot=0, reward_delay=0.0, skip_reward=0, clone=0)  # TODO
 
 
 @ContinueOnRest(250)

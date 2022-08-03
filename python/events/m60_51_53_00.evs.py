@@ -1,4 +1,4 @@
-"""
+"""DONE
 Southwest Mountaintops (SE) (NE)
 
 linked:
@@ -84,6 +84,7 @@ def Constructor():
         item_lot=1051530700,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,
     )
     Event_1051532220(
         0,
@@ -112,6 +113,7 @@ def Constructor():
         item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_BloodyFingerOkina,
     )
     CommonFunc_NPCInvaderSummonSign(
         0,

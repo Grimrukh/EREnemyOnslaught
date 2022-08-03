@@ -64,6 +64,10 @@ class Characters(Character):
     Ballista0 = 1051570414  # c8100_9004 npc 81000051 think 81000000
     Ballista1 = 1051570415  # c8100_9005 npc 81000051 think 81000000
 
+    CLONE_LionGuardian0 = 1051570312
+    CLONE_LionGuardian1 = 1051570313
+    CLONE_TibiaMariner = 1051570422
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1051571952  # AEG099

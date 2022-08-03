@@ -1,4 +1,4 @@
-"""
+"""DONE
 West Limgrave (SE) (NE)
 
 linked:
@@ -27,6 +27,7 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1043370000, asset=Assets.AEG099_060_9000)
     CommonFunc_NonRespawningWithReward(0, dead_flag=1043370210, character=Characters.Scarab, item_lot=40108, reward_delay=0.0, skip_reward=0, clone=0)
+
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1043370800,
@@ -34,10 +35,13 @@ def Constructor():
         item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_NightsCavalryHorse,
     )
     CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry, horse=Characters.NightsCavalryHorse)
+    CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.CLONE_NightsCavalry, horse=Characters.CLONE_NightsCavalryHorse)
     RunCommonEvent(90005477)
     Event_1043372340(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
+    Event_1043372340(1, character=Characters.CLONE_NightsCavalry, character_1=Characters.CLONE_NightsCavalryHorse)
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1043370800,
@@ -46,6 +50,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1043370400,
         seconds=0.0,
+        clone_boss=Characters.CLONE_NightsCavalry,
     )
     CommonFunc_NightsCavalryHealthBar(
         0,
@@ -53,8 +58,11 @@ def Constructor():
         name=903150600,
         npc_threat_level=10,
         horse=Characters.NightsCavalryHorse,
+        clone_cavalry=Characters.CLONE_NightsCavalry,
+        clone_horse=Characters.CLONE_NightsCavalryHorse,
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.NightsCavalry, npc_threat_level=10, optional_trigger_flag=0)
+
     Event_1043373700(0, character=1043370700, character_1=1043370701, character_2=1043370702, asset=1043376700)
     Event_1043373703(0, character=1043370700)
     Event_1043373705(0, character=1043370700)

@@ -1,4 +1,4 @@
-"""
+"""DONE
 Northeast Altus Plateau (Ashen) (SW) (SE)
 
 linked:
@@ -27,7 +27,10 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=76314, asset=Assets.AEG099_060_9000)
     Event_1045522500()
-    CommonFunc_FieldBossMusicHealthBar(0, boss=m60_45_Characters.DraconicTreeSentinel, name=903250600, npc_threat_level=12)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=m60_45_Characters.DraconicTreeSentinel, name=903250600, npc_threat_level=12,
+        clone_boss=m60_45_Characters.CLONE_DraconicTreeSentinel, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1045520800,
@@ -36,9 +39,12 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30315,
         seconds=0.0,
+        clone_boss=m60_45_Characters.CLONE_DraconicTreeSentinel,
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=m60_45_Characters.DraconicTreeSentinel, npc_threat_level=12, optional_trigger_flag=0)
+
     CommonFunc_ControlBossFog(0, boss_dead_flag=1045520800, fog_asset=m60_45_Assets.AEG099_001_9000, model_point=5, required_flag=0)
+
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=m60_45_Characters.GuardianGolem2, radius=70.0, seconds=0.0, animation_id=3006)
     Event_1045522200()
     CommonFunc_NonRespawningWithReward(
@@ -48,6 +54,7 @@ def Constructor():
         item_lot=30360,
         reward_delay=0.0,
         skip_reward=0,
+        clone=m60_45_Characters.CLONE_GuardianGolem0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -56,6 +63,7 @@ def Constructor():
         item_lot=30365,
         reward_delay=0.0,
         skip_reward=0,
+        clone=m60_45_Characters.GuardianGolem1,
     )
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=m60_45_Characters.WanderingNoble0, radius=100.0, seconds=0.0, animation_id=0)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=m60_45_Characters.WanderingNoble1, radius=100.0, seconds=0.0, animation_id=0)

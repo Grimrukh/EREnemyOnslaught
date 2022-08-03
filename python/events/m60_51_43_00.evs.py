@@ -1,4 +1,4 @@
-"""
+"""DONE
 North Caelid (NE) (NE)
 
 linked:
@@ -25,7 +25,10 @@ from .entities.m60_51_43_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1051430000, asset=Assets.AEG099_060_9000)
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.Gargoyle, name=904770600, npc_threat_level=16)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.Gargoyle, name=904770600, npc_threat_level=16,
+        clone_boss=Characters.CLONE_Gargoyle, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1051430800,
@@ -34,11 +37,14 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30425,
         seconds=0.0,
+        clone_boss=Characters.CLONE_Gargoyle,
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.Gargoyle, npc_threat_level=16, optional_trigger_flag=0)
     Event_1051432209()
-    Event_1051432200(0, character=Characters.Gargoyle, radius=55.0, seconds=0.0, animation_id=-1)
-    Event_1051430700(0, character=Characters.BeastClergyman)
+    GargoyleAITrigger(
+        0, character=Characters.Gargoyle, clone=Characters.CLONE_Gargoyle, radius=55.0, seconds=0.0, animation_id=-1
+    )
+    Event_1051430700(0, character=Characters.BeastClergyman)  # not cloned
     CommonFunc_90005703(
         0,
         character=Characters.BeastClergyman,
@@ -64,18 +70,21 @@ def Constructor():
 
 
 @RestartOnRest(1051432200)
-def Event_1051432200(_, character: uint, radius: float, seconds: float, animation_id: int):
+def GargoyleAITrigger(_, character: uint, clone: uint, radius: float, seconds: float, animation_id: int):
     """Event 1051432200"""
     if ThisEventSlotFlagEnabled():
         return
     DisableAI(character)
+    DisableAI(clone)
     AND_9.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_9.Add(CharacterHasSpecialEffect(PLAYER, 3710))
     OR_1.Add(AND_9)
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.Alive))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.BluePhantom))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
-    AND_1.Add(EntityWithinDistance(entity=PLAYER, other_entity=character, radius=radius))
+    OR_3.Add(EntityWithinDistance(entity=PLAYER, other_entity=character, radius=radius))
+    OR_3.Add(EntityWithinDistance(entity=PLAYER, other_entity=clone, radius=radius))
+    AND_1.Add(OR_3)
     AND_1.Add(FlagDisabled(1051430210))
     AND_1.Add(OR_1)
     OR_2.Add(AttackedWithDamageType(attacked_entity=character))
@@ -84,6 +93,12 @@ def Event_1051432200(_, character: uint, radius: float, seconds: float, animatio
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=6))
     OR_2.Add(CharacterHasStateInfo(character=character, state_info=260))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=clone))
+    OR_2.Add(CharacterHasStateInfo(character=clone, state_info=436))
+    OR_2.Add(CharacterHasStateInfo(character=clone, state_info=2))
+    OR_2.Add(CharacterHasStateInfo(character=clone, state_info=5))
+    OR_2.Add(CharacterHasStateInfo(character=clone, state_info=6))
+    OR_2.Add(CharacterHasStateInfo(character=clone, state_info=260))
     OR_2.Add(AND_1)
     
     MAIN.Await(OR_2)
@@ -93,10 +108,12 @@ def Event_1051432200(_, character: uint, radius: float, seconds: float, animatio
     Wait(seconds)
     if ValueNotEqual(left=animation_id, right=-1):
         ForceAnimation(character, animation_id, loop=True)
+        ForceAnimation(clone, animation_id, loop=True)
 
     # --- Label 1 --- #
     DefineLabel(1)
     EnableAI(character)
+    EnableAI(clone)
 
 
 @RestartOnRest(1051432209)

@@ -36,6 +36,7 @@ def Constructor():
         item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,  # TODO
     )
     CommonFunc_90005550(0, flag=1044310200, asset=1044311200, obj_act_id=44313200)
     CommonFunc_90005631(0, 1044311640, 61012)

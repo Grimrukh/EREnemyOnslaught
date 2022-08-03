@@ -14,6 +14,9 @@ class Characters(Character):
     DemiHumanShaman = 1043370750  # c4110_9000 npc 41109010 think 41109000 talk 223006000
     Scarab = 1043370210  # c4191_9000 npc 41912010 think 41910000
 
+    CLONE_NightsCavalry = 1043370342
+    CLONE_NightsCavalryHorse = 1043370343
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1043371950  # AEG099

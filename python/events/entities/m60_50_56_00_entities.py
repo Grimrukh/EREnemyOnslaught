@@ -1,6 +1,11 @@
 from soulstruct.eldenring.game_types import *
 
 
+class NameText(NPCName):
+    GreatWyrmTheodorix = 904911600
+    CLONE_GreatWyrmTheodorix = 904911610
+
+
 class Characters(Character):
     JunoHoslow = 1050560700  # c0000_9000 npc 523470050 think 523470000 chara 23470
     TalkDummy = 1050560100  # c1000_9000 npc 10001000 think 1 talk 2000
@@ -13,6 +18,9 @@ class Characters(Character):
     Bat3 = 1050560203  # c4200_9003 npc 42001050 think 42000000 group 1050565200,1050565210
     WanderingNoble = 1050560550  # c4300_9000 npc 43007150 think 43007000
     GreatWyrmTheodorix = 1050560800  # c4911_9000 npc 49110052 think 49100952
+
+    CLONE_GreatWyrmTheodorix = 1050560801
+    CLONE_RedWolf = 1050560301
 
 
 class Assets(Asset):

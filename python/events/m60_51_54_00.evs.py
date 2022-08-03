@@ -1,4 +1,4 @@
-"""
+"""DONE
 Southwest Mountaintops (NE) (SE)
 
 linked:
@@ -33,7 +33,7 @@ def Constructor():
         animation_id=0,
     )
     Event_1051542200(0, character=1049535200)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1051540210, character=1051540210, item_lot=40512, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1051540210, character=1051540210, item_lot=40512, reward_delay=0.0, skip_reward=0, clone=0)
 
 
 @RestartOnRest(1051542200)

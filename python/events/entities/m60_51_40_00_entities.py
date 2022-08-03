@@ -10,6 +10,8 @@ class Characters(Character):
     GuardianGolem = 1051400299  # c4660_9000 npc 46604142 think 46600000
     PutridAvatar = 1051400800  # c4811_9000 npc 48110042 think 48110000 group 1051405100
 
+    CLONE_PutridAvatar = 1051400801
+
 
 class Assets(Asset):
     AEG099_053_9000 = 1051401100  # AEG099

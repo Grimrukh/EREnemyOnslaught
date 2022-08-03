@@ -1,4 +1,4 @@
-"""
+"""DONE
 West Limgrave (SE) (SE)
 
 linked:
@@ -40,30 +40,73 @@ def Constructor():
         asset=Assets.AEG099_166_9000,
         asset_1=Assets.AEG099_090_9006,
     )
-    Event_1043362340(0, character=Characters.FlyingDragon, region=1043362340, destination=1043362360)
-    Event_1043362340(1, character=Characters.FlyingDragon, region=1043362341, destination=1043362361)
-    Event_1043362340(2, character=Characters.FlyingDragon, region=1043362342, destination=1043362362)
-    Event_1043362340(3, character=Characters.FlyingDragon, region=1043362343, destination=1043362363)
-    Event_1043362340(4, character=Characters.FlyingDragon, region=1043362344, destination=1043362364)
-    Event_1043362340(5, character=Characters.FlyingDragon, region=1043362345, destination=1043362365)
-    Event_1043362340(6, character=Characters.FlyingDragon, region=1043362346, destination=1043362366)
-    Event_1043362340(7, character=Characters.FlyingDragon, region=1043362347, destination=1043362367)
-    Event_1043362340(8, character=Characters.FlyingDragon, region=1043362348, destination=1043362368)
-    Event_1043362340(9, character=Characters.FlyingDragon, region=1043362349, destination=1043362369)
-    Event_1043362340(10, character=Characters.FlyingDragon, region=1043362350, destination=1043362370)
-    Event_1043362340(11, character=Characters.FlyingDragon, region=1043362351, destination=1043362371)
-    Event_1043362340(12, character=Characters.FlyingDragon, region=1043362352, destination=1043362372)
+    AgheelInitialPosition(
+        0, agheel=Characters.FlyingDragonAgheel, clone=Characters.CLONE_FlyingDragonAgheel, player_region=1043362340,
+        agheel_point=RegionPoints.AgheelPosition0, clone_point=RegionPoints.CLONE_AgheelPosition0
+    )
+    AgheelInitialPosition(
+        1, agheel=Characters.FlyingDragonAgheel, clone=Characters.CLONE_FlyingDragonAgheel, player_region=1043362341,
+        agheel_point=RegionPoints.AgheelPosition1, clone_point=RegionPoints.CLONE_AgheelPosition1
+    )
+    AgheelInitialPosition(
+        2, agheel=Characters.FlyingDragonAgheel, clone=Characters.CLONE_FlyingDragonAgheel, player_region=1043362342,
+        agheel_point=RegionPoints.AgheelPosition2, clone_point=RegionPoints.CLONE_AgheelPosition2
+    )
+    AgheelInitialPosition(
+        3, agheel=Characters.FlyingDragonAgheel, clone=Characters.CLONE_FlyingDragonAgheel, player_region=1043362343,
+        agheel_point=RegionPoints.AgheelPosition3, clone_point=RegionPoints.CLONE_AgheelPosition3
+    )
+    AgheelInitialPosition(
+        4, agheel=Characters.FlyingDragonAgheel, clone=Characters.CLONE_FlyingDragonAgheel, player_region=1043362344,
+        agheel_point=RegionPoints.AgheelPosition4, clone_point=RegionPoints.CLONE_AgheelPosition4
+    )
+    AgheelInitialPosition(
+        5, agheel=Characters.FlyingDragonAgheel, clone=Characters.CLONE_FlyingDragonAgheel, player_region=1043362345,
+        agheel_point=RegionPoints.AgheelPosition5, clone_point=RegionPoints.CLONE_AgheelPosition5
+    )
+    AgheelInitialPosition(
+        6, agheel=Characters.FlyingDragonAgheel, clone=Characters.CLONE_FlyingDragonAgheel, player_region=1043362346,
+        agheel_point=RegionPoints.AgheelPosition6, clone_point=RegionPoints.CLONE_AgheelPosition6
+    )
+    AgheelInitialPosition(
+        7, agheel=Characters.FlyingDragonAgheel, clone=Characters.CLONE_FlyingDragonAgheel, player_region=1043362347,
+        agheel_point=RegionPoints.AgheelPosition7, clone_point=RegionPoints.CLONE_AgheelPosition7
+    )
+    AgheelInitialPosition(
+        8, agheel=Characters.FlyingDragonAgheel, clone=Characters.CLONE_FlyingDragonAgheel, player_region=1043362348,
+        agheel_point=RegionPoints.AgheelPosition8, clone_point=RegionPoints.CLONE_AgheelPosition8
+    )
+    AgheelInitialPosition(
+        9, agheel=Characters.FlyingDragonAgheel, clone=Characters.CLONE_FlyingDragonAgheel, player_region=1043362349,
+        agheel_point=RegionPoints.AgheelPosition9, clone_point=RegionPoints.CLONE_AgheelPosition9
+    )
+    AgheelInitialPosition(
+        10, agheel=Characters.FlyingDragonAgheel, clone=Characters.CLONE_FlyingDragonAgheel, player_region=1043362350,
+        agheel_point=RegionPoints.AgheelPosition10, clone_point=RegionPoints.CLONE_AgheelPosition10
+    )
+    AgheelInitialPosition(
+        11, agheel=Characters.FlyingDragonAgheel, clone=Characters.CLONE_FlyingDragonAgheel, player_region=1043362351,
+        agheel_point=RegionPoints.AgheelPosition11, clone_point=RegionPoints.CLONE_AgheelPosition11
+    )
+    AgheelInitialPosition(
+        12, agheel=Characters.FlyingDragonAgheel, clone=Characters.CLONE_FlyingDragonAgheel, player_region=1043362352,
+        agheel_point=RegionPoints.AgheelPosition12, clone_point=RegionPoints.CLONE_AgheelPosition12
+    )
     CommonFunc_FieldBossNonRespawningWithRewardAndMessage(
         0,
         dead_flag=1043360800,
         extra_flag_to_enable=0,
-        boss=Characters.FlyingDragon,
+        boss=Characters.FlyingDragonAgheel,
         boss_banner_choice=1,
         item_lot=30110,
         message=30060,
         seconds=0.0,
+        clone_boss=Characters.CLONE_FlyingDragonAgheel,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.FlyingDragon, name=904500600, npc_threat_level=25)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.FlyingDragonAgheel, name=NameText.FlyingDragonAgheel, npc_threat_level=25,
+        clone_boss=Characters.CLONE_FlyingDragonAgheel, clone_name=NameText.CLONE_FlyingDragonAgheel,
+    )
     Event_1043362380()
     Event_1043362510(0, asset=Assets.AEG099_290_9001, region=1043362510, flag=1043362500, obj_act_id=1043363600)
     CommonFunc_90005781(
@@ -105,14 +148,30 @@ def Constructor():
 def Preconstructor():
     """Event 50"""
     DisableBackread(Characters.YuraHunterofBloodyFingers)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble0, radius=20.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble1, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble2, radius=20.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble3, radius=20.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble4, radius=20.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble5, radius=20.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble6, radius=20.0, seconds=0.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.WanderingNoble7, radius=20.0, seconds=0.0, animation_id=-1)
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.WanderingNoble0, radius=20.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.WanderingNoble1, radius=10.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.WanderingNoble2, radius=20.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.WanderingNoble3, radius=20.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.WanderingNoble4, radius=20.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.WanderingNoble5, radius=20.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.WanderingNoble6, radius=20.0, seconds=0.0, animation_id=-1
+    )
+    CommonFunc_TriggerEnemyAI_WithRadius(
+        0, character=Characters.WanderingNoble7, radius=20.0, seconds=0.0, animation_id=-1
+    )
     CommonFunc_TriggerEnemyAI_WithRadius(0, 1043360200, 5.0, 0.0, -1)
 
 
@@ -162,9 +221,9 @@ def Event_1043362220(
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagEnabled(flag_1))
     AND_1.Add(EntityWithinDistance(entity=character, other_entity=PLAYER, radius=radius))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableAsset(asset)
     EnableAsset(asset_1)
     EnableTreasure(asset=asset)
@@ -182,9 +241,9 @@ def Event_1043362221(_, character: uint, flag: uint, flag_1: uint, animation_id:
     AND_1.Add(CharacterType(PLAYER, character_type=CharacterType.Alive))
     AND_1.Add(EntityWithinDistance(entity=character, other_entity=PLAYER, radius=7.0))
     AND_1.Add(FlagEnabled(flag_1))
-    
+
     MAIN.Await(AND_1)
-    
+
     ForceAnimation(character, animation_id)
     ForceAnimation(asset, 1)
     Wait(3.799999952316284)
@@ -198,18 +257,31 @@ def Event_1043362221(_, character: uint, flag: uint, flag_1: uint, animation_id:
 
 
 @RestartOnRest(1043362340)
-def Event_1043362340(_, character: uint, region: uint, destination: uint):
+def AgheelInitialPosition(
+    _,
+    agheel: uint,
+    clone: uint,
+    player_region: uint,
+    agheel_point: uint,
+    clone_point: uint,
+):
     """Event 1043362340"""
     if FlagEnabled(1043360340):
-        EnableCharacter(character)
-        EnableAnimations(character)
+        EnableCharacter(agheel)
+        EnableAnimations(agheel)
+        EnableCharacter(clone)
+        EnableAnimations(clone)
         EnableNetworkFlag(1043362379)
         End()
-    DisableCharacter(character)
-    DisableAnimations(character)
-    ForceAnimation(character, 30005, loop=True)
+    DisableCharacter(agheel)
+    DisableAnimations(agheel)
+    ForceAnimation(agheel, 30005, loop=True)
+    DisableCharacter(clone)
+    DisableAnimations(clone)
+    ForceAnimation(clone, 30005, loop=True)
+
     AND_1.Add(FlagDisabled(1043360340))
-    AND_1.Add(CharacterInsideRegion(character=PLAYER, region=region))
+    AND_1.Add(CharacterInsideRegion(character=PLAYER, region=player_region))
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
     OR_1.Add(AND_15)
@@ -217,13 +289,17 @@ def Event_1043362340(_, character: uint, region: uint, destination: uint):
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.GrayPhantom))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
-    Move(character, destination=destination, destination_type=CoordEntityType.Region, copy_draw_parent=character)
-    EnableCharacter(character)
-    EnableAnimations(character)
-    ForceAnimation(character, 20005, loop=True)
+
+    Move(agheel, destination=agheel_point, destination_type=CoordEntityType.Region, copy_draw_parent=agheel)
+    Move(clone, destination=clone_point, destination_type=CoordEntityType.Region, copy_draw_parent=agheel)
+    EnableCharacter(agheel)
+    EnableAnimations(agheel)
+    ForceAnimation(agheel, 20005, loop=True)
+    EnableCharacter(clone)
+    EnableAnimations(clone)
+    ForceAnimation(clone, 20005, loop=True)
     EnableNetworkFlag(1043360340)
     End()
 
@@ -243,9 +319,9 @@ def Event_1043362380():
     DefineLabel(0)
     OR_1.Add(FlagEnabled(1043362379))
     OR_1.Add(FlagEnabled(1043360341))
-    
+
     MAIN.Await(OR_1)
-    
+
     DisableCharacter(1043365340)
     DisableAnimations(1043365340)
     DisableAI(1043365340)
@@ -264,9 +340,9 @@ def Event_1043362510(_, asset: uint, region: uint, flag: uint, obj_act_id: uint)
     OR_1.Add(AssetActivated(obj_act_id=obj_act_id))
     OR_1.Add(MultiplayerPending())
     OR_1.Add(Multiplayer())
-    
+
     MAIN.Await(OR_1)
-    
+
     GotoIfMultiplayerPending(Label.L1)
     GotoIfMultiplayer(Label.L1)
     EnableFlag(flag)
@@ -340,9 +416,9 @@ def Event_1043362510(_, asset: uint, region: uint, flag: uint, obj_act_id: uint)
     AND_2.Add(not OR_2)
     OR_3.Add(Multiplayer())
     AND_2.Add(not OR_3)
-    
+
     MAIN.Await(AND_2)
-    
+
     EnableAssetActivation(asset, obj_act_id=-1)
     Restart()
 
@@ -357,9 +433,9 @@ def Event_1043362651(_, tutorial_param_id: int, flag: uint, flag_1: uint, flag_2
     AND_1.Add(FlagEnabled(flag_1))
     AND_1.Add(FlagDisabled(flag))
     AND_1.Add(Singleplayer())
-    
+
     MAIN.Await(AND_1)
-    
+
     if Multiplayer():
         return
     if FlagEnabled(flag):
@@ -395,9 +471,9 @@ def Event_1043362652(_, tutorial_param_id: int, flag: uint, flag_1: uint):
     AND_1.Add(Singleplayer())
     AND_1.Add(InsideMap(game_map=WEST_LIMGRAVE_SE_SE))
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     if FlagEnabled(flag):
         return
     EnableFlag(flag)
@@ -416,9 +492,9 @@ def Event_1043362653(_, tutorial_param_id: int, flag: uint, flag_1: uint, tutori
     AND_1.Add(Singleplayer())
     AND_1.Add(InsideMap(game_map=WEST_LIMGRAVE_SE_SE))
     AND_1.Add(PlayerDoesNotHaveGood(9116, including_storage=True))
-    
+
     MAIN.Await(AND_1)
-    
+
     if Multiplayer():
         return
     EnableFlag(flag_1)
@@ -450,9 +526,9 @@ def Event_1043362654(_, tutorial_param_id: int, flag: uint):
     AND_1.Add(PlayerDoesNotHaveGood(9111, including_storage=True))
     AND_1.Add(InsideMap(game_map=WEST_LIMGRAVE_SE_SE))
     AND_1.Add(OR_1)
-    
+
     MAIN.Await(AND_1)
-    
+
     if Multiplayer():
         return
     Wait(1.0)
@@ -469,9 +545,9 @@ def Event_1043363700():
         return
     if FlagEnabled(1043360800):
         return
-    
-    MAIN.Await(AttackedWithDamageType(attacked_entity=Characters.FlyingDragon, attacker=PLAYER))
-    
+
+    MAIN.Await(AttackedWithDamageType(attacked_entity=Characters.FlyingDragonAgheel, attacker=PLAYER))
+
     EnableFlag(1043359258)
     End()
 
@@ -502,9 +578,9 @@ def Event_1043363702(_, entity: uint):
     AND_1.Add(EntityWithinDistance(entity=entity, other_entity=20000, radius=10.0))
     AND_1.Add(FlagEnabled(1043360340))
     AND_1.Add(FlagEnabled(1043359256))
-    
+
     MAIN.Await(AND_1)
-    
+
     if FlagDisabled(3620):
         return
     if FlagEnabled(1043360800):
@@ -529,9 +605,9 @@ def Event_1043363703(_, character: uint, other_entity: uint):
     AND_1.Add(FlagEnabled(1043362700))
     OR_2.Add(AND_1)
     OR_2.Add(FlagEnabled(1043360800))
-    
+
     MAIN.Await(OR_2)
-    
+
     if FlagEnabled(1043360800):
         return
     SendNPCSummonHome(character=character)
@@ -551,9 +627,9 @@ def Event_1043363704():
     OR_1.Add(FlagEnabled(3626))
     if not OR_1:
         return
-    
+
     MAIN.Await(FlagEnabled(1043360800))
-    
+
     if FlagEnabled(1043362700):
         EnableFlag(1043369201)
     DisableFlag(1043369200)

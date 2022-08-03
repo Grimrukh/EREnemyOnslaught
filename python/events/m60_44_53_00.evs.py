@@ -1,4 +1,4 @@
-"""
+"""TODO
 Northeast Altus Plateau (SW) (NW)
 
 linked:
@@ -24,8 +24,20 @@ from .entities.m60_44_53_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DeathRiteBird, name=904980605, npc_threat_level=24)
-    CommonFunc_FieldBossNonRespawningWithReward(0, 1044530800, 0, 1044530800, 0, 1044530300, 0.0)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.DeathRiteBird, name=904980605, npc_threat_level=24,
+        clone_boss=0, clone_name=0,  # TODO
+    )
+    CommonFunc_FieldBossNonRespawningWithReward(
+        0,
+        dead_flag=1044530800,
+        extra_flag_to_enable=0,
+        boss=Characters.DeathRiteBird,
+        boss_banner_choice=0,
+        item_lot=1044530300,
+        seconds=0.0,
+        clone_boss=0,  # TODO
+    )
 
 
 @ContinueOnRest(50)

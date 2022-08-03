@@ -1,4 +1,4 @@
-"""
+"""TODO: Bell Bearing Hunter
 North Altus Plateau (SE) (NE)
 
 linked:
@@ -84,7 +84,9 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.BellBearingHunter, name=903100602, npc_threat_level=10)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.BellBearingHunter, name=903100602, npc_threat_level=10, clone_boss=0, clone_name=0
+    )  # TODO
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1043530800,
@@ -93,6 +95,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1043530400,
         seconds=0.0,
+        clone_boss=0,  # TODO
     )
     CommonFunc_TriggerBellBearingHunter(
         0,
@@ -100,6 +103,7 @@ def Constructor():
         hunter=Characters.BellBearingHunter,
         region=1043532400,
         required_flag=1043532708,
+        clone=0,  # TODO
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.BellBearingHunter, npc_threat_level=10, optional_trigger_flag=0)
     CommonFunc_90005702(0, character=Characters.Merchant, flag=4763, first_flag=4760, last_flag=4763)

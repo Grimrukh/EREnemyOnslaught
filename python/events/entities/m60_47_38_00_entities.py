@@ -23,6 +23,8 @@ class Characters(Character):
     FungalSorcerer0 = 1047380450  # c4385_9000 npc 43850240 think 43850000
     FungalSorcerer1 = 1047382459  # c4385_9009 npc 43850140 think 43850000
 
+    CLONE_LionGuardian = 1047380297
+
 
 class Assets(Asset):
     AEG030_017_2000 = 1047381580  # AEG030

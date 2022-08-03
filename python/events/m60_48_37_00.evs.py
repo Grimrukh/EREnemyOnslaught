@@ -1,4 +1,4 @@
-"""
+"""DONE
 South Caelid (SW) (NW)
 
 linked:
@@ -55,7 +55,22 @@ def Constructor():
         trigger_on_ai_unknown5=0,
         trigger_on_ai_unknown6=0,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DecayingEkzykes, name=904501600, npc_threat_level=25)
+    CommonFunc_TriggerInactiveEnemy_WithRadius(
+        0,
+        character=Characters.CLONE_DecayingEkzykes,
+        inactive_animation=30000,
+        active_animation=20000,
+        radius=50.0,
+        delay=0.0,
+        disable_gravity_collision=0,
+        trigger_on_ai_battle=0,
+        trigger_on_ai_unknown5=0,
+        trigger_on_ai_unknown6=0,
+    )
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.DecayingEkzykes, name=NameText.DecayingEkzykes, npc_threat_level=25,
+        clone_boss=Characters.CLONE_DecayingEkzykes, clone_name=NameText.CLONE_DecayingEkzykes,
+    )
     CommonFunc_FieldBossNonRespawningWithRewardAndMessage(
         0,
         dead_flag=1048370800,
@@ -65,6 +80,7 @@ def Constructor():
         item_lot=30400,
         message=30064,
         seconds=0.0,
+        clone_boss=Characters.CLONE_DecayingEkzykes,
     )
     Event_1048372200(
         0,
@@ -74,7 +90,7 @@ def Constructor():
         region_1=1048372298,
         region_2=1048372297,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1048370299, character=1048370299, item_lot=40406, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1048370299, character=Characters.Scarab, item_lot=40406, reward_delay=0.0, skip_reward=0, clone=0)
 
 
 @ContinueOnRest(50)

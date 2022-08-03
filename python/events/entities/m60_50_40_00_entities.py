@@ -4,7 +4,7 @@ from soulstruct.eldenring.game_types import *
 class Characters(Character):
     TalkDummy0 = 1050400950  # c1000_9000 npc 10000000 think 1 talk 1000
     TalkDummy1 = 1050400100  # c1000_9001 npc 10001000 think 1 talk 2000
-    LargeDragonbarrowDragon = 1050400800  # c4504_9000 npc 45040042 think 45040000 group 1050405100
+    Greyoll = 1050400800  # c4504_9000 npc 45040042 think 45040000 group 1050405100
     DragonbarrowDragon0 = 1050400200  # c4505_9000 npc 45050042 think 45050000
     DragonbarrowDragon1 = 1050400201  # c4505_9001 npc 45050042 think 45050000
     DragonbarrowDragon2 = 1050400202  # c4505_9002 npc 45050042 think 45050000

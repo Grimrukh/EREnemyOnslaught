@@ -7663,9 +7663,10 @@ def CommonFunc_TriggerBellBearingHunter(
     EnableCharacter(hunter)
     EnableBackread(hunter)
     ForceAnimation(hunter, 20000)
-    EnableCharacter(clone)
-    EnableBackread(clone)
-    ForceAnimation(clone, 20000)
+    if clone != 0:
+        EnableCharacter(clone)
+        EnableBackread(clone)
+        ForceAnimation(clone, 20000)
     End()
 
 
@@ -9032,7 +9033,8 @@ def CommonFunc_NightsCavalryHealthBar(
     """CommonFunc 90005871"""
     DisableNetworkSync()
     OR_1.Add(HasAIStatus(nights_cavalry, ai_status=AIStatusType.Battle))
-    OR_1.Add(HasAIStatus(clone_cavalry, ai_status=AIStatusType.Battle))
+    if clone_cavalry != 0:
+        OR_1.Add(HasAIStatus(clone_cavalry, ai_status=AIStatusType.Battle))
     AND_1.Add(OR_1)
     AND_1.Add(FieldBattleMusicEnabled(npc_threat_level=npc_threat_level))
     AND_1.Add(FlagDisabled(9000))
@@ -9047,24 +9049,31 @@ def CommonFunc_NightsCavalryHealthBar(
     DefineLabel(0)
     EnableFlag(9290)
     Wait(1.0)
-    EnableBossHealthBar(nights_cavalry, name=name, bar_slot=1)
-    EnableBossHealthBar(clone_cavalry, name=name, bar_slot=0)
+    if clone_cavalry != 0:
+        EnableBossHealthBar(nights_cavalry, name=name, bar_slot=1)
+        EnableBossHealthBar(clone_cavalry, name=name, bar_slot=0)
+    else:
+        EnableBossHealthBar(nights_cavalry, name=name, bar_slot=0)
     if PlayerInOwnWorld():
         SetNetworkUpdateAuthority(nights_cavalry, authority_level=UpdateAuthority.Forced)
         SetNetworkUpdateRate(nights_cavalry, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-        SetNetworkUpdateAuthority(clone_cavalry, authority_level=UpdateAuthority.Forced)
-        SetNetworkUpdateRate(clone_cavalry, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
         SetNetworkUpdateAuthority(horse, authority_level=UpdateAuthority.Forced)
         SetNetworkUpdateRate(horse, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-        SetNetworkUpdateAuthority(clone_horse, authority_level=UpdateAuthority.Forced)
-        SetNetworkUpdateRate(clone_horse, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        if clone_cavalry != 0:
+            SetNetworkUpdateAuthority(clone_cavalry, authority_level=UpdateAuthority.Forced)
+            SetNetworkUpdateRate(clone_cavalry, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        if clone_horse != 0:
+            SetNetworkUpdateAuthority(clone_horse, authority_level=UpdateAuthority.Forced)
+            SetNetworkUpdateRate(clone_horse, is_fixed=True, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
     OR_4.Add(HasAIStatus(nights_cavalry, ai_status=AIStatusType.Battle))
-    OR_4.Add(HasAIStatus(clone_cavalry, ai_status=AIStatusType.Battle))
+    if clone_cavalry != 0:
+        OR_4.Add(HasAIStatus(clone_cavalry, ai_status=AIStatusType.Battle))
     AND_2.Add(OR_4)
     AND_2.Add(FieldBattleMusicEnabled(npc_threat_level=npc_threat_level))
     OR_2.Add(not AND_2)
     AND_3.Add(CharacterDead(nights_cavalry))
-    AND_3.Add(CharacterDead(clone_cavalry))
+    if clone_cavalry != 0:
+        AND_3.Add(CharacterDead(clone_cavalry))
     OR_2.Add(AND_3)
     OR_2.Add(FlagEnabled(9000))
     
@@ -9076,17 +9085,22 @@ def CommonFunc_NightsCavalryHealthBar(
     SkipLines(2)
     if FlagDisabled(9000):
         Wait(1.0)
-    DisableBossHealthBar(nights_cavalry, name=name, bar_slot=1)
-    DisableBossHealthBar(clone_cavalry, name=name, bar_slot=0)
+    if clone_cavalry != 0:
+        DisableBossHealthBar(nights_cavalry, name=name, bar_slot=1)
+        DisableBossHealthBar(clone_cavalry, name=name, bar_slot=0)
+    else:
+        DisableBossHealthBar(nights_cavalry, name=name, bar_slot=0)
     if PlayerInOwnWorld():
         SetNetworkUpdateAuthority(nights_cavalry, authority_level=UpdateAuthority.Normal)
         SetNetworkUpdateRate(nights_cavalry, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-        SetNetworkUpdateAuthority(clone_cavalry, authority_level=UpdateAuthority.Normal)
-        SetNetworkUpdateRate(clone_cavalry, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
         SetNetworkUpdateAuthority(horse, authority_level=UpdateAuthority.Normal)
         SetNetworkUpdateRate(horse, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
-        SetNetworkUpdateAuthority(clone_horse, authority_level=UpdateAuthority.Normal)
-        SetNetworkUpdateRate(clone_horse, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        if clone_cavalry != 0:
+            SetNetworkUpdateAuthority(clone_cavalry, authority_level=UpdateAuthority.Normal)
+            SetNetworkUpdateRate(clone_cavalry, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
+        if clone_horse != 0:
+            SetNetworkUpdateAuthority(clone_horse, authority_level=UpdateAuthority.Normal)
+            SetNetworkUpdateRate(clone_horse, is_fixed=False, update_rate=CharacterUpdateRate.AtLeastEveryTwoFrames)
     DisableFlag(9290)
     Restart()
 

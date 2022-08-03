@@ -1,4 +1,4 @@
-"""TODO
+"""TODO: Night's Cavalry
 Northeast Caelid (SW) (NW)
 
 linked:
@@ -29,6 +29,8 @@ def Constructor():
     Event_1052412270()
     Event_1052412270(slot=1)
     Event_1052412200(0, character=Characters.GiantBall, asset=Assets.AEG099_090_9000, region=1052412210)
+
+    # TODO
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1052410850,
@@ -36,15 +38,20 @@ def Constructor():
         item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,  # TODO
     )
     CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry, horse=Characters.NightsCavalryHorse)
+    # TODO: copy
     Event_1052412291(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
+    # TODO: copy
     CommonFunc_NightsCavalryHealthBar(
         0,
         nights_cavalry=Characters.NightsCavalry,
         name=903150606,
         npc_threat_level=10,
         horse=Characters.NightsCavalryHorse,
+        clone_cavalry=0,
+        clone_horse=0,  # TODO
     )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
@@ -54,6 +61,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1052410100,
         seconds=0.0,
+        clone_boss=0,  # TODO
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.NightsCavalry, npc_threat_level=10, optional_trigger_flag=0)
     Event_1052412510()
@@ -67,15 +75,20 @@ def Constructor():
         asset_2=Assets.AEG099_182_2000,
         flag_2=1052410512,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.FlyingDragon, name=904500601, npc_threat_level=25)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.FlyingDragonGreyll, name=NameText.FlyingDragonGreyll, npc_threat_level=25,
+        clone_boss=Characters.CLONE_FlyingDragonGreyll, clone_name=NameText.CLONE_FlyingDragonGreyll,
+
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1052410800,
         extra_flag_to_enable=0,
-        boss=Characters.FlyingDragon,
+        boss=Characters.FlyingDragonGreyll,
         boss_banner_choice=1,
         item_lot=30420,
         seconds=0.0,
+        clone_boss=Characters.CLONE_FlyingDragonGreyll,
     )
     Event_1052412230()
 
@@ -133,7 +146,12 @@ def Event_1052412220():
 def Event_1052412230():
     """Event 1052412230"""
     SetCharacterEnableDistanceWithUnknown(
-        character=Characters.FlyingDragon,
+        character=Characters.FlyingDragonGreyll,
+        enable_distance=220.0,
+        unknown_distance=40.0,
+    )
+    SetCharacterEnableDistanceWithUnknown(
+        character=Characters.CLONE_FlyingDragonGreyll,
         enable_distance=220.0,
         unknown_distance=40.0,
     )

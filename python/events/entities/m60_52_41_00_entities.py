@@ -1,6 +1,11 @@
 from soulstruct.eldenring.game_types import *
 
 
+class NameText(NPCName):
+    FlyingDragonGreyll = 904500601
+    CLONE_FlyingDragonGreyll = 904500611
+
+
 class Characters(Character):
     Dummy = 1052410270  # c0100_9000 npc 1000000 think 1000000
     TalkDummy0 = 1052410950  # c1000_9000 npc 10000000 think 1 talk 1000
@@ -9,7 +14,9 @@ class Characters(Character):
     NightsCavalryHorse = 1052410851  # c3160_9002 npc 31600042 think 31600000
     GiantBall = 1052410210  # c3330_9000 npc 33300042 think 33300020
     GravenSchool = 1052410399  # c3730_9000 npc 37300042 think 37300000
-    FlyingDragon = 1052410800  # c4500_9000 npc 45000042 think 45000942 group 1052415100
+    FlyingDragonGreyll = 1052410800  # c4500_9000 npc 45000042 think 45000942 group 1052415100
+
+    CLONE_FlyingDragonGreyll = 1052410801
 
 
 class Assets(Asset):

@@ -17,6 +17,15 @@ class Characters(Character):
     AlbinauricArcher2 = 1048570285  # c3170_9025 npc 31701052 think 31700057 group 1048575301
     DeathRiteBird = 1048570800  # c4980_9000 npc 49801052 think 49800100 group 1048575300
 
+    CLONE_DeathRiteBird = 1048570801
+    CLONE_BlackKnifeAssassin0 = 1048570240
+    CLONE_BlackKnifeAssassin1 = 1048570241
+    CLONE_BlackKnifeAssassin2 = 1048570242
+    CLONE_BlackKnifeAssassin3 = 1048570243
+    CLONE_BlackKnifeAssassin4 = 1048570244
+    CLONE_BlackKnifeAssassin5 = 1048570245
+    CLONE_BlackKnifeAssassin6 = 1048570246
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1048571950  # AEG099

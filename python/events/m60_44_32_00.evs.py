@@ -41,8 +41,12 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1044320400,
         seconds=0.0,
+        clone_boss=0,  # TODO
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DeathRiteBird, name=904980602, npc_threat_level=24)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.DeathRiteBird, name=904980602, npc_threat_level=24,
+        clone_boss=0, clone_name=0,  # TODO
+    )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1044320850,
@@ -50,10 +54,13 @@ def Constructor():
         item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,  # TODO
     )
     CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry, horse=Characters.NightsCavalryHorse)
+    # TODO: copy above
     RunCommonEvent(90005477)
     Event_1044322340(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
+    # TODO: copy above
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1044320850,
@@ -62,6 +69,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1044320410,
         seconds=0.0,
+        clone_boss=0,  # TODO
     )
     CommonFunc_NightsCavalryHealthBar(
         0,
@@ -69,14 +77,19 @@ def Constructor():
         name=903150601,
         npc_threat_level=10,
         horse=Characters.NightsCavalryHorse,
+        clone_cavalry=0,  # TODO
+        clone_horse=0,  # TODO
     )
-    CommonFunc_FieldBossMusicHeatUp(0, 1044320342, 10, 0)
+    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.NightsCavalry, npc_threat_level=10, optional_trigger_flag=0)
 
 
 @ContinueOnRest(50)
 def Preconstructor():
     """Event 50"""
-    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 1044320340, 30000, 20000, 1044322340, 10.0, 0.0, 0, 0, 0, 0)
+    CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
+        0, Characters.DeathRiteBird, 30000, 20000, 1044322340, 10.0, 0.0, 0, 0, 0, 0
+    )
+    # TODO: copy above
 
 
 @ContinueOnRest(1044322200)

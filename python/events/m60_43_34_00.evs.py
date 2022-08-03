@@ -1,4 +1,4 @@
-"""
+"""DONE
 West Weeping Peninsula (NE) (SE)
 
 linked:
@@ -42,6 +42,7 @@ def Constructor():
         item_lot=1043340400,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_DemiHumanQueen,
     )
     CommonFunc_90005706(0, character=Characters.Commoner, animation_id=930025, left=Assets.AEG099_590_9000)
     CommonFunc_90005771(0, 1043340950, 1043342700)

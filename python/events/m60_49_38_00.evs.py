@@ -1,4 +1,4 @@
-"""
+"""DONE
 South Caelid (NW) (SE)
 
 linked:
@@ -28,7 +28,7 @@ def Constructor():
     RegisterLadder(start_climbing_flag=49381504, stop_climbing_flag=49381505, asset=1049381504)
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
-        flag=1049380800,
+        flag=Flags.CommanderONeilDead,
         grace_flag=1049380000,
         character=Characters.TalkDummy1,
         asset=Assets.AEG099_060_9000,
@@ -64,7 +64,7 @@ def Constructor():
     CommonFunc_90005512(0, flag=1049380560, region=1049382560, region_1=1049382561)
     CommonFunc_90005780(
         0,
-        flag=1049380800,
+        flag=Flags.CommanderONeilDead,
         summon_flag=1049382160,
         dismissal_flag=1049382161,
         character=Characters.Human1,
@@ -74,10 +74,10 @@ def Constructor():
         unknown=1,
         right_1=0,
     )
-    CommonFunc_90005781(0, flag=1049380800, flag_1=1049382160, flag_2=1049382161, character=Characters.Human1)
+    CommonFunc_90005781(0, flag=Flags.CommanderONeilDead, flag_1=1049382160, flag_2=1049382161, character=Characters.Human1)
     CommonFunc_90005783(
         0,
-        flag=1049380800,
+        flag=Flags.CommanderONeilDead,
         flag_1=1049382160,
         flag_2=1049382161,
         character=Characters.Human1,
@@ -119,33 +119,62 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CleanrotKnight1, region=1049382311, seconds=22.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CleanrotKnight3, region=1049382311, seconds=115.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.CleanrotKnight4, region=1049382311, seconds=50.0, animation_id=-1)
-    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Commander, radius=35.0, seconds=0.0, animation_id=-1)
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.Commander, name=903050600, npc_threat_level=11)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.CommanderONeil, radius=35.0, seconds=0.0, animation_id=-1)
+
+    # COMMANDER O'NEIL
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.CommanderONeil, name=NameText.CommanderONeil, npc_threat_level=11,
+        clone_boss=Characters.CLONE_CommanderONeil, clone_name=NameText.CLONE_CommanderONeil,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
-        dead_flag=1049380800,
+        dead_flag=Flags.CommanderONeilDead,
         extra_flag_to_enable=0,
-        boss=Characters.Commander,
+        boss=Characters.CommanderONeil,
         boss_banner_choice=1,
         item_lot=30405,
         seconds=0.0,
+        clone_boss=Characters.CLONE_CommanderONeil,
     )
-    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.Commander, npc_threat_level=11, optional_trigger_flag=0)
-    Event_1049382820(
+    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.CommanderONeil, npc_threat_level=11, optional_trigger_flag=0)
+    CommanderONeilSummons1(
         0,
-        character=Characters.Commander,
-        character_1=1049385800,
-        special_effect=11130,
+        oneil=Characters.CommanderONeil,
+        summon_group=CharacterGroups.ONeilSummons1,
+        oneil_trigger_effect=11130,
         animation_id=20015,
+        done_flag=Flags.ONeilSummons1Done,
     )
-    Event_1049382824(
+    CommanderONeilSummons2(
         0,
-        character=Characters.Commander,
-        character_1=1049385801,
-        special_effect=11131,
+        oneil=Characters.CommanderONeil,
+        summon_group=CharacterGroups.ONeilSummons2,
+        oneil_trigger_effect=11131,
         animation_id=20015,
+        done_flag=Flags.ONeilSummons2Done,
     )
-    Event_1049382821(0, 1049380800, 1049385800, 1049385801, 20016)
+    ONeilSummonsDie(
+        0, Characters.CommanderONeil, CharacterGroups.ONeilSummons1, CharacterGroups.ONeilSummons2, 20016
+    )
+    CommanderONeilSummons1(
+        10,
+        oneil=Characters.CLONE_CommanderONeil,
+        summon_group=CharacterGroups.CLONE_ONeilSummons1,
+        oneil_trigger_effect=11130,
+        animation_id=20015,
+        done_flag=Flags.CLONE_ONeilSummons1Done,
+    )
+    CommanderONeilSummons2(
+        10,
+        oneil=Characters.CLONE_CommanderONeil,
+        summon_group=CharacterGroups.CLONE_ONeilSummons2,
+        oneil_trigger_effect=11131,
+        animation_id=20015,
+        done_flag=Flags.CLONE_ONeilSummons2Done,
+    )
+    ONeilSummonsDie(
+        10, Characters.CLONE_CommanderONeil, CharacterGroups.CLONE_ONeilSummons1, CharacterGroups.CLONE_ONeilSummons2, 20016
+    )
 
 
 @RestartOnRest(1049382200)
@@ -288,89 +317,90 @@ def Event_1049382399(_, character: uint, destination: uint, special_effect: int)
 
 
 @RestartOnRest(1049382820)
-def Event_1049382820(_, character: uint, character_1: uint, special_effect: int, animation_id: int):
+def CommanderONeilSummons1(
+    _, oneil: uint, summon_group: uint, oneil_trigger_effect: int, animation_id: int, done_flag: int):
     """Event 1049382820"""
-    GotoIfFlagDisabled(Label.L0, flag=1049380800)
-    DisableCharacter(character_1)
-    DisableAnimations(character_1)
-    Kill(character_1)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.CommanderONeilDead)
+    DisableCharacter(summon_group)
+    DisableAnimations(summon_group)
+    Kill(summon_group)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    GotoIfFlagEnabled(Label.L1, flag=1049382300)
-    DisableAI(character_1)
-    DisableCharacter(character_1)
-    AND_1.Add(CharacterHasSpecialEffect(character, special_effect))
-    AND_1.Add(CharacterAlive(character))
+    GotoIfFlagEnabled(Label.L1, flag=done_flag)
+    DisableAI(summon_group)
+    DisableCharacter(summon_group)
+    AND_1.Add(CharacterHasSpecialEffect(oneil, oneil_trigger_effect))
+    AND_1.Add(CharacterAlive(oneil))
     
     MAIN.Await(AND_1)
     
-    AICommand(character, command_id=-1, command_slot=0)
+    AICommand(oneil, command_id=-1, command_slot=0)
 
     # --- Label 1 --- #
     DefineLabel(1)
-    EnableCharacter(character_1)
-    EnableAnimations(character_1)
-    EnableAI(character_1)
-    if FlagDisabled(1049382300):
-        EnableFlag(1049382300)
-        ForceAnimation(character_1, animation_id, wait_for_completion=True)
+    EnableCharacter(summon_group)
+    EnableAnimations(summon_group)
+    EnableAI(summon_group)
+    if FlagDisabled(done_flag):
+        EnableFlag(done_flag)
+        ForceAnimation(summon_group, animation_id, wait_for_completion=True)
 
 
 @RestartOnRest(1049382821)
-def Event_1049382821(_, character: uint, character_1: uint, character_2: uint, animation_id: int):
+def ONeilSummonsDie(_, oneil: uint, summon_group_1: uint, summon_group_2: uint, animation_id: int):
     """Event 1049382821"""
-    GotoIfFlagDisabled(Label.L0, flag=character)
-    DisableCharacter(character_1)
-    DisableAnimations(character_1)
-    Kill(character_1)
+    GotoIfFlagDisabled(Label.L0, flag=oneil)
+    DisableCharacter(summon_group_1)
+    DisableAnimations(summon_group_1)
+    Kill(summon_group_1)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    OR_1.Add(CharacterDead(character))
+    OR_1.Add(CharacterDead(oneil))
     
     MAIN.Await(OR_1)
     
-    ForceAnimation(character_1, animation_id, skip_transition=True)
-    ForceAnimation(character_2, animation_id, skip_transition=True)
+    ForceAnimation(summon_group_1, animation_id, skip_transition=True)
+    ForceAnimation(summon_group_2, animation_id, skip_transition=True)
     Wait(3.0)
-    DisableCharacter(character_1)
-    DisableAnimations(character_1)
-    Kill(character_1)
-    DisableCharacter(character_2)
-    DisableAnimations(character_2)
-    Kill(character_2)
+    DisableCharacter(summon_group_1)
+    DisableAnimations(summon_group_1)
+    Kill(summon_group_1)
+    DisableCharacter(summon_group_2)
+    DisableAnimations(summon_group_2)
+    Kill(summon_group_2)
     End()
 
 
 @RestartOnRest(1049382824)
-def Event_1049382824(_, character: uint, character_1: uint, special_effect: int, animation_id: int):
+def CommanderONeilSummons2(_, oneil: uint, summon_group: uint, oneil_trigger_effect: int, animation_id: int, done_flag: int):
     """Event 1049382824"""
-    GotoIfFlagDisabled(Label.L0, flag=1049380800)
-    DisableCharacter(character_1)
-    DisableAnimations(character_1)
-    Kill(character_1)
+    GotoIfFlagDisabled(Label.L0, flag=Flags.CommanderONeilDead)
+    DisableCharacter(summon_group)
+    DisableAnimations(summon_group)
+    Kill(summon_group)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    GotoIfFlagEnabled(Label.L1, flag=1049382301)
-    DisableAI(character_1)
-    DisableCharacter(character_1)
-    AND_1.Add(CharacterHasSpecialEffect(character, special_effect))
-    AND_1.Add(CharacterAlive(character))
+    GotoIfFlagEnabled(Label.L1, flag=done_flag)
+    DisableAI(summon_group)
+    DisableCharacter(summon_group)
+    AND_1.Add(CharacterHasSpecialEffect(oneil, oneil_trigger_effect))
+    AND_1.Add(CharacterAlive(oneil))
     
     MAIN.Await(AND_1)
     
-    AICommand(character, command_id=-1, command_slot=0)
+    AICommand(oneil, command_id=-1, command_slot=0)
 
     # --- Label 1 --- #
     DefineLabel(1)
-    EnableCharacter(character_1)
-    EnableAnimations(character_1)
-    EnableAI(character_1)
-    if FlagDisabled(1049382301):
-        EnableFlag(1049382301)
-        ForceAnimation(character_1, animation_id, wait_for_completion=True)
+    EnableCharacter(summon_group)
+    EnableAnimations(summon_group)
+    EnableAI(summon_group)
+    if FlagDisabled(done_flag):
+        EnableFlag(done_flag)
+        ForceAnimation(summon_group, animation_id, wait_for_completion=True)

@@ -1,4 +1,4 @@
-"""
+"""TODO
 Northwest Mountaintops (SE) (NW)
 
 linked:
@@ -35,9 +35,12 @@ def Constructor():
         left=0,
         left_1=0,
         left_2=0,
-        left_3=0,
+        left_3=0,  # TODO: clone
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DeathRiteBird, name=904980600, npc_threat_level=24)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.DeathRiteBird, name=904980600, npc_threat_level=24,
+        clone_boss=0, clone_name=0,  # TODO
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1050570800,
@@ -46,8 +49,12 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30530,
         seconds=0.0,
+        clone_boss=0,  # TODO
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.PutridAvatar, name=904811600, npc_threat_level=18)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.PutridAvatar, name=904811600, npc_threat_level=18,
+        clone_boss=0, clone_name=0,  # TODO
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1050570850,
@@ -56,6 +63,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30555,
         seconds=0.0,
+        clone_boss=0,  # TODO
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.PutridAvatar, npc_threat_level=18, optional_trigger_flag=0)
     Event_1050572320(0, character=Characters.GiantSkeletonTorso, destination=1051570320, special_effect=5030)

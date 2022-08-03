@@ -1,4 +1,4 @@
-"""
+"""DONE
 Northwest Caelid (SE) (SE)
 
 linked:
@@ -584,7 +584,10 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.PutridCorpseBare7, region=1047402336, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=1047400468, region=1047402468, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1047400391, radius=60.0, seconds=0.0, animation_id=-1)
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.PutridAvatar, name=904811602, npc_threat_level=18)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.PutridAvatar, name=904811602, npc_threat_level=18,
+        clone_boss=Characters.CLONE_PutridAvatar, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1047400800,
@@ -593,6 +596,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30410,
         seconds=0.0,
+        clone_boss=Characters.CLONE_PutridAvatar,
     )
     CommonFunc_FieldBossMusicHeatUp(0, 1047400800, 18, 0)
 

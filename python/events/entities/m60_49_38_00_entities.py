@@ -1,13 +1,33 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    CommanderONeilDead = 1049380800
+    ONeilSummons1Done = 1049382300
+    ONeilSummons2Done = 1049382301
+    CLONE_ONeilSummons1Done = 1049382302
+    CLONE_ONeilSummons2Done = 1049382303
+
+
+class NameText(NPCName):
+    CommanderONeil = 903050600
+    CLONE_CommanderONeil = 903050610
+
+
+class CharacterGroups(Character):
+    ONeilSummons1 = 1049385800
+    ONeilSummons2 = 1049385801
+    CLONE_ONeilSummons1 = 1049385802
+    CLONE_ONeilSummons2 = 1049385803
+
+
 class Characters(Character):
     Human0 = 1049380299  # c0000_9001 npc 1000000 think 1000000
     Human1 = 1049380700  # c0000_9003 npc 533900040 think 533900000 chara 23901
     TalkDummy0 = 1049380100  # c1000_9000 npc 10001000 think 1 talk 2000
     TalkDummy1 = 1049380950  # c1000_9001 npc 10000000 think 1 talk 1000
     TalkDummy2 = 1049380951  # c1000_9004 npc 10000000 think 1 talk 1000
-    Commander = 1049380800  # c3050_9000 npc 30500140 think 30500940 group 1049385100
+    CommanderONeil = 1049380800  # c3050_9000 npc 30500140 think 30500940 group 1049385100
     RayaLucariaScholar0 = 1049380200  # c3702_9000 npc 37022140 think 37020000
     RayaLucariaScholar1 = 1049380201  # c3702_9001 npc 37022140 think 37020000
     RayaLucariaScholar2 = 1049380202  # c3702_9002 npc 37021140 think 37020000
@@ -18,6 +38,8 @@ class Characters(Character):
     CleanrotKnight4 = 1049380313  # c3800_9013 npc 38000040 think 38000000
     Scarab = 1049380290  # c4191_9000 npc 41912040 think 41910000
     DeathRiteBird = 1049380399  # c4980_9000 npc 49800001 think 49800000
+
+    CLONE_CommanderONeil = 1049380801
 
 
 class Assets(Asset):

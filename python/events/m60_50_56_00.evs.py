@@ -1,4 +1,4 @@
-"""
+"""DONE
 Northwest Mountaintops (SE) (SW)
 
 linked:
@@ -25,7 +25,10 @@ from .entities.m60_50_57_00_entities import Characters as m60_50_Characters
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.GreatWyrmTheodorix, name=904911600, npc_threat_level=5)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.GreatWyrmTheodorix, name=NameText.GreatWyrmTheodorix, npc_threat_level=5,
+        clone_boss=Characters.CLONE_GreatWyrmTheodorix, clone_name=NameText.CLONE_GreatWyrmTheodorix,
+    )
     CommonFunc_FieldBossNonRespawningWithRewardAndMessage(
         0,
         dead_flag=1050560800,
@@ -35,6 +38,7 @@ def Constructor():
         item_lot=30550,
         message=30065,
         seconds=0.0,
+        clone_boss=Characters.CLONE_GreatWyrmTheodorix,
     )
     Event_1050562200(0, attacker__character=1050565200, region=1050562200)
     Event_1050562580()
@@ -90,7 +94,10 @@ def Constructor():
     Event_1050562260(0, anchor_entity=Assets.AEG099_251_9000)
     Event_1050562260(1, anchor_entity=Assets.AEG099_251_9001)
     Event_1050562260(2, anchor_entity=Assets.AEG099_251_9002)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1050560300, character=Characters.RedWolf, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1050560300, character=Characters.RedWolf, item_lot=0, reward_delay=0.0, skip_reward=0,
+        clone=Characters.CLONE_RedWolf,
+    )
     CommonFunc_90005560(0, flag=1050560500, asset=Assets.AEG099_635_9000, left=0)
     CommonFunc_90005795(
         0,

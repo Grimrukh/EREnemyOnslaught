@@ -12,6 +12,8 @@ class Characters(Character):
     MassiveFingercreeper2 = 1051530324  # c4241_9004 npc 42410150 think 42410050
     MonstrousCrow = 1051530331  # c4560_9001 npc 45601850 think 45609990
 
+    CLONE_BloodyFingerOkina = 1051530181
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1051531950  # AEG099

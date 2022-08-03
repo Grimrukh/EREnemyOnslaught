@@ -1,4 +1,4 @@
-"""
+"""TODO
 North Altus Plateau (SE) (SE)
 
 linked:
@@ -48,6 +48,7 @@ def Constructor():
         item_lot=1043520500,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,  # TODO: not cloned (700 entity)
     )
     CommonFunc_NonRespawningWithReward(0, dead_flag=1043520400, character=Characters.Scarab, item_lot=40316, reward_delay=0.0, skip_reward=0, clone=0)
     CommonFunc_90005631(0, anchor_entity=Assets.AEG099_376_1000, text=61032)

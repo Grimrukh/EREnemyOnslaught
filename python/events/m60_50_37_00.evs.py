@@ -1,4 +1,4 @@
-"""
+"""TODO: Troll
 South Caelid (SE) (NW)
 
 linked:
@@ -25,4 +25,4 @@ from .entities.m60_50_37_00_entities import *
 def Constructor():
     """Event 0"""
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.Troll, radius=100.0, seconds=0.0, animation_id=-1)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1050370299, character=1050370299, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1050370299, character=Characters.Troll, item_lot=0, reward_delay=0.0, skip_reward=0, clone=0)  # TODO

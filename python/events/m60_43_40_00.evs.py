@@ -1,4 +1,4 @@
-"""
+"""DONE
 Northwest Limgrave Coast (SE) (SE)
 
 linked:
@@ -26,7 +26,8 @@ from .entities.m60_43_40_00_entities import *
 def Constructor():
     """Event 0"""
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GuardianGolem, radius=10.0, seconds=0.0, animation_id=-1)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1043400200, character=1043400200, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.CLONE_GuardianGolem, radius=10.0, seconds=0.0, animation_id=-1)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1043400200, character=Characters.GuardianGolem, item_lot=0, reward_delay=0.0, skip_reward=0, clone=Characters.CLONE_GuardianGolem)
 
 
 @ContinueOnRest(50)
@@ -42,6 +43,10 @@ def Event_1043402200():
         return
     DisableHealthBar(Characters.GuardianGolem)
     AddSpecialEffect(Characters.GuardianGolem, 12189)
+    DisableHealthBar(Characters.CLONE_GuardianGolem)
+    AddSpecialEffect(Characters.CLONE_GuardianGolem, 12189)
     Wait(3.0)
     RemoveSpecialEffect(Characters.GuardianGolem, 12189)
+    RemoveSpecialEffect(Characters.CLONE_GuardianGolem, 12189)
     EnableHealthBar(Characters.GuardianGolem)
+    EnableHealthBar(Characters.CLONE_GuardianGolem)

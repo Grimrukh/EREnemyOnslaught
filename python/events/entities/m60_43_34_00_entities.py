@@ -16,6 +16,8 @@ class Characters(Character):
     DemiHuman4 = 1043340224  # c4100_9034 npc 41000012 think 41000000
     DemiHumanQueen = 1043340340  # c4130_9000 npc 41300012 think 41300000 group 1044345100,1043345210
 
+    CLONE_DemiHumanQueen = 1043340341
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1043341950  # AEG099

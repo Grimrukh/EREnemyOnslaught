@@ -1,4 +1,4 @@
-"""
+"""DONE
 Southwest Mountaintops (SE) (NW)
 
 linked:
@@ -32,6 +32,7 @@ def Constructor():
         item_lot=1050530700,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,
     )
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=1050538620)
     CommonFunc_90005683(0, flag=62511, asset=Assets.AEG099_057_1000, vfx_id=211, flag_1=78592, flag_2=0)

@@ -1,4 +1,4 @@
-"""
+"""DONE
 Southwest Mountaintops (NW) (SE)
 
 linked:
@@ -51,6 +51,7 @@ def Constructor():
         item_lot=1049540700,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,
     )
     CommonFunc_90005501(
         0,

@@ -1,4 +1,4 @@
-"""
+"""DONE
 North Caelid (SE) (SW)
 
 linked:
@@ -94,10 +94,11 @@ def Constructor():
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1050400800,
-        character=Characters.LargeDragonbarrowDragon,
+        character=Characters.Greyoll,
         item_lot=1050400800,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,  # not cloned
     )
     Event_1050402205()
 
@@ -111,14 +112,14 @@ def Event_1050402201(_, character: uint):
     
     MAIN.Await(CharacterDead(character))
     
-    AND_1.Add(HealthRatio(Characters.LargeDragonbarrowDragon) > 3.0)
+    AND_1.Add(HealthRatio(Characters.Greyoll) > 3.0)
     GotoIfConditionTrue(Label.L0, input_condition=AND_1)
-    AddSpecialEffect(Characters.LargeDragonbarrowDragon, 4402)
+    AddSpecialEffect(Characters.Greyoll, 4402)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    AddSpecialEffect(Characters.LargeDragonbarrowDragon, 4404)
+    AddSpecialEffect(Characters.Greyoll, 4404)
 
 
 @RestartOnRest(1050402202)
@@ -126,7 +127,7 @@ def Event_1050402202(_, character: uint):
     """Event 1050402202"""
     GotoIfFlagEnabled(Label.L0, flag=1050400599)
     
-    MAIN.Await(CharacterDead(Characters.LargeDragonbarrowDragon))
+    MAIN.Await(CharacterDead(Characters.Greyoll))
     
     EnableFlag(1050400599)
     Kill(character, award_runes=True)
@@ -140,7 +141,7 @@ def Event_1050402202(_, character: uint):
 @RestartOnRest(1050402203)
 def Event_1050402203():
     """Event 1050402203"""
-    MAIN.Await(CharacterDead(Characters.LargeDragonbarrowDragon))
+    MAIN.Await(CharacterDead(Characters.Greyoll))
     
     DestroyAsset(Assets.AEG007_476_1000)
     DisableMapCollision(collision=1050401500)
@@ -163,7 +164,7 @@ def Event_1050402205():
     if PlayerNotInOwnWorld():
         return
     
-    MAIN.Await(CharacterDead(Characters.LargeDragonbarrowDragon))
+    MAIN.Await(CharacterDead(Characters.Greyoll))
     
     Wait(2.0)
     DisplayFlashingMessage(30063)
@@ -263,7 +264,7 @@ def Event_1050402800():
     """Event 1050402800"""
     if FlagEnabled(1050400599):
         return
-    ForceAnimation(Characters.LargeDragonbarrowDragon, 30006)
+    ForceAnimation(Characters.Greyoll, 30006)
     GotoIfFlagEnabled(Label.L0, flag=1050402599)
     AND_9.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_9.Add(CharacterHasSpecialEffect(PLAYER, 3710))
@@ -274,7 +275,7 @@ def Event_1050402800():
     AND_2.Add(OR_2)
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=1050402800))
     OR_1.Add(AND_2)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.LargeDragonbarrowDragon))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Greyoll))
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DragonbarrowDragon0))
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DragonbarrowDragon1))
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DragonbarrowDragon2))
@@ -290,7 +291,7 @@ def Event_1050402800():
 
     # --- Label 0 --- #
     DefineLabel(0)
-    OR_2.Add(HasAIStatus(Characters.LargeDragonbarrowDragon, ai_status=AIStatusType.Battle))
+    OR_2.Add(HasAIStatus(Characters.Greyoll, ai_status=AIStatusType.Battle))
     OR_2.Add(HasAIStatus(Characters.DragonbarrowDragon0, ai_status=AIStatusType.Battle))
     OR_2.Add(HasAIStatus(Characters.DragonbarrowDragon1, ai_status=AIStatusType.Battle))
     OR_2.Add(HasAIStatus(Characters.DragonbarrowDragon2, ai_status=AIStatusType.Battle))
@@ -305,7 +306,7 @@ def Event_1050402800():
 
     # --- Label 1 --- #
     DefineLabel(1)
-    ForceAnimation(Characters.LargeDragonbarrowDragon, 20006)
+    ForceAnimation(Characters.Greyoll, 20006)
     Wait(20.0)
     if FlagEnabled(1050400599):
         return
@@ -320,6 +321,6 @@ def Event_1050402800():
     AddSpecialEffect(Characters.DragonbarrowDragon5, 10250)
     AddSpecialEffect(Characters.DragonbarrowDragon6, 10250)
     Wait(18.0)
-    ForceAnimation(Characters.LargeDragonbarrowDragon, 30006)
+    ForceAnimation(Characters.Greyoll, 30006)
     Wait(10.0)
     Restart()

@@ -1,4 +1,4 @@
-"""
+"""DONE
 Northwest Mountaintops (SE) (SE)
 
 linked:
@@ -50,6 +50,7 @@ def Constructor():
         item_lot=1051560700,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,
     )
     Event_1051562200(0, character=1051565200)
     Event_1051562500()

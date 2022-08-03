@@ -105,7 +105,7 @@ namespace EREnemyOnslaught
             [12050800] = new CloneInfo(12050801, new Vector4(1529.703f, -501.027f, 1248.235f, -64.391f), new Vector4(1527.465f, -501.027f, 1243.568f, -64.391f)),  // Mohg, Lord of Blood
             #endregion
 
-            // NOTE: No special entiteis to handle in m12_07_00_00 (Siofra River Start).
+            // NOTE: No special entities to handle in m12_07_00_00 (Siofra River Start).
 
             #region m12_08_00_00 (Ancestor Spirit Arena)
             [12080800] = new CloneInfo(12080801, new Vector4(1561f, -1736.050f, 1068.033f, -12.443f), new Vector4(1549.666f, -1736.050f, 1037.133f, -12.443f)),  // Ancestor Spirit
@@ -301,6 +301,16 @@ namespace EREnemyOnslaught
 
             [1043330800] = new CloneInfo(1043330801),  // Erdtree Avatar
 
+            [1043340340] = new CloneInfo(1043340341),  // Demi-Human Queen 
+
+            [1043360800] = new CloneInfo(1043360801, new Vector4(-89.866f, 65.068f, 65.892f, 21.199f)),  // Agheel
+
+            [1043370340] = new CloneInfo(1043370342, new Vector4(60.691f, 90.880f, -95.624f, -89.772f)),  // Night's Cavalry
+            [1043370341] = new CloneInfo(1043370343, new Vector4(62.261f, 90.990f, -94.327f, -87.915f)),  // and horse
+
+            [1043400200] = new CloneInfo(1043400201),  // Guardian Golem
+
+            [1047380299] = new CloneInfo(1047380297),  // Lion Guardian
             #endregion
 
             #region Liurnia
@@ -387,6 +397,10 @@ namespace EREnemyOnslaught
             [1042510300] = new CloneInfo(1042510301, new Vector4(41.110f, 880.269f, 82.568f, 50.509f), new Vector4(32.828f, 880.269f, 88.856f, 12.221f)),  // Gargoyle
 
             [1042550800] = new CloneInfo(1042550801, new Vector4(-30.954f, 968.164f, -37.932f, -11.389f)),  // Godskin Apostle
+
+            [1045520800] = new CloneInfo(1045520801, new Vector4(25.714f, 1023.759f, 45.294f, -145.248f), new Vector4(30.288f, 1024.047f, 42.166f, -145.248f)),  // Draconic Tree Sentinel
+            [1045520200] = new CloneInfo(1045520210),  // Guardian Golem
+            [1045520202] = new CloneInfo(1045520212),  // Guardian Golem
             #endregion
 
             #region Caelid
@@ -405,6 +419,21 @@ namespace EREnemyOnslaught
             [1052380240] = new CloneInfo(1052380241),  // summon
 
             [1048410800] = new CloneInfo(1048410801, new Vector4(-89.996f, 225.781f, -69.942f, -2.860f)),  // Bell-Bearing Hunter
+
+            [1047400800] = new CloneInfo(1047400801),  // Putrid Avatar
+
+            [1048370800] = new CloneInfo(1048370801, new Vector4(-22.378f, 115.230f, -50.638f, 143.753f)),  // Decaying Ekzykes
+
+            [1049370800] = new CloneInfo(1049370802),  // Night's Cavalry
+            [1049370801] = new CloneInfo(1049370803),  // and horse
+            [1049370299] = new CloneInfo(1049370298),  // Lion Guardian
+            [1049370850] = new CloneInfo(1049370851),  // Deathrite Bird
+
+            [1049380800] = new CloneInfo(1049380801, new Vector4(-25.055f, 65.975f, 46.699f, 81.940f)),  // Commander O'Neil
+
+            [1051400800] = new CloneInfo(1051400801),  // Putrid Avatar
+
+            [1051430800] = new CloneInfo(1051430801, new Vector4(-7.218f, 334.658f, -19.671f, -56.548f), new Vector4(-15.926f, 336.654f, -22.923f, -38.521f)),  // Gargoyle (Bestial Sanctum)
             #endregion
 
             #region Mountaintops
@@ -418,6 +447,26 @@ namespace EREnemyOnslaught
             [1054562823] = new CloneInfo(1054562843, new Vector4(31.460f, 1620.184f, -180.204f, 145f)),
             [1054562824] = new CloneInfo(1054562844, new Vector4(19.465f, 1620.184f, -172.957f, 125f)),
             [1054562825] = new CloneInfo(1054562845, new Vector4(63.988f, 1620.184f, -117.742f, 125.684f)),
+
+            [1048570800] = new CloneInfo(1048570801),  // Deathrite Bird
+            [1048570250] = new CloneInfo(1048570240),  // Black Knife Assassin
+            [1048570251] = new CloneInfo(1048570241),  // Black Knife Assassin
+            [1048570252] = new CloneInfo(1048570242),  // Black Knife Assassin
+            [1048570253] = new CloneInfo(1048570243),  // Black Knife Assassin
+            [1048570254] = new CloneInfo(1048570244),  // Black Knife Assassin
+            [1048570255] = new CloneInfo(1048570245),  // Black Knife Assassin
+            [1048570256] = new CloneInfo(1048570246),  // Black Knife Assassin
+
+            [1050560800] = new CloneInfo(1050560801, new Vector4(21.156f, 1255.064f, -6.692f, -133.980f)),  // Great Wyrm Theodorix
+            [1050560300] = new CloneInfo(1050560301),  // Red Wolf
+
+            [1051530180] = new CloneInfo(1051530181),  // Bloody Finger Okina
+
+            [1051570310] = new CloneInfo(1051570312),  // Lion Guardian
+            [1051570311] = new CloneInfo(1051570313),  // Lion Guardian
+            [1051570421] = new CloneInfo(1051570422),  // Tibia Mariner
+
+            [1052550390] = new CloneInfo(1052550391),  // Chief Guardian Arghanthy
             #endregion
 
             #region Catacombs
@@ -515,47 +564,7 @@ namespace EREnemyOnslaught
 
         public readonly static HashSet<int> DoNotCloneEntityIDs = new HashSet<int>()
         {
-            // TODO: Starting to seem like I should ignore any entity ending in 7XX (NPCs).
-
-            // m14_00_00_00
-            14000710,  // SorceressSellen0
-            14000712,  // SorceressSellen1
-            14000713,  // SorceressSellen2
-            14000730,  // SorceressSellen3
-            14000720,  // BoctheSeamster
-            14000740,  // SorcererThops
-            14000715,  // WitchHunterJerren0
-            14000716,  // WitchHunterJerren1
-            14000717,  // WitchHunterJerren2
-            14000700,  // RennalaNPC1
-            14000701,  // RennalaNPC2
-            14000711,  // GravenSchool (Sellen)
-
-            // Volcano Manor NPCs
-            16000710,  // Patches
-            16000730,  // KnightDiallos
-            16000750,  // RecusantBernahl
-            16000700,  // Tanith0
-            16000701,  // Tanith1
-            16000770,  // RykardHatingSpirit
-            16000720,  // RyatheScout0
-            16000722,  // RyatheScout1
-            16000740,  // Crucible Knight
-            16000741,  // Crucible Knight
-
-            // Redmane Castle NPCs
-            1051360700,  // WitchHunterJerren0
-            1051360701,  // WitchHunterJerren1
-            1051360705,  // Alexander
-            1051360715,  // LionelTheLionhearted
-            1051360725,  // GreatHornedTragoth
-            1051360730,  // Okina
-            1051360735,  // FingerMaidenTherolina
-
-            // Radahn arena NPCs
-            1052380726,  // BlaiddNPC
-            1052380699,  // CleanrotKnight
-            1052380706,  // AlexanderNPC
+            // Any entity ID ending in 7XX is ignored, unless it appears in `Clones`.
 
             // Gideon battle variants
             11050851,
@@ -565,6 +574,15 @@ namespace EREnemyOnslaught
             11050855,
             11050856,
             11050857,
+
+            // Greyoll the Giant Dragon
+            1050400800,
+
+            // Self-Copying Erdtree Avatar in Mountaintops
+            1052560800,
+            1052560801,
+            1052560802,
+            1052560803,
         };
 
         // Maps (new) Spawner Entity IDs to lists of part entity IDs and coordinates of new region X/Y/Z/rotY,
@@ -590,7 +608,7 @@ namespace EREnemyOnslaught
 
             // m11_05_00_00
             [904720010] = "Mysterious Stranger",
-            [904720011] = "Eric the Foreshadowed, Father of Merbit and Mulg, Husband of Rhonda, Uncle of Mazohr, Former Roommate of Ryktar",
+            [904720011] = "Eddy Loux, Father of Merbit and Mulg, Husband of Rhonda, Uncle of Mazohr, Former Roommate of Ryktar",
             [132401] = "Sir Goomba Ofnir, the Idiot",
 
             // m12_01_00_00
@@ -650,6 +668,11 @@ namespace EREnemyOnslaught
             [904510610] = "Ancient Dragon Larry",  // both appearances
             [904130610] = "Demi-Human Queen Morgan",
             [903560610] = "Stretch Dude",
+            [904500610] = "Flying Dragon Alberto",
+            [904501610] = "Decaying Edna",
+            [903050610] = "Commander O'Connell",
+            [904911610] = "Great Wyrm Womble-Bomble",
+            [904500611] = "Flying Dragon Graham",
 
             // Generic
             [902500300] = "Crucible Knights Ordovis and Olga",

@@ -1,4 +1,4 @@
-"""
+"""TODO: Tibia Mariner events
 Northwest Mountaintops (SE) (NE)
 
 linked:
@@ -935,7 +935,7 @@ def Constructor():
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1051570395, region=1051572275, radius=3.0, seconds=0.0, animation_id=3005)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1051570315, region=1051572315, radius=3.0, seconds=0.0, animation_id=-1)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1051570315, character=1051570315, item_lot=40508, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1051570315, character=1051570315, item_lot=40508, reward_delay=0.0, skip_reward=0, clone=0)
     Event_1051572310(
         0,
         character=Characters.LionGuardian1,
@@ -957,6 +957,7 @@ def Constructor():
         item_lot=1051570800,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_LionGuardian0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -965,6 +966,7 @@ def Constructor():
         item_lot=1051570810,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_LionGuardian1,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Wolf0, region=1051572370, radius=3.0, seconds=0.0, animation_id=0)
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
@@ -1042,6 +1044,7 @@ def Constructor():
         item_lot=1051570720,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_TibiaMariner,
     )
     Event_1051572460(
         0,

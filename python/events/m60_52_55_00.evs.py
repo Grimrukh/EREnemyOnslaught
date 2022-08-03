@@ -1,4 +1,4 @@
-"""
+"""DONE
 Southeast Mountaintops (NW) (NW)
 
 linked:
@@ -34,6 +34,14 @@ def Constructor():
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
+        character=Characters.CLONE_ChiefGuardianArghanthy,
+        region=1052552390,
+        radius=5.0,
+        seconds=0.0,
+        animation_id=0,
+    )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0,
         character=Characters.FlameGuardian1,
         region=1052552354,
         radius=5.0,
@@ -47,6 +55,7 @@ def Constructor():
         item_lot=1052550700,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_ChiefGuardianArghanthy,
     )
     Event_1052552270(
         0,

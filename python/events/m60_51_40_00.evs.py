@@ -1,4 +1,4 @@
-"""
+"""DONE
 North Caelid (SE) (SE)
 
 linked:
@@ -34,7 +34,10 @@ def Constructor():
         asset=Assets.AEG099_166_9000,
         asset_1=Assets.AEG099_990_9000,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.PutridAvatar, name=904811601, npc_threat_level=18)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.PutridAvatar, name=904811601, npc_threat_level=18,
+        clone_boss=Characters.CLONE_PutridAvatar, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1051400800,
@@ -43,6 +46,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30415,
         seconds=0.0,
+        clone_boss=Characters.CLONE_PutridAvatar,
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.PutridAvatar, npc_threat_level=18, optional_trigger_flag=0)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.ErdtreeGuardian0, region=1051402200, seconds=0.0, animation_id=-1)

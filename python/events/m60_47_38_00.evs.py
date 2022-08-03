@@ -1,4 +1,4 @@
-"""
+"""DONE
 East Limgrave (NE) (SE)
 
 linked:
@@ -174,6 +174,7 @@ def Constructor():
         item_lot=1047380700,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_LionGuardian,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=1047380301, region=1047382453, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.KindredofRot0, region=1047382302, seconds=0.0, animation_id=-1)

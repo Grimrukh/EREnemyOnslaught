@@ -7,6 +7,8 @@ class Characters(Character):
     BeastClergyman = 1051430700  # c2110_9000 npc 21109042 think 21102000 talk 202006000
     Gargoyle = 1051430800  # c4770_9000 npc 47701242 think 47706900 group 1051435100
 
+    CLONE_Gargoyle = 1051430801
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1051431950  # AEG099

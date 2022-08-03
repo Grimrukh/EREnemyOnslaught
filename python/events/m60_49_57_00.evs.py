@@ -1,4 +1,4 @@
-"""
+"""DONE
 Northwest Mountaintops (SW) (NE)
 
 linked:
@@ -70,6 +70,7 @@ def Constructor():
         item_lot=1049570710,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -78,6 +79,7 @@ def Constructor():
         item_lot=1049570700,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -86,6 +88,7 @@ def Constructor():
         item_lot=1049570720,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,
     )
     CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,

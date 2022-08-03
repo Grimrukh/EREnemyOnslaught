@@ -45,6 +45,8 @@ class Characters(Character):
     MonstrousCrow1 = 1047400260  # c4560_9010 npc 45600040 think 45600000
     PutridAvatar = 1047400800  # c4811_9000 npc 48110040 think 48110040 group 1047405100
 
+    CLONE_PutridAvatar = 1047400801
+
 
 class Assets(Asset):
     AEG099_060_9001 = 1047401950  # AEG099

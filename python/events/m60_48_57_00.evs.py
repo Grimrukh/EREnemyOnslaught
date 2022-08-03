@@ -1,4 +1,4 @@
-"""
+"""DONE
 Northwest Mountaintops (SW) (NW)
 
 linked:
@@ -70,7 +70,9 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1048570200, character=1048570200, item_lot=40526, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1048570200, character=1048570200, item_lot=40526, reward_delay=0.0, skip_reward=0, clone=0
+    )
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1048570250,
@@ -78,6 +80,7 @@ def Constructor():
         item_lot=1048570900,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_BlackKnifeAssassin0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -86,6 +89,7 @@ def Constructor():
         item_lot=1048570910,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_BlackKnifeAssassin1,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -94,6 +98,7 @@ def Constructor():
         item_lot=1048570920,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_BlackKnifeAssassin2,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -102,10 +107,12 @@ def Constructor():
         item_lot=1048570930,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_BlackKnifeAssassin3,
     )
-    Event_1048572820(
+    DeathRiteBirdTrigger(
         0,
-        character=Characters.DeathRiteBird,
+        bird=Characters.DeathRiteBird,
+        clone=Characters.CLONE_DeathRiteBird,
         animation_id=30000,
         animation_id_1=20000,
         region=1048572800,
@@ -115,7 +122,10 @@ def Constructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DeathRiteBird, name=904980607, npc_threat_level=24)
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.DeathRiteBird, name=904980607, npc_threat_level=24,
+        clone_boss=Characters.CLONE_DeathRiteBird, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1048570800,
@@ -124,7 +134,9 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1048570700,
         seconds=0.0,
+        clone_boss=Characters.CLONE_DeathRiteBird,
     )
+
     CommonFunc_90005605(
         0,
         asset=Assets.AEG099_510_9000,
@@ -169,10 +181,19 @@ def Constructor():
         seconds=0.0,
         animation_id=-1,
     )
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
+        0,
+        character=Characters.CLONE_BlackKnifeAssassin0,
+        region=1048572250,
+        radius=5.0,
+        seconds=0.0,
+        animation_id=-1,
+    )
     Event_1048572256()
     Event_1048572260()
     Event_1048572270()
-    Event_1048572275(0, character=Characters.BlackKnifeAssassin5)
+    Event_1048572275(0, character=Characters.BlackKnifeAssassin5)  # some kind of invincible ghost
+    Event_1048572275(1, character=Characters.CLONE_BlackKnifeAssassin5)
     Event_1048572580()
     Event_1048572400()
 
@@ -188,9 +209,9 @@ def Event_1048572260():
     """Event 1048572260"""
     DisableNetworkSync()
     AND_1.Add(CharacterHasSpecialEffect(20000, 416))
-    
+
     MAIN.Await(AND_1)
-    
+
     AddSpecialEffect(20000, 14508)
     Wait(1.0)
     Restart()
@@ -199,11 +220,13 @@ def Event_1048572260():
 @RestartOnRest(1048572270)
 def Event_1048572270():
     """Event 1048572270"""
-    AND_1.Add(CharacterHasSpecialEffect(Characters.BlackKnifeAssassin5, 14507))
-    
-    MAIN.Await(AND_1)
-    
+    OR_1.Add(CharacterHasSpecialEffect(Characters.BlackKnifeAssassin5, 14507))
+    OR_1.Add(CharacterHasSpecialEffect(Characters.CLONE_BlackKnifeAssassin5, 14507))
+
+    MAIN.Await(OR_1)
+
     AddSpecialEffect(Characters.BlackKnifeAssassin4, 14507)
+    AddSpecialEffect(Characters.CLONE_BlackKnifeAssassin4, 14507)
     Wait(1.0)
     Restart()
 
@@ -289,9 +312,9 @@ def Event_1048572300(
     AND_1.Add(not AND_2)
     AND_1.Add(Singleplayer())
     AND_1.Add(ActionButtonParamActivated(action_button_id=9527, entity=anchor_entity))
-    
+
     MAIN.Await(AND_1)
-    
+
     DisplayDialogAndSetFlags(
         message=30021,
         button_type=ButtonType.Yes_or_No,
@@ -373,9 +396,9 @@ def Event_1048572310():
     DisableNetworkSync()
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(ActionButtonParamActivated(action_button_id=9210, entity=Assets.AEG099_023_2000))
-    
+
     MAIN.Await(AND_1)
-    
+
     DisplayDialog(text=60100, anchor_entity=Assets.AEG099_023_2000)
     Wait(1.0)
     EnableNetworkFlag(1048570310)
@@ -398,9 +421,9 @@ def Event_1048572320(_, entity: uint):
     AND_2.Add(MultiplayerPending())
     AND_1.Add(not AND_2)
     AND_1.Add(FlagEnabled(1048570310))
-    
+
     MAIN.Await(AND_1)
-    
+
     WaitFrames(frames=1)
     ForceAnimation(entity, 1, loop=True)
     AND_11.Add(Singleplayer())
@@ -408,9 +431,9 @@ def Event_1048572320(_, entity: uint):
     AND_11.Add(not AND_12)
     OR_1.Add(not AND_11)
     OR_1.Add(FlagEnabled(1048572309))
-    
+
     MAIN.Await(OR_1)
-    
+
     WaitFrames(frames=1)
     Restart()
 
@@ -434,9 +457,9 @@ def Event_1048572350():
     AND_1.Add(FlagEnabled(1048570371))
     AND_1.Add(FlagEnabled(1048570372))
     AND_1.Add(FlagEnabled(1048570373))
-    
+
     MAIN.Await(AND_1)
-    
+
     EnableFlag(1048570350)
     Wait(2.299999952316284)
     DisplayDialog(text=30020, anchor_entity=0, display_distance=5.0)
@@ -474,7 +497,7 @@ def Event_1048572355():
     CreateAssetVFX(Assets.AEG110_264_2004, vfx_id=200, model_point=1503)
     CreateAssetVFX(Assets.AEG110_264_2005, vfx_id=200, model_point=1503)
     AND_1.Add(FlagEnabled(1048572309))
-    
+
     MAIN.Await(AND_1)
 
     # --- Label 0 --- #
@@ -502,9 +525,9 @@ def Event_1048572370(_, asset: uint, asset_1: uint, flag: uint):
     AwaitFlagEnabled(flag=1048572309)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(ActionButtonParamActivated(action_button_id=9528, entity=asset))
-    
+
     MAIN.Await(AND_1)
-    
+
     WaitFrames(frames=1)
     ForceAnimation(PLAYER, 60550)
     EnableFlag(flag)
@@ -528,9 +551,9 @@ def Event_1048572390():
         return
     OR_1.Add(ActionButtonParamActivated(action_button_id=9529, entity=Assets.AEG099_251_9000))
     OR_1.Add(FlagEnabled(1048570350))
-    
+
     MAIN.Await(OR_1)
-    
+
     if FlagEnabled(1048570350):
         return
     DisplayDialog(text=30023, anchor_entity=Assets.AEG099_251_9000)
@@ -559,9 +582,10 @@ def Event_1048572580():
 
 
 @RestartOnRest(1048572820)
-def Event_1048572820(
+def DeathRiteBirdTrigger(
     _,
-    character: uint,
+    bird: uint,
+    clone: uint,
     animation_id: int,
     animation_id_1: int,
     region: uint,
@@ -572,12 +596,16 @@ def Event_1048572820(
     left_3: uint,
 ):
     """Event 1048572820"""
-    EndIffSpecialStandbyEndedFlagEnabled(character=character)
+    EndIffSpecialStandbyEndedFlagEnabled(character=bird)
     if UnsignedNotEqual(left=left, right=0):
-        DisableGravity(character)
-        DisableCharacterCollision(character)
-    DisableAI(character)
-    ForceAnimation(character, animation_id, loop=True)
+        DisableGravity(bird)
+        DisableCharacterCollision(bird)
+        DisableGravity(clone)
+        DisableCharacterCollision(clone)
+    DisableAI(bird)
+    DisableAI(clone)
+    ForceAnimation(bird, animation_id, loop=True)
+    ForceAnimation(clone, animation_id, loop=True)
     AND_15.Add(CharacterType(PLAYER, character_type=CharacterType.BlackPhantom))
     AND_15.Add(CharacterHasSpecialEffect(PLAYER, 3710))
     OR_1.Add(AND_15)
@@ -585,80 +613,96 @@ def Event_1048572820(
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.GrayPhantom))
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=region))
-    AND_1.Add(CharacterBackreadEnabled(character))
-    OR_11.Add(CharacterHasSpecialEffect(character, 5080))
-    OR_11.Add(CharacterHasSpecialEffect(character, 5450))
+    AND_1.Add(CharacterBackreadEnabled(bird))
+    AND_1.Add(CharacterBackreadEnabled(clone))
+    OR_11.Add(CharacterHasSpecialEffect(bird, 5080))
+    OR_11.Add(CharacterHasSpecialEffect(bird, 5450))
+    OR_11.Add(CharacterHasSpecialEffect(clone, 5080))
+    OR_11.Add(CharacterHasSpecialEffect(clone, 5450))
     AND_1.Add(OR_11)
     AND_9.Add(UnsignedEqual(left=left_1, right=0))
     AND_9.Add(UnsignedEqual(left=left_2, right=0))
     AND_9.Add(UnsignedEqual(left=left_3, right=0))
     GotoIfConditionTrue(Label.L9, input_condition=AND_9)
     if UnsignedNotEqual(left=left_1, right=0):
-        OR_9.Add(HasAIStatus(character, ai_status=AIStatusType.Battle))
+        OR_9.Add(HasAIStatus(bird, ai_status=AIStatusType.Battle))
     if UnsignedNotEqual(left=left_2, right=0):
-        OR_9.Add(HasAIStatus(character, ai_status=AIStatusType.Unknown5))
+        OR_9.Add(HasAIStatus(bird, ai_status=AIStatusType.Unknown5))
     if UnsignedNotEqual(left=left_3, right=0):
-        OR_9.Add(HasAIStatus(character, ai_status=AIStatusType.Unknown4))
+        OR_9.Add(HasAIStatus(bird, ai_status=AIStatusType.Unknown4))
     AND_1.Add(OR_9)
 
     # --- Label 9 --- #
     DefineLabel(9)
-    AND_4.Add(CharacterHasSpecialEffect(character, 481))
-    AND_4.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
-    AND_4.Add(CharacterDoesNotHaveSpecialEffect(character, 90110))
-    AND_4.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
-    AND_5.Add(CharacterHasSpecialEffect(character, 482))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(character, 90120))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
-    AND_5.Add(CharacterDoesNotHaveSpecialEffect(character, 90162))
-    AND_6.Add(CharacterHasSpecialEffect(character, 483))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(character, 90140))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
-    AND_6.Add(CharacterDoesNotHaveSpecialEffect(character, 90161))
-    AND_7.Add(CharacterHasSpecialEffect(character, 484))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(character, 90130))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(character, 90161))
-    AND_7.Add(CharacterDoesNotHaveSpecialEffect(character, 90162))
-    AND_8.Add(CharacterHasSpecialEffect(character, 487))
-    AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90100))
-    AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90150))
-    AND_8.Add(CharacterDoesNotHaveSpecialEffect(character, 90160))
+    AND_4.Add(CharacterHasSpecialEffect(bird, 481))
+    AND_4.Add(CharacterDoesNotHaveSpecialEffect(bird, 90100))
+    AND_4.Add(CharacterDoesNotHaveSpecialEffect(bird, 90110))
+    AND_4.Add(CharacterDoesNotHaveSpecialEffect(bird, 90160))
+    AND_5.Add(CharacterHasSpecialEffect(bird, 482))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(bird, 90100))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(bird, 90120))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(bird, 90160))
+    AND_5.Add(CharacterDoesNotHaveSpecialEffect(bird, 90162))
+    AND_6.Add(CharacterHasSpecialEffect(bird, 483))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(bird, 90100))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(bird, 90140))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(bird, 90160))
+    AND_6.Add(CharacterDoesNotHaveSpecialEffect(bird, 90161))
+    AND_7.Add(CharacterHasSpecialEffect(bird, 484))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(bird, 90100))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(bird, 90130))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(bird, 90161))
+    AND_7.Add(CharacterDoesNotHaveSpecialEffect(bird, 90162))
+    AND_8.Add(CharacterHasSpecialEffect(bird, 487))
+    AND_8.Add(CharacterDoesNotHaveSpecialEffect(bird, 90100))
+    AND_8.Add(CharacterDoesNotHaveSpecialEffect(bird, 90150))
+    AND_8.Add(CharacterDoesNotHaveSpecialEffect(bird, 90160))
     AND_1.Add(OR_1)
     OR_2.Add(AND_1)
-    OR_2.Add(AttackedWithDamageType(attacked_entity=character))
-    OR_2.Add(CharacterHasStateInfo(character=character, state_info=436))
-    OR_2.Add(CharacterHasStateInfo(character=character, state_info=2))
-    OR_2.Add(CharacterHasStateInfo(character=character, state_info=5))
-    OR_2.Add(CharacterHasStateInfo(character=character, state_info=6))
-    OR_2.Add(CharacterHasStateInfo(character=character, state_info=260))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=bird))
+    OR_2.Add(CharacterHasStateInfo(character=bird, state_info=436))
+    OR_2.Add(CharacterHasStateInfo(character=bird, state_info=2))
+    OR_2.Add(CharacterHasStateInfo(character=bird, state_info=5))
+    OR_2.Add(CharacterHasStateInfo(character=bird, state_info=6))
+    OR_2.Add(CharacterHasStateInfo(character=bird, state_info=260))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=clone))
+    OR_2.Add(CharacterHasStateInfo(character=clone, state_info=436))
+    OR_2.Add(CharacterHasStateInfo(character=clone, state_info=2))
+    OR_2.Add(CharacterHasStateInfo(character=clone, state_info=5))
+    OR_2.Add(CharacterHasStateInfo(character=clone, state_info=6))
+    OR_2.Add(CharacterHasStateInfo(character=clone, state_info=260))
     OR_2.Add(AND_4)
     OR_2.Add(AND_5)
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
-    
+
     MAIN.Await(OR_2)
-    
+
     Wait(0.10000000149011612)
-    AND_2.Add(CharacterDoesNotHaveSpecialEffect(character, 5080))
-    AND_2.Add(CharacterDoesNotHaveSpecialEffect(character, 5450))
+    AND_2.Add(CharacterDoesNotHaveSpecialEffect(bird, 5080))
+    AND_2.Add(CharacterDoesNotHaveSpecialEffect(bird, 5450))
     GotoIfConditionTrue(Label.L0, input_condition=AND_2)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
-    SetSpecialStandbyEndedFlag(character=character, state=True)
+    SetSpecialStandbyEndedFlag(character=bird, state=True)
+    SetSpecialStandbyEndedFlag(character=clone, state=True)
     Wait(seconds)
     if UnsignedNotEqual(left=left, right=0):
-        EnableGravity(character)
-        EnableCharacterCollision(character)
-    EnableAI(character)
-    ForceAnimation(character, animation_id_1, loop=True)
+        EnableGravity(bird)
+        EnableCharacterCollision(bird)
+        EnableGravity(clone)
+        EnableCharacterCollision(clone)
+    EnableAI(bird)
+    EnableAI(clone)
+    ForceAnimation(bird, animation_id_1, loop=True)
+    ForceAnimation(clone, animation_id_1, loop=True)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     if UnsignedNotEqual(left=left, right=0):
-        EnableGravity(character)
-        EnableCharacterCollision(character)
+        EnableGravity(bird)
+        EnableCharacterCollision(bird)
+        EnableGravity(clone)
+        EnableCharacterCollision(clone)
     End()

@@ -98,6 +98,14 @@ namespace EREnemyOnslaught
                     AddNewRennalaGrace(msb);
                 }
 
+                // Duplicate Agheel regions in (43, 36).
+                if (msbFile.EndsWith("m60_43_36_00.msb.dcx"))
+                    CloneAgheelRegions(msb);
+
+                // Duplicate Commander O'Neil summons in (49, 38).
+                if (msbFile.EndsWith("m60_49_38_00.msb.dcx"))
+                    CloneONeilSummons(msb);
+
                 // Duplicate characters.
                 List<MSBE.Part.Enemy> clonedCharacters = new List<MSBE.Part.Enemy>();
                 foreach (var character in msb.Parts.Enemies)
@@ -221,6 +229,45 @@ namespace EREnemyOnslaught
             Console.WriteLine($"    REGION: '{region.Name}' ({region.EntityID}) -> '{clone.Name}' ({clone.EntityID})");
 
             return clone;
+        }
+
+        static void CloneAgheelRegions(MSBE msb)
+        {
+            Vector3 offset = new Vector3(-6f, 0f, -15f);
+
+            for (int i = 0; i < 13; i++)
+            {
+                int agheelPointEntityID = 1043362360 + i;
+                MSBE.Region originalPoint = msb.Regions.GetEntries().Find(x => x.EntityID == agheelPointEntityID);
+
+                // Duplicate.
+                MSBE.Region clonePoint = originalPoint.DeepCopy();
+                clonePoint.Name += " (Clone)";
+                clonePoint.EntityID += 20;  // e.g., 1043362362 -> 1043362382
+                clonePoint.Position += offset;
+                Console.WriteLine($"    AGHEEL REGION: '{originalPoint.Name}' ({originalPoint.EntityID}) -> '{clonePoint.Name}' ({clonePoint.EntityID})");
+                msb.Regions.Add(clonePoint);
+            }
+        }
+
+        static void CloneONeilSummons(MSBE msb)
+        {
+            List<MSBE.Part.Enemy> clones = new List<MSBE.Part.Enemy>();
+            foreach (MSBE.Part.Enemy enemy in msb.Parts.Enemies)
+            {
+                if (enemy.EntityGroupIDs[0] == 1049385800 || enemy.EntityGroupIDs[0] == 1049385801)
+                {
+                    MSBE.Part.Enemy clone = (MSBE.Part.Enemy)enemy.DeepCopy();
+                    clone.Name += " (Clone)";
+
+                    Console.WriteLine($"    O'NEIL SUMMON CHARACTER: '{enemy.Name}' -> '{clone.Name}'");
+
+                    clone.EntityGroupIDs[0] += 2;  // e.g., 1049385801 -> 1049385803
+                    clones.Add(clone);
+                }
+            }
+            foreach (MSBE.Part.Enemy clone in clones)
+                msb.Parts.Enemies.Add(clone);
         }
 
         static MSBE.Event.Generator CloneSpawner(MSBE.Event.Generator spawner, MSBE.PointParam msbRegions)

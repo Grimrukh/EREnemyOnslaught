@@ -1,4 +1,4 @@
-"""
+"""TODO: Night's Cavalry local events
 Southwest Mountaintops (NW) (NW)
 
 linked:
@@ -24,7 +24,7 @@ from .entities.m60_48_55_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1048550200, character=1048550200, item_lot=40522, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1048550200, character=1048550200, item_lot=40522, reward_delay=0.0, skip_reward=0, clone=0)
 
 
 @ContinueOnRest(200)
@@ -42,6 +42,8 @@ def Event_200():
     )
     CommonFunc_90005423(0, character=Characters.SnowTroll0)
     CommonFunc_90005423(0, character=Characters.SnowTroll1)
+
+    # TODO: Night's Cavalry (local events)
     CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry0, horse=Characters.NightsCavalryHorse0)
     CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry1, horse=Characters.NightsCavalryHorse1)
     Event_1248552820(0, character=Characters.NightsCavalry0, seconds=0.0)

@@ -1,4 +1,4 @@
-"""
+"""DONE
 South Caelid (SW) (NE)
 
 linked:
@@ -26,6 +26,7 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=1049370000, asset=Assets.AEG099_060_9000)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=1049370200, radius=20.0, seconds=0.0, animation_id=-1)
+
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1049370800,
@@ -33,15 +34,20 @@ def Constructor():
         item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_NightsCavalryHorse,
     )
     CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry, horse=Characters.NightsCavalryHorse)
+    CommonFunc_MoveNightsCavalryToHorse(1, nights_cavalry=Characters.CLONE_NightsCavalry, horse=Characters.CLONE_NightsCavalryHorse)
     Event_1049372291(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
+    Event_1049372291(1, character=Characters.CLONE_NightsCavalry, character_1=Characters.CLONE_NightsCavalryHorse)
     CommonFunc_NightsCavalryHealthBar(
         0,
         nights_cavalry=Characters.NightsCavalry,
         name=903150605,
         npc_threat_level=10,
         horse=Characters.NightsCavalryHorse,
+        clone_cavalry=Characters.CLONE_NightsCavalry,
+        clone_horse=Characters.CLONE_NightsCavalryHorse,
     )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
@@ -51,9 +57,15 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1049370100,
         seconds=0.0,
+        clone_boss=Characters.CLONE_NightsCavalry,
     )
-    CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.NightsCavalry, npc_threat_level=10, optional_trigger_flag=0)
-    CommonFunc_FieldBossMusicHealthBar(0, boss=Characters.DeathRiteBird, name=904980606, npc_threat_level=24)
+    CommonFunc_FieldBossMusicHeatUp(
+        0, boss=Characters.NightsCavalry, npc_threat_level=10, optional_trigger_flag=0,
+    )
+    CommonFunc_FieldBossMusicHealthBar(
+        0, boss=Characters.DeathRiteBird, name=904980606, npc_threat_level=24,
+        clone_boss=Characters.CLONE_DeathRiteBird, clone_name=0,
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1049370850,
@@ -62,6 +74,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1049370110,
         seconds=0.0,
+        clone_boss=Characters.CLONE_DeathRiteBird,
     )
     Event_1049372299()
     CommonFunc_NonRespawningWithReward(
@@ -71,6 +84,7 @@ def Constructor():
         item_lot=1049370700,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_LionGuardian,
     )
     CommonFunc_90005725(
         0,

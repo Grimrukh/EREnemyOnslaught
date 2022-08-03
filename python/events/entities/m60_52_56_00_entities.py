@@ -11,6 +11,8 @@ class Characters(Character):
     ErdtreeAvatar2 = 1052560802  # c4810_9002 npc 48100150 think 48100000 group 1052565100
     ErdtreeAvatar3 = 1052560803  # c4810_9003 npc 48100150 think 1
 
+    # NOT CLONED
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1052561950  # AEG099

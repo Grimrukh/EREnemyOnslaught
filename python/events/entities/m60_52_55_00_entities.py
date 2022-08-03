@@ -32,6 +32,8 @@ class Characters(Character):
     ThornSorcerer13 = 1052550227  # c4381_9027 npc 43810250 think 43810000
     ThornSorcerer14 = 1052550228  # c4381_9028 npc 43810250 think 43810000
 
+    CLONE_ChiefGuardianArghanthy = 1052550391
+
 
 class Assets(Asset):
     AEG030_902_2000 = 1052551580  # AEG030

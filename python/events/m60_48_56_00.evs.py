@@ -1,4 +1,4 @@
-"""
+"""DONE
 Northwest Mountaintops (SW) (SW)
 
 linked:
@@ -104,4 +104,4 @@ def Event_1048562350(_, character_1: uint, character: uint):
 @ContinueOnRest(100)
 def Event_100():
     """Event 100"""
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1148560200, character=1148560200, item_lot=40524, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1148560200, character=Characters.Scarab, item_lot=40524, reward_delay=0.0, skip_reward=0, clone=0)
