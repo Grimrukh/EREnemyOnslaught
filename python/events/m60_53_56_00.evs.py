@@ -188,6 +188,7 @@ def Constructor():
         cc_id=56,
         dd_id=0,
         player_start=1053562805,
+        clone=Characters.CLONE_RoundtableKnightVyke,
     )
     CommonFunc_EnterEvergaol(
         0,
@@ -217,6 +218,7 @@ def Constructor():
         boss_name=130401,
         standby_animation=-1,
         appearance_animation=90005,
+        clone=Characters.CLONE_RoundtableKnightVyke,
     )
     CommonFunc_90005883(0, flag=1053560800, flag_1=1053560805, entity=Assets.AEG099_171_1000)
     CommonFunc_EvergaolBossMusic(

@@ -569,7 +569,7 @@ def RegalAncestorSpiritDies():
         return
 
     AND_1.Add(HealthRatio(Characters.RegalAncestorSpirit) <= 0.0)
-    AND_1.Add(HealthRatio(Characters.CLONE_AncestorSpirit) <= 0.0)
+    AND_1.Add(HealthRatio(Characters.CLONE_RegalAncestorSpirit) <= 0.0)
     MAIN.Await(AND_1)
     
     DisableFlag(Flags.ProjectileRequest_LowAnimalCount)

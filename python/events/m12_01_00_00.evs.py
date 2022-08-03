@@ -1961,7 +1961,7 @@ def DragonkinSoldierOfNokstellaDies():
     PlaySoundEffect(Characters.DragonkinSoldierHealthPool, 888880000, sound_type=SoundType.s_SFX)
 
     AND_2.Add(CharacterDead(Characters.DragonkinSoldierHealthPool))
-    AND_2.Add(CharacterDead(Characters.CLONE_DragonkinSoldierOfNokstella))
+    AND_2.Add(CharacterDead(Characters.CLONE_DragonkinSoldierHealthPool))
     MAIN.Await(AND_2)
 
     KillBossAndDisplayBanner(character=Characters.DragonkinSoldierHealthPool, banner_type=BannerType.GreatEnemyFelled)

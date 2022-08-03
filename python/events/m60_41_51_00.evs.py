@@ -39,9 +39,11 @@ def Constructor():
         flag=1041510800,
         left=0,
         sentinel_1=Characters.TreeSentinelLeft,
+        clone_1=Characters.CLONE_TreeSentinelLeft,
         left_1=0,
         item_lot=30335,
         sentinel_2=Characters.TreeSentinelRight,
+        clone_2=Characters.CLONE_TreeSentinelRight,
     )
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,

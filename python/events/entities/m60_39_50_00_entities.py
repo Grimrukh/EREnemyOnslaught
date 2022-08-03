@@ -8,7 +8,9 @@ class Characters(Character):
     RevenantFollower = 1039500400  # c4000_9000 npc 40000030 think 40000000
     VulgarMilitia0 = 1039500450  # c4321_9000 npc 43211030 think 43211000
     VulgarMilitia1 = 1039500451  # c4321_9001 npc 43210030 think 43210000
-    GodricktheGrafted = 1039500800  # c4750_9000 npc 47500030 think 47500000
+    Godefroy = 1039500800  # c4750_9000 npc 47500030 think 47500000
+
+    CLONE_Godefroy = 1039500801
 
 
 class Assets(Asset):

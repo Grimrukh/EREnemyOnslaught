@@ -114,6 +114,7 @@ def Constructor():
     Event_30082400(10, character=Characters.Imp6)
     Event_30082400(11, character=Characters.Imp7)
     Event_30082400(12, character=Characters.GraveWardenDuelist)
+    Event_30082400(13, character=Characters.CLONE_GraveWardenDuelist)
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=30080450,
@@ -121,6 +122,7 @@ def Constructor():
         item_lot=0,
         reward_delay=3.0,
         skip_reward=0,
+        clone=Characters.CLONE_GraveWardenDuelist,
     )
     CommonFunc_TriggerEnemyAI_WithRegion(0, character=Characters.RevenantFollower1, region=30082403, seconds=0.0, animation_id=3022)
     CommonFunc_TriggerEnemyAI_WithRegion(
@@ -302,7 +304,9 @@ def Event_30082401():
     if FlagEnabled(30080400):
         return
     
-    MAIN.Await(CharacterDead(Characters.GraveWardenDuelist))
+    AND_1.Add(CharacterDead(Characters.GraveWardenDuelist))
+    AND_1.Add(CharacterDead(Characters.CLONE_GraveWardenDuelist))
+    MAIN.Await(AND_1)
     
     EnableFlag(30080400)
     End()

@@ -55,6 +55,7 @@ def Constructor():
         cc_id=41,
         dd_id=0,
         player_start=1038412805,
+        clone=Characters.CLONE_AdanThiefofFire,
     )
     CommonFunc_EnterEvergaol(
         0,
@@ -84,6 +85,7 @@ def Constructor():
         boss_name=900000520,
         standby_animation=-1,
         appearance_animation=90005,
+        clone=Characters.CLONE_AdanThiefofFire,
     )
     CommonFunc_90005883(0, flag=1038410800, flag_1=1038410805, entity=Assets.AEG099_170_1000)
     CommonFunc_EvergaolBossMusic(

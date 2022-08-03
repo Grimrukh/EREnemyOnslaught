@@ -18,6 +18,8 @@ class Characters(Character):
     Marionette8 = 1053560261  # c3850_9011 npc 38501050 think 38501000 group 1053565810,1053565251
     Marionette9 = 1053560262  # c3850_9012 npc 38502050 think 38502000 group 1053565810,1053565251
 
+    CLONE_RoundtableKnightVyke = 1053560801
+
 
 class Assets(Asset):
     AEG099_160_9000 = 1053561250  # AEG099

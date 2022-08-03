@@ -66,7 +66,7 @@ def Constructor():
         animation_id=60522,
         left=0,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=34100300, character=34100300, item_lot=34100300, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=34100300, character=34100300, item_lot=34100300, reward_delay=0.0, skip_reward=0, clone=0)
 
 
 @ContinueOnRest(50)

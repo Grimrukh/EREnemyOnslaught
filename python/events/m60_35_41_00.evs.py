@@ -40,7 +40,7 @@ def Constructor():
     Event_1035412610(0, flag=1035410610, character=Characters.GiantTurtle)
     Event_1035412611(0, flag=1035410610, attacked_entity=Characters.GiantTurtle)
     CommonFunc_TriggerEnemyAI_WithRadius(0, character=Characters.GiantTurtle, radius=0.0, seconds=0.0, animation_id=0)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1035410610, character=1035410610, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1035410610, character=1035410610, item_lot=0, reward_delay=0.0, skip_reward=0, clone=0)
 
 
 @ContinueOnRest(50)

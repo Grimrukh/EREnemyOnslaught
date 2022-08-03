@@ -9,6 +9,8 @@ class Characters(Character):
     Merchant = 1038410730  # c3200_9000 npc 32001520 think 32000000 talk 801156000
     NomadMule = 1038400730  # c3210_9000 npc 32101520 think 32100000
 
+    CLONE_AdanThiefofFire = 1038410801
+
 
 class Assets(Asset):
     AEG099_060_9001 = 1038411950  # AEG099

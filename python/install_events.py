@@ -1,6 +1,7 @@
 """Install selected EMEVD."""
 
 import re
+import shutil
 from pathlib import Path
 from soulstruct.eldenring.events import EMEVD, EMEVDDirectory
 
@@ -36,14 +37,29 @@ MAPS_TO_INSTALL = [
 ]
 
 
-def install():
-    # ed = EMEVDDirectory("events")
+def install_select_maps():
 
     for map_name in MAPS_TO_INSTALL:
         emevd = EMEVD(f"events/{map_name}.evs.py")
-        emevd.write(ELDEN_RING_PATH / f"event/{map_name}.emevd.dcx")
-        emevd.write(ELDEN_RING_PATH / f"OnslaughtMod/event/{map_name}.emevd.dcx")
+        packed = emevd.pack()
+        (ELDEN_RING_PATH / f"event/{map_name}.emevd.dcx").write_bytes(packed)
+        (ELDEN_RING_PATH / f"OnslaughtMod/event/{map_name}.emevd.dcx").write_bytes(packed)
+
+
+def install_all_maps():
+
+    for evs_path in Path("events").glob("*.evs.py"):
+        if evs_path.name[:3] in {"m31", "m32", "m34"}:
+            # Skip Caves, Tunnels, and Divine Towers.
+            continue
+        print(evs_path.name)
+        emevd = EMEVD(evs_path)
+        emevd.write(ELDEN_RING_PATH / f"event/{emevd.map_name}.emevd.dcx")
+        shutil.copy2(
+            ELDEN_RING_PATH / f"event/{emevd.map_name}.emevd.dcx",
+            ELDEN_RING_PATH / f"OnslaughtMod/event/{emevd.map_name}.emevd.dcx"
+        )
 
 
 if __name__ == '__main__':
-    install()
+    install_all_maps()

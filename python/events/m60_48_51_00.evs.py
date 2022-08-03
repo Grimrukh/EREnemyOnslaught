@@ -1,4 +1,4 @@
-"""DONE
+"""TODO: Night's Cavalry
 Forbidden Lands (NW) (NW)
 
 linked:
@@ -38,14 +38,19 @@ def Constructor():
         left_3=0,
     )
     CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry, horse=Characters.NightsCavalryHorse)
+    # TODO
     Event_1048512820(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
+    # TODO
     CommonFunc_NightsCavalryHealthBar(
         0,
         nights_cavalry=Characters.NightsCavalry,
         name=903150607,
         npc_threat_level=10,
         horse=Characters.NightsCavalryHorse,
+        clone_cavalry=0,  # TODO
+        clone_horse=0,  # TODO
     )
+    # TODO: Support clones in this common local call.
     RunCommonEvent(1048512800, slot=0, args=(1048510800, 0, 1048510800, 0, 1048510700, 0.0), arg_types="IIIIif")
     CommonFunc_FieldBossMusicHeatUp(0, 1048510800, 10, 0)
 

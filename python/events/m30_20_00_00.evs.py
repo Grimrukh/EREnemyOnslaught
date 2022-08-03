@@ -28,8 +28,8 @@ def Constructor():
     Event_30202800()
     Event_30202810()
     Event_30202811()
-    SpawnMimicTear(0, Characters.SilverTear, Characters.StrayMimicTear)
-    SpawnMimicTear(1, Characters.CLONE_SilverTear, Characters.CLONE_StrayMimicTear)
+    SpawnMimicTear(0, Characters.SilverTear, Characters.StrayMimicTear, 1)
+    SpawnMimicTear(1, Characters.CLONE_SilverTear, Characters.CLONE_StrayMimicTear, 0)
     Event_30202829()
     CommonFunc_90005616(0, flag=30207910, region=30202700)
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(

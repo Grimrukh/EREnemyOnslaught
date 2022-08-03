@@ -51,7 +51,7 @@ def Constructor():
         right=0,
     )
     CommonFunc_90005637(0, flag=32058691, character=Characters.WanderingNoble, region=1041531650)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1041530500, character=1041530500, item_lot=40308, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1041530500, character=1041530500, item_lot=40308, reward_delay=0.0, skip_reward=0, clone=0)
 
 
 @ContinueOnRest(50)

@@ -311,6 +311,12 @@ namespace EREnemyOnslaught
             [1043400200] = new CloneInfo(1043400201),  // Guardian Golem
 
             [1047380299] = new CloneInfo(1047380297),  // Lion Guardian
+
+            [1042330800] = new CloneInfo(1042330801),  // Ancient Hero of Zamor (Evergaol)
+
+            [1042370800] = new CloneInfo(1042370801),  // Crucible Knight (Evergaol)
+
+            [1044350800] = new CloneInfo(1044350801),  // Bloodhound Knight (Evergaol)
             #endregion
 
             #region Liurnia
@@ -358,6 +364,8 @@ namespace EREnemyOnslaught
 
             [1039510800] = new CloneInfo(1039510802, new Vector4(-8.315f, 756.418f, -102.654f, -133.421f)),  // Night's Cavalry
             [1039510801] = new CloneInfo(1039510803, new Vector4(-7.967f, 754.993f, -102.381f, -133.217f)),  // and horse
+
+            [1038410800] = new CloneInfo(1038410801),  // Adan, Thief of Fire (Everagaol)
             #endregion
 
             #region Altus Plateau
@@ -401,6 +409,8 @@ namespace EREnemyOnslaught
             [1045520800] = new CloneInfo(1045520801, new Vector4(25.714f, 1023.759f, 45.294f, -145.248f), new Vector4(30.288f, 1024.047f, 42.166f, -145.248f)),  // Draconic Tree Sentinel
             [1045520200] = new CloneInfo(1045520210),  // Guardian Golem
             [1045520202] = new CloneInfo(1045520212),  // Guardian Golem
+
+            [1039500800] = new CloneInfo(1039500801),  // Godefroy (Evergaol)
             #endregion
 
             #region Caelid
@@ -434,6 +444,8 @@ namespace EREnemyOnslaught
             [1051400800] = new CloneInfo(1051400801),  // Putrid Avatar
 
             [1051430800] = new CloneInfo(1051430801, new Vector4(-7.218f, 334.658f, -19.671f, -56.548f), new Vector4(-15.926f, 336.654f, -22.923f, -38.521f)),  // Gargoyle (Bestial Sanctum)
+
+            [1049390850] = new CloneInfo(1049390851),  // Battle Mage (Evergaol)
             #endregion
 
             #region Mountaintops
@@ -467,6 +479,8 @@ namespace EREnemyOnslaught
             [1051570421] = new CloneInfo(1051570422),  // Tibia Mariner
 
             [1052550390] = new CloneInfo(1052550391),  // Chief Guardian Arghanthy
+
+            [1053560800] = new CloneInfo(1053560801),  // Vyke (Evergaol)
             #endregion
 
             #region Catacombs
@@ -499,9 +513,12 @@ namespace EREnemyOnslaught
             [30050800] = new CloneInfo(30050801),
             [30050850] = new CloneInfo(30050851),
 
+            [30060800] = new CloneInfo(30060801),
+
             [30070800] = new CloneInfo(30070801),
 
-            [30080800] = new CloneInfo(30080801),
+            [30080450] = new CloneInfo(30080451),  // Grave Warden Duelist
+            [30080800] = new CloneInfo(30080801),  // Ancient Hero of Zamor
 
             [30090800] = new CloneInfo(30090801),
 

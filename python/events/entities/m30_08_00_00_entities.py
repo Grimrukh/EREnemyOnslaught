@@ -40,6 +40,7 @@ class Characters(Character):
     Revenant2 = 30080462  # c4020_9002 col h000400 npc 40208030 think 40200000
     AncientHeroofZamor = 30080800  # c7100_9001 col h000500 npc 71000030 think 71000000 group 30085800,30085100
 
+    CLONE_GraveWardenDuelist = 30080451
     CLONE_AncientHeroofZamor = 30080801
 
 

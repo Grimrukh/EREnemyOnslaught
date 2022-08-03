@@ -16,6 +16,8 @@ class Characters(Character):
     MausoleumSoldier7 = 1042330202  # c4315_9011 npc 43150012 think 43150000 group 1042335200,1042335230,1042335810
     AncientHeroofZamor = 1042330800  # c7100_9001 col h423300 npc 71000012 think 71000900 group 1042335200
 
+    CLONE_AncientHeroofZamor = 1042330801
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1042331950  # AEG099

@@ -620,7 +620,7 @@ def Constructor():
         clone=Characters.CLONE_CrucibleKnight1,
     )
     UlceratedTreeSpiritAppears(
-        0, tree_spirit=Characters.UlceratedTreeSpirit, clone_character=Characters.CLONE_UlceratedTreeSpirit,
+        0, tree_spirit=Characters.UlceratedTreeSpirit, tree_spirit_clone=Characters.CLONE_UlceratedTreeSpirit,
         region=11002497, seconds=0.0
     )
     CommonFunc_NonRespawningWithReward(

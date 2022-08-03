@@ -51,6 +51,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30525,
         seconds=0.0,
+        clone_boss=0,  # NOT CLONED
     )
     Event_1052562815(0, character=Characters.ErdtreeAvatar0, name=904810601, npc_threat_level=18)
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.ErdtreeAvatar0, npc_threat_level=18, optional_trigger_flag=0)

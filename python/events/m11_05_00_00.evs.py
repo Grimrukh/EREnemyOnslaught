@@ -480,8 +480,8 @@ def HoarahLouxDies():
         return
     
     # Hoarah Loux is not immortal, so we can wait for both to die.
-    AND_1.Await(HealthValue(Characters.HoarahLoux) <= 0)
-    AND_1.Await(HealthValue(Characters.CLONE_HoarahLoux) <= 0)
+    AND_1.Add(HealthValue(Characters.HoarahLoux) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_HoarahLoux) <= 0)
     MAIN.Await(AND_1)
     
     Wait(4.0)

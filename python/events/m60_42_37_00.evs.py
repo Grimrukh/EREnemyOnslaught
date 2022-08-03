@@ -57,6 +57,7 @@ def Constructor():
         cc_id=37,
         dd_id=0,
         player_start=1042372805,
+        clone=Characters.CLONE_CrucibleKnight,
     )
     CommonFunc_EnterEvergaol(
         0,
@@ -86,6 +87,7 @@ def Constructor():
         boss_name=902500520,
         standby_animation=-1,
         appearance_animation=20000,
+        clone=Characters.CLONE_CrucibleKnight,
     )
     CommonFunc_90005883(0, flag=1042370800, flag_1=1042370805, entity=Assets.AEG099_170_1000)
     CommonFunc_EvergaolBossMusic(

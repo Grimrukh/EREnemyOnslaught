@@ -43,7 +43,7 @@ def Event_200():
     CommonFunc_90005423(0, character=Characters.SnowTroll0)
     CommonFunc_90005423(0, character=Characters.SnowTroll1)
 
-    # TODO: Night's Cavalry (local events)
+    # TODO: Night's Cavalry x2 (local events)
     CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry0, horse=Characters.NightsCavalryHorse0)
     CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry1, horse=Characters.NightsCavalryHorse1)
     Event_1248552820(0, character=Characters.NightsCavalry0, seconds=0.0)
@@ -68,6 +68,8 @@ def Event_200():
         name=903150608,
         npc_threat_level=10,
         horse=Characters.NightsCavalryHorse0,
+        clone_cavalry=0,
+        clone_horse=0,  # TODO
     )
     CommonFunc_NightsCavalryHealthBar(
         0,
@@ -75,6 +77,8 @@ def Event_200():
         name=903150609,
         npc_threat_level=10,
         horse=Characters.NightsCavalryHorse1,
+        clone_cavalry=0,
+        clone_horse=0,  # TODO
     )
     RunCommonEvent(
         1248552800,

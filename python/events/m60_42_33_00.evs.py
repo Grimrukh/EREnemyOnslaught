@@ -49,6 +49,7 @@ def Constructor():
         cc_id=33,
         dd_id=0,
         player_start=1042332805,
+        clone=Characters.CLONE_AncientHeroofZamor,
     )
     CommonFunc_EvergaolBossBattleTrigger(
         0,
@@ -64,6 +65,7 @@ def Constructor():
         boss_name=907100520,
         standby_animation=-1,
         appearance_animation=20002,
+        clone=Characters.CLONE_AncientHeroofZamor,
     )
     CommonFunc_EvergaolBossMusic(
         0,

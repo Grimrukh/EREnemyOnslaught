@@ -33,6 +33,8 @@ class Characters(Character):
     Imp16 = 30060216  # c3080_9016 col h000400 npc 30800020 think 30800110
     ErdtreeBurialWatchdog = 30060800  # c4260_9000 col h000300 npc 42601920 think 42601000 group 30065800,30065100
 
+    CLONE_ErdtreeBurialWatchdog = 30060801
+
 
 class Assets(Asset):
     AEG027_002_0500 = 30061511  # AEG027

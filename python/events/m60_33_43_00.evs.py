@@ -52,4 +52,4 @@ def Constructor():
         0, boss=Characters.ErdtreeAvatar, npc_threat_level=18, optional_trigger_flag=0
     )
     CommonFunc_900005610(0, asset=Assets.AEG003_316_9000, vfx_id=100, model_point=800, right=1033438600)
-    CommonFunc_NonRespawningWithReward(0, 1033430200, Characters.Scarab, 40238, 0.0, 0, clone=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=1033430200, character=Characters.Scarab, item_lot=40238, reward_delay=0.0, skip_reward=0, clone=0)

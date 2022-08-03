@@ -28,6 +28,8 @@ class Characters(Character):
     WanderingNoble2 = 1049390310  # c4300_9010 npc 43002140 think 43002000
     DragonbarrowDragon = 1049390296  # c4505_9000 npc 45050042 think 45050000 group 1049395860
 
+    CLONE_BattleMage = 1049390851
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1049391950  # AEG099

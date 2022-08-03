@@ -21,6 +21,8 @@ class Characters(Character):
     WildMouflon0 = 1044350230  # c6060_9010 npc 60600010 think 60600000 group 1044355810
     WildMouflon1 = 1044350231  # c6060_9011 npc 60600010 think 60600000 group 1044355810
 
+    CLONE_BloodhoundKnight = 1044350801
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1044351950  # AEG099

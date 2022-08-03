@@ -34,12 +34,13 @@ def Constructor():
         cancel_flag__right_flag=1039502572,
         right=1039502573,
     )
-    Event_1039502580(
+    GodefroyEvergaolDies(
         0,
         flag=1039500800,
         flag_1=1039500805,
         flag_2=1039502800,
-        character=Characters.GodricktheGrafted,
+        character=Characters.Godefroy,
+        clone=Characters.CLONE_Godefroy,
         item_lot=1039500100,
         area_id=60,
         block_id=39,
@@ -52,7 +53,7 @@ def Constructor():
         dead_flag=1039500800,
         required_flag=1039500805,
         flag_2=1039502800,
-        boss=Characters.GodricktheGrafted,
+        boss=Characters.Godefroy,
         battle_started_flag=1039502806,
         character_1=1039505810,
         evergaol_gate=Assets.AEG099_120_3000,
@@ -61,6 +62,7 @@ def Constructor():
         boss_name=904750520,
         standby_animation=-1,
         appearance_animation=20012,
+        clone=Characters.CLONE_Godefroy,
     )
     CommonFunc_EvergaolBossMusic(
         0,
@@ -224,12 +226,13 @@ def Event_1039502576(_, flag: uint, flag_1: uint, entity: uint, flag_2: uint):
 
 
 @RestartOnRest(1039502580)
-def Event_1039502580(
+def GodefroyEvergaolDies(
     _,
     flag: uint,
     flag_1: uint,
     flag_2: uint,
     character: uint,
+    clone: uint,
     item_lot: int,
     area_id: uchar,
     block_id: uchar,
@@ -245,7 +248,8 @@ def Event_1039502580(
     if FlagDisabled(flag_1):
         return
     AND_1.Add(CharacterDead(character))
-    
+    AND_1.Add(CharacterDead(clone))
+
     MAIN.Await(AND_1)
     
     Wait(3.0)

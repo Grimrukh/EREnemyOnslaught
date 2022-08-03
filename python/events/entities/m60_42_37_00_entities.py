@@ -8,6 +8,8 @@ class Characters(Character):
     CrucibleKnight = 1042370800  # c2500_9000 npc 25000010 think 25000030
     GodrickSoldier = 1042370200  # c4311_9021 npc 43111110 think 43111100 group 1042375110,1042375810
 
+    CLONE_CrucibleKnight = 1042370801
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1042371950  # AEG099

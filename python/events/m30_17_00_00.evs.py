@@ -227,7 +227,7 @@ def Constructor():
         trigger_on_ai_unknown6=0,
     )
     Event_30172400(11, character=Characters.Troll)
-    CommonFunc_NonRespawningWithReward(0, dead_flag=30170400, character=Characters.Troll, item_lot=0, reward_delay=0.0, skip_reward=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=30170400, character=Characters.Troll, item_lot=0, reward_delay=0.0, skip_reward=0, clone=0)
     CommonFunc_90005652(0, flag=30170540, asset=Assets.AEG027_041_0500, flag_1=30170400)
     CommonFunc_90005651(0, flag=30170540, anchor_entity=Assets.AEG027_041_0500)
     Event_30172600()
