@@ -1,4 +1,4 @@
-"""
+"""DONE
 Raya Lucaria Crystal Tunnel
 
 linked:
@@ -883,29 +883,43 @@ def Event_32022810():
     DisableCharacter(Characters.Crystalian)
     DisableAnimations(Characters.Crystalian)
     Kill(Characters.Crystalian)
+    DisableCharacter(Characters.CLONE_Crystalian)
+    DisableAnimations(Characters.CLONE_Crystalian)
+    Kill(Characters.CLONE_Crystalian)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.Crystalian)
+    DisableAI(Characters.CLONE_Crystalian)
     AddSpecialEffect(Characters.Crystalian, 8090)
+    AddSpecialEffect(Characters.CLONE_Crystalian, 8090)
     EnableInvincibility(Characters.Crystalian)
+    EnableInvincibility(Characters.CLONE_Crystalian)
     SetLockOnPoint(character=Characters.Crystalian, lock_on_model_point=220, state=False)
+    SetLockOnPoint(character=Characters.CLONE_Crystalian, lock_on_model_point=220, state=False)
     ForceAnimation(Characters.Crystalian, 30001, loop=True)
+    ForceAnimation(Characters.CLONE_Crystalian, 30001, loop=True)
     AND_2.Add(FlagEnabled(32022805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=32022800))
     
     MAIN.Await(AND_2)
     
     ForceAnimation(Characters.Crystalian, 20001)
+    ForceAnimation(Characters.CLONE_Crystalian, 20001)
 
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.Crystalian)
+    EnableAI(Characters.CLONE_Crystalian)
     SetNetworkUpdateRate(Characters.Crystalian, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.Crystalian, name=903350320)
+    SetNetworkUpdateRate(Characters.CLONE_Crystalian, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.Crystalian, name=903350320, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_Crystalian, name=903350320, bar_slot=0)
     DisableInvincibility(Characters.Crystalian)
+    DisableInvincibility(Characters.CLONE_Crystalian)
     SetLockOnPoint(character=Characters.Crystalian, lock_on_model_point=220, state=True)
+    SetLockOnPoint(character=Characters.CLONE_Crystalian, lock_on_model_point=220, state=True)
 
 
 @RestartOnRest(32022811)

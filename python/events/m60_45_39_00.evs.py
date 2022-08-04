@@ -101,13 +101,13 @@ def Constructor():
         seconds=0.0,
         clone_boss=0,  # TODO
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.DHunteroftheDead,
+        npc=Characters.DHunteroftheDead,
         flag=4041,
-        flag_1=4040,
-        flag_2=1044399201,
-        right=3,
+        required_flag=4040,
+        hostile_flag=1044399201,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,

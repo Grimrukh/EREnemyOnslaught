@@ -136,13 +136,13 @@ def Constructor():
         asset_2=Assets.AEG099_182_2000,
         flag_2=1034500512,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.SorceressSellen,
+        npc=Characters.SorceressSellen,
         flag=1034509258,
-        flag_1=3460,
-        flag_2=1034502711,
-        right=3,
+        required_flag=3460,
+        hostile_flag=1034502711,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,
@@ -160,7 +160,7 @@ def Constructor():
     Event_1034503706()
     Event_1034503707()
     Event_1034500730(0, character=Characters.Ranni, asset=Assets.AEG110_347_2000)
-    CommonFunc_90005704(0, attacked_entity=Characters.Ranni, flag=3743, flag_1=3740, flag_2=1034509401, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Ranni, flag=3743, required_flag=3740, hostile_flag=1034509401, hostile_hits=3)
     CommonFunc_90005707(
         0,
         character=Characters.Ranni,
@@ -197,13 +197,13 @@ def Constructor():
     Event_1034500702(0, character=Characters.Blaidd1)
     Event_1034500715(0, character=Characters.PreceptorSeluvis0)
     Event_1034500716(0, character=Characters.PreceptorSeluvis1)
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.PreceptorSeluvis1,
+        npc=Characters.PreceptorSeluvis1,
         flag=3561,
-        flag_1=3560,
-        flag_2=1034509301,
-        right=3,
+        required_flag=3560,
+        hostile_flag=1034509301,
+        hostile_hits=3,
     )
     CommonFunc_90005707(
         0,

@@ -1,6 +1,15 @@
 from soulstruct.eldenring.game_types import *
 
 
+class NameText(NPCName):
+    Crystalian0 = 903350313
+    Crystalian1 = 903350312
+    Crystalian2 = 903350314
+    CLONE_Crystalian0 = 903350316
+    CLONE_Crystalian1 = 903350315
+    CLONE_Crystalian2 = 903350317
+
+
 class Characters(Character):
     TalkDummy0 = 31110950  # c1000_9000 npc 10000000 think 1 talk 1000
     TalkDummy1 = 31110100  # c1000_9001 npc 10001000 think 1 talk 2000
@@ -34,6 +43,10 @@ class Characters(Character):
     GlintstoneMiner6 = 31110216  # c4383_9016 col h000200 npc 43830040 think 43830000
     GlintstoneMiner7 = 31110223  # c4383_9023 col h000400 npc 43830040 think 43830000
     BigGlintstoneMiner = 31110310  # c4384_9000 col h000200 npc 43840040 think 43840000
+
+    CLONE_Crystalian0 = 31110810
+    CLONE_Crystalian1 = 31110811
+    CLONE_Crystalian2 = 31110812
 
 
 class Assets(Asset):

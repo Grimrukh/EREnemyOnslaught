@@ -1,4 +1,4 @@
-"""
+"""DONE
 Morne Tunnel
 
 linked:
@@ -768,22 +768,29 @@ def Event_32002810():
     DisableCharacter(Characters.ScalyMisbegotten)
     DisableAnimations(Characters.ScalyMisbegotten)
     Kill(Characters.ScalyMisbegotten)
+    DisableCharacter(Characters.CLONE_ScalyMisbegotten)
+    DisableAnimations(Characters.CLONE_ScalyMisbegotten)
+    Kill(Characters.CLONE_ScalyMisbegotten)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.ScalyMisbegotten)
+    DisableAI(Characters.CLONE_ScalyMisbegotten)
     GotoIfFlagEnabled(Label.L1, flag=32000801)
     ForceAnimation(Characters.ScalyMisbegotten, 30000, loop=True)
+    ForceAnimation(Characters.CLONE_ScalyMisbegotten, 30000, loop=True)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=32002801))
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.ScalyMisbegotten, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_ScalyMisbegotten, attacker=PLAYER))
+
     MAIN.Await(OR_1)
     
     EnableNetworkFlag(32000801)
     ForceAnimation(Characters.ScalyMisbegotten, 20000, wait_for_completion=True)
+    ForceAnimation(Characters.CLONE_ScalyMisbegotten, 20000, wait_for_completion=True)
     Goto(Label.L2)
 
     # --- Label 1 --- #
@@ -796,9 +803,13 @@ def Event_32002810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.ScalyMisbegotten)
+    EnableAI(Characters.CLONE_ScalyMisbegotten)
     SetNetworkUpdateRate(Characters.ScalyMisbegotten, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.ScalyMisbegotten, name=903451320)
+    SetNetworkUpdateRate(Characters.CLONE_ScalyMisbegotten, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.ScalyMisbegotten, name=903451320, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_ScalyMisbegotten, name=903451320, bar_slot=0)
     AddSpecialEffect(Characters.ScalyMisbegotten, 8089)
+    AddSpecialEffect(Characters.CLONE_ScalyMisbegotten, 8089)
 
 
 @RestartOnRest(32002811)

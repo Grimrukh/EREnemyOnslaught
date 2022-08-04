@@ -1,4 +1,4 @@
-"""
+"""DONE
 Sage's Cave
 
 linked:
@@ -25,19 +25,28 @@ from .entities.m31_19_00_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=31190000, asset=Assets.AEG099_060_9000)
+
+    # BLACK KNIFE ASSASSIN
     Event_31192800()
     Event_31192810()
     Event_31192849()
     Event_31192830()
     Event_31192811()
+
+    # GARRIS
     Event_31192850()
     Event_31192860()
     Event_31192899()
-    Event_31192861()
-    Event_31192862()
+    GarrisPhaseTwo(0, Characters.NecromancerGarris, Spawners.GarrisSnailSpawner1, 31192871)
+    GarrisPhaseTwo(8, Characters.CLONE_NecromancerGarris, Spawners.CLONE_GarrisSnailSpawner1, 31192873)  # 31192869
+    FirstGarrisSnailDies(0, Characters.Snail0, Spawners.GarrisSnailSpawner0, 31192870)
+    FirstGarrisSnailDies(1, Characters.CLONE_Snail0, Spawners.CLONE_GarrisSnailSpawner0, 31192872)
     Event_31192880()
     Event_31192863(0, character=Characters.Snail1, flag=31192870)
     Event_31192863(1, character=Characters.Snail2, flag=31192871)
+    Event_31192863(2, character=Characters.CLONE_Snail1, flag=31192872)
+    Event_31192863(3, character=Characters.CLONE_Snail2, flag=31192873)
+
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=0)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Skeleton0, region=31192200, radius=3.0, seconds=0.0, animation_id=0)
     Event_31192210(0, character=Characters.Skeleton1, region=31192210, radius=2.0, seconds=0.0, animation_id=0)
@@ -253,25 +262,35 @@ def Event_31192810():
     DisableCharacter(Characters.BlackKnifeAssassin)
     DisableAnimations(Characters.BlackKnifeAssassin)
     Kill(Characters.BlackKnifeAssassin)
+    DisableCharacter(Characters.CLONE_BlackKnifeAssassin)
+    DisableAnimations(Characters.CLONE_BlackKnifeAssassin)
+    Kill(Characters.CLONE_BlackKnifeAssassin)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.BlackKnifeAssassin)
+    DisableAI(Characters.CLONE_BlackKnifeAssassin)
     DisableAnimations(Characters.BlackKnifeAssassin)
+    DisableAnimations(Characters.CLONE_BlackKnifeAssassin)
     GotoIfFlagEnabled(Label.L1, flag=31190802)
     AND_1.Add(FlagEnabled(31192805))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=31192800))
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.BlackKnifeAssassin, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_BlackKnifeAssassin, attacker=PLAYER))
+
     MAIN.Await(AND_1)
 
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.BlackKnifeAssassin)
+    EnableAI(Characters.CLONE_BlackKnifeAssassin)
     EnableAnimations(Characters.BlackKnifeAssassin)
+    EnableAnimations(Characters.CLONE_BlackKnifeAssassin)
     SetNetworkUpdateRate(Characters.BlackKnifeAssassin, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.BlackKnifeAssassin, name=902100310)
+    SetNetworkUpdateRate(Characters.CLONE_BlackKnifeAssassin, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.BlackKnifeAssassin, name=902100310, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_BlackKnifeAssassin, name=902100310, bar_slot=0)
 
 
 @RestartOnRest(31192811)
@@ -319,9 +338,11 @@ def Event_31192850():
     MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.NecromancerGarris, banner_type=BannerType.EnemyFelled)
-    Kill(31195850)
-    DisableSpawner(entity=31193821)
-    DisableSpawner(entity=31193820)
+    Kill(CharacterGroups.GarrisSnails)
+    DisableSpawner(entity=Spawners.GarrisSnailSpawner1)
+    DisableSpawner(entity=Spawners.CLONE_GarrisSnailSpawner1)
+    DisableSpawner(entity=Spawners.GarrisSnailSpawner0)
+    DisableSpawner(entity=Spawners.CLONE_GarrisSnailSpawner0)
     EnableFlag(31190850)
     if PlayerInOwnWorld():
         EnableFlag(61249)
@@ -335,65 +356,88 @@ def Event_31192860():
     DisableCharacter(Characters.NecromancerGarris)
     DisableAnimations(Characters.NecromancerGarris)
     Kill(Characters.NecromancerGarris)
-    DisableCharacter(31195850)
-    DisableAnimations(31195850)
-    Kill(31195850)
-    DisableSpawner(entity=31193821)
-    DisableSpawner(entity=31193820)
+    DisableCharacter(Characters.CLONE_NecromancerGarris)
+    DisableAnimations(Characters.CLONE_NecromancerGarris)
+    Kill(Characters.CLONE_NecromancerGarris)
+    DisableCharacter(CharacterGroups.GarrisSnails)
+    DisableAnimations(CharacterGroups.GarrisSnails)
+    Kill(CharacterGroups.GarrisSnails)
+    DisableSpawner(entity=Spawners.GarrisSnailSpawner1)
+    DisableSpawner(entity=Spawners.GarrisSnailSpawner0)
+    DisableCharacter(Characters.CLONE_NecromancerGarris)
+    DisableAnimations(Characters.CLONE_NecromancerGarris)
+    Kill(Characters.CLONE_NecromancerGarris)
+    DisableCharacter(Characters.CLONE_CLONE_NecromancerGarris)
+    DisableAnimations(Characters.CLONE_CLONE_NecromancerGarris)
+    Kill(Characters.CLONE_CLONE_NecromancerGarris)
+    DisableSpawner(entity=Spawners.CLONE_GarrisSnailSpawner1)
+    DisableSpawner(entity=Spawners.CLONE_GarrisSnailSpawner0)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.NecromancerGarris)
+    DisableAI(Characters.CLONE_NecromancerGarris)
     ForceAnimation(Characters.NecromancerGarris, 68011)
+    ForceAnimation(Characters.CLONE_NecromancerGarris, 68011)
     DisableAI(Characters.Snail0)
+    DisableAI(Characters.CLONE_Snail0)
     ForceAnimation(Characters.Snail0, 30000)
+    ForceAnimation(Characters.CLONE_Snail0, 30000)
     SetLockOnPoint(character=Characters.Snail0, lock_on_model_point=220, state=False)
+    SetLockOnPoint(character=Characters.CLONE_Snail0, lock_on_model_point=220, state=False)
     AND_2.Add(FlagEnabled(31192855))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=31192850))
     
     MAIN.Await(AND_2)
     
     ForceAnimation(Characters.NecromancerGarris, 68012)
+    ForceAnimation(Characters.CLONE_NecromancerGarris, 68012)
     EnableAI(Characters.NecromancerGarris)
+    EnableAI(Characters.CLONE_NecromancerGarris)
     SetNetworkUpdateRate(Characters.NecromancerGarris, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.NecromancerGarris, name=137600)
+    SetNetworkUpdateRate(Characters.CLONE_NecromancerGarris, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.NecromancerGarris, name=NameText.NecromancerGarris, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_NecromancerGarris, name=NameText.CLONE_NecromancerGarris, bar_slot=0)
     ForceAnimation(Characters.Snail0, 20000)
+    ForceAnimation(Characters.CLONE_Snail0, 20000)
     EnableAI(Characters.Snail0)
+    EnableAI(Characters.CLONE_Snail0)
     Wait(3.0)
     SetLockOnPoint(character=Characters.Snail0, lock_on_model_point=220, state=True)
+    SetLockOnPoint(character=Characters.CLONE_Snail0, lock_on_model_point=220, state=True)
 
 
 @RestartOnRest(31192861)
-def Event_31192861():
+def GarrisPhaseTwo(_, garris: uint, phase_two_spawner: uint, snail_2_flag: int):
     """Event 31192861"""
     DisableNetworkSync()
     if FlagEnabled(31190850):
         return
-    AND_1.Add(HealthRatio(Characters.NecromancerGarris) <= 0.6000000238418579)
+    AND_1.Add(HealthRatio(garris) <= 0.6000000238418579)
     
     MAIN.Await(AND_1)
     
-    EnableFlag(31192852)
+    EnableFlag(31192852)  # shared by clone
     if FlagEnabled(31190850):
         return
-    EnableSpawner(entity=31193821)
-    EnableNetworkFlag(31192871)
+    EnableSpawner(entity=phase_two_spawner)
+    EnableNetworkFlag(snail_2_flag)
 
 
 @RestartOnRest(31192862)
-def Event_31192862():
+def FirstGarrisSnailDies(_, snail: uint, spawner: uint, snail_1_flag: int):
     """Event 31192862"""
     DisableNetworkSync()
     if FlagEnabled(31190850):
         return
     
-    MAIN.Await(CharacterDead(Characters.Snail0))
+    MAIN.Await(CharacterDead(snail))
     
     if FlagEnabled(31190850):
         return
-    EnableSpawner(entity=31193820)
-    EnableNetworkFlag(31192870)
+    EnableSpawner(entity=spawner)
+    EnableNetworkFlag(snail_1_flag)
 
 
 @RestartOnRest(31192863)
@@ -489,7 +533,7 @@ def Event_31192899():
         entity=Assets.AEG099_001_9002,
         region=31192850,
         flag_1=31192855,
-        character=31195850,
+        character=CharacterGroups.GarrisSnails,
         action_button_id=10000,
         left=0,
         region_1=0,

@@ -1,6 +1,11 @@
 from soulstruct.eldenring.game_types import *
 
 
+class NameText(NPCName):
+    DemiHumanQueenMargot = 904130310
+    CLONE_DemiHumanQueenMargot = 904130311
+
+
 class Characters(Character):
     TalkDummy0 = 31090950  # c1000_9000 npc 10000000 think 1 talk 1000
     TalkDummy1 = 31090100  # c1000_9001 npc 10001000 think 1 talk 2000
@@ -21,6 +26,8 @@ class Characters(Character):
     DemiHumanShaman2 = 31090258  # c4110_9008 col h000300 npc 41100032 think 41100000
     DemiHumanBeastman = 31090350  # c4120_9000 col h000300 npc 41200032 think 41200200
     DemiHumanQueen = 31090800  # c4130_9000 col h000400 npc 41301932 think 41301000 group 31095100,31095800
+
+    CLONE_DemiHumanQueen = 31090801
 
 
 class Assets(Asset):

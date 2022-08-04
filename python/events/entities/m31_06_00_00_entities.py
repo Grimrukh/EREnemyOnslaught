@@ -19,6 +19,9 @@ class Characters(Character):
     Rat1 = 31060281  # c4080_9001 col h000101 npc 40800020 think 40800001
     Rat2 = 31060282  # c4080_9002 col h000101 npc 40800020 think 40800001
 
+    CLONE_Crystalian0 = 31060810  # c3350_9000 col h000400 npc 33502920 think 33502900 group 31065800,31065100
+    CLONE_Crystalian1 = 31060811  # c3350_9001 col h000400 npc 33501920 think 33501900 group 31065800,31065100
+
 
 class Assets(Asset):
     AEG027_043_1000 = 31061540  # AEG027

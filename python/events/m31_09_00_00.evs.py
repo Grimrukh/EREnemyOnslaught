@@ -1,4 +1,4 @@
-"""
+"""DONE
 Volcano Cave
 
 linked:
@@ -348,12 +348,17 @@ def Event_31092810():
     DisableCharacter(Characters.DemiHumanQueen)
     DisableAnimations(Characters.DemiHumanQueen)
     Kill(Characters.DemiHumanQueen)
+    DisableCharacter(Characters.CLONE_DemiHumanQueen)
+    DisableAnimations(Characters.CLONE_DemiHumanQueen)
+    Kill(Characters.CLONE_DemiHumanQueen)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.DemiHumanQueen)
+    DisableAI(Characters.CLONE_DemiHumanQueen)
     AddSpecialEffect(Characters.DemiHumanQueen, 8092)
+    AddSpecialEffect(Characters.CLONE_DemiHumanQueen, 8092)
     AND_2.Add(FlagEnabled(31092805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=31092800))
     
@@ -362,8 +367,11 @@ def Event_31092810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.DemiHumanQueen)
+    EnableAI(Characters.CLONE_DemiHumanQueen)
     SetNetworkUpdateRate(Characters.DemiHumanQueen, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.DemiHumanQueen, name=904130310)
+    SetNetworkUpdateRate(Characters.CLONE_DemiHumanQueen, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.DemiHumanQueen, name=NameText.DemiHumanQueenMargot, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_DemiHumanQueen, name=NameText.CLONE_DemiHumanQueenMargot, bar_slot=0)
 
 
 @RestartOnRest(31092811)

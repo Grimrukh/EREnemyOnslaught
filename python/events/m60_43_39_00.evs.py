@@ -99,13 +99,13 @@ def Constructor():
         last_flag=3663,
         right=-1,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.LivingPot,
+        npc=Characters.LivingPot,
         flag=1043399314,
-        flag_1=3660,
-        flag_2=1043399301,
-        right=3,
+        required_flag=3660,
+        hostile_flag=1043399301,
+        hostile_hits=3,
     )
     CommonFunc_90005702(0, character=Characters.LivingPot, flag=3663, first_flag=3660, last_flag=3663)
     Event_1043393720(0, character=Characters.LivingPot)

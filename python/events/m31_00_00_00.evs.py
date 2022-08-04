@@ -1,4 +1,4 @@
-"""
+"""DONE
 Murkwater Cave
 
 linked:
@@ -25,17 +25,21 @@ from .entities.m31_00_00_00_entities import *
 def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=31000000, asset=Assets.AEG099_060_9000)
-    Event_31002800()
-    Event_31002810()
-    Event_31002849()
-    Event_31002811()
-    Event_31002813()
-    Event_31002814()
-    Event_31002850()
-    Event_31002860()
-    Event_31002899()
-    Event_31002861()
-    Event_31002863()
+
+    # PATCHES BOSS 1
+    PatchesDies()
+    PatchesBattleTrigger()
+    PatchesBasicEvents()
+    PatchesIsSpared()
+    PatchesBattleResumes()
+    PatchesMadeHostile()
+
+    # PATCHES BOSS 2
+    PatchesSecondBossDies()
+    PatchesSecondBossBattleTrigger()
+    PatchesSecondBossBasicEvents()
+    PatchesSecondBossIsSpared()
+    PatchesSecondBossBattleResumes()
     Event_31002845()
     Event_31002875()
     Event_31002876(
@@ -53,22 +57,24 @@ def Constructor():
     Event_31002500(0, attacked_entity=Assets.AEG099_280_9000, region=31002500)
     Event_31002500(1, attacked_entity=Assets.AEG099_280_9001, region=31002501)
     Event_31002500(2, attacked_entity=Assets.AEG099_280_9002, region=31002502)
-    Event_31003700(0, character=Characters.Patches1)
+
+    # PATCHES SETUP
+    Event_31003700(0, patches=Characters.Patches1)
     Event_31003710(0, character=Characters.Patches3)
-    Event_31003701(0, character=Characters.Patches1, flag=31002709, flag_1=31009201, character_1=Characters.Patches0)
-    Event_31003711(0, character=Characters.Patches3, flag=31002709, flag_1=31009201, character_1=Characters.Patches2)
-    Event_31003702(0, character=Characters.Patches0)
+    Event_31003701(0, character=Characters.Patches1, flag=31002709, flag_1=31009201, character_1=Characters.PatchesBoss)
+    Event_31003711(0, character=Characters.Patches3, flag=31002709, flag_1=31009201, character_1=Characters.PatchesSecondBoss)
+    Event_31003702(0, character=Characters.PatchesBoss)
     Event_31003703()
-    Event_31003704(0, character=Characters.Patches0, seconds=10.0)
-    Event_31003705(0, character=Characters.Patches0)
+    PatchesSurrenderTimer(0, patches=Characters.PatchesBoss, seconds=10.0)
+    Event_31003705(0, character=Characters.PatchesBoss)
     Event_31003707()
-    Event_31003713(0, character=Characters.Patches2)
-    Event_31003714(0, character=Characters.Patches2, seconds=10.0)
-    Event_31003715(0, attacked_entity=Characters.Patches2)
-    CommonFunc_90005704(0, attacked_entity=Characters.Patches0, flag=31009219, flag_1=3680, flag_2=31009201, right=3)
+    Event_31003713(0, character=Characters.PatchesSecondBoss)
+    Event_31003714(0, patches=Characters.PatchesSecondBoss, seconds=10.0)
+    Event_31003715(0, attacked_entity=Characters.PatchesSecondBoss)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.PatchesBoss, flag=31009219, required_flag=3680, hostile_flag=31009201, hostile_hits=3)
     CommonFunc_90005703(
         0,
-        character=Characters.Patches0,
+        character=Characters.PatchesBoss,
         flag=3681,
         flag_1=3682,
         flag_2=31009201,
@@ -77,8 +83,8 @@ def Constructor():
         last_flag=3684,
         right=-1,
     )
-    Event_31003706(0, character=Characters.Patches0, flag=3683, first_flag=3680, last_flag=3684)
-    CommonFunc_90005704(0, attacked_entity=Characters.Patches1, flag=31009219, flag_1=3680, flag_2=31009201, right=3)
+    Event_31003706(0, character=Characters.PatchesBoss, flag=3683, first_flag=3680, last_flag=3684)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Patches1, flag=31009219, required_flag=3680, hostile_flag=31009201, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Patches1,
@@ -91,7 +97,7 @@ def Constructor():
         right=-1,
     )
     CommonFunc_90005702(0, character=Characters.Patches1, flag=3683, first_flag=3680, last_flag=3684)
-    CommonFunc_90005704(0, attacked_entity=Characters.Patches3, flag=3681, flag_1=3680, flag_2=31009201, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Patches3, flag=3681, required_flag=3680, hostile_flag=31009201, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Patches3,
@@ -104,10 +110,10 @@ def Constructor():
         right=-1,
     )
     CommonFunc_90005702(0, character=Characters.Patches3, flag=3683, first_flag=3680, last_flag=3684)
-    CommonFunc_90005704(0, attacked_entity=Characters.Patches2, flag=31009269, flag_1=3680, flag_2=31009201, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.PatchesSecondBoss, flag=31009269, required_flag=3680, hostile_flag=31009201, hostile_hits=3)
     CommonFunc_90005703(
         0,
-        character=Characters.Patches2,
+        character=Characters.PatchesSecondBoss,
         flag=3681,
         flag_1=3682,
         flag_2=31009201,
@@ -116,7 +122,7 @@ def Constructor():
         last_flag=3684,
         right=-1,
     )
-    Event_31003716(0, 31000850, 3683, 3680, 3684)
+    Event_31003716(0, character=Characters.PatchesSecondBoss, flag=3683, first_flag=3680, last_flag=3684)
 
 
 @ContinueOnRest(50)
@@ -485,31 +491,31 @@ def Event_31002230(_, character: uint, region: uint, radius: float, seconds: flo
 
 
 @RestartOnRest(31002800)
-def Event_31002800():
+def PatchesDies():
     """Event 31002800"""
-    OR_1.Add(FlagEnabled(31000800))
+    OR_1.Add(FlagEnabled(Flags.PatchesBattleDone))
     OR_1.Add(FlagEnabled(3683))
     OR_1.Add(FlagEnabled(3691))
     if OR_1:
         return
     
-    MAIN.Await(HealthValue(Characters.Patches0) <= 0)
+    MAIN.Await(HealthValue(Characters.PatchesBoss) <= 0)
     
-    if FlagEnabled(31000800):
+    if FlagEnabled(Flags.PatchesBattleDone):
         return
     Wait(4.0)
-    PlaySoundEffect(Characters.Patches0, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(Characters.PatchesBoss, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(PlayerInOwnWorld())
-    AND_2.Add(CharacterDead(Characters.Patches0))
+    AND_2.Add(CharacterDead(Characters.PatchesBoss))
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9646))
     OR_2.Add(AND_2)
-    OR_2.Add(FlagEnabled(31000800))
+    OR_2.Add(FlagEnabled(Flags.PatchesBattleDone))
     
     MAIN.Await(OR_2)
     
-    EnableNetworkFlag(31000800)
-    KillBossAndDisplayBanner(character=Characters.Patches0, banner_type=BannerType.EnemyFelled)
-    EnableFlag(31000800)
+    EnableNetworkFlag(Flags.PatchesBattleDone)
+    KillBossAndDisplayBanner(character=Characters.PatchesBoss, banner_type=BannerType.EnemyFelled)
+    EnableFlag(Flags.PatchesBattleDone)
     EnableFlag(9232)
     if PlayerInOwnWorld():
         EnableFlag(61232)
@@ -517,33 +523,46 @@ def Event_31002800():
 
 
 @RestartOnRest(31002810)
-def Event_31002810():
+def PatchesBattleTrigger():
     """Event 31002810"""
-    OR_1.Add(FlagEnabled(31000800))
+    OR_1.Add(FlagEnabled(Flags.PatchesBattleDone))
     OR_1.Add(FlagEnabled(3683))
     OR_1.Add(FlagEnabled(3691))
     GotoIfConditionFalse(Label.L0, input_condition=OR_1)
-    DisableCharacter(Characters.Patches0)
-    DisableAnimations(Characters.Patches0)
-    DisableBackread(Characters.Patches0)
-    Kill(Characters.Patches0)
-    if FlagDisabled(31000800):
-        EnableFlag(31000800)
+    DisableCharacter(Characters.PatchesBoss)
+    DisableAnimations(Characters.PatchesBoss)
+    DisableBackread(Characters.PatchesBoss)
+    Kill(Characters.PatchesBoss)
+    DisableCharacter(Characters.CLONE_PatchesBoss)
+    DisableAnimations(Characters.CLONE_PatchesBoss)
+    DisableBackread(Characters.CLONE_PatchesBoss)
+    Kill(Characters.CLONE_PatchesBoss)
+    if FlagDisabled(Flags.PatchesBattleDone):
+        EnableFlag(Flags.PatchesBattleDone)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(Characters.Patches0)
-    AddSpecialEffect(Characters.Patches0, 9643)
+    DisableAI(Characters.PatchesBoss)
+    AddSpecialEffect(Characters.PatchesBoss, 9643)
+    DisableAI(Characters.CLONE_PatchesBoss)
+    AddSpecialEffect(Characters.CLONE_PatchesBoss, 9643)
     GotoIfFlagDisabled(Label.L1, flag=31008521)
     EnableNetworkFlag(31008820)
     Move(
-        Characters.Patches0,
-        destination=31002820,
+        Characters.PatchesBoss,
+        destination=31002820,  # TODO: Copy for clone.
         destination_type=CoordEntityType.Region,
-        copy_draw_parent=Characters.Patches0,
+        copy_draw_parent=Characters.PatchesBoss,
     )
-    ChangePatrolBehavior(Characters.Patches0, patrol_information_id=0)
+    Move(
+        Characters.CLONE_PatchesBoss,
+        destination=31002820,  # TODO: Copy for clone.
+        destination_type=CoordEntityType.Region,
+        copy_draw_parent=Characters.CLONE_PatchesBoss,
+    )
+    ChangePatrolBehavior(Characters.PatchesBoss, patrol_information_id=0)
+    ChangePatrolBehavior(Characters.CLONE_PatchesBoss, patrol_information_id=0)
 
     # --- Label 1 --- #
     DefineLabel(1)
@@ -554,50 +573,60 @@ def Event_31002810():
     
     if FlagDisabled(31008820):
         EnableNetworkFlag(31008821)
-        DisableCharacter(Characters.Patches0)
+        DisableCharacter(Characters.PatchesBoss)
+        DisableCharacter(Characters.CLONE_PatchesBoss)
         End()
-    SetTeamType(Characters.Patches0, TeamType.Enemy)
-    EnableAI(Characters.Patches0)
-    SetNetworkUpdateRate(Characters.Patches0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.Patches0, name=130900)
+
+    SetTeamType(Characters.PatchesBoss, TeamType.Enemy)
+    EnableAI(Characters.PatchesBoss)
+    SetNetworkUpdateRate(Characters.PatchesBoss, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+
+    SetTeamType(Characters.CLONE_PatchesBoss, TeamType.Enemy)
+    EnableAI(Characters.CLONE_PatchesBoss)
+    SetNetworkUpdateRate(Characters.CLONE_PatchesBoss, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+
+    EnableBossHealthBar(Characters.PatchesBoss, name=NameText.Patches, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_PatchesBoss, name=NameText.CLONE_Patches, bar_slot=0)
+
     EnableNetworkFlag(31000811)
 
 
 @RestartOnRest(31002811)
-def Event_31002811():
+def PatchesIsSpared():
     """Event 31002811"""
-    OR_1.Add(FlagEnabled(31000800))
+    OR_1.Add(FlagEnabled(Flags.PatchesBattleDone))
     OR_1.Add(FlagEnabled(3683))
     OR_1.Add(FlagEnabled(3691))
     if OR_1:
         return
-    
+
+    # Wait until Patches is spared.
     MAIN.Await(FlagEnabled(31009810))
     
-    SetTeamType(Characters.Patches0, TeamType.FriendlyNPC)
+    SetTeamType(Characters.PatchesBoss, TeamType.FriendlyNPC)
     AND_2.Add(PlayerInOwnWorld())
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9646))
     OR_2.Add(AND_2)
-    OR_2.Add(FlagEnabled(31000800))
+    OR_2.Add(FlagEnabled(Flags.PatchesBattleDone))
     
     MAIN.Await(OR_2)
     
-    EnableNetworkFlag(31000800)
-    PlaySoundEffect(Characters.Patches0, 888880000, sound_type=SoundType.s_SFX)
-    KillBossAndDisplayBanner(character=Characters.Patches0, banner_type=BannerType.EnemyFelled)
-    EnableFlag(31000800)
+    EnableNetworkFlag(Flags.PatchesBattleDone)
+    PlaySoundEffect(Characters.PatchesBoss, 888880000, sound_type=SoundType.s_SFX)
+    KillBossAndDisplayBanner(character=Characters.PatchesBoss, banner_type=BannerType.EnemyFelled)
+    EnableFlag(Flags.PatchesBattleDone)
     if PlayerInOwnWorld():
         EnableFlag(61232)
     EnableFlag(9232)
     AwardItemLot(101830, host_only=False)
-    ChangePatrolBehavior(Characters.Patches0, patrol_information_id=31003820)
-    ReplanAI(Characters.Patches0)
+    ChangePatrolBehavior(Characters.PatchesBoss, patrol_information_id=31003820)
+    ReplanAI(Characters.PatchesBoss)
 
 
 @RestartOnRest(31002813)
-def Event_31002813():
+def PatchesBattleResumes():
     """Event 31002813"""
-    OR_1.Add(FlagEnabled(31000800))
+    OR_1.Add(FlagEnabled(Flags.PatchesBattleDone))
     OR_1.Add(FlagEnabled(3683))
     OR_1.Add(FlagEnabled(3691))
     if OR_1:
@@ -607,21 +636,27 @@ def Event_31002813():
     
     if FlagDisabled(31008821):
         return
-    EnableCharacter(Characters.Patches0)
+    EnableCharacter(Characters.PatchesBoss)
+    EnableCharacter(Characters.CLONE_PatchesBoss)
     Wait(4.0)
-    SetTeamType(Characters.Patches0, TeamType.Enemy)
-    EnableAI(Characters.Patches0)
-    SetNetworkUpdateRate(Characters.Patches0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetTeamType(Characters.PatchesBoss, TeamType.Enemy)
+    SetTeamType(Characters.CLONE_PatchesBoss, TeamType.Enemy)
+    EnableAI(Characters.PatchesBoss)
+    EnableAI(Characters.CLONE_PatchesBoss)
+    SetNetworkUpdateRate(Characters.PatchesBoss, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_PatchesBoss, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     Wait(5.0)
-    EnableBossHealthBar(Characters.Patches0, name=130900)
+    EnableBossHealthBar(Characters.PatchesBoss, name=NameText.Patches, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_PatchesBoss, name=NameText.CLONE_Patches, bar_slot=0)
     EnableNetworkFlag(31000811)
-    SetNest(Characters.Patches0, region=31002820)
+    SetNest(Characters.PatchesBoss, region=31002820)
+    SetNest(Characters.CLONE_PatchesBoss, region=31002820)
 
 
 @RestartOnRest(31002814)
-def Event_31002814():
-    """Event 31002814"""
-    OR_1.Add(FlagEnabled(31000800))
+def PatchesMadeHostile():
+    """Triggered when you attack Patches enough AFTER he surrenders."""
+    OR_1.Add(FlagEnabled(Flags.PatchesBattleDone))
     OR_1.Add(FlagEnabled(3683))
     OR_1.Add(FlagEnabled(3691))
     if OR_1:
@@ -629,16 +664,18 @@ def Event_31002814():
     
     MAIN.Await(FlagEnabled(31002713))
     
-    EnableAI(Characters.Patches0)
-    SetTeamType(Characters.Patches0, TeamType.Enemy)
+    EnableAI(Characters.PatchesBoss)
+    EnableAI(Characters.CLONE_PatchesBoss)
+    SetTeamType(Characters.PatchesBoss, TeamType.Enemy)
+    SetTeamType(Characters.CLONE_PatchesBoss, TeamType.Enemy)
 
 
 @RestartOnRest(31002849)
-def Event_31002849():
+def PatchesBasicEvents():
     """Event 31002849"""
     Event_31002830(
         0,
-        flag=31000800,
+        flag=Flags.PatchesBattleDone,
         entity=Assets.AEG099_001_9000,
         region=31002800,
         flag_1=31002805,
@@ -649,15 +686,15 @@ def Event_31002849():
     )
     Event_31002831(
         0,
-        flag=31000800,
+        flag=Flags.PatchesBattleDone,
         entity=Assets.AEG099_001_9000,
         region=31002800,
         flag_1=31002805,
         flag_2=31002806,
         action_button_id=10000,
     )
-    Event_31002832(0, flag=31000800, asset=Assets.AEG099_001_9000, model_point=4, right=0)
-    Event_31002833(0, 31000800, 931000, 31002805, 31002806, 31000811, 0, 0, 0)
+    Event_31002832(0, flag=Flags.PatchesBattleDone, asset=Assets.AEG099_001_9000, model_point=4, right=0)
+    Event_31002833(0, Flags.PatchesBattleDone, 931000, 31002805, 31002806, 31000811, 0, 0, 0)
 
 
 @RestartOnRest(31002831)
@@ -929,7 +966,7 @@ def Event_31002833(
 
 
 @RestartOnRest(31002899)
-def Event_31002899():
+def PatchesSecondBossBasicEvents():
     """Event 31002899"""
     Event_31002870(
         0,
@@ -947,7 +984,7 @@ def Event_31002899():
 
 
 @RestartOnRest(31002850)
-def Event_31002850():
+def PatchesSecondBossDies():
     """Event 31002850"""
     OR_1.Add(FlagEnabled(31000850))
     OR_1.Add(FlagEnabled(3683))
@@ -955,14 +992,14 @@ def Event_31002850():
     if OR_1:
         return
     
-    MAIN.Await(HealthValue(Characters.Patches2) <= 0)
+    MAIN.Await(HealthValue(Characters.PatchesSecondBoss) <= 0)
     
     if FlagEnabled(31000850):
         return
     Wait(4.0)
-    PlaySoundEffect(Characters.Patches2, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(Characters.PatchesSecondBoss, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(PlayerInOwnWorld())
-    AND_2.Add(CharacterDead(Characters.Patches2))
+    AND_2.Add(CharacterDead(Characters.PatchesSecondBoss))
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9646))
     OR_2.Add(AND_2)
     OR_2.Add(FlagEnabled(31000850))
@@ -970,7 +1007,7 @@ def Event_31002850():
     MAIN.Await(OR_2)
     
     EnableNetworkFlag(31000850)
-    KillBossAndDisplayBanner(character=Characters.Patches2, banner_type=BannerType.EnemyFelled)
+    KillBossAndDisplayBanner(character=Characters.PatchesSecondBoss, banner_type=BannerType.EnemyFelled)
     EnableFlag(31000850)
     EnableFlag(9232)
     if PlayerInOwnWorld():
@@ -978,33 +1015,33 @@ def Event_31002850():
 
 
 @RestartOnRest(31002860)
-def Event_31002860():
+def PatchesSecondBossBattleTrigger():
     """Event 31002860"""
     OR_1.Add(FlagEnabled(31000850))
     OR_1.Add(FlagEnabled(3683))
     OR_1.Add(FlagDisabled(3691))
     GotoIfConditionFalse(Label.L0, input_condition=OR_1)
-    DisableCharacter(Characters.Patches2)
-    DisableAnimations(Characters.Patches2)
-    DisableBackread(Characters.Patches2)
-    Kill(Characters.Patches2)
+    DisableCharacter(Characters.PatchesSecondBoss)
+    DisableAnimations(Characters.PatchesSecondBoss)
+    DisableBackread(Characters.PatchesSecondBoss)
+    Kill(Characters.PatchesSecondBoss)
     if FlagEnabled(3683):
         EnableFlag(31000850)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(Characters.Patches2)
-    AddSpecialEffect(Characters.Patches2, 9643)
+    DisableAI(Characters.PatchesSecondBoss)
+    AddSpecialEffect(Characters.PatchesSecondBoss, 9643)
     GotoIfFlagDisabled(Label.L1, flag=31008523)
     EnableNetworkFlag(31008870)
     Move(
-        Characters.Patches2,
+        Characters.PatchesSecondBoss,
         destination=31002820,
         destination_type=CoordEntityType.Region,
-        copy_draw_parent=Characters.Patches2,
+        copy_draw_parent=Characters.PatchesSecondBoss,
     )
-    ChangePatrolBehavior(Characters.Patches2, patrol_information_id=0)
+    ChangePatrolBehavior(Characters.PatchesSecondBoss, patrol_information_id=0)
 
     # --- Label 1 --- #
     DefineLabel(1)
@@ -1015,17 +1052,17 @@ def Event_31002860():
     
     if FlagDisabled(31008870):
         EnableNetworkFlag(31008871)
-        DisableCharacter(Characters.Patches2)
+        DisableCharacter(Characters.PatchesSecondBoss)
         End()
-    SetTeamType(Characters.Patches2, TeamType.Enemy)
-    EnableAI(Characters.Patches2)
-    SetNetworkUpdateRate(Characters.Patches2, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.Patches2, name=130900)
+    SetTeamType(Characters.PatchesSecondBoss, TeamType.Enemy)
+    EnableAI(Characters.PatchesSecondBoss)
+    SetNetworkUpdateRate(Characters.PatchesSecondBoss, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.PatchesSecondBoss, name=130900)
     EnableNetworkFlag(31000861)
 
 
 @RestartOnRest(31002861)
-def Event_31002861():
+def PatchesSecondBossIsSpared():
     """Event 31002861"""
     OR_1.Add(FlagEnabled(31000850))
     OR_1.Add(FlagEnabled(3683))
@@ -1035,7 +1072,7 @@ def Event_31002861():
     
     MAIN.Await(FlagEnabled(31009889))
     
-    SetTeamType(Characters.Patches2, TeamType.FriendlyNPC)
+    SetTeamType(Characters.PatchesSecondBoss, TeamType.FriendlyNPC)
     AND_2.Add(PlayerInOwnWorld())
     AND_2.Add(CharacterDoesNotHaveSpecialEffect(PLAYER, 9646))
     OR_2.Add(AND_2)
@@ -1044,18 +1081,18 @@ def Event_31002861():
     MAIN.Await(OR_2)
     
     EnableNetworkFlag(31000850)
-    PlaySoundEffect(Characters.Patches2, 888880000, sound_type=SoundType.s_SFX)
-    KillBossAndDisplayBanner(character=Characters.Patches2, banner_type=BannerType.EnemyFelled)
+    PlaySoundEffect(Characters.PatchesSecondBoss, 888880000, sound_type=SoundType.s_SFX)
+    KillBossAndDisplayBanner(character=Characters.PatchesSecondBoss, banner_type=BannerType.EnemyFelled)
     EnableFlag(31000850)
     if PlayerInOwnWorld():
         EnableFlag(61232)
     EnableFlag(9232)
-    ChangePatrolBehavior(Characters.Patches2, patrol_information_id=31003820)
-    ReplanAI(Characters.Patches2)
+    ChangePatrolBehavior(Characters.PatchesSecondBoss, patrol_information_id=31003820)
+    ReplanAI(Characters.PatchesSecondBoss)
 
 
 @RestartOnRest(31002863)
-def Event_31002863():
+def PatchesSecondBossBattleResumes():
     """Event 31002863"""
     OR_1.Add(FlagEnabled(31000850))
     OR_1.Add(FlagEnabled(3683))
@@ -1067,15 +1104,15 @@ def Event_31002863():
     
     if FlagDisabled(31008871):
         return
-    EnableCharacter(Characters.Patches2)
+    EnableCharacter(Characters.PatchesSecondBoss)
     Wait(4.0)
-    SetTeamType(Characters.Patches2, TeamType.Enemy)
-    EnableAI(Characters.Patches2)
-    SetNetworkUpdateRate(Characters.Patches2, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetTeamType(Characters.PatchesSecondBoss, TeamType.Enemy)
+    EnableAI(Characters.PatchesSecondBoss)
+    SetNetworkUpdateRate(Characters.PatchesSecondBoss, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     Wait(5.0)
-    EnableBossHealthBar(Characters.Patches2, name=130900)
+    EnableBossHealthBar(Characters.PatchesSecondBoss, name=130900)
     EnableNetworkFlag(31000861)
-    SetNest(Characters.Patches2, region=31002820)
+    SetNest(Characters.PatchesSecondBoss, region=31002820)
 
 
 @RestartOnRest(31002870)
@@ -1320,8 +1357,8 @@ def Event_31002873(
 def Event_31002845():
     """Event 31002845"""
     GotoIfFlagEnabled(Label.L2, flag=3863)
-    GotoIfFlagDisabled(Label.L0, flag=31000800)
-    AND_1.Add(FlagEnabled(31000800))
+    GotoIfFlagDisabled(Label.L0, flag=Flags.PatchesBattleDone)
+    AND_1.Add(FlagEnabled(Flags.PatchesBattleDone))
     AND_1.Add(FlagDisabled(3691))
     GotoIfConditionTrue(Label.L1, input_condition=AND_1)
     AND_2.Add(FlagDisabled(31000850))
@@ -1356,7 +1393,7 @@ def Event_31002845():
 
     # --- Label 10 --- #
     DefineLabel(10)
-    OR_15.Add(FlagState(FlagSetting.Change, FlagType.Absolute, 31000800))
+    OR_15.Add(FlagState(FlagSetting.Change, FlagType.Absolute, Flags.PatchesBattleDone))
     OR_15.Add(FlagState(FlagSetting.Change, FlagType.Absolute, 31000850))
     OR_15.Add(FlagState(FlagSetting.Change, FlagType.Absolute, 3691))
     OR_15.Add(FlagState(FlagSetting.Change, FlagType.Absolute, 3683))
@@ -1445,7 +1482,7 @@ def Event_31002876(
 
 
 @RestartOnRest(31003700)
-def Event_31003700(_, character: uint):
+def Event_31003700(_, patches: uint):
     """Event 31003700"""
     WaitFrames(frames=1)
     DisableNetworkSync()
@@ -1455,18 +1492,18 @@ def Event_31003700(_, character: uint):
 
     # --- Label 10 --- #
     DefineLabel(10)
-    DisableCharacter(character)
-    DisableBackread(character)
+    DisableCharacter(patches)
+    DisableBackread(patches)
     GotoIfFlagEnabled(Label.L5, flag=3686)
     AND_1.Add(FlagEnabled(3685))
-    AND_1.Add(FlagEnabled(31000800))
+    AND_1.Add(FlagEnabled(Flags.PatchesBattleDone))
     AND_1.Add(FlagDisabled(31002704))
     GotoIfConditionTrue(Label.L5, input_condition=AND_1)
-    DisableCharacter(character)
-    DisableBackread(character)
+    DisableCharacter(patches)
+    DisableBackread(patches)
     OR_3.Add(FlagEnabled(3686))
     AND_3.Add(FlagEnabled(3685))
-    AND_3.Add(FlagEnabled(31000800))
+    AND_3.Add(FlagEnabled(Flags.PatchesBattleDone))
     AND_3.Add(FlagDisabled(31002704))
     OR_3.Add(AND_3)
     
@@ -1483,39 +1520,39 @@ def Event_31003700(_, character: uint):
 
     # --- Label 1 --- #
     DefineLabel(1)
-    EnableBackread(character)
-    EnableCharacter(character)
-    SetTeamType(character, TeamType.FriendlyNPC)
-    ForceAnimation(character, 90100)
+    EnableBackread(patches)
+    EnableCharacter(patches)
+    SetTeamType(patches, TeamType.FriendlyNPC)
+    ForceAnimation(patches, 90100)
     GotoIfConditionTrue(Label.L20, input_condition=MAIN)
 
     # --- Label 2 --- #
     DefineLabel(2)
-    EnableBackread(character)
-    EnableCharacter(character)
-    SetTeamType(character, TeamType.HostileNPC)
+    EnableBackread(patches)
+    EnableCharacter(patches)
+    SetTeamType(patches, TeamType.HostileNPC)
     Goto(Label.L20)
 
     # --- Label 3 --- #
     DefineLabel(3)
-    EnableBackread(character)
-    EnableCharacter(character)
-    SetTeamType(character, TeamType.HostileNPC)
+    EnableBackread(patches)
+    EnableCharacter(patches)
+    SetTeamType(patches, TeamType.HostileNPC)
     Goto(Label.L20)
 
     # --- Label 4 --- #
     DefineLabel(4)
-    DisableCharacter(character)
-    DisableBackread(character)
+    DisableCharacter(patches)
+    DisableBackread(patches)
     GotoIfFlagEnabled(Label.L20, flag=31002714)
-    DropMandatoryTreasure(character)
+    DropMandatoryTreasure(patches)
     Goto(Label.L20)
 
     # --- Label 20 --- #
     DefineLabel(20)
     OR_4.Add(FlagEnabled(3686))
     AND_4.Add(FlagEnabled(3685))
-    AND_4.Add(FlagEnabled(31000800))
+    AND_4.Add(FlagEnabled(Flags.PatchesBattleDone))
     AND_4.Add(FlagDisabled(31002704))
     OR_4.Add(AND_4)
     
@@ -1614,7 +1651,7 @@ def Event_31003703():
     """Event 31003703"""
     if FlagEnabled(3683):
         return
-    if FlagEnabled(31000800):
+    if FlagEnabled(Flags.PatchesBattleDone):
         return
     DisableFlag(31009810)
     DisableFlag(31009215)
@@ -1624,31 +1661,31 @@ def Event_31003703():
     DisableNetworkConnectedFlagRange(flag_range=(3680, 3684))
     EnableNetworkFlag(3682)
     
-    MAIN.Await(FlagEnabled(31000800))
+    MAIN.Await(FlagEnabled(Flags.PatchesBattleDone))
     
     DisableFlag(31009219)
     End()
 
 
 @RestartOnRest(31003704)
-def Event_31003704(_, character: uint, seconds: float):
+def PatchesSurrenderTimer(_, patches: uint, seconds: float):
     """Event 31003704"""
     WaitFrames(frames=1)
     if FlagDisabled(3685):
         return
     if FlagEnabled(3683):
         return
-    if FlagEnabled(31000800):
+    if FlagEnabled(Flags.PatchesBattleDone):
         return
     GotoIfFlagEnabled(Label.L2, flag=31002713)
     if FlagDisabled(31002704):
         DisableFlag(31009811)
     GotoIfFlagEnabled(Label.L1, flag=31002704)
-    EnableImmortality(character)
+    EnableImmortality(patches)
     
-    MAIN.Await(HealthRatio(character) <= 0.5)
+    MAIN.Await(HealthRatio(patches) <= 0.5)
     
-    DisableImmortality(character)
+    DisableImmortality(patches)
     if FlagEnabled(3683):
         return
     EnableFlag(31002704)
@@ -1657,16 +1694,16 @@ def Event_31003704(_, character: uint, seconds: float):
     # --- Label 1 --- #
     DefineLabel(1)
     WaitFrames(frames=1)
-    AddSpecialEffect(character, 9701)
-    AddSpecialEffect(character, 5005)
-    AddSpecialEffect(character, 9703)
-    AddSpecialEffect(character, 9645)
+    AddSpecialEffect(patches, 9701)
+    AddSpecialEffect(patches, 5005)
+    AddSpecialEffect(patches, 9703)
+    AddSpecialEffect(patches, 9645)
     if PlayerInOwnWorld():
-        RemoveSpecialEffect(character, 9703)
-    AddSpecialEffect(character, 9647)
-    AddSpecialEffect(character, 9642)
-    SetTeamType(character, TeamType.FriendlyNPC)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=character, attacker=PLAYER))
+        RemoveSpecialEffect(patches, 9703)
+    AddSpecialEffect(patches, 9647)
+    AddSpecialEffect(patches, 9642)
+    SetTeamType(patches, TeamType.FriendlyNPC)
+    OR_1.Add(AttackedWithDamageType(attacked_entity=patches, attacker=PLAYER))
     OR_2.Add(TimeElapsed(seconds=seconds))
     OR_3.Add(OR_1)
     OR_3.Add(OR_2)
@@ -1679,21 +1716,23 @@ def Event_31003704(_, character: uint, seconds: float):
         return
     SkipLinesIfFinishedConditionTrue(1, input_condition=OR_2)
     Restart()
+
+    # Player has spared Patches.
     EnableFlag(31009215)
     EnableFlag(31009810)
     DisableFlag(31009201)
     DisableNetworkConnectedFlagRange(flag_range=(3680, 3684))
     EnableNetworkFlag(3680)
     SaveRequest()
-    SetCharacterTalkRange(character=character, distance=17.0)
-    AddSpecialEffect(character, 9702)
-    AddSpecialEffect(character, 5006)
+    SetCharacterTalkRange(character=patches, distance=17.0)
+    AddSpecialEffect(patches, 9702)
+    AddSpecialEffect(patches, 5006)
     if PlayerNotInOwnWorld():
         return
     if FlagEnabled(60819):
         return
-    AND_10.Add(CharacterDead(character, target_comparison_type=ComparisonType.NotEqual))
-    AND_10.Add(FlagEnabled(31000800))
+    AND_10.Add(CharacterDead(patches, target_comparison_type=ComparisonType.NotEqual))
+    AND_10.Add(FlagEnabled(Flags.PatchesBattleDone))
     
     MAIN.Await(AND_10)
     
@@ -1704,12 +1743,12 @@ def Event_31003704(_, character: uint, seconds: float):
     # --- Label 2 --- #
     DefineLabel(2)
     WaitFramesAfterCutscene(frames=1)
-    AddSpecialEffect(character, 9702)
-    AddSpecialEffect(character, 5006)
-    AddSpecialEffect(character, 9704)
-    AddSpecialEffect(character, 9644)
-    AddSpecialEffect(character, 9643)
-    SetTeamType(character, TeamType.Enemy)
+    AddSpecialEffect(patches, 9702)
+    AddSpecialEffect(patches, 5006)
+    AddSpecialEffect(patches, 9704)
+    AddSpecialEffect(patches, 9644)
+    AddSpecialEffect(patches, 9643)
+    SetTeamType(patches, TeamType.Enemy)
     End()
 
 
@@ -1722,8 +1761,9 @@ def Event_31003705(_, character: uint):
         return
     if FlagEnabled(3683):
         return
-    if FlagEnabled(31000800):
+    if FlagEnabled(Flags.PatchesBattleDone):
         return
+
     DisableFlag(31009212)
     DisableFlag(31009211)
     DisableFlag(31009213)
@@ -1734,7 +1774,7 @@ def Event_31003705(_, character: uint):
     MAIN.Await(AND_1)
     
     Wait(2.5)
-    if FlagEnabled(31000800):
+    if FlagEnabled(Flags.PatchesBattleDone):
         return
     WaitFrames(frames=1)
     AND_2.Add(AttackedWithDamageType(attacked_entity=character, attacker=PLAYER))
@@ -1743,7 +1783,7 @@ def Event_31003705(_, character: uint):
     
     MAIN.Await(AND_2)
     
-    if FlagEnabled(31000800):
+    if FlagEnabled(Flags.PatchesBattleDone):
         return
     WaitFrames(frames=1)
     AND_10.Add(AttackedWithDamageType(attacked_entity=character, attacker=PLAYER))
@@ -1752,7 +1792,7 @@ def Event_31003705(_, character: uint):
     
     MAIN.Await(AND_10)
     
-    if FlagEnabled(31000800):
+    if FlagEnabled(Flags.PatchesBattleDone):
         return
     WaitFrames(frames=1)
     AND_3.Add(AttackedWithDamageType(attacked_entity=character, attacker=PLAYER))
@@ -1761,7 +1801,7 @@ def Event_31003705(_, character: uint):
     
     MAIN.Await(AND_3)
     
-    if FlagEnabled(31000800):
+    if FlagEnabled(Flags.PatchesBattleDone):
         return
     EnableNetworkFlag(31002713)
     End()
@@ -1771,7 +1811,7 @@ def Event_31003705(_, character: uint):
     
     MAIN.Await(FlagEnabled(31002713))
     
-    if FlagEnabled(31000800):
+    if FlagEnabled(Flags.PatchesBattleDone):
         return
     SetTeamType(character, TeamType.Enemy)
     End()
@@ -1782,7 +1822,7 @@ def Event_31003706(_, character: uint, flag: uint, first_flag: uint, last_flag: 
     """Event 31003706"""
     if PlayerNotInOwnWorld():
         return
-    if FlagEnabled(31000800):
+    if FlagEnabled(Flags.PatchesBattleDone):
         return
     AND_1.Add(FlagDisabled(flag))
     AND_1.Add(FlagEnabled(3685))
@@ -2078,7 +2118,7 @@ def Event_31003713(_, character: uint):
 
 
 @RestartOnRest(31003714)
-def Event_31003714(_, character: uint, seconds: float):
+def Event_31003714(_, patches: uint, seconds: float):
     """Event 31003714"""
     WaitFrames(frames=1)
     if FlagDisabled(3691):
@@ -2089,7 +2129,7 @@ def Event_31003714(_, character: uint, seconds: float):
         return
     GotoIfFlagEnabled(Label.L2, flag=31002722)
     GotoIfFlagEnabled(Label.L1, flag=31002730)
-    EnableImmortality(character)
+    EnableImmortality(patches)
     AND_5.Add(FlagEnabled(31009257))
     
     MAIN.Await(AND_5)
@@ -2101,8 +2141,8 @@ def Event_31003714(_, character: uint, seconds: float):
     # --- Label 5 --- #
     DefineLabel(5)
     Wait(3.0)
-    DisableImmortality(character)
-    AddSpecialEffect(character, 18670)
+    DisableImmortality(patches)
+    AddSpecialEffect(patches, 18670)
     if FlagEnabled(3683):
         return
     EnableFlag(31002721)
@@ -2112,16 +2152,16 @@ def Event_31003714(_, character: uint, seconds: float):
     # --- Label 1 --- #
     DefineLabel(1)
     WaitFrames(frames=1)
-    AddSpecialEffect(character, 9701)
-    AddSpecialEffect(character, 5005)
-    AddSpecialEffect(character, 9703)
-    AddSpecialEffect(character, 9645)
+    AddSpecialEffect(patches, 9701)
+    AddSpecialEffect(patches, 5005)
+    AddSpecialEffect(patches, 9703)
+    AddSpecialEffect(patches, 9645)
     if PlayerInOwnWorld():
-        RemoveSpecialEffect(character, 9703)
-    AddSpecialEffect(character, 9647)
-    AddSpecialEffect(character, 9642)
-    SetTeamType(character, TeamType.FriendlyNPC)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=character, attacker=PLAYER))
+        RemoveSpecialEffect(patches, 9703)
+    AddSpecialEffect(patches, 9647)
+    AddSpecialEffect(patches, 9642)
+    SetTeamType(patches, TeamType.FriendlyNPC)
+    OR_1.Add(AttackedWithDamageType(attacked_entity=patches, attacker=PLAYER))
     OR_2.Add(TimeElapsed(seconds=seconds))
     OR_3.Add(OR_1)
     OR_3.Add(OR_2)
@@ -2132,23 +2172,25 @@ def Event_31003714(_, character: uint, seconds: float):
     GotoIfFlagEnabled(Label.L2, flag=31002722)
     if FlagEnabled(3683):
         return
+
     SkipLinesIfFinishedConditionTrue(1, input_condition=OR_2)
     Restart()
+
     EnableFlag(31002728)
     EnableFlag(31009889)
     DisableFlag(31009201)
-    AddSpecialEffect(character, 9706)
+    AddSpecialEffect(patches, 9706)
     DisableNetworkConnectedFlagRange(flag_range=(3680, 3684))
     EnableNetworkFlag(3680)
     SaveRequest()
-    SetCharacterTalkRange(character=character, distance=17.0)
-    AddSpecialEffect(character, 9702)
-    AddSpecialEffect(character, 5006)
+    SetCharacterTalkRange(character=patches, distance=17.0)
+    AddSpecialEffect(patches, 9702)
+    AddSpecialEffect(patches, 5006)
     if PlayerNotInOwnWorld():
         return
     if FlagEnabled(60832):
         return
-    AND_10.Add(CharacterDead(character, target_comparison_type=ComparisonType.NotEqual))
+    AND_10.Add(CharacterDead(patches, target_comparison_type=ComparisonType.NotEqual))
     AND_10.Add(FlagEnabled(31000850))
     
     MAIN.Await(AND_10)
@@ -2160,13 +2202,13 @@ def Event_31003714(_, character: uint, seconds: float):
     # --- Label 2 --- #
     DefineLabel(2)
     WaitFramesAfterCutscene(frames=1)
-    AddSpecialEffect(character, 9702)
-    AddSpecialEffect(character, 5006)
-    AddSpecialEffect(character, 9704)
-    AddSpecialEffect(character, 9644)
-    AddSpecialEffect(character, 9706)
-    AddSpecialEffect(character, 9643)
-    SetTeamType(character, TeamType.Enemy)
+    AddSpecialEffect(patches, 9702)
+    AddSpecialEffect(patches, 5006)
+    AddSpecialEffect(patches, 9704)
+    AddSpecialEffect(patches, 9644)
+    AddSpecialEffect(patches, 9706)
+    AddSpecialEffect(patches, 9643)
+    SetTeamType(patches, TeamType.Enemy)
     End()
 
 
@@ -2227,7 +2269,7 @@ def Event_31003716(_, character: uint, flag: uint, first_flag: uint, last_flag: 
     """Event 31003716"""
     if PlayerNotInOwnWorld():
         return
-    if FlagDisabled(31000800):
+    if FlagDisabled(Flags.PatchesBattleDone):
         return
     if FlagEnabled(31000850):
         return

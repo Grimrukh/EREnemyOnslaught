@@ -1,4 +1,4 @@
-"""
+"""DONE
 Limgrave Tunnels
 
 linked:
@@ -738,13 +738,17 @@ def Event_32012800():
     """Event 32012800"""
     if FlagEnabled(32010800):
         return
-    
-    MAIN.Await(HealthValue(Characters.MineTroll) <= 0)
+
+    AND_7.Add(HealthValue(Characters.MineTroll) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_MineTroll) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(32018000, 888880000, sound_type=SoundType.s_SFX)
-    
-    MAIN.Await(HealthValue(Characters.MineTroll) == 0)
+
+    AND_8.Add(CharacterDead(Characters.MineTroll))
+    AND_8.Add(CharacterDead(Characters.CLONE_MineTroll))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.MineTroll, banner_type=BannerType.EnemyFelled)
     EnableFlag(32010800)
@@ -760,23 +764,30 @@ def Event_32012810():
     DisableCharacter(Characters.MineTroll)
     DisableAnimations(Characters.MineTroll)
     Kill(Characters.MineTroll)
+    DisableCharacter(Characters.CLONE_MineTroll)
+    DisableAnimations(Characters.CLONE_MineTroll)
+    Kill(Characters.CLONE_MineTroll)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.MineTroll)
+    DisableAI(Characters.CLONE_MineTroll)
     GotoIfFlagEnabled(Label.L1, flag=32010801)
     ForceAnimation(Characters.MineTroll, 30000, loop=True)
+    ForceAnimation(Characters.CLONE_MineTroll, 30000, loop=True)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=32012801))
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.MineTroll, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_MineTroll, attacker=PLAYER))
+
     MAIN.Await(OR_1)
     
     if PlayerInOwnWorld():
         EnableNetworkFlag(32010801)
     ForceAnimation(Characters.MineTroll, 20000, skip_transition=True)
+    ForceAnimation(Characters.CLONE_MineTroll, 20000, skip_transition=True)
     Goto(Label.L2)
 
     # --- Label 1 --- #
@@ -789,8 +800,11 @@ def Event_32012810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.MineTroll)
+    EnableAI(Characters.CLONE_MineTroll)
     SetNetworkUpdateRate(Characters.MineTroll, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.MineTroll, name=904600320)
+    SetNetworkUpdateRate(Characters.CLONE_MineTroll, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.MineTroll, name=904600320, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_MineTroll, name=904600320, bar_slot=0)
 
 
 @RestartOnRest(32012811)

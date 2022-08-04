@@ -1,4 +1,4 @@
-"""
+"""DONE
 Abandoned Cave
 
 linked:
@@ -25,10 +25,14 @@ from .entities.m31_20_00_00_entities import *
 def Constructor():
     """Event 0"""
     Event_31202800()
-    Event_31202801()
-    Event_31202802()
+    Event_31202801(0, Characters.CleanrotKnight0)
+    Event_31202801(1, Characters.CleanrotKnight1)
+    Event_31202801(2, Characters.CLONE_CleanrotKnight0)
+    Event_31202801(3, Characters.CLONE_CleanrotKnight1)
     Event_31202810()
     Event_31202811()
+    KillBossClone(0, Characters.CleanrotKnight0, Characters.CLONE_CleanrotKnight0)
+    KillBossClone(1, Characters.CleanrotKnight1, Characters.CLONE_CleanrotKnight1)
     Event_31092849()
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9000, vfx_id=100, model_point=800, right=0)
     RegisterGrace(grace_flag=31200000, asset=Assets.AEG099_060_9000)
@@ -224,7 +228,9 @@ def Event_31202800():
         return
     AND_1.Add(CharacterDead(Characters.CleanrotKnight0))
     AND_1.Add(CharacterDead(Characters.CleanrotKnight1))
-    
+    AND_1.Add(CharacterDead(Characters.CLONE_CleanrotKnight0))
+    AND_1.Add(CharacterDead(Characters.CLONE_CleanrotKnight1))
+
     MAIN.Await(AND_1)
     
     Wait(4.0)
@@ -236,27 +242,15 @@ def Event_31202800():
 
 
 @RestartOnRest(31202801)
-def Event_31202801():
+def Event_31202801(_, knight: uint):
     """Event 31202801"""
     if FlagEnabled(31200800):
         return
     
-    MAIN.Await(HealthValue(Characters.CleanrotKnight0) <= 0)
+    MAIN.Await(HealthValue(knight) <= 0)
     
     Wait(4.0)
-    PlaySoundEffect(Characters.CleanrotKnight0, 888880000, sound_type=SoundType.s_SFX)
-
-
-@RestartOnRest(31202802)
-def Event_31202802():
-    """Event 31202802"""
-    if FlagEnabled(31200800):
-        return
-    
-    MAIN.Await(HealthValue(Characters.CleanrotKnight1) <= 0)
-    
-    Wait(4.0)
-    PlaySoundEffect(Characters.CleanrotKnight1, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(knight, 888880000, sound_type=SoundType.s_SFX)
 
 
 @RestartOnRest(31202810)
@@ -269,6 +263,12 @@ def Event_31202810():
     DisableAnimations(Characters.CleanrotKnight1)
     Kill(Characters.CleanrotKnight0)
     Kill(Characters.CleanrotKnight1)
+    DisableCharacter(Characters.CLONE_CleanrotKnight0)
+    DisableCharacter(Characters.CLONE_CleanrotKnight1)
+    DisableAnimations(Characters.CLONE_CleanrotKnight0)
+    DisableAnimations(Characters.CLONE_CleanrotKnight1)
+    Kill(Characters.CLONE_CleanrotKnight0)
+    Kill(Characters.CLONE_CleanrotKnight1)
     End()
 
     # --- Label 0 --- #
@@ -276,6 +276,9 @@ def Event_31202810():
     DisableAI(Characters.CleanrotKnight0)
     DisableAI(Characters.CleanrotKnight1)
     ForceAnimation(Characters.CleanrotKnight0, 30001)
+    DisableAI(Characters.CLONE_CleanrotKnight0)
+    DisableAI(Characters.CLONE_CleanrotKnight1)
+    ForceAnimation(Characters.CLONE_CleanrotKnight0, 30001)
     AND_2.Add(FlagEnabled(31202805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=31202800))
     
@@ -284,14 +287,24 @@ def Event_31202810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.CleanrotKnight0)
+    EnableAI(Characters.CLONE_CleanrotKnight0)
     SetNetworkUpdateRate(Characters.CleanrotKnight0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_CleanrotKnight0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableImmortality(Characters.CLONE_CleanrotKnight0)
+    EnableImmortality(Characters.CLONE_CleanrotKnight1)
+    ReferDamageToEntity(Characters.CLONE_CleanrotKnight0, Characters.CleanrotKnight0)
+    ReferDamageToEntity(Characters.CLONE_CleanrotKnight1, Characters.CleanrotKnight1)
     Wait(1.0)
     EnableBossHealthBar(Characters.CleanrotKnight0, name=903800311)
     ForceAnimation(Characters.CleanrotKnight0, 20001)
+    ForceAnimation(Characters.CLONE_CleanrotKnight0, 20001)
     Wait(5.0)
     EnableAI(Characters.CleanrotKnight1)
+    EnableAI(Characters.CLONE_CleanrotKnight1)
     SetNetworkUpdateRate(Characters.CleanrotKnight1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_CleanrotKnight1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     OR_15.Add(AttackedWithDamageType(attacked_entity=Characters.CleanrotKnight1))
+    OR_15.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_CleanrotKnight1))
     OR_15.Add(TimeElapsed(seconds=7.0))
     AwaitConditionTrue(OR_15)
     EnableBossHealthBar(Characters.CleanrotKnight1, name=903800312, bar_slot=1)
@@ -308,6 +321,15 @@ def Event_31202811():
     MAIN.Await(OR_15)
     
     EnableFlag(31202842)
+
+
+@RestartOnRest(31202812)
+def KillBossClone(_, knight: uint, clone: uint):
+    if FlagEnabled(31200800):
+        return
+
+    MAIN.Await(HealthValue(knight) <= 0)
+    Kill(clone)
 
 
 @RestartOnRest(31092849)

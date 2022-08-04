@@ -37,13 +37,13 @@ def Constructor():
     Event_1044362849()
     CommonFunc_NonRespawningWithReward(0, dead_flag=1044360220, character=Characters.Scarab, item_lot=40112, reward_delay=0.0, skip_reward=0, clone=0)
     Event_1044362500()
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.SorceressSellen,
+        npc=Characters.SorceressSellen,
         flag=3461,
-        flag_1=3460,
-        flag_2=1044369201,
-        right=3,
+        required_flag=3460,
+        hostile_flag=1044369201,
+        hostile_hits=3,
     )
     RunCommonEvent(
         1044363711,

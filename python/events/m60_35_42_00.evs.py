@@ -64,13 +64,13 @@ def Constructor():
         region=1035422160,
         left=0,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.AlbinauricLookout0,
+        npc=Characters.AlbinauricLookout0,
         flag=3541,
-        flag_1=3540,
-        flag_2=1035429201,
-        right=3,
+        required_flag=3540,
+        hostile_flag=1035429201,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,
@@ -89,7 +89,7 @@ def Constructor():
     Event_1035423702(0, character=Characters.AlbinauricLookout0)
     Event_1035423703(0, entity=Characters.AlbinauricLookout0)
     Event_1035420710(0, character=Characters.Ranni)
-    CommonFunc_90005704(0, attacked_entity=Characters.Ranni, flag=3741, flag_1=3740, flag_2=1035429251, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Ranni, flag=3741, required_flag=3740, hostile_flag=1035429251, hostile_hits=3)
     CommonFunc_90005707(
         0,
         character=Characters.Ranni,

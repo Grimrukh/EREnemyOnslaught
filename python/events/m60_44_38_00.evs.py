@@ -30,13 +30,13 @@ def Constructor():
     CommonFunc_NonRespawningWithReward(0, dead_flag=1044380210, character=Characters.Scarab, item_lot=40142, reward_delay=0.0, skip_reward=0, clone=0)
     CommonFunc_90005632(0, flag=580000, asset=Assets.AEG099_371_1001, item_lot=80000)
     Event_1044382220()
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.YuraHunterofBloodyFingers,
+        npc=Characters.YuraHunterofBloodyFingers,
         flag=3621,
-        flag_1=3620,
-        flag_2=1043379251,
-        right=3,
+        required_flag=3620,
+        hostile_flag=1043379251,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,

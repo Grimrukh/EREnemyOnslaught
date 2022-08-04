@@ -13,6 +13,8 @@ class Characters(Character):
     SpiritJellyfish0 = 31120227  # c4180_9007 col h000200 npc 41800152 think 41800000
     SpiritJellyfish1 = 31120228  # c4180_9008 col h000101 npc 41800152 think 41800000
 
+    CLONE_LeonineMisbegotten = 31120801
+
 
 class Assets(Asset):
     AEG099_001_9000 = 31121800  # AEG099

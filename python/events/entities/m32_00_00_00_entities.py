@@ -28,6 +28,8 @@ class Characters(Character):
     TunnelMiner10 = 32000216  # c4382_9016 col h000200 npc 43821012 think 43821000
     TunnelMiner11 = 32000219  # c4382_9019 col h000200 npc 43821012 think 43821000
 
+    CLONE_ScalyMisbegotten = 32000801
+
 
 class Assets(Asset):
     AEG027_000_1000 = 32001530  # AEG027

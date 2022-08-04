@@ -19,6 +19,9 @@ class Characters(Character):
     Springhare1 = 31100237  # c6100_9007 col h000200 npc 61000042 think 61000010
     Springhare2 = 31100238  # c6100_9008 col h000200 npc 61000042 think 61000010
 
+    CLONE_BeastmanofFarumAzula0 = 31100810
+    CLONE_BeastmanofFarumAzula1 = 31100811
+
 
 class Assets(Asset):
     AEG020_950_1023 = 31105303  # AEG020

@@ -42,6 +42,8 @@ class Characters(Character):
     MirandaFlower8 = 31040278  # c4481_9018 col h000200 npc 44810020 think 44810000
     MirandaFlower9 = 31040279  # c4481_9019 col h000200 npc 44810020 think 44810000
 
+    CLONE_CleanrotKnight = 31040801
+
 
 class Assets(Asset):
     AEG003_071_1000 = 31041606  # AEG003

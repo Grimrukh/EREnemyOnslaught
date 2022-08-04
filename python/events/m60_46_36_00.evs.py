@@ -46,7 +46,7 @@ def Constructor():
     Event_1046362203()
     Event_1046362300()
     Event_1046362310()
-    CommonFunc_90005704(0, attacked_entity=Characters.KennethHaight, flag=3581, flag_1=3580, flag_2=1046369201, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.KennethHaight, flag=3581, required_flag=3580, hostile_flag=1046369201, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.KennethHaight,

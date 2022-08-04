@@ -454,7 +454,7 @@ def Constructor():
         arg_types="IIIIIIi",
     )
     Event_13003700()
-    CommonFunc_90005704(0, attacked_entity=Characters.Alexander, flag=13009256, flag_1=3660, flag_2=13009251, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Alexander, flag=13009256, required_flag=3660, hostile_flag=13009251, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Alexander,

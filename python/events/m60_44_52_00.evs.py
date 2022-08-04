@@ -32,7 +32,7 @@ def Constructor():
     Event_1044523705()
     Event_1044523706()
     Event_1044523707(0, asset=Assets.AEG099_315_9000, asset_1=Assets.AEG099_090_9000)
-    CommonFunc_90005704(0, attacked_entity=Characters.Blackguard0, flag=4141, flag_1=4140, flag_2=1044529251, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Blackguard0, flag=4141, required_flag=4140, hostile_flag=1044529251, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Blackguard0,

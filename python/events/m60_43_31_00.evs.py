@@ -267,7 +267,7 @@ def Constructor():
             repetition_time=1.0,
         )
     CommonFunc_90005706(0, character=Characters.WanderingNoble, animation_id=930023, left=0)
-    CommonFunc_90005704(0, attacked_entity=Characters.Edgar, flag=3401, flag_1=3400, flag_2=1043309201, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Edgar, flag=3401, required_flag=3400, hostile_flag=1043309201, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Edgar,

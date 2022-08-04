@@ -23,7 +23,7 @@ from .entities.m60_45_38_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005704(0, attacked_entity=Characters.KennethHaight, flag=3581, flag_1=3580, flag_2=1045389201, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.KennethHaight, flag=3581, required_flag=3580, hostile_flag=1045389201, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.KennethHaight,

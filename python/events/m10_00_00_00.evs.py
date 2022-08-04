@@ -477,53 +477,53 @@ def Constructor():
         last_flag=3263,
         right=-1,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.GatekeeperGostoc0,
+        npc=Characters.GatekeeperGostoc0,
         flag=3261,
-        flag_1=3260,
-        flag_2=10009504,
-        right=3,
+        required_flag=3260,
+        hostile_flag=10009504,
+        hostile_hits=3,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.GatekeeperGostoc1,
+        npc=Characters.GatekeeperGostoc1,
         flag=3261,
-        flag_1=3260,
-        flag_2=10009385,
-        right=3,
+        required_flag=3260,
+        hostile_flag=10009385,
+        hostile_hits=3,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.GatekeeperGostoc2,
+        npc=Characters.GatekeeperGostoc2,
         flag=3261,
-        flag_1=3260,
-        flag_2=10009386,
-        right=3,
+        required_flag=3260,
+        hostile_flag=10009386,
+        hostile_hits=3,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.GatekeeperGostoc3,
+        npc=Characters.GatekeeperGostoc3,
         flag=3261,
-        flag_1=3260,
-        flag_2=10009387,
-        right=3,
+        required_flag=3260,
+        hostile_flag=10009387,
+        hostile_hits=3,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.GatekeeperGostoc4,
+        npc=Characters.GatekeeperGostoc4,
         flag=3261,
-        flag_1=3260,
-        flag_2=10009388,
-        right=3,
+        required_flag=3260,
+        hostile_flag=10009388,
+        hostile_hits=3,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.GatekeeperGostoc5,
+        npc=Characters.GatekeeperGostoc5,
         flag=3261,
-        flag_1=3260,
-        flag_2=10009505,
-        right=3,
+        required_flag=3260,
+        hostile_flag=10009505,
+        hostile_hits=3,
     )
     CommonFunc_90005702(0, character=Characters.GatekeeperGostoc0, flag=3263, first_flag=3260, last_flag=3263)
     CommonFunc_90005702(0, character=Characters.GatekeeperGostoc1, flag=3263, first_flag=3260, last_flag=3263)
@@ -594,7 +594,7 @@ def Constructor():
     Event_10003736()
     Event_10003737()
     Event_10003775(0, character=Characters.NepheliLoux0, character_1=Characters.BanishedKnight7)
-    CommonFunc_90005704(0, attacked_entity=Characters.NepheliLoux0, flag=4221, flag_1=4220, flag_2=10009701, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.NepheliLoux0, flag=4221, required_flag=4220, hostile_flag=10009701, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.NepheliLoux0,
@@ -608,7 +608,7 @@ def Constructor():
     )
     CommonFunc_90005702(0, character=Characters.NepheliLoux0, flag=4223, first_flag=4220, last_flag=4224)
     Event_10003776(0, character=Characters.NepheliLoux1)
-    CommonFunc_90005704(0, attacked_entity=Characters.NepheliLoux1, flag=4221, flag_1=4220, flag_2=10009701, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.NepheliLoux1, flag=4221, required_flag=4220, hostile_flag=10009701, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.NepheliLoux1,

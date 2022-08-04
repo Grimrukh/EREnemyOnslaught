@@ -1,4 +1,4 @@
-"""
+"""DONE
 Tombsward Cave
 
 linked:
@@ -571,12 +571,15 @@ def Event_31022810():
     GotoIfFlagDisabled(Label.L0, flag=31020800)
     DisableCharacter(Characters.GiantMirandaFlower)
     DisableAnimations(Characters.GiantMirandaFlower)
+    DisableCharacter(Characters.CLONE_GiantMirandaFlower)
+    DisableAnimations(Characters.CLONE_GiantMirandaFlower)
     Kill(31025800)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.GiantMirandaFlower)
+    DisableAI(Characters.CLONE_GiantMirandaFlower)
     AND_2.Add(FlagEnabled(31022805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=31022800))
     
@@ -588,8 +591,11 @@ def Event_31022810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.GiantMirandaFlower)
+    EnableAI(Characters.CLONE_GiantMirandaFlower)
     SetNetworkUpdateRate(Characters.GiantMirandaFlower, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.GiantMirandaFlower, name=904480311)
+    SetNetworkUpdateRate(Characters.CLONE_GiantMirandaFlower, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.GiantMirandaFlower, name=904480311, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_GiantMirandaFlower, name=904480311, bar_slot=0)
 
 
 @RestartOnRest(31022811)

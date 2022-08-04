@@ -30,6 +30,8 @@ class Characters(Character):
     Snail12 = 31050317  # c4140_9017 col h000300 npc 41404020 think 41404000
     BloodhoundKnight = 31050800  # c4290_9000 col h000400 npc 42900920 think 42900000 group 31055800,31055100
 
+    CLONE_BloodhoundKnight = 31050801
+
 
 class Assets(Asset):
     AEG099_001_9000 = 31051801  # AEG099

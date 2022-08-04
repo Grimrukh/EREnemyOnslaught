@@ -50,7 +50,7 @@ def Constructor():
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Springhare3, region=1049532263, radius=1.0, seconds=0.0, animation_id=0)
     CommonFunc_900005610(0, asset=1049531600, vfx_id=100, model_point=800, right=0)
     Event_1049532200(0, character=1049535200)
-    CommonFunc_90005704(0, attacked_entity=Characters.Shabriri, flag=3621, flag_1=3620, flag_2=1049539201, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Shabriri, flag=3621, required_flag=3620, hostile_flag=1049539201, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Shabriri,

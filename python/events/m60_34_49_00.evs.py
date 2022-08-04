@@ -75,7 +75,7 @@ def Constructor():
     Event_1034492270(1, seconds=2.5, flag=1034492282)
     Event_1034492270(2, seconds=2.5, flag=1034492283)
     Event_1034492270(3, seconds=2.4000000953674316, flag=1034492284)
-    CommonFunc_90005704(0, attacked_entity=Characters.Iji0, flag=3761, flag_1=3760, flag_2=1034499201, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Iji0, flag=3761, required_flag=3760, hostile_flag=1034499201, hostile_hits=3)
     CommonFunc_90005707(
         0,
         character=Characters.Iji0,
@@ -93,7 +93,7 @@ def Constructor():
     Event_1034490700(0, character=Characters.Iji0)
     CommonFunc_90005709(0, attacked_entity=Characters.Iji0, model_point=905, vfx_id=603002)
     CommonFunc_90005709(0, attacked_entity=Characters.Iji0, model_point=960, vfx_id=603052)
-    CommonFunc_90005704(0, attacked_entity=Characters.Iji1, flag=3761, flag_1=3760, flag_2=1034499203, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Iji1, flag=3761, required_flag=3760, hostile_flag=1034499203, hostile_hits=3)
     CommonFunc_90005707(
         0,
         character=Characters.Iji1,

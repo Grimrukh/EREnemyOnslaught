@@ -241,7 +241,7 @@ def Constructor():
     )
     Event_35000703(0, seconds=7.5)
     Event_35003720(0, character=Characters.DungEater1)
-    CommonFunc_90005704(0, attacked_entity=Characters.DungEater1, flag=4241, flag_1=4240, flag_2=35009251, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.DungEater1, flag=4241, required_flag=4240, hostile_flag=35009251, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.DungEater1,

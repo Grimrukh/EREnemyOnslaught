@@ -6421,24 +6421,24 @@ def CommonFunc_90005703(
 
 
 @RestartOnRest(90005704)
-def CommonFunc_90005704(_, attacked_entity: uint, flag: uint, flag_1: uint, flag_2: uint, right: int):
+def CommonFunc_MakeNPCHostile(_, npc: uint, flag: uint, required_flag: uint, hostile_flag: uint, hostile_hits: int):
     """CommonFunc 90005704"""
     if PlayerNotInOwnWorld():
         return
     WaitFrames(frames=1)
     AND_1.Add(FlagDisabled(flag))
-    AND_1.Add(FlagEnabled(flag_1))
+    AND_1.Add(FlagEnabled(required_flag))
     
     MAIN.Await(AND_1)
     
-    GotoIfValueComparison(Label.L4, comparison_type=ComparisonType.Equal, left=4, right=right)
-    GotoIfValueComparison(Label.L3, comparison_type=ComparisonType.Equal, left=3, right=right)
-    GotoIfValueComparison(Label.L2, comparison_type=ComparisonType.Equal, left=2, right=right)
-    GotoIfValueComparison(Label.L1, comparison_type=ComparisonType.Equal, left=1, right=right)
+    GotoIfValueComparison(Label.L4, comparison_type=ComparisonType.Equal, left=4, right=hostile_hits)
+    GotoIfValueComparison(Label.L3, comparison_type=ComparisonType.Equal, left=3, right=hostile_hits)
+    GotoIfValueComparison(Label.L2, comparison_type=ComparisonType.Equal, left=2, right=hostile_hits)
+    GotoIfValueComparison(Label.L1, comparison_type=ComparisonType.Equal, left=1, right=hostile_hits)
     OR_1.Add(FlagEnabled(flag))
-    OR_1.Add(FlagDisabled(flag_1))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=attacked_entity, attacker=PLAYER))
-    OR_2.Add(AttackedWithDamageType(attacked_entity=attacked_entity, attacker=40000))
+    OR_1.Add(FlagDisabled(required_flag))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=npc, attacker=PLAYER))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=npc, attacker=40000))
     OR_2.Add(OR_1)
     
     MAIN.Await(OR_2)
@@ -6449,9 +6449,9 @@ def CommonFunc_90005704(_, attacked_entity: uint, flag: uint, flag_1: uint, flag
     # --- Label 4 --- #
     DefineLabel(4)
     OR_3.Add(FlagEnabled(flag))
-    OR_3.Add(FlagDisabled(flag_1))
-    OR_4.Add(AttackedWithDamageType(attacked_entity=attacked_entity, attacker=PLAYER))
-    OR_4.Add(AttackedWithDamageType(attacked_entity=attacked_entity, attacker=40000))
+    OR_3.Add(FlagDisabled(required_flag))
+    OR_4.Add(AttackedWithDamageType(attacked_entity=npc, attacker=PLAYER))
+    OR_4.Add(AttackedWithDamageType(attacked_entity=npc, attacker=40000))
     OR_4.Add(OR_3)
     
     MAIN.Await(OR_4)
@@ -6462,9 +6462,9 @@ def CommonFunc_90005704(_, attacked_entity: uint, flag: uint, flag_1: uint, flag
     # --- Label 3 --- #
     DefineLabel(3)
     OR_5.Add(FlagEnabled(flag))
-    OR_5.Add(FlagDisabled(flag_1))
-    OR_6.Add(AttackedWithDamageType(attacked_entity=attacked_entity, attacker=PLAYER))
-    OR_6.Add(AttackedWithDamageType(attacked_entity=attacked_entity, attacker=40000))
+    OR_5.Add(FlagDisabled(required_flag))
+    OR_6.Add(AttackedWithDamageType(attacked_entity=npc, attacker=PLAYER))
+    OR_6.Add(AttackedWithDamageType(attacked_entity=npc, attacker=40000))
     OR_6.Add(OR_5)
     
     MAIN.Await(OR_6)
@@ -6475,9 +6475,9 @@ def CommonFunc_90005704(_, attacked_entity: uint, flag: uint, flag_1: uint, flag
     # --- Label 2 --- #
     DefineLabel(2)
     OR_7.Add(FlagEnabled(flag))
-    OR_7.Add(FlagDisabled(flag_1))
-    OR_8.Add(AttackedWithDamageType(attacked_entity=attacked_entity, attacker=PLAYER))
-    OR_8.Add(AttackedWithDamageType(attacked_entity=attacked_entity, attacker=40000))
+    OR_7.Add(FlagDisabled(required_flag))
+    OR_8.Add(AttackedWithDamageType(attacked_entity=npc, attacker=PLAYER))
+    OR_8.Add(AttackedWithDamageType(attacked_entity=npc, attacker=40000))
     OR_8.Add(OR_7)
     
     MAIN.Await(OR_8)
@@ -6488,15 +6488,15 @@ def CommonFunc_90005704(_, attacked_entity: uint, flag: uint, flag_1: uint, flag
     # --- Label 1 --- #
     DefineLabel(1)
     OR_9.Add(FlagEnabled(flag))
-    OR_9.Add(FlagDisabled(flag_1))
-    OR_10.Add(AttackedWithDamageType(attacked_entity=attacked_entity, attacker=PLAYER))
-    OR_10.Add(AttackedWithDamageType(attacked_entity=attacked_entity, attacker=40000))
+    OR_9.Add(FlagDisabled(required_flag))
+    OR_10.Add(AttackedWithDamageType(attacked_entity=npc, attacker=PLAYER))
+    OR_10.Add(AttackedWithDamageType(attacked_entity=npc, attacker=40000))
     OR_10.Add(OR_9)
     
     MAIN.Await(OR_10)
     
     RestartIfFinishedConditionTrue(input_condition=OR_9)
-    EnableFlag(flag_2)
+    EnableFlag(hostile_flag)
     Restart()
 
 

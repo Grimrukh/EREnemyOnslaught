@@ -1,4 +1,4 @@
-"""
+"""DONE
 Altus Tunnel
 
 linked:
@@ -554,14 +554,18 @@ def Event_32052800():
         return
     AND_1.Add(HealthValue(Characters.Crystalian0) <= 0)
     AND_1.Add(HealthValue(Characters.Crystalian1) <= 0)
-    
+    AND_1.Add(HealthValue(Characters.CLONE_Crystalian0) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_Crystalian1) <= 0)
+
     MAIN.Await(AND_1)
     
     Wait(4.0)
     PlaySoundEffect(Characters.Crystalian0, 888880000, sound_type=SoundType.s_SFX)
-    AND_2.Add(HealthValue(Characters.Crystalian0) == 0)
-    AND_2.Add(HealthValue(Characters.Crystalian1) == 0)
-    
+    AND_2.Add(CharacterDead(Characters.Crystalian0))
+    AND_2.Add(CharacterDead(Characters.Crystalian1))
+    AND_2.Add(CharacterDead(Characters.CLONE_Crystalian0))
+    AND_2.Add(CharacterDead(Characters.CLONE_Crystalian1))
+
     MAIN.Await(AND_2)
     
     KillBossAndDisplayBanner(character=Characters.Crystalian0, banner_type=BannerType.EnemyFelled)
@@ -581,49 +585,72 @@ def Event_32052810():
     DisableAnimations(Characters.Crystalian1)
     Kill(Characters.Crystalian0)
     Kill(Characters.Crystalian1)
+    DisableCharacter(Characters.CLONE_Crystalian0)
+    DisableCharacter(Characters.CLONE_Crystalian1)
+    DisableAnimations(Characters.CLONE_Crystalian0)
+    DisableAnimations(Characters.CLONE_Crystalian1)
+    Kill(Characters.CLONE_Crystalian0)
+    Kill(Characters.CLONE_Crystalian1)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.Crystalian0)
     DisableAI(Characters.Crystalian1)
+    DisableAI(Characters.CLONE_Crystalian0)
+    DisableAI(Characters.CLONE_Crystalian1)
     GotoIfFlagEnabled(Label.L1, flag=32050801)
     ForceAnimation(Characters.Crystalian0, 30000, loop=True)
     ForceAnimation(Characters.Crystalian1, 30000, loop=True)
+    ForceAnimation(Characters.CLONE_Crystalian0, 30000, loop=True)
+    ForceAnimation(Characters.CLONE_Crystalian1, 30000, loop=True)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=32052801))
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Crystalian0, attacker=PLAYER))
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Crystalian1, attacker=PLAYER))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_Crystalian0, attacker=PLAYER))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_Crystalian1, attacker=PLAYER))
     
     MAIN.Await(OR_1)
     
     if PlayerInOwnWorld():
         EnableNetworkFlag(32050801)
     ForceAnimation(Characters.Crystalian0, 20000)
+    ForceAnimation(Characters.CLONE_Crystalian0, 20000)
     ForceAnimation(Characters.Crystalian1, 20000)
+    ForceAnimation(Characters.CLONE_Crystalian1, 20000)
     Goto(Label.L2)
 
     # --- Label 1 --- #
     DefineLabel(1)
     ForceAnimation(Characters.Crystalian0, 30000, loop=True)
+    ForceAnimation(Characters.CLONE_Crystalian0, 30000, loop=True)
     ForceAnimation(Characters.Crystalian1, 30000, loop=True)
+    ForceAnimation(Characters.CLONE_Crystalian1, 30000, loop=True)
     AND_2.Add(FlagEnabled(32052805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=32052800))
     
     MAIN.Await(AND_2)
     
     ForceAnimation(Characters.Crystalian0, 20000)
+    ForceAnimation(Characters.CLONE_Crystalian0, 20000)
     ForceAnimation(Characters.Crystalian1, 20000)
+    ForceAnimation(Characters.CLONE_Crystalian1, 20000)
 
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.Crystalian0)
+    EnableAI(Characters.CLONE_Crystalian0)
     EnableAI(Characters.Crystalian1)
+    EnableAI(Characters.CLONE_Crystalian1)
     SetNetworkUpdateRate(Characters.Crystalian0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_Crystalian0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.Crystalian1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_Crystalian1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     EnableBossHealthBar(Characters.Crystalian0, name=903350321)
     EnableBossHealthBar(Characters.Crystalian1, name=903350322, bar_slot=1)
+    # No boss health bars for clones.
 
 
 @RestartOnRest(32052811)
@@ -633,10 +660,14 @@ def Event_32052811():
         return
     AND_1.Add(HealthRatio(Characters.Crystalian0) <= 0.6000000238418579)
     AND_1.Add(HealthRatio(Characters.Crystalian0) <= 0.6000000238418579)
+    AND_1.Add(HealthRatio(Characters.CLONE_Crystalian0) <= 0.6000000238418579)
+    AND_1.Add(HealthRatio(Characters.CLONE_Crystalian0) <= 0.6000000238418579)
     OR_1.Add(AND_1)
     OR_1.Add(CharacterDead(Characters.Crystalian0))
     OR_1.Add(CharacterDead(Characters.Crystalian1))
-    
+    OR_1.Add(CharacterDead(Characters.CLONE_Crystalian0))
+    OR_1.Add(CharacterDead(Characters.CLONE_Crystalian1))
+
     MAIN.Await(OR_1)
     
     EnableFlag(32052802)

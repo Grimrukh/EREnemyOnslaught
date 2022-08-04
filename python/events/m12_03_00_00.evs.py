@@ -296,13 +296,13 @@ def Constructor():
     Event_12032300(0, character=12035380, seconds=1.0)
     Event_12032500()
     Event_12030050()
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.DHunteroftheDead,
+        npc=Characters.DHunteroftheDead,
         flag=4061,
-        flag_1=4060,
-        flag_2=12039001,
-        right=3,
+        required_flag=4060,
+        hostile_flag=12039001,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,
@@ -327,13 +327,13 @@ def Constructor():
         flag=4067,
         model_point=0,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.FiaDeathbedCompanion2,
+        npc=Characters.FiaDeathbedCompanion2,
         flag=4121,
-        flag_1=4120,
-        flag_2=12039051,
-        right=3,
+        required_flag=4120,
+        hostile_flag=12039051,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,

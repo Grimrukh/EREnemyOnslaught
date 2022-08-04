@@ -83,7 +83,7 @@ def Constructor():
         patrol_information_id=1045373620,
         right=-1,
     )
-    CommonFunc_90005704(0, attacked_entity=Characters.Blaidd, flag=3601, flag_1=3600, flag_2=1045379201, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Blaidd, flag=3601, required_flag=3600, hostile_flag=1045379201, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Blaidd,

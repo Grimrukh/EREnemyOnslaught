@@ -1,4 +1,4 @@
-"""
+"""DONE
 Academy Crystal Cave
 
 linked:
@@ -26,8 +26,10 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=31060000, asset=Assets.AEG099_060_9000)
     Event_31062800()
-    Event_31062801()
-    Event_31062802()
+    CrystalianDeathSound(0, Characters.Crystalian0)
+    CrystalianDeathSound(1, Characters.Crystalian1)
+    CrystalianDeathSound(2, Characters.CLONE_Crystalian0)
+    CrystalianDeathSound(3, Characters.CLONE_Crystalian1)
     Event_31062810()
     Event_31062849()
     Event_31062811()
@@ -145,7 +147,9 @@ def Event_31062800():
         return
     AND_1.Add(CharacterDead(Characters.Crystalian0))
     AND_1.Add(CharacterDead(Characters.Crystalian1))
-    
+    AND_1.Add(CharacterDead(Characters.CLONE_Crystalian0))
+    AND_1.Add(CharacterDead(Characters.CLONE_Crystalian1))
+
     MAIN.Await(AND_1)
     
     Wait(3.0)
@@ -157,27 +161,15 @@ def Event_31062800():
 
 
 @RestartOnRest(31062801)
-def Event_31062801():
+def CrystalianDeathSound(_, crystalian: uint):
     """Event 31062801"""
     if FlagEnabled(31060800):
         return
     
-    MAIN.Await(HealthValue(Characters.Crystalian0) <= 0)
+    MAIN.Await(HealthValue(crystalian) <= 0)
     
     Wait(4.0)
-    PlaySoundEffect(Characters.Crystalian0, 888880000, sound_type=SoundType.s_SFX)
-
-
-@RestartOnRest(31062802)
-def Event_31062802():
-    """Event 31062802"""
-    if FlagEnabled(31060800):
-        return
-    
-    MAIN.Await(HealthValue(Characters.Crystalian1) <= 0)
-    
-    Wait(4.0)
-    PlaySoundEffect(Characters.Crystalian1, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(crystalian, 888880000, sound_type=SoundType.s_SFX)
 
 
 @RestartOnRest(31062810)
@@ -190,20 +182,32 @@ def Event_31062810():
     DisableAnimations(Characters.Crystalian1)
     Kill(Characters.Crystalian0)
     Kill(Characters.Crystalian1)
+    DisableCharacter(Characters.CLONE_Crystalian0)
+    DisableCharacter(Characters.CLONE_Crystalian1)
+    DisableAnimations(Characters.CLONE_Crystalian0)
+    DisableAnimations(Characters.CLONE_Crystalian1)
+    Kill(Characters.CLONE_Crystalian0)
+    Kill(Characters.CLONE_Crystalian1)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.Crystalian0)
     DisableAI(Characters.Crystalian1)
+    DisableAI(Characters.CLONE_Crystalian0)
+    DisableAI(Characters.CLONE_Crystalian1)
     ForceAnimation(Characters.Crystalian0, 30000)
     ForceAnimation(Characters.Crystalian1, 30000)
+    ForceAnimation(Characters.CLONE_Crystalian0, 30000)
+    ForceAnimation(Characters.CLONE_Crystalian1, 30000)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=31062800))
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Crystalian0, attacker=PLAYER))
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Crystalian1, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_Crystalian0, attacker=PLAYER))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_Crystalian1, attacker=PLAYER))
+
     MAIN.Await(OR_1)
     
     EnableNetworkFlag(31060801)
@@ -220,12 +224,19 @@ def Event_31062810():
     DefineLabel(2)
     EnableAI(Characters.Crystalian0)
     EnableAI(Characters.Crystalian1)
+    EnableAI(Characters.CLONE_Crystalian0)
+    EnableAI(Characters.CLONE_Crystalian1)
     SetNetworkUpdateRate(Characters.Crystalian0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.Crystalian1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_Crystalian0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_Crystalian1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     EnableBossHealthBar(Characters.Crystalian0, name=903350310)
     EnableBossHealthBar(Characters.Crystalian1, name=903350311, bar_slot=1)
+    # Only normal HP bars for clone Crystalians. They do NOT refer damage.
     ForceAnimation(Characters.Crystalian0, 20000)
     ForceAnimation(Characters.Crystalian1, 20000)
+    ForceAnimation(Characters.CLONE_Crystalian0, 20000)
+    ForceAnimation(Characters.CLONE_Crystalian1, 20000)
 
 
 @RestartOnRest(31062811)
@@ -235,7 +246,9 @@ def Event_31062811():
         return
     OR_15.Add(CharacterDead(Characters.Crystalian0))
     OR_15.Add(CharacterDead(Characters.Crystalian1))
-    
+    OR_15.Add(CharacterDead(Characters.CLONE_Crystalian0))
+    OR_15.Add(CharacterDead(Characters.CLONE_Crystalian1))
+
     MAIN.Await(OR_15)
     
     EnableFlag(31062842)

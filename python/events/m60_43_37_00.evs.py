@@ -77,7 +77,7 @@ def Constructor():
         last_flag=4703,
         right=0,
     )
-    CommonFunc_90005704(0, attacked_entity=1043370700, flag=4701, flag_1=4700, flag_2=1043379249, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=1043370700, flag=4701, required_flag=4700, hostile_flag=1043379249, hostile_hits=3)
     CommonFunc_90005702(0, character=1043370700, flag=4703, first_flag=4700, last_flag=4703)
     CommonFunc_90005703(
         0,
@@ -90,7 +90,7 @@ def Constructor():
         last_flag=1043379246,
         right=0,
     )
-    CommonFunc_90005704(0, attacked_entity=1043370701, flag=1043379246, flag_1=1043379246, flag_2=1043379247, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=1043370701, flag=1043379246, required_flag=1043379246, hostile_flag=1043379247, hostile_hits=3)
     RunCommonEvent(1043373706, slot=0, args=(1043370700, 1043370701), arg_types="II")
     Event_1043373707(
         0,
@@ -152,13 +152,13 @@ def Constructor():
         right_2=0,
     )
     CommonFunc_90005774(0, flag=1043379262, item_lot=1042370700, flag_1=1042377700)
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.DemiHumanShaman,
+        npc=Characters.DemiHumanShaman,
         flag=3941,
-        flag_1=3940,
-        flag_2=1043379351,
-        right=3,
+        required_flag=3940,
+        hostile_flag=1043379351,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,

@@ -56,13 +56,13 @@ def Constructor():
         last_flag=3643,
         right=-1,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.BeastClergyman,
+        npc=Characters.BeastClergyman,
         flag=1051439212,
-        flag_1=3640,
-        flag_2=1051439201,
-        right=3,
+        required_flag=3640,
+        hostile_flag=1051439201,
+        hostile_hits=3,
     )
     CommonFunc_90005702(0, character=Characters.BeastClergyman, flag=3643, first_flag=3640, last_flag=3643)
     Event_1051430702(0, character=Characters.BeastClergyman, value=0.8999999761581421)

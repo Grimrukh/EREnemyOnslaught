@@ -1709,7 +1709,7 @@ def Constructor():
     Event_15000701()
     Event_15000702(0, asset=Assets.MaleniaFlower, asset_1=Assets.AEG099_090_9001)
     Event_15000710(0, character=Characters.Millicent0)
-    CommonFunc_90005704(0, attacked_entity=Characters.Millicent0, flag=4181, flag_1=4180, flag_2=15002901, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Millicent0, flag=4181, required_flag=4180, hostile_flag=15002901, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Millicent0,

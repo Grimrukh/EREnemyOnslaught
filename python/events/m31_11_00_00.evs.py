@@ -1,4 +1,4 @@
-"""
+"""DONE
 Sellia Hideaway
 
 linked:
@@ -26,12 +26,22 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=31110000, asset=Assets.AEG099_060_9000)
     Event_31112800()
-    Event_31112801()
-    Event_31112802()
+    Event_31112801(0, Characters.Crystalian0)
+    Event_31112801(1, Characters.Crystalian1)
+    Event_31112801(2, Characters.Crystalian2)
+    Event_31112801(3, Characters.CLONE_Crystalian0)
+    Event_31112801(4, Characters.CLONE_Crystalian1)
+    Event_31112801(5, Characters.CLONE_Crystalian2)
     Event_31112810()
     Event_31112811()
+    SwapCrystalianHealthBar(0, Characters.Crystalian0, Characters.Crystalian0, NameText.Crystalian0,
+                            NameText.CLONE_Crystalian0, 0)
+    SwapCrystalianHealthBar(1, Characters.Crystalian1, Characters.Crystalian1, NameText.Crystalian1,
+                            NameText.CLONE_Crystalian1, 1)
+    SwapCrystalianHealthBar(2, Characters.Crystalian2, Characters.Crystalian2, NameText.Crystalian2,
+                            NameText.CLONE_Crystalian2, 2)
     Event_31112849()
-    Event_31112803()
+
     CommonFunc_90005646(
         0,
         flag=31110800,
@@ -139,7 +149,8 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=31110215, region=31112215, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=31110215, region=31112215, radius=2.0, seconds=0.0,
+                                                 animation_id=0)
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.GlintstoneMiner6,
@@ -203,9 +214,11 @@ def Preconstructor():
         seconds=3.5,
         animation_id=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail0, region=31112240, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail0, region=31112240, radius=2.0,
+                                                 seconds=0.0, animation_id=0)
     Event_31112250(1, character=Characters.Snail1, region=31112241, radius=3.0, seconds=0.0, animation_id=3011)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail2, region=31112240, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail2, region=31112240, radius=2.0,
+                                                 seconds=0.0, animation_id=0)
     CommonFunc_TriggerInactiveEnemy_WithRadius(
         0,
         character=Characters.Snail3,
@@ -269,13 +282,17 @@ def Preconstructor():
         left_2=0,
         left_3=0,
     )
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail9, region=31112300, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail9, region=31112300, radius=2.0,
+                                                 seconds=0.0, animation_id=0)
     Event_31112240(0, character=Characters.Snail9)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail10, region=31112262, radius=2.0, seconds=0.0, animation_id=0)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail11, region=31112262, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail10, region=31112262, radius=2.0,
+                                                 seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Snail11, region=31112262, radius=2.0,
+                                                 seconds=0.0, animation_id=0)
     Event_31112245(0, character=Characters.Snail10)
     Event_31112245(1, character=Characters.Snail11)
-    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Revenant, region=31112300, radius=2.0, seconds=0.0, animation_id=0)
+    CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=Characters.Revenant, region=31112300, radius=2.0,
+                                                 seconds=0.0, animation_id=0)
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(0, 31110310, 30006, 20006, 31112213, 2.0, 1.0, 0, 0, 0, 0)
 
 
@@ -332,9 +349,9 @@ def Event_31112208():
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
-    
+
     MAIN.Await(OR_2)
-    
+
     RemoveSpecialEffect(Characters.GlintstoneMiner3, 8081)
     RemoveSpecialEffect(Characters.GlintstoneMiner3, 8082)
     RemoveSpecialEffect(Characters.GlintstoneMiner3, 5000)
@@ -392,9 +409,9 @@ def Event_31112240(_, character: uint):
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
-    
+
     MAIN.Await(OR_2)
-    
+
     RemoveSpecialEffect(character, 8081)
     RemoveSpecialEffect(character, 8082)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
@@ -451,9 +468,9 @@ def Event_31112245(_, character: uint):
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
-    
+
     MAIN.Await(OR_2)
-    
+
     RemoveSpecialEffect(character, 8081)
     RemoveSpecialEffect(character, 8082)
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
@@ -511,9 +528,9 @@ def Event_31112250(_, character: uint, region: uint, radius: float, seconds: flo
     OR_2.Add(AND_6)
     OR_2.Add(AND_7)
     OR_2.Add(AND_8)
-    
+
     MAIN.Await(OR_2)
-    
+
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
     GotoIfFinishedConditionFalse(Label.L1, input_condition=AND_1)
     Wait(seconds)
@@ -550,9 +567,9 @@ def Event_31112301():
     OR_2.Add(AND_1)
     OR_2.Add(HasAIStatus(31110301, ai_status=AIStatusType.Battle))
     OR_2.Add(AttackedWithDamageType(attacked_entity=31110301))
-    
+
     MAIN.Await(OR_2)
-    
+
     RemoveSpecialEffect(31110301, 8081)
     RemoveSpecialEffect(31110301, 8082)
     RemoveSpecialEffect(31110301, 5000)
@@ -573,9 +590,9 @@ def Event_31112400():
     AND_1.Add(ActionButtonParamActivated(action_button_id=9533, entity=Assets.AEG099_264_1000))
     OR_1.Add(AND_1)
     OR_1.Add(FlagEnabled(31118700))
-    
+
     MAIN.Await(OR_1)
-    
+
     GotoIfFlagEnabled(Label.L9, flag=31118700)
     AND_2.Add(PlayerHasGood(8169))
     GotoIfConditionTrue(Label.L3, input_condition=AND_2)
@@ -603,9 +620,12 @@ def Event_31112800():
     AND_1.Add(CharacterDead(Characters.Crystalian0))
     AND_1.Add(CharacterDead(Characters.Crystalian1))
     AND_1.Add(CharacterDead(Characters.Crystalian2))
-    
+    AND_1.Add(CharacterDead(Characters.CLONE_Crystalian0))
+    AND_1.Add(CharacterDead(Characters.CLONE_Crystalian1))
+    AND_1.Add(CharacterDead(Characters.CLONE_Crystalian2))
+
     MAIN.Await(AND_1)
-    
+
     Wait(3.0)
     KillBossAndDisplayBanner(character=Characters.Crystalian0, banner_type=BannerType.EnemyFelled)
     EnableFlag(31110800)
@@ -615,39 +635,15 @@ def Event_31112800():
 
 
 @RestartOnRest(31112801)
-def Event_31112801():
+def Event_31112801(_, crystalian: uint):
     """Event 31112801"""
     if FlagEnabled(31110800):
         return
-    
-    MAIN.Await(HealthValue(Characters.Crystalian0) <= 0)
-    
+
+    MAIN.Await(HealthValue(crystalian) <= 0)
+
     Wait(4.0)
-    PlaySoundEffect(Characters.Crystalian0, 888880000, sound_type=SoundType.s_SFX)
-
-
-@RestartOnRest(31112802)
-def Event_31112802():
-    """Event 31112802"""
-    if FlagEnabled(31110800):
-        return
-    
-    MAIN.Await(HealthValue(Characters.Crystalian1) <= 0)
-    
-    Wait(4.0)
-    PlaySoundEffect(Characters.Crystalian1, 888880000, sound_type=SoundType.s_SFX)
-
-
-@RestartOnRest(31112803)
-def Event_31112803():
-    """Event 31112803"""
-    if FlagEnabled(31110800):
-        return
-    
-    MAIN.Await(HealthValue(Characters.Crystalian2) <= 0)
-    
-    Wait(4.0)
-    PlaySoundEffect(Characters.Crystalian2, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(crystalian, 888880000, sound_type=SoundType.s_SFX)
 
 
 @RestartOnRest(31112810)
@@ -663,6 +659,15 @@ def Event_31112810():
     Kill(Characters.Crystalian0)
     Kill(Characters.Crystalian1)
     Kill(Characters.Crystalian2)
+    DisableCharacter(Characters.CLONE_Crystalian0)
+    DisableCharacter(Characters.CLONE_Crystalian1)
+    DisableCharacter(Characters.CLONE_Crystalian2)
+    DisableAnimations(Characters.CLONE_Crystalian0)
+    DisableAnimations(Characters.CLONE_Crystalian1)
+    DisableAnimations(Characters.CLONE_Crystalian2)
+    Kill(Characters.CLONE_Crystalian0)
+    Kill(Characters.CLONE_Crystalian1)
+    Kill(Characters.CLONE_Crystalian2)
     End()
 
     # --- Label 0 --- #
@@ -670,12 +675,18 @@ def Event_31112810():
     DisableAI(Characters.Crystalian0)
     DisableAI(Characters.Crystalian1)
     DisableAI(Characters.Crystalian2)
+    DisableAI(Characters.CLONE_Crystalian0)
+    DisableAI(Characters.CLONE_Crystalian1)
+    DisableAI(Characters.CLONE_Crystalian2)
     ForceAnimation(Characters.Crystalian0, 30001)
     ForceAnimation(Characters.Crystalian1, 30001)
     ForceAnimation(Characters.Crystalian2, 30000)
+    ForceAnimation(Characters.CLONE_Crystalian0, 30001)
+    ForceAnimation(Characters.CLONE_Crystalian1, 30001)
+    ForceAnimation(Characters.CLONE_Crystalian2, 30000)
     AND_2.Add(FlagEnabled(31112805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=31112800))
-    
+
     MAIN.Await(AND_2)
 
     # --- Label 2 --- #
@@ -683,15 +694,29 @@ def Event_31112810():
     EnableAI(Characters.Crystalian0)
     EnableAI(Characters.Crystalian1)
     EnableAI(Characters.Crystalian2)
+    EnableAI(Characters.CLONE_Crystalian0)
+    EnableAI(Characters.CLONE_Crystalian1)
+    EnableAI(Characters.CLONE_Crystalian2)
     SetNetworkUpdateRate(Characters.Crystalian0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.Crystalian1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.Crystalian2, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_Crystalian0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_Crystalian1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_Crystalian2, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     EnableBossHealthBar(Characters.Crystalian0, name=903350313)
     EnableBossHealthBar(Characters.Crystalian1, name=903350312, bar_slot=1)
     EnableBossHealthBar(Characters.Crystalian2, name=903350314, bar_slot=2)
+    EnableBossHealthBar(Characters.CLONE_Crystalian0, name=NameText.Crystalian0)
+    EnableBossHealthBar(Characters.CLONE_Crystalian1, name=NameText.Crystalian1, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_Crystalian2, name=NameText.Crystalian2, bar_slot=2)
     ForceAnimation(Characters.Crystalian0, 20001)
     ForceAnimation(Characters.Crystalian1, 20001)
     ForceAnimation(Characters.Crystalian2, 20000)
+    ForceAnimation(Characters.CLONE_Crystalian0, 20001)
+    ForceAnimation(Characters.CLONE_Crystalian1, 20001)
+    ForceAnimation(Characters.CLONE_Crystalian2, 20000)
+
+    EnableFlag(31112812)  # allow bar swapping
 
 
 @RestartOnRest(31112811)
@@ -702,10 +727,44 @@ def Event_31112811():
     OR_15.Add(CharacterDead(Characters.Crystalian0))
     OR_15.Add(CharacterDead(Characters.Crystalian1))
     OR_15.Add(CharacterDead(Characters.Crystalian2))
-    
+    OR_15.Add(CharacterDead(Characters.CLONE_Crystalian0))
+    OR_15.Add(CharacterDead(Characters.CLONE_Crystalian1))
+    OR_15.Add(CharacterDead(Characters.CLONE_Crystalian2))
+
     MAIN.Await(OR_15)
-    
+
     EnableFlag(31112842)
+
+
+@RestartOnRest(31112812)
+def SwapCrystalianHealthBar(_, original: uint, clone: uint, original_name: int, clone_name: int, bar_slot: short):
+    """Swap health bar between Crystalian and its clone to last one hit."""
+    if FlagEnabled(31110800):
+        return  # dead
+
+    OR_1.Add(FlagEnabled(31110800))
+    AND_1.Add(FlagEnabled(31112812))  # battle started
+    AND_1.Add(AttackedWithDamageType(clone))
+    OR_1.Add(AND_1)
+    MAIN.Await(OR_1)
+
+    if FlagEnabled(31110800):
+        return
+
+    EnableBossHealthBar(clone, clone_name, bar_slot)
+
+    OR_2.Add(FlagEnabled(31110800))
+    AND_2.Add(FlagEnabled(31112812))  # battle started
+    AND_2.Add(AttackedWithDamageType(original))
+    OR_2.Add(AND_2)
+    MAIN.Await(OR_2)
+
+    if FlagEnabled(31110800):
+        return
+
+    EnableBossHealthBar(original, original_name, bar_slot)
+
+    return RESTART
 
 
 @RestartOnRest(31112849)
@@ -731,7 +790,8 @@ def Event_31112849():
         summon_entered_fog_flag=31112806,
         action_button_id=10000,
     )
-    CommonFunc_ControlBossFog(0, boss_dead_flag=31110800, fog_asset=Assets.AEG099_002_9000, model_point=5, required_flag=0)
+    CommonFunc_ControlBossFog(0, boss_dead_flag=31110800, fog_asset=Assets.AEG099_002_9000, model_point=5,
+                              required_flag=0)
     CommonFunc_ControlBossMusic(0, 31110800, 931000, 31112805, 31112806, 0, 31112842, 0, 0)
 
 

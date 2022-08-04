@@ -24,7 +24,7 @@ from .entities.m60_39_39_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_90005704(0, attacked_entity=Characters.SorcererThops, flag=3801, flag_1=3800, flag_2=1039399201, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.SorcererThops, flag=3801, required_flag=3800, hostile_flag=1039399201, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.SorcererThops,

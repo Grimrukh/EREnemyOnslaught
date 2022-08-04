@@ -282,7 +282,7 @@ def Constructor():
     Event_1037543703()
     Event_1037543705()
     Event_1037543706()
-    CommonFunc_90005704(0, attacked_entity=Characters.Patches0, flag=3681, flag_1=3680, flag_2=1037549201, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Patches0, flag=3681, required_flag=3680, hostile_flag=1037549201, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Patches0,
@@ -295,7 +295,7 @@ def Constructor():
         right=-1,
     )
     CommonFunc_90005702(0, character=Characters.Patches0, flag=3683, first_flag=3680, last_flag=3684)
-    CommonFunc_90005704(0, attacked_entity=Characters.Patches1, flag=3681, flag_1=3680, flag_2=1037549216, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Patches1, flag=3681, required_flag=3680, hostile_flag=1037549216, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Patches1,
@@ -329,7 +329,7 @@ def Constructor():
         last_flag=4774,
         right=0,
     )
-    CommonFunc_90005704(0, attacked_entity=Characters.Merchant, flag=4771, flag_1=4770, flag_2=1037549256, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Merchant, flag=4771, required_flag=4770, hostile_flag=1037549256, hostile_hits=3)
     CommonFunc_90005702(0, character=Characters.Merchant, flag=4773, first_flag=4770, last_flag=4774)
     CommonFunc_90005703(
         0,
@@ -342,7 +342,7 @@ def Constructor():
         last_flag=4774,
         right=0,
     )
-    CommonFunc_90005704(0, attacked_entity=Characters.NomadMule, flag=4771, flag_1=4770, flag_2=1037549257, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.NomadMule, flag=4771, required_flag=4770, hostile_flag=1037549257, hostile_hits=3)
     CommonFunc_90005728(0, attacked_entity=Characters.NomadMule, flag=1037542716, flag_1=1037542717)
     CommonFunc_90005727(
         0,

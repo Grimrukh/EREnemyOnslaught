@@ -70,7 +70,7 @@ def Constructor():
         model_point=0,
     )
     Event_1050383710(0, character=Characters.Millicent0)
-    CommonFunc_90005704(0, attacked_entity=Characters.Millicent0, flag=4181, flag_1=4180, flag_2=1050389251, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Millicent0, flag=4181, required_flag=4180, hostile_flag=1050389251, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Millicent0,
@@ -84,7 +84,7 @@ def Constructor():
     )
     CommonFunc_90005702(0, character=Characters.Millicent0, flag=4183, first_flag=4180, last_flag=4184)
     Event_1050383711(0, character=Characters.Millicent2)
-    CommonFunc_90005704(0, attacked_entity=Characters.Millicent2, flag=4181, flag_1=4180, flag_2=1050389251, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Millicent2, flag=4181, required_flag=4180, hostile_flag=1050389251, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Millicent2,
@@ -98,7 +98,7 @@ def Constructor():
     )
     CommonFunc_90005702(0, character=Characters.Millicent2, flag=4183, first_flag=4180, last_flag=4184)
     Event_1050383712(0, character=Characters.Millicent1)
-    CommonFunc_90005704(0, attacked_entity=Characters.Millicent1, flag=4181, flag_1=4180, flag_2=1050389261, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Millicent1, flag=4181, required_flag=4180, hostile_flag=1050389261, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Millicent1,

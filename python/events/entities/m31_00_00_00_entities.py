@@ -1,10 +1,19 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    PatchesBattleDone = 31000800  # dead or spared
+
+
+class NameText(NPCName):
+    Patches = 130900
+    CLONE_Patches = 130901
+
+
 class Characters(Character):
-    Patches0 = 31000800  # c0000_9000 col h000300 npc 523090010 think 523090010 chara 23090 talk 309003100 group 31005100,31005800
+    PatchesBoss = 31000800  # c0000_9000 col h000300 npc 523090010 think 523090010 chara 23090 talk 309003100 group 31005100,31005800
     Patches1 = 31000701  # c0000_9001 col h000300 npc 523090110 think 523090000 chara 23090 talk 309003100
-    Patches2 = 31000850  # c0000_9002 col h000300 npc 523090210 think 523090010 chara 23090 talk 309003100
+    PatchesSecondBoss = 31000850  # c0000_9002 col h000300 npc 523090210 think 523090010 chara 23090 talk 309003100
     Patches3 = 31000703  # c0000_9003 col h000300 npc 523090310 think 523090000 chara 23090 talk 309003100
     TalkDummy = 31000950  # c1000_9000 npc 10000000 think 1 talk 1000
     Highwayman0 = 31000200  # c4377_9000 col h000101 npc 43772012 think 43770012 group 31005200
@@ -14,6 +23,8 @@ class Characters(Character):
     Highwayman4 = 31000209  # c4377_9009 col h000200 npc 43772012 think 43770012 group 31005200
     Highwayman5 = 31000210  # c4377_9010 col h000200 npc 43772012 think 43770012 group 31005200
     Highwayman6 = 31000211  # c4377_9011 col h000200 npc 43770012 think 43770012 group 31005200
+
+    CLONE_PatchesBoss = 31000801
 
 
 class Assets(Asset):

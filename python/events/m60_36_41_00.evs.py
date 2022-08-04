@@ -28,13 +28,13 @@ def Constructor():
     Event_1036413700(0, character=Characters.AlbinauricArcher, character_1=Characters.BigWolf)
     Event_1036413701(0, character=Characters.AlbinauricArcher)
     Event_1036413702(0, character=Characters.AlbinauricArcher)
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.AlbinauricArcher,
+        npc=Characters.AlbinauricArcher,
         flag=4101,
-        flag_1=4100,
-        flag_2=1036419201,
-        right=3,
+        required_flag=4100,
+        hostile_flag=1036419201,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,

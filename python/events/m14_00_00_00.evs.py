@@ -915,13 +915,13 @@ def Constructor():
         last_flag=3363,
         right=-1,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.WitchHunterJerren2,
+        npc=Characters.WitchHunterJerren2,
         flag=3361,
-        flag_1=3360,
-        flag_2=14009351,
-        right=3,
+        required_flag=3360,
+        hostile_flag=14009351,
+        hostile_hits=3,
     )
     CommonFunc_90005702(0, character=Characters.WitchHunterJerren2, flag=3363, first_flag=3360, last_flag=3363)
     CommonFunc_90005702(0, character=Characters.WitchHunterJerren1, flag=3363, first_flag=3360, last_flag=3363)

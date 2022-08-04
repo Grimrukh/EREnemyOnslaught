@@ -95,7 +95,7 @@ def Constructor():
         seconds_3=0.0,
         flag=1038432250,
     )
-    CommonFunc_90005704(0, attacked_entity=Characters.Hyetta, flag=3381, flag_1=3380, flag_2=1038439201, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Hyetta, flag=3381, required_flag=3380, hostile_flag=1038439201, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Hyetta,

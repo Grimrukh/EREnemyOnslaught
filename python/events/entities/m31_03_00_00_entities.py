@@ -13,6 +13,8 @@ class Characters(Character):
     Wolf5 = 31030216  # c4070_9016 col h000200 npc 40700010 think 40703000
     WolfPackLeader = 31030250  # c4071_9000 col h000200 npc 40710010 think 40703000
 
+    CLONE_BeastmanofFarumAzula = 31030801
+
 
 class Assets(Asset):
     AEG099_001_9000 = 31031800  # AEG099

@@ -163,7 +163,7 @@ def Constructor():
         flag_3=69370,
     )
     Event_1044350710(0, character=Characters.Blaidd0, character_1=Characters.TalkDummy3)
-    CommonFunc_90005704(0, attacked_entity=Characters.Blaidd0, flag=3601, flag_1=3600, flag_2=1044359251, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Blaidd0, flag=3601, required_flag=3600, hostile_flag=1044359251, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Blaidd0,

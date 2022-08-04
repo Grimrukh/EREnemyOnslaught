@@ -553,9 +553,70 @@ namespace EREnemyOnslaught
             #endregion
 
             #region Caves
+            [31000800] = new CloneInfo(31000801),  // Patches (complicated events, will definitely be buggy)
+
+            [31010800] = new CloneInfo(31010801),  // Runebear
+
+            [31020800] = new CloneInfo(31020801),  // Giant Miranda Flower
+
+            [31030800] = new CloneInfo(31030801),  // Beastman
+
+            [31040800] = new CloneInfo(31040801),  // Cleanrot Knight
+
+            [31060800] = new CloneInfo(31060810),  // Crystalian Duo
+            [31060801] = new CloneInfo(31060811),
+
+            [31070800] = new CloneInfo(31070810),  // Kindred of Rot Duo
+            [31070801] = new CloneInfo(31070811),
+
+            [31090800] = new CloneInfo(31090801),  // Demi-Human Queen Margot
+
+            [31100800] = new CloneInfo(31100810),  // Beastman Duo
+            [31100801] = new CloneInfo(31100811),
+
+            [31110800] = new CloneInfo(31110810),  // Putrid Crystalian Trio
+            [31110801] = new CloneInfo(31110811),
+            [31110802] = new CloneInfo(31110812),
+
+            [31120800] = new CloneInfo(31120801),  // Leonine Misbegotten
+
+            [31150800] = new CloneInfo(31150810),  // Demi-Human Beastman Duo
+            [31150801] = new CloneInfo(31150811),
+
+            [31170800] = new CloneInfo(31170801),  // Guardian Golem
+
+            [31180800] = new CloneInfo(31180810),  // Miranda the Blighted Bloom
+            [31180801] = new CloneInfo(31180811),  // Omenkiller
+
+            [31190800] = new CloneInfo(31190801),  // Black Knife Assassin
+            [31190850] = new CloneInfo(31190851),  // Necromancer Garris
+            [31190380] = new CloneInfo(31190383),  // Garris snail
+            [31190381] = new CloneInfo(31190384),  // Garris snail
+            [31190382] = new CloneInfo(31190385),  // Garris snail
+            [31193820] = new CloneInfo(31193822),  // Garris snail spawner 0
+            [31193821] = new CloneInfo(31193823),  // Garris snail spawner 1
+
+            [31200800] = new CloneInfo(31200810),  // Cleanrot Knight Duo
+            [31200801] = new CloneInfo(31200811),  // Cleanrot Knight Duo
+
+            [31210800] = new CloneInfo(31210801),  // Gravewarden Duelist
+
+            // TODO: Spiritcaller Cave (snails and Godskins)
             #endregion
 
             #region Tunnels
+            [32000800] = new CloneInfo(32000801),  // Scaly Misbegotten
+
+            [32010800] = new CloneInfo(32010801),  // Mine Troll
+
+            [32020800] = new CloneInfo(32020801),  // Crystalian
+
+            [32040800] = new CloneInfo(32040801),  // Mine Troll
+
+            [32050800] = new CloneInfo(32050810),  // Crystalian Duo
+            [32050801] = new CloneInfo(32050811),
+
+            [32070800] = new CloneInfo(32070801),  // Magma Wyrm
             #endregion
 
             #region m39_20_00_00 (Ruin-Strewn Precipice)
@@ -697,6 +758,19 @@ namespace EREnemyOnslaught
             [903700300] = "Perfumers Tricia and Helga",
             [904260304] = "Erdtree Burial Watchdogs",
             [904260305] = "Erdtree Burial Watchdogs",
+            [130901] = "Patches' Less Handsome Twin Brother",
+            [904130311] = "Demi-Human Queen Margaret",
+            [903350313] = "Putrid Crystalian (Spear)",
+            [903350312] = "Putrid Crystalian (Ringblade)",
+            [903350314] = "Putrid Crystalian (Staff)",
+            [903350316] = "Very Putrid Crystalian (Spear)",
+            [903350315] = "Very Putrid Crystalian (Ringblade)",
+            [903350317] = "Very Putrid Crystalian (Staff)",
+            [904480310] = "Miranda and Myrtle the Blighted Blooms",
+            [904820310] = "Omenkiller Duo",
+            [137601] = "Necromanger Garth",
+            [903800311] = "Cleanrot Knight Alpha Team",
+            [903800312] = "Cleanrot Knight Beta Team",
 
             // m39_20_00_00
             [904910010] = "Magma Wyrm Marge",

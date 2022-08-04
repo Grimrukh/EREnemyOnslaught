@@ -1,4 +1,4 @@
-"""
+"""DONE
 Stillwater Cave
 
 linked:
@@ -421,13 +421,19 @@ def Event_31042810():
     DisableCharacter(Characters.CleanrotKnight)
     DisableAnimations(Characters.CleanrotKnight)
     Kill(Characters.CleanrotKnight)
+    DisableCharacter(Characters.CLONE_CleanrotKnight)
+    DisableAnimations(Characters.CLONE_CleanrotKnight)
+    Kill(Characters.CLONE_CleanrotKnight)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.CleanrotKnight)
+    DisableAI(Characters.CLONE_CleanrotKnight)
     AddSpecialEffect(Characters.CleanrotKnight, 90000)
+    AddSpecialEffect(Characters.CLONE_CleanrotKnight, 90000)
     ForceAnimation(Characters.CleanrotKnight, 30001)
+    ForceAnimation(Characters.CLONE_CleanrotKnight, 30001)
     AND_2.Add(FlagEnabled(31042805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=31042800))
     
@@ -437,9 +443,13 @@ def Event_31042810():
     DefineLabel(2)
     Wait(1.0)
     ForceAnimation(Characters.CleanrotKnight, 20001)
+    ForceAnimation(Characters.CLONE_CleanrotKnight, 20001)
     EnableAI(Characters.CleanrotKnight)
+    EnableAI(Characters.CLONE_CleanrotKnight)
     SetNetworkUpdateRate(Characters.CleanrotKnight, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.CleanrotKnight, name=903800310)
+    SetNetworkUpdateRate(Characters.CLONE_CleanrotKnight, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.CleanrotKnight, name=903800310, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_CleanrotKnight, name=903800310, bar_slot=0)
 
 
 @RestartOnRest(31042811)

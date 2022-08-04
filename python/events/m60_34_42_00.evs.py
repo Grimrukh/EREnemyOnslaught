@@ -97,7 +97,7 @@ def Constructor():
     CommonFunc_90005525(0, flag=1034420650, asset=Assets.AEG004_983_1000)
     CommonFunc_90005706(0, character=Characters.Commoner, animation_id=930023, left=0)
     Event_1034420700(0, character=Characters.NepheliLoux, asset=Assets.AEG007_360_2000)
-    CommonFunc_90005704(0, attacked_entity=Characters.NepheliLoux, flag=4221, flag_1=4220, flag_2=10009701, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.NepheliLoux, flag=4221, required_flag=4220, hostile_flag=10009701, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.NepheliLoux,

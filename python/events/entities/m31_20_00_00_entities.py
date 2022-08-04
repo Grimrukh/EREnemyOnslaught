@@ -1,6 +1,11 @@
 from soulstruct.eldenring.game_types import *
 
 
+class NameText(NPCName):
+    CleanrotKnight0 = 903800311
+    CleanrotKnight1 = 903800312
+
+
 class Characters(Character):
     Dummy0 = 31200450  # c0100_9000 col h000101 npc 1000000 think 1000000
     Dummy1 = 31200475  # c0100_9001 col h000101 npc 1000000 think 1000000
@@ -26,6 +31,9 @@ class Characters(Character):
     MirandaRotFlower1 = 31200241  # c4483_9001 col h000300 npc 44830040 think 44830000
     MirandaRotFlower2 = 31200242  # c4483_9002 col h000300 npc 44830040 think 44830000
     MirandaRotFlower3 = 31200243  # c4483_9003 col h000300 npc 44830040 think 44830000
+
+    CLONE_CleanrotKnight0 = 31200810
+    CLONE_CleanrotKnight1 = 31200811
 
 
 class Assets(Asset):

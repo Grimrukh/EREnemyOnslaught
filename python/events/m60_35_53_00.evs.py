@@ -99,7 +99,7 @@ def Constructor():
     Event_1035532450(0, asset=Assets.AEG007_434_9000)
     Event_1035532450(1, asset=Assets.AEG007_434_9001)
     Event_1035532450(2, asset=Assets.AEG007_434_9002)
-    CommonFunc_90005704(0, attacked_entity=Characters.LivingPot, flag=3661, flag_1=3660, flag_2=1043399301, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.LivingPot, flag=3661, required_flag=3660, hostile_flag=1043399301, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.LivingPot,

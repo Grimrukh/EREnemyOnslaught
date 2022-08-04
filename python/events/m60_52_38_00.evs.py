@@ -47,7 +47,7 @@ def Constructor():
         dd_id=0,
     )
     Event_1252380700(0, character=Characters.BlaiddNPC)
-    CommonFunc_90005704(0, attacked_entity=Characters.BlaiddNPC, flag=3601, flag_1=3600, flag_2=1052389301, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.BlaiddNPC, flag=3601, required_flag=3600, hostile_flag=1052389301, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.BlaiddNPC,
@@ -61,7 +61,7 @@ def Constructor():
     )
     CommonFunc_90005702(0, character=Characters.BlaiddNPC, flag=3603, first_flag=3600, last_flag=3604)
     Event_1252380705(0, character=Characters.AlexanderNPC)
-    CommonFunc_90005704(0, attacked_entity=Characters.AlexanderNPC, flag=3661, flag_1=3660, flag_2=1043399301, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.AlexanderNPC, flag=3661, required_flag=3660, hostile_flag=1043399301, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.AlexanderNPC,

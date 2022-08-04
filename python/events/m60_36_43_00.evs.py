@@ -28,7 +28,7 @@ def Constructor():
     RegisterGrace(grace_flag=1036430000, asset=Assets.AEG099_060_9000)
     RegisterGrace(grace_flag=1036430001, asset=Assets.AEG099_060_9001)
     Event_1036433700(0, character=Characters.Blackguard, asset=Assets.AEG099_316_1000)
-    CommonFunc_90005704(0, attacked_entity=Characters.Blackguard, flag=4141, flag_1=4140, flag_2=1036439201, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Blackguard, flag=4141, required_flag=4140, hostile_flag=1036439201, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Blackguard,

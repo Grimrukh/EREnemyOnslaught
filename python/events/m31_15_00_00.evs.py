@@ -1,4 +1,4 @@
-"""
+"""DONE
 Coastal Cave
 
 linked:
@@ -150,7 +150,9 @@ def Event_31152800():
         return
     AND_2.Add(CharacterDead(Characters.DemiHumanBeastman0))
     AND_2.Add(CharacterDead(Characters.DemiHumanBeastman1))
-    
+    AND_2.Add(CharacterDead(Characters.CLONE_DemiHumanBeastman0))
+    AND_2.Add(CharacterDead(Characters.CLONE_DemiHumanBeastman1))
+
     MAIN.Await(AND_2)
     
     Wait(2.0)
@@ -174,26 +176,39 @@ def Event_31152810():
     DisableCharacter(Characters.DemiHumanBeastman0)
     DisableAnimations(Characters.DemiHumanBeastman0)
     Kill(Characters.DemiHumanBeastman0)
+    DisableCharacter(Characters.CLONE_DemiHumanBeastman0)
+    DisableAnimations(Characters.CLONE_DemiHumanBeastman0)
+    Kill(Characters.CLONE_DemiHumanBeastman0)
     Kill(31155800)
     DisableCharacter(Characters.DemiHumanBeastman1)
     DisableAnimations(Characters.DemiHumanBeastman1)
     Kill(Characters.DemiHumanBeastman1)
+    DisableCharacter(Characters.CLONE_DemiHumanBeastman1)
+    DisableAnimations(Characters.CLONE_DemiHumanBeastman1)
+    Kill(Characters.CLONE_DemiHumanBeastman1)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     GotoIfFlagEnabled(Label.L1, flag=31150815)
     DisableCharacter(Characters.DemiHumanBeastman0)
+    DisableCharacter(Characters.CLONE_DemiHumanBeastman0)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=31152800))
     AND_1.Add(CharacterAlive(Characters.DemiHumanBeastman0))
+    AND_1.Add(CharacterAlive(Characters.CLONE_DemiHumanBeastman0))
     AND_1.Add(CharacterBackreadEnabled(Characters.DemiHumanBeastman0))
+    AND_1.Add(CharacterBackreadEnabled(Characters.CLONE_DemiHumanBeastman0))
     AND_2.Add(PlayerInOwnWorld())
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=31152800))
     AND_2.Add(CharacterAlive(Characters.DemiHumanBeastman1))
+    AND_2.Add(CharacterAlive(Characters.CLONE_DemiHumanBeastman1))
     AND_2.Add(CharacterBackreadEnabled(Characters.DemiHumanBeastman1))
+    AND_2.Add(CharacterBackreadEnabled(Characters.CLONE_DemiHumanBeastman1))
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DemiHumanBeastman0, attacker=PLAYER))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_DemiHumanBeastman0, attacker=PLAYER))
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DemiHumanBeastman1, attacker=PLAYER))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_DemiHumanBeastman1, attacker=PLAYER))
     OR_1.Add(AND_1)
     OR_1.Add(AND_2)
     
@@ -202,6 +217,7 @@ def Event_31152810():
     if PlayerInOwnWorld():
         EnableNetworkFlag(31150815)
     EnableCharacter(Characters.DemiHumanBeastman0)
+    EnableCharacter(Characters.CLONE_DemiHumanBeastman0)
     End()
 
     # --- Label 1 --- #
@@ -209,13 +225,17 @@ def Event_31152810():
     AND_1.Add(FlagEnabled(31152805))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=31152800))
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.DemiHumanBeastman0, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_DemiHumanBeastman0, attacker=PLAYER))
+
     MAIN.Await(AND_1)
     
     SetNetworkUpdateRate(Characters.DemiHumanBeastman0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_DemiHumanBeastman0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     EnableBossHealthBar(Characters.DemiHumanBeastman0, name=904120310)
     SetNetworkUpdateRate(Characters.DemiHumanBeastman1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_DemiHumanBeastman1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     EnableBossHealthBar(Characters.DemiHumanBeastman1, name=904120311, bar_slot=1)
+    # No boss health bars for clones.
     EnableFlag(31152815)
     EnableNetworkFlag(31152805)
     BanishInvaders(unknown=0)
@@ -231,12 +251,16 @@ def Event_31152816():
         return
     OR_2.Add(HasAIStatus(Characters.DemiHumanBeastman1, ai_status=AIStatusType.Battle))
     OR_2.Add(HasAIStatus(Characters.DemiHumanBeastman0, ai_status=AIStatusType.Battle))
-    
+    OR_2.Add(HasAIStatus(Characters.CLONE_DemiHumanBeastman1, ai_status=AIStatusType.Battle))
+    OR_2.Add(HasAIStatus(Characters.CLONE_DemiHumanBeastman0, ai_status=AIStatusType.Battle))
+
     MAIN.Await(OR_2)
     
     SetNetworkUpdateRate(Characters.DemiHumanBeastman0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_DemiHumanBeastman0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     EnableBossHealthBar(Characters.DemiHumanBeastman0, name=904120310)
     SetNetworkUpdateRate(Characters.DemiHumanBeastman1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_DemiHumanBeastman1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     EnableBossHealthBar(Characters.DemiHumanBeastman1, name=904120311, bar_slot=1)
     EnableFlag(31152815)
     RemoveSpecialEffect(31155200, 8081)
@@ -250,7 +274,9 @@ def Event_31152811():
         return
     OR_15.Add(CharacterDead(Characters.DemiHumanBeastman0))
     OR_15.Add(CharacterDead(Characters.DemiHumanBeastman1))
-    
+    OR_15.Add(CharacterDead(Characters.CLONE_DemiHumanBeastman0))
+    OR_15.Add(CharacterDead(Characters.CLONE_DemiHumanBeastman1))
+
     MAIN.Await(OR_15)
     
     EnableFlag(31152842)

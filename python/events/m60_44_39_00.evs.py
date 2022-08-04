@@ -45,15 +45,15 @@ def Constructor():
         last_flag=4724,
         right=0,
     )
-    CommonFunc_90005704(0, attacked_entity=Characters.Merchant, flag=4721, flag_1=4720, flag_2=1044399256, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Merchant, flag=4721, required_flag=4720, hostile_flag=1044399256, hostile_hits=3)
     CommonFunc_90005702(0, character=Characters.Merchant, flag=4723, first_flag=4720, last_flag=4724)
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.DHunteroftheDead,
+        npc=Characters.DHunteroftheDead,
         flag=4041,
-        flag_1=4040,
-        flag_2=1044399201,
-        right=3,
+        required_flag=4040,
+        hostile_flag=1044399201,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,

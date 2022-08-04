@@ -1,4 +1,4 @@
-"""
+"""DONE
 Cave of the Forlorn
 
 linked:
@@ -123,25 +123,33 @@ def Event_31122810():
     DisableCharacter(Characters.LeonineMisbegotten)
     DisableAnimations(Characters.LeonineMisbegotten)
     Kill(Characters.LeonineMisbegotten)
+    DisableCharacter(Characters.CLONE_LeonineMisbegotten)
+    DisableAnimations(Characters.CLONE_LeonineMisbegotten)
+    Kill(Characters.CLONE_LeonineMisbegotten)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.LeonineMisbegotten)
+    DisableAI(Characters.CLONE_LeonineMisbegotten)
     DisableAnimations(Characters.LeonineMisbegotten)
+    DisableAnimations(Characters.CLONE_LeonineMisbegotten)
     GotoIfFlagEnabled(Label.L1, flag=31120802)
     AND_1.Add(FlagEnabled(31122805))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=31122800))
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.LeonineMisbegotten, attacker=PLAYER))
-    
+
     MAIN.Await(AND_1)
 
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.LeonineMisbegotten)
+    EnableAI(Characters.CLONE_LeonineMisbegotten)
     EnableAnimations(Characters.LeonineMisbegotten)
+    EnableAnimations(Characters.CLONE_LeonineMisbegotten)
     SetNetworkUpdateRate(Characters.LeonineMisbegotten, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.LeonineMisbegotten, name=903460310)
+    SetNetworkUpdateRate(Characters.CLONE_LeonineMisbegotten, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.LeonineMisbegotten, name=903460310, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_LeonineMisbegotten, name=903460310, bar_slot=0)
 
 
 @RestartOnRest(31122811)

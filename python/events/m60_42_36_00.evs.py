@@ -79,13 +79,13 @@ def Constructor():
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.TreeSentinel, npc_threat_level=12, optional_trigger_flag=0)
     CommonFunc_90005683(0, flag=62103, asset=Assets.AEG099_055_1500, vfx_id=210, flag_1=78190, flag_2=78190)
     Event_1042363700(0, character=Characters.WhiteMaskVarre, asset=Assets.AEG007_360_1000)
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.WhiteMaskVarre,
+        npc=Characters.WhiteMaskVarre,
         flag=3181,
-        flag_1=3180,
-        flag_2=1042369201,
-        right=3,
+        required_flag=3180,
+        hostile_flag=1042369201,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,
@@ -103,7 +103,7 @@ def Constructor():
     RunCommonEvent(1042363702)
     RunCommonEvent(1042363703)
     Event_1042360710(0, character=Characters.Ranni, asset=Assets.AEG099_090_9018)
-    CommonFunc_90005704(0, attacked_entity=Characters.Ranni, flag=1042369401, flag_1=3746, flag_2=1042369401, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Ranni, flag=1042369401, required_flag=3746, hostile_flag=1042369401, hostile_hits=3)
     CommonFunc_90005709(0, attacked_entity=Characters.Ranni, model_point=905, vfx_id=603000)
     CommonFunc_90005709(0, attacked_entity=Characters.Ranni, model_point=960, vfx_id=603050)
     Event_1042360711(0, character=Characters.TalkDummy3)
@@ -121,7 +121,7 @@ def Constructor():
     )
     CommonFunc_90005708(0, character=Characters.Ranni, flag=3746, left=0)
     Event_1042363720(0, character=Characters.Merchant, character_1=Characters.NomadMule)
-    CommonFunc_90005704(0, attacked_entity=Characters.Merchant, flag=4701, flag_1=4700, flag_2=1042369301, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Merchant, flag=4701, required_flag=4700, hostile_flag=1042369301, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Merchant,
@@ -134,7 +134,7 @@ def Constructor():
         right=-1,
     )
     CommonFunc_90005702(0, character=Characters.Merchant, flag=4703, first_flag=4700, last_flag=4704)
-    CommonFunc_90005704(0, attacked_entity=Characters.NomadMule, flag=4701, flag_1=4700, flag_2=1042369327, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.NomadMule, flag=4701, required_flag=4700, hostile_flag=1042369327, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.NomadMule,

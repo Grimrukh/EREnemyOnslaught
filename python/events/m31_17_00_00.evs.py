@@ -1,4 +1,4 @@
-"""
+"""DONE
 Highroad Cave
 
 linked:
@@ -475,12 +475,17 @@ def Event_31172810():
     DisableCharacter(Characters.GuardianGolem)
     DisableAnimations(Characters.GuardianGolem)
     Kill(Characters.GuardianGolem)
+    DisableCharacter(Characters.CLONE_GuardianGolem)
+    DisableAnimations(Characters.CLONE_GuardianGolem)
+    Kill(Characters.CLONE_GuardianGolem)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.GuardianGolem)
+    DisableAI(Characters.CLONE_GuardianGolem)
     SetLockOnPoint(character=Characters.GuardianGolem, lock_on_model_point=220, state=False)
+    SetLockOnPoint(character=Characters.CLONE_GuardianGolem, lock_on_model_point=220, state=False)
     AND_2.Add(FlagEnabled(31172805))
     AND_2.Add(FlagEnabled(31172499))
     
@@ -492,9 +497,13 @@ def Event_31172810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.GuardianGolem)
+    EnableAI(Characters.CLONE_GuardianGolem)
     SetNetworkUpdateRate(Characters.GuardianGolem, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.GuardianGolem, name=904660310)
+    SetNetworkUpdateRate(Characters.CLONE_GuardianGolem, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.GuardianGolem, name=904660310, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_GuardianGolem, name=904660310, bar_slot=0)
     SetLockOnPoint(character=Characters.GuardianGolem, lock_on_model_point=220, state=True)
+    SetLockOnPoint(character=Characters.CLONE_GuardianGolem, lock_on_model_point=220, state=True)
 
 
 @RestartOnRest(31172811)

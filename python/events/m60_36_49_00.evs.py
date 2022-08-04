@@ -54,7 +54,7 @@ def Constructor():
         clone=0,
     )
     Event_1036492610()
-    CommonFunc_90005704(0, attacked_entity=Characters.Hyetta, flag=3381, flag_1=3380, flag_2=1036499201, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Hyetta, flag=3381, required_flag=3380, hostile_flag=1036499201, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Hyetta,
@@ -89,7 +89,7 @@ def Constructor():
         last_flag=4759,
         right=0,
     )
-    CommonFunc_90005704(0, attacked_entity=Characters.Merchant, flag=4756, flag_1=4755, flag_2=1036499256, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Merchant, flag=4756, required_flag=4755, hostile_flag=1036499256, hostile_hits=3)
     CommonFunc_90005702(0, character=Characters.Merchant, flag=4758, first_flag=4755, last_flag=4759)
     CommonFunc_90005703(
         0,
@@ -102,7 +102,7 @@ def Constructor():
         last_flag=4759,
         right=0,
     )
-    CommonFunc_90005704(0, attacked_entity=Characters.NomadMule, flag=4756, flag_1=4755, flag_2=1036499257, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.NomadMule, flag=4756, required_flag=4755, hostile_flag=1036499257, hostile_hits=3)
     CommonFunc_90005727(0, 4756, 1036490705, 1036490706, 4755, 4758)
 
 

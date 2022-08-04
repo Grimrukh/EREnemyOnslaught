@@ -1,4 +1,4 @@
-"""
+"""DONE
 Seethewater Cave
 
 linked:
@@ -26,8 +26,10 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=31070000, asset=Assets.AEG099_060_9000)
     Event_31072800()
-    Event_31072801()
-    Event_31072802()
+    Event_31072801(0, Characters.KindredofRot0)
+    Event_31072801(1, Characters.KindredofRot1)
+    Event_31072801(2, Characters.CLONE_KindredofRot0)
+    Event_31072801(3, Characters.CLONE_KindredofRot1)
     Event_31042810()
     Event_31042849()
     Event_31072811()
@@ -665,7 +667,9 @@ def Event_31072800():
         return
     AND_1.Add(CharacterDead(Characters.KindredofRot0))
     AND_1.Add(CharacterDead(Characters.KindredofRot1))
-    
+    AND_1.Add(CharacterDead(Characters.CLONE_KindredofRot0))
+    AND_1.Add(CharacterDead(Characters.CLONE_KindredofRot1))
+
     MAIN.Await(AND_1)
     
     KillBossAndDisplayBanner(character=Characters.KindredofRot0, banner_type=BannerType.EnemyFelled)
@@ -676,27 +680,15 @@ def Event_31072800():
 
 
 @RestartOnRest(31072801)
-def Event_31072801():
+def Event_31072801(_, kindred: uint):
     """Event 31072801"""
     if FlagEnabled(31070800):
         return
     
-    MAIN.Await(HealthValue(Characters.KindredofRot0) <= 0)
+    MAIN.Await(HealthValue(kindred) <= 0)
     
     Wait(4.0)
-    PlaySoundEffect(Characters.KindredofRot0, 888880000, sound_type=SoundType.s_SFX)
-
-
-@RestartOnRest(31072802)
-def Event_31072802():
-    """Event 31072802"""
-    if FlagEnabled(31070800):
-        return
-    
-    MAIN.Await(HealthValue(Characters.KindredofRot1) <= 0)
-    
-    Wait(4.0)
-    PlaySoundEffect(Characters.KindredofRot1, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(kindred, 888880000, sound_type=SoundType.s_SFX)
 
 
 @RestartOnRest(31042810)
@@ -709,15 +701,26 @@ def Event_31042810():
     DisableAnimations(Characters.KindredofRot1)
     Kill(Characters.KindredofRot0)
     Kill(Characters.KindredofRot1)
+    DisableCharacter(Characters.CLONE_KindredofRot0)
+    DisableCharacter(Characters.CLONE_KindredofRot1)
+    DisableAnimations(Characters.CLONE_KindredofRot0)
+    DisableAnimations(Characters.CLONE_KindredofRot1)
+    Kill(Characters.CLONE_KindredofRot0)
+    Kill(Characters.CLONE_KindredofRot1)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     ForceAnimation(Characters.KindredofRot1, 30009, loop=True)
+    ForceAnimation(Characters.CLONE_KindredofRot1, 30009, loop=True)
     DisableAI(Characters.KindredofRot0)
+    DisableAI(Characters.CLONE_KindredofRot0)
     DisableAI(Characters.KindredofRot1)
+    DisableAI(Characters.CLONE_KindredofRot1)
     AddSpecialEffect(Characters.KindredofRot0, 8092)
+    AddSpecialEffect(Characters.CLONE_KindredofRot0, 8092)
     AddSpecialEffect(Characters.KindredofRot1, 8092)
+    AddSpecialEffect(Characters.CLONE_KindredofRot1, 8092)
     AND_2.Add(FlagEnabled(31072805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=31072800))
     
@@ -729,12 +732,18 @@ def Event_31042810():
     DefineLabel(2)
     EnableBossHealthBar(Characters.KindredofRot0, name=903810310)
     EnableBossHealthBar(Characters.KindredofRot1, name=903810311, bar_slot=1)
+    # No boss health bars for clones. They do NOT refer damage.
     EnableAI(Characters.KindredofRot0)
+    EnableAI(Characters.CLONE_KindredofRot0)
     EnableAI(Characters.KindredofRot1)
+    EnableAI(Characters.CLONE_KindredofRot1)
     SetNetworkUpdateRate(Characters.KindredofRot0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_KindredofRot0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.KindredofRot1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_KindredofRot1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     Wait(2.0)
     ForceAnimation(Characters.KindredofRot1, 20029)
+    ForceAnimation(Characters.CLONE_KindredofRot1, 20029)
 
 
 @RestartOnRest(31072811)
@@ -744,7 +753,9 @@ def Event_31072811():
         return
     OR_15.Add(CharacterDead(Characters.KindredofRot0))
     OR_15.Add(CharacterDead(Characters.KindredofRot1))
-    
+    OR_15.Add(CharacterDead(Characters.CLONE_KindredofRot0))
+    OR_15.Add(CharacterDead(Characters.CLONE_KindredofRot1))
+
     MAIN.Await(OR_15)
     
     EnableFlag(31072842)

@@ -14,6 +14,8 @@ class Characters(Character):
     GiantRat = 31010300  # c4090_9000 col h000101 npc 40900012 think 40900000
     Runebear = 31010800  # c4630_9000 col h000400 npc 46300912 think 46300000 group 31015100,31015800
 
+    CLONE_Runebear = 31010801
+
 
 class Assets(Asset):
     AEG020_125_1000 = 31011500  # AEG020

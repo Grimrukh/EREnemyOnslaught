@@ -58,13 +58,13 @@ def Constructor():
         last_flag=3464,
         right=-1,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.SorceressSellen0,
+        npc=Characters.SorceressSellen0,
         flag=3461,
-        flag_1=3460,
-        flag_2=1044369204,
-        right=3,
+        required_flag=3460,
+        hostile_flag=1044369204,
+        hostile_hits=3,
     )
     Event_1041333700(0, character=Characters.SorceressSellen0, character_1=Characters.SorceressSellen1)
     CommonFunc_90005740(
@@ -106,13 +106,13 @@ def Constructor():
         last_flag=3363,
         right=-1,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.WitchHunterJerren,
+        npc=Characters.WitchHunterJerren,
         flag=3361,
-        flag_1=3360,
-        flag_2=1041339251,
-        right=3,
+        required_flag=3360,
+        hostile_flag=1041339251,
+        hostile_hits=3,
     )
     CommonFunc_90005702(0, character=Characters.WitchHunterJerren, flag=3363, first_flag=3360, last_flag=3363)
     CommonFunc_90005706(0, 1041330720, 930023, 0)

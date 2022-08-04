@@ -35,6 +35,8 @@ class Characters(Character):
     Octopus6 = 31170310  # c4230_9010 col h000400 npc 42300010 think 42300000
     GuardianGolem = 31170800  # c4660_9000 col h000400 npc 46600910 think 46600100 group 31175100,31175800
 
+    CLONE_GuardianGolem = 31170801
+
 
 class Assets(Asset):
     AEG003_071_1008 = 31171500  # AEG003

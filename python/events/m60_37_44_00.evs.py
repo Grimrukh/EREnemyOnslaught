@@ -49,7 +49,7 @@ def Constructor():
     Event_1037442610(0, asset=1037441610, entity=1037441611, flag=82021)
     Event_1037443700(0, character=Characters.KnightDiallos, character_1=Characters.Human)
     Event_1037443701(0, flag=1037449206, flag_1=1037449200)
-    CommonFunc_90005704(0, attacked_entity=Characters.KnightDiallos, flag=3441, flag_1=3440, flag_2=1037449201, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.KnightDiallos, flag=3441, required_flag=3440, hostile_flag=1037449201, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.KnightDiallos,

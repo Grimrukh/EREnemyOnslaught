@@ -27,6 +27,8 @@ class Characters(Character):
     LivingPot = 32070700  # c4490_9000 col h000200 npc 44909410 think 44900000 talk 220003207
     MagmaWyrm = 32070800  # c4910_9000 col h000300 npc 49100940 think 49100000 group 32075800,32075100
 
+    CLONE_MagmaWyrm = 32070801
+
 
 class Assets(Asset):
     AEG027_006_0500 = 32071540  # AEG027

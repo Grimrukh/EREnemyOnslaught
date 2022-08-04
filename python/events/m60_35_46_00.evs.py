@@ -105,13 +105,13 @@ def Constructor():
         region=1035462141,
     )
     Event_1035462145()
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.YuraHunterofBloodyFingers1,
+        npc=Characters.YuraHunterofBloodyFingers1,
         flag=3621,
-        flag_1=3620,
-        flag_2=1035469201,
-        right=3,
+        required_flag=3620,
+        hostile_flag=1035469201,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,

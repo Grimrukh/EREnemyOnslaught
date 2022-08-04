@@ -65,13 +65,13 @@ def Constructor():
         last_flag=3663,
         right=-1,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.LivingPot0,
+        npc=Characters.LivingPot0,
         flag=1043399314,
-        flag_1=3660,
-        flag_2=1043399301,
-        right=3,
+        required_flag=3660,
+        hostile_flag=1043399301,
+        hostile_hits=3,
     )
     CommonFunc_90005702(0, character=Characters.LivingPot0, flag=3663, first_flag=3660, last_flag=3663)
     Event_1039443700(0, character=Characters.LivingPot0)
@@ -81,13 +81,13 @@ def Constructor():
     Event_1039443706()
     Event_1039443707()
     Event_1039443720(0, character=Characters.SmallLivingPot0, character_1=Characters.SmallLivingPot8)
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.SmallLivingPot0,
+        npc=Characters.SmallLivingPot0,
         flag=3821,
-        flag_1=3820,
-        flag_2=1039449251,
-        right=3,
+        required_flag=3820,
+        hostile_flag=1039449251,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,
@@ -100,13 +100,13 @@ def Constructor():
         last_flag=3823,
         right=-1,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.SmallLivingPot8,
+        npc=Characters.SmallLivingPot8,
         flag=3821,
-        flag_1=3820,
-        flag_2=1039449251,
-        right=3,
+        required_flag=3820,
+        hostile_flag=1039449251,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,
@@ -120,13 +120,13 @@ def Constructor():
         right=-1,
     )
     Event_1039443721(0, character=Characters.SmallLivingPot1)
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.SmallLivingPot1,
+        npc=Characters.SmallLivingPot1,
         flag=3821,
-        flag_1=3820,
-        flag_2=1039449251,
-        right=3,
+        required_flag=3820,
+        hostile_flag=1039449251,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,
@@ -140,13 +140,13 @@ def Constructor():
         right=-1,
     )
     Event_1039443722(0, character=Characters.SmallLivingPot7)
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.SmallLivingPot7,
+        npc=Characters.SmallLivingPot7,
         flag=3821,
-        flag_1=3820,
-        flag_2=1039449251,
-        right=3,
+        required_flag=3820,
+        hostile_flag=1039449251,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,
@@ -197,13 +197,13 @@ def Constructor():
         first_flag=1039440735,
         last_flag=1039440736,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.LivingPot1,
+        npc=Characters.LivingPot1,
         flag=1039449284,
-        flag_1=3820,
-        flag_2=1039449294,
-        right=3,
+        required_flag=3820,
+        hostile_flag=1039449294,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,
@@ -224,13 +224,13 @@ def Constructor():
         first_flag=1039440737,
         last_flag=1039440738,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.LivingPot2,
+        npc=Characters.LivingPot2,
         flag=1039449284,
-        flag_1=3820,
-        flag_2=1039449294,
-        right=3,
+        required_flag=3820,
+        hostile_flag=1039449294,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,
@@ -251,13 +251,13 @@ def Constructor():
         first_flag=1039440745,
         last_flag=1039440746,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.SmallLivingPot2,
+        npc=Characters.SmallLivingPot2,
         flag=1039449284,
-        flag_1=3820,
-        flag_2=1039449294,
-        right=3,
+        required_flag=3820,
+        hostile_flag=1039449294,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,
@@ -278,13 +278,13 @@ def Constructor():
         first_flag=1039440747,
         last_flag=1039440748,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.SmallLivingPot3,
+        npc=Characters.SmallLivingPot3,
         flag=1039449284,
-        flag_1=3820,
-        flag_2=1039449294,
-        right=3,
+        required_flag=3820,
+        hostile_flag=1039449294,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,
@@ -305,13 +305,13 @@ def Constructor():
         first_flag=1039440749,
         last_flag=1039440750,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.SmallLivingPot4,
+        npc=Characters.SmallLivingPot4,
         flag=1039449284,
-        flag_1=3820,
-        flag_2=1039449294,
-        right=3,
+        required_flag=3820,
+        hostile_flag=1039449294,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,
@@ -332,13 +332,13 @@ def Constructor():
         first_flag=1039440751,
         last_flag=1039440752,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.SmallLivingPot5,
+        npc=Characters.SmallLivingPot5,
         flag=1039449284,
-        flag_1=3820,
-        flag_2=1039449294,
-        right=3,
+        required_flag=3820,
+        hostile_flag=1039449294,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,
@@ -359,13 +359,13 @@ def Constructor():
         first_flag=1039440753,
         last_flag=1039440754,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.SmallLivingPot6,
+        npc=Characters.SmallLivingPot6,
         flag=1039449284,
-        flag_1=3820,
-        flag_2=1039449294,
-        right=3,
+        required_flag=3820,
+        hostile_flag=1039449294,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,
@@ -381,13 +381,13 @@ def Constructor():
     Event_1039443729()
     Event_1039443730()
     Event_1039443731()
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.KnightDiallos0,
+        npc=Characters.KnightDiallos0,
         flag=3441,
-        flag_1=3440,
-        flag_2=1039449301,
-        right=3,
+        required_flag=3440,
+        hostile_flag=1039449301,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,

@@ -1,4 +1,4 @@
-"""
+"""DONE
 Groveside Cave
 
 linked:
@@ -140,13 +140,19 @@ def Event_31032810():
     DisableCharacter(Characters.BeastmanofFarumAzula)
     DisableAnimations(Characters.BeastmanofFarumAzula)
     Kill(Characters.BeastmanofFarumAzula)
+    DisableCharacter(Characters.CLONE_BeastmanofFarumAzula)
+    DisableAnimations(Characters.CLONE_BeastmanofFarumAzula)
+    Kill(Characters.CLONE_BeastmanofFarumAzula)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.BeastmanofFarumAzula)
+    DisableAI(Characters.CLONE_BeastmanofFarumAzula)
     DisableAnimations(Characters.BeastmanofFarumAzula)
+    DisableAnimations(Characters.CLONE_BeastmanofFarumAzula)
     ForceAnimation(Characters.BeastmanofFarumAzula, 30003)
+    ForceAnimation(Characters.CLONE_BeastmanofFarumAzula, 30003)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=31032800))
     OR_1.Add(AND_1)
@@ -162,11 +168,16 @@ def Event_31032810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.BeastmanofFarumAzula)
+    EnableAI(Characters.CLONE_BeastmanofFarumAzula)
     EnableAnimations(Characters.BeastmanofFarumAzula)
+    EnableAnimations(Characters.CLONE_BeastmanofFarumAzula)
     SetNetworkUpdateRate(Characters.BeastmanofFarumAzula, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.BeastmanofFarumAzula, name=903970310)
+    SetNetworkUpdateRate(Characters.CLONE_BeastmanofFarumAzula, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.BeastmanofFarumAzula, name=903970310, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_BeastmanofFarumAzula, name=903970310, bar_slot=0)
     Wait(1.0)
     ForceAnimation(Characters.BeastmanofFarumAzula, 20003)
+    ForceAnimation(Characters.CLONE_BeastmanofFarumAzula, 20003)
 
 
 @RestartOnRest(31032811)

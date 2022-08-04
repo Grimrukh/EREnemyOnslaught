@@ -70,7 +70,7 @@ def Constructor():
     CommonFunc_90005460(0, character=1045340207)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9001, vfx_id=100, model_point=800, right=1045348540)
     CommonFunc_90005683(0, flag=62151, asset=Assets.AEG099_055_1000, vfx_id=208, flag_1=78198, flag_2=78198)
-    CommonFunc_90005704(0, attacked_entity=Characters.IrinaofMorne0, flag=3381, flag_1=3380, flag_2=1045349201, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.IrinaofMorne0, flag=3381, required_flag=3380, hostile_flag=1045349201, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.IrinaofMorne0,
@@ -85,7 +85,7 @@ def Constructor():
     CommonFunc_90005702(0, character=Characters.IrinaofMorne0, flag=3383, first_flag=3380, last_flag=3384)
     Event_1045340700(0, character=Characters.IrinaofMorne0)
     Event_1045340701(0, character=Characters.IrinaofMorne1, asset=Assets.AEG099_400_9000)
-    CommonFunc_90005704(0, attacked_entity=Characters.Edgar, flag=3401, flag_1=3400, flag_2=1045349251, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Edgar, flag=3401, required_flag=3400, hostile_flag=1045349251, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Edgar,

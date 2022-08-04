@@ -21,6 +21,9 @@ class Characters(Character):
     DemiHumanBeastman0 = 31150800  # c4120_9001 col h000300 npc 41200910 think 41200100 group 31155800,31155100,31155200
     DemiHumanBeastman1 = 31150801  # c4120_9002 col h000300 npc 41200910 think 41200100 group 31155800,31155100,31155200
 
+    CLONE_DemiHumanBeastman0 = 31150810
+    CLONE_DemiHumanBeastman1 = 31150811
+
 
 class Assets(Asset):
     AEG027_114_9000 = 31151700  # AEG027

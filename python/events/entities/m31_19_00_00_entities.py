@@ -1,6 +1,25 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Spawners(SpawnerEvent):
+    GarrisSnailSpawner0 = 31193820
+    GarrisSnailSpawner1 = 31193821
+
+    CLONE_GarrisSnailSpawner0 = 31193822
+    CLONE_GarrisSnailSpawner1 = 31193823
+
+
+class CharacterGroups(Character):
+    GarrisSnails = 31195850
+
+    CLONE_GarrisSnails = 31195851
+
+
+class NameText(NPCName):
+    NecromancerGarris = 137600
+    CLONE_NecromancerGarris = 137601
+
+
 class Characters(Character):
     NecromancerGarris = 31190850  # c0000_9001 col h000400 npc 523760930 think 523760000 chara 23760 group 31195102,31195850
     Dummy = 31190810  # c0100_9000 col h000400 npc 1000000 think 1000000
@@ -20,6 +39,12 @@ class Characters(Character):
     Snail0 = 31190380  # c4140_9000 col h000400 npc 41403930 think 41403000 group 31195850,31195102
     Snail1 = 31190381  # c4140_9001 col h000400 npc 41403930 think 41403001 group 31195850,31195102
     Snail2 = 31190382  # c4140_9002 col h000400 npc 41403930 think 41403001 group 31195850,31195102
+
+    CLONE_NecromancerGarris = 31190851
+    CLONE_BlackKnifeAssassin = 31190801
+    CLONE_Snail0 = 31190383
+    CLONE_Snail1 = 31190384
+    CLONE_Snail2 = 31190385
 
 
 class Assets(Asset):

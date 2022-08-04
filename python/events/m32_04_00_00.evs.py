@@ -1,4 +1,4 @@
-"""
+"""DONE
 Old Altus Tunnel
 
 linked:
@@ -658,24 +658,33 @@ def Event_32042810():
     DisableCharacter(Characters.MineTroll)
     DisableAnimations(Characters.MineTroll)
     Kill(Characters.MineTroll)
+    DisableCharacter(Characters.CLONE_MineTroll)
+    DisableAnimations(Characters.CLONE_MineTroll)
+    Kill(Characters.CLONE_MineTroll)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.MineTroll)
+    DisableAI(Characters.CLONE_MineTroll)
     ForceAnimation(Characters.MineTroll, 30000, loop=True)
+    ForceAnimation(Characters.CLONE_MineTroll, 30000, loop=True)
     AND_2.Add(FlagEnabled(32042805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=32042800))
     
     MAIN.Await(AND_2)
     
     ForceAnimation(Characters.MineTroll, 20000)
+    ForceAnimation(Characters.CLONE_MineTroll, 20000)
 
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.MineTroll)
+    EnableAI(Characters.CLONE_MineTroll)
     SetNetworkUpdateRate(Characters.MineTroll, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.MineTroll, name=904600321)
+    SetNetworkUpdateRate(Characters.CLONE_MineTroll, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.MineTroll, name=904600321, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_MineTroll, name=904600321, bar_slot=0)
 
 
 @RestartOnRest(32042811)

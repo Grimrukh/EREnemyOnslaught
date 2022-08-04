@@ -1,4 +1,4 @@
-"""
+"""DONE
 Perfumer's Grotto
 
 linked:
@@ -26,11 +26,15 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=311800, asset=Assets.AEG099_060_9000)
     Event_31182800()
-    Event_31182801()
-    Event_31182802()
+    Event_31182801(0, boss=Characters.MirandaTheBlightedBloom)
+    Event_31182801(1, boss=Characters.CLONE_MirandaTheBlightedBloom)
+    Event_31182801(2, boss=Characters.Omenkiller)
+    Event_31182801(3, boss=Characters.CLONE_Omenkiller)
     Event_31182810()
     Event_31182849()
     Event_31182811()
+    KillBossClone(0, Characters.MirandaTheBlightedBloom, Characters.CLONE_MirandaTheBlightedBloom)
+    KillBossClone(1, Characters.Omenkiller, Characters.CLONE_Omenkiller)
     CommonFunc_90005646(
         0,
         flag=31180800,
@@ -362,12 +366,14 @@ def Event_31182800():
     """Event 31182800"""
     if FlagEnabled(31180800):
         return
-    AND_1.Add(CharacterDead(Characters.GiantMirandaFlower0))
+    AND_1.Add(CharacterDead(Characters.MirandaTheBlightedBloom))
+    AND_1.Add(CharacterDead(Characters.CLONE_MirandaTheBlightedBloom))
     AND_1.Add(CharacterDead(Characters.Omenkiller))
-    
+    AND_1.Add(CharacterDead(Characters.CLONE_Omenkiller))
+
     MAIN.Await(AND_1)
     
-    KillBossAndDisplayBanner(character=Characters.GiantMirandaFlower0, banner_type=BannerType.EnemyFelled)
+    KillBossAndDisplayBanner(character=Characters.MirandaTheBlightedBloom, banner_type=BannerType.EnemyFelled)
     EnableFlag(31180800)
     EnableFlag(9241)
     if PlayerInOwnWorld():
@@ -375,46 +381,43 @@ def Event_31182800():
 
 
 @RestartOnRest(31182801)
-def Event_31182801():
+def Event_31182801(_, boss: uint):
     """Event 31182801"""
     if FlagEnabled(31180800):
         return
     
-    MAIN.Await(HealthValue(Characters.GiantMirandaFlower0) <= 0)
+    MAIN.Await(HealthValue(boss) <= 0)
     
     Wait(4.0)
-    PlaySoundEffect(Characters.GiantMirandaFlower0, 888880000, sound_type=SoundType.s_SFX)
-
-
-@RestartOnRest(31182802)
-def Event_31182802():
-    """Event 31182802"""
-    if FlagEnabled(31180800):
-        return
-    
-    MAIN.Await(HealthValue(Characters.Omenkiller) <= 0)
-    
-    Wait(4.0)
-    PlaySoundEffect(Characters.Omenkiller, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(boss, 888880000, sound_type=SoundType.s_SFX)
 
 
 @RestartOnRest(31182810)
 def Event_31182810():
     """Event 31182810"""
     GotoIfFlagDisabled(Label.L0, flag=31180800)
-    DisableCharacter(Characters.GiantMirandaFlower0)
+    DisableCharacter(Characters.MirandaTheBlightedBloom)
     DisableCharacter(Characters.Omenkiller)
-    DisableAnimations(Characters.GiantMirandaFlower0)
+    DisableAnimations(Characters.MirandaTheBlightedBloom)
     DisableAnimations(Characters.Omenkiller)
-    Kill(Characters.GiantMirandaFlower0)
+    Kill(Characters.MirandaTheBlightedBloom)
     Kill(Characters.Omenkiller)
+    DisableCharacter(Characters.CLONE_MirandaTheBlightedBloom)
+    DisableCharacter(Characters.CLONE_Omenkiller)
+    DisableAnimations(Characters.CLONE_MirandaTheBlightedBloom)
+    DisableAnimations(Characters.CLONE_Omenkiller)
+    Kill(Characters.CLONE_MirandaTheBlightedBloom)
+    Kill(Characters.CLONE_Omenkiller)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(Characters.GiantMirandaFlower0)
+    DisableAI(Characters.MirandaTheBlightedBloom)
+    DisableAI(Characters.CLONE_MirandaTheBlightedBloom)
     DisableAI(Characters.Omenkiller)
-    ForceAnimation(Characters.GiantMirandaFlower0, 30001)
+    DisableAI(Characters.CLONE_Omenkiller)
+    ForceAnimation(Characters.MirandaTheBlightedBloom, 30001)
+    ForceAnimation(Characters.CLONE_MirandaTheBlightedBloom, 30001)
     AND_1.Add(FlagEnabled(31182805))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=31182800))
     
@@ -422,16 +425,27 @@ def Event_31182810():
 
     # --- Label 2 --- #
     DefineLabel(2)
-    EnableBossHealthBar(Characters.GiantMirandaFlower0, name=904480310)
-    EnableBossHealthBar(Characters.Omenkiller, name=904820310, bar_slot=1)
+    EnableBossHealthBar(Characters.MirandaTheBlightedBloom, name=NameText.MirandaTheBlightedBloom)
+    EnableBossHealthBar(Characters.Omenkiller, name=NameText.Omenkiller, bar_slot=1)
+    EnableImmortality(Characters.CLONE_MirandaTheBlightedBloom)
+    EnableImmortality(Characters.CLONE_Omenkiller)
+    ReferDamageToEntity(Characters.CLONE_MirandaTheBlightedBloom, Characters.MirandaTheBlightedBloom)
+    ReferDamageToEntity(Characters.CLONE_Omenkiller, Characters.Omenkiller)
     Wait(0.5)
-    EnableAI(Characters.GiantMirandaFlower0)
-    EnableAnimations(Characters.GiantMirandaFlower0)
-    SetNetworkUpdateRate(Characters.GiantMirandaFlower0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    ForceAnimation(Characters.GiantMirandaFlower0, 20001)
+    EnableAI(Characters.MirandaTheBlightedBloom)
+    EnableAI(Characters.CLONE_MirandaTheBlightedBloom)
+    EnableAnimations(Characters.MirandaTheBlightedBloom)
+    EnableAnimations(Characters.CLONE_MirandaTheBlightedBloom)
+    SetNetworkUpdateRate(Characters.MirandaTheBlightedBloom, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_MirandaTheBlightedBloom, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    ForceAnimation(Characters.MirandaTheBlightedBloom, 20001)
+    ForceAnimation(Characters.CLONE_MirandaTheBlightedBloom, 20001)
     EnableAI(Characters.Omenkiller)
+    EnableAI(Characters.CLONE_Omenkiller)
     EnableAnimations(Characters.Omenkiller)
+    EnableAnimations(Characters.CLONE_Omenkiller)
     SetNetworkUpdateRate(Characters.Omenkiller, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_Omenkiller, is_fixed=True, update_rate=CharacterUpdateRate.Always)
 
 
 @RestartOnRest(31182811)
@@ -439,12 +453,21 @@ def Event_31182811():
     """Event 31182811"""
     if FlagEnabled(31180800):
         return
-    OR_15.Add(CharacterDead(Characters.GiantMirandaFlower0))
+    OR_15.Add(CharacterDead(Characters.MirandaTheBlightedBloom))
     OR_15.Add(CharacterDead(Characters.Omenkiller))
     
     MAIN.Await(OR_15)
     
     EnableFlag(31182842)
+
+
+@RestartOnRest(31182812)
+def KillBossClone(_, original: uint, clone: uint):
+    if FlagEnabled(31180800):
+        return
+
+    MAIN.Await(HealthValue(original) <= 0)
+    Kill(clone)
 
 
 @RestartOnRest(31182849)

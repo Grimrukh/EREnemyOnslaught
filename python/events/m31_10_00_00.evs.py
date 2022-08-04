@@ -1,4 +1,4 @@
-"""
+"""DONE
 Dragonbarrow Cave
 
 linked:
@@ -26,14 +26,17 @@ def Constructor():
     """Event 0"""
     RegisterGrace(grace_flag=31100000, asset=Assets.AEG099_060_9000)
     Event_31102800()
-    Event_31102801()
-    Event_31102802()
+    Event_31102801(0, Characters.BeastmanofFarumAzula0)
+    Event_31102801(1, Characters.BeastmanofFarumAzula1)
+    Event_31102801(2, Characters.CLONE_BeastmanofFarumAzula0)
+    Event_31102801(3, Characters.CLONE_BeastmanofFarumAzula1)
     Event_31102810()
     Event_31102811()
     Event_31102815()
     Event_31102849()
     Event_31102860()
-    Event_31102830()
+    Event_31102830(0, Characters.BeastmanofFarumAzula0, Characters.BeastmanofFarumAzula1)
+    Event_31102830(1, Characters.CLONE_BeastmanofFarumAzula0, Characters.CLONE_BeastmanofFarumAzula1)
     CommonFunc_90005646(
         0,
         flag=31100800,
@@ -222,7 +225,9 @@ def Event_31102800():
         return
     AND_1.Add(CharacterDead(Characters.BeastmanofFarumAzula0))
     AND_1.Add(CharacterDead(Characters.BeastmanofFarumAzula1))
-    
+    AND_1.Add(CharacterDead(Characters.CLONE_BeastmanofFarumAzula0))
+    AND_1.Add(CharacterDead(Characters.CLONE_BeastmanofFarumAzula1))
+
     MAIN.Await(AND_1)
     
     Wait(4.0)
@@ -234,40 +239,28 @@ def Event_31102800():
 
 
 @RestartOnRest(31102801)
-def Event_31102801():
+def Event_31102801(_, beastman: uint):
     """Event 31102801"""
     if FlagEnabled(31100800):
         return
     
-    MAIN.Await(HealthValue(Characters.BeastmanofFarumAzula0) <= 0)
+    MAIN.Await(HealthValue(beastman) <= 0)
     
     Wait(4.0)
-    PlaySoundEffect(Characters.BeastmanofFarumAzula0, 888880000, sound_type=SoundType.s_SFX)
-
-
-@RestartOnRest(31102802)
-def Event_31102802():
-    """Event 31102802"""
-    if FlagEnabled(31100800):
-        return
-    
-    MAIN.Await(HealthValue(Characters.BeastmanofFarumAzula1) <= 0)
-    
-    Wait(4.0)
-    PlaySoundEffect(Characters.BeastmanofFarumAzula1, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(beastman, 888880000, sound_type=SoundType.s_SFX)
 
 
 @RestartOnRest(31102830)
-def Event_31102830():
+def Event_31102830(_, beastman: uint, partner: uint):
     """Event 31102830"""
     if FlagEnabled(31100800):
         return
     
-    MAIN.Await(HealthRatio(Characters.BeastmanofFarumAzula0) <= 0.8500000238418579)
+    MAIN.Await(HealthRatio(beastman) <= 0.8500000238418579)
     
-    ChangePatrolBehavior(Characters.BeastmanofFarumAzula1, patrol_information_id=31103830)
-    RemoveSpecialEffect(Characters.BeastmanofFarumAzula1, 8085)
-    AddSpecialEffect(Characters.BeastmanofFarumAzula1, 8090)
+    ChangePatrolBehavior(partner, patrol_information_id=31103830)
+    RemoveSpecialEffect(partner, 8085)
+    AddSpecialEffect(partner, 8090)
     SetAIParamID(0, ai_param_id=0)
 
 
@@ -281,15 +274,25 @@ def Event_31102810():
     DisableAnimations(Characters.BeastmanofFarumAzula1)
     Kill(Characters.BeastmanofFarumAzula0)
     Kill(Characters.BeastmanofFarumAzula1)
+    DisableCharacter(Characters.CLONE_BeastmanofFarumAzula0)
+    DisableCharacter(Characters.CLONE_BeastmanofFarumAzula1)
+    DisableAnimations(Characters.CLONE_BeastmanofFarumAzula0)
+    DisableAnimations(Characters.CLONE_BeastmanofFarumAzula1)
+    Kill(Characters.CLONE_BeastmanofFarumAzula0)
+    Kill(Characters.CLONE_BeastmanofFarumAzula1)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     GotoIfFlagEnabled(Label.L1, flag=31100801)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.BeastmanofFarumAzula0, attacker=PLAYER))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_BeastmanofFarumAzula0, attacker=PLAYER))
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.BeastmanofFarumAzula1, attacker=PLAYER))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_BeastmanofFarumAzula1, attacker=PLAYER))
     OR_1.Add(HasAIStatus(Characters.BeastmanofFarumAzula0, ai_status=AIStatusType.Battle))
+    OR_1.Add(HasAIStatus(Characters.CLONE_BeastmanofFarumAzula0, ai_status=AIStatusType.Battle))
     OR_1.Add(HasAIStatus(Characters.BeastmanofFarumAzula1, ai_status=AIStatusType.Battle))
+    OR_1.Add(HasAIStatus(Characters.CLONE_BeastmanofFarumAzula1, ai_status=AIStatusType.Battle))
     AND_1.Add(OR_1)
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=31102805))
     AND_1.Add(PlayerInOwnWorld())
@@ -302,9 +305,13 @@ def Event_31102810():
     # --- Label 1 --- #
     DefineLabel(1)
     OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.BeastmanofFarumAzula0, attacker=PLAYER))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_BeastmanofFarumAzula0, attacker=PLAYER))
     OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.BeastmanofFarumAzula1, attacker=PLAYER))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_BeastmanofFarumAzula1, attacker=PLAYER))
     OR_2.Add(HasAIStatus(Characters.BeastmanofFarumAzula0, ai_status=AIStatusType.Battle))
+    OR_2.Add(HasAIStatus(Characters.CLONE_BeastmanofFarumAzula0, ai_status=AIStatusType.Battle))
     OR_2.Add(HasAIStatus(Characters.BeastmanofFarumAzula1, ai_status=AIStatusType.Battle))
+    OR_2.Add(HasAIStatus(Characters.CLONE_BeastmanofFarumAzula1, ai_status=AIStatusType.Battle))
     AND_2.Add(OR_2)
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=31102805))
     AND_2.Add(FlagEnabled(31102805))
@@ -314,9 +321,12 @@ def Event_31102810():
     # --- Label 2 --- #
     DefineLabel(2)
     SetNetworkUpdateRate(Characters.BeastmanofFarumAzula0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_BeastmanofFarumAzula0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.BeastmanofFarumAzula1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_BeastmanofFarumAzula1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     EnableBossHealthBar(Characters.BeastmanofFarumAzula0, name=903970311)
     EnableBossHealthBar(Characters.BeastmanofFarumAzula1, name=903970312, bar_slot=1)
+    # Clones do not have boss health bars, but do not refer damage.
 
 
 @RestartOnRest(31102811)
@@ -326,7 +336,9 @@ def Event_31102811():
         return
     OR_15.Add(CharacterDead(Characters.BeastmanofFarumAzula0))
     OR_15.Add(CharacterDead(Characters.BeastmanofFarumAzula1))
-    
+    OR_15.Add(CharacterDead(Characters.CLONE_BeastmanofFarumAzula0))
+    OR_15.Add(CharacterDead(Characters.CLONE_BeastmanofFarumAzula1))
+
     MAIN.Await(OR_15)
     
     EnableFlag(31102842)

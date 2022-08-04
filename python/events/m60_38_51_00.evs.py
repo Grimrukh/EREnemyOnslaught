@@ -82,7 +82,7 @@ def Constructor():
         seconds=0.5,
     )
     Event_1038513705(0, character=Characters.Millicent)
-    CommonFunc_90005704(0, attacked_entity=Characters.Millicent, flag=4181, flag_1=4180, flag_2=1038519251, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Millicent, flag=4181, required_flag=4180, hostile_flag=1038519251, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.Millicent,

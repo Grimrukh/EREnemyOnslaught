@@ -208,7 +208,7 @@ def Constructor():
         distance=90.0,
     )
     Event_11053705(0, character=Characters.BrotherCorhyn)
-    CommonFunc_90005704(0, attacked_entity=Characters.BrotherCorhyn, flag=4201, flag_1=4200, flag_2=1040529251, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.BrotherCorhyn, flag=4201, required_flag=4200, hostile_flag=1040529251, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.BrotherCorhyn,
@@ -264,13 +264,13 @@ def Constructor():
         last_flag=3943,
         right=0,
     )
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.DemiHumanShaman,
+        npc=Characters.DemiHumanShaman,
         flag=3941,
-        flag_1=3940,
-        flag_2=1039409251,
-        right=3,
+        required_flag=3940,
+        hostile_flag=1039409251,
+        hostile_hits=3,
     )
     CommonFunc_90005702(0, character=Characters.DemiHumanShaman, flag=3943, first_flag=3940, last_flag=3944)
     Event_11053730(0, character=Characters.DemiHumanShaman)

@@ -1,4 +1,4 @@
-"""
+"""DONE
 Earthbore Cave
 
 linked:
@@ -281,18 +281,24 @@ def Event_31012810():
     DisableCharacter(Characters.Runebear)
     DisableAnimations(Characters.Runebear)
     Kill(Characters.Runebear)
+    DisableCharacter(Characters.CLONE_Runebear)
+    DisableAnimations(Characters.CLONE_Runebear)
+    Kill(Characters.CLONE_Runebear)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.Runebear)
+    DisableAI(Characters.CLONE_Runebear)
     ForceAnimation(Characters.Runebear, 30000)
+    ForceAnimation(Characters.CLONE_Runebear, 30000)
     GotoIfFlagEnabled(Label.L1, flag=31010801)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=31012801))
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Runebear, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_Runebear, attacker=PLAYER))
+
     MAIN.Await(OR_1)
     
     EnableNetworkFlag(31010801)
@@ -308,9 +314,13 @@ def Event_31012810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.Runebear)
+    EnableAI(Characters.CLONE_Runebear)
     ForceAnimation(Characters.Runebear, 20000)
+    ForceAnimation(Characters.CLONE_Runebear, 20000)
     SetNetworkUpdateRate(Characters.Runebear, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.Runebear, name=904630310)
+    SetNetworkUpdateRate(Characters.CLONE_Runebear, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.Runebear, name=904630310, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_Runebear, name=904630310, bar_slot=0)
 
 
 @RestartOnRest(31012811)

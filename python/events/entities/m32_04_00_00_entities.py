@@ -23,6 +23,8 @@ class Characters(Character):
     TunnelMiner6 = 32040221  # c4382_9021 col h000200 npc 43829030 think 43826000
     MineTroll = 32040800  # c4603_9000 col h000400 npc 46030930 think 46030200 group 32045100,32045800
 
+    CLONE_MineTroll = 32040801
+
 
 class Assets(Asset):
     AEG027_000_1001 = 32041532  # AEG027

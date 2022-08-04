@@ -1,4 +1,4 @@
-"""
+"""DONE
 Lakeside Crystal Cave
 
 linked:
@@ -301,11 +301,15 @@ def Event_31052810():
     DisableCharacter(Characters.BloodhoundKnight)
     DisableAnimations(Characters.BloodhoundKnight)
     Kill(Characters.BloodhoundKnight)
+    DisableCharacter(Characters.CLONE_BloodhoundKnight)
+    DisableAnimations(Characters.CLONE_BloodhoundKnight)
+    Kill(Characters.CLONE_BloodhoundKnight)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableCharacter(Characters.BloodhoundKnight)
+    DisableCharacter(Characters.CLONE_BloodhoundKnight)
     GotoIfFlagEnabled(Label.L1, flag=31050801)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=31052801))
@@ -325,11 +329,16 @@ def Event_31052810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableCharacter(Characters.BloodhoundKnight)
+    EnableCharacter(Characters.CLONE_BloodhoundKnight)
     Wait(1.0)
     EnableAI(Characters.BloodhoundKnight)
+    EnableAI(Characters.CLONE_BloodhoundKnight)
     SetNetworkUpdateRate(Characters.BloodhoundKnight, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_BloodhoundKnight, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     ForceAnimation(Characters.BloodhoundKnight, 3013)
-    EnableBossHealthBar(Characters.BloodhoundKnight, name=904290310)
+    ForceAnimation(Characters.CLONE_BloodhoundKnight, 3013)
+    EnableBossHealthBar(Characters.BloodhoundKnight, name=904290310, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_BloodhoundKnight, name=904290310, bar_slot=0)
 
 
 @RestartOnRest(31052811)

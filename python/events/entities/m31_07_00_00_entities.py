@@ -40,6 +40,9 @@ class Characters(Character):
     FungalSorcerer13 = 31070234  # c4385_9024 col h000300 npc 43850032 think 43850000
     GiantMirandaFlower = 31070350  # c4480_9000 col h000300 npc 44800032 think 44800000
 
+    CLONE_KindredofRot0 = 31070810
+    CLONE_KindredofRot1 = 31070811
+
 
 class Assets(Asset):
     AEG099_001_9000 = 31071800  # AEG099

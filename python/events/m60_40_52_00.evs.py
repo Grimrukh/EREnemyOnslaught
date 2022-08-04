@@ -84,7 +84,7 @@ def Constructor():
     Event_1040523702(0, entity=1040520700, attacked_entity=1040520710, flag=1040529206)
     Event_1040523703(0, character=1040520710)
     Event_1040523705(0, character=Characters.BrotherCorhyn)
-    CommonFunc_90005704(0, attacked_entity=Characters.BrotherCorhyn, flag=4201, flag_1=4200, flag_2=1040529251, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.BrotherCorhyn, flag=4201, required_flag=4200, hostile_flag=1040529251, hostile_hits=3)
     CommonFunc_90005703(
         0,
         character=Characters.BrotherCorhyn,
@@ -118,7 +118,7 @@ def Constructor():
         last_flag=4769,
         right=0,
     )
-    CommonFunc_90005704(0, attacked_entity=Characters.Merchant, flag=4766, flag_1=4765, flag_2=1035469206, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Merchant, flag=4766, required_flag=4765, hostile_flag=1035469206, hostile_hits=3)
     CommonFunc_90005702(0, character=Characters.Merchant, flag=4768, first_flag=4765, last_flag=4769)
     CommonFunc_90005705(0, 1040520720)
 

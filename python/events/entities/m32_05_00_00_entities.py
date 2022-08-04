@@ -35,6 +35,9 @@ class Characters(Character):
     GlintstoneMiner6 = 32050211  # c4383_9011 col h000300 npc 43830030 think 43830000
     GlintstoneMiner7 = 32050212  # c4383_9012 col h000300 npc 43831030 think 43831000
 
+    CLONE_Crystalian0 = 32050810
+    CLONE_Crystalian1 = 32050811
+
 
 class Assets(Asset):
     AEG027_001_1000 = 32051510  # AEG027

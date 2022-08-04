@@ -1,4 +1,4 @@
-"""
+"""DONE
 Gaol Cave
 
 linked:
@@ -806,13 +806,18 @@ def Event_31212810():
     DisableCharacter(Characters.GraveWardenDuelist)
     DisableAnimations(Characters.GraveWardenDuelist)
     Kill(Characters.GraveWardenDuelist)
+    DisableCharacter(Characters.CLONE_GraveWardenDuelist)
+    DisableAnimations(Characters.CLONE_GraveWardenDuelist)
+    Kill(Characters.CLONE_GraveWardenDuelist)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     GotoIfFlagEnabled(Label.L1, flag=31210801)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.GraveWardenDuelist, attacker=PLAYER))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_GraveWardenDuelist, attacker=PLAYER))
     OR_1.Add(HasAIStatus(Characters.GraveWardenDuelist, ai_status=AIStatusType.Battle))
+    OR_1.Add(HasAIStatus(Characters.CLONE_GraveWardenDuelist, ai_status=AIStatusType.Battle))
     AND_1.Add(OR_1)
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=31212805))
     AND_1.Add(PlayerInOwnWorld())
@@ -827,7 +832,9 @@ def Event_31212810():
     # --- Label 1 --- #
     DefineLabel(1)
     OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.GraveWardenDuelist, attacker=PLAYER))
+    OR_2.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_GraveWardenDuelist, attacker=PLAYER))
     OR_2.Add(HasAIStatus(Characters.GraveWardenDuelist, ai_status=AIStatusType.Battle))
+    OR_2.Add(HasAIStatus(Characters.CLONE_GraveWardenDuelist, ai_status=AIStatusType.Battle))
     AND_2.Add(OR_2)
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=31212805))
     AND_2.Add(FlagEnabled(31212805))
@@ -839,7 +846,9 @@ def Event_31212810():
     # --- Label 2 --- #
     DefineLabel(2)
     SetNetworkUpdateRate(Characters.GraveWardenDuelist, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.GraveWardenDuelist, name=903400310)
+    SetNetworkUpdateRate(Characters.CLONE_GraveWardenDuelist, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.GraveWardenDuelist, name=903400310, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_GraveWardenDuelist, name=903400310, bar_slot=0)
 
 
 @RestartOnRest(312112811)
@@ -958,6 +967,13 @@ def Event_31212860():
     OR_1.Add(CharacterHasStateInfo(character=Characters.GraveWardenDuelist, state_info=5))
     OR_1.Add(CharacterHasStateInfo(character=Characters.GraveWardenDuelist, state_info=6))
     OR_1.Add(CharacterHasStateInfo(character=Characters.GraveWardenDuelist, state_info=260))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_GraveWardenDuelist, attacker=PLAYER))
+    OR_1.Add(HasAIStatus(Characters.CLONE_GraveWardenDuelist, ai_status=AIStatusType.Battle))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_GraveWardenDuelist, state_info=436))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_GraveWardenDuelist, state_info=2))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_GraveWardenDuelist, state_info=5))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_GraveWardenDuelist, state_info=6))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_GraveWardenDuelist, state_info=260))
     AND_1.Add(OR_1)
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=31212805))
     AND_1.Add(PlayerInOwnWorld())

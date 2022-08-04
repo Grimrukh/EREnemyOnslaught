@@ -28,13 +28,13 @@ def Constructor():
     Event_1035442650(0, flag=710680, tutorial_param_id=1680, item=9124, flag_1=69240)
     Event_1035443700(0, character=Characters.WhiteMaskVarre, asset=Assets.AEG007_360_1000)
     Event_1035443701(0, character=Characters.WhiteMaskVarre)
-    CommonFunc_90005704(
+    CommonFunc_MakeNPCHostile(
         0,
-        attacked_entity=Characters.WhiteMaskVarre,
+        npc=Characters.WhiteMaskVarre,
         flag=3181,
-        flag_1=3180,
-        flag_2=1035449201,
-        right=3,
+        required_flag=3180,
+        hostile_flag=1035449201,
+        hostile_hits=3,
     )
     CommonFunc_90005703(
         0,

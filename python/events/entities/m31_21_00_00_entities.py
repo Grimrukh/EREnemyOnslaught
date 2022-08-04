@@ -59,6 +59,8 @@ class Characters(Character):
     VulgarMilitia19 = 31210238  # c4321_9038 col h000500 npc 43210040 think 43210000
     VulgarMilitia20 = 31210239  # c4321_9039 col h000500 npc 43210040 think 43210000
 
+    CLONE_GraveWardenDuelist = 31210801
+
 
 class Assets(Asset):
     AEG020_126_1000 = 31211500  # AEG020

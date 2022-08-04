@@ -833,7 +833,7 @@ def Constructor():
         last_flag=4814,
         right=0,
     )
-    CommonFunc_90005704(0, attacked_entity=Characters.Merchant, flag=4811, flag_1=4810, flag_2=12059106, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Merchant, flag=4811, required_flag=4810, hostile_flag=12059106, hostile_hits=3)
     CommonFunc_90005702(0, character=Characters.Merchant, flag=4813, first_flag=4810, last_flag=4814)
     CommonFunc_90005725(
         0,

@@ -500,7 +500,7 @@ def Constructor():
         last_flag=3603,
         right=-1,
     )
-    CommonFunc_90005704(0, attacked_entity=Characters.Blaidd, flag=3601, flag_1=3600, flag_2=12029151, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Blaidd, flag=3601, required_flag=3600, hostile_flag=12029151, hostile_hits=3)
     CommonFunc_90005702(0, character=Characters.Blaidd, flag=3603, first_flag=3600, last_flag=3603)
     Event_12023721(0, other_entity=Assets.AEG099_631_9000, radius=3.0, special_effect_id=9710, flag=1034509410)
     Event_12023710(0, character=12020700, character_1=12020701)
@@ -525,7 +525,7 @@ def Constructor():
         last_flag=4804,
         right=0,
     )
-    CommonFunc_90005704(0, attacked_entity=Characters.Merchant, flag=4801, flag_1=4800, flag_2=12029106, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.Merchant, flag=4801, required_flag=4800, hostile_flag=12029106, hostile_hits=3)
     CommonFunc_90005702(0, character=Characters.Merchant, flag=4803, first_flag=4800, last_flag=4804)
     CommonFunc_90005706(0, character=Characters.Commoner, animation_id=930023, left=0)
     CommonFunc_90005780(

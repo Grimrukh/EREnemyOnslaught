@@ -1,4 +1,4 @@
-"""
+"""DONE
 Gael Tunnel
 
 linked:
@@ -143,7 +143,7 @@ def Constructor():
         last_flag=3663,
         right=-1,
     )
-    CommonFunc_90005704(0, attacked_entity=Characters.LivingPot, flag=3661, flag_1=3660, flag_2=1043399301, right=3)
+    CommonFunc_MakeNPCHostile(0, npc=Characters.LivingPot, flag=3661, required_flag=3660, hostile_flag=1043399301, hostile_hits=3)
     CommonFunc_90005702(0, character=Characters.LivingPot, flag=3663, first_flag=3660, last_flag=3663)
     Event_32073700(0, character=Characters.LivingPot)
     Event_32073701()
@@ -323,28 +323,36 @@ def Event_32072810():
     DisableCharacter(Characters.MagmaWyrm)
     DisableAnimations(Characters.MagmaWyrm)
     Kill(Characters.MagmaWyrm)
+    DisableCharacter(Characters.CLONE_MagmaWyrm)
+    DisableAnimations(Characters.CLONE_MagmaWyrm)
+    Kill(Characters.CLONE_MagmaWyrm)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.MagmaWyrm)
+    DisableAI(Characters.CLONE_MagmaWyrm)
     GotoIfFlagEnabled(Label.L1, flag=32070801)
     ForceAnimation(Characters.MagmaWyrm, 30000, loop=True)
+    ForceAnimation(Characters.CLONE_MagmaWyrm, 30000, loop=True)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=32072801))
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.MagmaWyrm, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_MagmaWyrm, attacker=PLAYER))
+
     MAIN.Await(OR_1)
     
     EnableNetworkFlag(32070801)
     Wait(0.30000001192092896)
     ForceAnimation(Characters.MagmaWyrm, 20000)
+    ForceAnimation(Characters.CLONE_MagmaWyrm, 20000)
     Goto(Label.L2)
 
     # --- Label 1 --- #
     DefineLabel(1)
     ForceAnimation(Characters.MagmaWyrm, 30000, loop=True)
+    ForceAnimation(Characters.CLONE_MagmaWyrm, 30000, loop=True)
     AND_2.Add(FlagEnabled(32072805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=32072800))
     
@@ -352,12 +360,16 @@ def Event_32072810():
     
     Wait(0.30000001192092896)
     ForceAnimation(Characters.MagmaWyrm, 20000)
+    ForceAnimation(Characters.CLONE_MagmaWyrm, 20000)
 
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.MagmaWyrm)
+    EnableAI(Characters.CLONE_MagmaWyrm)
     SetNetworkUpdateRate(Characters.MagmaWyrm, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.MagmaWyrm, name=904910320)
+    SetNetworkUpdateRate(Characters.CLONE_MagmaWyrm, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.MagmaWyrm, name=904910320, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_MagmaWyrm, name=904910320, bar_slot=0)
 
 
 @RestartOnRest(32072811)
