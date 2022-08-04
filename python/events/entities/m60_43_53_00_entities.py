@@ -28,6 +28,8 @@ class Characters(Character):
     LeyndellFootSoldier0 = 1043530354  # c4373_9004 npc 43732030 think 43730000
     LeyndellFootSoldier1 = 1043530355  # c4373_9005 npc 43736030 think 43731000
 
+    CLONE_BellBearingHunter = 1043530801
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1043531950  # AEG099

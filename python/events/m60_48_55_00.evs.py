@@ -1,4 +1,4 @@
-"""TODO: Night's Cavalry local events
+"""DONE
 Southwest Mountaintops (NW) (NW)
 
 linked:
@@ -24,6 +24,7 @@ from .entities.m60_48_55_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
+    # UNUSED
     CommonFunc_NonRespawningWithReward(0, dead_flag=1048550200, character=1048550200, item_lot=40522, reward_delay=0.0, skip_reward=0, clone=0)
 
 
@@ -43,17 +44,28 @@ def Event_200():
     CommonFunc_90005423(0, character=Characters.SnowTroll0)
     CommonFunc_90005423(0, character=Characters.SnowTroll1)
 
-    # TODO: Night's Cavalry x2 (local events)
     CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry0, horse=Characters.NightsCavalryHorse0)
+    CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.CLONE_NightsCavalry0, horse=Characters.CLONE_NightsCavalryHorse0)
     CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry1, horse=Characters.NightsCavalryHorse1)
+    CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.CLONE_NightsCavalry1, horse=Characters.CLONE_NightsCavalryHorse1)
     Event_1248552820(0, character=Characters.NightsCavalry0, seconds=0.0)
     Event_1248552820(1, character=Characters.NightsCavalry1, seconds=0.0)
+    Event_1248552820(2, character=Characters.CLONE_NightsCavalry0, seconds=0.0)
+    Event_1248552820(3, character=Characters.CLONE_NightsCavalry1, seconds=0.0)
     Event_1248552830(0, character=Characters.NightsCavalry0, character_1=Characters.NightsCavalryHorse0)
     Event_1248552830(1, character=Characters.NightsCavalry1, character_1=Characters.NightsCavalryHorse1)
+    Event_1248552830(2, character=Characters.CLONE_NightsCavalry0, character_1=Characters.CLONE_NightsCavalryHorse0)
+    Event_1248552830(3, character=Characters.CLONE_NightsCavalry1, character_1=Characters.CLONE_NightsCavalryHorse1)
     Event_1248552840(
         0,
         character=Characters.NightsCavalry0,
         character_1=Characters.NightsCavalryHorse0,
+        destination=1248552800,
+    )
+    Event_1248552840(
+        2,
+        character=Characters.CLONE_NightsCavalry0,
+        character_1=Characters.CLONE_NightsCavalryHorse0,
         destination=1248552800,
     )
     Event_1248552840(
@@ -62,14 +74,20 @@ def Event_200():
         character_1=Characters.NightsCavalryHorse1,
         destination=1248552801,
     )
+    Event_1248552840(
+        1,
+        character=Characters.CLONE_NightsCavalry1,
+        character_1=Characters.CLONE_NightsCavalryHorse1,
+        destination=1248552801,
+    )
     CommonFunc_NightsCavalryHealthBar(
         0,
         nights_cavalry=Characters.NightsCavalry0,
         name=903150608,
         npc_threat_level=10,
         horse=Characters.NightsCavalryHorse0,
-        clone_cavalry=0,
-        clone_horse=0,  # TODO
+        clone_cavalry=Characters.CLONE_NightsCavalry0,
+        clone_horse=Characters.CLONE_NightsCavalryHorse0,
     )
     CommonFunc_NightsCavalryHealthBar(
         0,
@@ -77,16 +95,16 @@ def Event_200():
         name=903150609,
         npc_threat_level=10,
         horse=Characters.NightsCavalryHorse1,
-        clone_cavalry=0,
-        clone_horse=0,  # TODO
+        clone_cavalry=Characters.CLONE_NightsCavalry1,
+        clone_horse=Characters.CLONE_NightsCavalryHorse1,
     )
-    RunCommonEvent(
+    RunCommonEvent(  # NightsCavalryDuoDies
         1248552800,
         slot=0,
-        args=(1248550800, 0, 1248550800, 0, 1048550700, 1248550801, 1048550710),
-        arg_types="IIIIiIi",
+        args=(1248550800, 0, 1248550800, 1248550802, 0, 1048550700, 1248550801, 1248550803, 1048550710),
+        arg_types="IIIIIiIIi",
     )
-    Event_1248552321(
+    Event_1248552321(  # phase two music
         0,
         character=Characters.NightsCavalry0,
         character_1=Characters.NightsCavalry1,
@@ -142,14 +160,16 @@ def Event_1248552321(_, character: uint, character_1: uint, npc_threat_level: ui
 
 
 @RestartOnRest(1248552800)
-def Event_1248552800(
+def NightsCavalryDuoDies(
     _,
     flag: uint,
     left: uint,
     character: uint,
+    clone: uint,
     left_1: uint,
     item_lot: int,
     character_1: uint,
+    clone_1: uint,
     item_lot_1: int,
 ):
     """Event 1248552800"""
@@ -158,16 +178,28 @@ def Event_1248552800(
     GotoIfFlagDisabled(Label.L0, flag=flag)
     DisableCharacter(character)
     DisableCharacter(character_1)
+    DisableCharacter(clone)
+    DisableCharacter(clone_1)
     DisableAnimations(character)
     DisableAnimations(character_1)
+    DisableAnimations(clone)
+    DisableAnimations(clone_1)
     Kill(character)
     Kill(character_1)
+    Kill(clone)
+    Kill(clone_1)
     DisableCharacter(Characters.NightsCavalryHorse0)
     DisableAnimations(Characters.NightsCavalryHorse0)
     Kill(Characters.NightsCavalryHorse0)
     DisableCharacter(Characters.NightsCavalryHorse1)
     DisableAnimations(Characters.NightsCavalryHorse1)
     Kill(Characters.NightsCavalryHorse1)
+    DisableCharacter(Characters.CLONE_NightsCavalryHorse0)
+    DisableAnimations(Characters.CLONE_NightsCavalryHorse0)
+    Kill(Characters.CLONE_NightsCavalryHorse0)
+    DisableCharacter(Characters.CLONE_NightsCavalryHorse1)
+    DisableAnimations(Characters.CLONE_NightsCavalryHorse1)
+    Kill(Characters.CLONE_NightsCavalryHorse1)
     if PlayerNotInOwnWorld():
         return
     if ValueEqual(left=item_lot, right=0):
@@ -181,6 +213,8 @@ def Event_1248552800(
     DefineLabel(0)
     AND_15.Add(HealthValue(character) <= 0)
     AND_15.Add(HealthValue(character_1) <= 0)
+    AND_15.Add(HealthValue(clone) <= 0)
+    AND_15.Add(HealthValue(clone_1) <= 0)
     
     MAIN.Await(AND_15)
     
@@ -188,6 +222,8 @@ def Event_1248552800(
     PlaySoundEffect(character, 888880000, sound_type=SoundType.s_SFX)
     AND_14.Add(CharacterDead(character))
     AND_14.Add(CharacterDead(character_1))
+    AND_14.Add(CharacterDead(clone))
+    AND_14.Add(CharacterDead(clone_1))
     
     MAIN.Await(AND_14)
     

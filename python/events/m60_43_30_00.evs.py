@@ -70,13 +70,17 @@ def Event_1043302800():
     if FlagEnabled(1043300800):
         return
     
-    MAIN.Await(HealthValue(Characters.LeonineMisbegotten) <= 0)
+    AND_1.Add(HealthValue(Characters.LeonineMisbegotten) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_LeonineMisbegotten) <= 0)
+    MAIN.Await(AND_1)
     
     Wait(4.0)
     PlaySoundEffect(Characters.LeonineMisbegotten, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.LeonineMisbegotten))
-    
+    AND_2.Add(CharacterDead(Characters.LeonineMisbegotten))
+    AND_2.Add(CharacterDead(Characters.CLONE_LeonineMisbegotten))
+    MAIN.Await(AND_2)
+
     KillBossAndDisplayBanner(character=Characters.LeonineMisbegotten, banner_type=BannerType.GreatEnemyFelled)
     EnableFlag(1043300800)
     EnableFlag(9180)
@@ -92,12 +96,17 @@ def Event_1043302810():
     DisableCharacter(Characters.LeonineMisbegotten)
     DisableAnimations(Characters.LeonineMisbegotten)
     Kill(Characters.LeonineMisbegotten)
+    DisableCharacter(Characters.CLONE_LeonineMisbegotten)
+    DisableAnimations(Characters.CLONE_LeonineMisbegotten)
+    Kill(Characters.CLONE_LeonineMisbegotten)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.LeonineMisbegotten)
+    DisableAI(Characters.CLONE_LeonineMisbegotten)
     SetLockOnPoint(character=Characters.LeonineMisbegotten, lock_on_model_point=220, state=False)
+    SetLockOnPoint(character=Characters.CLONE_LeonineMisbegotten, lock_on_model_point=220, state=False)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(FlagEnabled(1043302805))
     OR_1.Add(CharacterInsideRegion(character=PLAYER, region=1043302850))
@@ -107,15 +116,26 @@ def Event_1043302810():
     OR_1.Add(CharacterHasStateInfo(character=Characters.LeonineMisbegotten, state_info=5))
     OR_1.Add(CharacterHasStateInfo(character=Characters.LeonineMisbegotten, state_info=6))
     OR_1.Add(CharacterHasStateInfo(character=Characters.LeonineMisbegotten, state_info=260))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_LeonineMisbegotten, attacker=PLAYER))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_LeonineMisbegotten, state_info=436))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_LeonineMisbegotten, state_info=2))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_LeonineMisbegotten, state_info=5))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_LeonineMisbegotten, state_info=6))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_LeonineMisbegotten, state_info=260))
     AND_1.Add(OR_1)
     
     MAIN.Await(AND_1)
     
     EnableAI(Characters.LeonineMisbegotten)
+    EnableAI(Characters.CLONE_LeonineMisbegotten)
     SetNetworkUpdateRate(Characters.LeonineMisbegotten, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.LeonineMisbegotten, name=903460500)
+    SetNetworkUpdateRate(Characters.CLONE_LeonineMisbegotten, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.LeonineMisbegotten, name=903460500, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_LeonineMisbegotten, name=903460500, bar_slot=0)
     SetLockOnPoint(character=Characters.LeonineMisbegotten, lock_on_model_point=220, state=True)
+    SetLockOnPoint(character=Characters.CLONE_LeonineMisbegotten, lock_on_model_point=220, state=True)
     AddSpecialEffect(Characters.LeonineMisbegotten, 8089)
+    AddSpecialEffect(Characters.CLONE_LeonineMisbegotten, 8089)
 
 
 @RestartOnRest(1043302849)

@@ -1,4 +1,4 @@
-"""
+"""DONE
 Subterranean Shunning-Grounds
 
 linked:
@@ -3342,13 +3342,17 @@ def Event_35002850():
     if FlagEnabled(35000850):
         return
 
-    MAIN.Await(HealthValue(Characters.EsgarPriestofBlood) <= 0)
+    AND_7.Add(HealthValue(Characters.EsgarPriestofBlood) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_EsgarPriestofBlood) <= 0)
+    MAIN.Await(AND_7)
 
     Kill(35005850)
     Wait(4.0)
     PlaySoundEffect(Characters.EsgarPriestofBlood, 888880000, sound_type=SoundType.s_SFX)
 
-    MAIN.Await(CharacterDead(Characters.EsgarPriestofBlood))
+    AND_8.Add(CharacterDead(Characters.EsgarPriestofBlood))
+    AND_8.Add(CharacterDead(Characters.CLONE_EsgarPriestofBlood))
+    MAIN.Await(AND_8)
 
     KillBossAndDisplayBanner(character=Characters.EsgarPriestofBlood, banner_type=BannerType.EnemyFelled)
     EnableFlag(35000850)
@@ -3368,6 +3372,7 @@ def Event_35002860():
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.EsgarPriestofBlood)
+    DisableAI(Characters.CLONE_EsgarPriestofBlood)
 
     # --- Label 1 --- #
     DefineLabel(1)
@@ -3379,8 +3384,11 @@ def Event_35002860():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.EsgarPriestofBlood)
+    EnableAI(Characters.CLONE_EsgarPriestofBlood)
     SetNetworkUpdateRate(Characters.EsgarPriestofBlood, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.EsgarPriestofBlood, name=138600)
+    SetNetworkUpdateRate(Characters.CLONE_EsgarPriestofBlood, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.EsgarPriestofBlood, name=NameText.EsgarPriestOfBlood, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_EsgarPriestofBlood, name=NameText.CLONE_EsgarPriestOfBlood, bar_slot=0)
 
 
 @RestartOnRest(35002899)

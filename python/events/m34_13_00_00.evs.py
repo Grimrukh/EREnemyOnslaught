@@ -1,4 +1,4 @@
-"""
+"""DONE
 Divine Tower of Caelid
 
 linked:
@@ -216,13 +216,17 @@ def Event_34132800():
     if FlagEnabled(34130800):
         return
     
-    MAIN.Await(HealthValue(Characters.GodskinApostle) <= 0)
+    AND_7.Add(HealthValue(Characters.GodskinApostle) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_GodskinApostle) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(Characters.GodskinApostle, 888880000, sound_type=SoundType.s_SFX)
-    
-    MAIN.Await(CharacterDead(Characters.GodskinApostle))
-    
+
+    AND_8.Add(CharacterDead(Characters.GodskinApostle))
+    AND_8.Add(CharacterDead(Characters.CLONE_GodskinApostle))
+    MAIN.Await(AND_8)
+
     KillBossAndDisplayBanner(character=Characters.GodskinApostle, banner_type=BannerType.GreatEnemyFelled)
     EnableFlag(34130800)
     EnableFlag(9173)
@@ -237,22 +241,32 @@ def Event_34132810():
     DisableCharacter(Characters.GodskinApostle)
     DisableAnimations(Characters.GodskinApostle)
     Kill(Characters.GodskinApostle)
+    DisableCharacter(Characters.CLONE_GodskinApostle)
+    DisableAnimations(Characters.CLONE_GodskinApostle)
+    Kill(Characters.CLONE_GodskinApostle)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.GodskinApostle)
+    DisableAI(Characters.CLONE_GodskinApostle)
     DisableAnimations(Characters.GodskinApostle)
+    DisableAnimations(Characters.CLONE_GodskinApostle)
     AND_1.Add(FlagEnabled(34132805))
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=34132800))
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.GodskinApostle, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_GodskinApostle, attacker=PLAYER))
+
     MAIN.Await(AND_1)
     
     EnableAI(Characters.GodskinApostle)
+    EnableAI(Characters.CLONE_GodskinApostle)
     EnableAnimations(Characters.GodskinApostle)
+    EnableAnimations(Characters.CLONE_GodskinApostle)
     SetNetworkUpdateRate(Characters.GodskinApostle, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.GodskinApostle, name=903560000)
+    SetNetworkUpdateRate(Characters.CLONE_GodskinApostle, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.GodskinApostle, name=903560000, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_GodskinApostle, name=903560000, bar_slot=0)
 
 
 @RestartOnRest(34132849)

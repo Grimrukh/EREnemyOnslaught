@@ -1,4 +1,4 @@
-"""TODO
+"""DONE
 Southwest Mountaintops (NE) (NE)
 
 linked:
@@ -24,7 +24,10 @@ from .entities.m60_51_55_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1051550300, character=Characters.GuardianGolem, item_lot=0, reward_delay=0.0, skip_reward=0, clone=0)  # TODO
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1051550300, character=Characters.GuardianGolem, item_lot=0, reward_delay=0.0, skip_reward=0,
+        clone=Characters.CLONE_GuardianGolem
+    )
 
 
 @ContinueOnRest(250)

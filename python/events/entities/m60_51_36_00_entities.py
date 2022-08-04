@@ -43,6 +43,8 @@ class Characters(Character):
 
     CLONE_CrucibleKnight = 1051360802  # c2500_9000 npc 25000941 think 25000040 group 1051365800,1051365100
     CLONE_LeonineMisbegotten = 1051360803  # c3460_9000 npc 34600941 think 34602000 group 1051365800,1051365100
+    CLONE_LionGuardian0 = 1051360293
+    CLONE_LionGuardian1 = 1051360294
 
 
 class Assets(Asset):

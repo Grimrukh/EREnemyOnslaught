@@ -16,6 +16,11 @@ class Characters(Character):
     DragonkinSoldier3 = 1048550325  # c4650_9005 npc 46500352 think 46500300 group 1048555320
     DragonkinSoldier4 = 1048550326  # c4650_9006 npc 46500352 think 46500300 group 1048555320
 
+    CLONE_NightsCavalry0 = 1248550802
+    CLONE_NightsCavalry1 = 1248550803
+    CLONE_NightsCavalryHorse0 = 1248550812
+    CLONE_NightsCavalryHorse1 = 1248550813
+
 
 class Assets(Asset):
     AEG100_101_9000 = 1248551301  # AEG100

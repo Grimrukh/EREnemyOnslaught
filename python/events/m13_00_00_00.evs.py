@@ -52,7 +52,6 @@ def Constructor():
     Event_13002500()
 
     # MALIKETH, THE BLACK BLADE
-    # TODO: Clone event instances. Harder to find free event IDs here.
     MalikethDies()
     MalikethBattleTrigger()
     MalikethPhaseTwoTransition(

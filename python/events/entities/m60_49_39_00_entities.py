@@ -29,6 +29,8 @@ class Characters(Character):
     DragonbarrowDragon = 1049390296  # c4505_9000 npc 45050042 think 45050000 group 1049395860
 
     CLONE_BattleMage = 1049390851
+    CLONE_NoxFighter0 = 1049390810
+    CLONE_NoxFighter1 = 1049390811
 
 
 class Assets(Asset):

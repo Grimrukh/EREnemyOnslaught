@@ -9,6 +9,8 @@ class Characters(Character):
     GodskinMonk0 = 34130299  # c3901_9000 col h000200 npc 39011042 think 39011000
     GodskinMonk1 = 34130298  # c3901_9001 col h000600 npc 39011042 think 39011100
 
+    CLONE_GodskinApostle = 34130801
+
 
 class Assets(Asset):
     AEG027_070_0500 = 34131510  # AEG027

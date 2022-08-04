@@ -1,4 +1,4 @@
-"""TODO
+"""DONE
 Northeast Altus Plateau (SW) (NW)
 
 linked:
@@ -26,7 +26,7 @@ def Constructor():
     """Event 0"""
     CommonFunc_FieldBossMusicHealthBar(
         0, boss=Characters.DeathRiteBird, name=904980605, npc_threat_level=24,
-        clone_boss=0, clone_name=0,  # TODO
+        clone_boss=Characters.CLONE_DeathRiteBird, clone_name=0,
     )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
@@ -36,7 +36,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1044530300,
         seconds=0.0,
-        clone_boss=0,  # TODO
+        clone_boss=Characters.CLONE_DeathRiteBird,
     )
 
 

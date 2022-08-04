@@ -39,6 +39,8 @@ class Characters(Character):
     AbnormalStoneCluster14 = 34120273  # c4430_9023 col h000300 npc 44301033 think 44301000
     IronVirgin = 34120350  # c4470_9000 col h000200 npc 44701033 think 44701000 group 34125102
 
+    CLONE_OnyxLord = 34120801
+
 
 class Assets(Asset):
     AEG027_001_7000 = 34121510  # AEG027

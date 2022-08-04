@@ -193,7 +193,9 @@ def Preconstructor():
         animation_id=3012,
         region_1=32052401,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=31180400, character=Characters.MalformedStar, item_lot=0, reward_delay=0.0, skip_reward=0, clone=0)  # TODO
+    # Malformed Star clones despawn separately.
+    CommonFunc_NonRespawningWithReward(0, dead_flag=31180400, character=Characters.MalformedStar, item_lot=0, reward_delay=0.0, skip_reward=0, clone=0)
+    CommonFunc_NonRespawningWithReward(0, dead_flag=31180401, character=Characters.CLONE_MalformedStar, item_lot=0, reward_delay=0.0, skip_reward=0, clone=0)
     Event_31182400()
 
 

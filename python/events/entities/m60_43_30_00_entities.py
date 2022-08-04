@@ -8,6 +8,8 @@ class Characters(Character):
     LargeCrab = 1043300340  # c2270_9000 npc 22700013 think 22700000
     LeonineMisbegotten = 1043300800  # c3460_9000 npc 34600913 think 34601000 group 1043305800,1043305100
 
+    CLONE_LeonineMisbegotten = 1043300801
+
 
 class Assets(Asset):
     AEG099_060_9000 = 1043301950  # AEG099

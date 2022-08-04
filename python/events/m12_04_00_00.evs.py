@@ -171,6 +171,7 @@ def AstelBattleTrigger():
     EnableAI(Characters.Astel)
     EnableAI(Characters.CLONE_Astel)
     EnableImmortality(Characters.CLONE_Astel)
+    DisableHealthBar(Characters.CLONE_Astel)
     ReferDamageToEntity(Characters.CLONE_Astel, Characters.Astel)
     SetNetworkUpdateRate(Characters.Astel, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.CLONE_Astel, is_fixed=True, update_rate=CharacterUpdateRate.Always)

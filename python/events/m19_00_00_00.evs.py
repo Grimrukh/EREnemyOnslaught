@@ -653,6 +653,7 @@ def EldenBeastBattleTrigger():
     EnableAnimations(Characters.CLONE_EldenBeast)
     EnableAI(Characters.CLONE_EldenBeast)
     EnableImmortality(Characters.CLONE_EldenBeast)
+    DisableHealthBar(Characters.CLONE_EldenBeast)
     ReferDamageToEntity(Characters.CLONE_EldenBeast, Characters.EldenBeast)
     ForceAnimation(Characters.CLONE_EldenBeast, 20000)
 

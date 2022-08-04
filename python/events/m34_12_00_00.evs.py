@@ -1,4 +1,4 @@
-"""
+"""DONE
 Divine Tower of West Altus
 
 linked:
@@ -429,13 +429,17 @@ def Event_34122800():
     """Event 34122800"""
     if FlagEnabled(34120800):
         return
-    
-    MAIN.Await(HealthValue(Characters.OnyxLord) <= 0)
+
+    AND_7.Add(HealthValue(Characters.OnyxLord) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_OnyxLord) <= 0)
+    MAIN.Await(AND_7)
     
     Wait(4.0)
     PlaySoundEffect(34128500, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.OnyxLord))
+    AND_8.Add(CharacterDead(Characters.OnyxLord))
+    AND_8.Add(CharacterDead(Characters.CLONE_OnyxLord))
+    MAIN.Await(AND_8)
     
     KillBossAndDisplayBanner(character=Characters.OnyxLord, banner_type=BannerType.EnemyFelled)
     EnableFlag(34120800)
@@ -451,24 +455,33 @@ def Event_34122810():
     DisableCharacter(Characters.OnyxLord)
     DisableAnimations(Characters.OnyxLord)
     Kill(Characters.OnyxLord)
+    DisableCharacter(Characters.CLONE_OnyxLord)
+    DisableAnimations(Characters.CLONE_OnyxLord)
+    Kill(Characters.CLONE_OnyxLord)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.OnyxLord)
+    DisableAI(Characters.CLONE_OnyxLord)
     GotoIfFlagEnabled(Label.L1, flag=34120801)
     DisableCharacter(Characters.OnyxLord)
+    DisableCharacter(Characters.CLONE_OnyxLord)
     ForceAnimation(Characters.OnyxLord, 30000, loop=True)
+    ForceAnimation(Characters.CLONE_OnyxLord, 30000, loop=True)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=34122801))
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.OnyxLord, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_OnyxLord, attacker=PLAYER))
+
     MAIN.Await(OR_1)
     
     EnableNetworkFlag(34120801)
     EnableCharacter(Characters.OnyxLord)
+    EnableCharacter(Characters.CLONE_OnyxLord)
     ForceAnimation(Characters.OnyxLord, 20000, skip_transition=True)
+    ForceAnimation(Characters.CLONE_OnyxLord, 20000, skip_transition=True)
     Goto(Label.L2)
 
     # --- Label 1 --- #
@@ -481,8 +494,11 @@ def Event_34122810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.OnyxLord)
+    EnableAI(Characters.CLONE_OnyxLord)
     SetNetworkUpdateRate(Characters.OnyxLord, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.OnyxLord, name=903600320)
+    SetNetworkUpdateRate(Characters.CLONE_OnyxLord, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.OnyxLord, name=903600320, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_OnyxLord, name=903600320, bar_slot=0)
 
 
 @RestartOnRest(34122811)

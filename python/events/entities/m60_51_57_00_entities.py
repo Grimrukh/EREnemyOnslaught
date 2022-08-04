@@ -1,6 +1,17 @@
 from soulstruct.eldenring.game_types import *
 
 
+class NameText(NPCName):
+    CommanderNiall = 903050500
+    CLONE_CommanderNiall = 903050510
+
+
+class CharacterGroups(Character):
+    NiallAndKnights = 1051575800
+    NiallKnights = 1051575801
+    CLONE_NiallKnights = 1051575802
+
+
 class Characters(Character):
     WalkingMausoleum = 1251570400  # c4450_9000 npc 44500050 think 44500000 talk 603026000
     Dummy0 = 1051570350  # c0100_9000 npc 1000000 think 1000000
@@ -31,7 +42,7 @@ class Characters(Character):
     BanishedKnight6 = 1051570802  # c3010_9019 npc 30107051 think 30107050 group 1051575800,1051575801
     CastleGuard12 = 1051570250  # c3020_9000 npc 30200151 think 30200000
     CastleGuard13 = 1051570255  # c3020_9005 npc 30200151 think 30200800
-    Commander = 1051570800  # c3050_9000 npc 30500051 think 30500000 group 1051575800,1051575104
+    CommanderNiall = 1051570800  # c3050_9000 npc 30500051 think 30500000 group 1051575800,1051575104
     AlbinauricLookout0 = 1051570240  # c3670_9000 npc 36702051 think 36702200
     AlbinauricLookout1 = 1051570241  # c3670_9001 npc 36702251 think 36702200
     AlbinauricLookout2 = 1051570242  # c3670_9002 npc 36703051 think 36703000
@@ -67,6 +78,9 @@ class Characters(Character):
     CLONE_LionGuardian0 = 1051570312
     CLONE_LionGuardian1 = 1051570313
     CLONE_TibiaMariner = 1051570422
+    CLONE_CommanderNiall = 1051570810
+    CLONE_BanishedKnight5 = 1051570811
+    CLONE_BanishedKnight6 = 1051570812
 
 
 class Assets(Asset):

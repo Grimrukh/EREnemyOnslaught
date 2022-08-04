@@ -8,6 +8,8 @@ class Flags(Flag):
 class NameText(NPCName):
     MohgTheOmen = 904800002
     CLONE_MohgTheOmen = 904800012
+    EsgarPriestOfBlood = 138600
+    CLONE_EsgarPriestOfBlood = 138601
 
 
 class Characters(Character):
@@ -215,6 +217,7 @@ class Characters(Character):
     Mohg = 35000800  # c4800_9000 col h004500 npc 48001935 think 48000000 group 35005800,35005100
 
     CLONE_Mohg = 35000801
+    CLONE_EsgarPriestofBlood = 35000851
 
 
 class Assets(Asset):

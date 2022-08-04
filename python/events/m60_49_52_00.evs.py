@@ -1,4 +1,4 @@
-"""TODO: Gargoyle
+"""DONE
 Southwest Mountaintops (SW) (SE)
 
 linked:
@@ -34,12 +34,25 @@ def Constructor():
         left=0,
         left_1=0,
         left_2=0,
-        left_3=0,  # TODO: copy
+        left_3=0,
     )
-    Event_1049522825(0, flag=1049520800, character=Characters.Gargoyle)  # TODO: copy
+    Event_1049522820(
+        1,
+        character=Characters.CLONE_Gargoyle,
+        animation_id=30004,
+        animation_id_1=20004,
+        region=1049522800,
+        seconds=0.0,
+        left=0,
+        left_1=0,
+        left_2=0,
+        left_3=0,
+    )
+    Event_1049522825(0, flag=1049520800, character=Characters.Gargoyle)
+    Event_1049522825(1, flag=1049520800, character=Characters.CLONE_Gargoyle)
     CommonFunc_FieldBossMusicHealthBar(
         0, boss=Characters.Gargoyle, name=904770600, npc_threat_level=16,
-        clone_boss=0, clone_name=0,  # TODO
+        clone_boss=Characters.CLONE_Gargoyle, clone_name=0,
     )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
@@ -49,7 +62,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=30505,
         seconds=0.0,
-        clone_boss=0,  # TODO
+        clone_boss=Characters.CLONE_Gargoyle,
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.Gargoyle, npc_threat_level=16, optional_trigger_flag=0)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1049520550, region=1049522550, radius=10.0, seconds=0.0, animation_id=-1)

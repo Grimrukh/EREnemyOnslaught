@@ -1,4 +1,4 @@
-"""
+"""DONE
 Isolated Divine Tower
 
 linked:

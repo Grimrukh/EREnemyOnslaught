@@ -93,7 +93,7 @@ def Constructor():
     Event_1049392303(0, asset=Assets.AEG099_047_2000, flag=1049390200)
     Event_1049392849()
     Event_1049390800()
-    Event_1049392810()
+    NoxDuoBattleTrigger()
     CommonFunc_ControlBossFog(0, boss_dead_flag=1049390800, fog_asset=Assets.AEG099_001_9000, model_point=3, required_flag=0)
     CommonFunc_EvergaolBossDies(
         0,
@@ -466,6 +466,8 @@ def Event_1049390800():
         return
     AND_1.Add(HealthValue(Characters.NoxFighter0) <= 0)
     AND_1.Add(HealthValue(Characters.NoxFighter1) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_NoxFighter0) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_NoxFighter1) <= 0)
     
     MAIN.Await(AND_1)
     
@@ -481,7 +483,7 @@ def Event_1049390800():
 
 
 @RestartOnRest(1049392810)
-def Event_1049392810():
+def NoxDuoBattleTrigger():
     """Event 1049392810"""
     GotoIfFlagDisabled(Label.L0, flag=1049390800)
     DisableCharacter(Characters.NoxFighter0)
@@ -490,12 +492,20 @@ def Event_1049392810():
     DisableCharacter(Characters.NoxFighter1)
     DisableAnimations(Characters.NoxFighter1)
     Kill(Characters.NoxFighter1)
+    DisableCharacter(Characters.CLONE_NoxFighter0)
+    DisableAnimations(Characters.CLONE_NoxFighter0)
+    Kill(Characters.CLONE_NoxFighter0)
+    DisableCharacter(Characters.CLONE_NoxFighter1)
+    DisableAnimations(Characters.CLONE_NoxFighter1)
+    Kill(Characters.CLONE_NoxFighter1)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.NoxFighter0)
     DisableAI(Characters.NoxFighter1)
+    DisableAI(Characters.CLONE_NoxFighter0)
+    DisableAI(Characters.CLONE_NoxFighter1)
     AND_2.Add(FlagEnabled(1049392805))
     OR_2.Add(CharacterInsideRegion(character=PLAYER, region=1049392800))
     AND_2.Add(OR_2)
@@ -505,10 +515,15 @@ def Event_1049392810():
     
     EnableAI(Characters.NoxFighter0)
     EnableAI(Characters.NoxFighter1)
+    EnableAI(Characters.CLONE_NoxFighter0)
+    EnableAI(Characters.CLONE_NoxFighter1)
     SetNetworkUpdateRate(Characters.NoxFighter0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.NoxFighter1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_NoxFighter0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_NoxFighter1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     EnableBossHealthBar(Characters.NoxFighter0, name=903300560)
     EnableBossHealthBar(Characters.NoxFighter1, name=903300561, bar_slot=1)
+    # Normal health bars for clones.
 
 
 @RestartOnRest(1049392849)

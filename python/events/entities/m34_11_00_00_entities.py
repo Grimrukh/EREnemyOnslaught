@@ -59,6 +59,8 @@ class Characters(Character):
     RayaLucariaSoldier1 = 34110451  # c4312_9001 col h000210 npc 43120028 think 43120010 group 34115160
     RayaLucariaSoldier2 = 34110452  # c4312_9002 col h000210 npc 43120028 think 43120010 group 34115160
 
+    CLONE_GodskinNoble = 34110281
+
 
 class Assets(Asset):
     AEG003_316_9000 = 34111500  # AEG003

@@ -11,6 +11,9 @@ class Characters(Character):
     ExtraLargeScarab = 34140210  # c4192_9000 col h000200 npc 41925050 think 41920000
     LeyndellSoldier = 34140300  # c4313_9000 col h000500 npc 43130150 think 43130100
 
+    CLONE_Omen0 = 34140852
+    CLONE_Omen1 = 34140853
+
 
 class Assets(Asset):
     AEG003_316_9000 = 34141500  # AEG003

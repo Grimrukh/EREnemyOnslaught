@@ -1,4 +1,4 @@
-"""TODO: Night's Cavalry
+"""DONE
 Northeast Caelid (SW) (NW)
 
 linked:
@@ -30,7 +30,6 @@ def Constructor():
     Event_1052412270(slot=1)
     Event_1052412200(0, character=Characters.GiantBall, asset=Assets.AEG099_090_9000, region=1052412210)
 
-    # TODO
     CommonFunc_NonRespawningWithReward(
         0,
         dead_flag=1052410850,
@@ -38,20 +37,22 @@ def Constructor():
         item_lot=0,
         reward_delay=0.0,
         skip_reward=0,
-        clone=0,  # TODO
+        clone=Characters.CLONE_NightsCavalryHorse,
     )
     CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry, horse=Characters.NightsCavalryHorse)
-    # TODO: copy
+    CommonFunc_MoveNightsCavalryToHorse(
+        0, nights_cavalry=Characters.CLONE_NightsCavalry, horse=Characters.CLONE_NightsCavalryHorse
+    )
     Event_1052412291(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
-    # TODO: copy
+    Event_1052412291(1, character=Characters.CLONE_NightsCavalry, character_1=Characters.CLONE_NightsCavalryHorse)
     CommonFunc_NightsCavalryHealthBar(
         0,
         nights_cavalry=Characters.NightsCavalry,
         name=903150606,
         npc_threat_level=10,
         horse=Characters.NightsCavalryHorse,
-        clone_cavalry=0,
-        clone_horse=0,  # TODO
+        clone_cavalry=Characters.CLONE_NightsCavalry,
+        clone_horse=Characters.CLONE_NightsCavalryHorse,
     )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
@@ -61,7 +62,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1052410100,
         seconds=0.0,
-        clone_boss=0,  # TODO
+        clone_boss=Characters.CLONE_NightsCavalry,
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.NightsCavalry, npc_threat_level=10, optional_trigger_flag=0)
     Event_1052412510()
@@ -117,9 +118,9 @@ def Event_1052412200(_, character: uint, asset: uint, region: uint):
     OR_1.Add(CharacterType(PLAYER, character_type=CharacterType.WhitePhantom))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=region))
     AND_2.Add(OR_1)
-    
+
     MAIN.Await(AND_2)
-    
+
     CreateAssetVFX(asset, vfx_id=100, model_point=620383)
     EnableCharacter(character)
     EnableNetworkFlag(region)
@@ -166,9 +167,9 @@ def Event_1052412291(_, character: uint, character_1: uint):
     AND_2.Add(CharacterHasSpecialEffect(character, 11825))
     GotoIfConditionTrue(Label.L0, input_condition=AND_2)
     AND_3.Add(CharacterBackreadEnabled(character_1))
-    
+
     MAIN.Await(AND_3)
-    
+
     AddSpecialEffect(character, 11825)
     Wait(1.0)
     Restart()
@@ -176,9 +177,9 @@ def Event_1052412291(_, character: uint, character_1: uint):
     # --- Label 0 --- #
     DefineLabel(0)
     AND_4.Add(CharacterBackreadDisabled(character_1))
-    
+
     MAIN.Await(AND_4)
-    
+
     AddSpecialEffect(character, 11826)
     Wait(1.0)
     Restart()
@@ -218,9 +219,9 @@ def Event_1052412270():
     """Event 1052412270"""
     DisableNetworkSync()
     CreateProjectileOwner(entity=Characters.Dummy)
-    
+
     MAIN.Await(EntityWithinDistance(entity=PLAYER, other_entity=Characters.Dummy, radius=60.0))
-    
+
     WaitRandomSeconds(min_seconds=1.0, max_seconds=8.0)
     AND_2.Add(NewGameCycleEqual(completion_count=0))
     SkipLinesIfConditionFalse(2, AND_2)

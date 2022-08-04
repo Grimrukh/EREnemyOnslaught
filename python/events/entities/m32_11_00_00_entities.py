@@ -1,6 +1,10 @@
 from soulstruct.eldenring.game_types import *
 
 
+class NameText(NPCName):
+    Astel = 904620320
+
+
 class Characters(Character):
     TalkDummy0 = 32110950  # c1000_9000 col h000100 npc 10000000 think 1 talk 1000
     TalkDummy1 = 32110100  # c1000_9001 col h000400 npc 10001000 think 1 talk 2000
@@ -17,7 +21,7 @@ class Characters(Character):
     TunnelMiner7 = 32110211  # c4382_9011 col h000300 npc 43827052 think 43825000
     TunnelMiner8 = 32110215  # c4382_9015 col h000300 npc 43820052 think 43820000
     TunnelMiner9 = 32110216  # c4382_9016 col h000300 npc 43821052 think 43821000
-    MalformedStar0 = 32110800  # c4620_9000 col h000400 npc 46200952 think 46200200 group 32115100,32115800
+    AstelStarsOfDarkness = 32110800  # c4620_9000 col h000400 npc 46200952 think 46200200 group 32115100,32115800
     MalformedStar1 = 32110801  # c4620_9001 col h000400 npc 46209152 think 46209100
     MalformedStar2 = 32110802  # c4620_9002 col h000400 npc 46209152 think 46209100
     MalformedStar3 = 32110803  # c4620_9003 col h000400 npc 46209152 think 46209100
@@ -26,6 +30,16 @@ class Characters(Character):
     MalformedStar6 = 32110806  # c4620_9006 col h000400 npc 46209152 think 46209100
     MalformedStar7 = 32110807  # c4620_9007 col h000400 npc 46209152 think 46209100
     MalformedStar8 = 32110808  # c4620_9008 col h000400 npc 46209152 think 46209100
+
+    CLONE_AstelStarsOfDarkness = 32110820
+    CLONE_MalformedStar1 = 32110821
+    CLONE_MalformedStar2 = 32110822
+    CLONE_MalformedStar3 = 32110823
+    CLONE_MalformedStar4 = 32110824
+    CLONE_MalformedStar5 = 32110825
+    CLONE_MalformedStar6 = 32110826
+    CLONE_MalformedStar7 = 32110827
+    CLONE_MalformedStar8 = 32110828
 
 
 class Assets(Asset):

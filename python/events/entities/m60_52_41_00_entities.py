@@ -17,6 +17,8 @@ class Characters(Character):
     FlyingDragonGreyll = 1052410800  # c4500_9000 npc 45000042 think 45000942 group 1052415100
 
     CLONE_FlyingDragonGreyll = 1052410801
+    CLONE_NightsCavalry = 1052410852
+    CLONE_NightsCavalryHorse = 1052410853
 
 
 class Assets(Asset):

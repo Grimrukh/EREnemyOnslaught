@@ -98,32 +98,56 @@ def Constructor():
     CommonFunc_90005502(0, flag=1051570514, asset=Assets.AEG030_183_2000, region=1051572511)
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9008, vfx_id=100, model_point=800, right=0)
     CommonFunc_90005632(0, flag=580030, asset=Assets.AEG099_387_2000, item_lot=80030)
-    Event_1051572849()
-    Event_1051572800()
-    Event_1051572810()
-    Event_1051572811()
-    Event_1051572812()
-    Event_1051572820(
+
+    CommanderNiallBasicEvents()
+    CommanderNiallDies()
+    CommanderNiallBattleTrigger()
+    CommanderNiallPhaseTwo()
+    NiallUnknownEvent(0, Characters.CommanderNiall)
+    NiallUnknownEvent(1, Characters.CLONE_CommanderNiall)
+    NiallSummonsKnights(
         0,
-        character=Characters.Commander,
-        character_1=1051575801,
+        niall=Characters.CommanderNiall,
+        knights_group=CharacterGroups.NiallKnights,
         special_effect=11130,
         animation_id=20015,
     )
-    Event_1051572821(
+    NiallSummonsKnights(
+        10,
+        niall=Characters.CLONE_CommanderNiall,
+        knights_group=CharacterGroups.CLONE_NiallKnights,
+        special_effect=11130,
+        animation_id=20015,
+    )
+    NiallDismissesKnights(
         0,
-        character=Characters.Commander,
-        character_1=1051575801,
+        niall=Characters.CommanderNiall,
+        knights_group=CharacterGroups.NiallKnights,
         special_effect=11136,
         animation_id=20016,
     )
-    Event_1051572822(
+    NiallDismissesKnights(
+        10,
+        niall=Characters.CLONE_CommanderNiall,
+        knights_group=CharacterGroups.CLONE_NiallKnights,
+        special_effect=11136,
+        animation_id=20016,
+    )
+    NiallKnightsKilled(
         0,
-        character=Characters.Commander,
-        character_1=Characters.BanishedKnight5,
-        character_2=Characters.BanishedKnight6,
+        niall=Characters.CommanderNiall,
+        knight_1=Characters.BanishedKnight5,
+        knight_2=Characters.BanishedKnight6,
         special_effect_id=11135,
     )
+    NiallKnightsKilled(
+        10,
+        niall=Characters.CLONE_CommanderNiall,
+        knight_1=Characters.CLONE_BanishedKnight5,
+        knight_2=Characters.CLONE_BanishedKnight6,
+        special_effect_id=11135,
+    )
+
     Event_1051572828(0, region=1051572829)
     Event_1051572829(0, region=1051572829)
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
@@ -1669,16 +1693,20 @@ def Event_1051572580():
 
 
 @ContinueOnRest(1051572800)
-def Event_1051572800():
+def CommanderNiallDies():
     """Event 1051572800"""
     if FlagEnabled(1051570800):
         return
     
-    MAIN.Await(HealthRatio(Characters.Commander) <= 0.0)
+    AND_1.Add(HealthRatio(Characters.CommanderNiall) <= 0.0)
+    AND_1.Add(HealthRatio(Characters.CLONE_CommanderNiall) <= 0.0)
+    MAIN.Await(AND_1)
+
+    AND_2.Add(CharacterDead(Characters.CommanderNiall))
+    AND_2.Add(CharacterDead(Characters.CLONE_CommanderNiall))
+    MAIN.Await(AND_2)
     
-    MAIN.Await(CharacterDead(Characters.Commander))
-    
-    KillBossAndDisplayBanner(character=Characters.Commander, banner_type=BannerType.GreatEnemyFelled)
+    KillBossAndDisplayBanner(character=Characters.CommanderNiall, banner_type=BannerType.GreatEnemyFelled)
     EnableFlag(1051570800)
     EnableFlag(9184)
     if PlayerInOwnWorld():
@@ -1686,32 +1714,43 @@ def Event_1051572800():
 
 
 @RestartOnRest(1051572810)
-def Event_1051572810():
+def CommanderNiallBattleTrigger():
     """Event 1051572810"""
     GotoIfFlagDisabled(Label.L0, flag=1051570800)
-    DisableCharacter(Characters.Commander)
-    DisableAnimations(Characters.Commander)
-    Kill(Characters.Commander)
+    DisableCharacter(Characters.CommanderNiall)
+    DisableAnimations(Characters.CommanderNiall)
+    Kill(Characters.CommanderNiall)
+    DisableCharacter(Characters.CLONE_CommanderNiall)
+    DisableAnimations(Characters.CLONE_CommanderNiall)
+    Kill(Characters.CLONE_CommanderNiall)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(Characters.Commander)
+    DisableAI(Characters.CommanderNiall)
+    DisableAI(Characters.CLONE_CommanderNiall)
     GotoIfFlagEnabled(Label.L1, flag=1051570801)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=1051572801))
     OR_1.Add(AND_1)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Commander))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.Commander, state_info=436))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.Commander, state_info=2))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.Commander, state_info=5))
-    OR_1.Add(CharacterHasStateInfo(character=Characters.Commander, state_info=6))
-    OR_2.Add(CharacterHasStateInfo(character=Characters.Commander, state_info=260))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CommanderNiall))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CommanderNiall, state_info=436))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CommanderNiall, state_info=2))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CommanderNiall, state_info=5))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CommanderNiall, state_info=6))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.CommanderNiall, state_info=260))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_CommanderNiall))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_CommanderNiall, state_info=436))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_CommanderNiall, state_info=2))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_CommanderNiall, state_info=5))
+    OR_1.Add(CharacterHasStateInfo(character=Characters.CLONE_CommanderNiall, state_info=6))
+    OR_2.Add(CharacterHasStateInfo(character=Characters.CLONE_CommanderNiall, state_info=260))
     
     MAIN.Await(OR_1)
     
     EnableNetworkFlag(1051570801)
-    ForceAnimation(Characters.Commander, 20010)
+    ForceAnimation(Characters.CommanderNiall, 20010)
+    ForceAnimation(Characters.CLONE_CommanderNiall, 20010)
     Goto(Label.L2)
 
     # --- Label 1 --- #
@@ -1721,108 +1760,112 @@ def Event_1051572810():
     
     MAIN.Await(AND_2)
     
-    ForceAnimation(Characters.Commander, 20010)
+    ForceAnimation(Characters.CommanderNiall, 20010)
+    ForceAnimation(Characters.CLONE_CommanderNiall, 20010)
 
     # --- Label 2 --- #
     DefineLabel(2)
-    EnableAI(Characters.Commander)
-    SetNetworkUpdateRate(1051575800, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.Commander, name=903050500)
+    EnableAI(Characters.CommanderNiall)
+    EnableAI(Characters.CLONE_CommanderNiall)
+    SetNetworkUpdateRate(CharacterGroups.NiallAndKnights, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.CommanderNiall, name=NameText.CommanderNiall, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_CommanderNiall, name=NameText.CLONE_CommanderNiall, bar_slot=0)
 
 
 @RestartOnRest(1051572811)
-def Event_1051572811():
+def CommanderNiallPhaseTwo():
     """Event 1051572811"""
     if FlagEnabled(1051570800):
         return
-    AND_1.Add(CharacterHasSpecialEffect(Characters.Commander, 11155))
+    OR_1.Add(CharacterHasSpecialEffect(Characters.CommanderNiall, 11155))
+    OR_1.Add(CharacterHasSpecialEffect(Characters.CLONE_CommanderNiall, 11155))
     
-    MAIN.Await(AND_1)
+    MAIN.Await(OR_1)
     
     EnableFlag(1051572802)
 
 
 @RestartOnRest(1051572812)
-def Event_1051572812():
-    """Event 1051572812"""
+def NiallUnknownEvent(_, niall: uint):
+    """This doesn't seem to actually do anything."""
     DisableNetworkSync()
     if FlagEnabled(1051570800):
         return
     AND_1.Add(FlagDisabled(1051570800))
-    AND_1.Add(HealthValue(Characters.Commander) != 0)
-    AND_1.Add(CharacterHasSpecialEffect(Characters.Commander, 11135))
+    AND_1.Add(HealthValue(niall) != 0)
+    AND_1.Add(CharacterHasSpecialEffect(niall, 11135))
     
     MAIN.Await(AND_1)
     
-    AND_2.Add(CharacterDoesNotHaveSpecialEffect(Characters.Commander, 11135))
+    AND_2.Add(CharacterDoesNotHaveSpecialEffect(niall, 11135))
     
     MAIN.Await(AND_2)
     
-    OR_15.Add(HealthValue(Characters.Commander) == 0)
+    OR_15.Add(HealthValue(niall) == 0)
     if OR_15:
         return
     Restart()
 
 
 @RestartOnRest(1051572820)
-def Event_1051572820(_, character: uint, character_1: uint, special_effect: int, animation_id: int):
+def NiallSummonsKnights(_, niall: uint, knights_group: uint, special_effect: int, animation_id: int):
     """Event 1051572820"""
     GotoIfFlagDisabled(Label.L0, flag=1051570800)
-    DisableCharacter(character_1)
-    DisableAnimations(character_1)
-    Kill(character_1)
+    DisableCharacter(knights_group)
+    DisableAnimations(knights_group)
+    Kill(knights_group)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(character_1)
-    DisableCharacter(character_1)
-    AND_1.Add(CharacterHasSpecialEffect(character, special_effect))
-    AND_1.Add(CharacterAlive(character))
+    DisableAI(knights_group)
+    DisableCharacter(knights_group)
+    AND_1.Add(CharacterHasSpecialEffect(niall, special_effect))
+    AND_1.Add(CharacterAlive(niall))
     
     MAIN.Await(AND_1)
     
-    EnableCharacter(character_1)
-    EnableAnimations(character_1)
-    EnableAI(character_1)
-    ForceAnimation(character_1, animation_id, wait_for_completion=True)
+    EnableCharacter(knights_group)
+    EnableAnimations(knights_group)
+    EnableAI(knights_group)
+    ForceAnimation(knights_group, animation_id, wait_for_completion=True)
 
 
 @RestartOnRest(1051572821)
-def Event_1051572821(_, character: uint, character_1: uint, special_effect: int, animation_id: int):
+def NiallDismissesKnights(_, niall: uint, knights_group: uint, special_effect: int, animation_id: int):
     """Event 1051572821"""
-    GotoIfFlagDisabled(Label.L0, flag=character)
-    DisableCharacter(character_1)
-    DisableAnimations(character_1)
-    Kill(character_1)
+    GotoIfFlagDisabled(Label.L0, flag=niall)
+    DisableCharacter(knights_group)
+    DisableAnimations(knights_group)
+    Kill(knights_group)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    OR_1.Add(CharacterHasSpecialEffect(character, special_effect))
-    OR_1.Add(CharacterDead(character))
+    OR_1.Add(CharacterHasSpecialEffect(niall, special_effect))
+    OR_1.Add(CharacterDead(niall))
     
     MAIN.Await(OR_1)
     
-    ForceAnimation(character_1, animation_id, skip_transition=True)
+    ForceAnimation(knights_group, animation_id, skip_transition=True)
     WaitFrames(frames=300)
-    DisableCharacter(character_1)
-    DisableAnimations(character_1)
-    Kill(character_1)
+    DisableCharacter(knights_group)
+    DisableAnimations(knights_group)
+    Kill(knights_group)
     End()
 
 
 @RestartOnRest(1051572822)
-def Event_1051572822(_, character: uint, character_1: uint, character_2: uint, special_effect_id: int):
+def NiallKnightsKilled(_, niall: uint, knight_1: uint, knight_2: uint, special_effect_id: int):
     """Event 1051572822"""
-    if FlagEnabled(character):
+    if FlagEnabled(niall):
         return
-    AND_1.Add(CharacterDead(character_1))
-    AND_1.Add(CharacterDead(character_2))
+    AND_1.Add(CharacterDead(knight_1))
+    AND_1.Add(CharacterDead(knight_2))
     
     MAIN.Await(AND_1)
     
-    AddSpecialEffect(character, special_effect_id)
+    AddSpecialEffect(niall, special_effect_id)
 
 
 @RestartOnRest(1051572828)
@@ -1860,7 +1903,7 @@ def Event_1051572829(_, region: uint):
 
 
 @ContinueOnRest(1051572849)
-def Event_1051572849():
+def CommanderNiallBasicEvents():
     """Event 1051572849"""
     CommonFunc_HostEntersBossFog(
         0,
@@ -1868,7 +1911,7 @@ def Event_1051572849():
         fog_asset=Assets.AEG099_002_9000,
         fog_region=1051572800,
         host_entered_fog_flag=1051572805,
-        boss_characters=1051575800,
+        boss_characters=CharacterGroups.NiallAndKnights,
         action_button_id=10000,
         first_time_done_flag=0,
         first_time_trigger_region=0,

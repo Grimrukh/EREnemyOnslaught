@@ -23,6 +23,8 @@ class Characters(Character):
     BigGlintstoneMiner = 32080250  # c4384_9000 col h000200 npc 43840040 think 43840000
     FallingstarBeast = 32080800  # c4680_9000 col h000400 npc 46801940 think 46800000 group 32085800,32085100
 
+    CLONE_FallingstarBeast = 32080801
+
 
 class Assets(Asset):
     AEG027_035_0500 = 32081586  # AEG027

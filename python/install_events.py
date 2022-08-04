@@ -48,10 +48,17 @@ def install_select_maps():
 
 def install_all_maps():
 
+    common_func = EMEVD("events/common_func.py")
+    common_func.write(ELDEN_RING_PATH / "event/common_func.emevd.dcx")
+    shutil.copy2(
+        ELDEN_RING_PATH / f"event/common_func.emevd.dcx",
+        ELDEN_RING_PATH / f"OnslaughtMod/event/common_func.emevd.dcx"
+    )
+    print("common_func.py")
+
     for evs_path in Path("events").glob("*.evs.py"):
-        if evs_path.name[:3] in {"m31", "m32", "m34"}:
-            # Skip Caves, Tunnels, and Divine Towers.
-            continue
+        if evs_path.name.startswith("m31_22_00_00"):
+            continue  # Spiritcaller Cave not done
         print(evs_path.name)
         emevd = EMEVD(evs_path)
         emevd.write(ELDEN_RING_PATH / f"event/{emevd.map_name}.emevd.dcx")

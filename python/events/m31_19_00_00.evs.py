@@ -356,22 +356,18 @@ def Event_31192860():
     DisableCharacter(Characters.NecromancerGarris)
     DisableAnimations(Characters.NecromancerGarris)
     Kill(Characters.NecromancerGarris)
-    DisableCharacter(Characters.CLONE_NecromancerGarris)
-    DisableAnimations(Characters.CLONE_NecromancerGarris)
-    Kill(Characters.CLONE_NecromancerGarris)
     DisableCharacter(CharacterGroups.GarrisSnails)
     DisableAnimations(CharacterGroups.GarrisSnails)
     Kill(CharacterGroups.GarrisSnails)
     DisableSpawner(entity=Spawners.GarrisSnailSpawner1)
     DisableSpawner(entity=Spawners.GarrisSnailSpawner0)
+
     DisableCharacter(Characters.CLONE_NecromancerGarris)
     DisableAnimations(Characters.CLONE_NecromancerGarris)
     Kill(Characters.CLONE_NecromancerGarris)
-    DisableCharacter(Characters.CLONE_CLONE_NecromancerGarris)
-    DisableAnimations(Characters.CLONE_CLONE_NecromancerGarris)
-    Kill(Characters.CLONE_CLONE_NecromancerGarris)
     DisableSpawner(entity=Spawners.CLONE_GarrisSnailSpawner1)
     DisableSpawner(entity=Spawners.CLONE_GarrisSnailSpawner0)
+
     End()
 
     # --- Label 0 --- #

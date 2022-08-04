@@ -1,4 +1,4 @@
-"""TODO: Lion Guardians
+"""DONE
 South Caelid (SE) (SE)
 
 linked:
@@ -430,7 +430,7 @@ def Constructor():
         item_lot=1051360700,
         reward_delay=0.0,
         skip_reward=0,
-        clone=0,  # TODO
+        clone=Characters.CLONE_LionGuardian0,
     )
     CommonFunc_NonRespawningWithReward(
         0,
@@ -439,7 +439,7 @@ def Constructor():
         item_lot=1051360800,
         reward_delay=0.0,
         skip_reward=0,
-        clone=0,  # TODO
+        clone=Characters.CLONE_LionGuardian1,
     )
     Event_1051362340(0, character=Characters.Troll)
     CommonFunc_TriggerEnemyAI_WithRegion(

@@ -1,4 +1,4 @@
-"""TODO: Bell Bearing Hunter
+"""DONE
 North Altus Plateau (SE) (NE)
 
 linked:
@@ -44,7 +44,9 @@ def Constructor():
         flag_10=78308,
         flag_11=78309,
     )
-    CommonFunc_NonRespawningWithReward(0, dead_flag=1043530500, character=Characters.Scarab, item_lot=40318, reward_delay=0.0, skip_reward=0, clone=0)
+    CommonFunc_NonRespawningWithReward(
+        0, dead_flag=1043530500, character=Characters.Scarab, item_lot=40318, reward_delay=0.0, skip_reward=0, clone=0
+    )
     CommonFunc_TriggerInactiveEnemy_WithRegionOrRadius(
         0,
         character=Characters.LeyndellFootSoldier0,
@@ -85,8 +87,9 @@ def Constructor():
         left_3=0,
     )
     CommonFunc_FieldBossMusicHealthBar(
-        0, boss=Characters.BellBearingHunter, name=903100602, npc_threat_level=10, clone_boss=0, clone_name=0
-    )  # TODO
+        0, boss=Characters.BellBearingHunter, name=903100602, npc_threat_level=10,
+        clone_boss=Characters.CLONE_BellBearingHunter, clone_name=0
+    )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
         dead_flag=1043530800,
@@ -95,7 +98,7 @@ def Constructor():
         boss_banner_choice=0,
         item_lot=1043530400,
         seconds=0.0,
-        clone_boss=0,  # TODO
+        clone_boss=Characters.CLONE_BellBearingHunter,
     )
     CommonFunc_TriggerBellBearingHunter(
         0,
@@ -103,9 +106,10 @@ def Constructor():
         hunter=Characters.BellBearingHunter,
         region=1043532400,
         required_flag=1043532708,
-        clone=0,  # TODO
+        clone=Characters.CLONE_BellBearingHunter,
     )
     CommonFunc_FieldBossMusicHeatUp(0, boss=Characters.BellBearingHunter, npc_threat_level=10, optional_trigger_flag=0)
+
     CommonFunc_90005702(0, character=Characters.Merchant, flag=4763, first_flag=4760, last_flag=4763)
     CommonFunc_90005703(
         0,
@@ -118,7 +122,9 @@ def Constructor():
         last_flag=4763,
         right=0,
     )
-    CommonFunc_MakeNPCHostile(0, npc=Characters.Merchant, flag=4761, required_flag=4760, hostile_flag=1043530702, hostile_hits=3)
+    CommonFunc_MakeNPCHostile(
+        0, npc=Characters.Merchant, flag=4761, required_flag=4760, hostile_flag=1043530702, hostile_hits=3
+    )
     Event_1043530700(0, character=Characters.Merchant, character_1=Characters.NomadMule, asset=1043536700)
     CommonFunc_90005770(0, flag=1043530701)
     CommonFunc_90005727(
@@ -141,7 +147,9 @@ def Constructor():
         last_flag=4763,
         right=0,
     )
-    CommonFunc_MakeNPCHostile(0, npc=Characters.NomadMule, flag=4761, required_flag=4760, hostile_flag=1043530702, hostile_hits=3)
+    CommonFunc_MakeNPCHostile(
+        0, npc=Characters.NomadMule, flag=4761, required_flag=4760, hostile_flag=1043530702, hostile_hits=3
+    )
     CommonFunc_90005771(0, 1043530951, 1043532710)
 
 

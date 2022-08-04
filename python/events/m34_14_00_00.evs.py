@@ -1,4 +1,4 @@
-"""
+"""DONE
 Divine Tower of East Altus
 
 linked:
@@ -28,6 +28,8 @@ def Constructor():
     RegisterGrace(grace_flag=34140001, asset=Assets.AEG099_060_9001)
     Event_34142850()
     Event_34140860()
+    KillBossClone(0, Characters.Omen0, Characters.CLONE_Omen0)
+    KillBossClone(1, Characters.Omen1, Characters.CLONE_Omen1)
     Event_34142899()
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(
         0,
@@ -55,8 +57,8 @@ def Constructor():
         left=1,
     )
     Event_34142252(0, flag=34140250, seconds=0.0, character=Characters.Scarab, seconds_1=0.0)
-    Event_34142870()
-    Event_34142865()
+    MovePlayerToFellTwinsArena()
+    WarpPlayerAfterFellTwins()
     Event_34142875()
     Event_34142510()
     CommonFunc_90005501(
@@ -338,6 +340,8 @@ def Event_34142850():
         return
     AND_1.Add(HealthValue(Characters.Omen0) <= 0)
     AND_1.Add(HealthValue(Characters.Omen1) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_Omen0) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_Omen1) <= 0)
     
     MAIN.Await(AND_1)
     
@@ -345,6 +349,8 @@ def Event_34142850():
     PlaySoundEffect(Characters.Omen0, 888880000, sound_type=SoundType.s_SFX)
     AND_2.Add(CharacterDead(Characters.Omen0))
     AND_2.Add(CharacterDead(Characters.Omen1))
+    AND_2.Add(CharacterDead(Characters.CLONE_Omen0))
+    AND_2.Add(CharacterDead(Characters.CLONE_Omen1))
     
     MAIN.Await(AND_2)
     
@@ -367,20 +373,31 @@ def Event_34140860():
     DisableCharacter(Characters.Omen1)
     DisableAnimations(Characters.Omen1)
     Kill(Characters.Omen1)
+    DisableCharacter(Characters.CLONE_Omen0)
+    DisableAnimations(Characters.CLONE_Omen0)
+    Kill(Characters.CLONE_Omen0)
+    DisableCharacter(Characters.CLONE_Omen1)
+    DisableAnimations(Characters.CLONE_Omen1)
+    Kill(Characters.CLONE_Omen1)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.Omen0)
     DisableAI(Characters.Omen1)
+    DisableAI(Characters.CLONE_Omen0)
+    DisableAI(Characters.CLONE_Omen1)
     DisableCharacter(Characters.Omen0)
     DisableCharacter(Characters.Omen1)
+    DisableCharacter(Characters.CLONE_Omen0)
+    DisableCharacter(Characters.CLONE_Omen1)
     GotoIfFlagEnabled(Label.L1, flag=34140851)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=34142855))
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Omen0, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_Omen0, attacker=PLAYER))
+
     MAIN.Await(OR_1)
     
     EnableNetworkFlag(34140851)
@@ -399,17 +416,37 @@ def Event_34140860():
     EnableNetworkFlag(34142855)
     EnableCharacter(Characters.Omen0)
     EnableCharacter(Characters.Omen1)
+    EnableCharacter(Characters.CLONE_Omen0)
+    EnableCharacter(Characters.CLONE_Omen1)
     EnableAI(Characters.Omen0)
     EnableAI(Characters.Omen1)
+    EnableAI(Characters.CLONE_Omen0)
+    EnableAI(Characters.CLONE_Omen1)
     SetNetworkUpdateRate(Characters.Omen0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.Omen1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_Omen0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_Omen1, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableImmortality(Characters.CLONE_Omen0)
+    EnableImmortality(Characters.CLONE_Omen1)
+    ReferDamageToEntity(Characters.CLONE_Omen0, Characters.Omen0)
+    ReferDamageToEntity(Characters.CLONE_Omen1, Characters.Omen1)
     EnableBossHealthBar(Characters.Omen0, name=902140000, bar_slot=1)
-    EnableBossHealthBar(Characters.Omen1, name=902140001)
+    EnableBossHealthBar(Characters.Omen1, name=902140001, bar_slot=0)
+    # No boss health bars for clones.
     SetNetworkFlagState(FlagType.RelativeToThisEventSlot, 0, state=FlagSetting.On)
 
 
+@RestartOnRest(34142860)
+def KillBossClone(_, twin: uint, clone: uint):
+    if FlagEnabled(34140850):
+        return
+
+    MAIN.Await(HealthValue(twin) <= 0)
+    Kill(clone)
+
+
 @RestartOnRest(34142865)
-def Event_34142865():
+def WarpPlayerAfterFellTwins():
     """Event 34142865"""
     if FlagEnabled(34140865):
         return
@@ -425,7 +462,7 @@ def Event_34142865():
 
 
 @RestartOnRest(34142870)
-def Event_34142870():
+def MovePlayerToFellTwinsArena():
     """Event 34142870"""
     DisableNetworkSync()
     if FlagEnabled(34140850):

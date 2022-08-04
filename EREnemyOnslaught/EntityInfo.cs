@@ -288,6 +288,7 @@ namespace EREnemyOnslaught
 
             #region m35_00_00_00
             [35000800] = new CloneInfo(35000801, new Vector4(75.117f, -298.550f, -83.080f, -117.328f), new Vector4(72.899f, -298.550f, -78.977f, -119.587f)),  // Mohg
+            [35000850] = new CloneInfo(35000851, new Vector4(-204.708f, -153.846f, -306.088f, -135.587f), new Vector4(-202.921f, -153.846f, -307.839f, -135.587f)),  // Esgar
             #endregion
 
             #region Limgrave / Weeping Peninsula
@@ -298,6 +299,8 @@ namespace EREnemyOnslaught
 
             [1042380800] = new CloneInfo(1042380801, new Vector4(123.558f, 183.694f, 47.226f, 134.359f)),  // Deathrite Bird
             [1042380850] = new CloneInfo(1042380851, new Vector4(10.343f, 188.006f, 88.935f, 130.245f), new Vector4(12.089f, 188.006f, 90.998f, 130.245f)),  // Bell-Bearing Hunter
+
+            [1043300800] = new CloneInfo(1043300801),  // Leonine Misbegotten
 
             [1043330800] = new CloneInfo(1043330801),  // Erdtree Avatar
 
@@ -338,6 +341,8 @@ namespace EREnemyOnslaught
             [1034500800] = new CloneInfo(1034500801, new Vector4(10.063f, 455.024f, 36.713f, -107.379f)),  // Glintstone Dragon Adula (Ranni's Rise)
 
             [1035420800] = new CloneInfo(1035420801, new Vector4(-38.849f, 269.155f, -12.055f, 44.135f)),  // Omenkiller
+
+            [1035500800] = new CloneInfo(1035500801, new Vector4(-32.985f, 430.946f, 97.375f, -70.682f)),  // Loretta
 
             [1036450340] = new CloneInfo(1036450341, new Vector4(-79.161f, 237.557f, 26.946f, -64.883f)),  // Deathrite Bird
 
@@ -406,6 +411,10 @@ namespace EREnemyOnslaught
 
             [1042550800] = new CloneInfo(1042550801, new Vector4(-30.954f, 968.164f, -37.932f, -11.389f)),  // Godskin Apostle
 
+            [1043530800] = new CloneInfo(1043530801),  // Bell-Bearing Hunter
+
+            [1044530800] = new CloneInfo(1044530801),  // Deathrite Bird
+
             [1045520800] = new CloneInfo(1045520801, new Vector4(25.714f, 1023.759f, 45.294f, -145.248f), new Vector4(30.288f, 1024.047f, 42.166f, -145.248f)),  // Draconic Tree Sentinel
             [1045520200] = new CloneInfo(1045520210),  // Guardian Golem
             [1045520202] = new CloneInfo(1045520212),  // Guardian Golem
@@ -416,6 +425,8 @@ namespace EREnemyOnslaught
             #region Caelid
             [1051360800] = new CloneInfo(1051360802, new Vector4(90.810f, 91.750f, 34.136f, 12.908f)),  // Redmane Castle duo boss (Leonine Misbegotten) 
             [1051360801] = new CloneInfo(1051360803, new Vector4(97.482f, 105.500f, 38.728f, 93.109f)),  // Redmane Castle duo boss (Crucible Knight)
+            [1051360291] = new CloneInfo(1051360293),  // Lion Guardian
+            [1051360292] = new CloneInfo(1051360294),  // Lion Guardian
             // RADAHN
             [1052380800] = new CloneInfo(1052380801, new Vector4(-435.286f, 34.595f, 86.675f, 96.100f)),  // Starscourge Radahn
             [1052380899] = new CloneInfo(1052380898),  // Starscourge Raddahn meteor angle dummy (c0000)
@@ -441,14 +452,28 @@ namespace EREnemyOnslaught
 
             [1049380800] = new CloneInfo(1049380801, new Vector4(-25.055f, 65.975f, 46.699f, 81.940f)),  // Commander O'Neil
 
+            [1049390800] = new CloneInfo(1049390810, new Vector4(92.200f, 83.522f, 85.510f, -29.649f)),  // Nox Duo
+            [1049390801] = new CloneInfo(1049390811, new Vector4(102.351f, 83.649f, 87.403f, 16.687f)),
+
             [1051400800] = new CloneInfo(1051400801),  // Putrid Avatar
 
             [1051430800] = new CloneInfo(1051430801, new Vector4(-7.218f, 334.658f, -19.671f, -56.548f), new Vector4(-15.926f, 336.654f, -22.923f, -38.521f)),  // Gargoyle (Bestial Sanctum)
 
             [1049390850] = new CloneInfo(1049390851),  // Battle Mage (Evergaol)
+
+            [1052410850] = new CloneInfo(1052410852, new Vector4(9.373f, 221.391f, 119.834f, -8.995f)),  // Night's Cavalry
+            [1052410851] = new CloneInfo(1052410853, new Vector4(8.873f, 219.046f, 121.173f, -9.111f)),  // and horse
             #endregion
 
             #region Mountaintops
+            [1049520800] = new CloneInfo(1049520801),  // Gargoyle (Forbidden Lands)
+
+            [1051550300] = new CloneInfo(1051550301),  // Guardian Golem
+
+            [1051570800] = new CloneInfo(1051570810, new Vector4(80.319f, 1632.0f, 211.005f, -18.200f), new Vector4(75.942f, 1632.0f, 209.566f, -18.2f)),  // Commander Niall
+            [1051570801] = new CloneInfo(1051570811, new Vector4(77.177f, 1632.0f, 206.721f, -26.253f)),  // Knight 1
+            [1051570802] = new CloneInfo(1051570812, new Vector4(84.972f, 1632.0f, 209.167f, -18.009f)),  // Knight 2
+
             [1052520801] = new CloneInfo(1052520803, new Vector4(-337.454f, 1859.962f, -374.085f, -37.187f)),  // Fire Giant (Phase One/Two)
             [1052520800] = new CloneInfo(1052520802),  // Fire Giant (Phase Three)
 
@@ -468,6 +493,11 @@ namespace EREnemyOnslaught
             [1048570254] = new CloneInfo(1048570244),  // Black Knife Assassin
             [1048570255] = new CloneInfo(1048570245),  // Black Knife Assassin
             [1048570256] = new CloneInfo(1048570246),  // Black Knife Assassin
+
+            [1248550800] = new CloneInfo(1248550802),  // Night's Cavalry
+            [1248550810] = new CloneInfo(1248550812),  // and horse
+            [1248550801] = new CloneInfo(1248550803),  // Night's Cavalry
+            [1248550811] = new CloneInfo(1248550813),  // and horse
 
             [1050560800] = new CloneInfo(1050560801, new Vector4(21.156f, 1255.064f, -6.692f, -133.980f)),  // Great Wyrm Theodorix
             [1050560300] = new CloneInfo(1050560301),  // Red Wolf
@@ -553,7 +583,7 @@ namespace EREnemyOnslaught
             #endregion
 
             #region Caves
-            [31000800] = new CloneInfo(31000801),  // Patches (complicated events, will definitely be buggy)
+            [31000800] = new CloneInfo(31000801, new Vector4(26.603f, 53.102f, 56.115f, -132.769f)),  // Patches (complicated events, will definitely be buggy)
 
             [31010800] = new CloneInfo(31010801),  // Runebear
 
@@ -574,9 +604,9 @@ namespace EREnemyOnslaught
             [31100800] = new CloneInfo(31100810),  // Beastman Duo
             [31100801] = new CloneInfo(31100811),
 
-            [31110800] = new CloneInfo(31110810),  // Putrid Crystalian Trio
-            [31110801] = new CloneInfo(31110811),
-            [31110802] = new CloneInfo(31110812),
+            [31110800] = new CloneInfo(31110810, new Vector4(-148.502f, 127.071f, 140.750f, -97.856f)),  // Putrid Crystalian Trio
+            [31110801] = new CloneInfo(31110811, new Vector4(-145.477f, 126.956f, 127.938f, -142.303f)),
+            [31110802] = new CloneInfo(31110812, new Vector4(-139.216f, 127.277f, 130.033f, -153.251f)),
 
             [31120800] = new CloneInfo(31120801),  // Leonine Misbegotten
 
@@ -585,19 +615,20 @@ namespace EREnemyOnslaught
 
             [31170800] = new CloneInfo(31170801),  // Guardian Golem
 
-            [31180800] = new CloneInfo(31180810),  // Miranda the Blighted Bloom
-            [31180801] = new CloneInfo(31180811),  // Omenkiller
+            [31180800] = new CloneInfo(31180810, new Vector4(-96.070f, 791.448f, 183.653f, -95.496f)),  // Miranda the Blighted Bloom
+            [31180801] = new CloneInfo(31180811, new Vector4(-92.763f, 790.507f, 184.897f, 58.068f)),  // Omenkiller
+            [31180400] = new CloneInfo(31180401, new Vector4(0.337f, 796.292f, 182.008f, 32.869f)),  // Malformed Star
 
-            [31190800] = new CloneInfo(31190801),  // Black Knife Assassin
-            [31190850] = new CloneInfo(31190851),  // Necromancer Garris
+            [31190800] = new CloneInfo(31190801, new Vector4(127.782f, 623.473f, -23.569f, -67.646f)),  // Black Knife Assassin
+            [31190850] = new CloneInfo(31190851, new Vector4(103.195f, 627.262f, -44.531f, -30.279f)),  // Necromancer Garris
             [31190380] = new CloneInfo(31190383),  // Garris snail
             [31190381] = new CloneInfo(31190384),  // Garris snail
             [31190382] = new CloneInfo(31190385),  // Garris snail
             [31193820] = new CloneInfo(31193822),  // Garris snail spawner 0
             [31193821] = new CloneInfo(31193823),  // Garris snail spawner 1
 
-            [31200800] = new CloneInfo(31200810),  // Cleanrot Knight Duo
-            [31200801] = new CloneInfo(31200811),  // Cleanrot Knight Duo
+            [31200800] = new CloneInfo(31200810, new Vector4(179.505f, 86.969f, 150.240f, 42.049f)),  // Cleanrot Knight Duo
+            [31200801] = new CloneInfo(31200811, new Vector4(160.878f, 85.821f, 147.109f, -67.262f)),
 
             [31210800] = new CloneInfo(31210801),  // Gravewarden Duelist
 
@@ -613,10 +644,34 @@ namespace EREnemyOnslaught
 
             [32040800] = new CloneInfo(32040801),  // Mine Troll
 
-            [32050800] = new CloneInfo(32050810),  // Crystalian Duo
-            [32050801] = new CloneInfo(32050811),
+            [32050800] = new CloneInfo(32050810, new Vector4(62.569f, 777.627f, -43.987f, 93.638f)),  // Crystalian Duo
+            [32050801] = new CloneInfo(32050811, new Vector4(57.861f, 777.708f, -44.676f, -121.453f)),
 
-            [32070800] = new CloneInfo(32070801),  // Magma Wyrm
+            [32070800] = new CloneInfo(32070801, new Vector4(-25.139f, 89.415f, 157.544f, -18.911f), new Vector4(-14.447f, 89.819f, 159.712f, 2.933f)),  // Magma Wyrm
+
+            [32080800] = new CloneInfo(32080801, new Vector4(-63.849f, 123.909f, 235.002f, -118.530f)),  // Fallingstar Beast
+
+            // Astel, Stars of Darkness
+            [32110800] = new CloneInfo(32110820, new Vector4(63.898f, 1207.515f, 149.428f, 14.521f), new Vector4(41.165f, 1207.515f, 149.500f, -10.892f)),
+            [32110801] = new CloneInfo(32110821),  // Astel (grab move copy)
+            [32110802] = new CloneInfo(32110822),  // Astel (grab move copy)
+            [32110803] = new CloneInfo(32110823),  // Astel (grab move copy)
+            [32110804] = new CloneInfo(32110824),  // Astel (grab move copy)
+            [32110805] = new CloneInfo(32110825),  // Astel (grab move copy)
+            [32110806] = new CloneInfo(32110826),  // Astel (grab move copy)
+            [32110807] = new CloneInfo(32110827),  // Astel (grab move copy)
+            [32110808] = new CloneInfo(32110828),  // Astel (grab move copy)
+            #endregion
+
+            #region Divine Towers
+            [34110280] = new CloneInfo(34110281),  // Godskin Noble (Liurnia)
+
+            [34120800] = new CloneInfo(34120801, new Vector4(-46.343f, 711.356f, -195.716f, 176.217f)),  // Onyx Lord (West Altus)
+
+            [34130800] = new CloneInfo(34130801, new Vector4(75.057f, 36.310f, -95.709f, 178.414f), new Vector4(79.058f, 36.310f, -95.672f, -179.405f)),  // Godskin Apostle (Caelid)
+
+            [34140850] = new CloneInfo(34140852, new Vector4(587.596f, -373.485f, -330.139f, 45.647f)),  // Omen Twins (East Altus)
+            [34140851] = new CloneInfo(34140853, new Vector4(595.989f, -373.485f, -336.553f, 66.351f)),
             #endregion
 
             #region m39_20_00_00 (Ruin-Strewn Precipice)
@@ -638,6 +693,8 @@ namespace EREnemyOnslaught
             [14005810] = 14005812,  // Rennala Students
             [14005811] = 14005813,  // Rennala Students (Unknown subgroup?)
             [14005820] = 14005830,  // Rennala Summons
+
+            [1051575801] = 1051575802,  // Commander Niall's Knights
         };
 
         public readonly static HashSet<int> DoNotCloneEntityIDs = new HashSet<int>()
@@ -652,6 +709,8 @@ namespace EREnemyOnslaught
             11050855,
             11050856,
             11050857,
+
+            31000850,  // Copy of Patches boss
 
             // Greyoll the Giant Dragon
             1050400800,
@@ -712,7 +771,7 @@ namespace EREnemyOnslaught
             [903575000] = "Oneskin, Twoskin",
             [903575010] = "Threeskin, Fourskin",
             [902110010] = "Beast Clergyman",
-            [902110011] = "Big the Cat... of Death",
+            [902110011] = "Fluffy the Cat... of Death",
             [904520010] = "Dragonlord Daniel",
 
             // m14_00_00_00
@@ -735,7 +794,8 @@ namespace EREnemyOnslaught
             [902190010] = "Ragadon of the Weird Love Triangle",
 
             // m35_00_00_00
-            [904800012] = "Hangry Mulg",
+            [904800012] = "Mulg the Hangry",
+            [138601] = "Esther, Priestess of Earwax",
 
             // m60_52_38_00
             [904730010] = "Meteorman Mazohr",
@@ -744,13 +804,16 @@ namespace EREnemyOnslaught
             [904502610] = "Glintstone Dragon Samantha",
             [904503610] = "Boris, the Uncomfortably Cold",
             [904510610] = "Ancient Dragon Larry",  // both appearances
-            [904130610] = "Demi-Human Queen Morgan",
+            [904130610] = "Demi-Human Queen Marge",
             [903560610] = "Stretch Dude",
             [904500610] = "Flying Dragon Alberto",
             [904501610] = "Decaying Edna",
             [903050610] = "Commander O'Connell",
             [904911610] = "Great Wyrm Womble-Bomble",
             [904500611] = "Flying Dragon Graham",
+            [903253510] = "Royal Knight Laurie",
+            [903050510] = "Commander O'Farrell",
+            [904760010] = "Fire Giantess",
 
             // Generic
             [902500300] = "Crucible Knights Ordovis and Olga",
@@ -768,12 +831,15 @@ namespace EREnemyOnslaught
             [903350317] = "Very Putrid Crystalian (Staff)",
             [904480310] = "Miranda and Myrtle the Blighted Blooms",
             [904820310] = "Omenkiller Duo",
-            [137601] = "Necromanger Garth",
-            [903800311] = "Cleanrot Knight Alpha Team",
-            [903800312] = "Cleanrot Knight Beta Team",
+            [137601] = "Necromancer Garth",
+            [903800311] = "Cleanrot Knights: Alpha Team",
+            [903800312] = "Cleanrot Knights: Beta Team",
+            [904620320] = "Why Did It Have To Be Astels?",
+            [902140000] = "Fell Twins",
+            [902140001] = "Fell Twins",
 
             // m39_20_00_00
-            [904910010] = "Magma Wyrm Marge",
+            [904910010] = "Magma Wyrm Molkor",
         };
     }
 }

@@ -26,6 +26,7 @@ class Characters(Character):
 
     CLONE_MirandaTheBlightedBloom = 31180810
     CLONE_Omenkiller = 31180811
+    CLONE_MalformedStar = 31180401
 
 
 class Assets(Asset):

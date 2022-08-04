@@ -1,6 +1,11 @@
 from soulstruct.eldenring.game_types import *
 
 
+class NameText(NPCName):
+    Loretta = 903253500
+    CLONE_Loretta = 903253510
+
+
 class Characters(Character):
     CariaManorSilentSpirit = 1035500710  # c0000_9004 npc 500000020 think 500000000 chara 27001 talk 701106000
     Dummy = 1035500399  # c0100_9000 npc 1000000 think 1000000
@@ -103,6 +108,8 @@ class Characters(Character):
     SmallLivingPot6 = 1035500282  # c4491_9012 npc 44910021 think 44910000
     SmallLivingPot7 = 1035500283  # c4491_9013 npc 44910021 think 44910000
     LiurniaTroll = 1035500391  # c4601_9000 npc 46018021 think 46010020 group 1035505104
+
+    CLONE_Loretta = 1035500801
 
 
 class Assets(Asset):

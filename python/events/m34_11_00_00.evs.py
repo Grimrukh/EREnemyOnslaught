@@ -1,4 +1,4 @@
-"""
+"""TODO: Preceptor Miriam
 Divine Tower of Liurnia
 
 linked:
@@ -78,6 +78,7 @@ def Constructor():
         item_lot=34110400,
         reward_delay=0.0,
         skip_reward=0,
+        clone=Characters.CLONE_GodskinNoble,
     )
     Event_34112400()
     Event_34112410()
@@ -101,6 +102,7 @@ def Constructor():
         item_lot=34110700,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,  # TODO
     )
     Event_34112460()
     Event_34112465()
@@ -111,6 +113,7 @@ def Constructor():
         item_lot=34110710,
         reward_delay=0.0,
         skip_reward=0,
+        clone=0,  # TODO
     )
     Event_34112475(0, flag=34112485, character=Characters.PreceptorMiriam0, region=34112411)
     Event_34112475(1, flag=34112486, character=Characters.PreceptorMiriam0, region=34112421)

@@ -1,4 +1,4 @@
-"""DONE
+"""TODO: Loretta warp events.
 Northwest Liurnia (NE) (SE)
 
 linked:
@@ -590,11 +590,14 @@ def Constructor():
     Event_1035502400(9, character=Characters.RayaLucariaSoldier21, region=1035502419, seconds=0.0, animation_id=-1)
     Event_1035502400(10, character=Characters.RayaLucariaSoldier22, region=1035502420, seconds=0.0, animation_id=-1)
     Event_1035502849()
-    Event_1035500800()
-    Event_1035502810()
+
+    # LORETTA
+    LorettaDies()
+    LorettaBattleTrigger()
     Event_1035502840()
     Event_1035502841()
     Event_1035502842()
+
     Event_1035502210(0, asset=Assets.AEG099_045_9000, flag=1035502600, owner_entity=Characters.Dummy)
     Event_1035502210(1, asset=Assets.AEG099_045_9001, flag=1035502601, owner_entity=Characters.Dummy)
     Event_1035502210(2, asset=Assets.AEG099_045_9002, flag=1035502602, owner_entity=Characters.Dummy)
@@ -915,17 +918,21 @@ def Event_1035502500():
 
 
 @RestartOnRest(1035500800)
-def Event_1035500800():
+def LorettaDies():
     """Event 1035500800"""
     if FlagEnabled(1035500800):
         return
-    
-    MAIN.Await(HealthValue(Characters.Loretta) <= 0)
+
+    AND_1.Add(HealthValue(Characters.Loretta) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_Loretta) <= 0)
+    MAIN.Await(AND_1)
     
     Wait(4.0)
     PlaySoundEffect(Characters.Loretta, 888880000, sound_type=SoundType.s_SFX)
-    
-    MAIN.Await(CharacterDead(Characters.Loretta))
+
+    AND_2.Add(CharacterDead(Characters.Loretta))
+    AND_2.Add(CharacterDead(Characters.CLONE_Loretta))
+    MAIN.Await(AND_2)
     
     KillBossAndDisplayBanner(character=Characters.Loretta, banner_type=BannerType.GreatEnemyFelled)
     EnableFlag(1035500800)
@@ -935,30 +942,39 @@ def Event_1035500800():
 
 
 @RestartOnRest(1035502810)
-def Event_1035502810():
+def LorettaBattleTrigger():
     """Event 1035502810"""
     GotoIfFlagDisabled(Label.L0, flag=1035500800)
     DisableCharacter(Characters.Loretta)
     DisableAnimations(Characters.Loretta)
     Kill(Characters.Loretta)
+    DisableCharacter(Characters.CLONE_Loretta)
+    DisableAnimations(Characters.CLONE_Loretta)
+    Kill(Characters.CLONE_Loretta)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
     DisableAI(Characters.Loretta)
+    DisableAI(Characters.CLONE_Loretta)
     GotoIfFlagEnabled(Label.L1, flag=1035500801)
     DisableCharacter(Characters.Loretta)
+    DisableCharacter(Characters.CLONE_Loretta)
     ForceAnimation(Characters.Loretta, 30000, loop=True)
+    ForceAnimation(Characters.CLONE_Loretta, 30000, loop=True)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=1035502801))
     OR_1.Add(AND_1)
     OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.Loretta, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_Loretta, attacker=PLAYER))
+
     MAIN.Await(OR_1)
     
     EnableNetworkFlag(1035500801)
     EnableCharacter(Characters.Loretta)
+    EnableCharacter(Characters.CLONE_Loretta)
     ForceAnimation(Characters.Loretta, 20010, skip_transition=True)
+    ForceAnimation(Characters.CLONE_Loretta, 20010, skip_transition=True)
     Goto(Label.L2)
 
     # --- Label 1 --- #
@@ -973,8 +989,11 @@ def Event_1035502810():
     # --- Label 2 --- #
     DefineLabel(2)
     EnableAI(Characters.Loretta)
+    EnableAI(Characters.CLONE_Loretta)
     SetNetworkUpdateRate(Characters.Loretta, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.Loretta, name=903253500)
+    SetNetworkUpdateRate(Characters.CLONE_Loretta, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.Loretta, name=NameText.Loretta, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_Loretta, name=NameText.CLONE_Loretta, bar_slot=0)
 
 
 @RestartOnRest(1035502840)

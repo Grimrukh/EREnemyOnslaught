@@ -26,6 +26,8 @@ class Characters(Character):
     Commoner5 = 1044530405  # c3660_9005 npc 36600733 think 36600600 group 1044535100
     DeathRiteBird = 1044530800  # c4980_9000 npc 49800033 think 49800100
 
+    CLONE_DeathRiteBird = 1044530801
+
 
 class Assets(Asset):
     AEG099_053_9000 = 1044531100  # AEG099

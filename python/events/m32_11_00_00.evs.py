@@ -1,4 +1,4 @@
-"""
+"""DONE
 Yelough Anix Tunnel
 
 linked:
@@ -29,22 +29,38 @@ def Constructor():
     Event_32112810()
     Event_32112811()
     Event_32112849()
-    Event_32112820(1, character=Characters.MalformedStar1, destination=Assets.AEG003_316_9001)
-    Event_32112820(2, character=Characters.MalformedStar2, destination=Assets.AEG003_316_9002)
-    Event_32112820(3, character=Characters.MalformedStar3, destination=Assets.AEG003_316_9003)
-    Event_32112820(4, character=Characters.MalformedStar4, destination=Assets.AEG003_316_9004)
-    Event_32112820(5, character=Characters.MalformedStar5, destination=Assets.AEG003_316_9005)
-    Event_32112820(6, character=Characters.MalformedStar6, destination=Assets.AEG003_316_9006)
-    Event_32112820(7, character=Characters.MalformedStar7, destination=Assets.AEG003_316_9007)
-    Event_32112820(8, character=Characters.MalformedStar8, destination=Assets.AEG003_316_9008)
-    Event_32112830(1, character=Characters.MalformedStar1)
-    Event_32112830(2, character=Characters.MalformedStar2)
-    Event_32112830(3, character=Characters.MalformedStar3)
-    Event_32112830(4, character=Characters.MalformedStar4)
-    Event_32112830(5, character=Characters.MalformedStar5)
-    Event_32112830(6, character=Characters.MalformedStar6)
-    Event_32112830(7, character=Characters.MalformedStar7)
-    Event_32112830(8, character=Characters.MalformedStar8)
+    Event_32112820(1, astel_copy=Characters.MalformedStar1, destination=Assets.AEG003_316_9001)
+    Event_32112820(2, astel_copy=Characters.MalformedStar2, destination=Assets.AEG003_316_9002)
+    Event_32112820(3, astel_copy=Characters.MalformedStar3, destination=Assets.AEG003_316_9003)
+    Event_32112820(4, astel_copy=Characters.MalformedStar4, destination=Assets.AEG003_316_9004)
+    Event_32112820(5, astel_copy=Characters.MalformedStar5, destination=Assets.AEG003_316_9005)
+    Event_32112820(6, astel_copy=Characters.MalformedStar6, destination=Assets.AEG003_316_9006)
+    Event_32112820(7, astel_copy=Characters.MalformedStar7, destination=Assets.AEG003_316_9007)
+    Event_32112820(8, astel_copy=Characters.MalformedStar8, destination=Assets.AEG003_316_9008)
+    Event_32112820(31, astel_copy=Characters.CLONE_MalformedStar1, destination=Assets.AEG003_316_9001)
+    Event_32112820(32, astel_copy=Characters.CLONE_MalformedStar2, destination=Assets.AEG003_316_9002)
+    Event_32112820(33, astel_copy=Characters.CLONE_MalformedStar3, destination=Assets.AEG003_316_9003)
+    Event_32112820(34, astel_copy=Characters.CLONE_MalformedStar4, destination=Assets.AEG003_316_9004)
+    Event_32112820(35, astel_copy=Characters.CLONE_MalformedStar5, destination=Assets.AEG003_316_9005)
+    Event_32112820(36, astel_copy=Characters.CLONE_MalformedStar6, destination=Assets.AEG003_316_9006)
+    Event_32112820(37, astel_copy=Characters.CLONE_MalformedStar7, destination=Assets.AEG003_316_9007)
+    Event_32112820(38, astel_copy=Characters.CLONE_MalformedStar8, destination=Assets.AEG003_316_9008)
+    Event_32112830(1, astel=Characters.AstelStarsOfDarkness, character=Characters.MalformedStar1)
+    Event_32112830(2, astel=Characters.AstelStarsOfDarkness, character=Characters.MalformedStar2)
+    Event_32112830(3, astel=Characters.AstelStarsOfDarkness, character=Characters.MalformedStar3)
+    Event_32112830(4, astel=Characters.AstelStarsOfDarkness, character=Characters.MalformedStar4)
+    Event_32112830(5, astel=Characters.AstelStarsOfDarkness, character=Characters.MalformedStar5)
+    Event_32112830(6, astel=Characters.AstelStarsOfDarkness, character=Characters.MalformedStar6)
+    Event_32112830(7, astel=Characters.AstelStarsOfDarkness, character=Characters.MalformedStar7)
+    Event_32112830(8, astel=Characters.AstelStarsOfDarkness, character=Characters.MalformedStar8)
+    Event_32112830(31, astel=Characters.CLONE_AstelStarsOfDarkness, character=Characters.CLONE_MalformedStar1)
+    Event_32112830(32, astel=Characters.CLONE_AstelStarsOfDarkness, character=Characters.CLONE_MalformedStar2)
+    Event_32112830(33, astel=Characters.CLONE_AstelStarsOfDarkness, character=Characters.CLONE_MalformedStar3)
+    Event_32112830(34, astel=Characters.CLONE_AstelStarsOfDarkness, character=Characters.CLONE_MalformedStar4)
+    Event_32112830(35, astel=Characters.CLONE_AstelStarsOfDarkness, character=Characters.CLONE_MalformedStar5)
+    Event_32112830(36, astel=Characters.CLONE_AstelStarsOfDarkness, character=Characters.CLONE_MalformedStar6)
+    Event_32112830(37, astel=Characters.CLONE_AstelStarsOfDarkness, character=Characters.CLONE_MalformedStar7)
+    Event_32112830(38, astel=Characters.CLONE_AstelStarsOfDarkness, character=Characters.CLONE_MalformedStar8)
     Event_32112510()
     CommonFunc_90005501(
         0,
@@ -269,18 +285,18 @@ def Event_32112800():
     if FlagEnabled(32110800):
         return
     
-    AND_7.Add(HealthValue(Characters.MalformedStar0) <= 0)
-    AND_7.Add(HealthValue(Characters.CLONE_MalformedStar0) <= 0)
-    MAIN.Await(AND_7)
-    
+    MAIN.Await(HealthValue(Characters.AstelStarsOfDarkness) <= 0)  # shared health bar
+
+    Kill(Characters.CLONE_AstelStarsOfDarkness)
+
     Wait(4.0)
     PlaySoundEffect(32048000, 888880000, sound_type=SoundType.s_SFX)
     
-    AND_8.Add(CharacterDead(Characters.MalformedStar0))
-    AND_8.Add(CharacterDead(Characters.CLONE_MalformedStar0))
+    AND_8.Add(CharacterDead(Characters.AstelStarsOfDarkness))
+    AND_8.Add(CharacterDead(Characters.CLONE_AstelStarsOfDarkness))
     MAIN.Await(AND_8)
     
-    KillBossAndDisplayBanner(character=Characters.MalformedStar0, banner_type=BannerType.EnemyFelled)
+    KillBossAndDisplayBanner(character=Characters.AstelStarsOfDarkness, banner_type=BannerType.EnemyFelled)
     EnableFlag(32110800)
     EnableFlag(9268)
     if PlayerInOwnWorld():
@@ -291,28 +307,37 @@ def Event_32112800():
 def Event_32112810():
     """Event 32112810"""
     GotoIfFlagDisabled(Label.L0, flag=32110800)
-    DisableCharacter(Characters.MalformedStar0)
-    DisableAnimations(Characters.MalformedStar0)
-    Kill(Characters.MalformedStar0)
+    DisableCharacter(Characters.AstelStarsOfDarkness)
+    DisableAnimations(Characters.AstelStarsOfDarkness)
+    Kill(Characters.AstelStarsOfDarkness)
+    DisableCharacter(Characters.CLONE_AstelStarsOfDarkness)
+    DisableAnimations(Characters.CLONE_AstelStarsOfDarkness)
+    Kill(Characters.CLONE_AstelStarsOfDarkness)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(Characters.MalformedStar0)
-    SetCharacterEventTarget(Characters.MalformedStar0, entity=32110810)
+    DisableAI(Characters.AstelStarsOfDarkness)
+    DisableAI(Characters.CLONE_AstelStarsOfDarkness)
+    SetCharacterEventTarget(Characters.AstelStarsOfDarkness, entity=32110810)
+    SetCharacterEventTarget(Characters.CLONE_AstelStarsOfDarkness, entity=32110810)
     SetBackreadStateAlternate(Characters.TalkDummy2, True)
     GotoIfFlagEnabled(Label.L1, flag=32110801)
-    DisableCharacter(Characters.MalformedStar0)
+    DisableCharacter(Characters.AstelStarsOfDarkness)
+    DisableCharacter(Characters.CLONE_AstelStarsOfDarkness)
     AND_1.Add(PlayerInOwnWorld())
     AND_1.Add(CharacterInsideRegion(character=PLAYER, region=32112801))
     OR_1.Add(AND_1)
-    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.MalformedStar0, attacker=PLAYER))
-    
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.AstelStarsOfDarkness, attacker=PLAYER))
+    OR_1.Add(AttackedWithDamageType(attacked_entity=Characters.CLONE_AstelStarsOfDarkness, attacker=PLAYER))
+
     MAIN.Await(OR_1)
     
     EnableNetworkFlag(32110801)
-    EnableCharacter(Characters.MalformedStar0)
-    ForceAnimation(Characters.MalformedStar0, 20016)
+    EnableCharacter(Characters.AstelStarsOfDarkness)
+    EnableCharacter(Characters.CLONE_AstelStarsOfDarkness)
+    ForceAnimation(Characters.AstelStarsOfDarkness, 20016)
+    ForceAnimation(Characters.CLONE_AstelStarsOfDarkness, 20016)
     Goto(Label.L2)
 
     # --- Label 1 --- #
@@ -324,9 +349,14 @@ def Event_32112810():
 
     # --- Label 2 --- #
     DefineLabel(2)
-    EnableAI(Characters.MalformedStar0)
-    SetNetworkUpdateRate(Characters.MalformedStar0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.MalformedStar0, name=904620320)
+    EnableAI(Characters.AstelStarsOfDarkness)
+    EnableAI(Characters.CLONE_AstelStarsOfDarkness)
+    EnableImmortality(Characters.CLONE_AstelStarsOfDarkness)
+    DisableHealthBar(Characters.CLONE_AstelStarsOfDarkness)
+    ReferDamageToEntity(Characters.CLONE_AstelStarsOfDarkness, Characters.AstelStarsOfDarkness)
+    SetNetworkUpdateRate(Characters.AstelStarsOfDarkness, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_AstelStarsOfDarkness, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.AstelStarsOfDarkness, name=NameText.Astel)
 
 
 @RestartOnRest(32112811)
@@ -334,7 +364,7 @@ def Event_32112811():
     """Event 32112811"""
     if FlagEnabled(32110800):
         return
-    AND_1.Add(HealthRatio(Characters.MalformedStar0) <= 0.6000000238418579)
+    AND_1.Add(HealthRatio(Characters.AstelStarsOfDarkness) <= 0.6000000238418579)
     
     MAIN.Await(AND_1)
     
@@ -342,24 +372,24 @@ def Event_32112811():
 
 
 @RestartOnRest(32112820)
-def Event_32112820(_, character: uint, destination: uint):
+def Event_32112820(_, astel_copy: uint, destination: uint):
     """Event 32112820"""
-    MAIN.Await(CharacterHasSpecialEffect(character, 16714))
+    MAIN.Await(CharacterHasSpecialEffect(astel_copy, 16714))
     
     Move(
-        character,
+        astel_copy,
         destination=destination,
         destination_type=CoordEntityType.Asset,
         model_point=100,
-        copy_draw_parent=character,
+        copy_draw_parent=astel_copy,
     )
     Wait(1.0)
-    RemoveSpecialEffect(character, 16714)
+    RemoveSpecialEffect(astel_copy, 16714)
     Restart()
 
 
 @RestartOnRest(32112830)
-def Event_32112830(_, character: uint):
+def Event_32112830(_, astel: uint, character: uint):
     """Event 32112830"""
     GotoIfFlagDisabled(Label.L0, flag=32110800)
     DisableCharacter(character)
@@ -369,7 +399,7 @@ def Event_32112830(_, character: uint):
     # --- Label 0 --- #
     DefineLabel(0)
     AND_1.Add(CharacterDoesNotHaveSpecialEffect(character, 5038))
-    AND_1.Add(CharacterDead(Characters.MalformedStar0))
+    AND_1.Add(CharacterDead(astel))
     
     MAIN.Await(AND_1)
     
