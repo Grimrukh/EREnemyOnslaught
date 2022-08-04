@@ -814,6 +814,7 @@ namespace EREnemyOnslaught
             [903253510] = "Royal Knight Laurie",
             [903050510] = "Commander O'Farrell",
             [904760010] = "Fire Giantess",
+            [904502611] = "Glintstone Dragon Adeline",
 
             // Generic
             [902500300] = "Crucible Knights Ordovis and Olga",
