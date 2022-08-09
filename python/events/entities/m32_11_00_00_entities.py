@@ -3,6 +3,7 @@ from soulstruct.eldenring.game_types import *
 
 class NameText(NPCName):
     Astel = 904620320
+    CLONE_Astel = 904620330
 
 
 class Characters(Character):

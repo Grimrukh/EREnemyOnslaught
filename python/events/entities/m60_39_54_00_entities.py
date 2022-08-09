@@ -1,13 +1,18 @@
 from soulstruct.eldenring.game_types import *
 
 
+class NameText(NPCName):
+    Elemer = 903100500
+    CLONE_Elemer = 903100510
+
+
 class Characters(Character):
     Patches = 1039540700  # c0000_9003 npc 523090030 think 523090000 chara 23090 talk 309006000
     TalkDummy0 = 1039540950  # c1000_9000 npc 10000000 think 1 talk 1000
     TalkDummy1 = 1039540951  # c1000_9001 npc 10000000 think 1 talk 1000
     TalkDummy2 = 1039540952  # c1000_9002 npc 10000000 think 1 talk 1000
     TalkDummy3 = 1039540100  # c1000_9003 npc 10001000 think 1 talk 2000
-    BellBearingHunter = 1039540800  # c3100_9000 npc 31000931 think 31000931 group 1039545800,1039545100
+    ElemerOfTheBriar = 1039540800  # c3100_9000 npc 31000931 think 31000931 group 1039545800,1039545100
     PutridCorpse0 = 1039540203  # c3661_9003 npc 36611031 think 36610000
     PutridCorpse1 = 1039540206  # c3661_9006 npc 36611031 think 36610000
     PutridCorpse2 = 1039540207  # c3661_9007 npc 36611031 think 36610000
@@ -92,6 +97,8 @@ class Characters(Character):
     WanderingNoble2 = 1039540342  # c4300_9002 npc 43002031 think 43002000
     WanderingNoble3 = 1039540343  # c4300_9003 npc 43001031 think 43001000
     WanderingNoble4 = 1039540701  # c4300_9004 npc 43009330 think 500000000 talk 702206000
+
+    CLONE_ElemerOfTheBriar = 1039540801
 
 
 class Assets(Asset):

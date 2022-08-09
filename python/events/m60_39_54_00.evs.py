@@ -1,4 +1,4 @@
-"""TODO: Bell Bearing Hunter
+"""DONE
 West Altus Plateau (NE) (SE)
 
 linked:
@@ -706,10 +706,10 @@ def Constructor():
         flag_2=1039540512,
     )
     Event_1039542510()
-    Event_1039542800()
+    ElemerDies()
     Event_1039542810()
     Event_1039542849()
-    Event_1039542811()
+    ElemerPhaseTwo()
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1039544680, region=1039546680, radius=1.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1039544681, region=1039546680, radius=1.0, seconds=0.0, animation_id=-1)
     CommonFunc_TriggerEnemyAI_WithRegionOrRadius(0, character=1039544650, region=1039546680, radius=1.0, seconds=0.0, animation_id=-1)
@@ -836,11 +836,11 @@ def Event_1039542498():
 
 
 @RestartOnRest(1039542811)
-def Event_1039542811():
+def ElemerPhaseTwo():
     """Event 1039542811"""
     if FlagEnabled(1039540800):
         return
-    AND_1.Add(HealthRatio(Characters.BellBearingHunter) <= 0.6000000238418579)
+    AND_1.Add(HealthRatio(Characters.ElemerOfTheBriar) <= 0.6000000238418579)
     
     MAIN.Await(AND_1)
     
@@ -989,22 +989,26 @@ def Event_1039542849():
 
 
 @RestartOnRest(1039542800)
-def Event_1039542800():
+def ElemerDies():
     """Event 1039542800"""
     if FlagEnabled(1039540800):
         return
     
-    MAIN.Await(HealthRatio(Characters.BellBearingHunter) <= 0.0)
+    AND_1.Add(HealthRatio(Characters.ElemerOfTheBriar) <= 0.0)
+    AND_1.Add(HealthRatio(Characters.CLONE_ElemerOfTheBriar) <= 0.0)
+    MAIN.Await(AND_1)
     
     CreateVFX(1039540820)
     CreateVFX(1039540821)
     CreateVFX(1039540822)
     Wait(4.0)
-    PlaySoundEffect(Characters.BellBearingHunter, 888880000, sound_type=SoundType.s_SFX)
+    PlaySoundEffect(Characters.ElemerOfTheBriar, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(Characters.BellBearingHunter))
+    AND_2.Add(CharacterDead(Characters.ElemerOfTheBriar))
+    AND_2.Add(CharacterDead(Characters.CLONE_ElemerOfTheBriar))
+    MAIN.Await(AND_2)
     
-    KillBossAndDisplayBanner(character=Characters.BellBearingHunter, banner_type=BannerType.GreatEnemyFelled)
+    KillBossAndDisplayBanner(character=Characters.ElemerOfTheBriar, banner_type=BannerType.GreatEnemyFelled)
     EnableFlag(1039540800)
     EnableFlag(9182)
     if PlayerInOwnWorld():
@@ -1015,23 +1019,30 @@ def Event_1039542800():
 def Event_1039542810():
     """Event 1039542810"""
     GotoIfFlagDisabled(Label.L0, flag=1039540800)
-    DisableCharacter(Characters.BellBearingHunter)
-    DisableAnimations(Characters.BellBearingHunter)
-    Kill(Characters.BellBearingHunter)
+    DisableCharacter(Characters.ElemerOfTheBriar)
+    DisableAnimations(Characters.ElemerOfTheBriar)
+    Kill(Characters.ElemerOfTheBriar)
+    DisableCharacter(Characters.CLONE_ElemerOfTheBriar)
+    DisableAnimations(Characters.CLONE_ElemerOfTheBriar)
+    Kill(Characters.CLONE_ElemerOfTheBriar)
     End()
 
     # --- Label 0 --- #
     DefineLabel(0)
-    DisableAI(Characters.BellBearingHunter)
+    DisableAI(Characters.ElemerOfTheBriar)
+    DisableAI(Characters.CLONE_ElemerOfTheBriar)
     AND_2.Add(FlagEnabled(1039542805))
     AND_2.Add(CharacterInsideRegion(character=PLAYER, region=1039542800))
     
     MAIN.Await(AND_2)
     
-    SetNetworkUpdateRate(Characters.BellBearingHunter, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.BellBearingHunter, name=903100500)
+    SetNetworkUpdateRate(Characters.ElemerOfTheBriar, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    SetNetworkUpdateRate(Characters.CLONE_ElemerOfTheBriar, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    EnableBossHealthBar(Characters.ElemerOfTheBriar, name=NameText.Elemer, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_ElemerOfTheBriar, name=NameText.CLONE_Elemer, bar_slot=0)
     Wait(1.75)
-    EnableAI(Characters.BellBearingHunter)
+    EnableAI(Characters.ElemerOfTheBriar)
+    EnableAI(Characters.CLONE_ElemerOfTheBriar)
 
 
 @RestartOnRest(1039542720)

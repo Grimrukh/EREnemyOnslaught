@@ -55,14 +55,12 @@ def Constructor():
     CommonFunc_900005610(0, asset=Assets.AEG099_090_9003, vfx_id=100, model_point=800, right=0)
 
     # GARGOYLES
-    # TODO: Place Gargoyle clones.
     GargoylesDie()
     GargoylesBattleTrigger()
     GargoylesCommonEvents()
     GargoylesPhaseTwoTransition()
-    OneGargoyleDead()
-    HandleGargoyleDeath(0, Characters.GargoyleGreatsword, Characters.CLONE_GargoyleGreatsword)
-    HandleGargoyleDeath(1, Characters.GargoyleTwinblade, Characters.CLONE_GargoyleTwinblade)  # 12022823
+    OneGargoyleDead(0, Characters.GargoyleGreatsword, Characters.GargoyleTwinblade)
+    OneGargoyleDead(3, Characters.CLONE_GargoyleGreatsword, Characters.CLONE_GargoyleTwinblade)
 
     # MIMIC TEAR
     MimicTearDies()
@@ -1836,7 +1834,9 @@ def GargoylesDie():
     if FlagEnabled(Flags.GargoylesDead):
         return
     AND_1.Add(HealthValue(Characters.GargoyleGreatsword) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_GargoyleGreatsword) <= 0)
     AND_1.Add(HealthValue(Characters.GargoyleTwinblade) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_GargoyleTwinblade) <= 0)
 
     MAIN.Await(AND_1)
 
@@ -1884,9 +1884,9 @@ def GargoylesBattleTrigger():
     SetNetworkUpdateRate(Characters.CLONE_GargoyleGreatsword, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     ForceAnimation(Characters.GargoyleGreatsword, 30002)
     ForceAnimation(Characters.CLONE_GargoyleGreatsword, 30002)
-    EnableImmortality(Characters.CLONE_GargoyleGreatsword)
-    DisableHealthBar(Characters.CLONE_GargoyleGreatsword)
-    ReferDamageToEntity(Characters.CLONE_GargoyleGreatsword, Characters.GargoyleGreatsword)
+    # EnableImmortality(Characters.CLONE_GargoyleGreatsword)
+    # DisableHealthBar(Characters.CLONE_GargoyleGreatsword)
+    # ReferDamageToEntity(Characters.CLONE_GargoyleGreatsword, Characters.GargoyleGreatsword)
 
     GotoIfFlagEnabled(Label.L1, flag=12020801)
     AND_1.Add(PlayerInOwnWorld())
@@ -1937,14 +1937,15 @@ def GargoylesPhaseTwoTransition():
         return
     ForceAnimation(Characters.GargoyleTwinblade, 30003, loop=True)
     ForceAnimation(Characters.CLONE_GargoyleTwinblade, 30003, loop=True)
-    EnableImmortality(Characters.CLONE_GargoyleTwinblade)
-    DisableHealthBar(Characters.CLONE_GargoyleTwinblade)
-    ReferDamageToEntity(Characters.CLONE_GargoyleTwinblade, Characters.GargoyleTwinblade)
+    # EnableImmortality(Characters.CLONE_GargoyleTwinblade)
+    # DisableHealthBar(Characters.CLONE_GargoyleTwinblade)
+    # ReferDamageToEntity(Characters.CLONE_GargoyleTwinblade, Characters.GargoyleTwinblade)
     DisableFlag(Flags.GargoylesInPhaseTwo)
 
-    AND_1.Add(HealthRatio(Characters.GargoyleGreatsword) <= 0.550000011920929)
+    OR_1.Add(HealthRatio(Characters.GargoyleGreatsword) <= 0.550000011920929)
+    OR_1.Add(HealthRatio(Characters.CLONE_GargoyleGreatsword) <= 0.550000011920929)
 
-    MAIN.Await(AND_1)
+    MAIN.Await(OR_1)
 
     ForceAnimation(Characters.GargoyleTwinblade, 20003, loop=True)
     ForceAnimation(Characters.CLONE_GargoyleTwinblade, 20003, loop=True)
@@ -1963,19 +1964,18 @@ def GargoylesPhaseTwoTransition():
 
 
 @RestartOnRest(12022821)
-def OneGargoyleDead():
+def OneGargoyleDead(_, greatsword_gargoyle: uint, twinblade_gargoyle: uint):
     """Removes a SpEffect from last Gargoyle that was probably reducing aggression while two were alive."""
     if FlagEnabled(Flags.GargoylesDead):
         return
     AND_1.Add(FlagEnabled(Flags.GargoylesInPhaseTwo))
-    OR_1.Add(CharacterDead(Characters.GargoyleGreatsword))
-    OR_1.Add(CharacterDead(Characters.GargoyleTwinblade))
-    AND_1.Add(OR_1)
+    OR_1.Add(CharacterDead(greatsword_gargoyle))
+    OR_1.Add(CharacterDead(twinblade_gargoyle))
 
     MAIN.Await(AND_1)
 
-    RemoveSpecialEffect(Characters.GargoyleGreatsword, 17648)
-    RemoveSpecialEffect(Characters.GargoyleTwinblade, 17648)
+    RemoveSpecialEffect(greatsword_gargoyle, 17648)
+    RemoveSpecialEffect(twinblade_gargoyle, 17648)
 
 
 @RestartOnRest(12022822)

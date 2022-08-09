@@ -263,7 +263,7 @@ class Characters(Character):
     CLONE_GodskinDuoHealthPool = 13000860
     CLONE_GodskinDuoApostle = 13000861
     CLONE_GodskinDuoNoble = 13000862
-    CLONE_DragonlordPlacidusax = 13000830
+    CLONE_DragonlordPlacidusax = 13000831
 
     CLONE_AncientDragonLowerPlatform = 13000330
     CLONE_AncientDragonUpperCurve = 13000331

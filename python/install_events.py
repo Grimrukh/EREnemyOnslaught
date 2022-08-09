@@ -3,7 +3,7 @@
 import re
 import shutil
 from pathlib import Path
-from soulstruct.eldenring.events import EMEVD, EMEVDDirectory
+from soulstruct.eldenring.events import EMEVD
 
 
 def fix_evs_kwargs(evs: str):
@@ -17,33 +17,16 @@ def fix_evs_kwargs(evs: str):
 
 ELDEN_RING_PATH = Path("C:/Steam/steamapps/common/ELDEN RING (Modding)/Game")
 
-MAPS_TO_INSTALL = [
-    "m10_00_00_00",
-    "m11_00_00_00",
-    "m11_05_00_00",
-    "m12_01_00_00",
+
+FILTER_EVS = [
     "m12_02_00_00",
     "m12_03_00_00",
-    "m12_04_00_00",
-    "m12_05_00_00",
-    "m12_07_00_00",
-    "m12_08_00_00",
-    "m12_09_00_00",
-    "m14_00_00_00",
-    "m15_00_00_00",
-    "m16_00_00_00",
-    "m19_00_00_00",
-    "m60_52_38_00",  # Radahn
+    "m13_00_00_00",
+    "m32_11_00_00",
+    "m60_39_54_00",
+    "m60_48_51_00",
+    "m60_51_36_00",
 ]
-
-
-def install_select_maps():
-
-    for map_name in MAPS_TO_INSTALL:
-        emevd = EMEVD(f"events/{map_name}.evs.py")
-        packed = emevd.pack()
-        (ELDEN_RING_PATH / f"event/{map_name}.emevd.dcx").write_bytes(packed)
-        (ELDEN_RING_PATH / f"OnslaughtMod/event/{map_name}.emevd.dcx").write_bytes(packed)
 
 
 def install_all_maps():
@@ -57,6 +40,8 @@ def install_all_maps():
     print("common_func.py")
 
     for evs_path in Path("events").glob("*.evs.py"):
+        if FILTER_EVS and evs_path.name.split(".")[0] not in FILTER_EVS:
+            continue
         if evs_path.name.startswith("m31_22_00_00"):
             continue  # Spiritcaller Cave not done
         print(evs_path.name)
@@ -69,4 +54,5 @@ def install_all_maps():
 
 
 if __name__ == '__main__':
+    # install_select_maps()
     install_all_maps()

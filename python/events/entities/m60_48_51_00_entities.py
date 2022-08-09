@@ -8,6 +8,9 @@ class Characters(Character):
     Scarab1 = 1048510201  # c4191_9001 npc 41910050 think 41910000
     Scarab2 = 1048510202  # c4191_9002 npc 41911050 think 41910000
 
+    CLONE_NightsCavalry = 1048510801
+    CLONE_NightsCavalryHorse = 1048510811
+
 
 class Assets(Asset):
     pass

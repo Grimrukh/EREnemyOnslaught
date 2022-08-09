@@ -770,7 +770,11 @@ def FiasChampionsDie():
     AND_1.Add(HealthValue(Characters.LioneltheLionhearted) <= 0)
     AND_1.Add(HealthValue(Characters.LionelSidekick2) <= 0)
     AND_1.Add(HealthValue(Characters.LionelSidekick1) <= 0)
-    # Clones are immortal and refer their damage to the originals.
+    AND_1.Add(HealthValue(Characters.CLONE_FirstFiasChampion) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_SorcererRogier) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_LioneltheLionhearted) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_LionelSidekick2) <= 0)
+    AND_1.Add(HealthValue(Characters.CLONE_LionelSidekick1) <= 0)
 
     MAIN.Await(AND_1)
 
@@ -782,7 +786,7 @@ def FiasChampionsDie():
     AND_2.Add(CharacterDead(Characters.LioneltheLionhearted))
     AND_2.Add(CharacterDead(Characters.LionelSidekick2))
     AND_2.Add(CharacterDead(Characters.LionelSidekick1))
-    AND_2.Add(CharacterDead(Characters.CLONE_FiasChampion0))
+    AND_2.Add(CharacterDead(Characters.CLONE_FirstFiasChampion))
     AND_2.Add(CharacterDead(Characters.CLONE_SorcererRogier))
     AND_2.Add(CharacterDead(Characters.CLONE_LioneltheLionhearted))
     AND_2.Add(CharacterDead(Characters.CLONE_LionelSidekick2))
@@ -821,9 +825,9 @@ def FiasChampionsBattleTrigger():
     DisableCharacter(Characters.UnknownFiasChampion)
     DisableAnimations(Characters.UnknownFiasChampion)
     Kill(Characters.UnknownFiasChampion)
-    DisableCharacter(Characters.CLONE_FiasChampion0)
-    DisableAnimations(Characters.CLONE_FiasChampion0)
-    Kill(Characters.CLONE_FiasChampion0)
+    DisableCharacter(Characters.CLONE_FirstFiasChampion)
+    DisableAnimations(Characters.CLONE_FirstFiasChampion)
+    Kill(Characters.CLONE_FirstFiasChampion)
     DisableCharacter(Characters.CLONE_SorcererRogier)
     DisableAnimations(Characters.CLONE_SorcererRogier)
     Kill(Characters.CLONE_SorcererRogier)
@@ -858,13 +862,13 @@ def FiasChampionsBattleTrigger():
     DisableCharacter(Characters.LionelSidekick2)
     DisableCharacter(Characters.LionelSidekick1)
     DisableCharacter(Characters.UnknownFiasChampion)
-    DisableAI(Characters.CLONE_FiasChampion0)
+    DisableAI(Characters.CLONE_FirstFiasChampion)
     DisableAI(Characters.CLONE_SorcererRogier)
     DisableAI(Characters.CLONE_LioneltheLionhearted)
     DisableAI(Characters.CLONE_LionelSidekick2)
     DisableAI(Characters.CLONE_LionelSidekick1)
     DisableAI(Characters.CLONE_UnknownFiasChampion)
-    DisableCharacter(Characters.CLONE_FiasChampion0)
+    DisableCharacter(Characters.CLONE_FirstFiasChampion)
     DisableCharacter(Characters.CLONE_SorcererRogier)
     DisableCharacter(Characters.CLONE_LioneltheLionhearted)
     DisableCharacter(Characters.CLONE_LionelSidekick2)
@@ -890,7 +894,7 @@ def FiasChampionsBattleTrigger():
     )
     CreateTemporaryVFX(
         vfx_id=600940,
-        anchor_entity=Characters.CLONE_FiasChampion0,
+        anchor_entity=Characters.CLONE_FirstFiasChampion,
         model_point=900,
         anchor_type=CoordEntityType.Character,
     )
@@ -904,7 +908,7 @@ def FiasChampionsBattleTrigger():
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23611,
-            target_character=Characters.CLONE_FiasChampion0,
+            target_character=Characters.CLONE_FirstFiasChampion,
         )
         Goto(Label.L8)
     if FlagEnabled(51):
@@ -916,7 +920,7 @@ def FiasChampionsBattleTrigger():
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23612,
-            target_character=Characters.CLONE_FiasChampion0,
+            target_character=Characters.CLONE_FirstFiasChampion,
         )
         Goto(Label.L8)
     if FlagEnabled(52):
@@ -928,7 +932,7 @@ def FiasChampionsBattleTrigger():
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23613,
-            target_character=Characters.CLONE_FiasChampion0,
+            target_character=Characters.CLONE_FirstFiasChampion,
         )
         Goto(Label.L8)
     if FlagEnabled(52):
@@ -940,7 +944,7 @@ def FiasChampionsBattleTrigger():
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23614,
-            target_character=Characters.CLONE_FiasChampion0,
+            target_character=Characters.CLONE_FirstFiasChampion,
         )
         Goto(Label.L8)
     if FlagEnabled(54):
@@ -952,7 +956,7 @@ def FiasChampionsBattleTrigger():
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23615,
-            target_character=Characters.CLONE_FiasChampion0,
+            target_character=Characters.CLONE_FirstFiasChampion,
         )
         Goto(Label.L8)
     if FlagEnabled(55):
@@ -964,7 +968,7 @@ def FiasChampionsBattleTrigger():
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23616,
-            target_character=Characters.CLONE_FiasChampion0,
+            target_character=Characters.CLONE_FirstFiasChampion,
         )
         Goto(Label.L8)
     if FlagEnabled(56):
@@ -976,7 +980,7 @@ def FiasChampionsBattleTrigger():
         CopyPlayerCharacterDataFromOnlinePlayers(
             pool_type=0,
             failcase_player_param_id=23617,
-            target_character=Characters.CLONE_FiasChampion0,
+            target_character=Characters.CLONE_FirstFiasChampion,
         )
         Goto(Label.L8)
     CopyPlayerCharacterDataFromOnlinePlayers(
@@ -987,29 +991,29 @@ def FiasChampionsBattleTrigger():
     CopyPlayerCharacterDataFromOnlinePlayers(
         pool_type=0,
         failcase_player_param_id=23618,
-        target_character=Characters.CLONE_FiasChampion0,
+        target_character=Characters.CLONE_FirstFiasChampion,
     )
 
     # --- Label 8 --- #
     DefineLabel(8)
     WaitFrames(frames=1)
     EnableCharacter(Characters.FirstFiasChampion)
-    EnableCharacter(Characters.CLONE_FiasChampion0)
+    EnableCharacter(Characters.CLONE_FirstFiasChampion)
     EnableCharacter(Characters.UnknownFiasChampion)
     EnableCharacter(Characters.CLONE_UnknownFiasChampion)
     WaitFrames(frames=1)
     ForceAnimation(Characters.FirstFiasChampion, 63010)
-    ForceAnimation(Characters.CLONE_FiasChampion0, 63010)
+    ForceAnimation(Characters.CLONE_FirstFiasChampion, 63010)
     EnableAI(Characters.FirstFiasChampion)
-    EnableAI(Characters.CLONE_FiasChampion0)
+    EnableAI(Characters.CLONE_FirstFiasChampion)
     SetNetworkUpdateRate(Characters.FirstFiasChampion, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    SetNetworkUpdateRate(Characters.CLONE_FiasChampion0, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableImmortality(Characters.CLONE_FiasChampion0)
-    DisableHealthBar(Characters.CLONE_FiasChampion0)
-    ReferDamageToEntity(Characters.CLONE_FiasChampion0, Characters.FirstFiasChampion)
+    SetNetworkUpdateRate(Characters.CLONE_FirstFiasChampion, is_fixed=True, update_rate=CharacterUpdateRate.Always)
+    # EnableImmortality(Characters.CLONE_FirstFiasChampion)
+    # DisableHealthBar(Characters.CLONE_FirstFiasChampion)
+    # ReferDamageToEntity(Characters.CLONE_FirstFiasChampion, Characters.FirstFiasChampion)
     Wait(3.0)
-    EnableBossHealthBar(Characters.FirstFiasChampion, name=NameText.FiasChampion0)
-    # TODO: Second health bar? Or refer clone damage to original?
+    EnableBossHealthBar(Characters.FirstFiasChampion, name=NameText.FiasChampion0, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_FirstFiasChampion, name=NameText.FiasChampion0, bar_slot=0)  # same name
     WaitFrames(frames=1)
     EnableNetworkFlag(Flags.FiasChampionsBattleStarted)
 
@@ -1019,21 +1023,14 @@ def SorcererRogierTransition():
     """Event 12032811"""
     if FlagEnabled(Flags.FiasChampionsDead):
         return
-    # NEW: Handle referred-damage clone.
-    AND_2.Add(HealthValue(Characters.FirstFiasChampion) <= 0)
-    AND_2.Add(FlagEnabled(Flags.FiasChampionsBattleStarted))
-    MAIN.Await(AND_2)
-
-    Kill(Characters.CLONE_FiasChampion0)
-
     AND_1.Add(CharacterDead(Characters.FirstFiasChampion))
-    AND_1.Add(CharacterDead(Characters.CLONE_FiasChampion0))
+    AND_1.Add(CharacterDead(Characters.CLONE_FirstFiasChampion))
     AND_1.Add(FlagEnabled(Flags.FiasChampionsBattleStarted))
-
     MAIN.Await(AND_1)
 
     Wait(3.0)
-    DisableBossHealthBar(Characters.FirstFiasChampion, name=NameText.FiasChampion0)
+    DisableBossHealthBar(Characters.FirstFiasChampion, name=NameText.FiasChampion0, bar_slot=1)
+    DisableBossHealthBar(Characters.CLONE_FirstFiasChampion, name=NameText.FiasChampion0, bar_slot=0)
     CreateTemporaryVFX(
         vfx_id=600940,
         anchor_entity=Characters.SorcererRogier,
@@ -1056,13 +1053,14 @@ def SorcererRogierTransition():
     EnableAI(Characters.CLONE_SorcererRogier)
     SetNetworkUpdateRate(Characters.SorcererRogier, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.CLONE_SorcererRogier, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableImmortality(Characters.CLONE_SorcererRogier)
-    DisableHealthBar(Characters.CLONE_SorcererRogier)
-    ReferDamageToEntity(Characters.CLONE_SorcererRogier, Characters.SorcererRogier)
+    # EnableImmortality(Characters.CLONE_SorcererRogier)
+    # DisableHealthBar(Characters.CLONE_SorcererRogier)
+    # ReferDamageToEntity(Characters.CLONE_SorcererRogier, Characters.SorcererRogier)
     WaitFrames(frames=1)
     EnableNetworkFlag(Flags.SorcererRogierBattleStarted)
     Wait(3.0)
-    EnableBossHealthBar(Characters.SorcererRogier, name=NameText.SorcererRogier)
+    EnableBossHealthBar(Characters.SorcererRogier, name=NameText.SorcererRogier, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_SorcererRogier, name=NameText.SorcererRogier, bar_slot=0)
 
 
 @RestartOnRest(12032812)
@@ -1070,20 +1068,14 @@ def LionelTheLionheartedTransition():
     """Event 12032812"""
     if FlagEnabled(Flags.FiasChampionsDead):
         return
-    AND_2.Add(HealthValue(Characters.SorcererRogier) <= 0)
-    AND_2.Add(FlagEnabled(Flags.SorcererRogierBattleStarted))
-    MAIN.Await(AND_2)
-
-    Kill(Characters.CLONE_SorcererRogier)
-
     AND_1.Add(CharacterDead(Characters.SorcererRogier))
     AND_1.Add(CharacterDead(Characters.CLONE_SorcererRogier))
     AND_1.Add(FlagEnabled(Flags.SorcererRogierBattleStarted))
-
     MAIN.Await(AND_1)
 
     Wait(3.0)
-    DisableBossHealthBar(Characters.SorcererRogier, name=NameText.SorcererRogier)
+    DisableBossHealthBar(Characters.SorcererRogier, name=NameText.SorcererRogier, bar_slot=1)
+    DisableBossHealthBar(Characters.CLONE_SorcererRogier, name=NameText.SorcererRogier, bar_slot=0)
     CreateTemporaryVFX(
         vfx_id=600940,
         anchor_entity=Characters.LioneltheLionhearted,
@@ -1111,9 +1103,9 @@ def LionelTheLionheartedTransition():
     )
     EnableCharacter(Characters.LioneltheLionhearted)
     EnableCharacter(Characters.CLONE_LioneltheLionhearted)
-    EnableImmortality(Characters.CLONE_LioneltheLionhearted)
-    DisableHealthBar(Characters.CLONE_LioneltheLionhearted)
-    ReferDamageToEntity(Characters.CLONE_LioneltheLionhearted, Characters.LioneltheLionhearted)
+    # EnableImmortality(Characters.CLONE_LioneltheLionhearted)
+    # DisableHealthBar(Characters.CLONE_LioneltheLionhearted)
+    # ReferDamageToEntity(Characters.CLONE_LioneltheLionhearted, Characters.LioneltheLionhearted)
     WaitFrames(frames=1)
     ForceAnimation(Characters.LioneltheLionhearted, 63010)
     ForceAnimation(Characters.CLONE_LioneltheLionhearted, 63010)
@@ -1234,9 +1226,9 @@ def LionelTheLionheartedTransition():
     WaitFrames(frames=1)
     EnableCharacter(Characters.LionelSidekick1)
     EnableCharacter(Characters.CLONE_LionelSidekick1)
-    EnableImmortality(Characters.CLONE_LionelSidekick1)
-    DisableHealthBar(Characters.CLONE_LionelSidekick1)
-    ReferDamageToEntity(Characters.CLONE_LionelSidekick1, Characters.LionelSidekick1)
+    # EnableImmortality(Characters.CLONE_LionelSidekick1)
+    # DisableHealthBar(Characters.CLONE_LionelSidekick1)
+    # ReferDamageToEntity(Characters.CLONE_LionelSidekick1, Characters.LionelSidekick1)
     WaitFrames(frames=1)
 
     ForceAnimation(Characters.LionelSidekick1, 63010)
@@ -1346,9 +1338,9 @@ def LionelTheLionheartedTransition():
     WaitFrames(frames=1)
     EnableCharacter(Characters.LionelSidekick2)
     EnableCharacter(Characters.CLONE_LionelSidekick2)
-    EnableImmortality(Characters.CLONE_LionelSidekick2)
-    DisableHealthBar(Characters.CLONE_LionelSidekick2)
-    ReferDamageToEntity(Characters.CLONE_LionelSidekick2, Characters.LionelSidekick2)
+    # EnableImmortality(Characters.CLONE_LionelSidekick2)
+    # DisableHealthBar(Characters.CLONE_LionelSidekick2)
+    # ReferDamageToEntity(Characters.CLONE_LionelSidekick2, Characters.LionelSidekick2)
     WaitFrames(frames=1)
 
     ForceAnimation(Characters.LionelSidekick2, 63010)
@@ -1358,7 +1350,7 @@ def LionelTheLionheartedTransition():
     SetNetworkUpdateRate(Characters.LionelSidekick2, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.CLONE_LionelSidekick2, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     Wait(2.0)
-    EnableBossHealthBar(Characters.LioneltheLionhearted, name=NameText.LionelTheLionhearted)
+    EnableBossHealthBar(Characters.LioneltheLionhearted, name=NameText.LionelTheLionhearted, bar_slot=0)
     EnableBossHealthBar(Characters.LionelSidekick1, name=NameText.LionelSidekick1, bar_slot=1)
     EnableBossHealthBar(Characters.LionelSidekick2, name=NameText.LionelSidekick2, bar_slot=2)
 

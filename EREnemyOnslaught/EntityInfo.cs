@@ -392,6 +392,8 @@ namespace EREnemyOnslaught
 
             [1039520400] = new CloneInfo(1039520401, new Vector4(28.190f, 771.836f, 54.728f, -70.325f), new Vector4(29.019f, 771.836f, 57.046f, -70.325f)),  // Sanguine Noble
 
+            [1039540800] = new CloneInfo(1039540801),  // Elemer
+
             [1040520800] = new CloneInfo(1040520801, new Vector4(51.817f, 884.000f, 9.096f, -80.198f), new Vector4(51.335f, 884f, 5.594f, -89.354f)),  // Black Knife Assassin
 
             [1041500800] = new CloneInfo(1041500801, new Vector4(40.033f, 833.699f, 115.255f, 55.553f)),  // Fallingstar Beast
@@ -466,6 +468,9 @@ namespace EREnemyOnslaught
             #endregion
 
             #region Mountaintops
+            [1048510800] = new CloneInfo(1048510801),  // Night's Cavalry
+            [1048510810] = new CloneInfo(1048510811),  // and horse
+
             [1049520800] = new CloneInfo(1049520801),  // Gargoyle (Forbidden Lands)
 
             [1051550300] = new CloneInfo(1051550301),  // Guardian Golem
@@ -753,8 +758,6 @@ namespace EREnemyOnslaught
             [904650611] = "Dragonkin Soldier",  // Lake of Rot
 
             // m12_02_00_00
-            [904770000] = "Valiant Gargoyles (Greatsword)",
-            [904770001] = "Valiant Gargoyles (Twinblade)",
             [904650610] = "Dragonkin Soldier",
 
             // m12_03_00_00
@@ -815,6 +818,7 @@ namespace EREnemyOnslaught
             [903050510] = "Commander O'Farrell",
             [904760010] = "Fire Giantess",
             [904502611] = "Glintstone Dragon Adeline",
+            [903100510] = "Elmer, Springhare Hunter",
 
             // Generic
             [902500300] = "Crucible Knights Ordovis and Olga",
@@ -835,7 +839,7 @@ namespace EREnemyOnslaught
             [137601] = "Necromancer Garth",
             [903800311] = "Cleanrot Knights: Alpha Team",
             [903800312] = "Cleanrot Knights: Beta Team",
-            [904620320] = "Why Did It Have To Be Astels?",
+            [904620330] = "Fastel, God-Tier Runner",
             [902140000] = "Fell Twins",
             [902140001] = "Fell Twins",
 

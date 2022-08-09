@@ -1060,6 +1060,10 @@ def RedmaneDuoCrucibleKnightTrigger(
     _, crucible_knight: uint, leonine: uint, max_delay: float, boss_name: int, bar_slot: short
 ):
     """Crucible Knight attached to given Leonine Misbegotten enters the fray."""
+    AND_3.Add(FlagEnabled(9410))
+    AND_3.Add(FlagDisabled(9413))
+    if AND_3:
+        return
     if FlagEnabled(Flags.RedmaneDuoDead):
         return
     OR_1.Add(HealthRatio(leonine) < 0.5)

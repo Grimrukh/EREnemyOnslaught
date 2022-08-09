@@ -285,9 +285,9 @@ def Event_32112800():
     if FlagEnabled(32110800):
         return
     
-    MAIN.Await(HealthValue(Characters.AstelStarsOfDarkness) <= 0)  # shared health bar
-
-    Kill(Characters.CLONE_AstelStarsOfDarkness)
+    AND_7.Add(HealthValue(Characters.AstelStarsOfDarkness) <= 0)
+    AND_7.Add(HealthValue(Characters.CLONE_AstelStarsOfDarkness) <= 0)
+    MAIN.Await(AND_7)
 
     Wait(4.0)
     PlaySoundEffect(32048000, 888880000, sound_type=SoundType.s_SFX)
@@ -351,12 +351,13 @@ def Event_32112810():
     DefineLabel(2)
     EnableAI(Characters.AstelStarsOfDarkness)
     EnableAI(Characters.CLONE_AstelStarsOfDarkness)
-    EnableImmortality(Characters.CLONE_AstelStarsOfDarkness)
-    DisableHealthBar(Characters.CLONE_AstelStarsOfDarkness)
-    ReferDamageToEntity(Characters.CLONE_AstelStarsOfDarkness, Characters.AstelStarsOfDarkness)
+    # EnableImmortality(Characters.CLONE_AstelStarsOfDarkness)
+    # DisableHealthBar(Characters.CLONE_AstelStarsOfDarkness)
+    # ReferDamageToEntity(Characters.CLONE_AstelStarsOfDarkness, Characters.AstelStarsOfDarkness)
     SetNetworkUpdateRate(Characters.AstelStarsOfDarkness, is_fixed=True, update_rate=CharacterUpdateRate.Always)
     SetNetworkUpdateRate(Characters.CLONE_AstelStarsOfDarkness, is_fixed=True, update_rate=CharacterUpdateRate.Always)
-    EnableBossHealthBar(Characters.AstelStarsOfDarkness, name=NameText.Astel)
+    EnableBossHealthBar(Characters.AstelStarsOfDarkness, name=NameText.Astel, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_AstelStarsOfDarkness, name=NameText.CLONE_Astel, bar_slot=0)
 
 
 @RestartOnRest(32112811)

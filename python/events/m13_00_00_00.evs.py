@@ -24,6 +24,7 @@ from .entities.m13_00_00_00_entities import *
 @ContinueOnRest(0)
 def Constructor():
     """Event 0"""
+    RegisterGrace(grace_flag=13000001, asset=Assets.AEG099_060_9001)
     RegisterGrace(grace_flag=13000003, asset=Assets.AEG099_060_9003)
     RegisterGrace(grace_flag=13000004, asset=Assets.AEG099_060_9004)
     RegisterGrace(grace_flag=13000005, asset=Assets.AEG099_060_9005)
@@ -33,14 +34,14 @@ def Constructor():
     RegisterGrace(grace_flag=13000009, asset=Assets.AEG099_060_9009)
     RegisterGrace(grace_flag=13000010, asset=Assets.AEG099_060_9010)
     ControlMalikethGrace()
-    CommonFunc_RegisterGraceIfFlagEnabled(
-        0,
-        flag=Flags.DragonlodPlacidusaxDead,
-        grace_flag=13000001,
-        character=Characters.TalkDummy1,
-        asset=Assets.AEG099_060_9001,
-        enemy_block_distance=5.0,
-    )
+    # CommonFunc_RegisterGraceIfFlagEnabled(
+    #     0,
+    #     flag=Flags.DragonlodPlacidusaxDead,
+    #     grace_flag=13000001,
+    #     character=Characters.TalkDummy1,
+    #     asset=Assets.AEG099_060_9001,
+    #     enemy_block_distance=5.0,
+    # )
     CommonFunc_RegisterGraceIfFlagEnabled(
         0,
         flag=Flags.GodskinDuoDead,

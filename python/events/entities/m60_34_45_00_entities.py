@@ -1,6 +1,10 @@
 from soulstruct.eldenring.game_types import *
 
 
+class Flags(Flag):
+    GlintstoneDragonSmaragDead = 1045520800
+
+
 class Characters(Character):
     TalkDummy = 1034450100  # c1000_9000 npc 10001000 think 1 talk 2000
     RayaLucariaScholar = 1034450200  # c3702_9000 npc 37020020 think 37020000

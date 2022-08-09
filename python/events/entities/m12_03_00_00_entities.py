@@ -90,7 +90,7 @@ class Characters(Character):
     # TODO: New positions.
     CLONE_CrucibleKnightSiluria = 12030391
     CLONE_ErdtreeAvatar = 12030393
-    CLONE_FiasChampion0 = 12030820
+    CLONE_FirstFiasChampion = 12030820
     CLONE_SorcererRogier = 12030830
     CLONE_LioneltheLionhearted = 12030831
     CLONE_LionelSidekick2 = 12030832

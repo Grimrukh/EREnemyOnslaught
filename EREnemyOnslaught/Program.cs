@@ -40,10 +40,10 @@ namespace EREnemyOnslaught
 
             //DupeCharacters();
             GenerateMSBs(
-                //"m10_00_00_00.msb.dcx",
                 //"m11_00_00_00.msb.dcx",
                 //"m11_05_00_00.msb.dcx",
                 //"m12_01_00_00.msb.dcx",
+                //"m13_00_00_00.msb.dcx",
                 //"m14_00_00_00.msb.dcx",
                 //"m15_00_00_00.msb.dcx",  // Haligtree
                 //"m16_00_00_00.msb.dcx",  // Volcano Manor
@@ -57,7 +57,7 @@ namespace EREnemyOnslaught
             BND4 parambnd = SFUtil.DecryptERRegulation(regulationPath);
             List<PARAMDEF> paramdefs = LoadParamdefs("Defs");
             ChangeBossTeams(parambnd, paramdefs);
-            AddRennalaGraceParams(parambnd, paramdefs);
+            AddGraceParams(parambnd, paramdefs);
             SFUtil.EncryptERRegulation(GetModdingPath("regulation.bin"), parambnd);
             File.Copy(GetModdingPath("regulation.bin"), GetDistPath("regulation.bin"), overwrite: true);
             Console.WriteLine("Wrote modded `regulation.bin`.");
@@ -91,6 +91,13 @@ namespace EREnemyOnslaught
 
                 Console.WriteLine($"Reading vanilla MSB: {Path.GetFileName(msbFile)}");
                 MSBE msb = MSBE.Read(msbFile);
+
+                // Add new Dragonlord grace to m13.
+                if (msbFile.EndsWith("m13_00_00_00.msb.dcx"))
+                {
+                    //AddNewDragonlordGrace(msb);
+                    MoveDragonlordGrace(msb);
+                }
 
                 // Add new Rennala grace to m14.
                 if (msbFile.EndsWith("m14_00_00_00.msb.dcx"))
@@ -343,10 +350,91 @@ namespace EREnemyOnslaught
             }
         }
 
+        static void AddNewDragonlordGrace(MSBE m13)
+        {
+            // In Elden Ring, chr/obj position is the same, thankfully.
+            Vector3 position = new Vector3(59.504f, -177.949f, 422.461f);
+
+            MSBE.Part.Enemy sourceGraceChr = m13.Parts.Enemies.Find(x => x.EntityID == 13000950);
+            MSBE.Part.Asset sourceGraceObj = m13.Parts.Assets.Find(x => x.EntityID == 13001950);
+            MSBE.Part.Player sourceGracePlayer = m13.Parts.Players.Find(x => x.EntityID == 13000980);
+
+            MSBE.Part.Enemy newChr = (MSBE.Part.Enemy)sourceGraceChr.DeepCopy();
+            newChr.EntityID = 13000961;
+            newChr.Position = position;
+            newChr.CollisionPartName = "";  // see draw groups below
+            newChr.Name = "c1000_9024";
+            newChr.Unk08 = 9024;
+            m13.Parts.Enemies.Add(newChr);
+            Console.WriteLine($"Added new grace chr with entity ID: {newChr.EntityID}");
+
+            MSBE.Part.Asset platform = m13.Parts.Assets.Find(x => x.Name == "AEG240_565_6001");
+
+            // Can't find real collision parent.
+            newChr.Unk1.DrawGroups = platform.Unk1.DrawGroups;
+
+            MSBE.Part.Asset newObj = (MSBE.Part.Asset)sourceGraceObj.DeepCopy();
+            newObj.Unk1.DrawGroups = platform.Unk1.DrawGroups;
+            newObj.Unk1.DisplayGroups = new uint[8];
+            newObj.Unk1.CollisionMask = new uint[32];
+            newObj.EntityID = 13001961;
+            newObj.EntityGroupIDs = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+            newObj.Position = position;
+            //newObj.UnkPartNames = new string[] { "h009000", "", "h009000", "", "h009000", "" };
+            newObj.Name = "AEG099_060_9011";
+            newObj.Unk08 = 9011;
+            m13.Parts.Assets.Add(newObj);
+            Console.WriteLine($"Added new grace obj with entity ID: {newObj.EntityID}");
+
+            MSBE.Part.Player newPlayer = (MSBE.Part.Player)sourceGracePlayer.DeepCopy();
+            newPlayer.EntityID = 13000991;
+            newPlayer.Position = new Vector3(57.211f, -178.172f, 422.402f);
+            newPlayer.Rotation = new Vector3(0f, 34f, 0f);
+            newPlayer.Name = "c0000_9023";
+            newPlayer.Unk08 = 9023;
+            m13.Parts.Players.Add(newPlayer);
+            Console.WriteLine($"Added new grace player spawn with entity ID: {newPlayer.EntityID}");
+
+            Console.WriteLine("Added new Site of Grace outside Dragonlord Placidusax fight in m13.");
+
+            // Resort parts.
+            m13.Parts.Enemies.Sort((x, y) => x.Name.CompareTo(y.Name));
+            m13.Parts.Assets.Sort((x, y) => x.Name.CompareTo(y.Name));
+        }
+
+        static void MoveDragonlordGrace(MSBE m13)
+        {
+            // In Elden Ring, chr/obj position is the same, thankfully.
+            Vector3 position = new Vector3(59.504f, -177.949f, 422.461f);
+
+            MSBE.Part.Enemy sourceGraceChr = m13.Parts.Enemies.Find(x => x.EntityID == 13000951);
+            MSBE.Part.Asset sourceGraceObj = m13.Parts.Assets.Find(x => x.EntityID == 13001951);
+            MSBE.Part.Player sourceGracePlayer = m13.Parts.Players.Find(x => x.EntityID == 13000981);
+
+            sourceGraceChr.Position = position;
+            sourceGraceChr.CollisionPartName = "";  // see draw groups below
+            Console.WriteLine($"Moved grace chr with entity ID: {sourceGraceChr.EntityID}");
+
+            MSBE.Part.Asset platform = m13.Parts.Assets.Find(x => x.Name == "AEG240_565_6001");
+
+            sourceGraceObj.Unk1.DrawGroups = platform.Unk1.DrawGroups;
+            sourceGraceObj.Unk1.DisplayGroups = new uint[8];
+            sourceGraceObj.Unk1.CollisionMask = new uint[32];
+            sourceGraceObj.Position = position;
+            //newObj.UnkPartNames = new string[] { "h009000", "", "h009000", "", "h009000", "" };
+            Console.WriteLine($"Moved grace obj with entity ID: {sourceGraceObj.EntityID}");
+
+            sourceGracePlayer.Position = new Vector3(57.211f, -178.172f, 422.402f);
+            sourceGracePlayer.Rotation = new Vector3(0f, 34f, 0f);
+            Console.WriteLine($"Moved grace player spawn with entity ID: {sourceGracePlayer.EntityID}");
+
+            Console.WriteLine("Moved Site of Grace outside Dragonlord Placidusax fight in m13.");
+        }
+
         static void AddNewRennalaGrace(MSBE m14)
         {
             // In Elden Ring, chr/obj position is the same, thankfully.
-            Vector3 position = new System.Numerics.Vector3(95.878f, 154.105f, -59.438f);
+            Vector3 position = new Vector3(95.878f, 154.105f, -59.438f);
             
             MSBE.Part.Enemy sourceGraceChr = m14.Parts.Enemies.Find(x => x.EntityID == 14000953);
             MSBE.Part.Asset sourceGraceObj = m14.Parts.Assets.Find(x => x.EntityID == 14001953);
@@ -378,8 +466,8 @@ namespace EREnemyOnslaught
 
             MSBE.Part.Player newPlayer = (MSBE.Part.Player)sourceGracePlayer.DeepCopy();
             newPlayer.EntityID = 14000985;
-            newPlayer.Position = new System.Numerics.Vector3(97.690f, 154.093f, -54.869f);
-            newPlayer.Rotation = new System.Numerics.Vector3(0f, 150f, 0f);
+            newPlayer.Position = new Vector3(97.690f, 154.093f, -54.869f);
+            newPlayer.Rotation = new Vector3(0f, 150f, 0f);
             newPlayer.Name = "c0000_9004";
             newPlayer.Unk08 = 9004;
             m14.Parts.Players.Add(newPlayer);
@@ -402,35 +490,48 @@ namespace EREnemyOnslaught
             foreach (var row in npcParam.Rows)
             {
                 byte oldTeamType = (byte)row["teamType"].Value;
-                if (oldTeamType == 7)
+                if (oldTeamType == 7 || oldTeamType == 11)  // 11 is Dragons
                 {
                     //Console.WriteLine($"{row.ID}: {oldTeamType} -> 6");
                     row["teamType"].Value = 6;  // Enemy
                 }
             }
-            Console.WriteLine("Changed boss teams (7) to enemy (6).");
+            Console.WriteLine("Changed boss teams (7 and 11) to enemy (6).");
             npcParamFile.Bytes = npcParam.Write();
         }
 
-        static void AddRennalaGraceParams(BND4 parambnd, List<PARAMDEF> paramdefs)
+        static void AddGraceParams(BND4 parambnd, List<PARAMDEF> paramdefs)
         {
             BinderFile bonfireWarpFile = parambnd.Files.Find(x => x.Name == $@"N:\GR\data\Param\param\GameParam\BonfireWarpParam.param");
             PARAM bonfireWarpParam = PARAM.Read(bonfireWarpFile.Bytes);
             bonfireWarpParam.ApplyParamdefCarefully(paramdefs);
 
-            PARAM.Row newGrace = new PARAM.Row(bonfireWarpParam.Rows.Find(x => x.ID == 140003))
+            PARAM.Row newRennalaGrace = new PARAM.Row(bonfireWarpParam.Rows.Find(x => x.ID == 140003))
             {
                 ID = 140005  // to match entity ID
             };
-            newGrace["bonfireSubCategorySortId"].Value = 40;
-            newGrace["eventflagId"].Value = 71405;
-            newGrace["bonfireEntityId"].Value = 14001955;  // new grace obj
-            newGrace["posX"].Value = 97.690f;  // icon position on map
-            newGrace["posY"].Value = 154.093f;
-            newGrace["posZ"].Value = -54.869f;
-            newGrace["textId1"].Value = 140005;  // new text ID
+            newRennalaGrace["bonfireSubCategorySortId"].Value = 40;
+            newRennalaGrace["eventflagId"].Value = 71405;
+            newRennalaGrace["bonfireEntityId"].Value = 14001955;  // new grace obj
+            newRennalaGrace["posX"].Value = 97.690f;  // icon position on map
+            newRennalaGrace["posY"].Value = 154.093f;
+            newRennalaGrace["posZ"].Value = -54.869f;
+            newRennalaGrace["textId1"].Value = 140005;  // new text ID
+            bonfireWarpParam.Rows.Add(newRennalaGrace);
 
-            bonfireWarpParam.Rows.Add(newGrace);
+            //PARAM.Row newDragonlordGrace = new PARAM.Row(bonfireWarpParam.Rows.Find(x => x.ID == 130001))
+            //{
+            //    ID = 130011  // to match entity ID
+            //};
+            //newDragonlordGrace["bonfireSubCategorySortId"].Value = 100;
+            //newDragonlordGrace["eventflagId"].Value = 71311;
+            //newDragonlordGrace["bonfireEntityId"].Value = 13001961;  // new grace obj
+            //newDragonlordGrace["posX"].Value = 59.504f;  // icon position on map
+            //newDragonlordGrace["posY"].Value = -177.949f;
+            //newDragonlordGrace["posZ"].Value = 422.461f;
+            //newDragonlordGrace["textId1"].Value = 130011;  // new text ID
+            //bonfireWarpParam.Rows.Add(newDragonlordGrace);
+
             bonfireWarpParam.Rows.Sort((x, y) => x.ID.CompareTo(y.ID));
 
             Console.WriteLine("Added bonfire warp params for new Rennala grace.");
@@ -454,6 +555,7 @@ namespace EREnemyOnslaught
             FMG placeNames = FMG.Read(placeNamesFile.Bytes);
 
             placeNames[140005] = "Outside the Grand Library";
+            placeNames[130011] = "Beneath the City";
 
             placeNamesFile.Bytes = placeNames.Write();
         }

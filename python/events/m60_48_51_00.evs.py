@@ -1,4 +1,4 @@
-"""TODO: Night's Cavalry
+"""DONE
 Forbidden Lands (NW) (NW)
 
 linked:
@@ -38,21 +38,28 @@ def Constructor():
         left_3=0,
     )
     CommonFunc_MoveNightsCavalryToHorse(0, nights_cavalry=Characters.NightsCavalry, horse=Characters.NightsCavalryHorse)
-    # TODO
+    CommonFunc_MoveNightsCavalryToHorse(
+        1, nights_cavalry=Characters.CLONE_NightsCavalry, horse=Characters.CLONE_NightsCavalryHorse
+    )
     Event_1048512820(0, character=Characters.NightsCavalry, character_1=Characters.NightsCavalryHorse)
-    # TODO
+    Event_1048512820(1, character=Characters.CLONE_NightsCavalry, character_1=Characters.CLONE_NightsCavalryHorse)
     CommonFunc_NightsCavalryHealthBar(
         0,
         nights_cavalry=Characters.NightsCavalry,
         name=903150607,
         npc_threat_level=10,
         horse=Characters.NightsCavalryHorse,
-        clone_cavalry=0,  # TODO
-        clone_horse=0,  # TODO
+        clone_cavalry=Characters.CLONE_NightsCavalry,
+        clone_horse=Characters.CLONE_NightsCavalryHorse,
     )
     # TODO: Support clones in this common local call.
-    RunCommonEvent(1048512800, slot=0, args=(1048510800, 0, 1048510800, 0, 1048510700, 0.0), arg_types="IIIIif")
-    CommonFunc_FieldBossMusicHeatUp(0, 1048510800, 10, 0)
+    RunCommonEvent(
+        1048512800,
+        slot=0,
+        args=(1048510800, 0, Characters.NightsCavalry, Characters.CLONE_NightsCavalry, 0, 1048510700, 0.0),
+        arg_types="IIIIIif",
+    )
+    CommonFunc_FieldBossMusicHeatUp(0, Characters.NightsCavalry, 10, 0)
 
 
 @RestartOnRest(1048512800)
@@ -61,6 +68,7 @@ def Event_1048512800(
     flag: uint,
     left: uint,
     character: uint,
+    clone: uint,
     left_1: uint,
     item_lot: int,
     seconds: float,
@@ -72,9 +80,15 @@ def Event_1048512800(
     DisableCharacter(character)
     DisableAnimations(character)
     Kill(character)
+    DisableCharacter(clone)
+    DisableAnimations(clone)
+    Kill(clone)
     DisableCharacter(Characters.NightsCavalryHorse)
     DisableAnimations(Characters.NightsCavalryHorse)
     Kill(Characters.NightsCavalryHorse)
+    DisableCharacter(Characters.CLONE_NightsCavalryHorse)
+    DisableAnimations(Characters.CLONE_NightsCavalryHorse)
+    Kill(Characters.CLONE_NightsCavalryHorse)
     if PlayerNotInOwnWorld():
         return
     if ValueEqual(left=item_lot, right=0):
@@ -86,12 +100,16 @@ def Event_1048512800(
     # --- Label 0 --- #
     DefineLabel(0)
     
-    MAIN.Await(HealthValue(character) <= 0)
+    AND_1.Add(HealthValue(character) <= 0)
+    AND_1.Add(HealthValue(clone) <= 0)
+    MAIN.Await(AND_1)
     
     Wait(2.0)
     PlaySoundEffect(character, 888880000, sound_type=SoundType.s_SFX)
     
-    MAIN.Await(CharacterDead(character))
+    AND_2.Add(CharacterDead(character))
+    AND_2.Add(CharacterDead(clone))
+    MAIN.Await(AND_2)
     
     SkipLinesIfUnsignedEqual(6, left=left_1, right=3)
     SkipLinesIfUnsignedEqual(4, left=left_1, right=2)
