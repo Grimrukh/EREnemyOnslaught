@@ -62,7 +62,7 @@ def Constructor():
     )
     CommonFunc_FieldBossMusicHealthBar(
         0, boss=Characters.FallingstarBeast, name=904680603, npc_threat_level=19,
-        clone_boss=Characters.FallingstarBeast, clone_name=0,
+        clone_boss=Characters.CLONE_FallingstarBeast, clone_name=0,
     )
     CommonFunc_FieldBossNonRespawningWithReward(
         0,
