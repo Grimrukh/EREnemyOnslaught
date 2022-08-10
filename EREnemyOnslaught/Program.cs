@@ -10,10 +10,10 @@ namespace EREnemyOnslaught
 {
     internal static partial class Program
     {
-        const string ER_VANILLA_PATH = @"C:\Steam\steamapps\common\ELDEN RING (Vanilla Unpacked)\Game";
-        const string ER_MODDING_PATH = @"C:\Steam\steamapps\common\ELDEN RING (Modding)\Game";
+        const string ER_VANILLA_PATH = @"C:\Steam\steamapps\common\ELDEN RING (Vanilla)\Game";
+        const string ER_MODDING_PATH = @"C:\Steam\steamapps\common\ELDEN RING (Modding) (1.06)\Game";
         const string ER_DIST_PATH = ER_MODDING_PATH + @"\OnslaughtMod";
-        const float CLONE_X_OFFSET = 0.5f;
+        const float DEFAULT_CLONE_X_OFFSET = 0.5f;
 
         static string GetModdingPath(string path)
         {
@@ -33,6 +33,11 @@ namespace EREnemyOnslaught
         static void Main()
         {
             Console.WriteLine("Starting...");
+
+            Directory.CreateDirectory(ER_DIST_PATH + @"\map");
+            Directory.CreateDirectory(ER_DIST_PATH + @"\map\mapstudio");
+            Directory.CreateDirectory(ER_DIST_PATH + @"\msg");
+            Directory.CreateDirectory(ER_DIST_PATH + @"\msg\engus");
 
             // Copy oo2core_6_win64.dll
             if (!File.Exists("oo2core_6_win64.dll"))
@@ -92,10 +97,10 @@ namespace EREnemyOnslaught
                 Console.WriteLine($"Reading vanilla MSB: {Path.GetFileName(msbFile)}");
                 MSBE msb = MSBE.Read(msbFile);
 
-                // Add new Dragonlord grace to m13.
+                // Move Dragonlord grace in m13.
                 if (msbFile.EndsWith("m13_00_00_00.msb.dcx"))
                 {
-                    //AddNewDragonlordGrace(msb);
+                    //AddNewDragonlordGrace(msb);  // can't get Grace to draw
                     MoveDragonlordGrace(msb);
                 }
 
@@ -335,7 +340,7 @@ namespace EREnemyOnslaught
             else if (setDefaultXOffset)
             {
                 // Offset X a tiny bit to avoid weird collision issues.
-                part.Position = new Vector3(part.Position.X + CLONE_X_OFFSET, part.Position.Y, part.Position.Z);
+                part.Position = new Vector3(part.Position.X + DEFAULT_CLONE_X_OFFSET, part.Position.Y, part.Position.Z);
             }
         }
 

@@ -422,10 +422,9 @@ def EldenBeastDies():
         return
     GotoIfFlagEnabled(Label.L0, flag=Flags.EldenBeastDead)
 
-    # Shared health pool.
-    MAIN.Await(HealthValue(Characters.EldenBeast) <= 0)
-
-    Kill(Characters.CLONE_EldenBeast)
+    AND_3.Add(HealthValue(Characters.EldenBeast) <= 0)
+    AND_3.Add(HealthValue(Characters.CLONE_EldenBeast) <= 0)
+    MAIN.Await(AND_3)
 
     Wait(4.0)
     PlaySoundEffect(19008000, 888880000, sound_type=SoundType.s_SFX)
@@ -548,9 +547,10 @@ def RadagonDies():
     AND_1.Add(CharacterDead(Characters.CLONE_Radagon))
 
     MAIN.Await(AND_1)
-    
+
     Wait(3.0)
-    # TODO: Elden Beast music should start straightaway if Radagon is already dead (no transition event).
+    DisableBossHealthBar(Characters.Radagon, name=NameText.RadagonOfTheGoldenOrder, bar_slot=1)
+    DisableBossHealthBar(Characters.CLONE_Radagon, name=NameText.CLONE_RadagonOfTheGoldenOrder, bar_slot=0)
     EnableFlag(Flags.RadagonDead)  # will trigger Elden Beast fight immediately
 
 
@@ -652,9 +652,6 @@ def EldenBeastBattleTrigger():
     EnableCharacter(Characters.CLONE_EldenBeast)
     EnableAnimations(Characters.CLONE_EldenBeast)
     EnableAI(Characters.CLONE_EldenBeast)
-    EnableImmortality(Characters.CLONE_EldenBeast)
-    DisableHealthBar(Characters.CLONE_EldenBeast)
-    ReferDamageToEntity(Characters.CLONE_EldenBeast, Characters.EldenBeast)
     ForceAnimation(Characters.CLONE_EldenBeast, 20000)
 
     # TODO: Not sure how to manage this unknown entity. It's never disabled during the Radagon fight, so I assume
@@ -662,8 +659,8 @@ def EldenBeastBattleTrigger():
     # EnableCharacter(Characters.Unknown)
     # EnableAnimations(Characters.Unknown)
 
-    # Shared health pool.
-    EnableBossHealthBar(Characters.EldenBeast, name=NameText.EldenBeast, bar_slot=0)
+    EnableBossHealthBar(Characters.EldenBeast, name=NameText.EldenBeast, bar_slot=1)
+    EnableBossHealthBar(Characters.CLONE_EldenBeast, name=NameText.CLONE_EldenBeast, bar_slot=0)
 
     ChangeCamera(normal_camera_id=2200, locked_camera_id=2200)
     WaitFramesAfterCutscene(frames=1)

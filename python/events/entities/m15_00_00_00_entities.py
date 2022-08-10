@@ -22,7 +22,7 @@ class RegionPoints(RegionPoint):
 
 
 class Effects(SpecialEffectParam):
-    MaleniaSwapRequest = 18037  # unused event. TODO: Find the animation that triggers this...
+    MaleniaSwapRequest = 18037  # unused event, not added by any animation
     NewMaleniaAppearing = 18401  # unused event
 
 

@@ -783,6 +783,7 @@ namespace EREnemyOnslaught
             [903181010] = "Ginger Sif",
 
             // m15_00_00_00
+            [903252010] = "Laurie, Knight of the Haligtree",
             [902120010] = "Malonia, Middle Finger of Miyazaki",
 
             // m16_00_00_00
@@ -795,6 +796,7 @@ namespace EREnemyOnslaught
 
             // m19_00_00_00
             [902190010] = "Ragadon of the Weird Love Triangle",
+            [902200010] = "Elden Weast",
 
             // m35_00_00_00
             [904800012] = "Mulg the Hangry",
@@ -818,6 +820,7 @@ namespace EREnemyOnslaught
             [903050510] = "Commander O'Farrell",
             [904760010] = "Fire Giantess",
             [904502611] = "Glintstone Dragon Adeline",
+            [904502612] = "Glintstone Dragon Adeline",  // at Moonlight Plateau
             [903100510] = "Elmer, Springhare Hunter",
 
             // Generic

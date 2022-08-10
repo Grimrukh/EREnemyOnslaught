@@ -1,35 +1,22 @@
 """Install selected EMEVD."""
 
-import re
 import shutil
 from pathlib import Path
 from soulstruct.eldenring.events import EMEVD
 
 
-def fix_evs_kwargs(evs: str):
-    pattern = re.compile(r"CommonFunc_NonRespawningWithReward\((\d+), (\d+), (\d+), (\d+), ([\d.]+), (\d+)\)")
-    return pattern.sub(
-        r"CommonFunc_NonRespawningWithReward(\1, dead_flag=\2, character=\3, "
-        r"item_lot=\4, reward_delay=\5, skip_reward=\6",
-        evs,
-    )
-
-
-ELDEN_RING_PATH = Path("C:/Steam/steamapps/common/ELDEN RING (Modding)/Game")
+ELDEN_RING_PATH = Path("C:/Steam/steamapps/common/ELDEN RING (Modding) (1.06)/Game")
+MOD_EVENT_PATH = ELDEN_RING_PATH / "OnslaughtMod/event"
 
 
 FILTER_EVS = [
-    "m12_02_00_00",
-    "m12_03_00_00",
-    "m13_00_00_00",
-    "m32_11_00_00",
-    "m60_39_54_00",
-    "m60_48_51_00",
-    "m60_51_36_00",
+    "m19_00_00_00",
 ]
 
 
-def install_all_maps():
+def install_events():
+
+    MOD_EVENT_PATH.mkdir(exist_ok=True, parents=True)
 
     common_func = EMEVD("events/common_func.py")
     common_func.write(ELDEN_RING_PATH / "event/common_func.emevd.dcx")
@@ -55,4 +42,4 @@ def install_all_maps():
 
 if __name__ == '__main__':
     # install_select_maps()
-    install_all_maps()
+    install_events()
